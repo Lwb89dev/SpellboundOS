@@ -62,20 +62,23 @@ a concrete native path behind these characteristic identifiers.
 
 Parser `0x7036d0ae` and serializer `0x7036d368` describe a lower channel layer
 with types 1–4. Type 3 has flags and optional extended fields plus payload.
-Some type-2 parsing/serialization fields appear asymmetric in the broad
-exports, so a complete codec/state machine has not been implemented. These
-packets must not be conflated with the separately recovered 16-byte JS message
-header, or with the sensor-hub zrpc payloads.
+The corrected exports now confirm the type-2 asymmetry: serialization emits
+six bytes, while this parser consumes only two. A host codec and bounded
+plaintext fragmentation/reassembly model preserve that behavior; see
+[NATIVE_CHANNEL.md](NATIVE_CHANNEL.md). These packets must not be conflated
+with the separately recovered 16-byte JS message header or sensor-hub zrpc.
 
 The custom UUID `0022` has a different observed use: `0x703654ac` registers it
 as `BT_PORT` through RFCOMM registrar `0x703b8fa2`. Its existence in the UUID
 string inventory did not by itself establish a BLE GATT characteristic.
 The custom UUID `0025` exists in the firmware but is absent from this builder.
 
-Pairing, app-level authentication/encryption, replay behavior, phone-side
-notification packets and the active watch configuration remain open.
-An unrelated `auth_keys` store exists elsewhere, but its relationship to this
-transport has not been established; no stored device secrets were read.
+The authentication initializer is now concretely linked to the native crypto
+delegate, including per-app key/counter lookups and integrity checks; see
+[NATIVE_CHANNEL.md](NATIVE_CHANNEL.md). Pairing/key provisioning, persistence,
+phone-side notification packets and the active watch configuration remain open.
+The on-disk `auth_keys` store still requires tracing through the provider and
+session setup. No stored device secrets were read.
 
 ## Reproduction and validation
 

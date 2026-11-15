@@ -1,0 +1,72 @@
+{
+  "crc_table": {
+    "address": 1889256700,
+    "all_256_entries_match": true,
+    "reflected_polynomial": 3988292384,
+    "sha256": "12f3e0576d447eb37b36d82ba0c1c5481b8f0d12fdc70347ce4a076b229d4c86",
+    "size": 1024
+  },
+  "member": "META/firmware_sign.bin",
+  "member_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "reviewed_crypto_delegate": {
+    "callbacks": {
+      "12": 1881233632,
+      "16": 1881233666,
+      "20": 1881233836,
+      "24": 1881236044,
+      "4": 1881233734,
+      "8": 1881234588
+    },
+    "enabled_byte_offset": 0,
+    "size": 28
+  },
+  "reviewed_functions": {
+    "auth_initializer": 1881241196,
+    "counter_window": 1882642034,
+    "crc_update": 1880494944,
+    "crc_wrapper": 1883049952,
+    "crypto_registrar": 1882637262,
+    "key_mixing": 1882641994,
+    "parser": 1882640558,
+    "rx_manager": 1882634430,
+    "serializer": 1882641256,
+    "tx_manager": 1882633264
+  },
+  "scope": "offline host models; no pairing, device execution or cipher interoperability proof",
+  "source_sha256": {
+    "runtime-channel-aes/70282c9c.c": "8acad68eb93b3c04149342e31573e572b97d0800809aed619fd77104cb13035a",
+    "runtime-channel-aes/70282ef8.c": "49a94488aeb7bb3da460fef5c45d9a1c05961ab1ac8de012279b72ec2f8dd17b",
+    "runtime-channel-aes/7036d64a.c": "14492cc0a4fe2ec935c6d4a412c7bfb1d50718c4027bb8d17228f3c89c512911",
+    "runtime-channel-crc/70161360.c": "309a4758cdaaf8e94f2102acfcc94479295519b0f6ace9a2d9a06e37ff2ba641",
+    "runtime-channel-crc/703bf368.c": "a7188aa469d67c3d194886d9e70c0a831ad17c4c2db7fa3b57e0e628af589c3d",
+    "runtime-channel-crc/703d0fe0.c": "a7188aa469d67c3d194886d9e70c0a831ad17c4c2db7fa3b57e0e628af589c3d",
+    "runtime-channel-crypto/702158e0.c": "e9ecfbf9694a355270547dc6947cf57fa8bf45824d02ca5f6282c52616f0f4d9",
+    "runtime-channel-crypto/70215902.c": "8b16ca9eb729e48f9eb06def07889f312f3288c4cdacbc05950ab34fe292375b",
+    "runtime-channel-crypto/70215946.c": "f3ea378cb2edc54fffd07fd7e784e4dba8d689caa8410d82aa2bd7d0dc0ba71f",
+    "runtime-channel-crypto/702159ac.c": "99fdcfc0b17aa2d7c7a752af69a574dc2e8a3b1964fa296a691bc514a9693a1f",
+    "runtime-channel-crypto/70215b60.c": "ce1784f54e0a90797f92db5fef193f907f2d6e67d912bc1344c15f8009155c2d",
+    "runtime-channel-crypto/70215c9c.c": "3e60bc0ef3af70cf07941845c45fb4163a7758562cc3e593640d44eb82932f64",
+    "runtime-channel-crypto/7021624c.c": "169c7290bd95a3e48001772c94b6c1e24370f73f18b116a62b1f5cc88d20db47",
+    "runtime-channel-crypto/702838de.c": "ca803f6bbd025bc066b75ac90049bcf77e8341665168a54470452c0cabb9035b",
+    "runtime-channel-policy/7021766c.c": "4ea985c7e28f46e8cbf0475b4e22a355eee208cd2d3ea5a0890409ed2f59906f",
+    "runtime-channel-policy/7036b430.c": "5c51d42bd96ccf8337f256ed71f37563d412c5c8958f6fb541aac472abfcbab2",
+    "runtime-channel-policy/7036b8be.c": "718ba22f710cc4b758c4082bf2c2d3de91eceb8eefba0e4a1012c37deb072279",
+    "runtime-channel-policy/7036c3ce.c": "274a46e8f0e1d09e0d547510698e72c0d9b769471e2c8a1b9d5e496af2d53a86",
+    "runtime-channel-policy/7036cac0.c": "2b1f7f370586ff798c7b6ad0dcd1c31709b0e9c697ba066519ca8d80a20be9d2",
+    "runtime-channel-policy/7036d672.c": "fb37fbbf7a460b9e40cfda1a46399ced77ada87a50e3df0d0615281162381617",
+    "runtime-channel/7036d0ae.c": "aef1de1ef1e55b47cc06b2d5e3f8056c4037a7e55fe64c86f0cf6e4ac9f081ed",
+    "runtime-channel/7036d368.c": "cc46a98d4a8bc85e236be8b92650012ab2f4b6fd4c0923e4ef60fb932b2267fc",
+    "runtime-channel/7036d9e4.c": "0eed3d5c5c9058c32e2573ea8554d1553bc8cd325a8f8676f70ac561d1f307bd",
+    "runtime-channel/7036e1da.c": "ce787e0bcf2b7e374300eb38c40c1f2aac338f7958490df3f31d46055f72f7d5",
+    "runtime-channel/703d0418.c": "17ff77c7ad1a07391bb82e3243f31dc05971a29a7d55a8bc95727dbc96c83dbb",
+    "runtime-channel/703d044a.c": "3354c7b8f6ae218f0c231cc660e030f0703371805164b05522aa025bfc34f178",
+    "runtime-channel/703d047e.c": "4eb0aa80b16024dafde979e633fe65425741193f5e36f03714fd1afa55a4dfa7"
+  },
+  "synthetic_vectors": {
+    "ack": "0412340100",
+    "control_enabled": "020201010100",
+    "crc_123456789": "cbf43926",
+    "probe": "01",
+    "single_plaintext": "0307123400030000005600616263"
+  }
+}

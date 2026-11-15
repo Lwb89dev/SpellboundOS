@@ -564,6 +564,29 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    All 115 Python tests pass with signature dependencies. The corrected Ghidra
    pass completed six targets; no Bluetooth or device interaction was performed.
 
+## 2026-11-15 — native channel framing and crypto delegate
+
+1. Continued from commit `776b393` with corrected native exports of packet
+   parsing, serialization, TX/RX management and the authentication initializer.
+   Recovered types 1–4, 5/11-byte data headers, fragmentation, ACK flags,
+   sequence wrap and path-specific UUID routing. Preserved the confirmed
+   six-byte-write/two-byte-read type-2 asymmetry and module u16-to-u8 conversion.
+2. Connected authentication initialization to the 28-byte channel crypto
+   delegate and its six key/counter/cipher callbacks. Traced session-byte XOR
+   of all 16 key bytes, payload/counter/CRC framing, independent block calls,
+   padding length and unsigned forward counter window. Pairing, key derivation,
+   padding contents and vendor cipher interoperability remain open.
+3. Verified every entry of the native CRC-32 table against polynomial
+   `0xedb88320`, inspected custom indexing p-code and raw tail jumps, and fixed
+   the inferred void return with a guarded analysis-only signature script.
+   The corrected CRC pseudocode retains its accumulator update and return.
+4. Added independently authored offline codec, bounded plaintext fragmentation/
+   reassembly and pre-encryption-envelope helpers, 14 synthetic tests,
+   [analysis/NATIVE_CHANNEL.md](analysis/NATIVE_CHANNEL.md), and reproducible
+   [analysis/native-channel.json](analysis/native-channel.json). All 129 Python
+   tests pass with signature dependencies. No Bluetooth/device interaction or
+   device-secret extraction was performed.
+
 ## Next work
 
 - Regenerate selected native paths with startup-aware mappings, corrected
@@ -587,3 +610,6 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
   a backup of device-specific data, before considering hardware writes.
 - Define the Android/watch transport, authentication and notification/navigation
   contracts, and test them on host and emulator before connecting a watch.
+- Follow the native authentication provider/session setup and registered
+  callbacks to recover pairing/key provisioning and counter lifecycle; connect
+  native module payloads to JS framing before claiming an end-to-end protocol.
