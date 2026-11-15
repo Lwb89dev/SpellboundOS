@@ -1,0 +1,1100 @@
+{
+  "member": "META/js_apps/framework.js",
+  "modules": {
+    "_internals": {
+      "methods": [
+        {
+          "arg_type": 2,
+          "binding": "native",
+          "name": "addSysPageListener",
+          "native": "hmApp.addSysPageListener",
+          "since": "3.6"
+        },
+        {
+          "binding": "javascript",
+          "name": "getNativeModules",
+          "since": "3.6"
+        },
+        {
+          "arg_type": 2,
+          "binding": "native",
+          "name": "removeSysPageListener",
+          "native": "hmApp.removeSysPageListener",
+          "since": "3.6"
+        }
+      ],
+      "specifier": null
+    },
+    "ai-flex": {
+      "methods": [],
+      "passthrough": [
+        {
+          "native_object": "hmVAD",
+          "since": "3.0"
+        },
+        {
+          "native_object": "hmSysApi",
+          "since": "3.0"
+        }
+      ],
+      "specifier": "@zos/ai-flex"
+    },
+    "alarm": {
+      "constants_from_call": "N",
+      "methods": [
+        {
+          "args": [
+            "id"
+          ],
+          "binding": "native",
+          "name": "cancel",
+          "native": "hmApp.cancelAlarm",
+          "permission": "device:os.alarm",
+          "since": "3.0"
+        },
+        {
+          "binding": "native",
+          "name": "getAllAlarms",
+          "native": "hmApp.getAlarmList",
+          "permission": "device:os.alarm",
+          "since": "3.0"
+        },
+        {
+          "binding": "native",
+          "name": "set",
+          "native": "hmApp.newAlarm",
+          "permission": "device:os.alarm",
+          "since": "3.0"
+        }
+      ],
+      "specifier": "@zos/alarm"
+    },
+    "app": {
+      "constants_from_call": "N",
+      "methods": [
+        {
+          "args": [
+            "eventName",
+            "eventParam"
+          ],
+          "binding": "native",
+          "name": "emitCustomSystemEvent",
+          "native": "hmApp.advertiseEvent",
+          "since": "3.0"
+        },
+        {
+          "binding": "native",
+          "name": "getPackageInfo",
+          "native": "hmApp.getPackageInfo",
+          "since": "2.0"
+        },
+        {
+          "binding": "javascript",
+          "name": "getPackageInfoById",
+          "since": "4.0"
+        },
+        {
+          "arg_type": 2,
+          "binding": "native",
+          "name": "getPerformance",
+          "native": "hmApp.getProfile",
+          "since": "4.0"
+        },
+        {
+          "binding": "native",
+          "name": "getScene",
+          "native": "hmSetting.getScreenType",
+          "since": "2.0"
+        },
+        {
+          "arg_type": 2,
+          "binding": "native",
+          "name": "offMessage",
+          "native": "hmApp.offMessage",
+          "since": "3.6"
+        },
+        {
+          "arg_type": 2,
+          "binding": "native",
+          "name": "onMessage",
+          "native": "hmApp.onMessage",
+          "since": "3.6"
+        },
+        {
+          "arg_type": 2,
+          "binding": "native",
+          "name": "postMessage",
+          "native": "hmApp.postMessage",
+          "since": "3.6"
+        },
+        {
+          "args": [
+            "permissions"
+          ],
+          "binding": "native",
+          "name": "queryPermission",
+          "native": "hmApp.queryPermission",
+          "since": "3.0"
+        },
+        {
+          "args": [
+            "permissions",
+            "callback"
+          ],
+          "binding": "native",
+          "name": "requestPermission",
+          "native": "hmApp.requestPermission",
+          "since": "3.0"
+        }
+      ],
+      "specifier": "@zos/app"
+    },
+    "app-access": {
+      "constants_from_native": "hmSysApi",
+      "methods": [
+        {
+          "binding": "javascript",
+          "name": "getSportData",
+          "permission": "data:user.hd.workout",
+          "since": "3.6"
+        }
+      ],
+      "passthrough": [
+        {
+          "native_object": "hmSysApi",
+          "since": "3.0"
+        }
+      ],
+      "specifier": "@zos/app-access"
+    },
+    "app-service": {
+      "methods": [
+        {
+          "binding": "native",
+          "name": "exit",
+          "native": "hmApp.exit",
+          "since": "3.0"
+        },
+        {
+          "binding": "native",
+          "name": "getAllAppServices",
+          "native": "hmApp.getServiceList",
+          "since": "3.0"
+        },
+        {
+          "binding": "native",
+          "name": "setStatusPoint",
+          "native": "hmApp.setStatusPoint",
+          "since": "4.1"
+        },
+        {
+          "binding": "native",
+          "name": "start",
+          "native": "hmApp.startService",
+          "since": "3.0"
+        },
+        {
+          "binding": "native",
+          "name": "stop",
+          "native": "hmApp.stopService",
+          "since": "3.0"
+        },
+        {
+          "binding": "native",
+          "name": "updateDuration",
+          "native": "hmApp.setServiceDuration",
+          "since": "4.0"
+        }
+      ],
+      "specifier": "@zos/app-service"
+    },
+    "ble": {
+      "classes": [
+        "LocalTransferFile",
+        "TransferFile"
+      ],
+      "constants_from_native": "hmBle",
+      "methods": [
+        {
+          "arg_type": 2,
+          "binding": "native",
+          "name": "mstDestroyProfileInstance",
+          "native": "hmBle.mstDestoryProfileInstance",
+          "since": "2.0"
+        }
+      ],
+      "passthrough": [
+        {
+          "native_object": "hmBle",
+          "since": "2.0"
+        }
+      ],
+      "specifier": "@zos/ble"
+    },
+    "crypto": {
+      "constants_from_native": "hmCrypto",
+      "methods": [],
+      "passthrough": [
+        {
+          "native_object": "hmCrypto",
+          "since": "3.0"
+        }
+      ],
+      "specifier": "@zos/crypto"
+    },
+    "device": {
+      "constants": [
+        "SCREEN_SHAPE_ROUND",
+        "SCREEN_SHAPE_SQUARE"
+      ],
+      "methods": [
+        {
+          "binding": "native",
+          "name": "getDeviceInfo",
+          "native": "hmSetting.getDeviceInfo",
+          "permission": "data:os.device.info",
+          "since": "2.0"
+        },
+        {
+          "binding": "native",
+          "name": "getDiskInfo",
+          "native": "hmSetting.getDiskInfo",
+          "since": "2.0"
+        }
+      ],
+      "specifier": "@zos/device"
+    },
+    "display": {
+      "methods": [
+        {
+          "binding": "native",
+          "name": "getAutoBrightness",
+          "native": "hmSetting.getScreenAutoBright",
+          "since": "2.0"
+        },
+        {
+          "binding": "native",
+          "name": "getBrightness",
+          "native": "hmSetting.getBrightness",
+          "since": "2.0"
+        },
+        {
+          "binding": "native",
+          "name": "getSettings",
+          "native": "hmSetting.getDisplayInfo",
+          "since": "3.0"
+        },
+        {
+          "binding": "javascript",
+          "name": "pauseDropWristScreenOff",
+          "since": "2.1"
+        },
+        {
+          "binding": "javascript",
+          "name": "pausePalmScreenOff",
+          "since": "2.1"
+        },
+        {
+          "binding": "native",
+          "name": "resetDropWristScreenOff",
+          "native": "hmSetting.releaseWristDownOff",
+          "since": "2.1"
+        },
+        {
+          "binding": "native",
+          "name": "resetPageBrightTime",
+          "native": "hmSetting.setBrightScreenCancel",
+          "since": "2.0"
+        },
+        {
+          "binding": "native",
+          "name": "resetPalmScreenOff",
+          "native": "hmSetting.releasePalmOff",
+          "since": "2.1"
+        },
+        {
+          "args": [
+            "autoBright"
+          ],
+          "binding": "native",
+          "name": "setAutoBrightness",
+          "native": "hmSetting.setScreenAutoBright",
+          "since": "2.0"
+        },
+        {
+          "args": [
+            "brightness"
+          ],
+          "binding": "native",
+          "name": "setBrightness",
+          "native": "hmSetting.setBrightness",
+          "since": "2.0"
+        },
+        {
+          "binding": "javascript",
+          "name": "setPageBrightTime",
+          "since": "2.0"
+        },
+        {
+          "binding": "native",
+          "name": "setScreenOff",
+          "native": "hmSetting.setScreenOff",
+          "since": "2.0"
+        },
+        {
+          "args": [
+            "relaunch"
+          ],
+          "binding": "native",
+          "name": "setWakeUpRelaunch",
+          "native": "hmApp.setScreenKeep",
+          "since": "2.0"
+        }
+      ],
+      "specifier": "@zos/display"
+    },
+    "fs": {
+      "methods": [
+        {
+          "args": [
+            "fd"
+          ],
+          "binding": "native",
+          "name": "closeSync",
+          "native": "hmFS.close",
+          "since": "2.0"
+        },
+        {
+          "args": [
+            "path"
+          ],
+          "binding": "native",
+          "name": "mkdirSync",
+          "native": "hmFS.mkdir",
+          "since": "2.0"
+        },
+        {
+          "args": [
+            "path",
+            "flag"
+          ],
+          "binding": "native",
+          "name": "openAssetsSync",
+          "native": "hmFS.open_asset",
+          "since": "2.0"
+        },
+        {
+          "binding": "javascript",
+          "name": "openSync",
+          "since": "2.0"
+        },
+        {
+          "binding": "javascript",
+          "name": "readFileSync",
+          "since": "2.0"
+        },
+        {
+          "binding": "javascript",
+          "name": "readSync",
+          "since": "2.0"
+        },
+        {
+          "binding": "javascript",
+          "name": "readdirSync",
+          "since": "2.0"
+        },
+        {
+          "args": [
+            "oldPath",
+            "newPath"
+          ],
+          "binding": "native",
+          "name": "renameSync",
+          "native": "hmFS.rename",
+          "since": "2.0"
+        },
+        {
+          "args": [
+            "path"
+          ],
+          "binding": "native",
+          "name": "rmSync",
+          "native": "hmFS.remove",
+          "since": "2.0"
+        },
+        {
+          "binding": "javascript",
+          "name": "statAssetsSync",
+          "since": "2.0"
+        },
+        {
+          "binding": "javascript",
+          "name": "statSync",
+          "since": "2.0"
+        },
+        {
+          "binding": "javascript",
+          "name": "writeFileSync",
+          "since": "2.0"
+        },
+        {
+          "binding": "javascript",
+          "name": "writeSync",
+          "since": "2.0"
+        }
+      ],
+      "specifier": "@zos/fs"
+    },
+    "interaction": {
+      "constants_from_call": "N",
+      "methods": [
+        {
+          "binding": "javascript",
+          "name": "createModal",
+          "since": "2.0"
+        },
+        {
+          "binding": "native",
+          "name": "offDigitalCrown",
+          "native": "hmApp.unregisterSpinEvent",
+          "since": "2.0"
+        },
+        {
+          "binding": "native",
+          "name": "offGesture",
+          "native": "hmApp.unregisterGestureEvent",
+          "since": "2.0"
+        },
+        {
+          "binding": "native",
+          "name": "offKey",
+          "native": "hmApp.unregisterKeyEvent",
+          "since": "2.0"
+        },
+        {
+          "args": [
+            "callback"
+          ],
+          "binding": "native",
+          "name": "onDigitalCrown",
+          "native": "hmApp.registerSpinEvent",
+          "since": "2.0"
+        },
+        {
+          "args": [
+            "callback"
+          ],
+          "binding": "native",
+          "name": "onGesture",
+          "native": "hmApp.registerGestureEvent",
+          "since": "2.0"
+        },
+        {
+          "args": [
+            "callback"
+          ],
+          "binding": "native",
+          "name": "onKey",
+          "native": "hmApp.registerKeyEvent",
+          "since": "2.0"
+        },
+        {
+          "binding": "javascript",
+          "name": "onWristMotion",
+          "since": "3.0"
+        },
+        {
+          "binding": "javascript",
+          "name": "showToast",
+          "since": "2.0"
+        }
+      ],
+      "specifier": "@zos/interaction"
+    },
+    "media": {
+      "constants_from_native": "hmMedia",
+      "methods": [
+        {
+          "binding": "javascript",
+          "name": "create",
+          "since": "3.0"
+        }
+      ],
+      "passthrough": [
+        {
+          "native_object": "hmMedia",
+          "since": "3.0"
+        }
+      ],
+      "specifier": "@zos/media"
+    },
+    "notification": {
+      "methods": [
+        {
+          "binding": "native",
+          "name": "cancel",
+          "native": "hmApp.deleteNotification",
+          "permission": "device:os.notification",
+          "since": "3.0"
+        },
+        {
+          "binding": "native",
+          "name": "getAllNotifications",
+          "native": "hmApp.getNotificationList",
+          "permission": "device:os.notification",
+          "since": "3.0"
+        },
+        {
+          "binding": "native",
+          "name": "notify",
+          "native": "hmApp.postNotification",
+          "permission": "device:os.notification",
+          "since": "3.0"
+        }
+      ],
+      "specifier": "@zos/notification"
+    },
+    "page": {
+      "constants": [
+        "SCROLL_ANIMATION_NONE",
+        "SCROLL_ANIMATION_SMOOTH",
+        "SCROLL_MODE_FREE",
+        "SCROLL_MODE_SWIPER",
+        "SCROLL_MODE_SWIPER_HORIZONTAL"
+      ],
+      "methods": [
+        {
+          "binding": "native",
+          "name": "getScrollTop",
+          "native": "hmApp.getLayerY",
+          "since": "2.0"
+        },
+        {
+          "binding": "native",
+          "name": "getSwiperIndex",
+          "native": "hmUI.getScrollCurrentPage",
+          "since": "2.0"
+        },
+        {
+          "binding": "javascript",
+          "name": "scrollTo",
+          "since": "2.0"
+        },
+        {
+          "binding": "javascript",
+          "name": "setScrollLock",
+          "since": "2.0"
+        },
+        {
+          "binding": "javascript",
+          "name": "setScrollMode",
+          "since": "2.0"
+        },
+        {
+          "binding": "javascript",
+          "name": "swipeToIndex",
+          "since": "2.0"
+        }
+      ],
+      "specifier": "@zos/page"
+    },
+    "router": {
+      "constants_from_call": "N",
+      "methods": [
+        {
+          "binding": "native",
+          "name": "back",
+          "native": "hmApp.goBack",
+          "since": "2.0"
+        },
+        {
+          "args": [
+            "appId"
+          ],
+          "binding": "native",
+          "name": "checkSystemApp",
+          "native": "hmApp.checkNative",
+          "since": "3.0"
+        },
+        {
+          "args": [
+            "timeoutId"
+          ],
+          "binding": "native",
+          "name": "clearLaunchAppTimeout",
+          "native": "hmApp.alarmCancel",
+          "since": "2.0"
+        },
+        {
+          "binding": "native",
+          "name": "exit",
+          "native": "hmApp.exit",
+          "since": "2.0"
+        },
+        {
+          "arg_type": 2,
+          "binding": "native",
+          "name": "getAppIdByName",
+          "native": "hmApp.matchApp",
+          "since": "3.6"
+        },
+        {
+          "binding": "native",
+          "name": "home",
+          "native": "hmApp.gotoHome",
+          "since": "2.0"
+        },
+        {
+          "binding": "javascript",
+          "name": "launchApp",
+          "since": "2.0"
+        },
+        {
+          "binding": "javascript",
+          "name": "push",
+          "since": "2.0"
+        },
+        {
+          "binding": "javascript",
+          "name": "replace",
+          "since": "2.0"
+        },
+        {
+          "binding": "javascript",
+          "name": "setLaunchAppTimeout",
+          "since": "2.0"
+        }
+      ],
+      "specifier": "@zos/router"
+    },
+    "sensor": {
+      "class_permissions": {
+        "Accelerometer": "device:os.accelerometer",
+        "Barometer": "device:os.barometer",
+        "BloodOxygen": "data:user.hd.spo2",
+        "BloodPress": "data:user.hd.blood_pressure",
+        "BodyComposition": "data:user.hd.body_composition",
+        "BodyTemperature": "data:user.hd.body_temp",
+        "Calorie": "data:user.hd.calorie",
+        "Compass": "device:os.compass",
+        "Distance": "data:user.hd.distance",
+        "FatBurning": "data:user.hd.fat_burning",
+        "Geolocation": "device:os.geolocation",
+        "Gyroscope": "device:os.gyroscope",
+        "HeartRate": "data:user.hd.heart_rate",
+        "Pai": "data:user.hd.pai",
+        "Sleep": "data:user.hd.sleep",
+        "Stand": "data:user.hd.stand",
+        "Step": "data:user.hd.step",
+        "Stress": "data:user.hd.stress",
+        "Workout": "data:user.hd.workout"
+      },
+      "classes": [
+        "Accelerometer",
+        "Barometer",
+        "Battery",
+        "BloodOxygen",
+        "BloodPress",
+        "BodyComposition",
+        "BodyTemperature",
+        "Buzzer",
+        "Calorie",
+        "Compass",
+        "Distance",
+        "FatBurning",
+        "Geolocation",
+        "Gyroscope",
+        "HeartRate",
+        "Music",
+        "Pai",
+        "Screen",
+        "Sleep",
+        "Stand",
+        "Step",
+        "Stress",
+        "SystemSounds",
+        "Time",
+        "Vibrator",
+        "Wear",
+        "Weather",
+        "Workout",
+        "WorldClock"
+      ],
+      "methods": [
+        {
+          "binding": "javascript",
+          "name": "checkSensor",
+          "since": "3.0"
+        }
+      ],
+      "specifier": "@zos/sensor"
+    },
+    "settings": {
+      "methods": [
+        {
+          "binding": "native",
+          "name": "getDateFormat",
+          "native": "hmSetting.getDateFormat",
+          "since": "2.0"
+        },
+        {
+          "binding": "native",
+          "name": "getDistanceUnit",
+          "native": "hmSetting.getMileageUnit",
+          "since": "2.0"
+        },
+        {
+          "binding": "native",
+          "name": "getFontSizeInfo",
+          "native": "hmSetting.getFontSizeInfo",
+          "since": "4.1"
+        },
+        {
+          "binding": "native",
+          "name": "getLanguage",
+          "native": "hmSetting.getLanguage",
+          "since": "2.0"
+        },
+        {
+          "binding": "native",
+          "name": "getSleepTarget",
+          "native": "hmSetting.getSleepTarget",
+          "since": "2.0"
+        },
+        {
+          "binding": "native",
+          "name": "getSystemInfo",
+          "native": "hmSetting.getSystemInfo",
+          "since": "2.1"
+        },
+        {
+          "binding": "native",
+          "name": "getSystemMode",
+          "native": "hmSetting.getSystemMode",
+          "since": "3.0"
+        },
+        {
+          "binding": "native",
+          "name": "getTemperatureUnit",
+          "native": "hmSetting.getTemperatureUnit",
+          "since": "2.1"
+        },
+        {
+          "binding": "native",
+          "name": "getTimeFormat",
+          "native": "hmSetting.getTimeFormat",
+          "since": "2.1"
+        },
+        {
+          "binding": "native",
+          "name": "getWeightTarget",
+          "native": "hmSetting.getWeightTarget",
+          "since": "2.0"
+        },
+        {
+          "binding": "native",
+          "name": "getWeightUnit",
+          "native": "hmSetting.getWeightUnit",
+          "since": "2.0"
+        }
+      ],
+      "specifier": "@zos/settings"
+    },
+    "share-storage": {
+      "classes": [
+        "FileSystem",
+        "LocalStorage",
+        "TypedStorage"
+      ],
+      "methods": [],
+      "specifier": "@zos/share-storage"
+    },
+    "storage": {
+      "class_permissions": {
+        "LocalStorage": "device:os.local_storage",
+        "ShareLocalStorage": "device:os.local_storage"
+      },
+      "classes": [
+        "LocalStorage",
+        "SessionStorage",
+        "ShareLocalStorage",
+        "ShareTypedStorage",
+        "TypedStorage"
+      ],
+      "methods": [
+        {
+          "binding": "javascript",
+          "name": "clear",
+          "permission": "device:os.local_storage",
+          "since": "2.0"
+        },
+        {
+          "binding": "javascript",
+          "name": "getItem",
+          "permission": "device:os.local_storage",
+          "since": "2.0"
+        },
+        {
+          "binding": "javascript",
+          "name": "removeItem",
+          "permission": "device:os.local_storage",
+          "since": "2.0"
+        },
+        {
+          "binding": "javascript",
+          "name": "setItem",
+          "permission": "device:os.local_storage",
+          "since": "2.0"
+        }
+      ],
+      "specifier": "@zos/storage"
+    },
+    "system": {
+      "constants": [
+        "ALARM_SERVICE",
+        "APP_SERVICE",
+        "NOTIFICATION_SERVICE"
+      ],
+      "methods": [
+        {
+          "binding": "javascript",
+          "name": "getSystemService",
+          "since": "3.0"
+        }
+      ],
+      "specifier": "@zos/system"
+    },
+    "timer": {
+      "methods": [
+        {
+          "binding": "javascript",
+          "name": "clearImmediate",
+          "since": "3.0"
+        },
+        {
+          "binding": "javascript",
+          "name": "clearInterval",
+          "since": "3.0"
+        },
+        {
+          "binding": "javascript",
+          "name": "clearTimeout",
+          "since": "3.0"
+        },
+        {
+          "arg_type": 2,
+          "binding": "native",
+          "name": "createSysTimer",
+          "native": "timer.createSysTimer",
+          "since": "4.0"
+        },
+        {
+          "arg_type": 2,
+          "binding": "native",
+          "name": "createTimer",
+          "native": "timer.createTimer",
+          "since": "3.0"
+        },
+        {
+          "binding": "javascript",
+          "name": "setImmediate",
+          "since": "3.0"
+        },
+        {
+          "binding": "javascript",
+          "name": "setInterval",
+          "since": "3.0"
+        },
+        {
+          "binding": "javascript",
+          "name": "setTimeout",
+          "since": "3.0"
+        },
+        {
+          "arg_type": 2,
+          "binding": "native",
+          "name": "stopTimer",
+          "native": "timer.stopTimer",
+          "since": "3.0"
+        }
+      ],
+      "specifier": "@zos/timer"
+    },
+    "ui": {
+      "constants_from_native": "hmUI",
+      "methods": [],
+      "passthrough": [
+        {
+          "native_object": "hmUI",
+          "since": "2.0"
+        }
+      ],
+      "specifier": "@zos/ui"
+    },
+    "user": {
+      "constants": [
+        "GENDER_FEMALE",
+        "GENDER_MALE",
+        "GENDER_UNSPECIFIED"
+      ],
+      "methods": [
+        {
+          "binding": "native",
+          "name": "addHealthData",
+          "native": "hmSetting.setUserData",
+          "since": "3.0"
+        },
+        {
+          "binding": "native",
+          "name": "getProfile",
+          "native": "hmSetting.getUserData",
+          "permission": "data:user.info",
+          "since": "2.0"
+        }
+      ],
+      "specifier": "@zos/user"
+    },
+    "vad": {
+      "constants_from_native": "hmVAD",
+      "methods": [],
+      "passthrough": [
+        {
+          "native_object": "hmVAD",
+          "since": "3.0"
+        }
+      ],
+      "specifier": "@zos/vad"
+    }
+  },
+  "sha256": "015e05053b2b4dc516e31398711e2c3fffb6db57d6a2080638d42fc8d1e5e7f6",
+  "summary": {
+    "distinct_native_targets": [
+      "hmApp.addSysPageListener",
+      "hmApp.advertiseEvent",
+      "hmApp.alarmCancel",
+      "hmApp.cancelAlarm",
+      "hmApp.checkNative",
+      "hmApp.deleteNotification",
+      "hmApp.exit",
+      "hmApp.getAlarmList",
+      "hmApp.getLayerY",
+      "hmApp.getNotificationList",
+      "hmApp.getPackageInfo",
+      "hmApp.getProfile",
+      "hmApp.getServiceList",
+      "hmApp.goBack",
+      "hmApp.gotoHome",
+      "hmApp.matchApp",
+      "hmApp.newAlarm",
+      "hmApp.offMessage",
+      "hmApp.onMessage",
+      "hmApp.postMessage",
+      "hmApp.postNotification",
+      "hmApp.queryPermission",
+      "hmApp.registerGestureEvent",
+      "hmApp.registerKeyEvent",
+      "hmApp.registerSpinEvent",
+      "hmApp.removeSysPageListener",
+      "hmApp.requestPermission",
+      "hmApp.setScreenKeep",
+      "hmApp.setServiceDuration",
+      "hmApp.setStatusPoint",
+      "hmApp.startService",
+      "hmApp.stopService",
+      "hmApp.unregisterGestureEvent",
+      "hmApp.unregisterKeyEvent",
+      "hmApp.unregisterSpinEvent",
+      "hmBle.mstDestoryProfileInstance",
+      "hmFS.close",
+      "hmFS.mkdir",
+      "hmFS.open_asset",
+      "hmFS.remove",
+      "hmFS.rename",
+      "hmSetting.getBrightness",
+      "hmSetting.getDateFormat",
+      "hmSetting.getDeviceInfo",
+      "hmSetting.getDiskInfo",
+      "hmSetting.getDisplayInfo",
+      "hmSetting.getFontSizeInfo",
+      "hmSetting.getLanguage",
+      "hmSetting.getMileageUnit",
+      "hmSetting.getScreenAutoBright",
+      "hmSetting.getScreenType",
+      "hmSetting.getSleepTarget",
+      "hmSetting.getSystemInfo",
+      "hmSetting.getSystemMode",
+      "hmSetting.getTemperatureUnit",
+      "hmSetting.getTimeFormat",
+      "hmSetting.getUserData",
+      "hmSetting.getWeightTarget",
+      "hmSetting.getWeightUnit",
+      "hmSetting.releasePalmOff",
+      "hmSetting.releaseWristDownOff",
+      "hmSetting.setBrightScreenCancel",
+      "hmSetting.setBrightness",
+      "hmSetting.setScreenAutoBright",
+      "hmSetting.setScreenOff",
+      "hmSetting.setUserData",
+      "hmUI.getScrollCurrentPage",
+      "timer.createSysTimer",
+      "timer.createTimer",
+      "timer.stopTimer"
+    ],
+    "javascript_methods": 38,
+    "method_count": 109,
+    "module_count": 25,
+    "native_bound_methods": 71,
+    "opaque_methods": 0,
+    "passthrough_modules": {
+      "ai-flex": [
+        "hmVAD",
+        "hmSysApi"
+      ],
+      "app-access": [
+        "hmSysApi"
+      ],
+      "ble": [
+        "hmBle"
+      ],
+      "crypto": [
+        "hmCrypto"
+      ],
+      "media": [
+        "hmMedia"
+      ],
+      "ui": [
+        "hmUI"
+      ],
+      "vad": [
+        "hmVAD"
+      ]
+    },
+    "permissions": [
+      "data:os.device.info",
+      "data:user.hd.blood_pressure",
+      "data:user.hd.body_composition",
+      "data:user.hd.body_temp",
+      "data:user.hd.calorie",
+      "data:user.hd.distance",
+      "data:user.hd.fat_burning",
+      "data:user.hd.heart_rate",
+      "data:user.hd.pai",
+      "data:user.hd.sleep",
+      "data:user.hd.spo2",
+      "data:user.hd.stand",
+      "data:user.hd.step",
+      "data:user.hd.stress",
+      "data:user.hd.workout",
+      "data:user.info",
+      "device:os.accelerometer",
+      "device:os.alarm",
+      "device:os.barometer",
+      "device:os.compass",
+      "device:os.geolocation",
+      "device:os.gyroscope",
+      "device:os.local_storage",
+      "device:os.notification"
+    ],
+    "unresolved_modules": []
+  }
+}

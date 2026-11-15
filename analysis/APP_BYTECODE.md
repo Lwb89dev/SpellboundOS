@@ -83,10 +83,9 @@ function declares `beforeAppCreate`, `afterAppCreate` and `__$$G$$__`.
   `@zos/app-access`, `@zos/unsafe`, `@zos/app`, `@zos/fs`, `@zos/storage`,
   `@zos/alarm`, `@zos/ble` and `@zos/page`. Per-module reference and app counts
   are in the JSON. This is the module surface a host would have to resolve.
-  The resolver is not in `framework.js` (whose only `@zos/` text is the alias
-  `"@zos/storage/localStorage" → "@zos/storage"`). The main firmware image
-  contains no `@zos/` strings either, so the module implementations are still
-  to be located.
+  The loader is built in `framework.js` from a declarative module table,
+  which strips the `@zos/` prefix, so the full specifiers appear only in the
+  apps. See [ZOS_API.md](ZOS_API.md).
 
 ## Reproduction
 

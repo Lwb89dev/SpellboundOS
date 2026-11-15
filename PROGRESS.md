@@ -317,6 +317,26 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    Running the upstream C reader on the vendor bytecode was not permitted in
    this session, so there is no C-side cross-check.
 
+## 2026-11-15 — `@zos/*` API table and native bindings
+
+1. Traced the `__$$R$$__` loader in `framework.js`: it walks an API object built
+   from one declarative configuration of 25 modules. Each method entry gives
+   its native binding (`{func:["hmApp","newAlarm"], …}`) or a JavaScript
+   function, a permission code gated through `hmApp.queryPermission`, and the
+   API version.
+2. Extracted the table with a conservative JS-literal reader (nothing
+   evaluated): 109 methods, 71 bound directly to 70 native targets (`hmApp` 35,
+   `hmSetting` 25, `hmFS` 5, `timer` 3, `hmBle` 1, `hmUI` 1), 38 JavaScript
+   wrappers, and seven modules reflected at runtime from six native objects
+   (`hmUI`, `hmBle`, `hmMedia`, `hmCrypto`, `hmVAD`, `hmSysApi`). Recovered the
+   29 sensor classes and the 24-code permission model, including one
+   `data:user.hd.*` code per health data type.
+3. Added `analysis_scripts/zos_api_table.py` with synthetic tests, the report
+   [analysis/ZOS_API.md](analysis/ZOS_API.md) and
+   [analysis/zos-api-table.json](analysis/zos-api-table.json). All 54 Python
+   tests pass. The method lists of the reflected objects come from native
+   registration code in the main image, which is the next target.
+
 ## Next work
 
 - Map the signed image formats and the loaders for the sensor hub and radio;

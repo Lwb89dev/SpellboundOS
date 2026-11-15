@@ -101,6 +101,7 @@ original archive.
 | App-loading contract and lifecycle model | [APP_MODEL.md](APP_MODEL.md) |
 | Embedded JS engine release (QuickJS 2020-07-05) | [QUICKJS_ENGINE.md](QUICKJS_ENGINE.md) |
 | App bytecode read and disassembly, free variables, `@zos/` modules | [APP_BYTECODE.md](APP_BYTECODE.md) |
+| `@zos/*` API table, native bindings and permissions | [ZOS_API.md](ZOS_API.md) |
 
 A concrete quality check found truncated control flow in some bulk exports
 around calls inferred as non-returning. Targeted noanalysis imports restore
