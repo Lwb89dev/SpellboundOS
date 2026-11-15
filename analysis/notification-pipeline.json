@@ -1,0 +1,145 @@
+{
+  "alert_screen_exclusions": {
+    "1889642984": "FlashLightScreen",
+    "1889755880": "StopWatchScreen",
+    "1889835772": "FindPhoneScreen",
+    "1889835900": "Settings_bltPairScreen",
+    "1891667068": "Settings_gestureCalibrateScreen",
+    "1891667100": "GPSCalibrateScreen",
+    "1891667120": "AlarmRemindScreen",
+    "1891667140": "Bind_QRCodeScreen"
+  },
+  "canonical_app_ids": {
+    "category_1": "android.email",
+    "category_5": "android.sms"
+  },
+  "legacy_route": {
+    "admit_record": 1884144936,
+    "alert_entry": 1884133574,
+    "construct_record": 1884145960,
+    "dispatcher": 1882756202,
+    "initializer": 1881202550,
+    "listener": 1884139122,
+    "notify_subscribers_and_gate_alert": 1884134848,
+    "queue_payload_bytes": 36,
+    "request_resource": 1884100856,
+    "resource_event_worker": 1884100274,
+    "resource_start": 1884100774,
+    "screen_argument_bytes": 16,
+    "screen_name": "NotificationNotifyScreen",
+    "worker": 1884147480
+  },
+  "limitations": [
+    "Static control flow, not device execution or observed rendering.",
+    "Per-app selector models only ordinary admission after expiration and clock rollback.",
+    "Storage-class byte +0x12 == 2 admission has unresolved tail-call/stack decompilation; distinct from category/type +0x24.",
+    "Sticky/rich notifications, allocation failure and all UI gate semantics are not fully modeled.",
+    "The advertised wire maximum 100 is distinct from the 400-slot internal store."
+  ],
+  "listener_array": {
+    "address": 1889422888,
+    "count": 2,
+    "records": [
+      {
+        "address": 1895208944,
+        "callbacks": {
+          "legacy_message": 1884139122,
+          "logo_result": 1884102322,
+          "message_image_result": 1884130992,
+          "reply_result": 1884119358,
+          "rich_message": 1884112588
+        },
+        "name": "notification_message"
+      },
+      {
+        "address": 1895176540,
+        "callbacks": {
+          "legacy_message": 1881640062,
+          "logo_result": 0,
+          "message_image_result": 0,
+          "reply_result": 0,
+          "rich_message": 0
+        },
+        "name": "androidCall_Info"
+      }
+    ]
+  },
+  "member": "META/firmware_sign.bin",
+  "member_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "ordinary_store": {
+    "app_id_pointer_offset": 48,
+    "base": 1895575168,
+    "capacity": 400,
+    "count_address": 1895364544,
+    "expiry_comparison": "type byte +0x12 == 1 and word +0x18 < current time; units unverified",
+    "per_app_eviction_threshold": 20,
+    "priority_word_offset": 32,
+    "record_bytes": 112,
+    "timestamp_offset": 28,
+    "uid_offset": 40
+  },
+  "resource_manager_name": "NotifyResMgr",
+  "reviewed_instruction_ranges_sha256": {
+    "capacity_insert_704dc7ea_704dc836": "567d68f245753c35ad4594223520522727ae09544879796bcfb923ea749e963e",
+    "per_app_choice_704dc89a_704dc8e2": "b3087e79e1bbd3cbb3fc570514ac4e1a90de67455837c0f94520ecf5fd53d701",
+    "per_app_scan_704dc5fe_704dc62e": "9f6c03f3ba53c8e279a3cb4c6b8b120299524c70136a5adfffd9a0675af49def",
+    "screen_launch_704d9aa4_704d9abc": "b747ae7598d19f4cecb0c0c7d733cb5548888bb9cd54c4e11385cfd717718742"
+  },
+  "source_sha256": {
+    "runtime-notification-admission/704d1aa8.c": "17adcb2b836a39e7c720226e2628a8dae155f2b198a17ed674d5d9bc7f8826e5",
+    "runtime-notification-admission/704d9dc0.c": "4d555fb98442bf8410ae061eb485b7c7f751d0c9b508a87fdd876bff0ea23290",
+    "runtime-notification-admission/704dc528.c": "0dd8b7487ddfb322861344f3df053834da5743483c69f2cbd9e276fead1ec4b6",
+    "runtime-notification-alert/704d967a.c": "ef9c651bf121844237302e70d20bdeca96cc983a775c657067735922fd0d2266",
+    "runtime-notification-alert/704d98c6.c": "2cc4a71aca2eee18506515548741c2d00b95065e579a583d5d270bcd2a7c9e95",
+    "runtime-notification-consumers/70278c7e.c": "04cfc0af6d42d46affbbbbf25586b2edd892e3b4dd6e7ac46bac2b88b5b225f9",
+    "runtime-notification-consumers/704d1eb2.c": "8920c4d2d7c339ff758fff32d74173a5607a1c52209fcbd9ca81ec441041b77b",
+    "runtime-notification-consumers/704d46cc.c": "3b7add1267b20f8fcfbbecf1444e9ac188cd6d8f5cbe917dea9723fe70145c7c",
+    "runtime-notification-consumers/704d613e.c": "cae7e8078325421a51abfd9c8d1b544e9d433fbd86ae777f11dfc45b13c33b32",
+    "runtime-notification-consumers/704d8eb0.c": "b545ab3e4f95ddb3817bef5fcad37519165a2296e410f2a11a045aa8293e16eb",
+    "runtime-notification-consumers/704dae72.c": "8b1167dff73d4e288cda996c0fea382295ecf247bf2c1342f866311720f08d51",
+    "runtime-notification-listeners/7020df76.c": "0e266ccf53eafb062709bbe797769f357d304c1aa7a0acae0add149f0dcfc30e",
+    "runtime-notification-render/704d1424.c": "1d65d6ee6c47f8746b95ddc34c5334bd23ed48437d2e080f18bfdacf6af512c8",
+    "runtime-notification-render/704d16b2.c": "bf4ca4897fb5e7223375d752b68653fc57916a2a7ca61ec8f7fc53fd1c17f72c",
+    "runtime-notification-render/704d1754.c": "066a0fae33dab2077ff14c575812782bc22d0b5d65d44cfc0b2fea77292b2bed",
+    "runtime-notification-resource/704d17f6.c": "96480cda02ecc277c7c7d5d7ae090078d0f869de8dd2b0477a8302ef6aa49efb",
+    "runtime-notification-resource/704d1820.c": "2c3f4fce3b5d207797a7092df22c9e351f6ed5fa782c49bce655dd545ddb8590",
+    "runtime-notification-resource/704d184a.c": "76024646c04c0996b9ec1bb50da9e4c3ba00b87ec7d4fe2667df56556390071b",
+    "runtime-notification-resource/704d1878.c": "977e4802ec6eace5e89602b00abba55cf1b6994bd50b7e48c44caaacc45a3a8b",
+    "runtime-notification-resource/704d18a6.c": "924521b98260cfb2daa0d565e8990ede4b994ce03455b1bac7128041c45b9f55",
+    "runtime-notification-screen/704d1516.c": "66a099784030d2f2e8d6b7aa05618b775faf19f1cfcf71274a0e7ce412b312b2",
+    "runtime-notification-store/704d1c34.c": "c509750d037044cca57f6a0e61989fa45fcd1a878fad05af25dceea78473bf18",
+    "runtime-notification-store/704db37c.c": "39207977fe4e0710b5348d3dfe93bc5cbf5789d3d543ffa19c5427387905172f",
+    "runtime-notification-store/704db476.c": "610c6dcef1b49785ccf6dbc9438ddedbee8aa56a993c03d0bb147707a34be18d",
+    "runtime-notification-store/704db5fe.c": "edca1538fb998fb52dccb8ec5ae8206ebc8ec28723fbe4038b6123cfe5d01e6d",
+    "runtime-notification-store/704dc928.c": "662450406d966a788517824b4ae43790821d9d1988df57471304d15c940e58e7",
+    "runtime-notification-ui/704d18f8.c": "365b1e22097ffafcdc62fdb0d3e3215aee0ca73431f16e697bbef2d1619b2cb8",
+    "runtime-notification-ui/704d9204.c": "01dd8a9208624bdf97904584aa1126a9cc8e73eb064ccb403bdc7cbe57051f50",
+    "runtime-notification-ui/704d9250.c": "593505482dd4202194855f5033ada6664d6a64e93e8c5743f1bbd1574e9e4285",
+    "runtime-notification-worker/704d1cc0.c": "56ace78485b00650a5310a5a1b7e4875dc3ac77369a4f3073e4d9022115b3533",
+    "runtime-notification-worker/704dcf18.c": "269cddb3668f7d0455e333be1b6d32bb395de4956185332fc9a6f1e12d11f4da",
+    "runtime-service-dispatch/7038946a.c": "955d73954a66b601df27ef1880f33f1e01031b03b523989c72b0f94ab056e304"
+  },
+  "subscriber_registry": {
+    "adapter_callbacks": [
+      1884099620,
+      1884099590,
+      1884099604
+    ],
+    "base": 1895573568,
+    "event_kinds": {
+      "0": "arrival",
+      "1": "removed (zeroed record)",
+      "2": "modified",
+      "3": "pre-change callback"
+    },
+    "register": 1884131844,
+    "slot_bytes": 8,
+    "slots": 3,
+    "unregister": 1884131920
+  },
+  "wire_events": {
+    "0": "add",
+    "1": "modify existing UID",
+    "2": "remove existing UID"
+  }
+}

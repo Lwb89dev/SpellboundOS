@@ -792,6 +792,30 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    native capture report remains byte-identical; public results exclude keys,
    counter values, notification IDs and message contents.
 
+## 2026-11-15 — native notification queue, store and screen request
+
+1. Regenerated selected paths with startup-aware mappings, save/restore fixups
+   and returning logger. Initializer `0x7020df76` registers the concrete Android
+   message and call listeners. Followed the legacy message consumer's owned
+   36-byte asynchronous payload to the add/modify/remove worker and UID lookup.
+2. Mapped the 112-byte ordinary records, 400-slot capacity, first-twenty
+   per-app eviction rule, clock-rollback clearing and conditional expiration.
+   Checked comparison arguments, priority/tie ordering and insertion in raw
+   instructions. The internal 400 slots differ from the wire-advertised 100.
+   Storage discriminator `+0x12` is distinct from normalized category/type
+   `+0x24`; its value-2 branch still has unresolved tail-call/stack analysis.
+3. Followed the three-slot subscriber registry and its adapter, then the
+   standard alert gates, `NotifyResMgr`, event queue and final request for
+   `NotificationNotifyScreen`. Documented concrete exclusions and override
+   points without claiming a resource grant, observed rendering or a complete
+   rich/sticky notification implementation.
+4. Added `notification_pipeline.py`, seven synthetic tests, reproducible
+   [analysis/notification-pipeline.json](analysis/notification-pipeline.json)
+   and [analysis/NOTIFICATION_PIPELINE.md](analysis/NOTIFICATION_PIPELINE.md).
+   All 204 Python tests pass with signature/cipher dependencies. Public output
+   contains metadata and evidence hashes only. This pass was entirely offline;
+   no phone/watch interaction or firmware write was performed.
+
 ## Next work
 
 - Regenerate selected native paths with startup-aware mappings, corrected
@@ -818,9 +842,9 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
 - Follow the native authentication provider/session setup and registered
   callbacks to recover pairing/key provisioning and counter lifecycle; connect
   native module payloads to JS framing before claiming an end-to-end protocol.
-- Follow notification listeners/actions and call/audio backends beyond the now
-  matched application-module descriptors; distinguish map download from the
-  still-unverified Roadstr navigation contract.
-- Close the notification display/storage listener chain and validate a permitted
-  Roadstr notification handoff before claiming working navigation. Reverse
+- Follow call/audio backends beyond the now-matched application descriptors;
+  distinguish map download from the still-unverified Roadstr navigation contract.
+- Observe notification rendering and validate a permitted Roadstr handoff.
+  The selected legacy listener/store path now reaches a screen request; special
+  storage-class/rich/sticky paths and complete UI policy remain open. Reverse
   action serializers are recovered; executing replies/call actions is untested.

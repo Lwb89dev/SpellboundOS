@@ -47,8 +47,10 @@ Adjacent code/table locations must not be assumed to share platform ownership.
 
 On opcode-3 reception, dispatcher `0x7038946a` validates decoding, then calls
 listener offset `+4` for each registered listener. Initialization records the
-listener pointer/count and bounds the count to 16. The concrete full UI/storage
-listener chain is not closed by this work. The dispatcher also has a separate,
+listener pointer/count and bounds the count to 16. The follow-up
+[queue, storage and alert analysis](NOTIFICATION_PIPELINE.md) identifies the
+concrete listeners and follows the selected legacy path to a screen request;
+actual rendering remains unobserved. The dispatcher also has a separate,
 richer opcode-31 format; it is not modeled here. The controlled client used
 opcode 3 despite advertising notification version 5.
 
