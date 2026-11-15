@@ -112,6 +112,10 @@ def transmit_uuid(kind, *, client=False):
 
 
 def accepts_uuid(uuid, kind):
+    """Receive filter on the native *client* path (0x7036d928).
+
+    The local GATT server instead receives types 1/3 on 0016 and 2/4 on 0017.
+    """
     return (uuid == '0016' and kind in (2, 4)) or (uuid == '0017' and kind in (1, 3))
 
 
@@ -256,6 +260,7 @@ SOURCES = {
                                '70215b60', '702838de'],
     'runtime-channel-aes': ['70282c9c', '70282ef8', '7036d64a'],
     'runtime-channel-crc': ['70161360', '703d0fe0', '703bf368'],
+    'runtime-channel-rx-roles': ['7036e5d8', '7036e554'],
 }
 
 
@@ -282,6 +287,8 @@ def main():
             'tx_manager': 0x7036b430, 'rx_manager': 0x7036b8be, 'auth_initializer': 0x7021766c,
             'crypto_registrar': 0x7036c3ce, 'key_mixing': 0x7036d64a, 'counter_window': 0x7036d672,
             'crc_wrapper': 0x703d0fe0, 'crc_update': 0x70161360},
+        'reviewed_server_rx': {'0016': {'callback': 0x7036e5d8, 'types': [1, 3]},
+                               '0017': {'callback': 0x7036e554, 'types': [2, 4]}},
         'reviewed_crypto_delegate': {'size': 28, 'enabled_byte_offset': 0,
             'callbacks': {'4': 0x70215946, '8': 0x70215c9c, '12': 0x702158e0,
                           '16': 0x70215902, '20': 0x702159ac, '24': 0x7021624c}},

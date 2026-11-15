@@ -1,0 +1,387 @@
+{
+  "all_logged_characteristics_match_static_properties": true,
+  "announced_application_service_counts": [
+    62
+  ],
+  "announced_encryption_flag_changes": {
+    "ZeppOsActivityFetchService": {
+      "announced": false,
+      "previous": true
+    },
+    "ZeppOsBatteryService": {
+      "announced": false,
+      "previous": true
+    },
+    "ZeppOsConnectionService": {
+      "announced": false,
+      "previous": true
+    }
+  },
+  "coverage": "Gadgetbridge log subset, not a complete live GATT database",
+  "gadgetbridge_target_sdk": 35,
+  "gadgetbridge_version": "2026.11.1",
+  "input_sha256": {
+    "builder": "f2f5dbaf5e262baf0f7cee700387cf8fcd60099f797db6957633ef11a28a0e78",
+    "logcat": "62de2b01c7cb29692299d5b4afc2503d050b4433d526f5aaa1adfc4d06cc9005",
+    "package": "6a40627b0395da0b95a6df88b8ed1bad3a765ca0c310716e9b481199bdf054e8",
+    "ui": "7e62fbf63fe783cf5200ba156b3bfe6f6a4426d34adeded9d50d262286f8fe55"
+  },
+  "logged_characteristic_count": 19,
+  "logged_characteristics": [
+    {
+      "properties": [
+        "read"
+      ],
+      "properties_mask": 2,
+      "properties_match_static_low_byte": true,
+      "static_builder_candidates": [
+        {
+          "internal_identifier": "2a23",
+          "properties_raw": 2,
+          "service_uuid": "180a"
+        }
+      ],
+      "uuid": "00002a23-0000-1000-8000-00805f9b34fb"
+    },
+    {
+      "properties": [
+        "read"
+      ],
+      "properties_mask": 2,
+      "properties_match_static_low_byte": true,
+      "static_builder_candidates": [
+        {
+          "internal_identifier": "2a25",
+          "properties_raw": 2,
+          "service_uuid": "180a"
+        }
+      ],
+      "uuid": "00002a25-0000-1000-8000-00805f9b34fb"
+    },
+    {
+      "properties": [
+        "read"
+      ],
+      "properties_mask": 2,
+      "properties_match_static_low_byte": true,
+      "static_builder_candidates": [
+        {
+          "internal_identifier": "2a27",
+          "properties_raw": 2,
+          "service_uuid": "180a"
+        }
+      ],
+      "uuid": "00002a27-0000-1000-8000-00805f9b34fb"
+    },
+    {
+      "properties": [
+        "read"
+      ],
+      "properties_mask": 2,
+      "properties_match_static_low_byte": true,
+      "static_builder_candidates": [
+        {
+          "internal_identifier": "2a28",
+          "properties_raw": 2,
+          "service_uuid": "180a"
+        }
+      ],
+      "uuid": "00002a28-0000-1000-8000-00805f9b34fb"
+    },
+    {
+      "properties": [
+        "read"
+      ],
+      "properties_mask": 2,
+      "properties_match_static_low_byte": true,
+      "static_builder_candidates": [
+        {
+          "internal_identifier": "2a50",
+          "properties_raw": 2,
+          "service_uuid": "180a"
+        }
+      ],
+      "uuid": "00002a50-0000-1000-8000-00805f9b34fb"
+    },
+    {
+      "properties": [
+        "read"
+      ],
+      "properties_mask": 2,
+      "properties_match_static_low_byte": true,
+      "static_builder_candidates": [
+        {
+          "internal_identifier": "2a29",
+          "properties_raw": 2,
+          "service_uuid": "180a"
+        }
+      ],
+      "uuid": "00002a29-0000-1000-8000-00805f9b34fb"
+    },
+    {
+      "properties": [
+        "notify",
+        "read",
+        "write"
+      ],
+      "properties_mask": 26,
+      "properties_match_static_low_byte": true,
+      "static_builder_candidates": [
+        {
+          "internal_identifier": "2a2b",
+          "properties_raw": 26,
+          "service_uuid": "fee0"
+        }
+      ],
+      "uuid": "00002a2b-0000-1000-8000-00805f9b34fb"
+    },
+    {
+      "properties": [
+        "notify",
+        "read",
+        "writeNoResponse"
+      ],
+      "properties_mask": 22,
+      "properties_match_static_low_byte": true,
+      "static_builder_candidates": [
+        {
+          "internal_identifier": "00000016-0000-3512-2118-0009af100700",
+          "properties_raw": 22,
+          "service_uuid": "fee0"
+        }
+      ],
+      "uuid": "00000016-0000-3512-2118-0009af100700"
+    },
+    {
+      "properties": [
+        "notify",
+        "writeNoResponse"
+      ],
+      "properties_mask": 20,
+      "properties_match_static_low_byte": true,
+      "static_builder_candidates": [
+        {
+          "internal_identifier": "00000017-0000-3512-2118-0009af100700",
+          "properties_raw": 20,
+          "service_uuid": "fee0"
+        }
+      ],
+      "uuid": "00000017-0000-3512-2118-0009af100700"
+    },
+    {
+      "properties": [
+        "notify",
+        "write"
+      ],
+      "properties_mask": 24,
+      "properties_match_static_low_byte": true,
+      "static_builder_candidates": [
+        {
+          "internal_identifier": "00000001-0000-3512-2118-0009af100700",
+          "properties_raw": 24,
+          "service_uuid": "fee0"
+        }
+      ],
+      "uuid": "00000001-0000-3512-2118-0009af100700"
+    },
+    {
+      "properties": [
+        "notify"
+      ],
+      "properties_mask": 16,
+      "properties_match_static_low_byte": true,
+      "static_builder_candidates": [
+        {
+          "internal_identifier": "00000002-0000-3512-2118-0009af100700",
+          "properties_raw": 16,
+          "service_uuid": "fee0"
+        }
+      ],
+      "uuid": "00000002-0000-3512-2118-0009af100700"
+    },
+    {
+      "properties": [
+        "notify",
+        "writeNoResponse"
+      ],
+      "properties_mask": 20,
+      "properties_match_static_low_byte": true,
+      "static_builder_candidates": [
+        {
+          "internal_identifier": "00000004-0000-3512-2118-0009af100700",
+          "properties_raw": 20,
+          "service_uuid": "fee0"
+        }
+      ],
+      "uuid": "00000004-0000-3512-2118-0009af100700"
+    },
+    {
+      "properties": [
+        "notify"
+      ],
+      "properties_mask": 16,
+      "properties_match_static_low_byte": true,
+      "static_builder_candidates": [
+        {
+          "internal_identifier": "00000005-0000-3512-2118-0009af100700",
+          "properties_raw": 16,
+          "service_uuid": "fee0"
+        }
+      ],
+      "uuid": "00000005-0000-3512-2118-0009af100700"
+    },
+    {
+      "properties": [
+        "notify",
+        "read",
+        "writeNoResponse"
+      ],
+      "properties_mask": 22,
+      "properties_match_static_low_byte": true,
+      "static_builder_candidates": [
+        {
+          "internal_identifier": "00000006-0000-3512-2118-0009af100700",
+          "properties_raw": 22,
+          "service_uuid": "fee0"
+        }
+      ],
+      "uuid": "00000006-0000-3512-2118-0009af100700"
+    },
+    {
+      "properties": [
+        "notify",
+        "write"
+      ],
+      "properties_mask": 24,
+      "properties_match_static_low_byte": true,
+      "static_builder_candidates": [
+        {
+          "internal_identifier": "00001531-0000-3512-2118-0009af100700",
+          "properties_raw": 24,
+          "service_uuid": "00001530-0000-3512-2118-0009af100700"
+        }
+      ],
+      "uuid": "00001531-0000-3512-2118-0009af100700"
+    },
+    {
+      "properties": [
+        "writeNoResponse"
+      ],
+      "properties_mask": 4,
+      "properties_match_static_low_byte": true,
+      "static_builder_candidates": [
+        {
+          "internal_identifier": "00001532-0000-3512-2118-0009af100700",
+          "properties_raw": 4,
+          "service_uuid": "00001530-0000-3512-2118-0009af100700"
+        }
+      ],
+      "uuid": "00001532-0000-3512-2118-0009af100700"
+    },
+    {
+      "properties": [
+        "notify",
+        "writeNoResponse"
+      ],
+      "properties_mask": 20,
+      "properties_match_static_low_byte": true,
+      "static_builder_candidates": [
+        {
+          "internal_identifier": "00000023-0000-3512-2118-0009af100700",
+          "properties_raw": 20,
+          "service_uuid": "00001530-0000-3512-2118-0009af100700"
+        }
+      ],
+      "uuid": "00000023-0000-3512-2118-0009af100700"
+    },
+    {
+      "properties": [
+        "notify",
+        "writeNoResponse"
+      ],
+      "properties_mask": 20,
+      "properties_match_static_low_byte": true,
+      "static_builder_candidates": [
+        {
+          "internal_identifier": "00000024-0000-3512-2118-0009af100700",
+          "properties_raw": 20,
+          "service_uuid": "00001530-0000-3512-2118-0009af100700"
+        }
+      ],
+      "uuid": "00000024-0000-3512-2118-0009af100700"
+    },
+    {
+      "properties": [
+        "notify"
+      ],
+      "properties_mask": 16,
+      "properties_match_static_low_byte": true,
+      "static_builder_candidates": [
+        {
+          "internal_identifier": "2a37",
+          "properties_raw": 16,
+          "service_uuid": "180d"
+        }
+      ],
+      "uuid": "00002a37-0000-1000-8000-00805f9b34fb"
+    }
+  ],
+  "privacy": "allowlisted metadata only; no raw lines, names, addresses, keys or payloads",
+  "successful_mtu_events": [
+    247,
+    247
+  ],
+  "ui_connection_states": [
+    "connected"
+  ],
+  "unlogged_static_characteristics": [
+    {
+      "service_uuid": "1811",
+      "uuid": "00002a46-0000-1000-8000-00805f9b34fb"
+    },
+    {
+      "service_uuid": "fee1",
+      "uuid": "0000fedd-0000-1000-8000-00805f9b34fb"
+    },
+    {
+      "service_uuid": "fee1",
+      "uuid": "0000fede-0000-1000-8000-00805f9b34fb"
+    },
+    {
+      "service_uuid": "1812",
+      "uuid": "00002a4e-0000-1000-8000-00805f9b34fb"
+    },
+    {
+      "service_uuid": "1812",
+      "uuid": "00002a4b-0000-1000-8000-00805f9b34fb"
+    },
+    {
+      "service_uuid": "1812",
+      "uuid": "00002a4a-0000-1000-8000-00805f9b34fb"
+    },
+    {
+      "service_uuid": "1812",
+      "uuid": "00002a4c-0000-1000-8000-00805f9b34fb"
+    },
+    {
+      "service_uuid": "1812",
+      "uuid": "00002a4d-0000-1000-8000-00805f9b34fb"
+    },
+    {
+      "service_uuid": "1812",
+      "uuid": "00002a4d-0000-1000-8000-00805f9b34fb"
+    },
+    {
+      "service_uuid": "1812",
+      "uuid": "00002a22-0000-1000-8000-00805f9b34fb"
+    },
+    {
+      "service_uuid": "1812",
+      "uuid": "00002a32-0000-1000-8000-00805f9b34fb"
+    },
+    {
+      "service_uuid": "180f",
+      "uuid": "00002a19-0000-1000-8000-00805f9b34fb"
+    }
+  ]
+}

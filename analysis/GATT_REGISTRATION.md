@@ -55,10 +55,12 @@ next UUID byte. `InspectInstructions.java` records the exact p-code in private
 ## Native transport bindings
 
 The connection/transmitter setup at `0x7036e282` registers modules for custom
-UUIDs `0016` and `0017`. Receive handler `0x7036d928` compares the actual UUID
-before dispatch: `0016` accepts native packet types 2 or 4; `0017` accepts 1 or
-3. It forwards accepted packets through the channel delegate. This establishes
-a concrete native path behind these characteristic identifiers.
+UUIDs `0016` and `0017`. Client-path receive handler `0x7036d928` compares the
+actual UUID before dispatch: `0016` accepts native packet types 2 or 4; `0017`
+accepts 1 or 3. The local GATT server has separate callbacks: `0x7036e5d8` on
+`0016` accepts types 1/3, while `0x7036e554` on `0017` accepts 2/4. This
+direction distinction is confirmed by the live phone-write/watch-notification
+capture in [LIVE_GADGETBRIDGE.md](LIVE_GADGETBRIDGE.md).
 
 Parser `0x7036d0ae` and serializer `0x7036d368` describe a lower channel layer
 with types 1–4. Type 3 has flags and optional extended fields plus payload.

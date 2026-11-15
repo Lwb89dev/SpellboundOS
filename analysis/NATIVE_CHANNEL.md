@@ -45,9 +45,15 @@ UUID direction is specific to the path:
 
 | Native path | Types 1/3 | Types 2/4 |
 | --- | --- | --- |
-| Receive filter `0x7036d928` | accepts `0017` | accepts `0016` |
+| Client-path receive filter `0x7036d928` | accepts `0017` | accepts `0016` |
+| Local server RX `0x7036e5d8` / `0x7036e554` | accepts `0016` | accepts `0017` |
 | Local server transmitter `0x7036e1da` | sends via `0017` | sends via `0016` |
 | Client transmitter `0x7036d9e4` | writes via `0016` | writes via `0017` |
+
+The distinction between the two receive paths was clarified by the live
+[Gadgetbridge session](LIVE_GADGETBRIDGE.md) and a new corrected export of the
+two server callbacks. `0x7036d928` must not be described as the server's receive
+handler for phone writes: its UUID/type filtering is the opposite direction.
 
 The flags used by TX manager `0x7036b430` and RX manager `0x7036b8be` are:
 
@@ -117,9 +123,12 @@ block routine `0x702838de` separately on each 16-byte block with mode 1.
 Decryption uses key setup `0x70282ef8` and mode 0, again block by block.
 Key setup `0x70282c9c` selects ten rounds for 128 bits; the block routine uses
 AES-shaped substitution/round tables. The observed wrapper is consistent with
-AES-128 ECB. No IV or chaining state is passed between blocks. A vendor-routine
-known-answer execution and peer interoperability check remain outstanding;
-the host model does not supply a cipher. Decryption's loop count includes a
+AES-128 ECB. No IV or chaining state is passed between blocks. A subsequent
+live capture verifies interoperability for 69 encrypted transfers in both
+directions, including the key XOR, length and CRC; see
+[LIVE_GADGETBRIDGE.md](LIVE_GADGETBRIDGE.md). Direct vendor-routine known-answer
+execution remains outstanding; the original host model does not supply a
+cipher. Decryption's loop count includes a
 16-bit length mask, another reason not to infer unrestricted message sizes.
 
 RX decrypts complete blocks as they arrive and verifies the CRC on End. Its
@@ -148,13 +157,15 @@ export now retains the update and return. It changes analysis metadata only.
 ## Reproduction and validation
 
 Use the startup-aware main ELF, Ghidra 12.1.2 AndeStar v5 and the corrected
-save/restore/logger setup in [NATIVE_REPAIR.md](NATIVE_REPAIR.md). Four export
+save/restore/logger setup in [NATIVE_REPAIR.md](NATIVE_REPAIR.md). Export
 groups are enumerated in `native_channel.py:SOURCES`; their private logs are
 `firmware/ghidra-runtime-channel{,-policy,-crypto,-aes}-stdout.log`.
 For the additional CRC group, execute `SeedChannelCrc.java` before
 `DecompileWithAbi.java firmware/decompiled/runtime-channel-crc
 0x70161360 0x703d0fe0 0x703bf368`. The instruction inspection uses
 `InspectInstructions.java 0x70161378 0x7016137c`.
+The later server-role pass exports `0x7036e5d8 0x7036e554` into
+`firmware/decompiled/runtime-channel-rx-roles` using the same corrected script.
 
 ```sh
 python3 analysis_scripts/native_channel.py firmware/bip6-4.6.0.3.zip \

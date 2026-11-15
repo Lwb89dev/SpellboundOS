@@ -1,7 +1,8 @@
 # Reverse-engineering status and completion criteria
 
-The investigation is of OTA 4.6.0.3, not a complete physical flash/ROM dump or
-an observed execution trace. There is no defensible percentage for completion.
+The investigation covers OTA 4.6.0.3 and one live Gadgetbridge/Bip 6 protocol
+session. It is not a complete physical flash/ROM dump or native execution trace.
+There is no defensible percentage for completion.
 Disassembly and export counts do not measure behavioral understanding.
 
 | Area | Current evidence | Still needed to close the area |
@@ -14,7 +15,7 @@ Disassembly and export counts do not measure behavioral understanding.
 | Optical sensing | MAX8617X driver, initial board data, IRQ/FIFO route, host FIFO model, eight register-table inventories | Exact fitted part, full mode/timing behavior, calibration and measurement chain |
 | Health data | Heart/SpO2 caches and services; sensor process/control IPC payloads modeled | Outer zrpc transport, remaining packet families, record formats, algorithms and validation |
 | Motion / other peripherals | Candidate identities and selected probe paths | Complete configuration, interrupts, power/timing and physical verification |
-| Bluetooth | Eight service/31 characteristic specs; 0016/0017 and RFCOMM 0022 bindings; native framing, plaintext host model, crypto delegate, CRC and counter policy; auth module `0x82` request layouts, sect163r2 public parameters, session-key/cloud-binding slicing and key store | Active handles/state, full task lifecycle and cipher interoperability, pairing/key provisioning and counter persistence, JS payload linkage, notification/audio behavior |
+| Bluetooth | Static builder/auth/curve models; live connection, MTU 247, 19 matching characteristic specs, 62 application services; 103 native transfers including 69 AES/CRC checks and session-key auth proof | Full active GATT/handle coverage, task lifecycle, fresh pairing/key derivation and provisioning, initial counters/persistence, JS payload linkage, notification/audio behavior |
 | GNSS / touch | Container sections, candidate code and identity clues | Full mappings, loader/command protocols, runtime integration |
 | Boot/debug/recovery | Startup-aware boot/recovery inputs; reset/handoff split and key/UI/validation paths | Proven non-destructive debug/boot path, full backup and device-specific restoration |
 | Standalone OS / companion | Independent QEMU UART prototype; project goal recorded | Hardware boot/drivers, secure transport, Android implementation and device tests |
@@ -50,6 +51,7 @@ Latest detailed findings:
 - [Sports-peripheral client and the four custom BLE UUIDs](SPORT_PERIPHERAL.md)
 - [Package manifest and the `res_info` mismatch](PACKAGE_MANIFEST.md)
 - [Official QuickJS C reader cross-check](QJS_CROSSCHECK.md)
+- [First live Gadgetbridge session and native cipher validation](LIVE_GADGETBRIDGE.md)
 
 No device write or installation is justified by the current results. The
 project's existing backup/boot/recovery prerequisites in [GOAL.md](../GOAL.md)

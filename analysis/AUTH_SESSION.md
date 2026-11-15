@@ -99,7 +99,7 @@ image. Their roles follow the provider's use sites, not symbols:
 | 6 | lookup app context |
 | 7 | list contexts |
 
-The tool checks that all eight are even-rejecting, in-image pointers before
+The tool checks that all eight are halfword-aligned, in-image pointers before
 reporting them.
 
 ## Reproduction and validation
@@ -137,3 +137,10 @@ around a native routine, not a verified ECDH agreement, and the block cipher
 itself is modelled in [NATIVE_CHANNEL.md](NATIVE_CHANNEL.md) without a
 known-answer or interoperability check. Opcodes 3, 6–11 have layouts but no
 established role.
+
+A later [live Gadgetbridge capture](LIVE_GADGETBRIDGE.md) observes API level 2,
+mode 2 authorization, its 67-byte challenge/public-point response, 33-byte proof
+and successful `10 05 01` reply. The second proof matches AES encryption of the
+challenge with the logged ephemeral session key. It also verifies 69 encrypted
+channel transfers; initial pairing, persistent-key provisioning and ECDH scalar
+generation remain unverified by that session.

@@ -707,6 +707,36 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    exactly. All 165 Python tests pass with signature dependencies; packaged
    bytecode was parsed and never evaluated.
 
+## 2026-11-15 — first live phone/Gadgetbridge/Bip 6 session
+
+1. Used the user's USB-connected SM-S921B (Android 17/SDK 37), with Gadgetbridge
+   2026.11.1. The app initially showed the already-associated Bip 6 disconnected;
+   reconnected it through the existing card and observed authentication and
+   initialization complete. ADB is access to the phone, not watch shell/flash.
+2. Collected 19 logged characteristic UUID/property specs, all matching the
+   static builder, MTU 247 and an announcement of 62 Zepp OS application
+   services. These layers/counts are separate; the 12 unlogged static specs
+   must not be called absent from the actual watch.
+3. Temporarily enabled app file logging, captured one normal reconnect, then
+   restored logging off and deleted the generated phone log/UI file after
+   copying. The association remains connected. Raw captures, including a
+   session key printed by Gadgetbridge, stay under ignored firmware/ with
+   directory/file modes 0700/0600; only allowlisted metadata is committed.
+4. Verified 114 native packets and 103 complete transfers, including 69
+   encrypted transfers with AES-128 ECB, all-byte session-key XOR, exact sizes
+   and CRC-32. All 67 subsequent encrypted counters are exact successors.
+   Confirmed module `0x82`, API 2/mode 2, the session-key challenge proof and
+   successful authorization reply. First counters, ECDH generation, persistent
+   key provisioning and fresh pairing remain outside this check.
+5. Clarified client/server receive directions with two new corrected native
+   exports. Added `gadgetbridge_session.py`, `verify_gadgetbridge_channel.py`,
+   eight synthetic tests, [analysis/LIVE_GADGETBRIDGE.md](analysis/LIVE_GADGETBRIDGE.md),
+   [analysis/gadgetbridge-session.json](analysis/gadgetbridge-session.json) and
+   [analysis/gadgetbridge-channel-verification.json](analysis/gadgetbridge-channel-verification.json).
+   All 173 Python tests pass; both live reports regenerate exactly. Normal
+   Gadgetbridge initialization sent protocol/configuration writes; no firmware,
+   recovery, boot or flash-backup operation was attempted.
+
 ## Next work
 
 - Regenerate selected native paths with startup-aware mappings, corrected
