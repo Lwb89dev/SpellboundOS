@@ -1,0 +1,468 @@
+{
+  "branch": "all preceding registrations succeed",
+  "builder": 1882580838,
+  "member": "META/firmware_sign.bin",
+  "member_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "registrar": 1882923574,
+  "services": [
+    {
+      "characteristic_count": 1,
+      "characteristics": [
+        {
+          "conditional_descriptor_uuids": [],
+          "extra_bytes": [
+            0,
+            0
+          ],
+          "internal_identifier": "2a46",
+          "max_length_field": 20,
+          "permissions_raw": 10,
+          "properties_raw": 10,
+          "uuid": "2a46"
+        }
+      ],
+      "uuid": "1811"
+    },
+    {
+      "characteristic_count": 6,
+      "characteristics": [
+        {
+          "conditional_descriptor_uuids": [],
+          "extra_bytes": [
+            0,
+            0
+          ],
+          "internal_identifier": "2a23",
+          "max_length_field": 20,
+          "permissions_raw": 2,
+          "properties_raw": 2,
+          "uuid": "2a23"
+        },
+        {
+          "conditional_descriptor_uuids": [],
+          "extra_bytes": [
+            0,
+            0
+          ],
+          "internal_identifier": "2a25",
+          "max_length_field": 20,
+          "permissions_raw": 2,
+          "properties_raw": 2,
+          "uuid": "2a25"
+        },
+        {
+          "conditional_descriptor_uuids": [],
+          "extra_bytes": [
+            0,
+            0
+          ],
+          "internal_identifier": "2a27",
+          "max_length_field": 20,
+          "permissions_raw": 2,
+          "properties_raw": 2,
+          "uuid": "2a27"
+        },
+        {
+          "conditional_descriptor_uuids": [],
+          "extra_bytes": [
+            0,
+            0
+          ],
+          "internal_identifier": "2a28",
+          "max_length_field": 20,
+          "permissions_raw": 2,
+          "properties_raw": 2,
+          "uuid": "2a28"
+        },
+        {
+          "conditional_descriptor_uuids": [],
+          "extra_bytes": [
+            0,
+            0
+          ],
+          "internal_identifier": "2a50",
+          "max_length_field": 20,
+          "permissions_raw": 2,
+          "properties_raw": 2,
+          "uuid": "2a50"
+        },
+        {
+          "conditional_descriptor_uuids": [],
+          "extra_bytes": [
+            0,
+            0
+          ],
+          "internal_identifier": "2a29",
+          "max_length_field": 32,
+          "permissions_raw": 2,
+          "properties_raw": 2,
+          "uuid": "2a29"
+        }
+      ],
+      "uuid": "180a"
+    },
+    {
+      "characteristic_count": 8,
+      "characteristics": [
+        {
+          "conditional_descriptor_uuids": [
+            "2902"
+          ],
+          "extra_bytes": [
+            0,
+            0
+          ],
+          "internal_identifier": "2a2b",
+          "max_length_field": 20,
+          "permissions_raw": 10,
+          "properties_raw": 26,
+          "uuid": "2a2b"
+        },
+        {
+          "conditional_descriptor_uuids": [
+            "2902"
+          ],
+          "extra_bytes": [
+            0,
+            0
+          ],
+          "internal_identifier": "00000016-0000-3512-2118-0009af100700",
+          "max_length_field": 244,
+          "permissions_raw": 20,
+          "properties_raw": 22,
+          "uuid": "00000016-0000-3512-2118-0009af100700"
+        },
+        {
+          "conditional_descriptor_uuids": [
+            "2902"
+          ],
+          "extra_bytes": [
+            0,
+            0
+          ],
+          "internal_identifier": "00000017-0000-3512-2118-0009af100700",
+          "max_length_field": 244,
+          "permissions_raw": 4,
+          "properties_raw": 20,
+          "uuid": "00000017-0000-3512-2118-0009af100700"
+        },
+        {
+          "conditional_descriptor_uuids": [
+            "2902"
+          ],
+          "extra_bytes": [
+            0,
+            0
+          ],
+          "internal_identifier": "00000001-0000-3512-2118-0009af100700",
+          "max_length_field": 20,
+          "permissions_raw": 8,
+          "properties_raw": 24,
+          "uuid": "00000001-0000-3512-2118-0009af100700"
+        },
+        {
+          "conditional_descriptor_uuids": [
+            "2902"
+          ],
+          "extra_bytes": [
+            0,
+            0
+          ],
+          "internal_identifier": "00000002-0000-3512-2118-0009af100700",
+          "max_length_field": 244,
+          "permissions_raw": 0,
+          "properties_raw": 16,
+          "uuid": "00000002-0000-3512-2118-0009af100700"
+        },
+        {
+          "conditional_descriptor_uuids": [
+            "2902"
+          ],
+          "extra_bytes": [
+            0,
+            0
+          ],
+          "internal_identifier": "00000004-0000-3512-2118-0009af100700",
+          "max_length_field": 20,
+          "permissions_raw": 8,
+          "properties_raw": 20,
+          "uuid": "00000004-0000-3512-2118-0009af100700"
+        },
+        {
+          "conditional_descriptor_uuids": [
+            "2902"
+          ],
+          "extra_bytes": [
+            0,
+            0
+          ],
+          "internal_identifier": "00000005-0000-3512-2118-0009af100700",
+          "max_length_field": 244,
+          "permissions_raw": 0,
+          "properties_raw": 16,
+          "uuid": "00000005-0000-3512-2118-0009af100700"
+        },
+        {
+          "conditional_descriptor_uuids": [
+            "2902"
+          ],
+          "extra_bytes": [
+            0,
+            0
+          ],
+          "internal_identifier": "00000006-0000-3512-2118-0009af100700",
+          "max_length_field": 20,
+          "permissions_raw": 4,
+          "properties_raw": 22,
+          "uuid": "00000006-0000-3512-2118-0009af100700"
+        }
+      ],
+      "uuid": "fee0"
+    },
+    {
+      "characteristic_count": 4,
+      "characteristics": [
+        {
+          "conditional_descriptor_uuids": [
+            "2902"
+          ],
+          "extra_bytes": [
+            0,
+            0
+          ],
+          "internal_identifier": "00001531-0000-3512-2118-0009af100700",
+          "max_length_field": 20,
+          "permissions_raw": 8,
+          "properties_raw": 24,
+          "uuid": "00001531-0000-3512-2118-0009af100700"
+        },
+        {
+          "conditional_descriptor_uuids": [],
+          "extra_bytes": [
+            0,
+            0
+          ],
+          "internal_identifier": "00001532-0000-3512-2118-0009af100700",
+          "max_length_field": 244,
+          "permissions_raw": 4,
+          "properties_raw": 4,
+          "uuid": "00001532-0000-3512-2118-0009af100700"
+        },
+        {
+          "conditional_descriptor_uuids": [
+            "2902"
+          ],
+          "extra_bytes": [
+            0,
+            0
+          ],
+          "internal_identifier": "00000023-0000-3512-2118-0009af100700",
+          "max_length_field": 244,
+          "permissions_raw": 4,
+          "properties_raw": 20,
+          "uuid": "00000023-0000-3512-2118-0009af100700"
+        },
+        {
+          "conditional_descriptor_uuids": [
+            "2902"
+          ],
+          "extra_bytes": [
+            0,
+            0
+          ],
+          "internal_identifier": "00000024-0000-3512-2118-0009af100700",
+          "max_length_field": 244,
+          "permissions_raw": 4,
+          "properties_raw": 20,
+          "uuid": "00000024-0000-3512-2118-0009af100700"
+        }
+      ],
+      "uuid": "00001530-0000-3512-2118-0009af100700"
+    },
+    {
+      "characteristic_count": 1,
+      "characteristics": [
+        {
+          "conditional_descriptor_uuids": [
+            "2902"
+          ],
+          "extra_bytes": [
+            0,
+            0
+          ],
+          "internal_identifier": "2a37",
+          "max_length_field": 20,
+          "permissions_raw": 0,
+          "properties_raw": 16,
+          "uuid": "2a37"
+        }
+      ],
+      "uuid": "180d"
+    },
+    {
+      "characteristic_count": 2,
+      "characteristics": [
+        {
+          "conditional_descriptor_uuids": [],
+          "extra_bytes": [
+            0,
+            0
+          ],
+          "internal_identifier": "fedd",
+          "max_length_field": 20,
+          "permissions_raw": 8,
+          "properties_raw": 8,
+          "uuid": "fedd"
+        },
+        {
+          "conditional_descriptor_uuids": [],
+          "extra_bytes": [
+            0,
+            0
+          ],
+          "internal_identifier": "fede",
+          "max_length_field": 20,
+          "permissions_raw": 2,
+          "properties_raw": 2,
+          "uuid": "fede"
+        }
+      ],
+      "uuid": "fee1"
+    },
+    {
+      "characteristic_count": 8,
+      "characteristics": [
+        {
+          "conditional_descriptor_uuids": [],
+          "extra_bytes": [
+            0,
+            0
+          ],
+          "internal_identifier": "2a4e",
+          "max_length_field": 1,
+          "permissions_raw": 10,
+          "properties_raw": 6,
+          "uuid": "2a4e"
+        },
+        {
+          "conditional_descriptor_uuids": [],
+          "extra_bytes": [
+            0,
+            0
+          ],
+          "internal_identifier": "2a4b",
+          "max_length_field": 20,
+          "permissions_raw": 2,
+          "properties_raw": 2,
+          "uuid": "2a4b"
+        },
+        {
+          "conditional_descriptor_uuids": [],
+          "extra_bytes": [
+            0,
+            0
+          ],
+          "internal_identifier": "2a4a",
+          "max_length_field": 4,
+          "permissions_raw": 2,
+          "properties_raw": 2,
+          "uuid": "2a4a"
+        },
+        {
+          "conditional_descriptor_uuids": [],
+          "extra_bytes": [
+            0,
+            0
+          ],
+          "internal_identifier": "2a4c",
+          "max_length_field": 1,
+          "permissions_raw": 8,
+          "properties_raw": 4,
+          "uuid": "2a4c"
+        },
+        {
+          "conditional_descriptor_uuids": [
+            "2902",
+            "2908"
+          ],
+          "extra_bytes": [
+            1,
+            1
+          ],
+          "internal_identifier": "2a4d11",
+          "max_length_field": 8,
+          "permissions_raw": 2,
+          "properties_raw": 1050,
+          "uuid": "2a4d"
+        },
+        {
+          "conditional_descriptor_uuids": [
+            "2902",
+            "2908"
+          ],
+          "extra_bytes": [
+            2,
+            1
+          ],
+          "internal_identifier": "2a4d21",
+          "max_length_field": 1,
+          "permissions_raw": 2,
+          "properties_raw": 1050,
+          "uuid": "2a4d"
+        },
+        {
+          "conditional_descriptor_uuids": [
+            "2902"
+          ],
+          "extra_bytes": [
+            0,
+            0
+          ],
+          "internal_identifier": "2a22",
+          "max_length_field": 8,
+          "permissions_raw": 2,
+          "properties_raw": 18,
+          "uuid": "2a22"
+        },
+        {
+          "conditional_descriptor_uuids": [],
+          "extra_bytes": [
+            0,
+            0
+          ],
+          "internal_identifier": "2a32",
+          "max_length_field": 8,
+          "permissions_raw": 10,
+          "properties_raw": 14,
+          "uuid": "2a32"
+        }
+      ],
+      "uuid": "1812"
+    },
+    {
+      "characteristic_count": 1,
+      "characteristics": [
+        {
+          "conditional_descriptor_uuids": [
+            "2902"
+          ],
+          "extra_bytes": [
+            0,
+            0
+          ],
+          "internal_identifier": "2a19",
+          "max_length_field": 1,
+          "permissions_raw": 10,
+          "properties_raw": 18,
+          "uuid": "2a19"
+        }
+      ],
+      "uuid": "180f"
+    }
+  ],
+  "source_sha256": "276c248eeaa25dd654d9b59e305c488176da304e30c870b912703c039b29003f",
+  "summary": {
+    "characteristics": 31,
+    "services": 8
+  }
+}

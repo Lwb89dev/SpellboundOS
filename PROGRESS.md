@@ -541,6 +541,29 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    and five synthetic tests. All 110 Python tests pass with signature
    dependencies; no device access, boot-state changes or installation occurred.
 
+## 2026-11-15 — native GATT registrations and transport ownership
+
+1. Committed FIFO/IPC and boot/recovery work as `1d45591`, then continued with
+   a separate ABI/logger-corrected native Bluetooth export set. The base GATT
+   builder attempts eight services and 31 characteristic specs along its
+   all-success branch; the prior broad export lost the last two services at a
+   falsely non-returning log call.
+2. Added an independent bounded inspector of explicit builder assignments,
+   resolving UUID registry pointers from the original bytes. It preserves raw
+   properties, permission/length fields and conditional descriptors. Qualified
+   strings `2a4d11`/`2a4d21` normalize to wire UUID `2a4d`; raw instructions and
+   AndeStar p-code confirm the conversion, while preserving both identifiers.
+3. Traced native channel bindings for custom `0016`/`0017`, and established
+   that custom `0022` is used by an RFCOMM BT_PORT registration. Corrected the
+   earlier string-inventory report's overbroad GATT/phone-contract claims.
+   The lower channel packet layer, JS framing, sensor IPC and authentication
+   must still be connected and verified rather than assumed interchangeable.
+4. Added `gatt_service_builder.py`, `InspectInstructions.java`, five synthetic
+   tests, [analysis/GATT_REGISTRATION.md](analysis/GATT_REGISTRATION.md) and
+   reproducible [analysis/gatt-service-builder.json](analysis/gatt-service-builder.json).
+   All 115 Python tests pass with signature dependencies. The corrected Ghidra
+   pass completed six targets; no Bluetooth or device interaction was performed.
+
 ## Next work
 
 - Regenerate selected native paths with startup-aware mappings, corrected

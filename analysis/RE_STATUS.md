@@ -14,7 +14,7 @@ Disassembly and export counts do not measure behavioral understanding.
 | Optical sensing | MAX8617X driver, initial board data, IRQ/FIFO route, host FIFO model, eight register-table inventories | Exact fitted part, full mode/timing behavior, calibration and measurement chain |
 | Health data | Heart/SpO2 caches and services; sensor process/control IPC payloads modeled | Outer zrpc transport, remaining packet families, record formats, algorithms and validation |
 | Motion / other peripherals | Candidate identities and selected probe paths | Complete configuration, interrupts, power/timing and physical verification |
-| Bluetooth | Radio image records, transport candidates, GATT inventory, JS framing | Active GATT contract, pairing/authentication, radio command framing and audio behavior |
+| Bluetooth | Eight service/31 characteristic builder specs; native 0016/0017 and RFCOMM 0022 bindings; radio and JS inventories | Active state/handles, complete channel codec, pairing/authentication, notification/audio behavior |
 | GNSS / touch | Container sections, candidate code and identity clues | Full mappings, loader/command protocols, runtime integration |
 | Boot/debug/recovery | Startup-aware boot/recovery inputs; reset/handoff split and key/UI/validation paths | Proven non-destructive debug/boot path, full backup and device-specific restoration |
 | Standalone OS / companion | Independent QEMU UART prototype; project goal recorded | Hardware boot/drivers, secure transport, Android implementation and device tests |
@@ -43,6 +43,7 @@ Latest detailed findings:
 - [Targeted corrected native exports](NATIVE_REPAIR.md)
 - [Optical FIFO and initial sensor IPC payloads](PPG_FIFO_AND_IPC.md)
 - [Boot/recovery control flow and signed metadata](BOOT_RECOVERY_AND_METADATA.md)
+- [Native GATT registrations and transport bindings](GATT_REGISTRATION.md)
 
 No device write or installation is justified by the current results. The
 project's existing backup/boot/recovery prerequisites in [GOAL.md](../GOAL.md)

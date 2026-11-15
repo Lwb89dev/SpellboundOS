@@ -9,9 +9,11 @@ present in the firmware member, not proof that any service is advertised,
 enabled or reachable on a running device. The same UUID set also appears in the
 factory-test image `META/extfw/fct_test_sign.bin`.
 
-This defines the device-side Bluetooth contract an Android companion or a
-standalone OS would interoperate with, and complements the JS-side ABI and
-message framing in [JS_RUNTIME_API.md](JS_RUNTIME_API.md).
+This is an initial Bluetooth identifier inventory. The subsequent native
+builder investigation in [GATT_REGISTRATION.md](GATT_REGISTRATION.md) recovers
+eight service registration attempts, 31 characteristic specs and concrete
+transport bindings. It complements the JS-side ABI and framing in
+[JS_RUNTIME_API.md](JS_RUNTIME_API.md); the complete phone contract is unresolved.
 
 ## UUID inventory
 
@@ -25,15 +27,17 @@ message framing in [JS_RUNTIME_API.md](JS_RUNTIME_API.md).
 | bt-sig | 1 | Bluetooth SIG base (Serial Port Profile) |
 | custom | 4 | unclassified 128-bit UUIDs |
 
-### Huami/Zepp custom services
+### Huami/Zepp custom identifiers
 
 All share the base `-0000-3512-2118-0009af100700`; the leading field is the
 short id. Observed: `0x0001`, `0x0002`, `0x0004`, `0x0005`, `0x0006`, `0x0016`,
 `0x0017`, `0x0022`, `0x0023`, `0x0024`, `0x0025`, and the firmware-update group
-`0x1530`, `0x1531`, `0x1532`. This is the proprietary channel the Zepp phone app
-uses; the `1530/1531/1532` triplet is the Huami OTA/DFU control, data and
-version pattern. The framed message protocol in
-[JS_RUNTIME_API.md](JS_RUNTIME_API.md) rides above this transport.
+`0x1530`, `0x1531`, `0x1532`. The later builder analysis confirms a `1530`
+service containing `1531`, `1532`, `0023` and `0024`, and a `fee0` service with
+`0016`, `0017` and other custom characteristics. Their complete OTA/data
+contracts still need recovery. Identifier `0022` is used by an RFCOMM BT_PORT
+registration, and `0025` is absent from that builder. The initial string scan
+alone did not establish which identifiers were GATT services or characteristics.
 
 ### Apple services (device acts as consumer)
 
@@ -65,10 +69,10 @@ not established here.
 - **iOS phone → watch:** standard ANCS/AMS. The watch subscribes to the phone's
   Notification Source and pulls attributes over the Control Point / Data Source.
   A compatible companion is not required for basic notifications.
-- **Android phone ↔ watch:** the Huami custom GATT services carry the Zepp
-  app's framed messages (see the 16-byte header in JS_RUNTIME_API.md), including
-  notification push and the `hmBle` file transfer. This is the channel a
-  SpellboundFit companion would implement.
+- **Android phone ↔ watch:** native custom `0016`/`0017` channel bindings and
+  the separate JS runtime framing are mapped. The complete nesting,
+  authentication and notification/file-transfer payload contract still needs
+  tracing before a SpellboundFit implementation can interoperate reliably.
 
 ## Reproduction
 
@@ -87,6 +91,8 @@ use synthetic inputs. JSON regenerates deterministically from the archive.
 
 A string scan cannot prove a service is advertised, which role is active, or
 which characteristics are actually used; it also cannot order the GATT table or
-recover handles. The custom UUIDs are unclassified, and the native ANCS/AMS and
+recover handles. The follow-up native builder recovers a conditional order,
+but live handles and active state remain unobserved. The four non-Huami custom
+UUIDs remain unclassified, and the native ANCS/AMS and
 Huami-channel handlers have not been decompiled into a reusable implementation.
 No Bluetooth connection was made.
