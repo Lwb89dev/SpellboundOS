@@ -669,6 +669,27 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    [analysis/ble-identifiers.json](analysis/ble-identifiers.json); no UUID
    remains "custom"). No device was contacted.
 
+## 2026-11-15 — package manifest mismatch explained
+
+1. Verified the `filehash` manifest: 12,881 of 12,882 entries match, none is
+   missing, and only `filehash`, `packageDiscription.json` and `update-script`
+   are unlisted. Explained the one mismatch recorded since the first inventory:
+   `META/res_info` is the build stamp (identical to `build_info`), the version,
+   and the SHA-256 of `filehash` itself, which the package description also
+   gives as `resourceHash`. The manifest lists the digest of the stamp alone, so
+   `res_info` was completed after the manifest was written; the mismatch is by
+   construction.
+2. Verified `fw_info` sizes and CRC-32 for the firmware, bootloader and recovery
+   images, and recorded the platform, bsdiff policy and update-script commands.
+3. Corrected HARDWARE_PROFILE.md: the package declares platform `mhs003`, so
+   `mhs003` names the platform rather than the sensor-hub processor as stated in
+   the earlier entry above.
+4. Added `analysis_scripts/package_manifest.py` with synthetic-package tests
+   (including tamper detection), the report
+   [analysis/PACKAGE_MANIFEST.md](analysis/PACKAGE_MANIFEST.md) and
+   [analysis/package-manifest.json](analysis/package-manifest.json). Nothing
+   was installed.
+
 ## Next work
 
 - Regenerate selected native paths with startup-aware mappings, corrected

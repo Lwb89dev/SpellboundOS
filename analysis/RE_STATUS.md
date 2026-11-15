@@ -6,7 +6,7 @@ Disassembly and export counts do not measure behavioral understanding.
 
 | Area | Current evidence | Still needed to close the area |
 | --- | --- | --- |
-| Package integrity / signatures | Hashes/signatures plus variable-length metadata and raw-recovery validator path | Explain manifest/size mismatches; observe device enforcement and rollback policy |
+| Package integrity / signatures | Hashes/signatures plus variable-length metadata and raw-recovery validator path; manifest fully verified and the `res_info` mismatch explained (it embeds the manifest's own digest); `fw_info` sizes/CRC-32 match | Observe device enforcement, update-script interpreter and rollback policy |
 | Main/sensor startup | Copy/zero tables reconstructed; startup-aware analysis ELFs | Validate full boot context, aliases, memory protection, retained/device data |
 | Native corpus | Broad exports plus targeted instruction checks | Repair save/restore ABI, logger call effects and relocated-code mappings; validate selected functions |
 | App bytecode | 44 members structurally parsed; QuickJS engine fingerprinted | Independent reader cross-check; runtime semantics and independently implemented host |
@@ -48,6 +48,7 @@ Latest detailed findings:
 - [Authentication module, request layouts and ECDH key material](AUTH_SESSION.md)
 - [GAPP compiled UI: complete decode of Application.bin](GAPP_UI.md)
 - [Sports-peripheral client and the four custom BLE UUIDs](SPORT_PERIPHERAL.md)
+- [Package manifest and the `res_info` mismatch](PACKAGE_MANIFEST.md)
 
 No device write or installation is justified by the current results. The
 project's existing backup/boot/recovery prerequisites in [GOAL.md](../GOAL.md)

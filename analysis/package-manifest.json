@@ -1,0 +1,71 @@
+{
+  "description": {
+    "bootUpgradeCMD": "write_image(\"META/bootloader_sign.bin\", \"boot\", 0);",
+    "bootloaderVer": "2.0.6",
+    "bsdiff": {
+      "enable_path": [
+        "META/resources/fonts",
+        "META/resources/locale"
+      ],
+      "ignore_path": [
+        "META/resources/fonts/allfont-Medium.ttf",
+        "META/resources/fonts/allfont-Regular.ttf"
+      ]
+    },
+    "firmwareVer": "4.6.0.3",
+    "platform": "mhs003"
+  },
+  "fw_info": [
+    {
+      "crc32_matches": true,
+      "member": "META/firmware_sign.bin",
+      "name": "firmware",
+      "size_matches": true,
+      "version": "4.6.0.3"
+    },
+    {
+      "crc32_matches": true,
+      "member": "META/bootloader_sign.bin",
+      "name": "bootloader",
+      "size_matches": true,
+      "version": "2.0.6"
+    },
+    {
+      "crc32_matches": true,
+      "member": "META/extfw/recovery_sign.bin",
+      "name": "recovery",
+      "size_matches": true,
+      "version": "2.3.1"
+    }
+  ],
+  "manifest": {
+    "entries": 12882,
+    "mismatched": [
+      "META/res_info"
+    ],
+    "missing_from_archive": [],
+    "unlisted_archive_files": [
+      "filehash",
+      "packageDiscription.json",
+      "update-script"
+    ],
+    "verified": 12881
+  },
+  "manifest_sha256": "b9519665377b6e59a7a0a21c1ffb0bd2074051c236da792b11c96f39c6cc3560",
+  "res_info": {
+    "appended_hash": "b9519665377b6e59a7a0a21c1ffb0bd2074051c236da792b11c96f39c6cc3560",
+    "appended_hash_is_sha256_of_manifest": true,
+    "description_resource_hash_matches": true,
+    "listed_digest_equals_sha256_of_stamp": true,
+    "stamp": "2026-09-24 11:54:48,root,f21c9e650e53",
+    "stamp_equals_build_info": true,
+    "version": "4.6.0.3",
+    "version_matches_description": true,
+    "version_matches_fw_info": true
+  },
+  "update_script": [
+    "mkfs(\"SYSTEM\");",
+    "package_extract_dir(\"META/\", \"/mnt/system/\");",
+    "package_extract_file(\"filehash\", \"/mnt/system/filehash\");"
+  ]
+}

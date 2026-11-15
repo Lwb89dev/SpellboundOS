@@ -34,9 +34,13 @@ exact fitted chip suffix.
 
 ## SoC identifiers
 
-The literal tokens `AX861`, `MHS002`, `MHS003`/`mhs003` appear in the image. The
-sensor-hub member is `sensorhub@mhs003_sign.bin`, so `mhs00x` names the sensor-
-hub processor; `AX861` is the main application-processor identifier. The main
+The literal tokens `AX861`, `MHS002`, `MHS003`/`mhs003` appear in the image.
+The package description declares `"platform": "mhs003"`
+([PACKAGE_MANIFEST.md](PACKAGE_MANIFEST.md)), so `mhs003` names the platform,
+and `sensorhub@mhs003_sign.bin` is the sensor-hub image built for it. An earlier
+version of this report read `mhs00x` as the sensor-hub processor's name, which
+the package metadata does not support. `AX861` is a candidate main
+application-processor identifier. The main
 image decodes as Andes RISC-V (AndeStar v5), consistent with these being an
 in-house multi-core SoC rather than an off-the-shelf MCU. Exact silicon, die and
 memory map still need corroboration.
