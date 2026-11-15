@@ -8,6 +8,14 @@ not executable-format validation.
 
 ## Local native corpus
 
+Subsequent investigation found two systematic issues requiring targeted
+regeneration: unmodeled alternate-return-register save/restore stubs
+([COMPILER_ABI.md](COMPILER_ABI.md)) and missing startup-copy mappings for
+executable RAM regions ([MAIN_MEMORY.md](MAIN_MEMORY.md)). The earlier
+non-returning logger problem also remains. Existing exports must be reviewed
+with these limitations before using inferred function signatures or control
+flow. Startup-aware analysis ELFs can now be regenerated from the original OTA.
+
 The batch workflow imports six candidate RISC-V images using Ghidra's AndeStar
 v5 profile and exports inferred function bodies to `firmware/decompiled/`:
 bootloader payload, recovery, sensor hub, factory firmware, main firmware and

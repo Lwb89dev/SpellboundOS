@@ -1,0 +1,92 @@
+{
+  "capability_table_initial_address": 1895653496,
+  "capability_table_initial_bytes": 144,
+  "capability_table_initially_zero": true,
+  "copy_table_address": 1880490608,
+  "image_base": 1880489984,
+  "member": "META/firmware_sign.bin",
+  "member_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "regions": [
+    {
+      "declared_size": 188161,
+      "destination": 1895170048,
+      "kind": "copy",
+      "size": 188164,
+      "source": 1893325556
+    },
+    {
+      "destination": 2160066560,
+      "kind": "copy",
+      "size": 10852,
+      "source": 1893513720
+    },
+    {
+      "destination": 2161323520,
+      "kind": "copy",
+      "size": 85304,
+      "source": 1893524572
+    },
+    {
+      "destination": 1880489984,
+      "kind": "copy",
+      "size": 0,
+      "source": 1893609880
+    },
+    {
+      "destination": 1895358216,
+      "kind": "zero",
+      "size": 411256,
+      "source": null
+    },
+    {
+      "destination": 2160077416,
+      "kind": "zero",
+      "size": 511180,
+      "source": null
+    }
+  ],
+  "relocated_target_examples": [
+    {
+      "file_offset": 13047896,
+      "original_mapping_address": 1893537880,
+      "runtime_address": 2161336828
+    },
+    {
+      "file_offset": 13048662,
+      "original_mapping_address": 1893538646,
+      "runtime_address": 2161337594
+    },
+    {
+      "file_offset": 13048834,
+      "original_mapping_address": 1893538818,
+      "runtime_address": 2161337766
+    },
+    {
+      "file_offset": 13049098,
+      "original_mapping_address": 1893539082,
+      "runtime_address": 2161338030
+    },
+    {
+      "file_offset": 13072720,
+      "original_mapping_address": 1893562704,
+      "runtime_address": 2161361652
+    },
+    {
+      "file_offset": 13092872,
+      "original_mapping_address": 1893582856,
+      "runtime_address": 2161381804
+    },
+    {
+      "file_offset": 13111412,
+      "original_mapping_address": 1893601396,
+      "runtime_address": 2161400344
+    },
+    {
+      "file_offset": 13119891,
+      "original_mapping_address": 1893609875,
+      "runtime_address": 2161408823
+    }
+  ],
+  "startup_function": 1880504300,
+  "zero_table_address": 1880490656
+}

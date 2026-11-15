@@ -1,0 +1,2473 @@
+{
+  "classes": [
+    {
+      "availability_callback_assignment": null,
+      "constructor": 1883595896,
+      "descriptor_address": 1891513708,
+      "enum_names": [
+        "ACTIVITY"
+      ],
+      "finalizer": 1883596304,
+      "name": "activity",
+      "properties": [
+        {
+          "address": 1883596094,
+          "arity": 0,
+          "kind": "function",
+          "name": "getActivityInfo"
+        }
+      ],
+      "property_count": 1,
+      "property_table": 1891513768,
+      "registration_function": 1883596978,
+      "sensor_id": 18,
+      "state_address": 1895547232
+    },
+    {
+      "availability_callback_assignment": null,
+      "constructor": 1883597316,
+      "descriptor_address": 1891513856,
+      "enum_names": [
+        "BATTERY"
+      ],
+      "finalizer": 1883597486,
+      "name": "battery",
+      "properties": [
+        {
+          "getter": 1883597376,
+          "kind": "getset_magic",
+          "magic": 2561,
+          "name": "current",
+          "setter": 1883597240
+        },
+        {
+          "getter": 1883597376,
+          "kind": "getset_magic",
+          "magic": 2562,
+          "name": "charge",
+          "setter": 1883597240
+        },
+        {
+          "getter": 1883597376,
+          "kind": "getset_magic",
+          "magic": 2563,
+          "name": "status",
+          "setter": 1883597240
+        },
+        {
+          "count": 2,
+          "entries": [
+            {
+              "kind": "int32",
+              "name": "CHANGE",
+              "value": 1
+            },
+            {
+              "kind": "int32",
+              "name": "CHARGE",
+              "value": 2561
+            }
+          ],
+          "kind": "object",
+          "name": "event",
+          "table": 1891513960
+        }
+      ],
+      "property_count": 4,
+      "property_table": 1891513896,
+      "registration_function": 1883597612,
+      "sensor_id": 10,
+      "state_address": 1895547408
+    },
+    {
+      "availability_callback_assignment": null,
+      "constructor": 1883648828,
+      "descriptor_address": 1891527080,
+      "enum_names": [
+        "STEP"
+      ],
+      "finalizer": 1883648940,
+      "name": "step",
+      "properties": [
+        {
+          "getter": 1883648996,
+          "kind": "getset_magic",
+          "magic": 2817,
+          "name": "current",
+          "setter": 1883648888
+        },
+        {
+          "getter": 1883648996,
+          "kind": "getset_magic",
+          "magic": 2818,
+          "name": "target",
+          "setter": 1883648888
+        }
+      ],
+      "property_count": 2,
+      "property_table": 1891527120,
+      "registration_function": 1883649170,
+      "sensor_id": 11,
+      "state_address": 1895549040
+    },
+    {
+      "availability_callback_assignment": null,
+      "constructor": 1883599734,
+      "descriptor_address": 1891514344,
+      "enum_names": [
+        "CALORIE"
+      ],
+      "finalizer": 1883599964,
+      "name": "calorie",
+      "properties": [
+        {
+          "getter": 1883599846,
+          "kind": "getset_magic",
+          "magic": 3073,
+          "name": "current",
+          "setter": 1883599794
+        },
+        {
+          "getter": 1883599846,
+          "kind": "getset_magic",
+          "magic": 3074,
+          "name": "target",
+          "setter": 1883599794
+        }
+      ],
+      "property_count": 2,
+      "property_table": 1891514384,
+      "registration_function": 1883600020,
+      "sensor_id": 12,
+      "state_address": 1895547584
+    },
+    {
+      "availability_callback_assignment": null,
+      "constructor": 1883602270,
+      "descriptor_address": 1891514984,
+      "enum_names": [
+        "DISTANCE"
+      ],
+      "finalizer": 1883602382,
+      "name": "distance",
+      "properties": [
+        {
+          "getter": 1883602438,
+          "kind": "getset_magic",
+          "magic": 3841,
+          "name": "current",
+          "setter": 1883602330
+        }
+      ],
+      "property_count": 1,
+      "property_table": 1891515024,
+      "registration_function": 1883602588,
+      "sensor_id": 15,
+      "state_address": 1895547760
+    },
+    {
+      "availability_callback_assignment": null,
+      "constructor": 1883651308,
+      "descriptor_address": 1891528384,
+      "enum_names": [
+        "TIME"
+      ],
+      "finalizer": 1883652940,
+      "name": "time",
+      "properties": [
+        {
+          "getter": 1883652996,
+          "kind": "getset_magic",
+          "magic": 6657,
+          "name": "utc",
+          "setter": 1883651368
+        },
+        {
+          "getter": 1883652996,
+          "kind": "getset_magic",
+          "magic": 6658,
+          "name": "year",
+          "setter": 1883651368
+        },
+        {
+          "getter": 1883652996,
+          "kind": "getset_magic",
+          "magic": 6659,
+          "name": "month",
+          "setter": 1883651368
+        },
+        {
+          "getter": 1883652996,
+          "kind": "getset_magic",
+          "magic": 6660,
+          "name": "day",
+          "setter": 1883651368
+        },
+        {
+          "getter": 1883652996,
+          "kind": "getset_magic",
+          "magic": 6661,
+          "name": "hour",
+          "setter": 1883651368
+        },
+        {
+          "getter": 1883652996,
+          "kind": "getset_magic",
+          "magic": 6662,
+          "name": "minute",
+          "setter": 1883651368
+        },
+        {
+          "getter": 1883652996,
+          "kind": "getset_magic",
+          "magic": 6663,
+          "name": "second",
+          "setter": 1883651368
+        },
+        {
+          "getter": 1883652996,
+          "kind": "getset_magic",
+          "magic": 6664,
+          "name": "format_hour",
+          "setter": 1883651368
+        },
+        {
+          "getter": 1883652996,
+          "kind": "getset_magic",
+          "magic": 6665,
+          "name": "week",
+          "setter": 1883651368
+        },
+        {
+          "getter": 1883652996,
+          "kind": "getset_magic",
+          "magic": 6666,
+          "name": "is24Hour",
+          "setter": 1883651368
+        },
+        {
+          "getter": 1883652996,
+          "kind": "getset_magic",
+          "magic": 6667,
+          "name": "lunar_year",
+          "setter": 1883651368
+        },
+        {
+          "getter": 1883652996,
+          "kind": "getset_magic",
+          "magic": 6668,
+          "name": "lunar_month",
+          "setter": 1883651368
+        },
+        {
+          "getter": 1883652996,
+          "kind": "getset_magic",
+          "magic": 6669,
+          "name": "lunar_day",
+          "setter": 1883651368
+        },
+        {
+          "getter": 1883652996,
+          "kind": "getset_magic",
+          "magic": 6670,
+          "name": "lunar_festival",
+          "setter": 1883651368
+        },
+        {
+          "getter": 1883652996,
+          "kind": "getset_magic",
+          "magic": 6671,
+          "name": "lunar_solar_term",
+          "setter": 1883651368
+        },
+        {
+          "getter": 1883652996,
+          "kind": "getset_magic",
+          "magic": 6672,
+          "name": "solar_festival",
+          "setter": 1883651368
+        },
+        {
+          "address": 1883653680,
+          "arity": 0,
+          "kind": "function",
+          "name": "getLunarMonthCalendar"
+        },
+        {
+          "address": 1883652728,
+          "arity": 1,
+          "kind": "function",
+          "name": "getShowFestival"
+        },
+        {
+          "count": 6,
+          "entries": [
+            {
+              "kind": "int32",
+              "name": "MINUTEEND",
+              "value": 6657
+            },
+            {
+              "kind": "int32",
+              "name": "HOUREND",
+              "value": 6658
+            },
+            {
+              "kind": "int32",
+              "name": "DAYCHANGE",
+              "value": 6659
+            },
+            {
+              "kind": "int32",
+              "name": "SUNRISE",
+              "value": 6660
+            },
+            {
+              "kind": "int32",
+              "name": "SUNSET",
+              "value": 6661
+            },
+            {
+              "kind": "int32",
+              "name": "CHANGE",
+              "value": 1
+            }
+          ],
+          "kind": "object",
+          "name": "event",
+          "table": 1891528944
+        }
+      ],
+      "property_count": 19,
+      "property_table": 1891528640,
+      "registration_function": 1883654026,
+      "sensor_id": 26,
+      "state_address": 1895549216
+    },
+    {
+      "availability_callback_assignment": null,
+      "constructor": 1883610476,
+      "descriptor_address": 1891518268,
+      "enum_names": [
+        "HEART"
+      ],
+      "finalizer": 1883611706,
+      "name": "heart",
+      "properties": [
+        {
+          "getter": 1883613274,
+          "kind": "getset_magic",
+          "magic": 3329,
+          "name": "last",
+          "setter": 1883610464
+        },
+        {
+          "getter": 1883613274,
+          "kind": "getset_magic",
+          "magic": 3330,
+          "name": "current",
+          "setter": 1883610464
+        },
+        {
+          "getter": 1883613274,
+          "kind": "getset_magic",
+          "magic": 3331,
+          "name": "today",
+          "setter": 1883610464
+        },
+        {
+          "getter": 1883613274,
+          "kind": "getset_magic",
+          "magic": 3332,
+          "name": "rest",
+          "setter": 1883610464
+        },
+        {
+          "count": 4,
+          "entries": [
+            {
+              "kind": "int32",
+              "name": "LAST",
+              "value": 3329
+            },
+            {
+              "kind": "int32",
+              "name": "CURRENT",
+              "value": 3330
+            },
+            {
+              "kind": "int32",
+              "name": "ALERT",
+              "value": 3331
+            },
+            {
+              "kind": "int32",
+              "name": "REST",
+              "value": 3332
+            }
+          ],
+          "kind": "object",
+          "name": "event",
+          "table": 1891518464
+        },
+        {
+          "address": 1883611556,
+          "arity": 0,
+          "kind": "function",
+          "name": "getMaxRecord"
+        },
+        {
+          "address": 1883610470,
+          "arity": 0,
+          "kind": "function",
+          "name": "getAfibRecord"
+        }
+      ],
+      "property_count": 7,
+      "property_table": 1891518352,
+      "registration_function": 1883613618,
+      "sensor_id": 13,
+      "state_address": 1895548200
+    },
+    {
+      "availability_callback_assignment": null,
+      "constructor": 1883615498,
+      "descriptor_address": 1891519224,
+      "enum_names": [
+        "PAI"
+      ],
+      "finalizer": 1883615946,
+      "name": "pai",
+      "properties": [
+        {
+          "getter": 1883615610,
+          "kind": "getset_magic",
+          "magic": 3585,
+          "name": "dailypai",
+          "setter": 1883615558
+        },
+        {
+          "getter": 1883615610,
+          "kind": "getset_magic",
+          "magic": 3586,
+          "name": "totalpai",
+          "setter": 1883615558
+        },
+        {
+          "getter": 1883615610,
+          "kind": "getset_magic",
+          "magic": 3587,
+          "name": "prepai0",
+          "setter": 1883615558
+        },
+        {
+          "getter": 1883615610,
+          "kind": "getset_magic",
+          "magic": 3588,
+          "name": "prepai1",
+          "setter": 1883615558
+        },
+        {
+          "getter": 1883615610,
+          "kind": "getset_magic",
+          "magic": 3589,
+          "name": "prepai2",
+          "setter": 1883615558
+        },
+        {
+          "getter": 1883615610,
+          "kind": "getset_magic",
+          "magic": 3590,
+          "name": "prepai3",
+          "setter": 1883615558
+        },
+        {
+          "getter": 1883615610,
+          "kind": "getset_magic",
+          "magic": 3591,
+          "name": "prepai4",
+          "setter": 1883615558
+        },
+        {
+          "getter": 1883615610,
+          "kind": "getset_magic",
+          "magic": 3592,
+          "name": "prepai5",
+          "setter": 1883615558
+        },
+        {
+          "getter": 1883615610,
+          "kind": "getset_magic",
+          "magic": 3593,
+          "name": "prepai6",
+          "setter": 1883615558
+        },
+        {
+          "getter": 1883615610,
+          "kind": "getset_magic",
+          "magic": 3594,
+          "name": "prepai",
+          "setter": 1883615558
+        }
+      ],
+      "property_count": 10,
+      "property_table": 1891519352,
+      "registration_function": 1883616002,
+      "sensor_id": 14,
+      "state_address": 1895548376
+    },
+    {
+      "availability_callback_assignment": null,
+      "constructor": 1883649618,
+      "descriptor_address": 1891527564,
+      "enum_names": [
+        "STRESS"
+      ],
+      "finalizer": 1883650460,
+      "name": "stress",
+      "properties": [
+        {
+          "getter": 1883650586,
+          "kind": "getset_magic",
+          "magic": 5633,
+          "name": "time",
+          "setter": 1883650408
+        },
+        {
+          "getter": 1883650586,
+          "kind": "getset_magic",
+          "magic": 5634,
+          "name": "current",
+          "setter": 1883650408
+        },
+        {
+          "address": 1883650196,
+          "arity": 0,
+          "kind": "function",
+          "name": "getAllDayStress"
+        },
+        {
+          "address": 1883650028,
+          "arity": 0,
+          "kind": "function",
+          "name": "getHourAverage"
+        },
+        {
+          "address": 1883649862,
+          "arity": 0,
+          "kind": "function",
+          "name": "getDailyAverage"
+        },
+        {
+          "address": 1883649678,
+          "arity": 0,
+          "kind": "function",
+          "name": "get7DayHourAverage"
+        },
+        {
+          "address": 1883650850,
+          "arity": 1,
+          "kind": "function",
+          "name": "startSingleEvaluation"
+        },
+        {
+          "address": 1883650516,
+          "arity": 0,
+          "kind": "function",
+          "name": "stopSingleEvaluation"
+        }
+      ],
+      "property_count": 8,
+      "property_table": 1891527720,
+      "registration_function": 1883650974,
+      "sensor_id": 22,
+      "state_address": 1895549128
+    },
+    {
+      "availability_callback_assignment": null,
+      "constructor": 1883602792,
+      "descriptor_address": 1891515088,
+      "enum_names": [
+        "FAT_BURRING",
+        "FAT_BURNING"
+      ],
+      "finalizer": 1883602904,
+      "name": "fatburn",
+      "properties": [
+        {
+          "getter": 1883602960,
+          "kind": "getset_magic",
+          "magic": 4865,
+          "name": "current",
+          "setter": 1883602852
+        },
+        {
+          "getter": 1883602960,
+          "kind": "getset_magic",
+          "magic": 4866,
+          "name": "target",
+          "setter": 1883602852
+        }
+      ],
+      "property_count": 2,
+      "property_table": 1891515128,
+      "registration_function": 1883603148,
+      "sensor_id": 19,
+      "state_address": 1895547848
+    },
+    {
+      "availability_callback_assignment": null,
+      "constructor": 1883648252,
+      "descriptor_address": 1891526936,
+      "enum_names": [
+        "STAND"
+      ],
+      "finalizer": 1883648364,
+      "name": "stand",
+      "properties": [
+        {
+          "getter": 1883648420,
+          "kind": "getset_magic",
+          "magic": 4097,
+          "name": "current",
+          "setter": 1883648312
+        },
+        {
+          "getter": 1883648420,
+          "kind": "getset_magic",
+          "magic": 4098,
+          "name": "target",
+          "setter": 1883648312
+        }
+      ],
+      "property_count": 2,
+      "property_table": 1891526976,
+      "registration_function": 1883648606,
+      "sensor_id": 16,
+      "state_address": 1895548952
+    },
+    {
+      "availability_callback_assignment": null,
+      "constructor": 1883626312,
+      "descriptor_address": 1891523148,
+      "enum_names": [
+        "SPO2"
+      ],
+      "finalizer": 1883627300,
+      "name": "spo2",
+      "properties": [
+        {
+          "getter": 1883626940,
+          "kind": "getset_magic",
+          "magic": 5889,
+          "name": "current",
+          "setter": 1883626888
+        },
+        {
+          "getter": 1883626940,
+          "kind": "getset_magic",
+          "magic": 5890,
+          "name": "time",
+          "setter": 1883626888
+        },
+        {
+          "getter": 1883626940,
+          "kind": "getset_magic",
+          "magic": 5891,
+          "name": "retcode",
+          "setter": 1883626888
+        },
+        {
+          "getter": 1883626940,
+          "kind": "getset_magic",
+          "magic": 5892,
+          "name": "hourAvgOfDay",
+          "setter": 1883626888
+        },
+        {
+          "address": 1883626372,
+          "arity": 1,
+          "kind": "function",
+          "name": "getRecordData"
+        },
+        {
+          "address": 1883627614,
+          "arity": 0,
+          "kind": "function",
+          "name": "getLastRecord"
+        }
+      ],
+      "property_count": 6,
+      "property_table": 1891523232,
+      "registration_function": 1883627782,
+      "sensor_id": 23,
+      "state_address": 1895548776
+    },
+    {
+      "availability_callback_assignment": null,
+      "constructor": 1883654170,
+      "descriptor_address": 1891529240,
+      "enum_names": [
+        "VIBRATE"
+      ],
+      "finalizer": 1883654396,
+      "name": "vibrate",
+      "properties": [
+        {
+          "getter": 1883654518,
+          "kind": "getset_magic",
+          "magic": 6913,
+          "name": "motortype",
+          "setter": 1883654230
+        },
+        {
+          "getter": 1883654518,
+          "kind": "getset_magic",
+          "magic": 6914,
+          "name": "motorenable",
+          "setter": 1883654230
+        },
+        {
+          "getter": 1883654518,
+          "kind": "getset_magic",
+          "magic": 6917,
+          "name": "crowneffecton",
+          "setter": 1883654230
+        },
+        {
+          "getter": 1883654518,
+          "kind": "getset_magic",
+          "magic": 6915,
+          "name": "strength",
+          "setter": 1883654230
+        },
+        {
+          "getter": 1883654518,
+          "kind": "getset_magic",
+          "magic": 6916,
+          "name": "intensity",
+          "setter": 1883654230
+        },
+        {
+          "getter": 1883654518,
+          "kind": "getset_magic",
+          "magic": 6918,
+          "name": "scene",
+          "setter": 1883654230
+        },
+        {
+          "count": 38,
+          "entries": [
+            {
+              "kind": "int32",
+              "name": "APP_NOTIFICATION",
+              "value": 100
+            },
+            {
+              "kind": "int32",
+              "name": "INCOMING_CALL",
+              "value": 101
+            },
+            {
+              "kind": "int32",
+              "name": "SMS",
+              "value": 102
+            },
+            {
+              "kind": "int32",
+              "name": "EMAIL",
+              "value": 103
+            },
+            {
+              "kind": "int32",
+              "name": "SPORT_ACHIEVEMENT",
+              "value": 104
+            },
+            {
+              "kind": "int32",
+              "name": "ALARM_CLOCK",
+              "value": 105
+            },
+            {
+              "kind": "int32",
+              "name": "SEDENTARY",
+              "value": 106
+            },
+            {
+              "kind": "int32",
+              "name": "CONNECTION_LOST",
+              "value": 107
+            },
+            {
+              "kind": "int32",
+              "name": "EVENT_REMINDER",
+              "value": 108
+            },
+            {
+              "kind": "int32",
+              "name": "FIND_DEVICE",
+              "value": 109
+            },
+            {
+              "kind": "int32",
+              "name": "TODO_LIST",
+              "value": 110
+            },
+            {
+              "kind": "int32",
+              "name": "COUNT_DOWN",
+              "value": 111
+            },
+            {
+              "kind": "int32",
+              "name": "SCHEDULE",
+              "value": 112
+            },
+            {
+              "kind": "int32",
+              "name": "HEALTH",
+              "value": 113
+            },
+            {
+              "kind": "int32",
+              "name": "ALARM",
+              "value": 114
+            },
+            {
+              "kind": "int32",
+              "name": "NOTIFICATION",
+              "value": 115
+            },
+            {
+              "kind": "int32",
+              "name": "CROWN_ACTION",
+              "value": 116
+            },
+            {
+              "kind": "int32",
+              "name": "CROWN_ACTION_SPULSE",
+              "value": 117
+            },
+            {
+              "kind": "int32",
+              "name": "CROWN_ACTION_DIPULSE",
+              "value": 118
+            },
+            {
+              "kind": "int32",
+              "name": "GSE_SCENE",
+              "value": 119
+            },
+            {
+              "kind": "int32",
+              "name": "SPORT_REMIND2",
+              "value": 120
+            },
+            {
+              "kind": "int32",
+              "name": "SPORT_REMIND",
+              "value": 121
+            },
+            {
+              "kind": "int32",
+              "name": "SPORT_ACTION",
+              "value": 122
+            },
+            {
+              "kind": "int32",
+              "name": "SPORT_SUCCESS",
+              "value": 123
+            },
+            {
+              "kind": "int32",
+              "name": "SPORT_FAILED",
+              "value": 124
+            },
+            {
+              "kind": "int32",
+              "name": "SPORT_WARN",
+              "value": 125
+            },
+            {
+              "kind": "int32",
+              "name": "BASIC_MINOR",
+              "value": 127
+            },
+            {
+              "kind": "int32",
+              "name": "BASIC_GENTLE",
+              "value": 128
+            },
+            {
+              "kind": "int32",
+              "name": "BASIC_LESS_GENTLE",
+              "value": 129
+            },
+            {
+              "kind": "int32",
+              "name": "BASIC_SHORT",
+              "value": 130
+            },
+            {
+              "kind": "int32",
+              "name": "BASIC_LONG",
+              "value": 131
+            },
+            {
+              "kind": "int32",
+              "name": "BASIC_CONTINUOUS",
+              "value": 132
+            },
+            {
+              "kind": "int32",
+              "name": "NOTIFICATION1",
+              "value": 133
+            },
+            {
+              "kind": "int32",
+              "name": "NOTIFICATION2",
+              "value": 134
+            },
+            {
+              "kind": "int32",
+              "name": "NOTIFICATION3",
+              "value": 135
+            },
+            {
+              "kind": "int32",
+              "name": "NOTIFICATION4",
+              "value": 136
+            },
+            {
+              "kind": "int32",
+              "name": "NOTIFICATION5",
+              "value": 137
+            },
+            {
+              "kind": "int32",
+              "name": "NOTIFICATION6",
+              "value": 138
+            }
+          ],
+          "kind": "object",
+          "name": "sceneType",
+          "table": 1891529936
+        },
+        {
+          "count": 11,
+          "entries": [
+            {
+              "kind": "int32",
+              "name": "PAUSE",
+              "value": 1
+            },
+            {
+              "kind": "int32",
+              "name": "CONTINUOUS",
+              "value": 2
+            },
+            {
+              "kind": "int32",
+              "name": "GENTLE_SHORT",
+              "value": 3
+            },
+            {
+              "kind": "int32",
+              "name": "STRONG_SHORT",
+              "value": 4
+            },
+            {
+              "kind": "int32",
+              "name": "STANDARD_CROWN",
+              "value": 5
+            },
+            {
+              "kind": "int32",
+              "name": "STRONG_CROWN",
+              "value": 6
+            },
+            {
+              "kind": "int32",
+              "name": "SPULSE_CROWN",
+              "value": 7
+            },
+            {
+              "kind": "int32",
+              "name": "DIPULSE_CROWN",
+              "value": 8
+            },
+            {
+              "kind": "int32",
+              "name": "KEYCODE_CLICK",
+              "value": 9
+            },
+            {
+              "kind": "int32",
+              "name": "CONTINUOUS_NO_BRK",
+              "value": 11
+            },
+            {
+              "kind": "int32",
+              "name": "URGENT",
+              "value": 10
+            }
+          ],
+          "kind": "object",
+          "name": "type",
+          "table": 1891529760
+        }
+      ],
+      "property_count": 8,
+      "property_table": 1891529632,
+      "registration_function": 1883655566,
+      "sensor_id": 27,
+      "state_address": 1895549304
+    },
+    {
+      "availability_callback_assignment": null,
+      "constructor": 1883655738,
+      "descriptor_address": 1891530544,
+      "enum_names": [
+        "WEAR"
+      ],
+      "finalizer": 1883655950,
+      "name": "wear",
+      "properties": [
+        {
+          "getter": 1883655850,
+          "kind": "getset_magic",
+          "magic": 7169,
+          "name": "current",
+          "setter": 1883655798
+        }
+      ],
+      "property_count": 1,
+      "property_table": 1891530584,
+      "registration_function": 1883656006,
+      "sensor_id": 28,
+      "state_address": 1895549392
+    },
+    {
+      "availability_callback_assignment": null,
+      "constructor": 1883658260,
+      "descriptor_address": 1891531516,
+      "enum_names": [
+        "WORLD_CLOCK"
+      ],
+      "finalizer": 1883659514,
+      "name": "worldClock",
+      "properties": [
+        {
+          "address": 1883659424,
+          "arity": 0,
+          "kind": "function",
+          "name": "init"
+        },
+        {
+          "address": 1883659324,
+          "arity": 0,
+          "kind": "function",
+          "name": "uninit"
+        },
+        {
+          "address": 1883659196,
+          "arity": 0,
+          "kind": "function",
+          "name": "getWorldClockCount"
+        },
+        {
+          "address": 1883658320,
+          "arity": 1,
+          "kind": "function",
+          "name": "getWorldClockInfo"
+        }
+      ],
+      "property_count": 4,
+      "property_table": 1891531600,
+      "registration_function": 1883659570,
+      "sensor_id": 29,
+      "state_address": 1895549568
+    },
+    {
+      "availability_callback_assignment": null,
+      "constructor": 1883656108,
+      "descriptor_address": 1891530768,
+      "enum_names": [
+        "WEATHER"
+      ],
+      "finalizer": 1883657976,
+      "name": "weather",
+      "properties": [
+        {
+          "address": 1883656532,
+          "arity": 0,
+          "kind": "function",
+          "name": "getForecastWeather"
+        },
+        {
+          "getter": 1883656348,
+          "kind": "getset_magic",
+          "magic": 4353,
+          "name": "current",
+          "setter": null
+        },
+        {
+          "getter": 1883656348,
+          "kind": "getset_magic",
+          "magic": 4354,
+          "name": "high",
+          "setter": null
+        },
+        {
+          "getter": 1883656348,
+          "kind": "getset_magic",
+          "magic": 4355,
+          "name": "low",
+          "setter": null
+        },
+        {
+          "getter": 1883656348,
+          "kind": "getset_magic",
+          "magic": 4356,
+          "name": "curAirIconIndex",
+          "setter": null
+        },
+        {
+          "getter": 1883656348,
+          "kind": "getset_magic",
+          "magic": 4357,
+          "name": "windSpeed",
+          "setter": null
+        },
+        {
+          "count": 1,
+          "entries": [
+            {
+              "kind": "int32",
+              "name": "CHANGE",
+              "value": 1
+            }
+          ],
+          "kind": "object",
+          "name": "event",
+          "table": 1891530968
+        }
+      ],
+      "property_count": 7,
+      "property_table": 1891530856,
+      "registration_function": 1883658114,
+      "sensor_id": 17,
+      "state_address": 1895549480
+    },
+    {
+      "availability_callback_assignment": null,
+      "constructor": 1883613724,
+      "descriptor_address": 1891518956,
+      "enum_names": [
+        "MUSIC"
+      ],
+      "finalizer": 1883614992,
+      "name": "music",
+      "properties": [
+        {
+          "address": 1883615368,
+          "arity": 0,
+          "kind": "function",
+          "name": "audInit"
+        },
+        {
+          "address": 1883614228,
+          "arity": 0,
+          "kind": "function",
+          "name": "audPlay"
+        },
+        {
+          "address": 1883614206,
+          "arity": 0,
+          "kind": "function",
+          "name": "audPause"
+        },
+        {
+          "address": 1883614184,
+          "arity": 0,
+          "kind": "function",
+          "name": "audNext"
+        },
+        {
+          "address": 1883614162,
+          "arity": 0,
+          "kind": "function",
+          "name": "audPrev"
+        },
+        {
+          "getter": 1883613796,
+          "kind": "getset_magic",
+          "magic": 7681,
+          "name": "artist",
+          "setter": 1883613716
+        },
+        {
+          "getter": 1883613796,
+          "kind": "getset_magic",
+          "magic": 7682,
+          "name": "title",
+          "setter": 1883613716
+        },
+        {
+          "getter": 1883613796,
+          "kind": "getset_magic",
+          "magic": 7685,
+          "name": "isPlaying",
+          "setter": 1883613716
+        }
+      ],
+      "property_count": 8,
+      "property_table": 1891519056,
+      "registration_function": 1883615388,
+      "sensor_id": 30,
+      "state_address": 1895548288
+    },
+    {
+      "availability_callback_assignment": null,
+      "constructor": 1883622552,
+      "descriptor_address": 1891521944,
+      "enum_names": [
+        "SLEEP"
+      ],
+      "finalizer": 1883624274,
+      "name": "sleep",
+      "properties": [
+        {
+          "address": 1883624666,
+          "arity": 0,
+          "kind": "function",
+          "name": "getSleepStageData"
+        },
+        {
+          "address": 1883622612,
+          "arity": 0,
+          "kind": "function",
+          "name": "getSleepStageModel"
+        },
+        {
+          "address": 1883624090,
+          "arity": 0,
+          "kind": "function",
+          "name": "getSleepHrData"
+        },
+        {
+          "address": 1883624070,
+          "arity": 0,
+          "kind": "function",
+          "name": "getTotalTime"
+        },
+        {
+          "address": 1883624038,
+          "arity": 0,
+          "kind": "function",
+          "name": "updateInfo"
+        },
+        {
+          "address": 1883623812,
+          "arity": 0,
+          "kind": "function",
+          "name": "getBasicInfo"
+        },
+        {
+          "address": 1883623782,
+          "arity": 0,
+          "kind": "function",
+          "name": "isSleeping"
+        },
+        {
+          "address": 1883624356,
+          "arity": 0,
+          "kind": "function",
+          "name": "getShortSleep"
+        },
+        {
+          "address": 1883622770,
+          "arity": 0,
+          "kind": "function",
+          "name": "get7DaysSleepData"
+        }
+      ],
+      "property_count": 9,
+      "property_table": 1891522120,
+      "registration_function": 1883625224,
+      "sensor_id": 31,
+      "state_address": 1895548600
+    },
+    {
+      "availability_callback_assignment": null,
+      "constructor": 1883627966,
+      "descriptor_address": 1891526212,
+      "enum_names": [
+        "SPORT"
+      ],
+      "finalizer": 1883631830,
+      "name": "sport",
+      "properties": [
+        {
+          "getter": 1883628994,
+          "kind": "getset_magic",
+          "magic": 8193,
+          "name": "current",
+          "setter": 1883628942
+        },
+        {
+          "getter": 1883628994,
+          "kind": "getset_magic",
+          "magic": 8194,
+          "name": "vo2max",
+          "setter": 1883628942
+        },
+        {
+          "getter": 1883628994,
+          "kind": "getset_magic",
+          "magic": 8197,
+          "name": "hrmax",
+          "setter": 1883628942
+        },
+        {
+          "getter": 1883628994,
+          "kind": "getset_magic",
+          "magic": 8195,
+          "name": "trainingLoad",
+          "setter": 1883628942
+        },
+        {
+          "getter": 1883628994,
+          "kind": "getset_magic",
+          "magic": 8196,
+          "name": "recoveryTime",
+          "setter": 1883628942
+        },
+        {
+          "count": 1,
+          "entries": [
+            {
+              "kind": "int32",
+              "name": "CHANGE",
+              "value": 1
+            }
+          ],
+          "kind": "object",
+          "name": "event",
+          "table": 1891526888
+        },
+        {
+          "count": 4,
+          "entries": [
+            {
+              "kind": "int32",
+              "name": "STOPPED",
+              "value": 0
+            },
+            {
+              "kind": "int32",
+              "name": "READY",
+              "value": 1
+            },
+            {
+              "kind": "int32",
+              "name": "RUNNING",
+              "value": 2
+            },
+            {
+              "kind": "int32",
+              "name": "PAUSED",
+              "value": 3
+            }
+          ],
+          "kind": "object",
+          "name": "state",
+          "table": 1891526824
+        },
+        {
+          "address": 1883628178,
+          "arity": 0,
+          "kind": "function",
+          "name": "getSportType"
+        },
+        {
+          "address": 1883627894,
+          "arity": 0,
+          "kind": "function",
+          "name": "getSportState"
+        },
+        {
+          "address": 1883631304,
+          "arity": 0,
+          "kind": "function",
+          "name": "getSportRecord"
+        },
+        {
+          "address": 1883630348,
+          "arity": 0,
+          "kind": "function",
+          "name": "getSportQuantification"
+        },
+        {
+          "address": 1883633786,
+          "arity": 1,
+          "kind": "function",
+          "name": "getSummary"
+        },
+        {
+          "address": 1883647854,
+          "arity": 1,
+          "kind": "function",
+          "name": "getRuntimeData"
+        },
+        {
+          "address": 1883628680,
+          "arity": 0,
+          "kind": "function",
+          "name": "getHrZone"
+        },
+        {
+          "address": 1883628214,
+          "arity": 0,
+          "kind": "function",
+          "name": "getTrackNaviInfo"
+        },
+        {
+          "address": 1883631936,
+          "arity": 1,
+          "kind": "function",
+          "name": "getWorkoutInfo"
+        },
+        {
+          "address": 1883631936,
+          "arity": 1,
+          "kind": "function",
+          "name": "getWorkoutStepInfo"
+        },
+        {
+          "address": 1883629556,
+          "arity": 0,
+          "kind": "function",
+          "name": "getWorkoutEffect"
+        },
+        {
+          "address": 1883633786,
+          "arity": 1,
+          "kind": "function",
+          "name": "getWorkoutSummary"
+        },
+        {
+          "address": 1883635014,
+          "arity": 1,
+          "kind": "function",
+          "name": "getLastRecord"
+        }
+      ],
+      "property_count": 20,
+      "property_table": 1891526504,
+      "registration_function": 1883647580,
+      "sensor_id": 32,
+      "state_address": 1895548864
+    },
+    {
+      "availability_callback_assignment": null,
+      "constructor": 1883597044,
+      "descriptor_address": 1891513784,
+      "enum_names": [
+        "BARO"
+      ],
+      "finalizer": 1883597104,
+      "name": "baro",
+      "properties": [
+        {
+          "getter": 1883597038,
+          "kind": "getset_magic",
+          "magic": 8705,
+          "name": "pressure",
+          "setter": null
+        },
+        {
+          "getter": 1883597038,
+          "kind": "getset_magic",
+          "magic": 8706,
+          "name": "altitude",
+          "setter": null
+        }
+      ],
+      "property_count": 2,
+      "property_table": 1891513824,
+      "registration_function": 1883597160,
+      "sensor_id": 34,
+      "state_address": 1895547320
+    },
+    {
+      "availability_callback_assignment": null,
+      "constructor": 1883603244,
+      "descriptor_address": 1891515168,
+      "enum_names": [
+        "FATIGUE"
+      ],
+      "finalizer": 1883603356,
+      "name": "fatigue",
+      "properties": [
+        {
+          "getter": 1883603304,
+          "kind": "getset_magic",
+          "magic": 8961,
+          "name": "current",
+          "setter": null
+        }
+      ],
+      "property_count": 1,
+      "property_table": 1891515208,
+      "registration_function": 1883603412,
+      "sensor_id": 35,
+      "state_address": 1895547936
+    },
+    {
+      "availability_callback_assignment": 1883600670,
+      "constructor": 1883600368,
+      "descriptor_address": 1891514804,
+      "enum_names": [
+        "COMPASS"
+      ],
+      "finalizer": 1883600614,
+      "name": "compass",
+      "properties": [
+        {
+          "getter": 1883601384,
+          "kind": "getset_magic",
+          "magic": 9217,
+          "name": "direction_angle",
+          "setter": null
+        },
+        {
+          "getter": 1883601384,
+          "kind": "getset_magic",
+          "magic": 9218,
+          "name": "direction",
+          "setter": null
+        },
+        {
+          "getter": 1883601384,
+          "kind": "getset_magic",
+          "magic": 9219,
+          "name": "pressure",
+          "setter": null
+        },
+        {
+          "getter": 1883601384,
+          "kind": "getset_magic",
+          "magic": 9220,
+          "name": "altitude",
+          "setter": null
+        },
+        {
+          "getter": 1883601384,
+          "kind": "getset_magic",
+          "magic": 9221,
+          "name": "calibration_status",
+          "setter": null
+        },
+        {
+          "getter": 1883601384,
+          "kind": "getset_magic",
+          "magic": 9222,
+          "name": "mode",
+          "setter": 1883600428
+        }
+      ],
+      "property_count": 6,
+      "property_table": 1891514848,
+      "registration_function": 1883602036,
+      "sensor_id": 36,
+      "state_address": 1895547672
+    },
+    {
+      "availability_callback_assignment": 1883604120,
+      "constructor": 1883603492,
+      "descriptor_address": 1891516364,
+      "enum_names": [
+        "GPS"
+      ],
+      "finalizer": 1883603860,
+      "name": "gps",
+      "properties": [
+        {
+          "getter": 1883605826,
+          "kind": "getset_magic",
+          "magic": 9473,
+          "name": "latitude",
+          "setter": null
+        },
+        {
+          "getter": 1883605826,
+          "kind": "getset_magic",
+          "magic": 9474,
+          "name": "longitude",
+          "setter": null
+        },
+        {
+          "getter": 1883605826,
+          "kind": "getset_magic",
+          "magic": 9475,
+          "name": "altitude",
+          "setter": null
+        },
+        {
+          "getter": 1883605826,
+          "kind": "getset_magic",
+          "magic": 9476,
+          "name": "pos_status",
+          "setter": null
+        },
+        {
+          "getter": 1883605826,
+          "kind": "getset_magic",
+          "magic": 9477,
+          "name": "gps_settig",
+          "setter": null
+        },
+        {
+          "getter": 1883605826,
+          "kind": "getset_magic",
+          "magic": 9477,
+          "name": "gps_setting",
+          "setter": null
+        },
+        {
+          "getter": 1883605826,
+          "kind": "getset_magic",
+          "magic": 9478,
+          "name": "enable",
+          "setter": null
+        },
+        {
+          "count": 1,
+          "entries": [
+            {
+              "kind": "int32",
+              "name": "GNSS_INFO",
+              "value": 9473
+            }
+          ],
+          "kind": "object",
+          "name": "event",
+          "table": 1891516920
+        },
+        {
+          "count": 6,
+          "entries": [
+            {
+              "kind": "int32",
+              "name": "GPS",
+              "value": 0
+            },
+            {
+              "kind": "int32",
+              "name": "BDS",
+              "value": 1
+            },
+            {
+              "kind": "int32",
+              "name": "GLN",
+              "value": 2
+            },
+            {
+              "kind": "int32",
+              "name": "GAL",
+              "value": 3
+            },
+            {
+              "kind": "int32",
+              "name": "QZSS",
+              "value": 4
+            },
+            {
+              "kind": "int32",
+              "name": "NAVIC",
+              "value": 5
+            }
+          ],
+          "kind": "object",
+          "name": "gnss_sys",
+          "table": 1891516824
+        },
+        {
+          "count": 6,
+          "entries": [
+            {
+              "kind": "int32",
+              "name": "HIGH_ACCURACY",
+              "value": 0
+            },
+            {
+              "kind": "int32",
+              "name": "SMT",
+              "value": 1
+            },
+            {
+              "kind": "int32",
+              "name": "NORMAL",
+              "value": 2
+            },
+            {
+              "kind": "int32",
+              "name": "LOW_POWER",
+              "value": 3
+            },
+            {
+              "kind": "int32",
+              "name": "SUPER_LOW_POWER",
+              "value": 4
+            },
+            {
+              "kind": "int32",
+              "name": "CUSTOM",
+              "value": 5
+            }
+          ],
+          "kind": "object",
+          "name": "gps_mode",
+          "table": 1891516728
+        }
+      ],
+      "property_count": 10,
+      "property_table": 1891516568,
+      "registration_function": 1883608860,
+      "sensor_id": 37,
+      "state_address": 1895548024
+    },
+    {
+      "availability_callback_assignment": 1883610054,
+      "constructor": 1883609436,
+      "descriptor_address": 1891516988,
+      "enum_names": [
+        "GYRO"
+      ],
+      "finalizer": 1883609998,
+      "name": "gyro",
+      "properties": [
+        {
+          "getter": 1883609496,
+          "kind": "getset_magic",
+          "magic": 9729,
+          "name": "x",
+          "setter": null
+        },
+        {
+          "getter": 1883609496,
+          "kind": "getset_magic",
+          "magic": 9730,
+          "name": "y",
+          "setter": null
+        },
+        {
+          "getter": 1883609496,
+          "kind": "getset_magic",
+          "magic": 9731,
+          "name": "z",
+          "setter": null
+        },
+        {
+          "getter": 1883609496,
+          "kind": "getset_magic",
+          "magic": 9732,
+          "name": "mode",
+          "setter": 1883609816
+        }
+      ],
+      "property_count": 4,
+      "property_table": 1891517032,
+      "registration_function": 1883610338,
+      "sensor_id": 38,
+      "state_address": 1895548112
+    },
+    {
+      "availability_callback_assignment": 1883595486,
+      "constructor": 1883594868,
+      "descriptor_address": 1891513304,
+      "enum_names": [
+        "ACCELERATOR"
+      ],
+      "finalizer": 1883595430,
+      "name": "acc",
+      "properties": [
+        {
+          "getter": 1883594928,
+          "kind": "getset_magic",
+          "magic": 9985,
+          "name": "x",
+          "setter": null
+        },
+        {
+          "getter": 1883594928,
+          "kind": "getset_magic",
+          "magic": 9986,
+          "name": "y",
+          "setter": null
+        },
+        {
+          "getter": 1883594928,
+          "kind": "getset_magic",
+          "magic": 9987,
+          "name": "z",
+          "setter": null
+        },
+        {
+          "getter": 1883594928,
+          "kind": "getset_magic",
+          "magic": 9988,
+          "name": "mode",
+          "setter": 1883595248
+        }
+      ],
+      "property_count": 4,
+      "property_table": 1891513344,
+      "registration_function": 1883595770,
+      "sensor_id": 39,
+      "state_address": 1895547144
+    },
+    {
+      "availability_callback_assignment": null,
+      "constructor": 1883616082,
+      "descriptor_address": 1891519688,
+      "enum_names": [
+        "SCREEN"
+      ],
+      "finalizer": 1883616298,
+      "name": "jsScreen",
+      "properties": [
+        {
+          "getter": 1883616996,
+          "kind": "getset_magic",
+          "magic": 10241,
+          "name": "status",
+          "setter": 1883616368
+        },
+        {
+          "getter": 1883616996,
+          "kind": "getset_magic",
+          "magic": 10242,
+          "name": "aod_mode",
+          "setter": 1883616368
+        },
+        {
+          "getter": 1883616996,
+          "kind": "getset_magic",
+          "magic": 10243,
+          "name": "light",
+          "setter": 1883616368
+        },
+        {
+          "getter": 1883616996,
+          "kind": "getset_magic",
+          "magic": 10244,
+          "name": "ratio",
+          "setter": 1883616368
+        },
+        {
+          "count": 2,
+          "entries": [
+            {
+              "kind": "int32",
+              "name": "LIGHT",
+              "value": 10241
+            },
+            {
+              "kind": "int32",
+              "name": "HOMEPAGE",
+              "value": 10242
+            }
+          ],
+          "kind": "object",
+          "name": "event",
+          "table": 1891519840
+        }
+      ],
+      "property_count": 5,
+      "property_table": 1891519760,
+      "registration_function": 1883617772,
+      "sensor_id": 40,
+      "state_address": 1895548464
+    },
+    {
+      "availability_callback_assignment": 1883625558,
+      "constructor": 1883625296,
+      "descriptor_address": 1891522320,
+      "enum_names": [
+        "SOUND"
+      ],
+      "finalizer": 1883625362,
+      "name": "sound",
+      "properties": [
+        {
+          "count": 25,
+          "entries": [
+            {
+              "kind": "int32",
+              "name": "ALARM",
+              "value": 0
+            },
+            {
+              "kind": "int32",
+              "name": "COUNTDOWN",
+              "value": 1
+            },
+            {
+              "kind": "int32",
+              "name": "SPORTS",
+              "value": 2
+            },
+            {
+              "kind": "int32",
+              "name": "MESSAGE",
+              "value": 3
+            },
+            {
+              "kind": "int32",
+              "name": "STEP_FREQ",
+              "value": 4
+            },
+            {
+              "kind": "int32",
+              "name": "CHARGE",
+              "value": 5
+            },
+            {
+              "kind": "int32",
+              "name": "SOS",
+              "value": 6
+            },
+            {
+              "kind": "int32",
+              "name": "ABNORMAL",
+              "value": 7
+            },
+            {
+              "kind": "int32",
+              "name": "ACHIEVE",
+              "value": 8
+            },
+            {
+              "kind": "int32",
+              "name": "REGULAR",
+              "value": 9
+            },
+            {
+              "kind": "int32",
+              "name": "CALENDAR",
+              "value": 10
+            },
+            {
+              "kind": "int32",
+              "name": "CAMERA",
+              "value": 11
+            },
+            {
+              "kind": "int32",
+              "name": "FIND_PHONE",
+              "value": 12
+            },
+            {
+              "kind": "int32",
+              "name": "ABN_HIGH",
+              "value": 13
+            },
+            {
+              "kind": "int32",
+              "name": "ABN_LOW",
+              "value": 14
+            },
+            {
+              "kind": "int32",
+              "name": "BACKLOG",
+              "value": 15
+            },
+            {
+              "kind": "int32",
+              "name": "SMS",
+              "value": 16
+            },
+            {
+              "kind": "int32",
+              "name": "MAIL",
+              "value": 17
+            },
+            {
+              "kind": "int32",
+              "name": "TOMCLK_START",
+              "value": 18
+            },
+            {
+              "kind": "int32",
+              "name": "TOMCLK_END",
+              "value": 19
+            },
+            {
+              "kind": "int32",
+              "name": "STOPWATCH",
+              "value": 20
+            },
+            {
+              "kind": "int32",
+              "name": "FLIGHT",
+              "value": 21
+            },
+            {
+              "kind": "int32",
+              "name": "PRESSURE",
+              "value": 22
+            },
+            {
+              "kind": "int32",
+              "name": "AGPS",
+              "value": 23
+            },
+            {
+              "kind": "int32",
+              "name": "ALEXA",
+              "value": 24
+            }
+          ],
+          "kind": "object",
+          "name": "type",
+          "table": 1891522544
+        },
+        {
+          "getter": 1883625480,
+          "kind": "getset_magic",
+          "magic": 10753,
+          "name": "enable",
+          "setter": 1883625288
+        }
+      ],
+      "property_count": 2,
+      "property_table": 1891522512,
+      "registration_function": 1883626228,
+      "sensor_id": 42,
+      "state_address": 1895548688
+    },
+    {
+      "availability_callback_assignment": 1883597730,
+      "constructor": 1883597734,
+      "descriptor_address": 1891514116,
+      "enum_names": [
+        "GLUCOSE"
+      ],
+      "finalizer": 1883597824,
+      "name": "glucose",
+      "properties": [
+        {
+          "count": 1,
+          "entries": [
+            {
+              "kind": "int32",
+              "name": "CHANGE",
+              "value": 1
+            }
+          ],
+          "kind": "object",
+          "name": "event",
+          "table": 1891514264
+        },
+        {
+          "address": 1883598286,
+          "arity": 1,
+          "kind": "function",
+          "name": "addRecord"
+        },
+        {
+          "address": 1883598688,
+          "arity": 1,
+          "kind": "function",
+          "name": "getRecords"
+        },
+        {
+          "address": 1883597920,
+          "arity": 0,
+          "kind": "function",
+          "name": "getLastRecord"
+        }
+      ],
+      "property_count": 4,
+      "property_table": 1891514200,
+      "registration_function": 1883599568,
+      "sensor_id": 44,
+      "state_address": 1895547496
+    }
+  ],
+  "common_properties": [
+    {
+      "address": 1883618452,
+      "arity": 0,
+      "kind": "function",
+      "name": "start"
+    },
+    {
+      "address": 1883618612,
+      "arity": 0,
+      "kind": "function",
+      "name": "stop"
+    },
+    {
+      "getter": 1883619012,
+      "kind": "getset_magic",
+      "magic": 1,
+      "name": "period",
+      "setter": 1883618900
+    },
+    {
+      "address": 1883619700,
+      "arity": 2,
+      "kind": "function",
+      "name": "addEventListener"
+    },
+    {
+      "address": 1883620654,
+      "arity": 2,
+      "kind": "function",
+      "name": "removeEventListener"
+    },
+    {
+      "address": 1883620412,
+      "arity": 1,
+      "kind": "function",
+      "name": "checkAvailable"
+    },
+    {
+      "address": 1883617846,
+      "arity": 0,
+      "kind": "function",
+      "name": "toString"
+    }
+  ],
+  "common_property_table": 1891520512,
+  "dispatcher": 1883622228,
+  "ids_without_dispatcher_registration": [
+    {
+      "enum_names": [
+        "SUN"
+      ],
+      "sensor_id": 20
+    },
+    {
+      "enum_names": [
+        "WIND"
+      ],
+      "sensor_id": 21
+    },
+    {
+      "enum_names": [
+        "BODY_TEMP"
+      ],
+      "sensor_id": 24
+    },
+    {
+      "enum_names": [
+        "PRESS"
+      ],
+      "sensor_id": 25
+    },
+    {
+      "enum_names": [
+        "BPRESSURE"
+      ],
+      "sensor_id": 33
+    },
+    {
+      "enum_names": [
+        "BODY_COMPOSITION"
+      ],
+      "sensor_id": 41
+    },
+    {
+      "enum_names": [
+        "BUZZER"
+      ],
+      "sensor_id": 43
+    }
+  ],
+  "image_base": 1880489984,
+  "member": "META/firmware_sign.bin",
+  "member_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "namespace": [
+    {
+      "count": 36,
+      "entries": [
+        {
+          "kind": "int32",
+          "name": "BATTERY",
+          "value": 10
+        },
+        {
+          "kind": "int32",
+          "name": "STEP",
+          "value": 11
+        },
+        {
+          "kind": "int32",
+          "name": "CALORIE",
+          "value": 12
+        },
+        {
+          "kind": "int32",
+          "name": "HEART",
+          "value": 13
+        },
+        {
+          "kind": "int32",
+          "name": "PAI",
+          "value": 14
+        },
+        {
+          "kind": "int32",
+          "name": "DISTANCE",
+          "value": 15
+        },
+        {
+          "kind": "int32",
+          "name": "STAND",
+          "value": 16
+        },
+        {
+          "kind": "int32",
+          "name": "WEATHER",
+          "value": 17
+        },
+        {
+          "kind": "int32",
+          "name": "ACTIVITY",
+          "value": 18
+        },
+        {
+          "kind": "int32",
+          "name": "FAT_BURRING",
+          "value": 19
+        },
+        {
+          "kind": "int32",
+          "name": "FAT_BURNING",
+          "value": 19
+        },
+        {
+          "kind": "int32",
+          "name": "SUN",
+          "value": 20
+        },
+        {
+          "kind": "int32",
+          "name": "WIND",
+          "value": 21
+        },
+        {
+          "kind": "int32",
+          "name": "STRESS",
+          "value": 22
+        },
+        {
+          "kind": "int32",
+          "name": "SPO2",
+          "value": 23
+        },
+        {
+          "kind": "int32",
+          "name": "BODY_TEMP",
+          "value": 24
+        },
+        {
+          "kind": "int32",
+          "name": "PRESS",
+          "value": 25
+        },
+        {
+          "kind": "int32",
+          "name": "TIME",
+          "value": 26
+        },
+        {
+          "kind": "int32",
+          "name": "VIBRATE",
+          "value": 27
+        },
+        {
+          "kind": "int32",
+          "name": "WEAR",
+          "value": 28
+        },
+        {
+          "kind": "int32",
+          "name": "WORLD_CLOCK",
+          "value": 29
+        },
+        {
+          "kind": "int32",
+          "name": "MUSIC",
+          "value": 30
+        },
+        {
+          "kind": "int32",
+          "name": "SLEEP",
+          "value": 31
+        },
+        {
+          "kind": "int32",
+          "name": "SPORT",
+          "value": 32
+        },
+        {
+          "kind": "int32",
+          "name": "BPRESSURE",
+          "value": 33
+        },
+        {
+          "kind": "int32",
+          "name": "COMPASS",
+          "value": 36
+        },
+        {
+          "kind": "int32",
+          "name": "GPS",
+          "value": 37
+        },
+        {
+          "kind": "int32",
+          "name": "GYRO",
+          "value": 38
+        },
+        {
+          "kind": "int32",
+          "name": "ACCELERATOR",
+          "value": 39
+        },
+        {
+          "kind": "int32",
+          "name": "BARO",
+          "value": 34
+        },
+        {
+          "kind": "int32",
+          "name": "FATIGUE",
+          "value": 35
+        },
+        {
+          "kind": "int32",
+          "name": "SCREEN",
+          "value": 40
+        },
+        {
+          "kind": "int32",
+          "name": "BODY_COMPOSITION",
+          "value": 41
+        },
+        {
+          "kind": "int32",
+          "name": "SOUND",
+          "value": 42
+        },
+        {
+          "kind": "int32",
+          "name": "BUZZER",
+          "value": 43
+        },
+        {
+          "kind": "int32",
+          "name": "GLUCOSE",
+          "value": 44
+        }
+      ],
+      "kind": "object",
+      "name": "id",
+      "table": 1891521008
+    },
+    {
+      "count": 3,
+      "entries": [
+        {
+          "kind": "int32",
+          "name": "DELAY",
+          "value": 0
+        },
+        {
+          "kind": "int32",
+          "name": "CHANGE",
+          "value": 1
+        },
+        {
+          "kind": "int32",
+          "name": "STATUS",
+          "value": 2
+        }
+      ],
+      "kind": "object",
+      "name": "event",
+      "table": 1891520960
+    },
+    {
+      "count": 3,
+      "entries": [
+        {
+          "kind": "int32",
+          "name": "LOW",
+          "value": 0
+        },
+        {
+          "kind": "int32",
+          "name": "NORMAL",
+          "value": 1
+        },
+        {
+          "kind": "int32",
+          "name": "HIGH",
+          "value": 2
+        }
+      ],
+      "kind": "object",
+      "name": "freq_mode",
+      "table": 1891520912
+    }
+  ],
+  "registrar": 1883621266,
+  "source_sha256": {
+    "ram_704563fa.c": "ae41b4dde26229542cb82397ea6a4619f197d483fffa3cbf89a1899bfacad287",
+    "ram_704568b2.c": "50b6510b2061775d97d94d19d11d73a74352b5395956f70d07a4c7942ff1f5c3",
+    "ram_70456968.c": "d3059d18b6eae2f1fbf9dc40368f2e0de55eaa6abe0ff7c8cac3e4cc7c43205a",
+    "ram_70456b2c.c": "14ffc894dc2c6afa8438b40893900dcd4364d25a64a04372ee0f9e2ba8ae6239",
+    "ram_704572d0.c": "2f36aa02e8ae897e214bc131cd459c516681dc2b562d819a58dbbd9be240862b",
+    "ram_70457494.c": "af71226e5aad04564d36a58b43ea4f0b700c09e80191cef2ea4ca9c6a05a533f",
+    "ram_70457c74.c": "66164f830821bd001203fbf5ffe31f89e5671ec76d6b3701a142355575d075fe",
+    "ram_70457e9c.c": "1873ad52633155d44ae8795540a2e4759f2ab1d85163eb4ee09a96c1fec4a161",
+    "ram_704580cc.c": "8c82a758586181989d4fbaea9992a8d816e795838314d46bf00e10a71071b8b0",
+    "ram_704581d4.c": "63a21b1795166ac5329ded66ef5f16584a88dd40f27c7640779891c8fa91e77f",
+    "ram_7045971c.c": "9de4e46b2af36e13bb98024347b27cbb2a1e00fc8cafbea6f604b7e9dbfe4a0e",
+    "ram_70459ce2.c": "e94a9dab61f5d7591a3e881263f8add43b11a751c75bcf284de4729cb5276e3b",
+    "ram_7045a9b2.c": "9d7a18cf556cac30ee43708979283ca47b0384fd91d51493dd0e0b7b33aa514f",
+    "ram_7045b09c.c": "5b61b7d46be2dcd8d20a323c1e3cef191c056726f8099d14ce23f6910753bc71",
+    "ram_7045b302.c": "e24232a61ea2c335b22500b584894b855399d883b11f955f7109f7d76744c4d3",
+    "ram_7045b9ec.c": "1a9017e6c65de607ad2bf9c440faa557abbb52788e5ba63b3249f24855fc824a",
+    "ram_7045bc20.c": "5dca78ca0e84d85005f3090d9eae6a92fdcaf4957ea4d08edd12db0414d735a8",
+    "ram_7045c792.c": "3a2e3547b0fe043eee0685dacdf16b2c340adb5182b798787309b374232af99a",
+    "ram_7045c8dc.c": "94009c744224f86ca47c3fe3c1f36ac5a3d214bdafbb946651e27095220c9395",
+    "ram_7045cb54.c": "8b7ca5ea65f352e0428b082387c4245db370c41f282eeacf6f429ccc10e0306c",
+    "ram_7045cc08.c": "21ad93afe2350bf14bf036efa4a2702f29dac098c80524159c4bc40272b96d63",
+    "ram_7045d708.c": "460d4ec5ea0118c5109e64db874334c3dbdd91bba703c4db9fd0347c13ad0c4e",
+    "ram_7045daf4.c": "655ad6d1a501fff11793bc559f3a674db766f19c80accb0b5e18e7fff96b8cb5",
+    "ram_7045e106.c": "e68a5711cb845f509c39f7eebb295fb6cf39e8c4dcb3d1c608f33705df2c665a",
+    "ram_70462e5c.c": "4ab5699115db830770e7e6e8224713867ad1d56ef09d1b824e9789c5402b6232",
+    "ram_7046325e.c": "3e2fcaba0c5ba1c263bd3f0e528df96f2183b1f430e3a7d0e91c45f287d4bb0b",
+    "ram_70463492.c": "4dbd93c3cf62f4c3966c09989c8a2164d573ff1ef310dc5843da8a6789d6b052",
+    "ram_70463b9e.c": "b2419fc9a4a544276d7f61a6f997d2a53a8f2f2d29a41c10d8ffd2307ef16c06",
+    "ram_7046478a.c": "8ed3475e462720a8a4ee59df79595e47c00c825127685aeae7c2904a290594ea",
+    "ram_70464d8e.c": "124107f4cdf4107414beb05eee9b3b81b817a26e01d99a3a731ced02e02ccefd",
+    "ram_70464f46.c": "323fbe968bc7fee16fb50f066f58463ee63d0577ee02ede3b6882ffce4ba218c",
+    "ram_70465782.c": "90c384615702fdf3fe679f39389d47b97229d23e5106432caf695011b376a2a0",
+    "ram_70465d32.c": "00724b0d26c02ffae3129cf3bc94c68cee5ee44c60d5429dc15c446bf7469a20"
+  },
+  "summary": {
+    "class_property_entries": 159,
+    "id_symbols": 36,
+    "ids_without_registration": 7,
+    "registered_classes": 28,
+    "unique_public_ids": 35
+  }
+}

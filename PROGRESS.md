@@ -362,7 +362,152 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    truncates after a call wrongly marked non-returning; it still needs a
    committed reproduction.
 
+## 2026-11-15 — reproducible native module registration
+
+1. Continued the last native-binding investigation by replacing the manual
+   name-to-constructor observation with an independent inspector of the original
+   OTA bytes. Recovered one contiguous 12-call registration sequence in
+   `jssdk_runtime_init`, matched exactly to the embedded module bootstrap.
+2. Reconstructed the initializer callback, export-table address and exact entry
+   count from each constructor's bounded argument-setup sequences. All 12
+   tables (242 entries), their contents and constructor callers match the prior
+   Ghidra-derived inventory. This works without the previous temporary Ghidra
+   installation or any local decompiled exports.
+3. Added `analysis_scripts/js_module_registration.py`, ten synthetic-fixture
+   tests, [analysis/JS_MODULE_REGISTRATION.md](analysis/JS_MODULE_REGISTRATION.md)
+   and reproducible
+   [analysis/js-module-registration.json](analysis/js-module-registration.json).
+   All 70 Python tests pass with the existing signature dependencies loaded
+   from the local package cache. The new inspector is standard-library-only.
+   The report regenerates byte-for-byte; LLVM disassembly was inspected as a
+   separate check of the registration chain and helper call sites.
+4. The inspector validates bounded instruction patterns and table data, not
+   whole-function reachability or runtime behavior. Helper roles and the image
+   mapping remain inferred. No watch access or firmware execution was needed.
+
+## 2026-11-15 — sensor class ownership and capability boundaries
+
+1. Followed the `hmSensor` module constructor and initializer into the sensor
+   dispatcher and common class registrar. Joined 28 explicit registration
+   calls and sensor-ID assignments in local C exports with original 40-byte
+   binary descriptors. Recovered 159 class-specific property entries, their
+   nested constants, constructors and candidate cleanup callbacks, plus the
+   seven shared sensor prototype entries.
+2. Compared these registrations with the public sensor ID namespace: 36
+   symbols represent 35 IDs (one spelling alias), of which seven lack a
+   registration in the inspected dispatcher. A registered `glucose` class
+   exposes record-management methods; it does not establish glucose-sensing
+   hardware. No runtime capability or physical sensor is inferred from these
+   API registrations alone.
+3. Added `analysis_scripts/sensor_classes.py`, eight synthetic tests,
+   [analysis/SENSOR_CLASSES.md](analysis/SENSOR_CLASSES.md) and reproducible
+   [analysis/sensor-classes.json](analysis/sensor-classes.json), including hashes
+   of consumed local C source texts. All 78 Python tests pass with the existing
+   signature dependencies available, and the JSON regenerates byte-for-byte.
+4. The BLE initializer directly installs the known 50-entry export table.
+   Targeted LLVM disassembly of the missing sensor availability export shows
+   a registry lookup plus an optional callback at state offset `0x40`; six
+   registration functions explicitly assign such callbacks. Availability is
+   therefore not necessarily a hardware probe. False non-returning logger
+   calls still truncate the sensor factory and glucose-record wrappers.
+   No firmware was executed and no device was accessed.
+
+## 2026-11-15 — availability policy, compiler ABI and health backends
+
+1. Inspected all six availability callbacks with local exports and bounded
+   LLVM disassembly. Recovered app/service and authority gates, app-type
+   exclusions and optional capability-table checks. The glucose callback is
+   literally an unconditional true return. These policies are not a physical
+   sensor inventory. Details are in
+   [analysis/HEALTH_BACKENDS.md](analysis/HEALTH_BACKENDS.md).
+2. Traced heart-rate and SpO2 getters into cached values and service wrappers,
+   including the SpO2 event callback's accepted value range and cache updates.
+   Logger truncation still blocks complete record/algorithm recovery.
+3. Identified four alternate-return-register save/restore stub pairs. A bounded
+   independent instruction interpreter verifies stack balance, saved-register
+   restoration and argument/result preservation. The scan finds 3,961
+   candidate save sites, 3,956 restore sites, and 2,064 corpus exports mentioning
+   the helpers. These are candidate references, not a count of proven bugs.
+   Concrete wrappers have incorrectly inferred void returns or arguments.
+4. Added `analysis_scripts/riscv_save_restore.py`, six synthetic tests,
+   [analysis/COMPILER_ABI.md](analysis/COMPILER_ABI.md) and reproducible
+   [analysis/riscv-save-restore.json](analysis/riscv-save-restore.json). The
+   interpreter models only the observed register-save instructions, not
+   application code or hardware. The broad Ghidra corpus has not been repaired.
+
+## 2026-11-15 — optical driver and startup RAM reconstruction
+
+1. Found `dev_max8617x` in the sensor-hub member and traced its probe: expected
+   register `0xff` value `0x46`, SPI-device lookup, power resources and IRQ setup.
+   This identifies a driver family, not an exact fitted silicon suffix.
+2. Reconstructed the sensor startup's two copy regions and one zero region.
+   Initial board configuration names `sens_spi0_dev0`, `PPG_1V8`, `PPG_VLED`,
+   logical IRQ GPIO 39 and a reset field of `0xffff`. The motion bus separately
+   names `sens_spi1_dev0`. Probe fields include 8,000,000 and `0x801`;
+   electrical modes, timing units and physical pins remain unverified.
+3. Recovered six 48-byte optical-operation records and their shared/differing
+   callbacks. Followed three-byte read/write register framing and a hibernate
+   path. Added `analysis_scripts/sensorhub_memory.py`, synthetic memory tests,
+   [analysis/PPG_AND_SENSOR_MEMORY.md](analysis/PPG_AND_SENSOR_MEMORY.md) and
+   [analysis/sensorhub-memory.json](analysis/sensorhub-memory.json).
+
+## 2026-11-15 — main RAM code and startup-aware analysis ELFs
+
+1. Reconstructed four main-image copy records and two zero regions. One copy
+   has a non-word-sized declaration and is rounded by the actual startup loop;
+   another record is empty. Added regression coverage for both cases.
+2. Established that code at `0x80c00000` and `0x80d32e00` is copied from bytes
+   already in the OTA. Many previously unmapped `SUB_ram_80d...` references are
+   therefore recoverable without an external ROM dump. The capability table
+   starts zeroed and is not a static declaration of enabled hardware.
+3. Added `analysis_scripts/main_memory.py` and `export_startup_elf.py`, a
+   [mapping report](analysis/MAIN_MEMORY.md), reproducible
+   [analysis/main-memory.json](analysis/main-memory.json) and local main/sensor
+   ELF containers with startup destinations mapped. LLVM accepts the ELFs and
+   disassembles a previously unmapped allocator-wrapper path at its runtime
+   address. They are analysis artifacts under ignored `firmware/`, not
+   installable images or recovered MPU configurations.
+4. All 92 Python tests pass with the existing signature dependencies available.
+   New JSON reports reproduce from the original OTA and local C corpus.
+   No watch access, firmware installation or application-code execution was
+   performed. See [analysis/RE_STATUS.md](analysis/RE_STATUS.md) for the current
+   scope and unresolved completion criteria.
+
+## 2026-11-15 — Ghidra restored and targeted ABI repair verified
+
+1. Reacquired official Ghidra 12.1.2, checked its published SHA-256 before
+   extraction, and kept installation/preferences/cache under `/tmp`. Imported
+   the startup-aware main ELF into a fresh private project.
+2. Added `DecompileWithAbi.java`: byte-hash-guarded program-local p-code fixups
+   for all four verified save/restore pairs, restore-tail flow overrides and a
+   returning logger. Imported firmware bytes are not patched. Twelve explicit
+   targets decompile successfully; the broad corpus remains unchanged.
+3. Recovered lost SpO2 arguments/output pointers, HR service inputs and the
+   HR today-array loop. The formerly truncated glucose add-record body now
+   shows an app-supplied numeric value converted to a float, passed through a
+   record-service write, followed by cleanup and a change-event path.
+4. Added [analysis/NATIVE_REPAIR.md](analysis/NATIVE_REPAIR.md),
+   `summarize_native_repair.py` and
+   [analysis/native-repair-summary.json](analysis/native-repair-summary.json).
+   Across ten comparable old exports, nine false non-returning warnings and
+   five fictitious save-result assignments disappear in this targeted pass.
+   These diagnostics do not prove full correctness: inferred return types,
+   unseeded callees and injection/unreachable-block warnings still need review.
+
 ## Next work
+
+- Regenerate selected native paths with startup-aware mappings, corrected
+  logger return behavior and register-save ABI effects. Current pseudocode
+  counts must not be treated as semantic coverage.
+- Follow MAX8617X initialization/FIFO paths, interrupt handling and the health
+  IPC pipeline; verify HAL flags and timing before implementing hardware code.
+
+- Follow population of the capability table and the deeper heart/SpO2 service
+  backends; distinguish software records from live hardware measurements.
+
+- Follow the now-reproducible native initializer callbacks to associate nested
+  constants and class prototypes with their modules, especially sensor classes
+  and BLE callbacks; see the latest report for the 12 callback addresses.
 
 - Map the signed image formats and the loaders for the sensor hub and radio;
   distinguish host-side mathematical signature checks from device behavior.

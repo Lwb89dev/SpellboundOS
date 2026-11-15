@@ -1,0 +1,212 @@
+{
+  "copy_table_address": 2163614336,
+  "image_base": 2163613696,
+  "member": "META/extfw/sensorhub@mhs003_sign.bin",
+  "member_sha256": "06f07541e8bb22b6118f081e791c3a4e40cbff2decd8ee478a7e82df826e9d0f",
+  "motion_bus": "sens_spi1_dev0",
+  "optical_sensor_records": [
+    {
+      "callbacks": {
+        "control_candidate": 2163696574,
+        "flush_candidate": 2163694582,
+        "power_candidate": 0,
+        "read_candidate": 2163689408,
+        "start_candidate": 2163695736,
+        "stop_candidate": 2163696290
+      },
+      "name": "MAX8617X SPO2 5PD 2LED",
+      "state_address": 2163299688,
+      "words": [
+        2164101536,
+        2164087480,
+        6553630,
+        200,
+        2163695736,
+        2163696290,
+        3276801,
+        2163689408,
+        2163696574,
+        2163694582,
+        0,
+        0
+      ]
+    },
+    {
+      "callbacks": {
+        "control_candidate": 2163696574,
+        "flush_candidate": 2163694582,
+        "power_candidate": 0,
+        "read_candidate": 2163689408,
+        "start_candidate": 2163695776,
+        "stop_candidate": 2163696314
+      },
+      "name": "MAX8617X PPG 5PD 2LED",
+      "state_address": 2163299736,
+      "words": [
+        2164101560,
+        2164087480,
+        6553629,
+        500,
+        2163695776,
+        2163696314,
+        3276801,
+        2163689408,
+        2163696574,
+        2163694582,
+        0,
+        0
+      ]
+    },
+    {
+      "callbacks": {
+        "control_candidate": 2163696574,
+        "flush_candidate": 2163694582,
+        "power_candidate": 0,
+        "read_candidate": 2163689408,
+        "start_candidate": 2163695816,
+        "stop_candidate": 2163696338
+      },
+      "name": "MAX8617X BP",
+      "state_address": 2163299784,
+      "words": [
+        2164101584,
+        2164087480,
+        6553615,
+        100,
+        2163695816,
+        2163696338,
+        8192001,
+        2163689408,
+        2163696574,
+        2163694582,
+        0,
+        0
+      ]
+    },
+    {
+      "callbacks": {
+        "control_candidate": 2163696574,
+        "flush_candidate": 2163694582,
+        "power_candidate": 0,
+        "read_candidate": 2163689408,
+        "start_candidate": 2163695856,
+        "stop_candidate": 2163696362
+      },
+      "name": "MAX8617X SPO2",
+      "state_address": 2163299832,
+      "words": [
+        2164101596,
+        2164087480,
+        6553607,
+        500,
+        2163695856,
+        2163696362,
+        3276801,
+        2163689408,
+        2163696574,
+        2163694582,
+        0,
+        0
+      ]
+    },
+    {
+      "callbacks": {
+        "control_candidate": 2163696574,
+        "flush_candidate": 2163694582,
+        "power_candidate": 0,
+        "read_candidate": 2163689408,
+        "start_candidate": 2163695896,
+        "stop_candidate": 2163696386
+      },
+      "name": "MAX8617X PPG",
+      "state_address": 2163299880,
+      "words": [
+        2164101612,
+        2164087480,
+        6553606,
+        500,
+        2163695896,
+        2163696386,
+        3276801,
+        2163689408,
+        2163696574,
+        2163694582,
+        0,
+        0
+      ]
+    },
+    {
+      "callbacks": {
+        "control_candidate": 2163696574,
+        "flush_candidate": 2163694582,
+        "power_candidate": 2163694720,
+        "read_candidate": 2163689408,
+        "start_candidate": 2163695978,
+        "stop_candidate": 2163696450
+      },
+      "name": "MAX8617X WEAR",
+      "state_address": 2163299928,
+      "words": [
+        2164101628,
+        2164087480,
+        6553605,
+        500,
+        2163695978,
+        2163696450,
+        3276801,
+        2163689408,
+        2163696574,
+        2163694582,
+        2163694720,
+        0
+      ]
+    }
+  ],
+  "ppg_board_configuration": {
+    "bus": "sens_spi0_dev0",
+    "irq_configuration_word": 4,
+    "logical_irq_gpio": 39,
+    "power_names": [
+      "PPG_1V8",
+      "PPG_VLED"
+    ],
+    "reset_gpio_raw": 65535,
+    "state_address": 2163299292,
+    "unclassified_word_0c": 0
+  },
+  "probe_export_observations": {
+    "bus_configuration_word": 2049,
+    "bus_frequency_field": 8000000,
+    "expected_identity": 70,
+    "function": 2163698406,
+    "identity_register": 255
+  },
+  "regions": [
+    {
+      "destination": 2163265536,
+      "kind": "copy",
+      "size": 40456,
+      "source": 2164198120
+    },
+    {
+      "destination": 2163595200,
+      "kind": "copy",
+      "size": 1340,
+      "source": 2164238944
+    },
+    {
+      "destination": 2163306360,
+      "kind": "zero",
+      "size": 288832,
+      "source": null
+    }
+  ],
+  "source_sha256": {
+    "ram_80f6257c.c": "de8c70cd92af19d24290a21110dd43cd19e57f7a929c3dd669bde76532c7b101",
+    "ram_80f6295a.c": "49956d9695f7f8b1793695f1b88ef10a2ee13d7724ed4601edfaf4b998f0f70e",
+    "ram_80f7304c.c": "b0ce8aafc1b8512e0e076ee4ded934c2d573f6f23f4364c12e6a0dc5983764ad",
+    "ram_80f73152.c": "6152b84481b506920dd52b95827a0b7dc0c20ae146a7d93ccf7581c11f8a1826",
+    "ram_80f76ae6.c": "ff5868d9135524a3b2bfc2d8ecc402adc39126ebc0683c659b254fd8f67cd957"
+  },
+  "zero_table_address": 2163614360
+}

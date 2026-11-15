@@ -26,8 +26,11 @@ elsewhere in this repo:
 The motion sensor (LSM6DSO, identity 0x6C) is covered in
 [DRIVER_INTERFACES.md](DRIVER_INTERFACES.md); the radio is the RTL8763 package in
 [RADIO_PACKAGE.md](RADIO_PACKAGE.md). The optical PPG/heart-rate analog front end
-is referenced only through its algorithm (`ppg_*`, `PPG_AFIB`, `PPG_SPO`) and is
-not resolved to a part here.
+was unresolved in this main-image inventory. A subsequent sensor-hub analysis
+finds a `dev_max8617x` driver, identity-register check and SPI board
+configuration; see [PPG_AND_SENSOR_MEMORY.md](PPG_AND_SENSOR_MEMORY.md).
+This narrows the candidate to the MAX8617X family without establishing an
+exact fitted chip suffix.
 
 ## SoC identifiers
 
@@ -81,6 +84,6 @@ deterministically from the archive.
 
 Driver names and log tokens are not a schematic: they do not prove a part is
 fitted, give its bus/address, or confirm a feature works. Vendor attributions
-for `aw32012` and `cw6305` are from the name prefix only. The PPG front end and
-the exact SoC silicon remain unidentified, and metric counts reflect logging
+for `aw32012` and `cw6305` are from the name prefix only. The exact PPG model and
+SoC silicon remain unidentified, and metric counts reflect logging
 verbosity, not measurement quality. No hardware was queried.

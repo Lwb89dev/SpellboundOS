@@ -93,9 +93,11 @@ shape and the QuickJS API, not from symbols:
 | `hmUtil` | `0x7044daf6` | `0x70be0728` | 2 | `stringToBuffer`, `bufferToString` |
 
 The export table and its length for each create function come from the Ghidra
-exports and are in the JSON (`callers`). The pairing of a global name with a
-create function is a session observation, not yet reproduced by a committed
-tool: in `jssdk_runtime_init` (`0x7044e1fc`) each module-name string address is
+exports and are in the JSON (`callers`). A subsequent independent byte-level
+inspector reproduces all twelve name-to-create-function pairings and their
+table addresses/counts directly from the OTA; see
+[JS_MODULE_REGISTRATION.md](JS_MODULE_REGISTRATION.md). In
+`jssdk_runtime_init` (`0x7044e1fc`) each module-name string address is
 built immediately before a call to that create function, and the bootstrap
 source is evaluated right after the twelfth call. For `hmApp`, `hmBle`, `hmFS`,
 `hmSetting`, `hmUI`, `hmSensor` and `timer` the table contents confirm the
@@ -152,5 +154,7 @@ function does, what arguments it expects, or which class a prototype table
 belongs to. Table lengths taken from runs are upper bounds, since two tables
 stored back to back look like one. A run can also be cut short by an entry the
 scanner rejects. Function roles for the three table-consuming functions are
-inferred. The name-to-create-function pairing needs a committed reproduction.
+inferred. The name-to-create-function pairing now has a committed reproduction
+in `analysis_scripts/js_module_registration.py`; its bounded instruction
+patterns and limitations are documented in the linked report.
 No function was executed or tested on a device.

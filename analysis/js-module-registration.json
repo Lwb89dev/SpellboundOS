@@ -1,0 +1,1742 @@
+{
+  "add_exports_helper": 1887038016,
+  "constructor_window_bytes": 384,
+  "image_base": 1880489984,
+  "member": "META/firmware_sign.bin",
+  "member_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "modules": [
+    {
+      "add_exports_call": 1883560370,
+      "call_address": 1883562930,
+      "count": 4,
+      "create_function": 1883560270,
+      "entries": [
+        {
+          "address": 1883559582,
+          "arity": 4,
+          "kind": "function",
+          "name": "createTimer"
+        },
+        {
+          "address": 1883559864,
+          "arity": 4,
+          "kind": "function",
+          "name": "createSysTimer"
+        },
+        {
+          "address": 1883559370,
+          "arity": 1,
+          "kind": "function",
+          "name": "clearTimer"
+        },
+        {
+          "address": 1883559370,
+          "arity": 1,
+          "kind": "function",
+          "name": "stopTimer"
+        }
+      ],
+      "export_setup_address": 1883560358,
+      "global": "timer",
+      "init_function": 1883557798,
+      "init_setup_address": 1883560334,
+      "module": "timer",
+      "name_address": 1891663728,
+      "new_module_call": 1883560344,
+      "setup_address": 1883562920,
+      "table_address": 1891501688
+    },
+    {
+      "add_exports_call": 1883471642,
+      "call_address": 1883562944,
+      "count": 56,
+      "create_function": 1883471566,
+      "entries": [
+        {
+          "address": 1883465254,
+          "arity": 0,
+          "kind": "function",
+          "name": "gotoHome"
+        },
+        {
+          "address": 1883468866,
+          "arity": 0,
+          "kind": "function",
+          "name": "exit"
+        },
+        {
+          "address": 1883470224,
+          "arity": 1,
+          "kind": "function",
+          "name": "startApp"
+        },
+        {
+          "address": 1883464484,
+          "arity": 1,
+          "cproto": 1,
+          "kind": "function",
+          "name": "gotoPage"
+        },
+        {
+          "address": 1883464484,
+          "arity": 1,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 1,
+          "name": "redirectPage"
+        },
+        {
+          "address": 1883464060,
+          "arity": 1,
+          "kind": "function",
+          "name": "reloadPage"
+        },
+        {
+          "address": 1883465492,
+          "arity": 1,
+          "kind": "function",
+          "name": "getLayerY"
+        },
+        {
+          "address": 1883463052,
+          "arity": 2,
+          "kind": "function",
+          "name": "setLayerY"
+        },
+        {
+          "address": 1883462132,
+          "arity": 0,
+          "kind": "function",
+          "name": "goBack"
+        },
+        {
+          "address": 1883465286,
+          "arity": 1,
+          "kind": "function",
+          "name": "setScreenKeep"
+        },
+        {
+          "address": 1883461908,
+          "arity": 5,
+          "kind": "function",
+          "name": "setPathTransition"
+        },
+        {
+          "address": 1883461742,
+          "arity": 3,
+          "kind": "function",
+          "name": "setFadeTransition"
+        },
+        {
+          "address": 1883468428,
+          "arity": 4,
+          "kind": "function",
+          "name": "addStatistic"
+        },
+        {
+          "address": 1883461650,
+          "arity": 0,
+          "kind": "function",
+          "name": "runGC"
+        },
+        {
+          "address": 1883461526,
+          "arity": 0,
+          "kind": "function",
+          "name": "getMemUsage"
+        },
+        {
+          "address": 1883478636,
+          "arity": 0,
+          "kind": "function",
+          "name": "getProfile"
+        },
+        {
+          "address": 1883461392,
+          "arity": 1,
+          "kind": "function",
+          "name": "checkNative"
+        },
+        {
+          "address": 1883461218,
+          "arity": 1,
+          "kind": "function",
+          "name": "matchApp"
+        },
+        {
+          "address": 1883459198,
+          "arity": 2,
+          "kind": "function",
+          "name": "onMessage"
+        },
+        {
+          "address": 1883459888,
+          "arity": 2,
+          "kind": "function",
+          "name": "offMessage"
+        },
+        {
+          "address": 1883460286,
+          "arity": 2,
+          "kind": "function",
+          "name": "postMessage"
+        },
+        {
+          "address": 1883473116,
+          "arity": 1,
+          "kind": "function",
+          "name": "postNotification"
+        },
+        {
+          "address": 1883474442,
+          "arity": 1,
+          "kind": "function",
+          "name": "deleteNotification"
+        },
+        {
+          "address": 1883474204,
+          "arity": 0,
+          "kind": "function",
+          "name": "getNotificationList"
+        },
+        {
+          "address": 1883485730,
+          "arity": 2,
+          "kind": "function",
+          "name": "startService"
+        },
+        {
+          "address": 1883483266,
+          "arity": 2,
+          "kind": "function",
+          "name": "stopService"
+        },
+        {
+          "address": 1883483930,
+          "arity": 0,
+          "kind": "function",
+          "name": "getServiceList"
+        },
+        {
+          "address": 1883484078,
+          "arity": 1,
+          "kind": "function",
+          "name": "setServiceDuration"
+        },
+        {
+          "address": 1883476514,
+          "arity": 1,
+          "kind": "function",
+          "name": "queryPermission"
+        },
+        {
+          "address": 1883477002,
+          "arity": 2,
+          "kind": "function",
+          "name": "requestPermission"
+        },
+        {
+          "address": 1883465768,
+          "arity": 1,
+          "cproto": 1,
+          "kind": "function",
+          "name": "registGestureEvent"
+        },
+        {
+          "address": 1883462770,
+          "arity": 0,
+          "cproto": 1,
+          "kind": "function",
+          "name": "unregistGestureEvent"
+        },
+        {
+          "address": 1883465768,
+          "arity": 1,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 2,
+          "name": "registKeyEvent"
+        },
+        {
+          "address": 1883462770,
+          "arity": 0,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 2,
+          "name": "unregistKeyEvent"
+        },
+        {
+          "address": 1883465768,
+          "arity": 1,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 1,
+          "name": "registSpinEvent"
+        },
+        {
+          "address": 1883462770,
+          "arity": 0,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 1,
+          "name": "unregistSpinEvent"
+        },
+        {
+          "address": 1883456094,
+          "arity": 1,
+          "kind": "function",
+          "name": "alarmNew"
+        },
+        {
+          "address": 1883456518,
+          "arity": 1,
+          "kind": "function",
+          "name": "alarmCancel"
+        },
+        {
+          "address": 1883466404,
+          "arity": 0,
+          "kind": "function",
+          "name": "packageInfo"
+        },
+        {
+          "address": 1883465768,
+          "arity": 1,
+          "cproto": 1,
+          "kind": "function",
+          "name": "registerGestureEvent"
+        },
+        {
+          "address": 1883462770,
+          "arity": 0,
+          "cproto": 1,
+          "kind": "function",
+          "name": "unregisterGestureEvent"
+        },
+        {
+          "address": 1883465768,
+          "arity": 1,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 2,
+          "name": "registerKeyEvent"
+        },
+        {
+          "address": 1883462770,
+          "arity": 0,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 2,
+          "name": "unregisterKeyEvent"
+        },
+        {
+          "address": 1883465768,
+          "arity": 1,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 1,
+          "name": "registerSpinEvent"
+        },
+        {
+          "address": 1883462770,
+          "arity": 0,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 1,
+          "name": "unregisterSpinEvent"
+        },
+        {
+          "address": 1883456094,
+          "arity": 1,
+          "kind": "function",
+          "name": "newAlarm"
+        },
+        {
+          "address": 1883456518,
+          "arity": 1,
+          "kind": "function",
+          "name": "cancelAlarm"
+        },
+        {
+          "address": 1883466404,
+          "arity": 0,
+          "kind": "function",
+          "name": "getPackageInfo"
+        },
+        {
+          "address": 1883456850,
+          "arity": 0,
+          "kind": "function",
+          "name": "getAlarmList"
+        },
+        {
+          "address": 1883495200,
+          "arity": 1,
+          "kind": "function",
+          "name": "setStatusPoint"
+        },
+        {
+          "address": 1883462598,
+          "arity": 2,
+          "kind": "function",
+          "name": "advertiseEvent"
+        },
+        {
+          "address": 1883492438,
+          "arity": 2,
+          "kind": "function",
+          "name": "findSkillTarget"
+        },
+        {
+          "address": 1883492710,
+          "arity": 3,
+          "kind": "function",
+          "name": "invokeSkillHandler"
+        },
+        {
+          "address": 1883493600,
+          "arity": 2,
+          "kind": "function",
+          "name": "sendFlowResponse"
+        },
+        {
+          "address": 1883494020,
+          "arity": 1,
+          "kind": "function",
+          "name": "setFlowLanguage"
+        },
+        {
+          "address": 1883494352,
+          "arity": 0,
+          "kind": "function",
+          "name": "getFlowLanguage"
+        }
+      ],
+      "export_setup_address": 1883471626,
+      "global": "hmApp",
+      "init_function": 1883462306,
+      "init_setup_address": 1883471604,
+      "module": "hmApp",
+      "name_address": 1891502260,
+      "new_module_call": 1883471614,
+      "setup_address": 1883562934,
+      "table_address": 1891474104
+    },
+    {
+      "add_exports_call": 1883553234,
+      "call_address": 1883562958,
+      "count": 31,
+      "create_function": 1883553134,
+      "entries": [
+        {
+          "address": 1883546434,
+          "arity": 0,
+          "kind": "function",
+          "name": "getScreenAutoBright"
+        },
+        {
+          "address": 1883546356,
+          "arity": 1,
+          "kind": "function",
+          "name": "setScreenAutoBright"
+        },
+        {
+          "address": 1883546336,
+          "arity": 0,
+          "kind": "function",
+          "name": "getBrightness"
+        },
+        {
+          "address": 1883546252,
+          "arity": 1,
+          "kind": "function",
+          "name": "setBrightness"
+        },
+        {
+          "address": 1883546228,
+          "arity": 0,
+          "kind": "function",
+          "name": "getScreenType"
+        },
+        {
+          "address": 1883548586,
+          "arity": 0,
+          "kind": "function",
+          "name": "getUserData"
+        },
+        {
+          "address": 1883551192,
+          "arity": 1,
+          "kind": "function",
+          "name": "setUserData"
+        },
+        {
+          "address": 1883546120,
+          "arity": 0,
+          "kind": "function",
+          "name": "getWeightTarget"
+        },
+        {
+          "address": 1883546100,
+          "arity": 0,
+          "kind": "function",
+          "name": "getSleepTarget"
+        },
+        {
+          "address": 1883546080,
+          "arity": 0,
+          "kind": "function",
+          "name": "getWeightUnit"
+        },
+        {
+          "address": 1883547064,
+          "arity": 1,
+          "kind": "function",
+          "name": "setUserDataListener"
+        },
+        {
+          "address": 1883545892,
+          "arity": 1,
+          "kind": "function",
+          "name": "setBrightScreen"
+        },
+        {
+          "address": 1883546932,
+          "arity": 1,
+          "kind": "function",
+          "name": "setBrightScreenCancel"
+        },
+        {
+          "address": 1883547832,
+          "arity": 1,
+          "kind": "function",
+          "name": "setScreenOff"
+        },
+        {
+          "address": 1883545530,
+          "arity": 1,
+          "kind": "function",
+          "name": "stopWristDownOff"
+        },
+        {
+          "address": 1883543878,
+          "arity": 0,
+          "kind": "function",
+          "name": "releaseWristDownOff"
+        },
+        {
+          "address": 1883545168,
+          "arity": 1,
+          "kind": "function",
+          "name": "stopPalmOff"
+        },
+        {
+          "address": 1883543840,
+          "arity": 0,
+          "kind": "function",
+          "name": "releasePalmOff"
+        },
+        {
+          "address": 1883545148,
+          "arity": 0,
+          "kind": "function",
+          "name": "getMileageUnit"
+        },
+        {
+          "address": 1883545122,
+          "arity": 0,
+          "kind": "function",
+          "name": "getLanguage"
+        },
+        {
+          "address": 1883545102,
+          "arity": 0,
+          "kind": "function",
+          "name": "getDateFormat"
+        },
+        {
+          "address": 1883545082,
+          "arity": 0,
+          "kind": "function",
+          "name": "getTimeFormat"
+        },
+        {
+          "address": 1883551680,
+          "arity": 0,
+          "kind": "function",
+          "name": "getDeviceInfo"
+        },
+        {
+          "address": 1883544760,
+          "arity": 0,
+          "kind": "function",
+          "name": "getSystemInfo"
+        },
+        {
+          "address": 1883551004,
+          "arity": 0,
+          "kind": "function",
+          "name": "getDiskInfo"
+        },
+        {
+          "address": 1883543810,
+          "arity": 0,
+          "kind": "function",
+          "name": "getRtlLayout"
+        },
+        {
+          "address": 1883543790,
+          "arity": 0,
+          "kind": "function",
+          "name": "getTemperatureUnit"
+        },
+        {
+          "address": 1883543374,
+          "arity": 0,
+          "kind": "function",
+          "name": "getSystemMode"
+        },
+        {
+          "address": 1883542784,
+          "arity": 0,
+          "kind": "function",
+          "name": "getDisplayInfo"
+        },
+        {
+          "address": 1883542764,
+          "arity": 0,
+          "kind": "function",
+          "name": "getOTAState"
+        },
+        {
+          "address": 1883542478,
+          "arity": 0,
+          "kind": "function",
+          "name": "getFontSizeInfo"
+        }
+      ],
+      "export_setup_address": 1883553220,
+      "global": "hmSetting",
+      "init_function": 1883546464,
+      "init_setup_address": 1883553198,
+      "module": "hmSetting",
+      "name_address": 1891502268,
+      "new_module_call": 1883553208,
+      "setup_address": 1883562948,
+      "table_address": 1891499136
+    },
+    {
+      "add_exports_call": 1883687734,
+      "call_address": 1883562972,
+      "count": 32,
+      "create_function": 1883687460,
+      "entries": [
+        {
+          "address": 1883739510,
+          "arity": 1,
+          "kind": "function",
+          "name": "createDialog"
+        },
+        {
+          "address": 1883739674,
+          "arity": 1,
+          "kind": "function",
+          "name": "deleteDialog"
+        },
+        {
+          "address": 1883687106,
+          "arity": 2,
+          "kind": "function",
+          "name": "createWidget"
+        },
+        {
+          "address": 1883673986,
+          "arity": 0,
+          "kind": "function",
+          "name": "deleteWidget"
+        },
+        {
+          "address": 1883681026,
+          "arity": 5,
+          "kind": "function",
+          "name": "setScrollView"
+        },
+        {
+          "address": 1883665046,
+          "arity": 0,
+          "kind": "function",
+          "name": "getScrollCurrentPage"
+        },
+        {
+          "address": 1883671658,
+          "arity": 2,
+          "kind": "function",
+          "name": "scrollToPage"
+        },
+        {
+          "address": 1883682172,
+          "arity": 1,
+          "kind": "function",
+          "name": "setLayerScrolling"
+        },
+        {
+          "address": 1883681876,
+          "arity": 1,
+          "kind": "function",
+          "name": "updateViewport"
+        },
+        {
+          "address": 1883674610,
+          "arity": 1,
+          "kind": "function",
+          "name": "getImageInfo"
+        },
+        {
+          "address": 1883739974,
+          "arity": 1,
+          "kind": "function",
+          "name": "showToast"
+        },
+        {
+          "address": 1883675008,
+          "arity": 1,
+          "kind": "function",
+          "name": "updateStatusBarTitle"
+        },
+        {
+          "address": 1883670980,
+          "arity": 1,
+          "kind": "function",
+          "name": "setStatusBarVisible"
+        },
+        {
+          "address": 1883670868,
+          "arity": 0,
+          "kind": "function",
+          "name": "getStatusBarVisible"
+        },
+        {
+          "address": 1883670824,
+          "arity": 0,
+          "kind": "function",
+          "name": "getRtlLayout"
+        },
+        {
+          "address": 1883680916,
+          "arity": 0,
+          "kind": "function",
+          "name": "relayoutRtl"
+        },
+        {
+          "address": 1883675256,
+          "arity": 2,
+          "kind": "function",
+          "name": "getTextLayout"
+        },
+        {
+          "address": 1883672896,
+          "arity": 1,
+          "kind": "function",
+          "name": "checkDataType"
+        },
+        {
+          "address": 1883673054,
+          "arity": 1,
+          "kind": "function",
+          "name": "checkSportType"
+        },
+        {
+          "address": 1883671496,
+          "arity": 0,
+          "kind": "function",
+          "name": "redraw"
+        },
+        {
+          "address": 1883670706,
+          "arity": 0,
+          "kind": "function",
+          "name": "getPluginPageStatus"
+        },
+        {
+          "address": 1883665366,
+          "arity": 0,
+          "kind": "function",
+          "name": "getWidgets"
+        },
+        {
+          "address": 1883668340,
+          "arity": 1,
+          "kind": "function",
+          "name": "updateLayout"
+        },
+        {
+          "address": 1883664174,
+          "arity": 1,
+          "kind": "function",
+          "name": "dumpLayout"
+        },
+        {
+          "address": 1883689898,
+          "arity": 1,
+          "kind": "function",
+          "name": "openInspector"
+        },
+        {
+          "address": 1883665148,
+          "arity": 1,
+          "cproto": 1,
+          "kind": "function",
+          "name": "getSysFontSize"
+        },
+        {
+          "address": 1883665148,
+          "arity": 1,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 1,
+          "name": "sp"
+        },
+        {
+          "address": 1883670480,
+          "arity": 1,
+          "kind": "function",
+          "name": "setAppWidgetSize"
+        },
+        {
+          "address": 1883670234,
+          "arity": 0,
+          "kind": "function",
+          "name": "getAppWidgetSize"
+        },
+        {
+          "address": 1883686982,
+          "arity": 1,
+          "kind": "function",
+          "name": "createKeyboard"
+        },
+        {
+          "address": 1883674358,
+          "arity": 0,
+          "kind": "function",
+          "name": "deleteKeyboard"
+        },
+        {
+          "address": 1883686794,
+          "arity": 1,
+          "kind": "function",
+          "name": "setMultiView"
+        }
+      ],
+      "export_setup_address": 1883687720,
+      "global": "hmUI",
+      "init_function": 1883668020,
+      "init_setup_address": 1883687678,
+      "module": "hmUI",
+      "name_address": 1891502280,
+      "new_module_call": 1883687706,
+      "setup_address": 1883562962,
+      "table_address": 1891538632
+    },
+    {
+      "add_exports_call": 1883621736,
+      "call_address": 1883562986,
+      "count": 2,
+      "create_function": 1883621596,
+      "entries": [
+        {
+          "address": 1883619078,
+          "arity": 0,
+          "kind": "function",
+          "name": "createSensor"
+        },
+        {
+          "address": 1883620412,
+          "arity": 1,
+          "kind": "function",
+          "name": "checkAvailable"
+        }
+      ],
+      "export_setup_address": 1883621724,
+      "global": "hmSensor",
+      "init_function": 1883618336,
+      "init_setup_address": 1883621698,
+      "module": "hmSensor",
+      "name_address": 1891502288,
+      "new_module_call": 1883621710,
+      "setup_address": 1883562976,
+      "table_address": 1891520624
+    },
+    {
+      "add_exports_call": 1883504650,
+      "call_address": 1883563000,
+      "count": 36,
+      "create_function": 1883504598,
+      "entries": [
+        {
+          "address": 1883503404,
+          "arity": 1,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 5,
+          "name": "stat"
+        },
+        {
+          "address": 1883502692,
+          "arity": 3,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 5,
+          "name": "open"
+        },
+        {
+          "kind": "int32",
+          "name": "O_RDONLY",
+          "value": 0
+        },
+        {
+          "kind": "int32",
+          "name": "O_WRONLY",
+          "value": 1
+        },
+        {
+          "kind": "int32",
+          "name": "O_RDWR",
+          "value": 2
+        },
+        {
+          "kind": "int32",
+          "name": "O_APPEND",
+          "value": 1024
+        },
+        {
+          "kind": "int32",
+          "name": "O_CREAT",
+          "value": 64
+        },
+        {
+          "kind": "int32",
+          "name": "O_EXCL",
+          "value": 128
+        },
+        {
+          "kind": "int32",
+          "name": "O_TRUNC",
+          "value": 512
+        },
+        {
+          "address": 1883497550,
+          "arity": 1,
+          "kind": "function",
+          "name": "close"
+        },
+        {
+          "address": 1883500728,
+          "arity": 3,
+          "kind": "function",
+          "name": "seek"
+        },
+        {
+          "kind": "int32",
+          "name": "SEEK_SET",
+          "value": 0
+        },
+        {
+          "kind": "int32",
+          "name": "SEEK_CUR",
+          "value": 1
+        },
+        {
+          "kind": "int32",
+          "name": "SEEK_END",
+          "value": 2
+        },
+        {
+          "address": 1883500916,
+          "arity": 4,
+          "cproto": 1,
+          "kind": "function",
+          "name": "read"
+        },
+        {
+          "address": 1883500916,
+          "arity": 4,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 1,
+          "name": "write"
+        },
+        {
+          "address": 1883502520,
+          "arity": 1,
+          "kind": "function",
+          "name": "remove"
+        },
+        {
+          "address": 1883502268,
+          "arity": 2,
+          "kind": "function",
+          "name": "rename"
+        },
+        {
+          "address": 1883502062,
+          "arity": 1,
+          "kind": "function",
+          "name": "mkdir"
+        },
+        {
+          "address": 1883501676,
+          "arity": 1,
+          "kind": "function",
+          "name": "readdir"
+        },
+        {
+          "address": 1883498358,
+          "arity": 2,
+          "cproto": 1,
+          "kind": "function",
+          "name": "SysProSetBool"
+        },
+        {
+          "address": 1883498358,
+          "arity": 2,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 1,
+          "name": "SysProSetInt"
+        },
+        {
+          "address": 1883498358,
+          "arity": 2,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 2,
+          "name": "SysProSetInt64"
+        },
+        {
+          "address": 1883498358,
+          "arity": 2,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 3,
+          "name": "SysProSetDouble"
+        },
+        {
+          "address": 1883498358,
+          "arity": 2,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 4,
+          "name": "SysProSetChars"
+        },
+        {
+          "address": 1883499372,
+          "arity": 1,
+          "cproto": 1,
+          "kind": "function",
+          "name": "SysProGetBool"
+        },
+        {
+          "address": 1883499372,
+          "arity": 1,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 1,
+          "name": "SysProGetInt"
+        },
+        {
+          "address": 1883499372,
+          "arity": 1,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 2,
+          "name": "SysProGetInt64"
+        },
+        {
+          "address": 1883499372,
+          "arity": 1,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 3,
+          "name": "SysProGetDouble"
+        },
+        {
+          "address": 1883499372,
+          "arity": 1,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 4,
+          "name": "SysProGetChars"
+        },
+        {
+          "address": 1883499160,
+          "arity": 0,
+          "kind": "function",
+          "name": "SysProReset"
+        },
+        {
+          "address": 1883498710,
+          "arity": 1,
+          "kind": "function",
+          "name": "SysProDelete"
+        },
+        {
+          "address": 1883504206,
+          "arity": 0,
+          "kind": "function",
+          "name": "SysProGetDBSize"
+        },
+        {
+          "address": 1883498976,
+          "arity": 1,
+          "kind": "function",
+          "name": "SysProGetValueSize"
+        },
+        {
+          "address": 1883503404,
+          "arity": 1,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 4,
+          "name": "stat_asset"
+        },
+        {
+          "address": 1883502692,
+          "arity": 2,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 4,
+          "name": "open_asset"
+        }
+      ],
+      "export_setup_address": 1883504634,
+      "global": "hmFS",
+      "init_function": 1883497492,
+      "init_setup_address": 1883504600,
+      "module": "hmFS",
+      "name_address": 1891502300,
+      "new_module_call": 1883504622,
+      "setup_address": 1883562990,
+      "table_address": 1891483992
+    },
+    {
+      "add_exports_call": 1883449218,
+      "call_address": 1883563014,
+      "count": 50,
+      "create_function": 1883449162,
+      "entries": [
+        {
+          "address": 1883445926,
+          "arity": 0,
+          "kind": "function",
+          "name": "getBTSwitch"
+        },
+        {
+          "address": 1883445796,
+          "arity": 0,
+          "kind": "function",
+          "name": "getAddress"
+        },
+        {
+          "address": 1883445746,
+          "arity": 0,
+          "kind": "function",
+          "name": "connectStatus"
+        },
+        {
+          "address": 1883446430,
+          "arity": 1,
+          "kind": "function",
+          "name": "addListener"
+        },
+        {
+          "address": 1883447676,
+          "arity": 0,
+          "kind": "function",
+          "name": "removeListener"
+        },
+        {
+          "address": 1883446394,
+          "arity": 1,
+          "kind": "function",
+          "name": "createConnect"
+        },
+        {
+          "address": 1883447348,
+          "arity": 0,
+          "kind": "function",
+          "name": "disConnect"
+        },
+        {
+          "address": 1883445464,
+          "arity": 2,
+          "kind": "function",
+          "name": "send"
+        },
+        {
+          "address": 1883446282,
+          "arity": 1,
+          "kind": "function",
+          "name": "addFWListener"
+        },
+        {
+          "address": 1883447376,
+          "arity": 1,
+          "kind": "function",
+          "name": "removeFWListener"
+        },
+        {
+          "address": 1883448904,
+          "arity": 0,
+          "kind": "function",
+          "name": "getAllConnectInfo"
+        },
+        {
+          "address": 1883447784,
+          "arity": 1,
+          "kind": "function",
+          "name": "registerAdv"
+        },
+        {
+          "address": 1883446876,
+          "arity": 0,
+          "kind": "function",
+          "name": "unregisterAdv"
+        },
+        {
+          "address": 1883444770,
+          "arity": 0,
+          "kind": "function",
+          "name": "getAdvSettings"
+        },
+        {
+          "address": 1883450802,
+          "arity": 0,
+          "kind": "function",
+          "name": "getPeripherals"
+        },
+        {
+          "address": 1883450214,
+          "arity": 3,
+          "kind": "function",
+          "name": "readPeripheralInfo"
+        },
+        {
+          "address": 1883425366,
+          "arity": 4,
+          "kind": "function",
+          "name": "transferFile"
+        },
+        {
+          "address": 1883426246,
+          "arity": 1,
+          "kind": "function",
+          "name": "cancelTransferFile"
+        },
+        {
+          "address": 1883424814,
+          "arity": 1,
+          "kind": "function",
+          "name": "listenTransferFile"
+        },
+        {
+          "address": 1883425220,
+          "arity": 1,
+          "kind": "function",
+          "name": "abortTransferFile"
+        },
+        {
+          "address": 1883433158,
+          "arity": 1,
+          "kind": "function",
+          "name": "mstStartScan"
+        },
+        {
+          "address": 1883434668,
+          "arity": 0,
+          "kind": "function",
+          "name": "mstStopScan"
+        },
+        {
+          "address": 1883434756,
+          "arity": 2,
+          "kind": "function",
+          "name": "mstConnect"
+        },
+        {
+          "address": 1883435266,
+          "arity": 1,
+          "kind": "function",
+          "name": "mstDisconnect"
+        },
+        {
+          "address": 1883435516,
+          "arity": 1,
+          "kind": "function",
+          "name": "mstPair"
+        },
+        {
+          "address": 1883435706,
+          "arity": 1,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 1,
+          "name": "mstBuildProfile"
+        },
+        {
+          "address": 1883435706,
+          "arity": 1,
+          "cproto": 1,
+          "kind": "function",
+          "name": "mstBuildProfileEx"
+        },
+        {
+          "address": 1883444222,
+          "arity": 0,
+          "kind": "function",
+          "name": "mstOffAllCb"
+        },
+        {
+          "address": 1883439464,
+          "arity": 1,
+          "kind": "function",
+          "name": "mstOnPrepare"
+        },
+        {
+          "address": 1883439654,
+          "arity": 1,
+          "kind": "function",
+          "name": "mstOnCharaReadComplete"
+        },
+        {
+          "address": 1883439844,
+          "arity": 2,
+          "kind": "function",
+          "name": "mstOnCharaValueArrived"
+        },
+        {
+          "address": 1883440034,
+          "arity": 1,
+          "kind": "function",
+          "name": "mstOnCharaWriteComplete"
+        },
+        {
+          "address": 1883440224,
+          "arity": 1,
+          "kind": "function",
+          "name": "mstOnDescReadComplete"
+        },
+        {
+          "address": 1883440414,
+          "arity": 1,
+          "kind": "function",
+          "name": "mstOnDescValueArrived"
+        },
+        {
+          "address": 1883440604,
+          "arity": 1,
+          "kind": "function",
+          "name": "mstOnDescWriteComplete"
+        },
+        {
+          "address": 1883440794,
+          "arity": 1,
+          "kind": "function",
+          "name": "mstOnCharaNotification"
+        },
+        {
+          "address": 1883440984,
+          "arity": 1,
+          "kind": "function",
+          "name": "mstOnServiceChangeBegin"
+        },
+        {
+          "address": 1883441174,
+          "arity": 1,
+          "kind": "function",
+          "name": "mstOnServiceChangeEnd"
+        },
+        {
+          "address": 1883441364,
+          "arity": 1,
+          "kind": "function",
+          "name": "mstOnMtuExchange"
+        },
+        {
+          "address": 1883441554,
+          "arity": 1,
+          "kind": "function",
+          "name": "mstPrepare"
+        },
+        {
+          "address": 1883441720,
+          "arity": 2,
+          "kind": "function",
+          "name": "mstReadCharacteristic"
+        },
+        {
+          "address": 1883441986,
+          "arity": 4,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 1,
+          "name": "mstWriteCharacteristic"
+        },
+        {
+          "address": 1883441986,
+          "arity": 4,
+          "cproto": 1,
+          "kind": "function",
+          "name": "mstWriteCharacteristicWithoutResponse"
+        },
+        {
+          "address": 1883442442,
+          "arity": 3,
+          "kind": "function",
+          "name": "mstReadDescriptor"
+        },
+        {
+          "address": 1883442800,
+          "arity": 5,
+          "kind": "function",
+          "name": "mstWriteDescriptor"
+        },
+        {
+          "address": 1883443446,
+          "arity": 2,
+          "kind": "function",
+          "name": "mstMtuExchangeRequest"
+        },
+        {
+          "address": 1883443698,
+          "arity": 1,
+          "kind": "function",
+          "name": "mstDestoryProfileInstance"
+        },
+        {
+          "address": 1883443698,
+          "arity": 1,
+          "kind": "function",
+          "name": "mstDestroyProfileInstance"
+        },
+        {
+          "address": 1883443922,
+          "arity": 2,
+          "kind": "function",
+          "name": "mstGetProfileInstance"
+        },
+        {
+          "address": 1883444308,
+          "arity": 1,
+          "kind": "function",
+          "name": "mstGetConnIdByRemoteAddr"
+        }
+      ],
+      "export_setup_address": 1883449202,
+      "global": "hmBle",
+      "init_function": 1883445958,
+      "init_setup_address": 1883449180,
+      "module": "hmBle",
+      "name_address": 1891502308,
+      "new_module_call": 1883449190,
+      "setup_address": 1883563004,
+      "table_address": 1891467168
+    },
+    {
+      "add_exports_call": 1883583976,
+      "call_address": 1883563028,
+      "count": 2,
+      "create_function": 1883583856,
+      "entries": [
+        {
+          "address": 1883581170,
+          "arity": 1,
+          "kind": "function",
+          "name": "create"
+        },
+        {
+          "address": 1883582572,
+          "arity": 1,
+          "kind": "function",
+          "name": "checkAvailable"
+        }
+      ],
+      "export_setup_address": 1883583964,
+      "global": "hmMedia",
+      "init_function": 1883581094,
+      "init_setup_address": 1883583938,
+      "module": "hmMedia",
+      "name_address": 1891502316,
+      "new_module_call": 1883583950,
+      "setup_address": 1883563018,
+      "table_address": 1891507880
+    },
+    {
+      "add_exports_call": 1883573930,
+      "call_address": 1883563042,
+      "count": 3,
+      "create_function": 1883573770,
+      "entries": [
+        {
+          "address": 1883572622,
+          "arity": 2,
+          "kind": "function",
+          "name": "createCrypto"
+        },
+        {
+          "address": 1883571840,
+          "arity": 1,
+          "kind": "function",
+          "name": "encryptKey"
+        },
+        {
+          "address": 1883572148,
+          "arity": 1,
+          "kind": "function",
+          "name": "checkAvailable"
+        }
+      ],
+      "export_setup_address": 1883573916,
+      "global": "hmCrypto",
+      "init_function": 1883571968,
+      "init_setup_address": 1883573834,
+      "module": "hmCrypto",
+      "name_address": 1891502324,
+      "new_module_call": 1883573844,
+      "setup_address": 1883563032,
+      "table_address": 1891505128
+    },
+    {
+      "add_exports_call": 1883557676,
+      "call_address": 1883563056,
+      "count": 11,
+      "create_function": 1883557632,
+      "entries": [
+        {
+          "address": 1883553342,
+          "arity": 0,
+          "kind": "function",
+          "name": "checkAvailable"
+        },
+        {
+          "address": 1883556146,
+          "arity": 3,
+          "cproto": 1,
+          "kind": "function",
+          "name": "launchApp"
+        },
+        {
+          "address": 1883556146,
+          "arity": 3,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 1,
+          "name": "exitApp"
+        },
+        {
+          "address": 1883556146,
+          "arity": 3,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 2,
+          "name": "startApp"
+        },
+        {
+          "address": 1883556146,
+          "arity": 3,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 3,
+          "name": "setApp"
+        },
+        {
+          "address": 1883556146,
+          "arity": 3,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 4,
+          "name": "controlApp"
+        },
+        {
+          "address": 1883556146,
+          "arity": 3,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 5,
+          "name": "queryApp"
+        },
+        {
+          "address": 1883556146,
+          "arity": 3,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 6,
+          "name": "addAppData"
+        },
+        {
+          "address": 1883556146,
+          "arity": 3,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 7,
+          "name": "delAppData"
+        },
+        {
+          "address": 1883554632,
+          "arity": 3,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 8,
+          "name": "subscribeEvent"
+        },
+        {
+          "address": 1883554632,
+          "arity": 2,
+          "cproto": 1,
+          "kind": "function",
+          "magic": 9,
+          "name": "unsubscribeEvent"
+        }
+      ],
+      "export_setup_address": 1883557664,
+      "global": "hmSysApi",
+      "init_function": 1883553578,
+      "init_setup_address": 1883557634,
+      "module": "hmSysApi",
+      "name_address": 1891502336,
+      "new_module_call": 1883557650,
+      "setup_address": 1883563046,
+      "table_address": 1891500824
+    },
+    {
+      "add_exports_call": 1883514208,
+      "call_address": 1883563070,
+      "count": 13,
+      "create_function": 1883514164,
+      "entries": [
+        {
+          "address": 1883509770,
+          "arity": 0,
+          "kind": "function",
+          "name": "checkAvailable"
+        },
+        {
+          "address": 1883512800,
+          "arity": 2,
+          "kind": "function",
+          "name": "startSession"
+        },
+        {
+          "address": 1883512412,
+          "arity": 0,
+          "kind": "function",
+          "name": "stopSession"
+        },
+        {
+          "address": 1883512312,
+          "arity": 0,
+          "kind": "function",
+          "name": "restartSession"
+        },
+        {
+          "address": 1883510180,
+          "arity": 1,
+          "kind": "function",
+          "name": "next"
+        },
+        {
+          "address": 1883513856,
+          "arity": 1,
+          "kind": "function",
+          "name": "replyCommand"
+        },
+        {
+          "address": 1883512240,
+          "arity": 0,
+          "kind": "function",
+          "name": "stopAudioPlay"
+        },
+        {
+          "address": 1883512168,
+          "arity": 0,
+          "kind": "function",
+          "name": "startListening"
+        },
+        {
+          "address": 1883510036,
+          "arity": 1,
+          "kind": "function",
+          "name": "setFirstState"
+        },
+        {
+          "address": 1883509970,
+          "arity": 0,
+          "kind": "function",
+          "name": "getMicStatus"
+        },
+        {
+          "address": 1883509834,
+          "arity": 1,
+          "kind": "function",
+          "name": "requestAIGC"
+        },
+        {
+          "address": 1883509776,
+          "arity": 0,
+          "kind": "function",
+          "name": "enterIdleState"
+        },
+        {
+          "address": 1883512524,
+          "arity": 1,
+          "kind": "function",
+          "name": "addStatistic"
+        }
+      ],
+      "export_setup_address": 1883514196,
+      "global": "hmVAD",
+      "init_function": 1883510340,
+      "init_setup_address": 1883514166,
+      "module": "hmVAD",
+      "name_address": 1891502348,
+      "new_module_call": 1883514182,
+      "setup_address": 1883563060,
+      "table_address": 1891488264
+    },
+    {
+      "add_exports_call": 1883560738,
+      "call_address": 1883563084,
+      "count": 2,
+      "create_function": 1883560694,
+      "entries": [
+        {
+          "address": 1883560412,
+          "arity": 1,
+          "kind": "function",
+          "name": "stringToBuffer"
+        },
+        {
+          "address": 1883560592,
+          "arity": 1,
+          "kind": "function",
+          "name": "bufferToString"
+        }
+      ],
+      "export_setup_address": 1883560726,
+      "global": "hmUtil",
+      "init_function": 1883560562,
+      "init_setup_address": 1883560696,
+      "module": "hmUtil",
+      "name_address": 1891502356,
+      "new_module_call": 1883560712,
+      "setup_address": 1883563074,
+      "table_address": 1891501864
+    }
+  ],
+  "new_module_helper": 1886995998,
+  "registration_search_end": 1883563128,
+  "runtime_init": 1883562492,
+  "summary": {
+    "export_entries": 242,
+    "modules": 12
+  }
+}
