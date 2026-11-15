@@ -1,0 +1,2310 @@
+{
+  "archive_sha256": "ee06079610eaf9b4ffbe35c7a6ddc604ee2aba00c3a66d85101ed2a6556d6df4",
+  "members": {
+    "META/firmware_sign.bin": {
+      "sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+      "size": 13120020,
+      "hits": {
+        "board_and_os": [
+          {
+            "offset": 8768056,
+            "text": "board_mhs003"
+          },
+          {
+            "offset": 8773280,
+            "text": "MHS003_A1 detected"
+          },
+          {
+            "offset": 8773300,
+            "text": "MHS003_A2 detected"
+          },
+          {
+            "offset": 8773320,
+            "text": "MHS003_A3 detected"
+          },
+          {
+            "offset": 9164852,
+            "text": "..//./core/freertos/portable/GCC/mhs003/port.c"
+          }
+        ],
+        "touch": [
+          {
+            "offset": 8769600,
+            "text": "dev_ztw622"
+          },
+          {
+            "offset": 8854984,
+            "text": "dev_touch_open"
+          },
+          {
+            "offset": 8855000,
+            "text": "dev_touch_open"
+          },
+          {
+            "offset": 8855016,
+            "text": "dev_touch_close"
+          },
+          {
+            "offset": 8855032,
+            "text": "dev_touch_close"
+          },
+          {
+            "offset": 8855048,
+            "text": "dev_touch_suspend"
+          },
+          {
+            "offset": 8855068,
+            "text": "dev_touch_suspend"
+          },
+          {
+            "offset": 8855088,
+            "text": "dev_touch_resume"
+          },
+          {
+            "offset": 8855108,
+            "text": "dev_touch_resume"
+          },
+          {
+            "offset": 8855128,
+            "text": "dev_touch_ioctrl"
+          },
+          {
+            "offset": 8855148,
+            "text": "dev_touch_ioctrl"
+          },
+          {
+            "offset": 8855396,
+            "text": "drv_touch_init"
+          },
+          {
+            "offset": 8855412,
+            "text": "drv_touch_init"
+          },
+          {
+            "offset": 8857136,
+            "text": "s_ztw622_cxt.bsd"
+          },
+          {
+            "offset": 8857800,
+            "text": "ztw622_reset type %d"
+          },
+          {
+            "offset": 8857824,
+            "text": "s_ztw622_cxt.lock"
+          },
+          {
+            "offset": 8857980,
+            "text": "ztw622 probed, and chip id:0x%04x."
+          },
+          {
+            "offset": 8858016,
+            "text": "EC[%d%03d%ld] can not probe ztw622 device, ret %d, err of %s."
+          },
+          {
+            "offset": 8858112,
+            "text": "ZTW622"
+          },
+          {
+            "offset": 8858228,
+            "text": "ztw622 read glove cmd err"
+          },
+          {
+            "offset": 8858544,
+            "text": "ztw622 glove %d %d"
+          },
+          {
+            "offset": 8858564,
+            "text": "ztw622 gesture %d %d %d"
+          },
+          {
+            "offset": 8859268,
+            "text": "ztw622 set esd reg: %d"
+          },
+          {
+            "offset": 8859563,
+            "text": "pztw622_get_ium_info"
+          },
+          {
+            "offset": 8859584,
+            "text": "ztw622_get_sysinfo_from_reg"
+          },
+          {
+            "offset": 8859612,
+            "text": "drv_touch_ztw622_probe"
+          },
+          {
+            "offset": 8859636,
+            "text": "drv_touch_ztw622_probe"
+          },
+          {
+            "offset": 8859660,
+            "text": "ztw622_upgrade_verify"
+          },
+          {
+            "offset": 8859684,
+            "text": "ztw622_uprgade_process"
+          },
+          {
+            "offset": 8859708,
+            "text": "ztw622_uprgade_process"
+          },
+          {
+            "offset": 8859752,
+            "text": "ztw622_work_process"
+          },
+          {
+            "offset": 8859772,
+            "text": "ztw622_get_version"
+          },
+          {
+            "offset": 8859792,
+            "text": "ztw622_check_mode"
+          },
+          {
+            "offset": 8859812,
+            "text": "ztw622_open"
+          },
+          {
+            "offset": 8859824,
+            "text": "ztw622_open"
+          },
+          {
+            "offset": 8859932,
+            "text": "ztw622_get_raw_data"
+          },
+          {
+            "offset": 8859952,
+            "text": "ztw622_cm_cp_test"
+          },
+          {
+            "offset": 8859972,
+            "text": "ztw622_cm_cp_test"
+          },
+          {
+            "offset": 8860044,
+            "text": "_ztw622_factory_test"
+          },
+          {
+            "offset": 8860068,
+            "text": "_ztw622_factory_test"
+          },
+          {
+            "offset": 8860092,
+            "text": "_ztw622_ioctrl_power"
+          },
+          {
+            "offset": 8860116,
+            "text": "_ztw622_ioctrl_power"
+          },
+          {
+            "offset": 8860140,
+            "text": "ztw622_ioctrl"
+          },
+          {
+            "offset": 8860156,
+            "text": "ztw622_ioctrl"
+          },
+          {
+            "offset": 8860172,
+            "text": "_ztw622_i2c_read"
+          },
+          {
+            "offset": 8860192,
+            "text": "_ztw622_handle_noise_event"
+          },
+          {
+            "offset": 8860220,
+            "text": "ztw622_stop_timer"
+          },
+          {
+            "offset": 8860240,
+            "text": "ztw622_start_timer"
+          },
+          {
+            "offset": 8860260,
+            "text": "ztw622_lpm"
+          },
+          {
+            "offset": 8860272,
+            "text": "ztw622_config_reset"
+          },
+          {
+            "offset": 8860292,
+            "text": "ztw622_should_be_cmd"
+          },
+          {
+            "offset": 8860316,
+            "text": "_ztw622_i2c_write"
+          },
+          {
+            "offset": 8860372,
+            "text": "_ztw622_tpm_cmd"
+          },
+          {
+            "offset": 8860388,
+            "text": "_ztw622_tpm_cmd"
+          }
+        ],
+        "ambient_light": [
+          {
+            "offset": 8769612,
+            "text": "dev_stk31e60"
+          },
+          {
+            "offset": 8855168,
+            "text": "drv_als"
+          },
+          {
+            "offset": 8855176,
+            "text": "drv_als_init"
+          },
+          {
+            "offset": 8855460,
+            "text": "EC[%d%03d%ld] stk31e60 read reg %x fail"
+          },
+          {
+            "offset": 8855580,
+            "text": "EC[%d%03d%ld] stk31e60 write reg %x fail"
+          },
+          {
+            "offset": 8855624,
+            "text": "stk31e60 integ-time:0x%x, is %.02f ms"
+          },
+          {
+            "offset": 8855992,
+            "text": "EC[%d%03d%ld] stk31e60_iic_wdt_try_set fail."
+          },
+          {
+            "offset": 8856092,
+            "text": "stk31e60 probe over. chip id: 0x%x, ret.%d"
+          },
+          {
+            "offset": 8856139,
+            "text": "Cstk31e60 sample peroid:0x%x, is %d ms"
+          },
+          {
+            "offset": 8856260,
+            "text": "stk31e60 init gain info: level(cur:%d, obj:%d), gain-factor:%.1f."
+          },
+          {
+            "offset": 8856328,
+            "text": "EC[%d%03d%ld] stk31e60_init failed."
+          },
+          {
+            "offset": 8856448,
+            "text": "EC[%d%03d%ld] stk31e60 integral_time_level err."
+          },
+          {
+            "offset": 8856496,
+            "text": "EC[%d%03d%ld] stk31e60 read data fail,use last data: %d"
+          }
+        ],
+        "motion": [
+          {
+            "offset": 9179968,
+            "text": "sensor.mmc5603_pdc"
+          },
+          {
+            "offset": 9179988,
+            "text": "sensor.akm09918c_pdc"
+          },
+          {
+            "offset": 9180040,
+            "text": "sensor.mmc5603_pdc_oversea"
+          },
+          {
+            "offset": 9180068,
+            "text": "sensor.akm09918c_pdc_oversea"
+          },
+          {
+            "offset": 9180288,
+            "text": "EC[%d%03d%ld] mmc5603 param act_length = %d is unexpected"
+          },
+          {
+            "offset": 9185078,
+            "text": "*pgot wrong bmi2xx param nums, expect %u but got %u"
+          },
+          {
+            "offset": 9185132,
+            "text": "bmi2xx para load success"
+          },
+          {
+            "offset": 9185160,
+            "text": "bmi2xx sensor load fail"
+          },
+          {
+            "offset": 9185216,
+            "text": "bmi2xx sensor para invalid"
+          }
+        ],
+        "power": [
+          {
+            "offset": 8769540,
+            "text": "dev_cw6305"
+          },
+          {
+            "offset": 9177128,
+            "text": "drv_charger"
+          },
+          {
+            "offset": 9197444,
+            "text": "DEV_PMIC"
+          },
+          {
+            "offset": 9197456,
+            "text": "dev_pmic_open"
+          },
+          {
+            "offset": 9197472,
+            "text": "dev_pmic_close"
+          },
+          {
+            "offset": 9197488,
+            "text": "dev_pmic_suspend"
+          },
+          {
+            "offset": 9197508,
+            "text": "dev_pmic_resume"
+          },
+          {
+            "offset": 9197524,
+            "text": "dev_pmic_ioctrl"
+          },
+          {
+            "offset": 9197540,
+            "text": "drv_pmic"
+          },
+          {
+            "offset": 9197588,
+            "text": "DRV_PMIC"
+          },
+          {
+            "offset": 9201456,
+            "text": "CW6305-CHARGER"
+          },
+          {
+            "offset": 9201748,
+            "text": "cw6305_get_charge_state_in_chip"
+          },
+          {
+            "offset": 9201804,
+            "text": "cw6305_supply_init"
+          },
+          {
+            "offset": 9201824,
+            "text": "cw6305_charger_chg_ctl"
+          },
+          {
+            "offset": 9201848,
+            "text": "cw6305_get_property"
+          },
+          {
+            "offset": 9201868,
+            "text": "cw6305_set_property"
+          },
+          {
+            "offset": 9201888,
+            "text": "charge,cw6305"
+          },
+          {
+            "offset": 9201928,
+            "text": "CW6305"
+          },
+          {
+            "offset": 9201936,
+            "text": "cw6305_drv_charger_probe start..."
+          },
+          {
+            "offset": 9201972,
+            "text": "cw6305_drv_charger_probe end..."
+          },
+          {
+            "offset": 9202100,
+            "text": "cw6305 id test err, id = %x"
+          },
+          {
+            "offset": 9202128,
+            "text": "cw6305_init"
+          },
+          {
+            "offset": 9202140,
+            "text": "cw6305_dischg_watchdog_enable"
+          },
+          {
+            "offset": 9202172,
+            "text": "cw6305_chg_watchdog_enable"
+          },
+          {
+            "offset": 9202200,
+            "text": "cw6305_power_off"
+          },
+          {
+            "offset": 9202220,
+            "text": "cw6305_usb_stat_get"
+          },
+          {
+            "offset": 9202240,
+            "text": "cw6305_ioctrl"
+          },
+          {
+            "offset": 9202256,
+            "text": "cw6305_io_irq_ctl"
+          },
+          {
+            "offset": 9202276,
+            "text": "cw6305_io_irq_init"
+          },
+          {
+            "offset": 9202296,
+            "text": "cw6305_get_id_code"
+          },
+          {
+            "offset": 9202316,
+            "text": "cw6305_get_dev_name"
+          },
+          {
+            "offset": 9202336,
+            "text": "cw6305_chg_reg_config"
+          },
+          {
+            "offset": 9202360,
+            "text": "cw6305_recovery_after_reinsert_for_chg_time_out"
+          },
+          {
+            "offset": 9202408,
+            "text": "cw6305_recovery_after_reinsert_for_pre_time_out"
+          },
+          {
+            "offset": 9202456,
+            "text": "cw6305_get_ic_status2_reg"
+          },
+          {
+            "offset": 9202484,
+            "text": "cw6305_get_ic_status_reg"
+          },
+          {
+            "offset": 9202512,
+            "text": "cw6305_clear_irq_source"
+          },
+          {
+            "offset": 9202536,
+            "text": "cw6305_get_irq_source_reg"
+          },
+          {
+            "offset": 9202564,
+            "text": "cw6305_safety_timer_set"
+          },
+          {
+            "offset": 9202588,
+            "text": "cw6305_fast_charge_current_set"
+          },
+          {
+            "offset": 9202620,
+            "text": "cw6305_chg_ctrl"
+          },
+          {
+            "offset": 9202636,
+            "text": "cw6305_reg_dump"
+          },
+          {
+            "offset": 9202652,
+            "text": "DEV_CHARGER"
+          },
+          {
+            "offset": 9202696,
+            "text": "EC[%d%03d%ld] %s, dev_charger member NULL"
+          },
+          {
+            "offset": 9202780,
+            "text": "dev_charger_open"
+          },
+          {
+            "offset": 9202800,
+            "text": "dev_charger_close"
+          },
+          {
+            "offset": 9202820,
+            "text": "dev_charger_ioctrl"
+          },
+          {
+            "offset": 9202880,
+            "text": "DRV_CHARGER"
+          },
+          {
+            "offset": 9202892,
+            "text": "drv_charger_init"
+          }
+        ],
+        "display": [
+          {
+            "offset": 8769748,
+            "text": "dev_lcd"
+          },
+          {
+            "offset": 9176008,
+            "text": "hal_display_rotation"
+          },
+          {
+            "offset": 9176072,
+            "text": "HAL_DISPLAY"
+          },
+          {
+            "offset": 9176236,
+            "text": "hal_display_init"
+          },
+          {
+            "offset": 9176256,
+            "text": "hal_display_init"
+          },
+          {
+            "offset": 9229788,
+            "text": "DRV_DISPLAY"
+          },
+          {
+            "offset": 9230696,
+            "text": "dev_display_open"
+          },
+          {
+            "offset": 9230716,
+            "text": "dev_display_open"
+          },
+          {
+            "offset": 9230736,
+            "text": "dev_display_close"
+          },
+          {
+            "offset": 9230756,
+            "text": "dev_display_close"
+          },
+          {
+            "offset": 9230776,
+            "text": "dev_display_write"
+          },
+          {
+            "offset": 9230796,
+            "text": "dev_display_write"
+          },
+          {
+            "offset": 9231036,
+            "text": "display_panel"
+          },
+          {
+            "offset": 9231052,
+            "text": "display_panel_read_id"
+          },
+          {
+            "offset": 9231076,
+            "text": "drv_display_init"
+          },
+          {
+            "offset": 9231096,
+            "text": "drv_display_init"
+          }
+        ],
+        "memory": [
+          {
+            "offset": 8769316,
+            "text": "dev_nand"
+          },
+          {
+            "offset": 8769648,
+            "text": "dev_flash"
+          },
+          {
+            "offset": 8769660,
+            "text": "dev_psram0"
+          },
+          {
+            "offset": 8769672,
+            "text": "dev_psram1"
+          },
+          {
+            "offset": 8769684,
+            "text": "dev_psram"
+          },
+          {
+            "offset": 8769736,
+            "text": "dev_nand_pm"
+          },
+          {
+            "offset": 9150500,
+            "text": "drv_psram"
+          },
+          {
+            "offset": 9210872,
+            "text": "dev_flash_ioctrl"
+          },
+          {
+            "offset": 9210892,
+            "text": "dev_flash_ioctrl"
+          },
+          {
+            "offset": 9210912,
+            "text": "dev_flash_resume"
+          },
+          {
+            "offset": 9210932,
+            "text": "dev_flash_resume"
+          },
+          {
+            "offset": 9210952,
+            "text": "dev_flash_suspend"
+          },
+          {
+            "offset": 9210972,
+            "text": "dev_flash_suspend"
+          },
+          {
+            "offset": 9210992,
+            "text": "dev_flash_close"
+          },
+          {
+            "offset": 9211008,
+            "text": "dev_flash_close"
+          },
+          {
+            "offset": 9211024,
+            "text": "dev_flash_open"
+          },
+          {
+            "offset": 9211040,
+            "text": "dev_flash_open"
+          },
+          {
+            "offset": 9211080,
+            "text": "drv_flash"
+          },
+          {
+            "offset": 9211092,
+            "text": "drv_flash_init"
+          },
+          {
+            "offset": 9211108,
+            "text": "drv_flash_init"
+          },
+          {
+            "offset": 9211228,
+            "text": "drv_flash_device_find"
+          },
+          {
+            "offset": 9211252,
+            "text": "drv_flash_device_find"
+          },
+          {
+            "offset": 9211276,
+            "text": "drv_flash_dev_init"
+          },
+          {
+            "offset": 9211296,
+            "text": "drv_flash_dev_init"
+          },
+          {
+            "offset": 9211416,
+            "text": "DRV_FLASH"
+          },
+          {
+            "offset": 9212856,
+            "text": "drv_flash_partition_init"
+          },
+          {
+            "offset": 9212884,
+            "text": "drv_flash_partition_init"
+          },
+          {
+            "offset": 9213096,
+            "text": "dev_psram_ioctrl"
+          },
+          {
+            "offset": 9213116,
+            "text": "dev_psram_ioctrl"
+          },
+          {
+            "offset": 9213136,
+            "text": "dev_psram_resume"
+          },
+          {
+            "offset": 9213156,
+            "text": "dev_psram_resume"
+          },
+          {
+            "offset": 9213176,
+            "text": "dev_psram_suspend"
+          },
+          {
+            "offset": 9213196,
+            "text": "dev_psram_suspend"
+          },
+          {
+            "offset": 9213216,
+            "text": "dev_psram_close"
+          },
+          {
+            "offset": 9213232,
+            "text": "dev_psram_close"
+          },
+          {
+            "offset": 9213248,
+            "text": "dev_psram_open"
+          },
+          {
+            "offset": 9213264,
+            "text": "dev_psram_open"
+          },
+          {
+            "offset": 9213304,
+            "text": "drv_psram_init"
+          },
+          {
+            "offset": 9213320,
+            "text": "drv_psram_init"
+          },
+          {
+            "offset": 9213336,
+            "text": "dev_psram%d"
+          },
+          {
+            "offset": 9243532,
+            "text": "dev_nand_open"
+          },
+          {
+            "offset": 9243548,
+            "text": "dev_nand_open"
+          },
+          {
+            "offset": 9243564,
+            "text": "dev_nand_close"
+          },
+          {
+            "offset": 9243580,
+            "text": "dev_nand_close"
+          },
+          {
+            "offset": 9243596,
+            "text": "dev_nand_suspend"
+          },
+          {
+            "offset": 9243616,
+            "text": "dev_nand_suspend"
+          },
+          {
+            "offset": 9243636,
+            "text": "dev_nand_resume"
+          },
+          {
+            "offset": 9243652,
+            "text": "dev_nand_resume"
+          },
+          {
+            "offset": 9243668,
+            "text": "dev_nand_ioctrl"
+          },
+          {
+            "offset": 9243684,
+            "text": "dev_nand_ioctrl"
+          },
+          {
+            "offset": 9243784,
+            "text": "drv_nand_init"
+          }
+        ],
+        "communications": [
+          {
+            "offset": 8769408,
+            "text": "sens_i2c1"
+          },
+          {
+            "offset": 9155756,
+            "text": "mhs_i2c_deinit"
+          },
+          {
+            "offset": 9155772,
+            "text": "mhs_i2c_deinit"
+          },
+          {
+            "offset": 9155788,
+            "text": "mhs_i2c_reset"
+          },
+          {
+            "offset": 9155804,
+            "text": "mhs_i2c_reset"
+          },
+          {
+            "offset": 9155820,
+            "text": "mhs_i2c_bus_write"
+          },
+          {
+            "offset": 9155840,
+            "text": "mhs_i2c_bus_write"
+          },
+          {
+            "offset": 9155860,
+            "text": "mhs_i2c_bus_read"
+          },
+          {
+            "offset": 9155880,
+            "text": "mhs_i2c_bus_read"
+          },
+          {
+            "offset": 9155900,
+            "text": "mhs_i2c_bus_mem_write"
+          },
+          {
+            "offset": 9155924,
+            "text": "mhs_i2c_bus_mem_write"
+          },
+          {
+            "offset": 9155948,
+            "text": "mhs_i2c_bus_mem_read"
+          },
+          {
+            "offset": 9155972,
+            "text": "mhs_i2c_bus_mem_read"
+          },
+          {
+            "offset": 9155996,
+            "text": "mhs_i2c_init"
+          },
+          {
+            "offset": 9156012,
+            "text": "mhs_i2c_init"
+          },
+          {
+            "offset": 9156472,
+            "text": "_mhs_uart_control"
+          },
+          {
+            "offset": 9156492,
+            "text": "_mhs_uart_send_it"
+          },
+          {
+            "offset": 9156512,
+            "text": "_mhs_uart_recv_it"
+          },
+          {
+            "offset": 9156532,
+            "text": "_mhs_uart_send_dma"
+          },
+          {
+            "offset": 9156552,
+            "text": "_mhs_uart_recv_dma"
+          },
+          {
+            "offset": 9174924,
+            "text": "/mnt/data/terminal_download/rtl8763_pack.bin"
+          },
+          {
+            "offset": 9175120,
+            "text": "/mnt/system/extfw/pamir/rtl8763_pack.bin"
+          },
+          {
+            "offset": 9175188,
+            "text": "EC[%d%03d%ld] rtl8763 upgrade task failed"
+          },
+          {
+            "offset": 9175232,
+            "text": "EC[%d%03d%ld] rtl8763 cp failed"
+          },
+          {
+            "offset": 9175264,
+            "text": "EC[%d%03d%ld] rtl8763 debug task failed"
+          },
+          {
+            "offset": 9175304,
+            "text": "_drvdbg_rtl8763_rb_debug_handle"
+          },
+          {
+            "offset": 9175356,
+            "text": "_drvdbg_rtl8763_rb_upgrade_handle"
+          },
+          {
+            "offset": 9175392,
+            "text": "rtl8763"
+          },
+          {
+            "offset": 9556528,
+            "text": "RTL8763 not ready"
+          },
+          {
+            "offset": 9562836,
+            "text": "rtl8763_sync_recv"
+          },
+          {
+            "offset": 9562856,
+            "text": "rtl8763_sync_send"
+          },
+          {
+            "offset": 9562948,
+            "text": "rtl8763_rx_cb"
+          },
+          {
+            "offset": 9562964,
+            "text": "rtl8763_tx_cb"
+          },
+          {
+            "offset": 9565960,
+            "text": "%s, BT address in rtl8763. addr[%s]"
+          }
+        ],
+        "boot_integrity": [
+          {
+            "offset": 9225040,
+            "text": "EC[%d%03d%ld] sign verify not pass"
+          },
+          {
+            "offset": 9226928,
+            "text": "%s():%d found firmware signed header, version = %s"
+          }
+        ]
+      }
+    },
+    "META/bootloader_sign.bin": {
+      "sha256": "44cd83c0d09864c6101e9825bd3c77d7fac314584d0408b378dd56c2aac5736a",
+      "size": 278386,
+      "hits": {
+        "board_and_os": [
+          {
+            "offset": 231548,
+            "text": "..//./core/freertos/portable/GCC/mhs003/port.c"
+          }
+        ],
+        "touch": [],
+        "ambient_light": [],
+        "motion": [],
+        "power": [
+          {
+            "offset": 211172,
+            "text": "dev_cw6305"
+          },
+          {
+            "offset": 238356,
+            "text": "DEV_PMIC"
+          },
+          {
+            "offset": 238368,
+            "text": "dev_pmic_open"
+          },
+          {
+            "offset": 238384,
+            "text": "dev_pmic_close"
+          },
+          {
+            "offset": 238400,
+            "text": "dev_pmic_suspend"
+          },
+          {
+            "offset": 238420,
+            "text": "dev_pmic_resume"
+          },
+          {
+            "offset": 238436,
+            "text": "dev_pmic_ioctrl"
+          },
+          {
+            "offset": 238452,
+            "text": "drv_pmic"
+          },
+          {
+            "offset": 238500,
+            "text": "DRV_PMIC"
+          },
+          {
+            "offset": 241692,
+            "text": "EC[%d%03d%ld] cw6305 ic status err: %02X - %02X"
+          },
+          {
+            "offset": 241740,
+            "text": "CW6305-CHARGER"
+          },
+          {
+            "offset": 241988,
+            "text": "cw6305_get_charge_state_in_chip"
+          },
+          {
+            "offset": 242020,
+            "text": "cw6305_supply_init"
+          },
+          {
+            "offset": 242040,
+            "text": "cw6305_charger_chg_ctl"
+          },
+          {
+            "offset": 242064,
+            "text": "cw6305_get_property"
+          },
+          {
+            "offset": 242084,
+            "text": "cw6305_set_property"
+          },
+          {
+            "offset": 242104,
+            "text": "charge,cw6305"
+          },
+          {
+            "offset": 242144,
+            "text": "CW6305"
+          },
+          {
+            "offset": 242152,
+            "text": "cw6305_drv_charger_probe start..."
+          },
+          {
+            "offset": 242188,
+            "text": "cw6305_drv_charger_probe end..."
+          },
+          {
+            "offset": 242316,
+            "text": "cw6305 id test err, id = %x"
+          },
+          {
+            "offset": 242344,
+            "text": "cw6305_init"
+          },
+          {
+            "offset": 242356,
+            "text": "cw6305_dischg_watchdog_enable"
+          },
+          {
+            "offset": 242388,
+            "text": "cw6305_chg_watchdog_enable"
+          },
+          {
+            "offset": 242416,
+            "text": "cw6305_power_off"
+          },
+          {
+            "offset": 242436,
+            "text": "cw6305_usb_stat_get"
+          },
+          {
+            "offset": 242456,
+            "text": "cw6305_ioctrl"
+          },
+          {
+            "offset": 242472,
+            "text": "cw6305_io_irq_ctl"
+          },
+          {
+            "offset": 242492,
+            "text": "cw6305_io_irq_init"
+          },
+          {
+            "offset": 242512,
+            "text": "cw6305_get_id_code"
+          },
+          {
+            "offset": 242532,
+            "text": "cw6305_get_dev_name"
+          },
+          {
+            "offset": 242552,
+            "text": "cw6305_chg_reg_config"
+          },
+          {
+            "offset": 242576,
+            "text": "cw6305_recovery_after_reinsert_for_chg_time_out"
+          },
+          {
+            "offset": 242624,
+            "text": "cw6305_recovery_after_reinsert_for_pre_time_out"
+          },
+          {
+            "offset": 242672,
+            "text": "cw6305_get_ic_status2_reg"
+          },
+          {
+            "offset": 242700,
+            "text": "cw6305_get_ic_status_reg"
+          },
+          {
+            "offset": 242728,
+            "text": "cw6305_clear_irq_source"
+          },
+          {
+            "offset": 242752,
+            "text": "cw6305_get_irq_source_reg"
+          },
+          {
+            "offset": 242780,
+            "text": "cw6305_safety_timer_set"
+          },
+          {
+            "offset": 242804,
+            "text": "cw6305_fast_charge_current_set"
+          },
+          {
+            "offset": 242836,
+            "text": "cw6305_chg_ctrl"
+          },
+          {
+            "offset": 242852,
+            "text": "cw6305_reg_dump"
+          },
+          {
+            "offset": 242868,
+            "text": "DEV_CHARGER"
+          },
+          {
+            "offset": 242912,
+            "text": "EC[%d%03d%ld] %s, dev_charger member NULL"
+          },
+          {
+            "offset": 242956,
+            "text": "dev_charger_open"
+          },
+          {
+            "offset": 242976,
+            "text": "dev_charger_close"
+          },
+          {
+            "offset": 242996,
+            "text": "dev_charger_ioctrl"
+          },
+          {
+            "offset": 243016,
+            "text": "drv_charger"
+          },
+          {
+            "offset": 243068,
+            "text": "DRV_CHARGER"
+          },
+          {
+            "offset": 243080,
+            "text": "drv_charger_init"
+          }
+        ],
+        "display": [
+          {
+            "offset": 209352,
+            "text": "hal_display_rotation"
+          }
+        ],
+        "memory": [
+          {
+            "offset": 210988,
+            "text": "dev_nand"
+          },
+          {
+            "offset": 211200,
+            "text": "dev_flash"
+          },
+          {
+            "offset": 211212,
+            "text": "dev_psram0"
+          },
+          {
+            "offset": 211224,
+            "text": "dev_psram1"
+          },
+          {
+            "offset": 211236,
+            "text": "dev_psram"
+          },
+          {
+            "offset": 245720,
+            "text": "dev_flash_ioctrl"
+          },
+          {
+            "offset": 245740,
+            "text": "dev_flash_ioctrl"
+          },
+          {
+            "offset": 245760,
+            "text": "dev_flash_resume"
+          },
+          {
+            "offset": 245780,
+            "text": "dev_flash_resume"
+          },
+          {
+            "offset": 245800,
+            "text": "dev_flash_suspend"
+          },
+          {
+            "offset": 245820,
+            "text": "dev_flash_suspend"
+          },
+          {
+            "offset": 245840,
+            "text": "dev_flash_close"
+          },
+          {
+            "offset": 245856,
+            "text": "dev_flash_close"
+          },
+          {
+            "offset": 245872,
+            "text": "dev_flash_open"
+          },
+          {
+            "offset": 245888,
+            "text": "dev_flash_open"
+          },
+          {
+            "offset": 245928,
+            "text": "drv_flash"
+          },
+          {
+            "offset": 245940,
+            "text": "drv_flash_init"
+          },
+          {
+            "offset": 245956,
+            "text": "drv_flash_init"
+          },
+          {
+            "offset": 246084,
+            "text": "drv_flash_device_find"
+          },
+          {
+            "offset": 246108,
+            "text": "drv_flash_device_find"
+          },
+          {
+            "offset": 246132,
+            "text": "drv_flash_dev_init"
+          },
+          {
+            "offset": 246152,
+            "text": "drv_flash_dev_init"
+          },
+          {
+            "offset": 246272,
+            "text": "DRV_FLASH"
+          },
+          {
+            "offset": 247712,
+            "text": "drv_flash_partition_init"
+          },
+          {
+            "offset": 247740,
+            "text": "drv_flash_partition_init"
+          },
+          {
+            "offset": 247900,
+            "text": "dev_psram_ioctrl"
+          },
+          {
+            "offset": 247920,
+            "text": "dev_psram_ioctrl"
+          },
+          {
+            "offset": 247940,
+            "text": "dev_psram_resume"
+          },
+          {
+            "offset": 247960,
+            "text": "dev_psram_resume"
+          },
+          {
+            "offset": 247980,
+            "text": "dev_psram_suspend"
+          },
+          {
+            "offset": 248000,
+            "text": "dev_psram_suspend"
+          },
+          {
+            "offset": 248020,
+            "text": "dev_psram_close"
+          },
+          {
+            "offset": 248036,
+            "text": "dev_psram_close"
+          },
+          {
+            "offset": 248052,
+            "text": "dev_psram_open"
+          },
+          {
+            "offset": 248068,
+            "text": "dev_psram_open"
+          },
+          {
+            "offset": 248108,
+            "text": "drv_psram"
+          },
+          {
+            "offset": 248120,
+            "text": "drv_psram_init"
+          },
+          {
+            "offset": 248136,
+            "text": "drv_psram_init"
+          },
+          {
+            "offset": 248152,
+            "text": "dev_psram%d"
+          },
+          {
+            "offset": 251232,
+            "text": "dev_nand_open"
+          },
+          {
+            "offset": 251248,
+            "text": "dev_nand_open"
+          },
+          {
+            "offset": 251264,
+            "text": "dev_nand_close"
+          },
+          {
+            "offset": 251280,
+            "text": "dev_nand_close"
+          },
+          {
+            "offset": 251296,
+            "text": "dev_nand_suspend"
+          },
+          {
+            "offset": 251316,
+            "text": "dev_nand_suspend"
+          },
+          {
+            "offset": 251336,
+            "text": "dev_nand_resume"
+          },
+          {
+            "offset": 251352,
+            "text": "dev_nand_resume"
+          },
+          {
+            "offset": 251368,
+            "text": "dev_nand_ioctrl"
+          },
+          {
+            "offset": 251384,
+            "text": "dev_nand_ioctrl"
+          },
+          {
+            "offset": 251400,
+            "text": "drv_nand_init"
+          }
+        ],
+        "communications": [
+          {
+            "offset": 210716,
+            "text": "sens_spi0_dev0"
+          },
+          {
+            "offset": 210732,
+            "text": "sens_spi0"
+          },
+          {
+            "offset": 211024,
+            "text": "sens_i2c2"
+          },
+          {
+            "offset": 211048,
+            "text": "sens_i2c1"
+          },
+          {
+            "offset": 227216,
+            "text": "mhs_i2c_init"
+          },
+          {
+            "offset": 227232,
+            "text": "mhs_i2c_init"
+          },
+          {
+            "offset": 227248,
+            "text": "mhs_i2c_deinit"
+          },
+          {
+            "offset": 227264,
+            "text": "mhs_i2c_deinit"
+          },
+          {
+            "offset": 227280,
+            "text": "mhs_i2c_reset"
+          },
+          {
+            "offset": 227296,
+            "text": "mhs_i2c_reset"
+          },
+          {
+            "offset": 227312,
+            "text": "mhs_i2c_bus_write"
+          },
+          {
+            "offset": 227332,
+            "text": "mhs_i2c_bus_write"
+          },
+          {
+            "offset": 227352,
+            "text": "mhs_i2c_bus_read"
+          },
+          {
+            "offset": 227372,
+            "text": "mhs_i2c_bus_read"
+          },
+          {
+            "offset": 227392,
+            "text": "mhs_i2c_bus_mem_write"
+          },
+          {
+            "offset": 227416,
+            "text": "mhs_i2c_bus_mem_write"
+          },
+          {
+            "offset": 227440,
+            "text": "mhs_i2c_bus_mem_read"
+          },
+          {
+            "offset": 227464,
+            "text": "mhs_i2c_bus_mem_read"
+          },
+          {
+            "offset": 227944,
+            "text": "_mhs_uart_control"
+          },
+          {
+            "offset": 227964,
+            "text": "_mhs_uart_send_it"
+          },
+          {
+            "offset": 227984,
+            "text": "_mhs_uart_recv_it"
+          },
+          {
+            "offset": 228004,
+            "text": "_mhs_uart_send_dma"
+          },
+          {
+            "offset": 228024,
+            "text": "_mhs_uart_recv_dma"
+          }
+        ],
+        "boot_integrity": [
+          {
+            "offset": 209164,
+            "text": "firmware secure verify failed!!!"
+          },
+          {
+            "offset": 225548,
+            "text": "EC[%d%03d%ld] sign verify not pass"
+          },
+          {
+            "offset": 225736,
+            "text": "%s():%d found firmware signed header, version = %s"
+          }
+        ]
+      }
+    },
+    "META/extfw/recovery_sign.bin": {
+      "sha256": "2af5c1c1a1283c0b1d558c7f4df3b77abfbd4a429c1141ec67c751adf904f412",
+      "size": 385346,
+      "hits": {
+        "board_and_os": [
+          {
+            "offset": 330464,
+            "text": "..//./core/freertos/portable/GCC/mhs003/port.c"
+          }
+        ],
+        "touch": [],
+        "ambient_light": [],
+        "motion": [],
+        "power": [
+          {
+            "offset": 296816,
+            "text": "dev_cw6305"
+          },
+          {
+            "offset": 336000,
+            "text": "drv_charger"
+          },
+          {
+            "offset": 339608,
+            "text": "DEV_PMIC"
+          },
+          {
+            "offset": 339620,
+            "text": "dev_pmic_open"
+          },
+          {
+            "offset": 339636,
+            "text": "dev_pmic_close"
+          },
+          {
+            "offset": 339652,
+            "text": "dev_pmic_suspend"
+          },
+          {
+            "offset": 339672,
+            "text": "dev_pmic_resume"
+          },
+          {
+            "offset": 339688,
+            "text": "dev_pmic_ioctrl"
+          },
+          {
+            "offset": 339704,
+            "text": "drv_pmic"
+          },
+          {
+            "offset": 339752,
+            "text": "DRV_PMIC"
+          },
+          {
+            "offset": 342944,
+            "text": "EC[%d%03d%ld] cw6305 ic status err: %02X - %02X"
+          },
+          {
+            "offset": 342992,
+            "text": "CW6305-CHARGER"
+          },
+          {
+            "offset": 343240,
+            "text": "cw6305_get_charge_state_in_chip"
+          },
+          {
+            "offset": 343272,
+            "text": "cw6305_supply_init"
+          },
+          {
+            "offset": 343292,
+            "text": "cw6305_charger_chg_ctl"
+          },
+          {
+            "offset": 343316,
+            "text": "cw6305_get_property"
+          },
+          {
+            "offset": 343336,
+            "text": "cw6305_set_property"
+          },
+          {
+            "offset": 343356,
+            "text": "charge,cw6305"
+          },
+          {
+            "offset": 343396,
+            "text": "CW6305"
+          },
+          {
+            "offset": 343404,
+            "text": "cw6305_drv_charger_probe start..."
+          },
+          {
+            "offset": 343440,
+            "text": "cw6305_drv_charger_probe end..."
+          },
+          {
+            "offset": 343568,
+            "text": "cw6305 id test err, id = %x"
+          },
+          {
+            "offset": 343596,
+            "text": "cw6305_init"
+          },
+          {
+            "offset": 343608,
+            "text": "cw6305_dischg_watchdog_enable"
+          },
+          {
+            "offset": 343640,
+            "text": "cw6305_chg_watchdog_enable"
+          },
+          {
+            "offset": 343668,
+            "text": "cw6305_power_off"
+          },
+          {
+            "offset": 343688,
+            "text": "cw6305_usb_stat_get"
+          },
+          {
+            "offset": 343708,
+            "text": "cw6305_ioctrl"
+          },
+          {
+            "offset": 343724,
+            "text": "cw6305_io_irq_ctl"
+          },
+          {
+            "offset": 343744,
+            "text": "cw6305_io_irq_init"
+          },
+          {
+            "offset": 343764,
+            "text": "cw6305_get_id_code"
+          },
+          {
+            "offset": 343784,
+            "text": "cw6305_get_dev_name"
+          },
+          {
+            "offset": 343804,
+            "text": "cw6305_chg_reg_config"
+          },
+          {
+            "offset": 343828,
+            "text": "cw6305_recovery_after_reinsert_for_chg_time_out"
+          },
+          {
+            "offset": 343876,
+            "text": "cw6305_recovery_after_reinsert_for_pre_time_out"
+          },
+          {
+            "offset": 343924,
+            "text": "cw6305_get_ic_status2_reg"
+          },
+          {
+            "offset": 343952,
+            "text": "cw6305_get_ic_status_reg"
+          },
+          {
+            "offset": 343980,
+            "text": "cw6305_clear_irq_source"
+          },
+          {
+            "offset": 344004,
+            "text": "cw6305_get_irq_source_reg"
+          },
+          {
+            "offset": 344032,
+            "text": "cw6305_safety_timer_set"
+          },
+          {
+            "offset": 344056,
+            "text": "cw6305_fast_charge_current_set"
+          },
+          {
+            "offset": 344088,
+            "text": "cw6305_chg_ctrl"
+          },
+          {
+            "offset": 344104,
+            "text": "cw6305_reg_dump"
+          },
+          {
+            "offset": 344120,
+            "text": "DEV_CHARGER"
+          },
+          {
+            "offset": 344164,
+            "text": "EC[%d%03d%ld] %s, dev_charger member NULL"
+          },
+          {
+            "offset": 344208,
+            "text": "dev_charger_open"
+          },
+          {
+            "offset": 344228,
+            "text": "dev_charger_close"
+          },
+          {
+            "offset": 344248,
+            "text": "dev_charger_ioctrl"
+          },
+          {
+            "offset": 344308,
+            "text": "DRV_CHARGER"
+          },
+          {
+            "offset": 344320,
+            "text": "drv_charger_init"
+          }
+        ],
+        "display": [
+          {
+            "offset": 296908,
+            "text": "dev_lcd"
+          },
+          {
+            "offset": 312232,
+            "text": "hal_display_rotation"
+          },
+          {
+            "offset": 335632,
+            "text": "HAL_DISPLAY"
+          },
+          {
+            "offset": 335756,
+            "text": "hal_display_init"
+          },
+          {
+            "offset": 335776,
+            "text": "hal_display_init"
+          },
+          {
+            "offset": 350956,
+            "text": "DRV_DISPLAY"
+          },
+          {
+            "offset": 351340,
+            "text": "dev_display_open"
+          },
+          {
+            "offset": 351360,
+            "text": "dev_display_open"
+          },
+          {
+            "offset": 351380,
+            "text": "dev_display_close"
+          },
+          {
+            "offset": 351400,
+            "text": "dev_display_close"
+          },
+          {
+            "offset": 351420,
+            "text": "dev_display_write"
+          },
+          {
+            "offset": 351440,
+            "text": "dev_display_write"
+          },
+          {
+            "offset": 351496,
+            "text": "display_panel"
+          },
+          {
+            "offset": 351512,
+            "text": "display_panel_read_id"
+          },
+          {
+            "offset": 351536,
+            "text": "drv_display_init"
+          },
+          {
+            "offset": 351556,
+            "text": "drv_display_init"
+          }
+        ],
+        "memory": [
+          {
+            "offset": 296612,
+            "text": "dev_nand"
+          },
+          {
+            "offset": 296844,
+            "text": "dev_flash"
+          },
+          {
+            "offset": 296856,
+            "text": "dev_psram0"
+          },
+          {
+            "offset": 296868,
+            "text": "dev_psram1"
+          },
+          {
+            "offset": 296880,
+            "text": "dev_psram"
+          },
+          {
+            "offset": 347012,
+            "text": "dev_flash_ioctrl"
+          },
+          {
+            "offset": 347032,
+            "text": "dev_flash_ioctrl"
+          },
+          {
+            "offset": 347052,
+            "text": "dev_flash_resume"
+          },
+          {
+            "offset": 347072,
+            "text": "dev_flash_resume"
+          },
+          {
+            "offset": 347092,
+            "text": "dev_flash_suspend"
+          },
+          {
+            "offset": 347112,
+            "text": "dev_flash_suspend"
+          },
+          {
+            "offset": 347132,
+            "text": "dev_flash_close"
+          },
+          {
+            "offset": 347148,
+            "text": "dev_flash_close"
+          },
+          {
+            "offset": 347164,
+            "text": "dev_flash_open"
+          },
+          {
+            "offset": 347180,
+            "text": "dev_flash_open"
+          },
+          {
+            "offset": 347220,
+            "text": "drv_flash"
+          },
+          {
+            "offset": 347232,
+            "text": "drv_flash_init"
+          },
+          {
+            "offset": 347248,
+            "text": "drv_flash_init"
+          },
+          {
+            "offset": 347376,
+            "text": "drv_flash_device_find"
+          },
+          {
+            "offset": 347400,
+            "text": "drv_flash_device_find"
+          },
+          {
+            "offset": 347424,
+            "text": "drv_flash_dev_init"
+          },
+          {
+            "offset": 347444,
+            "text": "drv_flash_dev_init"
+          },
+          {
+            "offset": 347564,
+            "text": "DRV_FLASH"
+          },
+          {
+            "offset": 349004,
+            "text": "drv_flash_partition_init"
+          },
+          {
+            "offset": 349032,
+            "text": "drv_flash_partition_init"
+          },
+          {
+            "offset": 349244,
+            "text": "dev_psram_ioctrl"
+          },
+          {
+            "offset": 349264,
+            "text": "dev_psram_ioctrl"
+          },
+          {
+            "offset": 349284,
+            "text": "dev_psram_resume"
+          },
+          {
+            "offset": 349304,
+            "text": "dev_psram_resume"
+          },
+          {
+            "offset": 349324,
+            "text": "dev_psram_suspend"
+          },
+          {
+            "offset": 349344,
+            "text": "dev_psram_suspend"
+          },
+          {
+            "offset": 349364,
+            "text": "dev_psram_close"
+          },
+          {
+            "offset": 349380,
+            "text": "dev_psram_close"
+          },
+          {
+            "offset": 349396,
+            "text": "dev_psram_open"
+          },
+          {
+            "offset": 349412,
+            "text": "dev_psram_open"
+          },
+          {
+            "offset": 349452,
+            "text": "drv_psram"
+          },
+          {
+            "offset": 349464,
+            "text": "drv_psram_init"
+          },
+          {
+            "offset": 349480,
+            "text": "drv_psram_init"
+          },
+          {
+            "offset": 349496,
+            "text": "dev_psram%d"
+          },
+          {
+            "offset": 356600,
+            "text": "dev_nand_open"
+          },
+          {
+            "offset": 356616,
+            "text": "dev_nand_open"
+          },
+          {
+            "offset": 356632,
+            "text": "dev_nand_close"
+          },
+          {
+            "offset": 356648,
+            "text": "dev_nand_close"
+          },
+          {
+            "offset": 356664,
+            "text": "dev_nand_suspend"
+          },
+          {
+            "offset": 356684,
+            "text": "dev_nand_suspend"
+          },
+          {
+            "offset": 356704,
+            "text": "dev_nand_resume"
+          },
+          {
+            "offset": 356720,
+            "text": "dev_nand_resume"
+          },
+          {
+            "offset": 356736,
+            "text": "dev_nand_ioctrl"
+          },
+          {
+            "offset": 356752,
+            "text": "dev_nand_ioctrl"
+          },
+          {
+            "offset": 356768,
+            "text": "drv_nand_init"
+          }
+        ],
+        "communications": [
+          {
+            "offset": 296260,
+            "text": "sens_spi0_dev0"
+          },
+          {
+            "offset": 296276,
+            "text": "sens_spi0"
+          },
+          {
+            "offset": 296288,
+            "text": "sens_spi1_dev0"
+          },
+          {
+            "offset": 296304,
+            "text": "sens_spi1"
+          },
+          {
+            "offset": 296668,
+            "text": "sens_i2c2"
+          },
+          {
+            "offset": 296692,
+            "text": "sens_i2c1"
+          },
+          {
+            "offset": 325496,
+            "text": "mhs_i2c_init"
+          },
+          {
+            "offset": 325512,
+            "text": "mhs_i2c_init"
+          },
+          {
+            "offset": 325528,
+            "text": "mhs_i2c_deinit"
+          },
+          {
+            "offset": 325544,
+            "text": "mhs_i2c_deinit"
+          },
+          {
+            "offset": 325560,
+            "text": "mhs_i2c_reset"
+          },
+          {
+            "offset": 325576,
+            "text": "mhs_i2c_reset"
+          },
+          {
+            "offset": 325592,
+            "text": "mhs_i2c_bus_write"
+          },
+          {
+            "offset": 325612,
+            "text": "mhs_i2c_bus_write"
+          },
+          {
+            "offset": 325632,
+            "text": "mhs_i2c_bus_read"
+          },
+          {
+            "offset": 325652,
+            "text": "mhs_i2c_bus_read"
+          },
+          {
+            "offset": 325672,
+            "text": "mhs_i2c_bus_mem_write"
+          },
+          {
+            "offset": 325696,
+            "text": "mhs_i2c_bus_mem_write"
+          },
+          {
+            "offset": 325720,
+            "text": "mhs_i2c_bus_mem_read"
+          },
+          {
+            "offset": 325744,
+            "text": "mhs_i2c_bus_mem_read"
+          },
+          {
+            "offset": 326224,
+            "text": "_mhs_uart_control"
+          },
+          {
+            "offset": 326244,
+            "text": "_mhs_uart_send_it"
+          },
+          {
+            "offset": 326264,
+            "text": "_mhs_uart_recv_it"
+          },
+          {
+            "offset": 326284,
+            "text": "_mhs_uart_send_dma"
+          },
+          {
+            "offset": 326304,
+            "text": "_mhs_uart_recv_dma"
+          }
+        ],
+        "boot_integrity": [
+          {
+            "offset": 288896,
+            "text": "EC[%d%03d%ld] sign verify not pass"
+          },
+          {
+            "offset": 288932,
+            "text": "EC[%d%03d%ld] archive verify failed"
+          },
+          {
+            "offset": 290920,
+            "text": "verify_image"
+          },
+          {
+            "offset": 322852,
+            "text": "%s():%d found firmware signed header, version = %s"
+          }
+        ]
+      }
+    },
+    "META/extfw/sensorhub@mhs003_sign.bin": {
+      "sha256": "06f07541e8bb22b6118f081e791c3a4e40cbff2decd8ee478a7e82df826e9d0f",
+      "size": 626716,
+      "hits": {
+        "board_and_os": [
+          {
+            "offset": 493472,
+            "text": "..//./core/freertos/portable/GCC/mhs003/port.c"
+          }
+        ],
+        "touch": [],
+        "ambient_light": [],
+        "motion": [
+          {
+            "offset": 468216,
+            "text": "dev_mmc5603"
+          },
+          {
+            "offset": 468244,
+            "text": "dev_lsm6dso"
+          },
+          {
+            "offset": 468256,
+            "text": "dev_bmi2xx"
+          },
+          {
+            "offset": 482216,
+            "text": "BMI2XX"
+          },
+          {
+            "offset": 483128,
+            "text": "bmi2xx remapped axis failed"
+          },
+          {
+            "offset": 483368,
+            "text": "EC=%d dev_bmi2xx bsd is NULL"
+          },
+          {
+            "offset": 483584,
+            "text": "EC=%d bmi2xx_irq_init fail"
+          },
+          {
+            "offset": 483644,
+            "text": "bmi2xx_gyro_set_user_gain"
+          },
+          {
+            "offset": 483672,
+            "text": "bmi2xx G"
+          },
+          {
+            "offset": 483684,
+            "text": "bmi2xx A"
+          },
+          {
+            "offset": 483980,
+            "text": "EC=%d lsm6dso_reset fail"
+          },
+          {
+            "offset": 484432,
+            "text": "EC=%d lsm6dso_reboot fail"
+          },
+          {
+            "offset": 485036,
+            "text": "EC=%d dev_lsm6dso bsd is NULL"
+          },
+          {
+            "offset": 485080,
+            "text": "EC=%d lsm6dso_irq_init fail"
+          },
+          {
+            "offset": 485134,
+            "text": "p?lsm6dso_reset_restore_sensor"
+          },
+          {
+            "offset": 485168,
+            "text": "lsm6dso_set_fifo_flush"
+          },
+          {
+            "offset": 485192,
+            "text": "lsm6dso_calibration_convert_to_fs"
+          },
+          {
+            "offset": 485240,
+            "text": "lsm6dso G"
+          },
+          {
+            "offset": 485252,
+            "text": "lsm6dso A"
+          },
+          {
+            "offset": 489151,
+            "text": "?MMC5603"
+          }
+        ],
+        "power": [
+          {
+            "offset": 499424,
+            "text": "DEV_PMIC"
+          },
+          {
+            "offset": 499436,
+            "text": "dev_pmic_open"
+          },
+          {
+            "offset": 499452,
+            "text": "dev_pmic_close"
+          },
+          {
+            "offset": 499468,
+            "text": "dev_pmic_suspend"
+          },
+          {
+            "offset": 499488,
+            "text": "dev_pmic_resume"
+          },
+          {
+            "offset": 499504,
+            "text": "dev_pmic_ioctrl"
+          },
+          {
+            "offset": 499520,
+            "text": "drv_pmic"
+          },
+          {
+            "offset": 499568,
+            "text": "DRV_PMIC"
+          }
+        ],
+        "display": [],
+        "memory": [],
+        "communications": [
+          {
+            "offset": 468000,
+            "text": "sens_spi0_dev0"
+          },
+          {
+            "offset": 468016,
+            "text": "sens_spi0"
+          },
+          {
+            "offset": 468028,
+            "text": "sens_spi1_dev0"
+          },
+          {
+            "offset": 468044,
+            "text": "sens_spi1"
+          },
+          {
+            "offset": 468152,
+            "text": "sens_i2c2"
+          },
+          {
+            "offset": 491648,
+            "text": "mhs_i2c_deinit"
+          },
+          {
+            "offset": 491664,
+            "text": "mhs_i2c_deinit"
+          },
+          {
+            "offset": 491680,
+            "text": "mhs_i2c_reset"
+          },
+          {
+            "offset": 491696,
+            "text": "mhs_i2c_reset"
+          },
+          {
+            "offset": 491712,
+            "text": "mhs_i2c_bus_write"
+          },
+          {
+            "offset": 491732,
+            "text": "mhs_i2c_bus_write"
+          },
+          {
+            "offset": 491752,
+            "text": "mhs_i2c_bus_read"
+          },
+          {
+            "offset": 491772,
+            "text": "mhs_i2c_bus_read"
+          },
+          {
+            "offset": 491792,
+            "text": "mhs_i2c_bus_mem_write"
+          },
+          {
+            "offset": 491816,
+            "text": "mhs_i2c_bus_mem_write"
+          },
+          {
+            "offset": 491840,
+            "text": "mhs_i2c_bus_mem_read"
+          },
+          {
+            "offset": 491864,
+            "text": "mhs_i2c_bus_mem_read"
+          },
+          {
+            "offset": 491888,
+            "text": "mhs_i2c_init"
+          },
+          {
+            "offset": 491904,
+            "text": "mhs_i2c_init"
+          }
+        ],
+        "boot_integrity": []
+      }
+    }
+  }
+}

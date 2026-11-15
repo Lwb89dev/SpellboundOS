@@ -1,0 +1,43 @@
+{
+  "archive_sha256": "ee06079610eaf9b4ffbe35c7a6ddc604ee2aba00c3a66d85101ed2a6556d6df4",
+  "curve": "secp256k1",
+  "key_offset_in_bootloader": "0x37094",
+  "public_key_xy_hex": "4c5ee3be1fc08452f8b7064cbec0bd13b65a9fced76acf9d87c7fba91add3dd585356d12dbb8278e4b3c8b61c40b87c62ab613c1f0f69f8c21b90bde5856687e",
+  "members": [
+    {
+      "member": "META/bootloader_sign.bin",
+      "size": 278386,
+      "sha256": "44cd83c0d09864c6101e9825bd3c77d7fac314584d0408b378dd56c2aac5736a",
+      "signature_valid": true,
+      "modified_payload_rejected": true
+    },
+    {
+      "member": "META/firmware_sign.bin",
+      "size": 13120020,
+      "sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+      "signature_valid": true,
+      "modified_payload_rejected": true
+    },
+    {
+      "member": "META/extfw/recovery_sign.bin",
+      "size": 385346,
+      "sha256": "2af5c1c1a1283c0b1d558c7f4df3b77abfbd4a429c1141ec67c751adf904f412",
+      "signature_valid": true,
+      "modified_payload_rejected": true
+    },
+    {
+      "member": "META/extfw/fct_test_sign.bin",
+      "size": 3752908,
+      "sha256": "fdeaa1d287caa950581a35680762813ea2a3cb4caab444f17d1286c3b52490d3",
+      "signature_valid": true,
+      "modified_payload_rejected": true
+    },
+    {
+      "member": "META/extfw/sensorhub@mhs003_sign.bin",
+      "size": 626716,
+      "sha256": "06f07541e8bb22b6118f081e791c3a4e40cbff2decd8ee478a7e82df826e9d0f",
+      "signature_valid": true,
+      "modified_payload_rejected": true
+    }
+  ]
+}
