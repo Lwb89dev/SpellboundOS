@@ -1,0 +1,223 @@
+{
+  "companion_modules": {
+    "contacts": {
+      "count": 9,
+      "examples": [
+        "app_contacts_count",
+        "app_contacts_data",
+        "app_contacts_items",
+        "app_contacts_list_data",
+        "app_contacts_list_store",
+        "app_contacts_settings_delegate",
+        "app_contacts_settings_items",
+        "app_contacts_settings_items_reply"
+      ],
+      "present": true
+    },
+    "find_device": {
+      "count": 6,
+      "examples": [
+        "find device",
+        "find_device_handle",
+        "find_device_reply_handle",
+        "find_device_start_with_reply_handle",
+        "find_device_started",
+        "find_device_stopped_handle"
+      ],
+      "present": true
+    },
+    "music": {
+      "count": 1,
+      "examples": [
+        "music_data"
+      ],
+      "present": true
+    },
+    "weather": {
+      "count": 53,
+      "examples": [
+        "_weather_add_city_tip",
+        "_weather_allergy",
+        "_weather_allergy_",
+        "_weather_aqi",
+        "_weather_aqi_",
+        "_weather_bg_day_",
+        "_weather_bg_night_",
+        "_weather_ch"
+      ],
+      "present": true
+    },
+    "world_clock": {
+      "count": 15,
+      "examples": [
+        "InitWorldClockData",
+        "WorldClockPresenter",
+        "XFpgetWorldClockCount",
+        "deleteOneWorldClockData",
+        "getAllWorldClockData",
+        "getWorldClockHeadInfo",
+        "getWorldClockInfo",
+        "isNeedRefishWorldClockData"
+      ],
+      "present": true
+    }
+  },
+  "families": {
+    "app_cmd_handlers": {
+      "count": 4,
+      "description": "app-layer channel command handlers",
+      "symbols": [
+        "app_handle_read_description_cmd",
+        "app_handle_set_sensor_cmd",
+        "app_handle_start_transfer_cmd",
+        "app_handle_stop_transfer_cmd"
+      ]
+    },
+    "audio_dsp_ipc": {
+      "count": 6,
+      "description": "audio DSP inter-processor command set",
+      "symbols": [
+        "AUD_IPC_CMD_HFP_START",
+        "AUD_IPC_CMD_PLAY_START",
+        "AUD_IPC_CMD_PLAY_STOP",
+        "AUD_IPC_CMD_REC_START",
+        "AUD_IPC_CMD_REC_STOP",
+        "AUD_IPC_CMD_VOLUME_SET_VOLUME"
+      ]
+    },
+    "bt_host": {
+      "count": 104,
+      "description": "bx_core Bluetooth host stack (GAP/GATT, LE and classic)",
+      "symbols": [
+        "bx_core_adptm_update_config",
+        "bx_core_check_ble_heartbeat",
+        "bx_core_close_adapter",
+        "bx_core_create_heartbeat_timer",
+        "bx_core_fltm_init",
+        "bx_core_fltm_recovery",
+        "bx_core_gap_ble_disconnect",
+        "bx_core_gap_bt_clear_connecting_device",
+        "bx_core_gap_bt_disconnect",
+        "bx_core_gap_bt_set_connecting_device",
+        "bx_core_gap_bt_start_inquiry",
+        "bx_core_gap_bt_stop_inquiry",
+        "bx_core_gap_change_connection_speed",
+        "bx_core_gap_cleanup",
+        "bx_core_gap_connect_le_device",
+        "bx_core_gap_disconnect",
+        "bx_core_gap_disconnect_le_device",
+        "bx_core_gap_enter_sniff",
+        "bx_core_gap_exit_sniff",
+        "bx_core_gap_get_all_conn_infor",
+        "bx_core_gap_get_chip_misc_info",
+        "bx_core_gap_get_conn_id_by_remote_addr",
+        "bx_core_gap_get_connectable_mode",
+        "bx_core_gap_get_discoverable_mode",
+        "bx_core_gap_get_mtu_payload_size",
+        "bx_core_gap_get_mtu_size",
+        "bx_core_gap_get_pair_dev_addr_by_conn_id",
+        "bx_core_gap_get_pair_status_by_id",
+        "bx_core_gap_get_paired_bt_devices",
+        "bx_core_gap_get_paired_device_by_addr",
+        "bx_core_gap_get_paired_le_devices",
+        "bx_core_gap_get_peer_device_feature",
+        "bx_core_gap_get_remote_addr_by_conn_id",
+        "bx_core_gap_get_status",
+        "bx_core_gap_init",
+        "bx_core_gap_is_conn_exist",
+        "bx_core_gap_le_start_scan",
+        "bx_core_gap_le_stop_scan",
+        "bx_core_gap_pairing_mgr_get_detail_and_conn_id",
+        "bx_core_gap_pairing_mgr_get_first_complete",
+        "bx_core_gap_pairing_mgr_get_first_user_conf",
+        "bx_core_gap_pairing_mgr_init",
+        "bx_core_gap_pairing_mgr_refresh_pairing_device",
+        "bx_core_gap_pairing_mgr_set_complete_tick",
+        "bx_core_gap_pairing_mgr_set_user_conf_tick",
+        "bx_core_gap_pairing_mgr_start",
+        "bx_core_gap_pairing_mgr_stop",
+        "bx_core_gap_pairing_request",
+        "bx_core_gap_reply_user_confirm",
+        "bx_core_gap_send_mtu_exchange_request",
+        "bx_core_gap_set_bt_device_addr",
+        "bx_core_gap_set_bt_device_name",
+        "bx_core_gap_set_conn_id_to_sm",
+        "bx_core_gap_set_connectable_mode",
+        "bx_core_gap_set_discoverable_mode",
+        "bx_core_gap_set_le_device_addr",
+        "bx_core_gap_set_le_device_name",
+        "bx_core_gap_set_peer_type",
+        "bx_core_gap_set_skip_latency",
+        "bx_core_gap_sniff_mgr_add_device",
+        "bx_core_gap_sniff_mgr_exit",
+        "bx_core_gap_start_adv",
+        "bx_core_gap_stop_adv",
+        "bx_core_gap_update_adv_data",
+        "bx_core_gap_update_scan_rsp_data",
+        "bx_core_gatt_cleanup",
+        "bx_core_gatt_enable_function_unit",
+        "bx_core_gatt_init",
+        "bx_core_gatt_register_service",
+        "bx_core_gatt_send_notification",
+        "bx_core_gatt_send_service_change",
+        "bx_core_gatt_set_conn_para",
+        "bx_core_gatt_start",
+        "bx_core_gatt_stop",
+        "bx_core_gattc_build_profile_instance",
+        "bx_core_gattc_cleanup_profile",
+        "bx_core_gattc_destroy_profile_instance",
+        "bx_core_gattc_get_profile_instance",
+        "bx_core_gattc_init",
+        "bx_core_gattc_is_remote_att_exsit",
+        "bx_core_gattc_is_remote_desc_exsit",
+        "bx_core_gattc_mtu_exchange",
+        "bx_core_gattc_prepare_profile",
+        "bx_core_gattc_read_chara",
+        "bx_core_gattc_read_desc",
+        "bx_core_gattc_write_desc",
+        "bx_core_init",
+        "bx_core_open_adapter",
+        "bx_core_open_adapter_sync",
+        "bx_core_reboot_task_init",
+        "bx_core_recovery_adapter",
+        "bx_core_reset_adapter",
+        "bx_core_reset_heartbeat_timer",
+        "bx_core_rfc_disconnect",
+        "bx_core_rfc_enter_fast_mode",
+        "bx_core_rfc_exit_fast_mode",
+        "bx_core_rfc_register_service",
+        "bx_core_rfc_send",
+        "bx_core_rfc_start",
+        "bx_core_rfc_stop",
+        "bx_core_start_heartbeat_timer",
+        "bx_core_stkm_cleanup_stack",
+        "bx_core_stkm_init",
+        "bx_core_stop_heartbeat_timer"
+      ]
+    },
+    "zrpc_rpmsg": {
+      "count": 15,
+      "description": "rpmsg-lite inter-processor RPC links and channels",
+      "symbols": [
+        "zrpc.ch",
+        "zrpc.lk",
+        "zrpc.rl",
+        "zrpc_channel_module_register",
+        "zrpc_channel_pkt_alloc",
+        "zrpc_channel_pkt_free",
+        "zrpc_link_alloc_tx_buffer",
+        "zrpc_link_pkt_checksum_check",
+        "zrpc_link_pkt_free",
+        "zrpc_link_recv_cb_set",
+        "zrpc_link_release_rx_buffer",
+        "zrpc_link_send",
+        "zrpc_pbuf_make",
+        "zrpc_recv",
+        "zrpc_send"
+      ]
+    }
+  },
+  "member": "META/firmware_sign.bin",
+  "member_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "member_size": 13120020
+}

@@ -219,6 +219,24 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    literal string inventory, not proof that a service is advertised or active,
    and the custom UUIDs and native handlers remain unresolved.
 
+## 2026-11-15 — SoC subsystem architecture from symbol families
+
+1. Inventoried embedded C symbol strings in the main firmware to sketch the
+   subsystem structure. Found an rpmsg-lite inter-processor RPC layer (`zrpc`
+   links and channels with checksummed packets and send/wait-reply), confirming
+   a multi-core SoC whose sensor-hub and radio images are separate processors.
+2. Mapped an audio DSP IPC command set (play/record/HFP/volume) and a 104-symbol
+   `bx_core` dual-mode Bluetooth host: GAP (LE + classic inquiry/sniff), a GATT
+   server (`register_service`/`send_notification`) serving the Huami services,
+   and a GATT client the JS `ble.mst*` calls map onto. Classic profiles HFP,
+   A2DP, AVRCP and RFCOMM/SPP are present, so the watch does call audio and media
+   control over classic Bluetooth alongside the BLE data channel.
+3. Added `analysis_scripts/firmware_symbols.py` with synthetic-input tests, the
+   report [analysis/SYSTEM_ARCHITECTURE.md](analysis/SYSTEM_ARCHITECTURE.md) and
+   reproducible [analysis/firmware-symbols.json](analysis/firmware-symbols.json).
+   JSON regenerates deterministically; all 30 Python tests pass. These are
+   log/assert symbol strings, not a call graph or an architecture spec.
+
 ## Next work
 
 - Map the signed image formats and the loaders for the sensor hub and radio;
