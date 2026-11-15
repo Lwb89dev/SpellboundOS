@@ -237,11 +237,32 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    JSON regenerates deterministically; all 30 Python tests pass. These are
    log/assert symbol strings, not a call graph or an architecture spec.
 
+## 2026-11-15 — candidate hardware profile and health capability surface
+
+1. Inventoried `dev_<part>` driver names in the main image and resolved six
+   candidate peripheral chips: Zinitix ZTW622 touch, Chipone ICNA3311 AMOLED
+   driver, Sensortek STK31e60 light, Airoha AG3335 GNSS, and candidate Awinic
+   AW32012 and CellWise CW6305 power parts. Four are corroborated by independent
+   findings (0xE622 touch, the display read, the light probe, the GNSS
+   container). The SoC tokens `AX861` (application processor) and
+   `mhs003` (sensor hub) appear, consistent with an in-house multi-core Andes
+   RISC-V design.
+2. Counted a fixed health-metric vocabulary: heart rate/PPG, SpO2, HRV, stress,
+   sleep, steps/distance/calories, PAI, VO2max, workout, plus weaker AFib, body
+   temperature and ECG signals. This is the data surface a standalone OS must
+   produce and the companion syncs.
+3. Added `analysis_scripts/hardware_profile.py` with synthetic-input tests, the
+   report [analysis/HARDWARE_PROFILE.md](analysis/HARDWARE_PROFILE.md) and
+   reproducible [analysis/hardware-profile.json](analysis/hardware-profile.json).
+   JSON regenerates deterministically; all 34 Python tests pass. Chip roles are
+   candidate attributions from driver names, not a confirmed bill of materials.
+
 ## Next work
 
 - Map the signed image formats and the loaders for the sensor hub and radio;
   distinguish host-side mathematical signature checks from device behavior.
-- Identify the actual chip, buses and memory layout with corroborating evidence.
+- Identify the PPG/heart-rate analog front end and the exact SoC silicon, buses
+  and memory layout with corroborating evidence beyond driver-name strings.
 - Research and validate a non-destructive boot/debug and recovery path, including
   a backup of device-specific data, before considering hardware writes.
 - Define the Android/watch transport, authentication and notification/navigation

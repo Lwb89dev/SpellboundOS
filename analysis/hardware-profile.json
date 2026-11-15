@@ -1,0 +1,69 @@
+{
+  "drivers": [
+    {
+      "candidate_role": "GNSS receiver",
+      "corroboration": "matches AG3352B GNSS container in GNSS_AND_TOUCH_BLOBS.md",
+      "part": "ag3335",
+      "vendor": "Airoha"
+    },
+    {
+      "candidate_role": "candidate charger / LED driver",
+      "part": "aw32012",
+      "vendor": "Awinic"
+    },
+    {
+      "candidate_role": "candidate battery fuel gauge / charger",
+      "part": "cw6305",
+      "vendor": "CellWise"
+    },
+    {
+      "candidate_role": "AMOLED display driver IC",
+      "corroboration": "matches the 0xda/0xdb/0xdc display read in DISPLAY_AND_LIGHT.md",
+      "part": "icna3311",
+      "vendor": "Chipone"
+    },
+    {
+      "candidate_role": "ambient light / proximity sensor",
+      "corroboration": "matches the dev_stk31e60 light probe in DISPLAY_AND_LIGHT.md",
+      "part": "stk31e60",
+      "vendor": "Sensortek"
+    },
+    {
+      "candidate_role": "capacitive touch controller",
+      "corroboration": "matches the expected 0xE622 touch identity in TOUCH_AND_SERIAL.md",
+      "part": "ztw622",
+      "vendor": "Zinitix"
+    }
+  ],
+  "health_metric_counts": {
+    "activity": 50,
+    "afib": 6,
+    "body temp": 3,
+    "calorie": 10,
+    "distance": 87,
+    "ecg": 2,
+    "heart rate": 14,
+    "hr": 288,
+    "hrv": 32,
+    "pai": 53,
+    "ppg": 15,
+    "sleep": 198,
+    "spo2": 29,
+    "sport": 355,
+    "step": 27,
+    "steps": 6,
+    "stress": 107,
+    "vo2max": 8,
+    "workout": 21
+  },
+  "identified_driver_count": 6,
+  "member": "META/firmware_sign.bin",
+  "member_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "member_size": 13120020,
+  "soc_identifiers": [
+    "AX861",
+    "MHS002",
+    "MHS003",
+    "mhs003"
+  ]
+}
