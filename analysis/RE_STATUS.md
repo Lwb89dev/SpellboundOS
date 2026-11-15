@@ -14,7 +14,7 @@ Disassembly and export counts do not measure behavioral understanding.
 | Optical sensing | MAX8617X driver, initial board data, IRQ/FIFO route, host FIFO model, eight register-table inventories | Exact fitted part, full mode/timing behavior, calibration and measurement chain |
 | Health data | Heart/SpO2 caches and services; sensor process/control IPC payloads modeled | Outer zrpc transport, remaining packet families, record formats, algorithms and validation |
 | Motion / other peripherals | Candidate identities and selected probe paths | Complete configuration, interrupts, power/timing and physical verification |
-| Bluetooth | Eight service/31 characteristic specs; 0016/0017 and RFCOMM 0022 bindings; native framing, plaintext host model, crypto delegate, CRC and counter policy | Active handles/state, full task lifecycle and cipher interoperability, pairing/key provisioning, JS payload linkage, notification/audio behavior |
+| Bluetooth | Eight service/31 characteristic specs; 0016/0017 and RFCOMM 0022 bindings; native framing, plaintext host model, crypto delegate, CRC and counter policy; auth module `0x82` request layouts, sect163r2 public parameters, session-key/cloud-binding slicing and key store | Active handles/state, full task lifecycle and cipher interoperability, pairing/key provisioning and counter persistence, JS payload linkage, notification/audio behavior |
 | GNSS / touch | Container sections, candidate code and identity clues | Full mappings, loader/command protocols, runtime integration |
 | Boot/debug/recovery | Startup-aware boot/recovery inputs; reset/handoff split and key/UI/validation paths | Proven non-destructive debug/boot path, full backup and device-specific restoration |
 | Standalone OS / companion | Independent QEMU UART prototype; project goal recorded | Hardware boot/drivers, secure transport, Android implementation and device tests |
@@ -45,6 +45,7 @@ Latest detailed findings:
 - [Boot/recovery control flow and signed metadata](BOOT_RECOVERY_AND_METADATA.md)
 - [Native GATT registrations and transport bindings](GATT_REGISTRATION.md)
 - [Native channel framing and authentication crypto delegate](NATIVE_CHANNEL.md)
+- [Authentication module, request layouts and ECDH key material](AUTH_SESSION.md)
 
 No device write or installation is justified by the current results. The
 project's existing backup/boot/recovery prerequisites in [GOAL.md](../GOAL.md)

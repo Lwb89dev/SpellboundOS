@@ -587,6 +587,28 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    tests pass with signature dependencies. No Bluetooth/device interaction or
    device-secret extraction was performed.
 
+## 2026-11-15 — authentication module, request layouts and key material
+
+1. Documented the authentication component carried as native channel module
+   `0x82` (controller `0x7035cb58`, dispatcher `0x7035be3e`). Recovered its
+   request opcodes 0–11 with their fixed layouts, the little-endian API-level
+   word whose low byte is the effective level, and the opcode-4 authorize mode.
+2. Read the five public curve-parameter words from RAM and compared each with
+   the sect163r2 parameters taken from the installed OpenSSL's explicit curve
+   encoding; all five match. Modelled the observed post-processing after scalar
+   multiplication: session key = persistent key XOR shared-point bytes 8..24,
+   RX/TX counters from bytes 0..8, `Y` unused; and the
+   `SHA-256(address || point)` cloud-binding digest.
+3. Modelled the 144-byte persistent key store (eight 18-byte records: validity,
+   app ID, 16-byte key) with first-free selection and later-duplicate
+   invalidation, plus the eight auth-provider callbacks at `0x70f60f70`.
+4. Completed the earlier in-progress `auth_session` work by adding the missing
+   report [analysis/AUTH_SESSION.md](analysis/AUTH_SESSION.md) and wiring it into
+   the status indexes. Confirmed `analysis/auth-session.json` regenerates from
+   the archive and the reviewed exports, and that its ten tests pass. The full
+   suite now passes 139 Python tests. No pairing, device-secret extraction or
+   crypto execution was performed.
+
 ## Next work
 
 - Regenerate selected native paths with startup-aware mappings, corrected

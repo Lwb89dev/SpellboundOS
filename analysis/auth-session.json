@@ -1,0 +1,101 @@
+{
+  "all_parameters_match_sect163r2": true,
+  "member": "META/firmware_sign.bin",
+  "member_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "provider": {
+    "address": 1895174000,
+    "callbacks": {
+      "initialize": 1881233540,
+      "insert_context": 1881232374,
+      "list_contexts": 1881233268,
+      "load_key": 1881232776,
+      "lookup_app_context": 1881233434,
+      "query_app_ids": 1881232616,
+      "remove_connection": 1881232228,
+      "save_key": 1881232956
+    },
+    "size": 32
+  },
+  "public_curve_parameters": {
+    "b": {
+      "address": 1889438552,
+      "matches_sect163r2": true,
+      "sha256": "e13daff383ecaaddc733d710ce8189030f1b0083ffee1ff22c08b2ad0a938645",
+      "size": 24
+    },
+    "field_polynomial": {
+      "address": 1889438576,
+      "matches_sect163r2": true,
+      "sha256": "6d67378a12a2cd9251cdaa7cad539e4b5e270e6fed9d1cf46602be8299897343",
+      "size": 24
+    },
+    "generator_x": {
+      "address": 1889438528,
+      "matches_sect163r2": true,
+      "sha256": "080a879965d5ce6d7e3952191eaf6ff80eeeefb21d02faad065bb6b18d8f9d89",
+      "size": 24
+    },
+    "generator_y": {
+      "address": 1889438504,
+      "matches_sect163r2": true,
+      "sha256": "c7fb040218a0a883565f399ec51bada97b263523f31626e2a3317744382580f7",
+      "size": 24
+    },
+    "order": {
+      "address": 1889438480,
+      "matches_sect163r2": true,
+      "sha256": "0159cb3b740c62b2823b204c0da5241ce25a27e0f15fb2e2adf7c5caff6497c0",
+      "size": 24
+    }
+  },
+  "reviewed_api_level": 2,
+  "reviewed_controller": 1882573656,
+  "reviewed_dispatcher": 1882570302,
+  "reviewed_module_id": 130,
+  "scope": "static metadata and synthetic host models; no pairing or vendor crypto execution",
+  "source_sha256": {
+    "runtime-auth-context/70215588.c": "0f711b19125952567dc3abf9eaed756e5238e1fa420b19070224b067396590c1",
+    "runtime-auth-context/7021563c.c": "1541c41f661537cdb94d99cf578bcada6f6e8c4aeab3a5eaa0062cada7a2a646",
+    "runtime-auth-context/7021581a.c": "66379fda13437a15e86289be28611469505e5a1ca410abcde802b99273e0602f",
+    "runtime-auth-context/70215884.c": "af53f32363b98969385956a203a0c804f5651ac8e6ec26a6a4d9517112dcf639",
+    "runtime-auth-context/702160bc.c": "77f059dd8e53e2e5c59eccbff4cd4f5c1d05bbc7755c777d0e20ce031e30e6b5",
+    "runtime-auth-context/70216176.c": "a71c7f864a5693363893a047a4399b2933d8fc894750002f010af2abc128c4ad",
+    "runtime-auth-context/702163a0.c": "ae5103f01656c6bb2c857eac793b1311d0841d335f28b1b010664963200d7548",
+    "runtime-auth-context/70216f5c.c": "92e0088aea0769a0c87b42643648a489fa47a9c9eeec580217ba29b03ff7e897",
+    "runtime-auth-context/702173e4.c": "cdd7d3ab560b25814bff267ac6827f296d743b3ae41b1e5ba068c81000635631",
+    "runtime-auth-lifecycle/70215364.c": "e2b123bb1fcd1e1c353bd189e9f5531580bb8204dc789c4df8c4401a557795d6",
+    "runtime-auth-lifecycle/702153f6.c": "1d0927603e1e7efabb14d2e0f549d287138a4ac7b5765b7367322c46a4b9d3a0",
+    "runtime-auth-lifecycle/70215774.c": "a6ce07fcfa0a6ec9b3e6cd6283a20bb5da6e0bccd3925372fda29f3e30982915",
+    "runtime-auth-lifecycle/70215da6.c": "62dad44173b990c67b8ad75f8d240f2734224ee0d3e86a8472c3257e9bfde33b",
+    "runtime-auth-lifecycle/70216112.c": "d54c12bc95c907d7c03bef76e449b3153887ea248ce68768bb693d70720dcc0b",
+    "runtime-auth-lifecycle/70216274.c": "0c4aaa827501405626cf2258d1aa8516ea9e6be77749ffe0f4439f2e3bbe3656",
+    "runtime-auth-lifecycle/7021631e.c": "50b9d22f5c9271aee3a525f6cf72bcac9f7f9ce6a535bf25d1628cd8554618c1",
+    "runtime-auth-lifecycle/702163e6.c": "cebd9ad951fc0a0e3fa5496fbe2ff11b3c3ddbe6b83b3e4c068eaa8847b1d88f",
+    "runtime-auth-lifecycle/702164be.c": "a90bde122de76f1de229485b657e6a428b1d3691c73f2f2673647f3a98e6d0e3",
+    "runtime-auth-lifecycle/70216b12.c": "866ab5191fb19cf31fa535bbe247a0d2b3945990bddcbc55161ad23b6b9e4ca4",
+    "runtime-auth-lifecycle/70216e40.c": "e9715a641ac45d52a6b7c91cb20377f99df14d794cf0829a864ec76b1ec17980",
+    "runtime-auth-module/70214d72.c": "9facc9d965b2e09d90b0a05958e879796a9cbda6f52fe3f81a5744d270f994f3",
+    "runtime-auth-module/70214d8c.c": "3035061c295f2e20063387e06903d9a7514902d1f6b1e00eac6d8542e2887742",
+    "runtime-auth-module/70214ed0.c": "4529be4af0263c8b8445e050cfd0129bc37da4cc054b6a48a95bba7d283407ea",
+    "runtime-auth-module/7035bcce.c": "3194c5183aeae5a6f825fca0c04731316b246a533f273f78f94420acb8cf3781",
+    "runtime-auth-module/7035bce0.c": "d5e0da1ccd9e0286385726b568f8e122f64b4d93e7d1e55f1db9b17b44f99702",
+    "runtime-auth-module/7035bcf6.c": "67d24f84a1e82981441d410e63d594186b394b8c9016f42731dac9e4792f65d4",
+    "runtime-auth-module/7035be3e.c": "ab979e316f9272af3d13ca3fc1f1055a1b87cebd79fabb46fea8d465565a7e34",
+    "runtime-auth-module/7035cb58.c": "04b8fd8e90ed7eb46e177081bee38f4f27451b3984e3399635b2f2f23f86e892",
+    "runtime-auth-proof/70215234.c": "61d98d3e66ce64abb37b737a1cb3308760c0e954d0754a208188e81129741be5",
+    "runtime-auth-proof/702152b6.c": "d22a1cca7c4f196e986f05407ac5da7cf64c1fd262599e86b55afa3bc5750d1f",
+    "runtime-auth-proof/702160cc.c": "8c6744634f494b706802c3b0b01d45f94475232764b819e99d1c2f55304cd899",
+    "runtime-auth-proof/7021657c.c": "3d4fc6803736c5c8c2280fada54661b19a8bb4d3a0e7b1db83d95afd4f9719df",
+    "runtime-auth-proof/704ee552.c": "dae18bd6a32ce871e77f3591219193626267f36f081f7e64bbcb69bd9a78a39e",
+    "runtime-auth-wire/7035bd28.c": "60fad91274dc7c3d254f92bf94c5c950cbdc19016f94dae3d73f852f0222fe4e",
+    "runtime-auth-wire/7035ca14.c": "602e9d6f9632fdb552e3c7752420e7283caee1147049ad28dd80c9ef1781712e",
+    "runtime-auth-wire/7035ca80.c": "ecb19feb19b5600416e318ce4cddd523d49f7009542cc805a723b200e113805b",
+    "runtime-auth-wire/7035caec.c": "9712a066a20846d86ebf070947b12a11166bf556bdc9ac1796eb59bc8e369151",
+    "runtime-auth-wire/703d057a.c": "e41035dfc51151b1480c1f876cd8902ca0affb0adce379a94253c93e2adeaee3"
+  },
+  "synthetic_requests": {
+    "authorize": "05000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+    "query_version": "00",
+    "request_authorize": "04020001000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f"
+  }
+}
