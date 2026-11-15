@@ -178,6 +178,28 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    signature suite, which needs `cryptography` installed. No device was written
    or queried; all vendor-derived exports stay under ignored `firmware/`.
 
+## 2026-11-15 — JS runtime native ABI and BLE application protocol
+
+1. Analyzed the shipped ZeppOS runtime `META/js_apps/framework.js`
+   (`device-runtime-core v4.2.0-release.1`, API level 4.2) statically, without
+   executing it. Mapped the native module boundary the runtime calls into —
+   `hmApp`, `hmUI`, `hmFS`, `hmSetting`, `hmSensor`, `hmBle`, `hmMedia` — with
+   every observed method, plus the `device:os.*` permission namespaces and the
+   typed `hmFS.SysPro*` property store.
+2. Recovered the BLE contract relevant to an Android companion: a 37-method
+   GATT master-role surface (`mst*`), connection and transfer channels, and the
+   framed message protocol above `ble.send` — a 16-byte little-endian header
+   (`flag`, `version`, `type`, `port1`, `port2`, `appId`, `extra`) with a
+   3584-byte payload cap, plus the invoke/close predicates and the
+   pending→transferring→transferred/canceled file-transfer state machine.
+3. Added `analysis_scripts/js_runtime_api.py` (a deterministic, non-executing
+   inspector) with synthetic-fixture tests, the report
+   [analysis/JS_RUNTIME_API.md](analysis/JS_RUNTIME_API.md) and reproducible
+   output [analysis/js-runtime-api.json](analysis/js-runtime-api.json). The JSON
+   regenerates byte-for-byte from the archive and all 23 Python tests pass
+   (`cryptography` installed for the signature suite). This is the shipped API
+   and its wire framing, not the native implementations behind each method.
+
 ## Next work
 
 - Map the signed image formats and the loaders for the sensor hub and radio;

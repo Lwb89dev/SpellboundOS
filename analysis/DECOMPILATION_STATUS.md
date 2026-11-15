@@ -72,10 +72,15 @@ decompilation, boot unlock or functional device port is claimed.
 
 The readable `META/js_apps/framework.js` declares device-runtime-core version
 `v4.2.0-release.1`, API level 4.2. Its SHA-256 is recorded in ota-workload.json.
-A literal-member scan finds `hmBle.transferFile` and `hmBle.cancelTransferFile`
-wrappers. This is a shipped JavaScript API surface; it does not reveal the
-underlying Bluetooth transport or provide a standalone implementation. The
-framework and watchface sources remain local in the original archive.
+A fuller static pass over this runtime now maps the whole native ABI surface it
+calls (`hmApp`, `hmUI`, `hmFS`, `hmSetting`, `hmSensor`, `hmBle`, `hmMedia`), the
+`device:os.*` permission namespaces, the 37-method BLE master-role surface, and
+the 16-byte framed message-protocol header used above `ble.send`. See
+[JS_RUNTIME_API.md](JS_RUNTIME_API.md) and
+[js-runtime-api.json](js-runtime-api.json). This is the shipped JavaScript API
+and its wire framing, not the native implementations behind each method or a
+standalone transport. The framework and watchface sources remain local in the
+original archive.
 
 ## Finding reports
 
@@ -88,6 +93,8 @@ framework and watchface sources remain local in the original archive.
 | Touch probe and radio serial abstraction | [TOUCH_AND_SERIAL.md](TOUCH_AND_SERIAL.md) |
 | Radio package, transfer loop and checksum | [RADIO_PACKAGE.md](RADIO_PACKAGE.md) |
 | Candidate ARM mapping of radio images | [RADIO_NATIVE.md](RADIO_NATIVE.md) |
+| Application container and packaged JS bytecode | [APP_FORMATS.md](APP_FORMATS.md) |
+| JS runtime native ABI and BLE application protocol | [JS_RUNTIME_API.md](JS_RUNTIME_API.md) |
 
 A concrete quality check found truncated control flow in some bulk exports
 around calls inferred as non-returning. Targeted noanalysis imports restore

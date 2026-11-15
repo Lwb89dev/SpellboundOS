@@ -1,0 +1,225 @@
+{
+  "banner": {
+    "api_level": "4.2",
+    "build-date": "2025-09-19T08:58:34.559Z",
+    "commit": "b3cc2d2",
+    "project": "device-runtime-core",
+    "version": "v4.2.0-release.1"
+  },
+  "ble_wrapper_methods": [
+    "abortTransferFile",
+    "addListener",
+    "cancelTransferFile",
+    "connectStatus",
+    "createConnect",
+    "disConnect",
+    "getAddress",
+    "getBTSwitch",
+    "listenTransferFile",
+    "mstBuildProfile",
+    "mstConnect",
+    "mstDestoryProfileInstance",
+    "mstDisconnect",
+    "mstGetConnIdByRemoteAddr",
+    "mstGetProfileInstance",
+    "mstOffAllCb",
+    "mstOnCharaNotification",
+    "mstOnCharaReadComplete",
+    "mstOnCharaValueArrived",
+    "mstOnCharaWriteComplete",
+    "mstOnDescReadComplete",
+    "mstOnDescValueArrived",
+    "mstOnDescWriteComplete",
+    "mstOnPrepare",
+    "mstOnServiceChangeBegin",
+    "mstOnServiceChangeEnd",
+    "mstPair",
+    "mstPrepare",
+    "mstReadCharacteristic",
+    "mstReadDescriptor",
+    "mstStartScan",
+    "mstStopScan",
+    "mstWriteCharacteristic",
+    "mstWriteDescriptor",
+    "removeListener",
+    "send",
+    "transferFile"
+  ],
+  "member": "META/js_apps/framework.js",
+  "message_protocol": {
+    "header": [
+      {
+        "bytes": 1,
+        "field": "flag",
+        "offset": 0,
+        "read": "readUInt8"
+      },
+      {
+        "bytes": 1,
+        "field": "version",
+        "offset": 1,
+        "read": "readUInt8"
+      },
+      {
+        "bytes": 2,
+        "field": "type",
+        "offset": 2,
+        "read": "readUInt16LE"
+      },
+      {
+        "bytes": 2,
+        "field": "port1",
+        "offset": 4,
+        "read": "readUInt16LE"
+      },
+      {
+        "bytes": 2,
+        "field": "port2",
+        "offset": 6,
+        "read": "readUInt16LE"
+      },
+      {
+        "bytes": 4,
+        "field": "appId",
+        "offset": 8,
+        "read": "readUInt32LE"
+      },
+      {
+        "bytes": 4,
+        "field": "extra",
+        "offset": 12,
+        "read": "readUInt32LE"
+      }
+    ],
+    "sizes": {
+      "header_size": 16,
+      "message_size": 3600,
+      "payload_size": 3584
+    }
+  },
+  "native_modules": {
+    "hmApp": [
+      "alarmNew",
+      "cancelAlarm",
+      "deleteNotification",
+      "exit",
+      "getAlarmList",
+      "getNotificationList",
+      "getPackageInfo",
+      "getServiceList",
+      "gotoPage",
+      "newAlarm",
+      "postNotification",
+      "queryPermission",
+      "redirectPage",
+      "setLayerY",
+      "startApp",
+      "startService",
+      "stopService"
+    ],
+    "hmBle": [
+      "cancelTransferFile",
+      "transferFile"
+    ],
+    "hmCrypto": [],
+    "hmFS": [
+      "O_CREAT",
+      "O_RDONLY",
+      "O_RDWR",
+      "O_TRUNC",
+      "SEEK_SET",
+      "SysProDelete",
+      "SysProGetBool",
+      "SysProGetChars",
+      "SysProGetDouble",
+      "SysProGetInt",
+      "SysProGetInt64",
+      "SysProGetValueSize",
+      "SysProReset",
+      "SysProSetBool",
+      "SysProSetChars",
+      "SysProSetDouble",
+      "SysProSetInt",
+      "SysProSetInt64",
+      "close",
+      "open",
+      "open_asset",
+      "read",
+      "readdir",
+      "remove",
+      "seek",
+      "stat",
+      "stat_asset",
+      "write"
+    ],
+    "hmMedia": [
+      "create"
+    ],
+    "hmSensor": [
+      "checkAvailable",
+      "createSensor",
+      "event",
+      "id"
+    ],
+    "hmSetting": [
+      "getDeviceInfo",
+      "getFontSizeInfo",
+      "getLanguage",
+      "setBrightScreen",
+      "stopPalmOff",
+      "stopWristDownOff"
+    ],
+    "hmSysApi": [],
+    "hmUI": [
+      "align",
+      "createDialog",
+      "deleteWidget",
+      "event",
+      "getRtlLayout",
+      "getTextLayout",
+      "prop",
+      "redraw",
+      "relayoutRtl",
+      "scrollToPage",
+      "setLayerScrolling",
+      "setScrollView",
+      "showToast",
+      "sp",
+      "sport_type",
+      "text_style",
+      "widget"
+    ],
+    "hmVAD": []
+  },
+  "permission_namespaces": [
+    "data:os.device.info",
+    "device:os.accelerometer",
+    "device:os.alarm",
+    "device:os.barometer",
+    "device:os.bg_service",
+    "device:os.compass",
+    "device:os.geolocation",
+    "device:os.gyroscope",
+    "device:os.local_storage",
+    "device:os.mic",
+    "device:os.notification"
+  ],
+  "protocol_constants": {
+    "flag_invoke": 0,
+    "is_close_protocol1": {
+      "flag": 0,
+      "type": 2,
+      "version": 1
+    },
+    "is_invoke_protocol1": {
+      "flag": 0,
+      "type": 1,
+      "version": 1
+    },
+    "type_close": 2,
+    "type_invoke": 1,
+    "version": 1
+  },
+  "sha256": "015e05053b2b4dc516e31398711e2c3fffb6db57d6a2080638d42fc8d1e5e7f6",
+  "size": 129578
+}
