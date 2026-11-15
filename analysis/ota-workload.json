@@ -1,0 +1,889 @@
+{
+  "archive_sha256": "ee06079610eaf9b4ffbe35c7a6ddc604ee2aba00c3a66d85101ed2a6556d6df4",
+  "extensions": [
+    {
+      "extension": "(none)",
+      "count": 19,
+      "uncompressed_bytes": 1971578
+    },
+    {
+      "extension": "bin",
+      "count": 84,
+      "uncompressed_bytes": 29793030
+    },
+    {
+      "extension": "bstyle",
+      "count": 185,
+      "uncompressed_bytes": 354294
+    },
+    {
+      "extension": "btxt",
+      "count": 112,
+      "uncompressed_bytes": 308592
+    },
+    {
+      "extension": "crc",
+      "count": 1,
+      "uncompressed_bytes": 8
+    },
+    {
+      "extension": "csv",
+      "count": 23,
+      "uncompressed_bytes": 1878867
+    },
+    {
+      "extension": "enc",
+      "count": 7,
+      "uncompressed_bytes": 749056
+    },
+    {
+      "extension": "gapp",
+      "count": 1,
+      "uncompressed_bytes": 1354
+    },
+    {
+      "extension": "js",
+      "count": 11,
+      "uncompressed_bytes": 164704
+    },
+    {
+      "extension": "json",
+      "count": 21,
+      "uncompressed_bytes": 80989
+    },
+    {
+      "extension": "mp3",
+      "count": 651,
+      "uncompressed_bytes": 17829242
+    },
+    {
+      "extension": "offset",
+      "count": 5,
+      "uncompressed_bytes": 540
+    },
+    {
+      "extension": "png",
+      "count": 11727,
+      "uncompressed_bytes": 68937132
+    },
+    {
+      "extension": "ttf",
+      "count": 6,
+      "uncompressed_bytes": 28575672
+    },
+    {
+      "extension": "zip",
+      "count": 32,
+      "uncompressed_bytes": 3923841
+    }
+  ],
+  "binary_members": [
+    {
+      "member": "META/bootloader_sign.bin",
+      "size": 278386,
+      "sha256": "44cd83c0d09864c6101e9825bd3c77d7fac314584d0408b378dd56c2aac5736a",
+      "header_kind": "HDRZ",
+      "prefix_hex": "4844525a00040000023b04004f000000"
+    },
+    {
+      "member": "META/uni2oem936.bin",
+      "size": 87169,
+      "sha256": "bbfc51394420226ed4633d8872f6c554baa206ec3db42258204336fac16ec401",
+      "header_kind": "unclassified",
+      "prefix_hex": "a400e8a1a700eca1a800a7a1b000e3a1"
+    },
+    {
+      "member": "META/oem2uni936.bin",
+      "size": 87169,
+      "sha256": "6b77a47a234e4fecac9cea98b2d512732c9e3e6b93adb1032e6fd0c149d456ce",
+      "header_kind": "unclassified",
+      "prefix_hex": "8000ac204081024e4181044e4281054e"
+    },
+    {
+      "member": "META/firmware_sign.bin",
+      "size": 13120020,
+      "sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+      "header_kind": "HDRZ",
+      "prefix_hex": "6f00c0224844525a06b40e002c021670"
+    },
+    {
+      "member": "META/resources/Application.bin",
+      "size": 2533862,
+      "sha256": "611f52629c71e1cc92d0175301f5022d921937e834b5ee9b1a7b10cd51650bb0",
+      "header_kind": "RIFF",
+      "prefix_hex": "524946468c7626004741505041505000"
+    },
+    {
+      "member": "META/resources/offlineasr/EN/vad_mdl_data.bin",
+      "size": 17975,
+      "sha256": "eed271f0b927b4c44a5ca2894db54c73f924f7b470767738301643e7340b6fa7",
+      "header_kind": "unclassified",
+      "prefix_hex": "2f717461672f2129e8f8b4952d90a108"
+    },
+    {
+      "member": "META/resources/offlineasr/EN/wtk_fsm_res.bin",
+      "size": 25665,
+      "sha256": "51ca4aabd9256650b3097e7c6c8ec502305ba35b63ebb2533d61ba7eaf7fabe6",
+      "header_kind": "unclassified",
+      "prefix_hex": "2f717461672f216dc33cb3feae6c6615"
+    },
+    {
+      "member": "META/resources/offlineasr/EN/wtk_outsym_res.bin",
+      "size": 1548,
+      "sha256": "094924d77bd40e3e8fb2ba01aad5029e7b9eb0cb65d79e09b243d93fa916a48e",
+      "header_kind": "unclassified",
+      "prefix_hex": "2f717461672f215f3bcb5013d8f0718e"
+    },
+    {
+      "member": "META/resources/offlineasr/EN/kmdl_data.bin",
+      "size": 85760,
+      "sha256": "9626df3b14b9c1e4500db12743519c6b16a4e2bbb14cbd22bd4edce05cb4c601",
+      "header_kind": "unclassified",
+      "prefix_hex": "2f717461672f213bd1ae3074feaf8619"
+    },
+    {
+      "member": "META/resources/offlineasr/EN/kmdl_data_1.bin",
+      "size": 83700,
+      "sha256": "39a15a8acca41325bfc670a816ca23c9643bf1f502d3ddef4557dffce757a2f8",
+      "header_kind": "unclassified",
+      "prefix_hex": "2f717461672f218311b05c38a78ddb28"
+    },
+    {
+      "member": "META/resources/offlineasr/EN/wtk_kparm_res.bin",
+      "size": 4766,
+      "sha256": "00effb71fccfa1951c803f7a087de07d7f341860f49172bf6c5ac8e75bbb2773",
+      "header_kind": "unclassified",
+      "prefix_hex": "2f717461672f21e6f80e22891ef0a90f"
+    },
+    {
+      "member": "META/resources/offlineasr/DE/vad_mdl_data.bin",
+      "size": 17976,
+      "sha256": "ca7609238f6cb91cba55553f089b19b8684bb42be750db0c0abcfede0972f43e",
+      "header_kind": "unclassified",
+      "prefix_hex": "2f717461672f224ab413cdd96cdef89d"
+    },
+    {
+      "member": "META/resources/offlineasr/DE/wtk_fsm_res.bin",
+      "size": 26164,
+      "sha256": "54842f05ca45b13621578a8066c672f18b30b82b792d230ad1c182ba3bbe42b8",
+      "header_kind": "unclassified",
+      "prefix_hex": "2f717461672f22cccda4e20f237ade88"
+    },
+    {
+      "member": "META/resources/offlineasr/DE/wtk_outsym_res.bin",
+      "size": 2591,
+      "sha256": "d200f65ac2285fae78bf068c3a5854c246080cd64bd8d5db9554757d879c0f11",
+      "header_kind": "unclassified",
+      "prefix_hex": "2f717461672f22ad534d13d209cb912e"
+    },
+    {
+      "member": "META/resources/offlineasr/DE/kmdl_data.bin",
+      "size": 112348,
+      "sha256": "e8ca4ab73de72bd1f6d527396fefb2d9a0917ae25cd0a770d7fea05f969bfdb1",
+      "header_kind": "unclassified",
+      "prefix_hex": "2f717461672f221bbf609c40e3e2bc89"
+    },
+    {
+      "member": "META/resources/offlineasr/DE/kmdl_data_1.bin",
+      "size": 80577,
+      "sha256": "a2ce9e9245a0655dcf76dbe22d7b91e9c098a0c1f100456010388b270ab1f043",
+      "header_kind": "unclassified",
+      "prefix_hex": "2f717461672f2285b4ce7a84cb08b519"
+    },
+    {
+      "member": "META/resources/offlineasr/DE/wtk_kparm_res.bin",
+      "size": 4667,
+      "sha256": "02d54cef11460a05e39b86709d9ab6aa34ceab91d6abdcd4af854e70acaef9d1",
+      "header_kind": "unclassified",
+      "prefix_hex": "2f717461672f2203126ba002fca706ac"
+    },
+    {
+      "member": "META/resources/offlineasr/CN/vad_mdl_data.bin",
+      "size": 17976,
+      "sha256": "3375e60105ebcc4ea5fe306f391b48d5680a39dc67ab81f31a4e83410c5698cf",
+      "header_kind": "unclassified",
+      "prefix_hex": "2f717461672f22f7c3b1626ac554830d"
+    },
+    {
+      "member": "META/resources/offlineasr/CN/wtk_fsm_res.bin",
+      "size": 20920,
+      "sha256": "266b90391003e98b4c4dcf9a7a897b3a412d0cb062746248a05f1f26e3a7c359",
+      "header_kind": "unclassified",
+      "prefix_hex": "2f717461672f22af6f428b78b0060b8b"
+    },
+    {
+      "member": "META/resources/offlineasr/CN/wtk_outsym_res.bin",
+      "size": 1545,
+      "sha256": "24f28df4b7650a646d202c6fab1b2fc6e6b174782294e0e6168f81dc31570d99",
+      "header_kind": "unclassified",
+      "prefix_hex": "2f717461672f227715467a6276fbc2ac"
+    },
+    {
+      "member": "META/resources/offlineasr/CN/kmdl_data.bin",
+      "size": 142767,
+      "sha256": "276765052b74104ccfe13d81ab5d8cf64b498153873bfa681460e2286a32a9ee",
+      "header_kind": "unclassified",
+      "prefix_hex": "2f717461672f229b0ba6b1cbb14afef2"
+    },
+    {
+      "member": "META/resources/offlineasr/CN/kmdl_data_1.bin",
+      "size": 88337,
+      "sha256": "20e3d83835a914c72df8645a0a39d4f459789ac6c319efafc794d8422d972af8",
+      "header_kind": "unclassified",
+      "prefix_hex": "2f717461672f22955962423b5d9381a7"
+    },
+    {
+      "member": "META/resources/offlineasr/CN/wtk_kparm_res.bin",
+      "size": 4767,
+      "sha256": "9749985cfbcaa8480dae196df52257677d07f2d9da599483a66ca1b48f7cb3bd",
+      "header_kind": "unclassified",
+      "prefix_hex": "2f717461672f22e6f80e22891ef0a90f"
+    },
+    {
+      "member": "META/resources/offlineasr/ES/vad_mdl_data.bin",
+      "size": 16013,
+      "sha256": "e6d87c660ca96290ac5d06546c5d15fe80fb48578c5c6607eae5c8e3d2c36e4e",
+      "header_kind": "unclassified",
+      "prefix_hex": "2f717461672f23b41ac79c17c0963353"
+    },
+    {
+      "member": "META/resources/offlineasr/ES/wtk_fsm_res.bin",
+      "size": 29622,
+      "sha256": "59ee350b5b787db55523ae43823297901500beb6a3fcb8550d07fb4f1fed1549",
+      "header_kind": "unclassified",
+      "prefix_hex": "2f717461672f23e7e37bf6b59fdd9326"
+    },
+    {
+      "member": "META/resources/offlineasr/ES/wtk_outsym_res.bin",
+      "size": 1863,
+      "sha256": "48c54deed2ca010a671096181b2790b13f739e489395dd0d32854d7d2243d0ad",
+      "header_kind": "unclassified",
+      "prefix_hex": "2f717461672f233a30329175d2a6c936"
+    },
+    {
+      "member": "META/resources/offlineasr/ES/kmdl_data.bin",
+      "size": 112349,
+      "sha256": "784a71b2eac00375c977fe06606ec7df0011ff2dd8a920443f3616f2a3bac257",
+      "header_kind": "unclassified",
+      "prefix_hex": "2f717461672f237cdecc8fbc08dbee74"
+    },
+    {
+      "member": "META/resources/offlineasr/ES/kmdl_data_1.bin",
+      "size": 69890,
+      "sha256": "e50ac4b3f8d564ce4b549b18c097160c2e4e0b596d9358a46361fd1f35f6f4aa",
+      "header_kind": "unclassified",
+      "prefix_hex": "2f717461672f238b49cc5bd0781bff4e"
+    },
+    {
+      "member": "META/resources/offlineasr/ES/wtk_kparm_res.bin",
+      "size": 4668,
+      "sha256": "784c991a685bb66f162f1f7c1112f91aae809b82af6cad6fa3e03c50ede4f27d",
+      "header_kind": "unclassified",
+      "prefix_hex": "2f717461672f2303126ba002fca706ac"
+    },
+    {
+      "member": "META/resources/images/common/load/load_image_data.bin",
+      "size": 4147252,
+      "sha256": "fd100afc768badbb012ba381a312b4ee183a70fbbd3fb2cb05e39261262880b1",
+      "header_kind": "unclassified",
+      "prefix_hex": "010000003600000002000000a0000000"
+    },
+    {
+      "member": "META/js_watchfaces/00002DEB/app.bin",
+      "size": 1118,
+      "sha256": "dbc2eabfc9d4d7c7dd98876ef5759cecebfae1e9748caff89bbfcbbc02aaf961",
+      "header_kind": "unclassified",
+      "prefix_hex": "011f02650e636f6e736f6c65066c6f67"
+    },
+    {
+      "member": "META/js_watchfaces/00002DEB/watchface/390x450_s_gts/index.bin",
+      "size": 5626,
+      "sha256": "dcc78a51b34121bb9c655d4100c96a81e058801f8547cf88f5f139bebe99a0a8",
+      "header_kind": "unclassified",
+      "prefix_hex": "01af0102650e636f6e736f6c65066c6f"
+    },
+    {
+      "member": "META/js_watchfaces/00002DF5/app.bin",
+      "size": 1156,
+      "sha256": "87f2df1b295a4c5c0e9fbb6be5b547e3a0d913bae787f581aa67168bca7e62c6",
+      "header_kind": "unclassified",
+      "prefix_hex": "011f02650e636f6e736f6c65066c6f67"
+    },
+    {
+      "member": "META/js_watchfaces/00002DF5/watchface/390x450_s_hannover/index.bin",
+      "size": 10379,
+      "sha256": "8e303b435c44327a50bf9d5d4ad677cd79d0e5e3f586ac0bdef1346f2ad05e5f",
+      "header_kind": "unclassified",
+      "prefix_hex": "01f70102650e636f6e736f6c65066c6f"
+    },
+    {
+      "member": "META/js_watchfaces/00002DEE/app.bin",
+      "size": 1146,
+      "sha256": "9c374f5aed129ad2260edcebde5d3a1f867edc115fb98c5ba6291eef224bf579",
+      "header_kind": "unclassified",
+      "prefix_hex": "011f02650e636f6e736f6c65066c6f67"
+    },
+    {
+      "member": "META/js_watchfaces/00002DEE/watchface/390x450_s_hannover/index.bin",
+      "size": 2243,
+      "sha256": "1158837a3819dfdc3164c75da1133c639053546cd5635b2b5c299ee11866c431",
+      "header_kind": "unclassified",
+      "prefix_hex": "014402650e636f6e736f6c65066c6f67"
+    },
+    {
+      "member": "META/js_watchfaces/00002DF0/app.bin",
+      "size": 1118,
+      "sha256": "03fc2fbaf3508098ca29e156e860943998667ce164c298096cb367dfc2558727",
+      "header_kind": "unclassified",
+      "prefix_hex": "011f02650e636f6e736f6c65066c6f67"
+    },
+    {
+      "member": "META/js_watchfaces/00002DF0/watchface/390x450_Lille/index.bin",
+      "size": 4000,
+      "sha256": "90c9aca098ef78699945aa630e481fbfa89b4367a7c0682d8daafdab07526eec",
+      "header_kind": "unclassified",
+      "prefix_hex": "017002650e636f6e736f6c65066c6f67"
+    },
+    {
+      "member": "META/js_watchfaces/00002DF2/app.bin",
+      "size": 1112,
+      "sha256": "52bba30f092322e98d438a235f2f28646b2dfac158233037e4cdd18eabe4167f",
+      "header_kind": "unclassified",
+      "prefix_hex": "011f02650e636f6e736f6c65066c6f67"
+    },
+    {
+      "member": "META/js_watchfaces/00002DF2/watchface/390x450_s_lille/index.bin",
+      "size": 7656,
+      "sha256": "afec90d4fa6de80c78c4334a42f7e114559a5eaa6051309eb45fab83fe776bd6",
+      "header_kind": "unclassified",
+      "prefix_hex": "01980102650e636f6e736f6c65066c6f"
+    },
+    {
+      "member": "META/js_watchfaces/00002DF3/app.bin",
+      "size": 1118,
+      "sha256": "b6fe994b14fe84ecdb101d49f39d25075b93414ee7ca7fe93486052dbe658234",
+      "header_kind": "unclassified",
+      "prefix_hex": "011f02650e636f6e736f6c65066c6f67"
+    },
+    {
+      "member": "META/js_watchfaces/00002DF3/watchface/leiden/index.bin",
+      "size": 13503,
+      "sha256": "2dfed397f7625b83d732cddaa7b04997dca80c0686a904307479e55915867d9b",
+      "header_kind": "unclassified",
+      "prefix_hex": "019b0202650e636f6e736f6c65066c6f"
+    },
+    {
+      "member": "META/js_watchfaces/00002DEF/app.bin",
+      "size": 1132,
+      "sha256": "45bcab5efa40d96ff645355431c99d91b8227c36764f8fc96f7066efa0837bf0",
+      "header_kind": "unclassified",
+      "prefix_hex": "011f02650e636f6e736f6c65066c6f67"
+    },
+    {
+      "member": "META/js_watchfaces/00002DEF/watchface/index.bin",
+      "size": 11321,
+      "sha256": "08763fa432c1336c0f3000e4ab7239cf3005fe79592ba2b0955588ba4dc691c3",
+      "header_kind": "unclassified",
+      "prefix_hex": "01ec0102650e636f6e736f6c65066c6f"
+    },
+    {
+      "member": "META/js_apps/000FFD39/app.bin",
+      "size": 2492,
+      "sha256": "83a4b1a1d2c42b7652c8258ba21538035811163cb2945163ea17fe8ebf030232",
+      "header_kind": "unclassified",
+      "prefix_hex": "016002650e636f6e736f6c65066c6f67"
+    },
+    {
+      "member": "META/js_apps/000FFD39/app-widget.pamir/index.bin",
+      "size": 14916,
+      "sha256": "f531b8bf7ed4c49a01f96c0157cfb1367f19853582164451390af2048fb28ec2",
+      "header_kind": "unclassified",
+      "prefix_hex": "01fe0102650e636f6e736f6c65066c6f"
+    },
+    {
+      "member": "META/js_apps/000FFD39/page/square_pamir/secondary-widget.bin",
+      "size": 18125,
+      "sha256": "494ee16cafcd933c8682ee2fa092e3650b41ea2fdc676063c8b3bacaaf89b040",
+      "header_kind": "unclassified",
+      "prefix_hex": "01a50202650e636f6e736f6c65066c6f"
+    },
+    {
+      "member": "META/js_apps/000FFD39/page/square_pamir/app-widget.bin",
+      "size": 14541,
+      "sha256": "7f7facdb04108f4319c7240a08039f9d4e83694c2ed9086eddc1326f67fae0a0",
+      "header_kind": "unclassified",
+      "prefix_hex": "01fa0102650e636f6e736f6c65066c6f"
+    },
+    {
+      "member": "META/js_apps/000FFD39/page/square_pamir/explain.bin",
+      "size": 8900,
+      "sha256": "a445c67373a706d50c64a16898a5958461248cd5a756de5150161392ebf98d62",
+      "header_kind": "unclassified",
+      "prefix_hex": "01cc0102650e636f6e736f6c65066c6f"
+    },
+    {
+      "member": "META/js_apps/000FFD39/page/square_pamir/index.bin",
+      "size": 39781,
+      "sha256": "393f58c997d84cf88da31ac54f1e3ed48a91e851b5df3fad7dd0f020ed7fc6a3",
+      "header_kind": "unclassified",
+      "prefix_hex": "01890402650e636f6e736f6c65066c6f"
+    },
+    {
+      "member": "META/js_apps/000FFD39/secondary-widget.pamir/index.bin",
+      "size": 18402,
+      "sha256": "932b32c0e0e6f6b9f7ef972cf2d1bc758c166eefaba20d36b0d39df0fe461829",
+      "header_kind": "unclassified",
+      "prefix_hex": "019e0202650e636f6e736f6c65066c6f"
+    },
+    {
+      "member": "META/js_apps/00003A97/app.bin",
+      "size": 1585,
+      "sha256": "1deb37e7b6406432ebad30ba7bb11039704ba8fec6d93148605511eae1e064b7",
+      "header_kind": "unclassified",
+      "prefix_hex": "012c02650e636f6e736f6c65066c6f67"
+    },
+    {
+      "member": "META/js_apps/00003A97/page/390x450_s_hannover/index.bin",
+      "size": 13073,
+      "sha256": "08169d2280f8a7bb3db78a0209d6163000e4e6cd652575ad3a129ecd123dbfa9",
+      "header_kind": "unclassified",
+      "prefix_hex": "01cd0102650e636f6e736f6c65066c6f"
+    },
+    {
+      "member": "META/js_apps/000F5149/app.bin",
+      "size": 1559,
+      "sha256": "f3e45621a4f27007dc4e1b0eee692ab2ae71b1f7790caf2e08d11e91b97aa9bf",
+      "header_kind": "unclassified",
+      "prefix_hex": "013102650e636f6e736f6c65066c6f67"
+    },
+    {
+      "member": "META/js_apps/000F5149/page/index.bin",
+      "size": 1279,
+      "sha256": "f8cb5c6d393b4c638d6388f1ed23de4e7f2a176817521f7c4c2b9b52d687e37c",
+      "header_kind": "unclassified",
+      "prefix_hex": "012d02650e636f6e736f6c65066c6f67"
+    },
+    {
+      "member": "META/js_apps/00100446/app.bin",
+      "size": 1307,
+      "sha256": "51b40c0d5e7840471d7f4d1111151c0638c1ba0821e1d820b787f2458547eaff",
+      "header_kind": "unclassified",
+      "prefix_hex": "012202650e636f6e736f6c65066c6f67"
+    },
+    {
+      "member": "META/js_apps/00100446/app-widget/index.bin",
+      "size": 15703,
+      "sha256": "b20a7a235623a72f4135dccd577c1444e4368ca7c1b19c8afda3c33cb9647c47",
+      "header_kind": "unclassified",
+      "prefix_hex": "01c10202650e636f6e736f6c65066c6f"
+    },
+    {
+      "member": "META/js_apps/00100446/page/wclk_addCityList.bin",
+      "size": 13785,
+      "sha256": "9801ae862a9cbe62824aff3fba61eff0a3a9d4f6d4fdd463fe6473de6981726e",
+      "header_kind": "unclassified",
+      "prefix_hex": "01b90202650e636f6e736f6c65066c6f"
+    },
+    {
+      "member": "META/js_apps/00100446/page/wclk_daylight_remind.bin",
+      "size": 3261,
+      "sha256": "1b05884d8ab864bdd84bcd16991fe5323fce2fcc0cb393b873d6a741a20840da",
+      "header_kind": "unclassified",
+      "prefix_hex": "015d02650e636f6e736f6c65066c6f67"
+    },
+    {
+      "member": "META/js_apps/00100446/page/wclk_showLayer.bin",
+      "size": 22113,
+      "sha256": "f184bbaccb5457a0b5821eca7c3bf8c2221f3b22108b2153a1551a0b3a9dee07",
+      "header_kind": "unclassified",
+      "prefix_hex": "01b40302650e636f6e736f6c65066c6f"
+    },
+    {
+      "member": "META/js_apps/000F653B/app.bin",
+      "size": 1792,
+      "sha256": "2b8a7eaaa78697a7256b565a165a3dd6647289c88fb537311b9c1ef8fcf111c3",
+      "header_kind": "unclassified",
+      "prefix_hex": "013d02650e636f6e736f6c65066c6f67"
+    },
+    {
+      "member": "META/js_apps/000F653B/page/meditation/index.bin",
+      "size": 13132,
+      "sha256": "d2946cd1e513caa764bffd3e45d02bfe410606c011f8cc58d59d924f57244094",
+      "header_kind": "unclassified",
+      "prefix_hex": "01aa0202650e636f6e736f6c65066c6f"
+    },
+    {
+      "member": "META/js_apps/000F653B/page/settings/index.bin",
+      "size": 6312,
+      "sha256": "6d2c863d18749b3e9655bc56cf30715accef4c989e003d726d2784065ee62c71",
+      "header_kind": "unclassified",
+      "prefix_hex": "01b40102650e636f6e736f6c65066c6f"
+    },
+    {
+      "member": "META/js_apps/000F653B/page/finish/index.bin",
+      "size": 42932,
+      "sha256": "c96b13a2ca32cb876f091e8cbaf26fa2fe7ed290e082e33e8f95f15b1607bfc7",
+      "header_kind": "unclassified",
+      "prefix_hex": "01ef0402650e636f6e736f6c65066c6f"
+    },
+    {
+      "member": "META/js_apps/000F653B/page/index/index.bin",
+      "size": 7082,
+      "sha256": "3362d2ca6205ec7fc797a52982f366158906d6b6327d27accc44e3dcb42d5ce3",
+      "header_kind": "unclassified",
+      "prefix_hex": "01ba0102650e636f6e736f6c65066c6f"
+    },
+    {
+      "member": "META/js_apps/000FFD3C/app.bin",
+      "size": 9168,
+      "sha256": "49141532dab5d06c3aee350da918acaf06667be75d542ae07ce924885849ab9a",
+      "header_kind": "unclassified",
+      "prefix_hex": "01ac0102650e636f6e736f6c65066c6f"
+    },
+    {
+      "member": "META/js_apps/000FFD3C/page/gt/home/index.page.bin",
+      "size": 45828,
+      "sha256": "dc6d6edaa0f02083a2ab47a4475b00c4693f804fba9635521dc7f087b7dafd91",
+      "header_kind": "unclassified",
+      "prefix_hex": "01d50402650e636f6e736f6c65066c6f"
+    },
+    {
+      "member": "META/js_apps/000FFD3C/page/gt/checkinfeedback/checkinfeedback.page.bin",
+      "size": 6542,
+      "sha256": "6c19ca5c9ac94eb8ecab2b2c197634841914e2e4f29c396a038728ab5b54982a",
+      "header_kind": "unclassified",
+      "prefix_hex": "019d0102650e636f6e736f6c65066c6f"
+    },
+    {
+      "member": "META/js_apps/000FFD3C/page/gt/checkinjetlag/checkinjetlag.page.bin",
+      "size": 8012,
+      "sha256": "72a39ea134cafa7cb7ccc02fb859dcb623187467340f935a7c48d655fae5f0a4",
+      "header_kind": "unclassified",
+      "prefix_hex": "01ab0102650e636f6e736f6c65066c6f"
+    },
+    {
+      "member": "META/js_apps/000FFD3C/page/gt/setting/setting.page.bin",
+      "size": 10106,
+      "sha256": "f2895f05d6f1a254a46bf8fb34c0ebe20ea0e9fa12d82327313762937d4b7eb5",
+      "header_kind": "unclassified",
+      "prefix_hex": "01d10102650e636f6e736f6c65066c6f"
+    },
+    {
+      "member": "META/js_apps/000FFD3C/page/gt/remind/remind.page.bin",
+      "size": 7244,
+      "sha256": "82a6cd903780c3c384920aa8f125d00624c0e29d858603ecb219622cbb246017",
+      "header_kind": "unclassified",
+      "prefix_hex": "01be0102650e636f6e736f6c65066c6f"
+    },
+    {
+      "member": "META/js_apps/000FFD3C/page/gt/checkinsleep/checkinsleep.page.bin",
+      "size": 7754,
+      "sha256": "fb4c3bac1aca9577657b3384e010b8bfeef5d1e45d2d484264b7804157401635",
+      "header_kind": "unclassified",
+      "prefix_hex": "01a80102650e636f6e736f6c65066c6f"
+    },
+    {
+      "member": "META/js_apps/000FFD3C/page/gt/checkinfatigue/checkinfatigue.page.bin",
+      "size": 8135,
+      "sha256": "4de55eb44711ddc30cb36cec786c9ae4100e0c56251a1eaeb4155d8589b46234",
+      "header_kind": "unclassified",
+      "prefix_hex": "01b00102650e636f6e736f6c65066c6f"
+    },
+    {
+      "member": "META/js_apps/000FFD3C/app-service/index.bin",
+      "size": 2495,
+      "sha256": "f2ff2bd55f07a4dee96b70dd151a7c7754dcdc78053964cdfb83010165fb0f7f",
+      "header_kind": "unclassified",
+      "prefix_hex": "013f02650e636f6e736f6c65066c6f67"
+    },
+    {
+      "member": "META/extfw/00151501_005c0913_0000009b_tp.bin",
+      "size": 49152,
+      "sha256": "b337b46fc49bb76021dbc3f62701c119bc6193fada71159110f2ff9b3a6458f7",
+      "header_kind": "unclassified",
+      "prefix_hex": "480042a84400cdab4400214300000000"
+    },
+    {
+      "member": "META/extfw/fw_gps.bin",
+      "size": 1260868,
+      "sha256": "7221d15903058ff050fceb3790b82c571c71358d4c02edfad24d7b26b8ebc41f",
+      "header_kind": "unclassified",
+      "prefix_hex": "414733333532425f56332e312e305f32"
+    },
+    {
+      "member": "META/extfw/recovery_sign.bin",
+      "size": 385346,
+      "sha256": "2af5c1c1a1283c0b1d558c7f4df3b77abfbd4a429c1141ec67c751adf904f412",
+      "header_kind": "HDRZ",
+      "prefix_hex": "6f00c0224844525a06b40e002c02d080"
+    },
+    {
+      "member": "META/extfw/fct_test_sign.bin",
+      "size": 3752908,
+      "sha256": "fdeaa1d287caa950581a35680762813ea2a3cb4caab444f17d1286c3b52490d3",
+      "header_kind": "HDRZ",
+      "prefix_hex": "6f00c0224844525a06b40e002c020070"
+    },
+    {
+      "member": "META/extfw/emoji_metadata.bin",
+      "size": 71384,
+      "sha256": "626c08b9ac460d86097c67b97cbe85493458212643fc76f1042496013fd59b42",
+      "header_kind": "unclassified",
+      "prefix_hex": "4d455441de0e000030000000d8160100"
+    },
+    {
+      "member": "META/extfw/sensorhub@mhs003_sign.bin",
+      "size": 626716,
+      "sha256": "06f07541e8bb22b6118f081e791c3a4e40cbff2decd8ee478a7e82df826e9d0f",
+      "header_kind": "LCPU",
+      "prefix_hex": "4c4350550020f6802020f68048454144"
+    },
+    {
+      "member": "META/extfw/algo_it_network.bin",
+      "size": 154084,
+      "sha256": "59c3459a7f3d1a38eddb1c1ee8aa7b962f79667025650c32eb3d6be2dd54eee5",
+      "header_kind": "unclassified",
+      "prefix_hex": "4954322e383030000506200301010120"
+    },
+    {
+      "member": "META/extfw/00161501_005B0913_0000009b_tp.bin",
+      "size": 49152,
+      "sha256": "ed7ec863c7842e6df98c44b71440423f32603e0f244ad16ef4e270dfa1b61e30",
+      "header_kind": "unclassified",
+      "prefix_hex": "480042a84400cdab4400214300000000"
+    },
+    {
+      "member": "META/extfw/pamir/rtl8763_pack.bin",
+      "size": 1508342,
+      "sha256": "47c41063ca2eaa1bac730d5ca1b7f5338c43152d83aa173ca5038956b36708c4",
+      "header_kind": "GM",
+      "prefix_hex": "474dbcdb160000000000000000000000"
+    },
+    {
+      "member": "META/ramdump/ramdump_pamir_64m@mhs003.bin",
+      "size": 276782,
+      "sha256": "57f20d6e35c71108d3853fa96acf4e8467ddff1f517588e9dedbc37923363d86",
+      "header_kind": "unclassified",
+      "prefix_hex": "17850a00130505782320b5016f00c022"
+    }
+  ],
+  "javascript_members": [
+    {
+      "member": "META/js_watchfaces/00002848/app.js",
+      "size": 520,
+      "sha256": "5ff8da4fe89e7d936d58255ad36e25d342958d8b7cb11d9a5f1c3cb14ab8ce50"
+    },
+    {
+      "member": "META/js_watchfaces/00002848/watchface/index.js",
+      "size": 6538,
+      "sha256": "e8c671a92eec95fa264b1400d0bf4755ee6511a128c272b3b24204588a100888"
+    },
+    {
+      "member": "META/js_watchfaces/00002844/app.js",
+      "size": 520,
+      "sha256": "5ff8da4fe89e7d936d58255ad36e25d342958d8b7cb11d9a5f1c3cb14ab8ce50"
+    },
+    {
+      "member": "META/js_watchfaces/00002844/watchface/index.js",
+      "size": 3866,
+      "sha256": "769ae3786c058c8e6527298c47f4126720d695959bebcd8a437b4bc6bcf0fa6c"
+    },
+    {
+      "member": "META/js_watchfaces/00002847/app.js",
+      "size": 520,
+      "sha256": "5ff8da4fe89e7d936d58255ad36e25d342958d8b7cb11d9a5f1c3cb14ab8ce50"
+    },
+    {
+      "member": "META/js_watchfaces/00002847/watchface/index.js",
+      "size": 9044,
+      "sha256": "4991a3d53764e178643df7090977ec9a0b3fab6ff691dac384f322d50d79b989"
+    },
+    {
+      "member": "META/js_watchfaces/00002846/app.js",
+      "size": 520,
+      "sha256": "5ff8da4fe89e7d936d58255ad36e25d342958d8b7cb11d9a5f1c3cb14ab8ce50"
+    },
+    {
+      "member": "META/js_watchfaces/00002846/watchface/index.js",
+      "size": 3454,
+      "sha256": "4e63fd9f4781c186e90cf89fe17fc6ff4e1a0c2440230cf46dc2106f33045e3e"
+    },
+    {
+      "member": "META/js_watchfaces/00002845/app.js",
+      "size": 520,
+      "sha256": "5ff8da4fe89e7d936d58255ad36e25d342958d8b7cb11d9a5f1c3cb14ab8ce50"
+    },
+    {
+      "member": "META/js_watchfaces/00002845/watchface/index.js",
+      "size": 9624,
+      "sha256": "81af44e3d6add93a86928e45f029d292090d9af7e7ccc31a2599f5987e5445ac"
+    },
+    {
+      "member": "META/js_apps/framework.js",
+      "size": 129578,
+      "sha256": "015e05053b2b4dc516e31398711e2c3fffb6db57d6a2080638d42fc8d1e5e7f6"
+    }
+  ],
+  "nested_archives": [
+    {
+      "member": "META/resources/fonts/ar-EG.zip",
+      "size": 164210,
+      "sha256": "2ef2a9de25093f25eba7afd523f23c79da8c958b2e7fa16488234d2848bf506e"
+    },
+    {
+      "member": "META/resources/fonts/it.zip",
+      "size": 21127,
+      "sha256": "1ce60af9fe82551ecf74c49e65af4e948281bccf837a97e7fa6f5066bd7a912a"
+    },
+    {
+      "member": "META/resources/fonts/nl.zip",
+      "size": 21217,
+      "sha256": "8d35ba3bf48c1e2b6799b294e27283081c945c18142b47ddb7cba2f169921fec"
+    },
+    {
+      "member": "META/resources/fonts/sr.zip",
+      "size": 25446,
+      "sha256": "af1110f6a33a3f9766e22c07362fc7eaac8badb79fc467581de1f759167c4713"
+    },
+    {
+      "member": "META/resources/fonts/vi.zip",
+      "size": 28401,
+      "sha256": "b5da9e799041fbff10d21407f1bf9c369a889b5c300dc0be119be8eaae1f9cec"
+    },
+    {
+      "member": "META/resources/fonts/el.zip",
+      "size": 27661,
+      "sha256": "76042283518493b4e94c0111976b7a8c0f110fcd1e9ba456e1e749cb1779ee46"
+    },
+    {
+      "member": "META/resources/fonts/nb-NO.zip",
+      "size": 21880,
+      "sha256": "a088888cc2d90207fc370c454680bf72d847f693a8c6a930821871fd1ae4e90b"
+    },
+    {
+      "member": "META/resources/fonts/th.zip",
+      "size": 29078,
+      "sha256": "afda57b9b306a1733589a40678b85c58d013c28d4b63cce15defd14e5920fe4f"
+    },
+    {
+      "member": "META/resources/fonts/hu-HU.zip",
+      "size": 22298,
+      "sha256": "1dec0f841bfd9551ca785c7e0c880420b4e90e62b7aac705ae6c4a564afde2f7"
+    },
+    {
+      "member": "META/resources/fonts/tr.zip",
+      "size": 21926,
+      "sha256": "bf35fbbcf850f89ff7ebccda962c2d2af9edb511cc5463a7f4e4543d3fadbafb"
+    },
+    {
+      "member": "META/resources/fonts/ko.zip",
+      "size": 80229,
+      "sha256": "05297dc32e2a04392a13e825363da193aaed70a9233a71d9cf4afc2691eb77b0"
+    },
+    {
+      "member": "META/resources/fonts/ro.zip",
+      "size": 22112,
+      "sha256": "eaece3a8891cd0b0f8436145065056b3a68208bf320bfb0269ab0817700809a0"
+    },
+    {
+      "member": "META/resources/fonts/ca-ES.zip",
+      "size": 22064,
+      "sha256": "069a99533e3533405ab55ce75d1fb22ef2f94928cc487254f0d4852f17108aef"
+    },
+    {
+      "member": "META/resources/fonts/pl.zip",
+      "size": 22002,
+      "sha256": "93b51426793aa3cc890bf1064694c75123ec6c6b0721aaad60003eccc085d3f3"
+    },
+    {
+      "member": "META/resources/fonts/fi.zip",
+      "size": 21232,
+      "sha256": "616830dbc2d916c5b642652f87ab86e906de97ded4c60ad8a303e3bb0d27d24f"
+    },
+    {
+      "member": "META/resources/fonts/sv-SE.zip",
+      "size": 21359,
+      "sha256": "de39c2ac07cba1a9ea102667236ac027a377c1e553f8ed0716d350ee76a82f23"
+    },
+    {
+      "member": "META/resources/fonts/pt-BR.zip",
+      "size": 22203,
+      "sha256": "bfefd17d676a40c251655f9f1e7b257d3b8432ea5b48522329a6d318dae3e45c"
+    },
+    {
+      "member": "META/resources/fonts/da-DK.zip",
+      "size": 21998,
+      "sha256": "cf50a1f0c36274c931d814f68a951fd3eead0872e86f0fd127c9ae1ef996d4db"
+    },
+    {
+      "member": "META/resources/fonts/zh-CN.zip",
+      "size": 204420,
+      "sha256": "dfd9e3432d7beee88e719fb89f7437209c07c828b45c0e2034c19ed626a19a31"
+    },
+    {
+      "member": "META/resources/fonts/en-US.zip",
+      "size": 21409,
+      "sha256": "95f5ce215aab7cedb38dcb042e5acde0f7797230f1f50961863acac6ef39208e"
+    },
+    {
+      "member": "META/resources/fonts/de.zip",
+      "size": 22011,
+      "sha256": "8f5a3f63b508f18df0966a703f088eae92a0d6f9f9c85bd949423f33c360db39"
+    },
+    {
+      "member": "META/resources/fonts/ru.zip",
+      "size": 26401,
+      "sha256": "24bbd978ea362b7c496546dfb4de928cef76b9b8085907e715da5302f8f377a7"
+    },
+    {
+      "member": "META/resources/fonts/id.zip",
+      "size": 21055,
+      "sha256": "e88eb602d56b851892625c035ee5643fca6962a09241a92ba1586acd667669f6"
+    },
+    {
+      "member": "META/resources/fonts/he.zip",
+      "size": 18778,
+      "sha256": "9b128d01fd5059e93ae93ed4fde408059be4b9e006dffc77611dfc0cf90c561b"
+    },
+    {
+      "member": "META/resources/fonts/es.zip",
+      "size": 22007,
+      "sha256": "20716fd7d9efe71783c55366357e9408b0ceaca081dfdf07fb1603796079e0db"
+    },
+    {
+      "member": "META/resources/fonts/ja.zip",
+      "size": 177700,
+      "sha256": "c38279a05553ef50fa510ac65346ea20883217d4dfe98edc8c9f1b3dc6cc5853"
+    },
+    {
+      "member": "META/resources/fonts/ms.zip",
+      "size": 20990,
+      "sha256": "d938a34971dfbfda7eefd590363f98da8b7c3641de1169eeb71e9682a8469ad4"
+    },
+    {
+      "member": "META/resources/fonts/fr.zip",
+      "size": 22173,
+      "sha256": "633993a4be2302191e0c4000051887ac1f4dd67814aa0935b75f3fca6e22d3ad"
+    },
+    {
+      "member": "META/resources/fonts/cs.zip",
+      "size": 22260,
+      "sha256": "55df29392aab37b75f79c5b09386615a529f10504a82f31693a84f77aceb2546"
+    },
+    {
+      "member": "META/resources/fonts/uk.zip",
+      "size": 26342,
+      "sha256": "71fe5c95f646530fec5c04685762b9e46bada9e93f7d1ec3fa165efb1853c3e8"
+    },
+    {
+      "member": "META/resources/fonts/zh-TW.zip",
+      "size": 230756,
+      "sha256": "46381af56c654146e4a3c3a506f389ac4367d4d88e02657f188033e5a6153c32"
+    },
+    {
+      "member": "META/resources/locale/locale.zip",
+      "size": 2471096,
+      "sha256": "3f72f48c0a218b3689486112944d206c6c8516b29f84a7fb0f1225f32cbf8e43"
+    }
+  ]
+}

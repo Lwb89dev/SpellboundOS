@@ -3,6 +3,12 @@
   "size": 1508342,
   "prefix_hex": "474dbcdb",
   "word_at_0x04": 22,
+  "declared_end_word_at_0x02": 1498044,
+  "bitmap_at_0x28": 31867886,
+  "bitmap_popcount": 15,
+  "candidate_payload_end": 1498044,
+  "payload_lengths_match_declared_end": true,
+  "trailing_bytes": 10298,
   "word_at_0x24": 184680448,
   "record_start": 72,
   "candidate_records": [
@@ -10,91 +16,121 @@
       "file_offset": 72,
       "word_0": 33562624,
       "word_1": 2524,
-      "word_2": 0
+      "word_2": 0,
+      "candidate_payload_offset": 252,
+      "candidate_payload_sha256": "44673cffb12c706c514f94f2766ba95f94a4f6f4020ef9625c1fe2cf58b23f2b"
     },
     {
       "file_offset": 84,
       "word_0": 33898496,
       "word_1": 1536,
-      "word_2": 0
+      "word_2": 0,
+      "candidate_payload_offset": 2776,
+      "candidate_payload_sha256": "d426761d09c78ec7328288f5cd687eb6e8450c24fff41bfa9de20d8e9ab8e60f"
     },
     {
       "file_offset": 96,
       "word_0": 33902592,
       "word_1": 3584,
-      "word_2": 0
+      "word_2": 0,
+      "candidate_payload_offset": 4312,
+      "candidate_payload_sha256": "199db19868b1cb4577e713eb42bf7178793fc0657df97dba912f714a89f9e145"
     },
     {
       "file_offset": 108,
       "word_0": 34185216,
       "word_1": 646812,
-      "word_2": 0
+      "word_2": 0,
+      "candidate_payload_offset": 7896,
+      "candidate_payload_sha256": "98dc259a673456f34eebe02e3b5a4bf09226cbe99b5598cccdd2b2e13e9dae42"
     },
     {
       "file_offset": 120,
       "word_0": 35024896,
       "word_1": 41600,
-      "word_2": 0
+      "word_2": 0,
+      "candidate_payload_offset": 654708,
+      "candidate_payload_sha256": "ca77927fd0ed72733b9836c1fcb270291bc4071198d34bad9dad623ace026fa0"
     },
     {
       "file_offset": 132,
       "word_0": 35155968,
       "word_1": 183688,
-      "word_2": 0
+      "word_2": 0,
+      "candidate_payload_offset": 696308,
+      "candidate_payload_sha256": "e9e448ad0cdbdb5946f75170daf29b84fdd7cc8cd649a330ed5559006382351b"
     },
     {
       "file_offset": 144,
       "word_0": 35549184,
       "word_1": 7200,
-      "word_2": 0
+      "word_2": 0,
+      "candidate_payload_offset": 879996,
+      "candidate_payload_sha256": "944ef4e4d88204cc1015076b13d563f3bbdeaf116d6368f2700809754fde998f"
     },
     {
       "file_offset": 156,
       "word_0": 35590144,
       "word_1": 8704,
-      "word_2": 0
+      "word_2": 0,
+      "candidate_payload_offset": 887196,
+      "candidate_payload_sha256": "4388bdab980da0a38a4fb17c67fdde856db661c620c88d45cec465ea8f4266bd"
     },
     {
       "file_offset": 168,
       "word_0": 33570816,
       "word_1": 7556,
-      "word_2": 0
+      "word_2": 0,
+      "candidate_payload_offset": 895900,
+      "candidate_payload_sha256": "8f6d54b09bfafd01231c07d7083aaf43defcea9c538d25a0285c907f9af653cc"
     },
     {
       "file_offset": 180,
       "word_0": 34078720,
       "word_1": 70484,
-      "word_2": 0
+      "word_2": 0,
+      "candidate_payload_offset": 903456,
+      "candidate_payload_sha256": "b2924fddfe2df1ef35e655f8aab61d7deaa026c11b18976fcc91975ff8b9f980"
     },
     {
       "file_offset": 192,
       "word_0": 33910784,
       "word_1": 116476,
-      "word_2": 0
+      "word_2": 0,
+      "candidate_payload_offset": 973940,
+      "candidate_payload_sha256": "aef0bb8fa39a649fde5a9184362c62c28a977549e52ba4294f509c85fe4e8484"
     },
     {
       "file_offset": 204,
       "word_0": 33579008,
       "word_1": 30492,
-      "word_2": 0
+      "word_2": 0,
+      "candidate_payload_offset": 1090416,
+      "candidate_payload_sha256": "d722d5300a12893325043bf95c7f75bd83c5e865d80767929bfb84e69dc27bf8"
     },
     {
       "file_offset": 216,
       "word_0": 33611776,
       "word_1": 28336,
-      "word_2": 0
+      "word_2": 0,
+      "candidate_payload_offset": 1120908,
+      "candidate_payload_sha256": "51d5cabc0044f5fa0cbd70bd08e073ca328e7bc4787568e318031f09d9193959"
     },
     {
       "file_offset": 228,
       "word_0": 33640448,
       "word_1": 256500,
-      "word_2": 0
+      "word_2": 0,
+      "candidate_payload_offset": 1149244,
+      "candidate_payload_sha256": "cc717f44c76e5daabfa6fb3d58d6baf468ddb15d59d9c9e8bdbca8b700892fba"
     },
     {
       "file_offset": 240,
       "word_0": 35655680,
       "word_1": 92300,
-      "word_2": 0
+      "word_2": 0,
+      "candidate_payload_offset": 1405744,
+      "candidate_payload_sha256": "09f57462e41d99a3f082520bdc0e447af93d9d1f72b831b6716688b4620fd33d"
     }
   ],
   "first_nonmatching_offset": 252,

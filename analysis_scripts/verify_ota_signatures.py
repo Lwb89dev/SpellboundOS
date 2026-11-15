@@ -55,7 +55,14 @@ def analyze(archive_path):
                             'sha256': hashlib.sha256(data).hexdigest(),
                             'signature_valid': valid,
                             'modified_payload_rejected': not verify(changed, public_key)})
-    return {'archive_sha256': archive_hash, 'curve': 'secp256k1',
+    with open(archive_path, 'rb') as source:
+        archive_data = source.read()
+    modified_archive = bytearray(archive_data)
+    modified_archive[len(modified_archive) // 2] ^= 1
+    archive_signature = {'trailer_marker_hex': archive_data[-112:-104].hex(),
+                         'signature_valid': verify(archive_data, public_key),
+                         'modified_payload_rejected': not verify(modified_archive, public_key)}
+    return {'archive_sha256': archive_hash, 'archive_signature': archive_signature, 'curve': 'secp256k1',
             'key_offset_in_bootloader': hex(KEY_OFFSET),
             'public_key_xy_hex': key.hex(), 'members': results}
 
@@ -70,7 +77,7 @@ def main():
         print(f'Cannot analyze archive: {error}', file=sys.stderr)
         return 2
     print(json.dumps(result, indent=2))
-    return 0 if all(x['signature_valid'] and x['modified_payload_rejected']
+    return 0 if result['archive_signature']['signature_valid'] and result['archive_signature']['modified_payload_rejected'] and all(x['signature_valid'] and x['modified_payload_rejected']
                     for x in result['members']) else 1
 
 

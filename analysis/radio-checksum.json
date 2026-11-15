@@ -1,0 +1,8 @@
+{
+  "image_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "table_file_offset": 9569960,
+  "table_candidate_address": "0x70a806a8",
+  "polynomial_reflected": "0xa001",
+  "all_256_entries_match": true,
+  "seed_zero_check_123456789": "0xbb3d"
+}

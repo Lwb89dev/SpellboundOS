@@ -1,5 +1,10 @@
 {
   "archive_sha256": "ee06079610eaf9b4ffbe35c7a6ddc604ee2aba00c3a66d85101ed2a6556d6df4",
+  "archive_signature": {
+    "trailer_marker_hex": "484d5a505349474e",
+    "signature_valid": true,
+    "modified_payload_rejected": true
+  },
   "curve": "secp256k1",
   "key_offset_in_bootloader": "0x37094",
   "public_key_xy_hex": "4c5ee3be1fc08452f8b7064cbec0bd13b65a9fced76acf9d87c7fba91add3dd585356d12dbb8278e4b3c8b61c40b87c62ab613c1f0f69f8c21b90bde5856687e",

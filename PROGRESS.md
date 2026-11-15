@@ -99,6 +99,29 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    The existing main-firmware decompilation shows an initial 0x48-byte read
    and a 0x200000 size bound, but custom instructions still obscure the parser.
 
+## 2026-11-15 — AndeStar profile, radio transfer and signed archive
+
+1. Re-imported selected functions with Ghidra's AndeStar v5 profile. Previously
+   missing branch and bitfield semantics now produce coherent control flow.
+   Recorded comparisons in [analysis/INSTRUCTION_PROFILE.md](analysis/INSTRUCTION_PROFILE.md).
+2. Followed the radio package caller and table reader: recovered the bitmap
+   count, 12-byte record reads, address and length fields, per-image 512-byte
+   prefix skips and block-transfer paths. Carved 15 candidate images locally.
+3. Corrected a checksum routine's inferred function signature and matched all
+   256 lookup-table entries to reflected polynomial 0xA001. Added a separate
+   bitwise checksum model and known-value/streaming tests.
+4. Verified the OTA archive's own trailing ECDSA signature against the embedded
+   public key, including rejection after a changed archive byte. Documented
+   the HMZPSIGN trailer and its recovery-code reference in
+   [analysis/OTA_ARCHIVE_SIGNATURE.md](analysis/OTA_ARCHIVE_SIGNATURE.md).
+5. Inventoried all top-level OTA members by extension and hashed each binary,
+   JavaScript member and nested archive. Added reproducible scripts for bulk
+   analysis and local function exports. The archive includes resources,
+   bytecode-like app containers, GNSS/radio images and other unclassified data;
+   the native exports do not cover all of these.
+6. All eleven Python tests pass. The new radio range inventory and archive
+   signature checks were regenerated from local original bytes.
+
 ## Next work
 
 - Map the signed image formats and the loaders for the sensor hub and radio;
