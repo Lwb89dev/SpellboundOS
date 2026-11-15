@@ -291,6 +291,32 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    [analysis/QUICKJS_ENGINE.md](analysis/QUICKJS_ENGINE.md) and
    [analysis/quickjs-fingerprint.json](analysis/quickjs-fingerprint.json).
 
+## 2026-11-15 — complete app bytecode disassembly and the app sandbox
+
+1. Wrote an independent Python reader and disassembler for the QuickJS
+   2020-07-05 bytecode format. It takes builtin atoms and opcode sizes/formats
+   from the firmware's own tables, and uses upstream opcode names only after
+   the header's table is found byte-for-byte in the firmware.
+2. All 30 app members (6 apps) parse completely with no unread bytes: 886
+   functions and 75,570 instructions, all passing structural validation
+   (exact tiling, branch targets on boundaries, in-range indices). The
+   2020-01-19 and 2021-03-27 descriptor tables fail on all 30 as a negative
+   control.
+3. Recovered the runtime's `ProxySandbox` from `framework.js`: the 16-key app
+   scope object, global aliases, hidden native names, the `Symbol.unscopables`
+   allow-list (with `Promise` deliberately excluded), the always-true `has`
+   trap and a global lockdown routine. Classified all 72 free variables the
+   bytecode reads against it, and listed the 16 `@zos/` module specifiers the
+   apps load. Their resolver is in neither `framework.js` nor the main image.
+4. Added `analysis_scripts/qjs_bytecode.py` and a sandbox extractor in
+   `app_model.py`, with synthetic tests, the report
+   [analysis/APP_BYTECODE.md](analysis/APP_BYTECODE.md), an updated
+   [analysis/APP_MODEL.md](analysis/APP_MODEL.md), and
+   [analysis/app-bytecode-summary.json](analysis/app-bytecode-summary.json).
+   Full listings stay under ignored `firmware/`. All 49 Python tests pass.
+   Running the upstream C reader on the vendor bytecode was not permitted in
+   this session, so there is no C-side cross-check.
+
 ## Next work
 
 - Map the signed image formats and the loaders for the sensor hub and radio;

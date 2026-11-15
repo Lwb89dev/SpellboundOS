@@ -44,6 +44,45 @@ exports identifier `e` as an ordinary function parameter, so a reliable static
 export list cannot be extracted by scanning assignments. Only the entry points
 the apps actually use are reported.
 
+## App sandbox (`ProxySandbox`)
+
+The compiled mini-program apps (see [APP_BYTECODE.md](APP_BYTECODE.md)) do not
+see the real global object. `framework.js` builds a per-app scope object and
+wraps it in a `Proxy` that the app code reaches through a `with` scope. The
+tool recovers the lists this proxy uses, by content, into the `sandbox` section
+of [app-model.json](app-model.json):
+
+- **App scope object** (16 keys), checked after `Symbol.unscopables` and the
+  global aliases, and before the sandbox object and the real global:
+  `__$$R$$__` (module loader), `__$$app$$__`, `__$$module$$__`, `App`, `Page`,
+  `AppEvent`, `SecondaryWidget`, `AppWidget`, `WatchFace`, `WatchWidget`,
+  `AppService`, `DataWidget`, `getApp`, `getCurrentPage`, `getCurrentModule`,
+  `getAppContext`.
+- **Global aliases** `globalThis`, `window`, `global`, `self` return the proxy
+  itself, so app code cannot reach the real global through them.
+- **Hidden native names**: `hmUI`, `hmBle`, `hmApp`, `hmSetting`, `hmSensor`,
+  `hmFS`, `hmMedia`, `timer`, `DeviceRuntimeCore`, `print`, `__loadScript`,
+  `__$$hmAppManager$$__`, `eval`. Reads of these names are served from the
+  sandbox object only, never from the real global, and they are removed from
+  the proxy's `ownKeys`.
+- **`Symbol.unscopables`**: 28 builtins marked `true` (including `Array`,
+  `Object`, `Math`, `Reflect`, `Proxy`, `Map`, `Set`, `Buffer`, `console` and
+  the timer functions) bypass the `with` scope and resolve directly. `Promise`
+  is listed as `false`, so it is deliberately routed through the proxy.
+- **Traps**: `has` always returns true, so every free name is looked up through
+  the proxy and an unknown name reads as `undefined` instead of throwing.
+  `set` writes go to the sandbox object, so implicit globals stay private to
+  the app. Other reads fall back to the sandbox object and then to the real
+  global.
+- **Global lockdown**: a separate routine, exposed as `install()`, walks
+  `globalThis` and makes every property non-configurable and non-writable,
+  except `Promise` and `globalThis`. It also deep-freezes object values, except
+  those of the hidden native names. Whether and when the runtime calls
+  `install()` was not traced.
+
+A host that runs these apps unmodified must reproduce this lookup order and
+these semantics, not only provide the named objects.
+
 ## Lifecycle hooks
 
 The `App`/`WatchFace` objects define these hooks (vendor spelling preserved,

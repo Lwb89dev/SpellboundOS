@@ -114,11 +114,13 @@ Four tests cover mixed narrow/wide atoms, truncated and overflowing length
 encodings, initial function-field consistency and bytecode bounds, LIST
 type-length handling, and a section extending past EOF.
 
-A next bytecode pass should extend the bounded parser through constant-pool
-objects and validate the exact shipped runtime's opcode definitions before
-disassembling, while preserving unresolved vendor changes.
+The bytecode task is now done: the embedded engine is QuickJS 2020-07-05
+([QUICKJS_ENGINE.md](QUICKJS_ENGINE.md)). With that release's format, all 30
+members are read and disassembled completely
+([APP_BYTECODE.md](APP_BYTECODE.md)). The 2020-01-19 reader crash described
+above came from that release's different opcode numbering.
 A separate GAPP pass should follow the main firmware's APP/LIST/DAMR readers
-before assigning semantics to those sections. Both tasks remain open.
+before assigning semantics to those sections. That task remains open.
 
 ## Follow-up: initial function metadata and bytecode ranges
 

@@ -34,5 +34,77 @@
     "HmLogger",
     "WatchFace",
     "WidgetFactory"
-  ]
+  ],
+  "sandbox": {
+    "app_scope_keys": [
+      "__$$R$$__",
+      "__$$app$$__",
+      "__$$module$$__",
+      "App",
+      "Page",
+      "AppEvent",
+      "SecondaryWidget",
+      "AppWidget",
+      "WatchFace",
+      "WatchWidget",
+      "AppService",
+      "DataWidget",
+      "getApp",
+      "getCurrentPage",
+      "getCurrentModule",
+      "getAppContext"
+    ],
+    "global_aliases": [
+      "globalThis",
+      "window",
+      "global",
+      "self"
+    ],
+    "sandbox_hidden_names": [
+      "hmUI",
+      "hmBle",
+      "hmApp",
+      "hmSetting",
+      "hmSensor",
+      "hmFS",
+      "hmMedia",
+      "timer",
+      "DeviceRuntimeCore",
+      "print",
+      "__loadScript",
+      "__$$hmAppManager$$__",
+      "eval"
+    ],
+    "unscopables": {
+      "Array": true,
+      "Boolean": true,
+      "Buffer": true,
+      "Float32Array": true,
+      "Float64Array": true,
+      "Function": true,
+      "Infinity": true,
+      "Map": true,
+      "Math": true,
+      "NaN": true,
+      "Number": true,
+      "Object": true,
+      "Promise": false,
+      "Proxy": true,
+      "Reflect": true,
+      "Set": true,
+      "String": true,
+      "Symbol": true,
+      "clearImmediate": true,
+      "clearInterval": true,
+      "clearTimeout": true,
+      "console": true,
+      "isNaN": true,
+      "parseFloat": true,
+      "parseInt": true,
+      "setImmediate": true,
+      "setInterval": true,
+      "setTimeout": true,
+      "undefined": true
+    }
+  }
 }
