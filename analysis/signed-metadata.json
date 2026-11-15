@@ -1,0 +1,131 @@
+{
+  "archive": {
+    "body_size_field": 118618375,
+    "body_size_matches_offset": true,
+    "magic": "HMZPSIGN",
+    "metadata_bytes": 48,
+    "metadata_offset": 118618375,
+    "metadata_sha256": "180be32e90173a4349fda320b72812ac2da3dd71e169bb08bc19d130808e3f1a",
+    "product_field": 155,
+    "secondary_size_field": 154568252,
+    "signature_bytes": 64,
+    "signature_offset": 118618423,
+    "size_field_difference": -35949877,
+    "tail_field_hex": "00000000000000000000",
+    "variant_field": 256,
+    "version": "4.6.0.3"
+  },
+  "archive_secondary_size_minus_zip_total": -647,
+  "archive_sha256": "ee06079610eaf9b4ffbe35c7a6ddc604ee2aba00c3a66d85101ed2a6556d6df4",
+  "archive_zip_uncompressed_bytes": 154568899,
+  "members": [
+    {
+      "member": "META/bootloader_sign.bin",
+      "metadata": {
+        "body_size_field": 278274,
+        "body_size_matches_offset": true,
+        "magic": "HMBZSIGN",
+        "metadata_bytes": 48,
+        "metadata_offset": 278274,
+        "metadata_sha256": "36c0e34679cbd86614f9fd85f8046269e43009ac3d0ee12a1d4d4a7b4797ae36",
+        "product_field": 155,
+        "secondary_size_field": 277250,
+        "signature_bytes": 64,
+        "signature_offset": 278322,
+        "size_field_difference": 1024,
+        "tail_field_hex": "00000000000000000000",
+        "variant_field": 256,
+        "version": "2.0.6"
+      },
+      "sha256": "44cd83c0d09864c6101e9825bd3c77d7fac314584d0408b378dd56c2aac5736a",
+      "size": 278386
+    },
+    {
+      "member": "META/firmware_sign.bin",
+      "metadata": {
+        "body_size_field": 13119892,
+        "body_size_matches_offset": true,
+        "build_text_candidate": "2026-09-24 11:54:48",
+        "magic": "HMZPSIGN",
+        "metadata_bytes": 64,
+        "metadata_offset": 13119892,
+        "metadata_sha256": "e24c06edff738752dcee35b1868b8a0aaa894f8e9f37603d5321c7945d5a5e89",
+        "product_field": 155,
+        "secondary_size_field": 13119892,
+        "signature_bytes": 64,
+        "signature_offset": 13119956,
+        "size_field_difference": 0,
+        "tail_field_hex": "323032362d30392d32342031313a35343a343800000000000000",
+        "variant_field": 256,
+        "version": "4.6.0.3"
+      },
+      "sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+      "size": 13120020
+    },
+    {
+      "member": "META/extfw/recovery_sign.bin",
+      "metadata": {
+        "body_size_field": 385234,
+        "body_size_matches_offset": true,
+        "magic": "HMRVYSIG",
+        "metadata_bytes": 48,
+        "metadata_offset": 385234,
+        "metadata_sha256": "aaa8bbb79f3414dae8d73e3c953e1a79f8571c060628fbeae83b76a433ff4076",
+        "product_field": 155,
+        "secondary_size_field": 385234,
+        "signature_bytes": 64,
+        "signature_offset": 385282,
+        "size_field_difference": 0,
+        "tail_field_hex": "00000000000000000000",
+        "variant_field": 256,
+        "version": "2.3.1"
+      },
+      "sha256": "2af5c1c1a1283c0b1d558c7f4df3b77abfbd4a429c1141ec67c751adf904f412",
+      "size": 385346
+    },
+    {
+      "member": "META/extfw/fct_test_sign.bin",
+      "metadata": {
+        "body_size_field": 3752780,
+        "body_size_matches_offset": true,
+        "build_text_candidate": "2026-09-24 11:42:59",
+        "magic": "HMZPSIGN",
+        "metadata_bytes": 64,
+        "metadata_offset": 3752780,
+        "metadata_sha256": "b2132f9c1d1285a69639c89afa0ca22d7df63f2474d1afcbe693b5677fc5b0fe",
+        "product_field": 155,
+        "secondary_size_field": 3752780,
+        "signature_bytes": 64,
+        "signature_offset": 3752844,
+        "size_field_difference": 0,
+        "tail_field_hex": "323032362d30392d32342031313a34323a353900000000000000",
+        "variant_field": 256,
+        "version": "4.6.0"
+      },
+      "sha256": "fdeaa1d287caa950581a35680762813ea2a3cb4caab444f17d1286c3b52490d3",
+      "size": 3752908
+    },
+    {
+      "member": "META/extfw/sensorhub@mhs003_sign.bin",
+      "metadata": {
+        "body_size_field": 626588,
+        "body_size_matches_offset": true,
+        "build_text_candidate": "2026-09-24 11:53:50",
+        "magic": "HMZPSIGN",
+        "metadata_bytes": 64,
+        "metadata_offset": 626588,
+        "metadata_sha256": "8c43c20e814305dc3bb71d1da45c2d18975f14aa558d28c8a4767bee0a560db4",
+        "product_field": 155,
+        "secondary_size_field": 626588,
+        "signature_bytes": 64,
+        "signature_offset": 626652,
+        "size_field_difference": 0,
+        "tail_field_hex": "323032362d30392d32342031313a35333a353000000000000000",
+        "variant_field": 256,
+        "version": "1.0.0"
+      },
+      "sha256": "06f07541e8bb22b6118f081e791c3a4e40cbff2decd8ee478a7e82df826e9d0f",
+      "size": 626716
+    }
+  ]
+}

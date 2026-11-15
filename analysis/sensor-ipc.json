@@ -1,0 +1,55 @@
+{
+  "control_packets": {
+    "fields": [
+      "opcode:u8",
+      "sensor_id:u8",
+      "command:u16",
+      "length:u16",
+      "payload:length"
+    ],
+    "fixed_header_size": 6,
+    "opcodes": [
+      4,
+      6,
+      7
+    ]
+  },
+  "integer_byte_order": "little-endian",
+  "member": "META/extfw/sensorhub@mhs003_sign.bin",
+  "member_sha256": "06f07541e8bb22b6118f081e791c3a4e40cbff2decd8ee478a7e82df826e9d0f",
+  "optical_irq_example": {
+    "local_irq_hex": "0106000000000000",
+    "reason": 0,
+    "remote_process_payload_hex": "10060000",
+    "sensor_id": 6,
+    "worker_message_hex": "0500000006000000"
+  },
+  "outer_zrpc_transport_implemented": false,
+  "parser": 2163842728,
+  "process_packet": {
+    "fields": [
+      "opcode:u8",
+      "sensor_id:u8",
+      "reason:u16"
+    ],
+    "opcode": 16,
+    "size": 4
+  },
+  "serializer": 2163844582,
+  "source_sha256": {
+    "ram_80f63886.c": "5d8bdf534e6af7eb0cdd38674f6e2685a9b54bcdf96ca323c806f51803abc2d1",
+    "ram_80f72f60.c": "ed4c011bde347065ab1c8b6c9091c0216a8804548ecc15c95b2c5540b6fa4632",
+    "ram_80f86414.c": "ef271461bb77ea4a5307f7cf46fe7f773d13cb4b853bebb58b7931d3f9d93f73",
+    "ram_80f9914e.c": "a2e2926ae2847d954ba243783f029bc3564e7b4f289cf36f5e6aedf79075b241",
+    "ram_80f99c26.c": "a7bdf2ef51100b8cfd46a5b558bd8028fedf49324eecf585399807f1b579861c",
+    "ram_80f99ea8.c": "4cab9cdb1c78175628cb592bb1a957af5630cea424f4692bc676c32252f06918",
+    "ram_80f9a5e6.c": "82ce57b6aa7b56c5fb339b0f49ff4b60bfc9dbb2cdfe98737a848e08d5020805",
+    "ram_80fa2cea.c": "d46f5510686f9259a99a1041112287c7fb3881d9e413000085b129cbe3fffd2c",
+    "ram_80fa3e84.c": "0e85338dadd0ca008588cbb6da42ec41e5e124fd8e5cf73bddc13099e4a3b7d6",
+    "ram_80fa3ff8.c": "99663fef6ede7ae8ec8b77d73c71452587fc3c532d6e6edf2848ee5355298e23",
+    "ram_80fa40d4.c": "02d0b61a54667d19acfa1e594dbb19a29547e2bda156d3e7e2a60ce7476c13fe",
+    "ram_80fa5dd2.c": "5d4142ba58689be87af7f6a44e47d89dfa4407b42f7660007dad017a19477bed",
+    "ram_80fa5e1c.c": "3c49144a7b5b89938931131140972e3f1dc91eadad15e008f9d116fa48b41a2b",
+    "ram_80fa5e6a.c": "b913dbbb30b8019495f5fdf4f15dc58188d665264ef38d8b59adc875c244fe09"
+  }
+}

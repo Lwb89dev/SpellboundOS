@@ -1,5 +1,9 @@
 # Signed OTA archive trailer
 
+Follow-up: [BOOT_RECOVERY_AND_METADATA.md](BOOT_RECOVERY_AND_METADATA.md)
+distinguishes the archive's 48-byte metadata from the 64-byte metadata used by
+main/factory/sensor members, and records further fields and validator paths.
+
 The OTA with SHA-256
 `ee06079610eaf9b4ffbe35c7a6ddc604ee2aba00c3a66d85101ed2a6556d6df4`
 has its ZIP end-of-central-directory record at file offset `0x711f8f1`.

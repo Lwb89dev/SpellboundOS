@@ -1,0 +1,65 @@
+{
+  "bytes_per_word": 4,
+  "cache_words": 1000,
+  "fifo_reader": 2163688742,
+  "fifo_reject_count_at_or_above": 512,
+  "fifo_tx_prefix_hex": "0880",
+  "image_base": 2163613696,
+  "irq_callback": 2163683168,
+  "irq_dispatch": 2163621740,
+  "irq_message_word": 1537,
+  "member": "META/extfw/sensorhub@mhs003_sign.bin",
+  "member_sha256": "06f07541e8bb22b6118f081e791c3a4e40cbff2decd8ee478a7e82df826e9d0f",
+  "register_pair_writer": 2163683820,
+  "register_tables": [
+    {
+      "address": 2164101644,
+      "count": 80,
+      "sha256": "356b4d8405fb91276a136830234c0e2f17231187274344f4a581d551caa449e4"
+    },
+    {
+      "address": 2164101804,
+      "count": 102,
+      "sha256": "7c3416fb21fa4b8011a88e04ca4990e27671e3e804ca35c398bc11953be70dcb"
+    },
+    {
+      "address": 2164102008,
+      "count": 91,
+      "sha256": "27c368bc7847ade2e8014dc5051b05edb36105c2b384bd510f3b9da887d92c9d"
+    },
+    {
+      "address": 2164102192,
+      "count": 80,
+      "sha256": "e203c0fc03e3655fcc6f0486772b265038d28a4ecacd8b33748ef670f47ab0cf"
+    },
+    {
+      "address": 2164102352,
+      "count": 58,
+      "sha256": "fe7d243af90ed3b6e0be323adf10acb69769f1d87b7a4076ee6c5091350cf54a"
+    },
+    {
+      "address": 2164102468,
+      "count": 69,
+      "sha256": "08ef644a8b48ea5352c30d68cadd1c95e338595cd13609a3a86510c5fe5774d5"
+    },
+    {
+      "address": 2164102608,
+      "count": 47,
+      "sha256": "fedd3b510659ae4c5ce0488c56a14599d6839cf6a4eaf69e3c776aa4a8b14cb2"
+    },
+    {
+      "address": 2164102704,
+      "count": 36,
+      "sha256": "ea99cddfa7f1b319547fe497308506631123af49e0b015c3aa67f42a2d250b8a"
+    }
+  ],
+  "status_registers": [
+    3,
+    4
+  ],
+  "summary": {
+    "ordered_register_writes": 563,
+    "register_tables": 8
+  },
+  "wire_word_order": "big-endian"
+}

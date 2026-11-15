@@ -494,6 +494,53 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    These diagnostics do not prove full correctness: inferred return types,
    unseeded callees and injection/unreachable-block warnings still need review.
 
+## 2026-11-15 — optical FIFO and sensor IPC payloads
+
+1. Committed the previous native-runtime, memory and sensor findings as
+   `60f2983`. Original firmware and vendor-derived exports remain ignored.
+2. Followed the optical IRQ through event kind 1, sensor-hub ID 6, the worker
+   queue's command 5, and local/remote ownership routing. The local callback
+   reaches the MAX8617X FIFO reader; the remote path emits sensor opcode `0x10`.
+3. Recovered FIFO status/count guards, whole-frame reads, `08 80` SPI prefix,
+   big-endian tagged sample words, signed low-20-bit values and the 1000-word
+   software ring. Preserved the driver's exact weak frame-start test rather
+   than inventing additional validation. The read path does not check the SPI
+   transfer result before decoding; the host model assumes valid response bytes.
+4. Inventoried eight ordered register tables (563 writes). Public evidence
+   contains addresses/counts/hashes; full values stay under ignored firmware/.
+   Recovered matching serializer/parser layouts for process opcode `0x10` and
+   control opcodes 4/6/7, distinct from local queue structures and outer zrpc.
+5. Added `ppg_fifo.py`, `sensor_ipc.py`, 13 synthetic tests,
+   [analysis/PPG_FIFO_AND_IPC.md](analysis/PPG_FIFO_AND_IPC.md),
+   [analysis/ppg-fifo.json](analysis/ppg-fifo.json) and
+   [analysis/sensor-ipc.json](analysis/sensor-ipc.json). A fresh startup-aware
+   Ghidra sensor pass corroborates the selected paths. All 105 Python tests
+   pass with signature dependencies, and both reports regenerate exactly.
+   No device access or writes were performed.
+
+## 2026-11-15 — boot/recovery metadata and corrected reset boundary
+
+1. Added structural parsing of the signed metadata: bootloader/recovery/ZIP
+   use 48-byte metadata, while main/factory/hub use 64 bytes. The first size
+   field matches each object's metadata offset; the second field has
+   variant-specific differences and is not universally an image length.
+   The archive's second field differs from summed ZIP sizes by 647 bytes;
+   its exact scope remains unresolved. Existing ECDSA checks remain separate.
+2. Extended the analysis ELF exporter to boot and recovery, reconstructing
+   their two copy regions and one zero region, including rounded word copies.
+   A fresh boot pass corroborates raw-recovery metadata/header validation and
+   its enabled signature branch; no runtime enforcement or unlock is claimed.
+3. Raw instructions prove reset helper `0x80c007b0` cannot normally return.
+   Added `SeedBootFlow.java` with a terminal-loop byte guard. Corrected exports
+   separate the reset wrapper from image handoff `0x80c0084a`, removing an
+   apparent boot route created by false fallthrough.
+4. Traced keyboard detection, boot environment updates and recovery UI paths.
+   These are not a proven non-destructive debug path. Added
+   [analysis/BOOT_RECOVERY_AND_METADATA.md](analysis/BOOT_RECOVERY_AND_METADATA.md),
+   `signed_metadata.py`, reproducible [analysis/signed-metadata.json](analysis/signed-metadata.json)
+   and five synthetic tests. All 110 Python tests pass with signature
+   dependencies; no device access, boot-state changes or installation occurred.
+
 ## Next work
 
 - Regenerate selected native paths with startup-aware mappings, corrected

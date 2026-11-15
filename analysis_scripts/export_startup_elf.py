@@ -59,16 +59,19 @@ def build_elf(memory, entry):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('archive')
-    parser.add_argument('--image', choices=('main', 'sensor'), required=True)
+    parser.add_argument('--image', choices=('main', 'sensor', 'boot', 'recovery'), required=True)
     parser.add_argument('--output', required=True)
     args = parser.parse_args()
-    member, base, entry, options = (
-        ('META/firmware_sign.bin', 0x70160000, 0x7016022c, (0x270, 4, 0x2a0, 2))
-        if args.image == 'main' else
-        ('META/extfw/sensorhub@mhs003_sign.bin', 0x80f62000, 0x80f6224c, (0x280, 2, 0x298, 1)))
+    layouts = {
+        'main': ('META/firmware_sign.bin', 0x70160000, 0x7016022c, (0x270, 4, 0x2a0, 2), 0),
+        'sensor': ('META/extfw/sensorhub@mhs003_sign.bin', 0x80f62000, 0x80f6224c, (0x280, 2, 0x298, 1), 0),
+        'boot': ('META/bootloader_sign.bin', 0x80c00000, 0x80c0022c, (0x26c, 2, 0x284, 1), 0x400),
+        'recovery': ('META/extfw/recovery_sign.bin', 0x80d00000, 0x80d0022c, (0x26c, 2, 0x284, 1), 0),
+    }
+    member, base, entry, options, skip = layouts[args.image]
     try:
         with zipfile.ZipFile(args.archive) as archive:
-            memory = StartupMemory(archive.read(member), base, *options)
+            memory = StartupMemory(archive.read(member)[skip:], base, *options)
         pathlib.Path(args.output).write_bytes(build_elf(memory, entry))
     except (OSError, ValueError, KeyError, zipfile.BadZipFile) as error:
         parser.exit(2, f'Cannot build analysis ELF: {error}\n')
