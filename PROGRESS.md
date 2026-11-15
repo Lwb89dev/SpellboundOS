@@ -86,6 +86,19 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    and the documented Ghidra sensor command succeeded in a fresh project.
    Ghidra still cannot fully decode custom instructions. No hardware was written.
 
+## 2026-11-15 — RTL8763 package prefix
+
+1. Inspected the radio firmware member directly. Recorded its hash, four-byte
+   prefix, 0x48-byte initial area, and 15 consecutive candidate 12-byte
+   records starting at offset 0x48. These are literal observations; record
+   meanings are still unverified. The detailed report and machine-readable
+   inventory are [analysis/RADIO_PACKAGE.md](analysis/RADIO_PACKAGE.md) and
+   [analysis/radio-package.json](analysis/radio-package.json).
+2. Added `analysis_scripts/inspect_radio_package.py` with a synthetic-prefix
+   test. All eight Python tests pass in the project analysis environment.
+   The existing main-firmware decompilation shows an initial 0x48-byte read
+   and a 0x200000 size bound, but custom instructions still obscure the parser.
+
 ## Next work
 
 - Map the signed image formats and the loaders for the sensor hub and radio;

@@ -1,0 +1,102 @@
+{
+  "sha256": "47c41063ca2eaa1bac730d5ca1b7f5338c43152d83aa173ca5038956b36708c4",
+  "size": 1508342,
+  "prefix_hex": "474dbcdb",
+  "word_at_0x04": 22,
+  "word_at_0x24": 184680448,
+  "record_start": 72,
+  "candidate_records": [
+    {
+      "file_offset": 72,
+      "word_0": 33562624,
+      "word_1": 2524,
+      "word_2": 0
+    },
+    {
+      "file_offset": 84,
+      "word_0": 33898496,
+      "word_1": 1536,
+      "word_2": 0
+    },
+    {
+      "file_offset": 96,
+      "word_0": 33902592,
+      "word_1": 3584,
+      "word_2": 0
+    },
+    {
+      "file_offset": 108,
+      "word_0": 34185216,
+      "word_1": 646812,
+      "word_2": 0
+    },
+    {
+      "file_offset": 120,
+      "word_0": 35024896,
+      "word_1": 41600,
+      "word_2": 0
+    },
+    {
+      "file_offset": 132,
+      "word_0": 35155968,
+      "word_1": 183688,
+      "word_2": 0
+    },
+    {
+      "file_offset": 144,
+      "word_0": 35549184,
+      "word_1": 7200,
+      "word_2": 0
+    },
+    {
+      "file_offset": 156,
+      "word_0": 35590144,
+      "word_1": 8704,
+      "word_2": 0
+    },
+    {
+      "file_offset": 168,
+      "word_0": 33570816,
+      "word_1": 7556,
+      "word_2": 0
+    },
+    {
+      "file_offset": 180,
+      "word_0": 34078720,
+      "word_1": 70484,
+      "word_2": 0
+    },
+    {
+      "file_offset": 192,
+      "word_0": 33910784,
+      "word_1": 116476,
+      "word_2": 0
+    },
+    {
+      "file_offset": 204,
+      "word_0": 33579008,
+      "word_1": 30492,
+      "word_2": 0
+    },
+    {
+      "file_offset": 216,
+      "word_0": 33611776,
+      "word_1": 28336,
+      "word_2": 0
+    },
+    {
+      "file_offset": 228,
+      "word_0": 33640448,
+      "word_1": 256500,
+      "word_2": 0
+    },
+    {
+      "file_offset": 240,
+      "word_0": 35655680,
+      "word_1": 92300,
+      "word_2": 0
+    }
+  ],
+  "first_nonmatching_offset": 252,
+  "first_nonmatching_bytes_hex": "010002000102000406007605"
+}
