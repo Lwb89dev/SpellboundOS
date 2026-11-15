@@ -119,8 +119,10 @@ The bytecode task is now done: the embedded engine is QuickJS 2020-07-05
 members are read and disassembled completely
 ([APP_BYTECODE.md](APP_BYTECODE.md)). The 2020-01-19 reader crash described
 above came from that release's different opcode numbering.
-A separate GAPP pass should follow the main firmware's APP/LIST/DAMR readers
-before assigning semantics to those sections. That task remains open.
+The GAPP node tree inside the LAYR, SCEN and ANIM sections is now decoded in
+[GAPP_UI.md](GAPP_UI.md): layers, scenes, controls, drawable primitives, event
+handlers and `${scope:path}` property bindings. The RATE and DAMR sections and
+the exact header-field semantics remain open.
 
 ## Follow-up: initial function metadata and bytecode ranges
 

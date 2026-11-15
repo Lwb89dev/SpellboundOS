@@ -609,6 +609,25 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    suite now passes 139 Python tests. No pairing, device-secret extraction or
    crypto execution was performed.
 
+## 2026-11-15 — GAPP compiled UI tree decoded
+
+1. Decoded the node tree inside Application.bin's LAYR, SCEN and ANIM sections,
+   extending the earlier top-level RIFF/GAPP walk. Each node is a 4-byte tag, a
+   u32 size and a body; a flat scan with size-containment validation recovers
+   25,342 nodes nesting to depth 5, and the LAYR/SCEN forests pass an integrity
+   check (siblings disjoint, children within parent).
+2. Recovered the built-in UI model: 1,058 layers, 460 named screens (SCEN with
+   INST instances), 34 animations with STEP keyframes, eight drawable primitive
+   types (text/image/fill/circle/rectangle/canvas/gradient/poly), 102 event
+   types (gre.press/touch/release/motion/gesture/keypress, scroll_change), and
+   an ARGS property system with `${scope:path}` data bindings against app,
+   layer, control and cell state.
+3. Added `analysis_scripts/gapp_ui.py` with synthetic-GAPP tests (including a
+   poisoned-string rejection), the report [analysis/GAPP_UI.md](analysis/GAPP_UI.md)
+   and reproducible [analysis/gapp-ui.json](analysis/gapp-ui.json). JSON
+   regenerates deterministically. The RATE/DAMR sections and exact header-field
+   semantics remain open. Nothing was rendered.
+
 ## Next work
 
 - Regenerate selected native paths with startup-aware mappings, corrected
