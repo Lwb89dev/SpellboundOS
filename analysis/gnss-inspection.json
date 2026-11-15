@@ -1,0 +1,88 @@
+{
+  "gnss_member": "META/extfw/fw_gps.bin",
+  "gnss_size": 1260868,
+  "gnss_sha256": "7221d15903058ff050fceb3790b82c571c71358d4c02edfad24d7b26b8ebc41f",
+  "declared_version": "AG3352B_V3.1.0_20250120,S,H",
+  "candidate_regions": [
+    {
+      "file_offset": 256,
+      "length": 43956,
+      "sha256": "aa171102514c9e8685ef01351e07e99b1f9256cb62005f5c5a1d97f7b2384008"
+    },
+    {
+      "file_offset": 44212,
+      "length": 432,
+      "sha256": "598669a76f93db468b63f440271cbc0c602d56534d3c25ed198ab222772efb0e"
+    },
+    {
+      "file_offset": 44644,
+      "length": 21120,
+      "sha256": "36d76094c27a1846e43f59d583d13a2d6f8e08419d8a5da41a73405bbacfe334"
+    },
+    {
+      "file_offset": 65764,
+      "length": 1194080,
+      "sha256": "62dd150e31ce3af17c2c91294d9cc0ae40b5a3defd80379051f434d0901b3225"
+    },
+    {
+      "file_offset": 1259844,
+      "length": 1024,
+      "sha256": "48bff14fc54fbe30270b0604884e2a6cd1223135912f2429b87ae7be36643124"
+    }
+  ],
+  "touch": [
+    {
+      "member": "META/extfw/00151501_005c0913_0000009b_tp.bin",
+      "length": 49152,
+      "sha256": "b337b46fc49bb76021dbc3f62701c119bc6193fada71159110f2ff9b3a6458f7"
+    },
+    {
+      "member": "META/extfw/00161501_005B0913_0000009b_tp.bin",
+      "length": 49152,
+      "sha256": "ed7ec863c7842e6df98c44b71440423f32603e0f244ad16ef4e270dfa1b61e30"
+    }
+  ],
+  "touch_differing_bytes": [
+    {
+      "offset": 48,
+      "first": 21,
+      "second": 22
+    },
+    {
+      "offset": 60,
+      "first": 6,
+      "second": 5
+    },
+    {
+      "offset": 70,
+      "first": 21,
+      "second": 22
+    },
+    {
+      "offset": 71,
+      "first": 21,
+      "second": 22
+    },
+    {
+      "offset": 44838,
+      "first": 6,
+      "second": 5
+    },
+    {
+      "offset": 44840,
+      "first": 21,
+      "second": 22
+    },
+    {
+      "offset": 45404,
+      "first": 21,
+      "second": 20
+    },
+    {
+      "offset": 45405,
+      "first": 205,
+      "second": 204
+    }
+  ],
+  "touch_equal_length": true
+}

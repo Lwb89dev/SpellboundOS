@@ -30,7 +30,7 @@ env=dict(os.environ,GHIDRA_HEADLESS_MAXMEM='6G')
 results=[]
 for name,image,base,entry in targets:
  start=time.monotonic();out=root/'firmware/decompiled'/name
- cmd=[head,str(root/'firmware/ghidra-bulk'),name,'-import',str(inputs/image),'-loader','BinaryLoader','-loader-baseAddr',base,'-processor','RISCV:LE:32:AndeStar_v5','-cspec','gcc','-scriptPath',str(root/'analysis_scripts'),'-preScript','SeedEntry.java',entry,'-postScript','ExportFunctions.java',str(out),'-analysisTimeoutPerFile','300','-log',str(root/f'firmware/bulk-{name}.log')]
+ cmd=[head,str(root/'firmware/ghidra-bulk'),name,'-import',str(inputs/image),'-loader','BinaryLoader','-loader-baseAddr',base,'-processor','RISCV:LE:32:AndeStar_v5','-cspec','gcc','-scriptPath',str(root/'analysis_scripts'),'-preScript','SeedEntry.java',entry,'-postScript','ExportFunctions.java',str(out),'-analysisTimeoutPerFile',('1800' if name == 'main' else '300'),'-log',str(root/f'firmware/bulk-{name}.log')]
  with open(root/f'firmware/bulk-{name}-stdout.log','w') as log:
   p=subprocess.run(cmd,stdout=log,stderr=subprocess.STDOUT,env=env)
  rows=(out/'functions.tsv').read_text().splitlines()[1:] if (out/'functions.tsv').exists() else []

@@ -21,6 +21,7 @@ public class ExportFunctions extends GhidraScript {
                 index.println(f.getEntryPoint() + "\t" + f.getName() + "\t" + status + "\t" + f.getBody().getNumAddresses());
                 index.flush();
                 if (result.decompileCompleted()) Files.writeString(output.resolve(f.getEntryPoint().toString().replace(':','_') + ".c"), result.getDecompiledFunction().getC());
+                else Files.writeString(output.resolve(f.getEntryPoint().toString().replace(':','_') + ".error.txt"), result.getErrorMessage());
             }
         } finally { d.dispose(); }
     }

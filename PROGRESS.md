@@ -122,6 +122,62 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
 6. All eleven Python tests pass. The new radio range inventory and archive
    signature checks were regenerated from local original bytes.
 
+## 2026-11-15 — extended native corpus and board-facing paths
+
+1. Completed the AndeStar batch for bootloader, recovery, sensor hub, factory
+   firmware, main firmware and ramdump. The main image's first 300-second pass
+   timed out; a continuation on the saved project completed with a larger budget.
+2. Mapped and analyzed the radio package separately as candidate ARM Thumb code.
+   Across these seven targets, 54,804 inferred functions were recognized and
+   54,794 emitted pseudocode; ten did not complete. Warnings, unknown calls and
+   inferred types remain, so this is not full behavioral coverage. The detailed
+   metrics are in [analysis/decompilation-summary.json](analysis/decompilation-summary.json).
+3. Followed touch and serial initialization in the larger corpus, finding the
+   touch probe's expected 0xE622 identity and a radio serial configuration with
+   value 115200. The LSM6DSO expected identity resolves to 0x6C. Findings are in
+   [analysis/TOUCH_AND_SERIAL.md](analysis/TOUCH_AND_SERIAL.md).
+4. Saved all vendor-derived exports locally under firmware/decompiled/ and all
+   Ghidra databases under firmware/. Only tools, reports and metadata are public.
+   The investigation scope and remaining formats are tracked in
+   [analysis/DECOMPILATION_STATUS.md](analysis/DECOMPILATION_STATUS.md).
+
+## 2026-11-15 — GNSS, touch, app containers, display and radio candidates
+
+1. Inspected the `fw_gps.bin` GNSS container without execution: recorded its
+   `AG3352B_V3.1.0` version string, the `55 aa aa 55` marker and five
+   little-endian section lengths that, plus the 0x100 header, account for the
+   whole file. Mapped the first region as candidate ARM Thumb at `0x04200000`,
+   following its startup zero/copy helpers under a bounded, first-region-only
+   import. Compared the two 49,152-byte touch payloads: they differ at only
+   eight bytes and both carry `22 e6 e6 22` at 0x40, consistent with the main
+   firmware's expected `0xE622` touch identity. Findings and reproduction are in
+   [analysis/GNSS_AND_TOUCH_BLOBS.md](analysis/GNSS_AND_TOUCH_BLOBS.md) with
+   machine-readable output in
+   [analysis/gnss-inspection.json](analysis/gnss-inspection.json).
+2. Parsed the `Application.bin` GAPP container and the packaged JavaScript as a
+   QuickJS-v1-like format without executing it: atom tables and a bounded
+   initial-function parser succeed across all 30 members, which share identical
+   metadata (flags `0x0600`, stack size 5, 91-byte initial bytecode) and split
+   28/2 by bytecode hash. See
+   [analysis/APP_FORMATS.md](analysis/APP_FORMATS.md) and
+   [analysis/app-format-summary.json](analysis/app-format-summary.json).
+3. Followed candidate display and ambient-light paths in the main image:
+   a three-byte display read (`0xda`/`0xdb`/`0xdc`), a `display0` driver
+   registration, a `dev_stk31e60` light probe rejecting a register `0x3e` value
+   other than `0xe0`, and a bulk-vs-targeted comparison showing a mis-inferred
+   non-returning logger truncates control flow in the broad export. Recorded in
+   [analysis/DISPLAY_AND_LIGHT.md](analysis/DISPLAY_AND_LIGHT.md).
+4. Mapped the 15 carved radio images as candidate ARM Thumb at their loader
+   record addresses and recovered startup-like copy/zero functions at two
+   plausible Thumb starts. See
+   [analysis/RADIO_NATIVE.md](analysis/RADIO_NATIVE.md).
+5. Added independent, tested inspectors (`app_formats.py`, `gnss_inspect.py`)
+   and reproduction helpers for the Ghidra passes. The GNSS and app-format JSON
+   regenerate byte-for-byte from the original archive, the decompilation summary
+   reproduces from local exports, and all Python tests pass except the
+   signature suite, which needs `cryptography` installed. No device was written
+   or queried; all vendor-derived exports stay under ignored `firmware/`.
+
 ## Next work
 
 - Map the signed image formats and the loaders for the sensor hub and radio;

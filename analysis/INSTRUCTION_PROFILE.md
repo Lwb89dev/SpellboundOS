@@ -36,8 +36,8 @@ command in the earlier reports, replacing the processor argument with
 
 `analysis_scripts/decompile_ota.py --ghidra /absolute/path/to/analyzeHeadless`
 starts a larger analysis of the bootloader payload, recovery, sensor hub,
-factory firmware, main firmware and the ramdump diagnostic executable. Each analysis has a 300-second analysis
-budget; each recognized function gets up to 10 seconds for decompilation.
+factory firmware, main firmware and the ramdump diagnostic executable. Analysis budgets are 300 seconds per smaller image and 1800 seconds for the main
+image; each recognized function gets up to 10 seconds for decompilation.
 An analysis timeout can leave functions undiscovered. The script preserves
 exit codes, discovered function counts and decompiler completion counts locally.
 Decompiler completion means pseudocode was emitted, not that it is correct or

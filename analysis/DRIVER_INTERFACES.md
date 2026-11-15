@@ -121,3 +121,13 @@ the repository does not redistribute vendor firmware or raw decompiler output.
 - Identify the fitted motion sensor, bus, chip-select, interrupt, power and
   initialization sequence using independent hardware or diagnostic evidence.
 - Establish a tested boot and recovery path before deploying a standalone OS.
+
+## Later pass
+
+The AndeStar profile resolves the LSM6DSO identification comparison as `0x6c`,
+read through the previously identified register path. This strengthens the
+bundled-driver interpretation; no sensor was queried on the watch. The expanded
+corpus also links the radio to a serial abstraction and identifies the ZTW622
+probe path; see [TOUCH_AND_SERIAL.md](TOUCH_AND_SERIAL.md). Earlier unresolved
+custom-instruction comments describe the generic-profile pass and should be
+read alongside [INSTRUCTION_PROFILE.md](INSTRUCTION_PROFILE.md).
