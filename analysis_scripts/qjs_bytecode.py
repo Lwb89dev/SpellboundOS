@@ -32,6 +32,7 @@ from quickjs_fingerprint import (FIRMWARE, firmware_atoms,  # noqa: E402
                                  opcode_table_bytes, upstream_opcodes)
 
 BC_VERSION = 1
+BYTECODE_DIRS = ('META/js_apps/', 'META/js_watchfaces/')
 TAGS = {1: 'null', 2: 'undefined', 3: 'false', 4: 'true', 5: 'int32',
         6: 'float64', 7: 'string', 8: 'object', 9: 'array', 10: 'big_int',
         11: 'big_float', 12: 'big_decimal', 13: 'template_object',
@@ -457,7 +458,7 @@ def main():
         reads, writes, modules = (collections.Counter() for _ in range(3))
         module_apps = collections.defaultdict(set)
         for name in sorted(archive.namelist()):
-            if not (name.startswith('META/js_apps/') and name.endswith('.bin')):
+            if not (name.startswith(BYTECODE_DIRS) and name.endswith('.bin')):
                 continue
             data = archive.read(name)
             entry = {'member': name, 'size': len(data),

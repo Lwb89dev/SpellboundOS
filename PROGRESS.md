@@ -314,6 +314,8 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    [analysis/APP_MODEL.md](analysis/APP_MODEL.md), and
    [analysis/app-bytecode-summary.json](analysis/app-bytecode-summary.json).
    Full listings stay under ignored `firmware/`. All 49 Python tests pass.
+   A later pass added the 14 watchface bytecode members: 44/44 parse with no
+   unread bytes (1,072 functions, 87,074 instructions).
    Running the upstream C reader on the vendor bytecode was not permitted in
    this session, so there is no C-side cross-check.
 

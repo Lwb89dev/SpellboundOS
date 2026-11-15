@@ -1,7 +1,8 @@
 # App bytecode: complete read and disassembly
 
-Static investigation on 2026-11-15 of the 30 `META/js_apps/*.bin` members (6
-apps) in the Bip 6 OTA 4.6.0.3, archive SHA-256
+Static investigation on 2026-11-15 of the 44 compiled bytecode members in the
+Bip 6 OTA 4.6.0.3: 30 under `META/js_apps/` (6 apps) and 14 under
+`META/js_watchfaces/` (7 watchfaces). Archive SHA-256
 `ee06079610eaf9b4ffbe35c7a6ddc604ee2aba00c3a66d85101ed2a6556d6df4`. The tool is
 `analysis_scripts/qjs_bytecode.py`, an independent Python implementation of the
 QuickJS 2020-07-05 bytecode reader (see [QUICKJS_ENGINE.md](QUICKJS_ENGINE.md)).
@@ -10,15 +11,15 @@ was executed.
 
 ## Result
 
-All 30 members parse completely as QuickJS 2020-07-05 serialized objects and
+All 44 members parse completely as QuickJS 2020-07-05 serialized objects and
 disassemble without a single validation failure:
 
 | Measure | Value |
 | --- | ---: |
-| Members parsed | 30 / 30 |
-| Functions (including nested closures) | 886 |
-| Instructions | 75,570 |
-| Distinct opcodes used | 142 of 244 |
+| Members parsed | 44 / 44 (30 app, 14 watchface) |
+| Functions (including nested closures) | 1,072 (886 app, 186 watchface) |
+| Instructions | 87,074 (75,570 app, 11,504 watchface) |
+| Distinct opcodes used | 150 of 244 |
 | Unread bytes after the root object | 0 in every member |
 
 This extends [APP_FORMATS.md](APP_FORMATS.md), which stopped after the
@@ -43,7 +44,7 @@ Each function's disassembly must pass these checks:
   integer;
 - local count equals arguments plus variables, and no read passes the end.
 
-As a negative control, the same 30 members were disassembled with the
+As a negative control, the 30 app members were disassembled with the
 descriptor tables of other releases. With 2020-01-19 and 2021-03-27, all 30
 fail. 2020-09-06 also passes, as expected: it differs from 2020-07-05 only in
 the last short-opcode descriptor, which these apps do not use. The release is
@@ -61,12 +62,13 @@ function declares `beforeAppCreate`, `afterAppCreate` and `__$$G$$__`.
   `with_get_ref` and 10 `with_make_ref` instructions. Free identifiers in app
   code are resolved through a `with` object, which matches the runtime's
   `ProxySandbox` described in [APP_MODEL.md](APP_MODEL.md).
-- **Free variables.** 72 distinct names are read as free variables. Against
+- **Free variables.** 75 distinct names are read as free variables. Against
   the sandbox lists recovered from `framework.js` they split into:
   - 9 app-scope members (`App`, `Page`, `AppEvent`, `AppWidget`,
     `SecondaryWidget`, `getApp`, `__$$R$$__`, `__$$app$$__`, `__$$module$$__`);
-  - 6 sandbox-hidden native names (`hmUI`, `hmApp`, `hmSetting`, `timer`,
-    `DeviceRuntimeCore`, `__$$hmAppManager$$__`);
+  - 7 sandbox-hidden native names (`hmUI`, `hmApp`, `hmSetting`, `hmSensor`,
+    `timer`, `DeviceRuntimeCore`, `__$$hmAppManager$$__`). `hmSensor` is read
+    only by the watchfaces;
   - 14 builtins that the sandbox marks unscopable, so they resolve directly
     (`Array`, `Math`, `Object`, `setTimeout`, `console`, …), plus `Promise`,
     which is explicitly not unscopable and goes through the proxy;
@@ -74,7 +76,8 @@ function declares `beforeAppCreate`, `afterAppCreate` and `__$$G$$__`.
   - 4 standard builtins outside the unscopables list (`Date`, `JSON`,
     `encodeURIComponent`, `decodeURIComponent`), which fall back to the real
     global;
-  - 33 app-level names that no global-write opcode in these bundles assigns.
+  - 35 app- and watchface-level names that no global-write opcode in these
+    bundles assigns.
     Because the sandbox's `has` trap always returns true, such a read inside the
     `with` scope yields `undefined` instead of throwing `ReferenceError`.
 - **`@zos/` modules.** The apps load 16 module specifiers through
