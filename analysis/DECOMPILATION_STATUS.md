@@ -102,6 +102,7 @@ original archive.
 | Embedded JS engine release (QuickJS 2020-07-05) | [QUICKJS_ENGINE.md](QUICKJS_ENGINE.md) |
 | App bytecode read and disassembly, free variables, `@zos/` modules | [APP_BYTECODE.md](APP_BYTECODE.md) |
 | `@zos/*` API table, native bindings and permissions | [ZOS_API.md](ZOS_API.md) |
+| Native JS binding tables and C function addresses | [NATIVE_BINDINGS.md](NATIVE_BINDINGS.md) |
 
 A concrete quality check found truncated control flow in some bulk exports
 around calls inferred as non-returning. Targeted noanalysis imports restore

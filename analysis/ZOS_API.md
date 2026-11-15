@@ -107,8 +107,8 @@ directly bound methods listed here. It would also have to provide the full
 property sets of the six reflected objects (`hmUI`, `hmBle`, `hmMedia`,
 `hmCrypto`, `hmVAD`, `hmSysApi`) and `hmApp.queryPermission` for the permission
 gate. The reflected objects' method lists cannot be read from `framework.js`.
-They are defined by the native registration code in the main image, which is
-the next thing to map.
+They are defined by native tables in the main image, now mapped in
+[NATIVE_BINDINGS.md](NATIVE_BINDINGS.md).
 
 ## Reproduction
 

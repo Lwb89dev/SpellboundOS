@@ -339,6 +339,29 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    tests pass. The method lists of the reflected objects come from native
    registration code in the main image, which is the next target.
 
+## 2026-11-15 — native JS binding tables
+
+1. Found the QuickJS `JSCFunctionListEntry` tables in the main image: 86 runs
+   (2,126 entries) that split into 168 tables, with 704 function entries on
+   508 distinct C functions, 131 accessors and 1,204 integer constants. 437 of
+   those functions already have a local decompiled export.
+2. Read the embedded 752-byte bootstrap that imports 12 native C modules and
+   assigns each to a global (`timer`, `hmApp`, `hmSetting`, `hmUI`, `hmSensor`,
+   `hmFS`, `hmBle`, `hmMedia`, `hmSysApi`, `hmVAD`, `hmUtil`, `hmCrypto`), and
+   took exact table lengths from the existing Ghidra exports. One function
+   receives exactly 12 tables, one per module.
+3. Cross-checked against `framework.js`: every native method it names exists in
+   these tables except `hmApp.addSysPageListener`/`removeSysPageListener`. The
+   method lists of the runtime-reflected modules are now known (`hmUI` 32,
+   `hmBle` 50, `hmVAD` 13, `hmSysApi` 11, `hmCrypto` 3, `hmMedia` 2).
+4. Added `analysis_scripts/js_cfunction_tables.py` with synthetic tests, the
+   report [analysis/NATIVE_BINDINGS.md](analysis/NATIVE_BINDINGS.md) and
+   [analysis/js-cfunction-tables.json](analysis/js-cfunction-tables.json). All
+   60 Python tests pass. The pairing of each global name with its create
+   function was observed by hand in `jssdk_runtime_init`, which the bulk export
+   truncates after a call wrongly marked non-returning; it still needs a
+   committed reproduction.
+
 ## Next work
 
 - Map the signed image formats and the loaders for the sensor hub and radio;
