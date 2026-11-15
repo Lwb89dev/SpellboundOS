@@ -46,7 +46,7 @@ Latest detailed findings:
 - [Native GATT registrations and transport bindings](GATT_REGISTRATION.md)
 - [Native channel framing and authentication crypto delegate](NATIVE_CHANNEL.md)
 - [Authentication module, request layouts and ECDH key material](AUTH_SESSION.md)
-- [GAPP compiled UI tree: layers, scenes, animations and drawables](GAPP_UI.md)
+- [GAPP compiled UI: complete decode of Application.bin](GAPP_UI.md)
 
 No device write or installation is justified by the current results. The
 project's existing backup/boot/recovery prerequisites in [GOAL.md](../GOAL.md)

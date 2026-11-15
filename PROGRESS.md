@@ -628,6 +628,26 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    regenerates deterministically. The RATE/DAMR sections and exact header-field
    semantics remain open. Nothing was rendered.
 
+## 2026-11-15 — GAPP container fully decoded, earlier counts corrected
+
+1. Found and fixed two validation errors in the first GAPP tree decode: node
+   bodies are padded to even length with a counted zero byte, so a last child
+   ends one byte before its parent; and every LIST section ends with an 8-byte
+   `LEND` marker that the last root abuts. The corrected parse recovers 37,261
+   nodes (previously reported as 25,342), and all 14,295 `ARGS` candidates
+   satisfy an exact key/value consumption check.
+2. Decoded the remaining sections. APP header: format word, 390×450 and three
+   counts that equal the decoded 461 screens, 1,049 layers and 35 animations
+   exactly. RATE: five cubic-Bézier easing curves. DAMR: a 7,922-entry typed data
+   model (key, value, change event) that consumes its section exactly and
+   provides initial values for 275 of the 344 `${app:…}` paths. STEP: six-field
+   keyframes whose easings all resolve. INST: all 1,437 instances name a layer.
+3. Rewrote [analysis/GAPP_UI.md](analysis/GAPP_UI.md) with a correction note,
+   regenerated [analysis/gapp-ui.json](analysis/gapp-ui.json) and extended the
+   synthetic tests to eleven. The RIFF size at offset 4 remains unexplained;
+   arithmetically it omits the ANIM and RATE chunks plus 2. Some header words
+   remain uninterpreted. Nothing was rendered.
+
 ## Next work
 
 - Regenerate selected native paths with startup-aware mappings, corrected

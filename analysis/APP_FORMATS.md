@@ -37,7 +37,9 @@ and the meaning or instruction set of DAMR have not been decoded. The top-level
 RIFF declared size is 2,520,716, giving a conventional RIFF end at `0x267694`,
 which still differs from physical EOF by 13,138 bytes. Its precise accounting
 rule remains unknown; the inspector does not silently treat that declaration
-as a validated total length.
+as a validated total length. Arithmetically the declaration equals the `GAPP`
+form type plus the APP, LAYR, SCEN and DAMR chunks plus 2, omitting the ANIM and
+RATE chunks ([GAPP_UI.md](GAPP_UI.md)); this is an observation, not a rule.
 
 ## Thirty packaged app binaries: atom tables recovered
 
@@ -119,10 +121,11 @@ The bytecode task is now done: the embedded engine is QuickJS 2020-07-05
 members are read and disassembled completely
 ([APP_BYTECODE.md](APP_BYTECODE.md)). The 2020-01-19 reader crash described
 above came from that release's different opcode numbering.
-The GAPP node tree inside the LAYR, SCEN and ANIM sections is now decoded in
-[GAPP_UI.md](GAPP_UI.md): layers, scenes, controls, drawable primitives, event
-handlers and `${scope:path}` property bindings. The RATE and DAMR sections and
-the exact header-field semantics remain open.
+All six GAPP sections are now decoded in [GAPP_UI.md](GAPP_UI.md): the APP
+header, the LAYR/SCEN/ANIM node trees (layers, screens, instances, controls,
+drawables, event handlers, keyframes and `${scope:path}` bindings), the RATE
+Bézier easing curves and the DAMR data model. Some header words remain
+uninterpreted.
 
 ## Follow-up: initial function metadata and bytecode ranges
 
