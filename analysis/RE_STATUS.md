@@ -9,7 +9,7 @@ Disassembly and export counts do not measure behavioral understanding.
 | Package integrity / signatures | Hashes/signatures plus variable-length metadata and raw-recovery validator path; manifest fully verified and the `res_info` mismatch explained (it embeds the manifest's own digest); `fw_info` sizes/CRC-32 match | Observe device enforcement, update-script interpreter and rollback policy |
 | Main/sensor startup | Copy/zero tables reconstructed; startup-aware analysis ELFs | Validate full boot context, aliases, memory protection, retained/device data |
 | Native corpus | Broad exports plus targeted instruction checks | Repair save/restore ABI, logger call effects and relocated-code mappings; validate selected functions |
-| App bytecode | 44 members structurally parsed; QuickJS engine fingerprinted | Independent reader cross-check; runtime semantics and independently implemented host |
+| App bytecode | 44 members structurally parsed; QuickJS engine fingerprinted; official C reader agrees on nine header fields for all 1,072 functions | Runtime semantics, operand-level validation and independently implemented host |
 | JS/native boundary | Modules, export tables, classes and initializer ownership mapped | Argument/error contracts, object lifetimes and behavior behind each implementation |
 | Optical sensing | MAX8617X driver, initial board data, IRQ/FIFO route, host FIFO model, eight register-table inventories | Exact fitted part, full mode/timing behavior, calibration and measurement chain |
 | Health data | Heart/SpO2 caches and services; sensor process/control IPC payloads modeled | Outer zrpc transport, remaining packet families, record formats, algorithms and validation |
@@ -49,6 +49,7 @@ Latest detailed findings:
 - [GAPP compiled UI: complete decode of Application.bin](GAPP_UI.md)
 - [Sports-peripheral client and the four custom BLE UUIDs](SPORT_PERIPHERAL.md)
 - [Package manifest and the `res_info` mismatch](PACKAGE_MANIFEST.md)
+- [Official QuickJS C reader cross-check](QJS_CROSSCHECK.md)
 
 No device write or installation is justified by the current results. The
 project's existing backup/boot/recovery prerequisites in [GOAL.md](../GOAL.md)

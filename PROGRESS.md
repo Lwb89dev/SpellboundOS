@@ -690,6 +690,23 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    [analysis/package-manifest.json](analysis/package-manifest.json). Nothing
    was installed.
 
+## 2026-11-15 — finish Claude's QuickJS cross-check
+
+1. Resumed at commit `6c162f8` with Claude's uncommitted cross-check script and
+   JSON. Reused the locally available official QuickJS 2020-07-05 source only
+   after rechecking its release tarball SHA-256.
+2. Added an independently authored, bounded C reader harness and rebuilt it.
+   All 44 bytecode members parse; all nine compared header fields agree for
+   1,072 functions. Both readers produce fingerprint
+   `2ee208e798e155d899f37f75b6ad8ccc5a8b5513281b8b294db7b155c66da88d`.
+   Python additionally verifies complete consumption; the upstream C API does
+   not expose its cursor, so C acceptance alone is not an EOF check.
+3. Hardened result validation for missing/extra members, malformed records and
+   broken function indices, added four tests and
+   [analysis/QJS_CROSSCHECK.md](analysis/QJS_CROSSCHECK.md). The report reproduces
+   exactly. All 165 Python tests pass with signature dependencies; packaged
+   bytecode was parsed and never evaluated.
+
 ## Next work
 
 - Regenerate selected native paths with startup-aware mappings, corrected
