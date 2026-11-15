@@ -257,6 +257,23 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    JSON regenerates deterministically; all 34 Python tests pass. Chip roles are
    candidate attributions from driver names, not a confirmed bill of materials.
 
+## 2026-11-15 — app-loading contract and lifecycle model
+
+1. Read the ten readable `META/js_watchfaces/*/*.js` bundles (unlike the minified
+   runtime) and recovered the host contract a standalone OS must provide to load
+   a ZeppOS app: the native-injected globals `__$$hmAppManager$$__`,
+   `__$$app$$__` and `__$$module$$__`, the `DeviceRuntimeCore` entry points the
+   apps construct (`App`, `WatchFace`, `WidgetFactory`, `HmDomApi`, `HmLogger`),
+   and the lifecycle hooks `onInit`/`onCreate`/`onReady`/`onShow`/`onHide`/
+   `onDestory`/`onError`/`onPageNotFound`/`onUnhandledRejection`.
+2. Did not publish a runtime export count: the minified `framework.js` reuses the
+   exports identifier as an ordinary parameter, so a reliable static export list
+   cannot be scanned out. Only entry points the apps actually use are reported.
+3. Added `analysis_scripts/app_model.py` with synthetic-fragment tests, the
+   report [analysis/APP_MODEL.md](analysis/APP_MODEL.md) and reproducible
+   [analysis/app-model.json](analysis/app-model.json). JSON regenerates
+   deterministically; all 37 Python tests pass.
+
 ## Next work
 
 - Map the signed image formats and the loaders for the sensor hub and radio;

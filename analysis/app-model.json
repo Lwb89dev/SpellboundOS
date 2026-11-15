@@ -1,0 +1,38 @@
+{
+  "bundle_members": [
+    "META/js_watchfaces/00002844/app.js",
+    "META/js_watchfaces/00002844/watchface/index.js",
+    "META/js_watchfaces/00002845/app.js",
+    "META/js_watchfaces/00002845/watchface/index.js",
+    "META/js_watchfaces/00002846/app.js",
+    "META/js_watchfaces/00002846/watchface/index.js",
+    "META/js_watchfaces/00002847/app.js",
+    "META/js_watchfaces/00002847/watchface/index.js",
+    "META/js_watchfaces/00002848/app.js",
+    "META/js_watchfaces/00002848/watchface/index.js"
+  ],
+  "framework_sha256": "015e05053b2b4dc516e31398711e2c3fffb6db57d6a2080638d42fc8d1e5e7f6",
+  "injected_host_globals": [
+    "app",
+    "hmAppManager",
+    "module"
+  ],
+  "lifecycle_hooks": [
+    "onCreate",
+    "onDestory",
+    "onError",
+    "onHide",
+    "onInit",
+    "onPageNotFound",
+    "onReady",
+    "onShow",
+    "onUnhandledRejection"
+  ],
+  "runtime_entry_points_used": [
+    "App",
+    "HmDomApi",
+    "HmLogger",
+    "WatchFace",
+    "WidgetFactory"
+  ]
+}
