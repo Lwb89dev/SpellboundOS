@@ -55,6 +55,20 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    potential integration surface, not an established API or an implemented
    SpellboundFit integration. A structured, versioned interface is still needed.
 
+## 2026-11-15 — targeted peripheral-loader decompilation
+
+1. Revisited the prior REA inventory and imported the OTA main firmware into
+   Ghidra with a candidate RISC-V mapping. Stopped broad automatic analysis
+   after excessive unmapped references, then manually seeded six candidate
+   functions and decompiled them without whole-image analysis.
+2. Traced the sensor-hub file path, chunked loading and `LCPU` header values,
+   followed the candidate validation path to a matching embedded public key,
+   and identified a candidate RTL8763 package loading path. The results, exact
+   offsets, reproduction command and limitations are in
+   [analysis/PERIPHERAL_LOADING.md](analysis/PERIPHERAL_LOADING.md).
+   Undecoded custom instructions and unresolved calls prevent a complete driver
+   or boot sequence. No device writes or runtime observation were performed.
+
 ## Next work
 
 - Map the signed image formats and the loaders for the sensor hub and radio;
