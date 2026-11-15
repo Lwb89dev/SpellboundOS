@@ -274,6 +274,23 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    [analysis/app-model.json](analysis/app-model.json). JSON regenerates
    deterministically; all 37 Python tests pass.
 
+## 2026-11-15 — embedded engine identified as QuickJS 2020-07-05
+
+1. Extracted the builtin atom blob (208 atoms, `JS_ATOM_END` 209) from the main
+   firmware and compared it, together with the compiled `opcode_info[]` table,
+   against nine official QuickJS releases. Only 2020-07-05 (non-bignum, default
+   `CONFIG_ATOMICS`/`SHORT_OPCODES`) matches both: identical atoms and the full
+   260-entry descriptor table byte-for-byte at member offset `0xb7e008`.
+2. Confirmed independently from the 30 packaged app binaries: the debug
+   filename atom reference implies the same `JS_ATOM_END` of 209, and the
+   top-level function name is builtin atom 80, `<eval>`.
+3. This explains the earlier 2020-01-19 reader crash (its opcode numbering
+   diverges from the 55th descriptor) and means app bytecode can be read with
+   the published 2020-07-05 format. Added `analysis_scripts/quickjs_fingerprint.py`
+   (pure Python, nothing compiled or executed) with synthetic tests, the report
+   [analysis/QUICKJS_ENGINE.md](analysis/QUICKJS_ENGINE.md) and
+   [analysis/quickjs-fingerprint.json](analysis/quickjs-fingerprint.json).
+
 ## Next work
 
 - Map the signed image formats and the loaders for the sensor hub and radio;

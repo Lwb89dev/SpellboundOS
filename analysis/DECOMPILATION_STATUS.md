@@ -99,6 +99,7 @@ original archive.
 | SoC subsystem architecture from symbol families | [SYSTEM_ARCHITECTURE.md](SYSTEM_ARCHITECTURE.md) |
 | Candidate hardware profile and health metrics | [HARDWARE_PROFILE.md](HARDWARE_PROFILE.md) |
 | App-loading contract and lifecycle model | [APP_MODEL.md](APP_MODEL.md) |
+| Embedded JS engine release (QuickJS 2020-07-05) | [QUICKJS_ENGINE.md](QUICKJS_ENGINE.md) |
 
 A concrete quality check found truncated control flow in some bulk exports
 around calls inferred as non-returning. Targeted noanalysis imports restore

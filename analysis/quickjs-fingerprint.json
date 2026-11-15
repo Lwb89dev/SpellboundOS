@@ -1,0 +1,122 @@
+{
+  "atom_blob_offset": 12052092,
+  "firmware_atom_index": {
+    "<eval>": 80,
+    "errors": 52,
+    "not-equal": 138
+  },
+  "firmware_builtin_atoms": 208,
+  "firmware_js_atom_end": 209,
+  "member": "META/firmware_sign.bin",
+  "member_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "releases": [
+    {
+      "atoms_identical": false,
+      "builtin_atoms": 207,
+      "declared_version": "2020-01-19",
+      "js_atom_end": 208,
+      "opcode_entries": 261,
+      "opcode_formats": 29,
+      "opcode_table_longest_prefix": 54,
+      "opcode_table_offset": null,
+      "opcode_table_sha256": "bc05c0e73864e685250bf180019cda4444b6ea1b08ff4b42ba4ca50e23ab02ac",
+      "source": "quickjs-2020-01-19"
+    },
+    {
+      "atoms_identical": true,
+      "builtin_atoms": 208,
+      "declared_version": "2020-07-05",
+      "js_atom_end": 209,
+      "opcode_entries": 260,
+      "opcode_formats": 29,
+      "opcode_table_longest_prefix": 260,
+      "opcode_table_offset": 12050440,
+      "opcode_table_sha256": "995a3544b6167ac0d6537ee4d01716f15ba170744350d8416b51e20bce8bce52",
+      "source": "quickjs-2020-07-05"
+    },
+    {
+      "atoms_identical": true,
+      "builtin_atoms": 208,
+      "declared_version": "2020-09-06",
+      "js_atom_end": 209,
+      "opcode_entries": 261,
+      "opcode_formats": 29,
+      "opcode_table_longest_prefix": 260,
+      "opcode_table_offset": null,
+      "opcode_table_sha256": "a787bbd53673f83be78dbe4ea505d17076705eb5d58370e2f570284d427c4c85",
+      "source": "quickjs-2020-09-06"
+    },
+    {
+      "atoms_identical": false,
+      "builtin_atoms": 209,
+      "declared_version": "2020-11-08",
+      "js_atom_end": 210,
+      "opcode_entries": 259,
+      "opcode_formats": 29,
+      "opcode_table_longest_prefix": 129,
+      "opcode_table_offset": null,
+      "opcode_table_sha256": "100708da0ff7a8329d0808a1a0ef5a9b3ecb341974db58caa851e2dcf3f05261",
+      "source": "quickjs-2020-11-08"
+    },
+    {
+      "atoms_identical": false,
+      "builtin_atoms": 209,
+      "declared_version": "2021-03-27",
+      "js_atom_end": 210,
+      "opcode_entries": 259,
+      "opcode_formats": 29,
+      "opcode_table_longest_prefix": 129,
+      "opcode_table_offset": null,
+      "opcode_table_sha256": "100708da0ff7a8329d0808a1a0ef5a9b3ecb341974db58caa851e2dcf3f05261",
+      "source": "quickjs-2021-03-27"
+    },
+    {
+      "atoms_identical": false,
+      "builtin_atoms": 213,
+      "declared_version": "2023-12-09",
+      "js_atom_end": 214,
+      "opcode_entries": 259,
+      "opcode_formats": 29,
+      "opcode_table_longest_prefix": 129,
+      "opcode_table_offset": null,
+      "opcode_table_sha256": "a16be8922d0121734f6a87d6f21074ad014b11ce61e962045e2e35cb64c00397",
+      "source": "quickjs-2023-12-09"
+    },
+    {
+      "atoms_identical": false,
+      "builtin_atoms": 215,
+      "declared_version": "2024-01-13",
+      "js_atom_end": 216,
+      "opcode_entries": 265,
+      "opcode_formats": 29,
+      "opcode_table_longest_prefix": 101,
+      "opcode_table_offset": null,
+      "opcode_table_sha256": "0097f21f982769cf977d749810204d302b112f1ad996f792eeceb58761e16877",
+      "source": "quickjs-2024-01-13"
+    },
+    {
+      "atoms_identical": false,
+      "builtin_atoms": 222,
+      "declared_version": "2025-04-26",
+      "js_atom_end": 223,
+      "opcode_entries": 267,
+      "opcode_formats": 29,
+      "opcode_table_longest_prefix": 44,
+      "opcode_table_offset": null,
+      "opcode_table_sha256": "77002e5cfb80442f20e331f35c6d963f3175cd4c383732a457599ca6bab70bd7",
+      "source": "quickjs-2025-04-26"
+    },
+    {
+      "atoms_identical": false,
+      "builtin_atoms": 229,
+      "declared_version": "2025-09-13",
+      "js_atom_end": 230,
+      "opcode_entries": 267,
+      "opcode_formats": 29,
+      "opcode_table_longest_prefix": 44,
+      "opcode_table_offset": null,
+      "opcode_table_sha256": "8e6de023907d224cfcaa74943ee2274c496e0964f48c9a94d0054f7e32beb78a",
+      "source": "quickjs-2025-09-13"
+    }
+  ]
+}
