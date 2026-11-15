@@ -1,0 +1,58 @@
+{
+  "member": "META/firmware_sign.bin",
+  "member_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "reviewed_modules": {
+    "0x00": {
+      "query_opcode": 3,
+      "receive": 1882629302,
+      "reply_opcode": 4
+    },
+    "0x0b": {
+      "modeled_requests": [
+        1,
+        3,
+        5,
+        6,
+        8
+      ],
+      "receive": 1882582346,
+      "role": "pairing and settings"
+    },
+    "0x1e": {
+      "modeled_requests": [
+        3
+      ],
+      "receive": 1882756202,
+      "role": "notification"
+    },
+    "0x46": {
+      "modeled_requests": [
+        5
+      ],
+      "receive": 1882771938,
+      "role": "map download task"
+    }
+  },
+  "scope": "offline selected payload models; no delivery, calls, map download or turn-by-turn navigation performed",
+  "source_sha256": {
+    "runtime-service-dispatch/7035ed4a.c": "7dd479b04159064960d79e82eb98077e090073df855e83b7cca666fd3e0ddd9c",
+    "runtime-service-dispatch/7036a4b6.c": "b3b427231c758b263d08ebddeeb4b37acca8e9eaaaa6a9b483f7dcfc3c7b22db",
+    "runtime-service-dispatch/7036c636.c": "57b7652f8802bf0c9b1baf561c82b5ef1eea70530e3e6cde6e7fb22909a2201a",
+    "runtime-service-dispatch/7036c834.c": "3c6dd9c1328e955347c09477312378e4ce6c643130301f62822ab6590f0d4eab",
+    "runtime-service-dispatch/7038946a.c": "955d73954a66b601df27ef1880f33f1e01031b03b523989c72b0f94ab056e304",
+    "runtime-service-dispatch/7038d1e2.c": "e0ce274092b253660d84013ed2d82e9bbec0aee77adfa62fc68b6452bc05fef3",
+    "runtime-service-payload/7035ec7c.c": "4a25000486a0386ed538a98b58b91012ef8ec1390f8f2fc554ab2342161ec44c",
+    "runtime-service-payload/7036cab2.c": "187cd0ca35fd0a586f1d6d61f31a3b863f4bbb13f3c5d658851bef320a6cd951",
+    "runtime-service-payload/7038d458.c": "44810bcaf66e69ee8d66ab0d1b15a7f1720bec42f54dc7d2aeab1877d737033d",
+    "runtime-service-payload/7038d506.c": "072cbbc6c9908888d5f065dbb35b747e83091049e4ea6cf244bf52e840e4d2e3",
+    "runtime-service-payload/7038d568.c": "84a7fee56306391eac8e6c67021ae895437bf4b84cf99f26871ecf8bee52933c",
+    "runtime-service-payload/703bc1f8.c": "cb1aba0372eae0a0ccad58feb8ecb664b30570b5ef3297973ca9384586cb9aaa",
+    "runtime-service-payload/703d066c.c": "107e568b2d6e386d13e4bfebf8d265056036e519ae1f538a31d329d287ab18f4"
+  },
+  "string_reader": {
+    "address": 1883047532,
+    "encoding": "unverified; host preserves raw bytes",
+    "terminator": 0
+  },
+  "synthetic_notification_hex": "03785634120100410042004300440001"
+}

@@ -737,6 +737,31 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    Gadgetbridge initialization sent protocol/configuration writes; no firmware,
    recovery, boot or flash-backup operation was attempted.
 
+## 2026-11-15 — all 62 announced modules and selected application payloads
+
+1. Reassembled the module-0 announcement from the private native capture,
+   matched it to the decoded log and 62 Gadgetbridge classifications, and
+   recovered its exact opcode-4/count/u16-ID/encryption-byte layout. The native
+   opcode-3 dispatcher independently corroborates the serializer.
+2. Re-exported 46 original registrar callers with ABI/logger corrections. Raw
+   call candidates found 14 additional caller paths absent from the old C
+   reference search. A separate dynamic registrar supplies world clocks.
+   The resulting 61 initializer exports contain 63 candidate descriptors;
+   all 62 announced modules match, with no encryption-policy mismatch. One
+   assistant branch describes unannounced module `0x10`.
+3. Guarded original LI+SH bytes resolve three misleading CSR-symbol/pointer
+   expressions as u16 scalar prefixes. The inspector preserves unknown bytes
+   and separately labels three source-hash-guarded, reviewed assistant branches.
+4. Followed notification (`0x1e`), phone (`0x0b`) and maps (`0x46`) dispatchers.
+   Added host-only models for notification opcode 3, phone pairing/settings
+   and map-download task opcode 5. Phone pairing and map download must not be
+   mistaken for demonstrated call controls or turn-by-turn navigation.
+5. Added `application_services.py`, `application_payloads.py`, 16 synthetic
+   tests, [analysis/APPLICATION_SERVICES.md](analysis/APPLICATION_SERVICES.md)
+   and reproducible module/payload JSON reports. All 189 Python tests pass with
+   signature dependencies. Reused the existing private capture; no phone/watch
+   interaction, pairing, notification delivery or download was performed.
+
 ## Next work
 
 - Regenerate selected native paths with startup-aware mappings, corrected
@@ -763,3 +788,6 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
 - Follow the native authentication provider/session setup and registered
   callbacks to recover pairing/key provisioning and counter lifecycle; connect
   native module payloads to JS framing before claiming an end-to-end protocol.
+- Follow notification listeners/actions and call/audio backends beyond the now
+  matched application-module descriptors; distinguish map download from the
+  still-unverified Roadstr navigation contract.

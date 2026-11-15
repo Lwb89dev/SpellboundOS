@@ -1,0 +1,2739 @@
+{
+  "member": "META/firmware_sign.bin",
+  "member_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "private_capture_sha256": "15a93fea605451b20af814315873f73c76767597318eaaa5dfeb13848dceb56c",
+  "registration_source_sha256": {
+    "703576ba.c": "4eb4ca5df844f08662a878e0338a61833dd2419b74dee95d31b968f4e59dd8ea",
+    "703587c8.c": "54ba378d920a655f84ffe9c92085d2f9a8cd3f6908349e6044d872eeabe430f7",
+    "7035a3d2.c": "23d1bc026618b0689afb5c83fd029d92669c8dd5bec5e3916c2cc79fbcbc642a",
+    "7035aeee.c": "562eeacd5e47945e704eb723d831ec8a4e636142e2d04bd5b2aabeb715c2f8eb",
+    "7035ba1e.c": "34852d70ada9de72e58e76fc99d87e09a61c59f44a40c34f57edbe138cd35af9",
+    "7035cb58.c": "04b8fd8e90ed7eb46e177081bee38f4f27451b3984e3399635b2f2f23f86e892",
+    "7035d482.c": "96c7bc7f29dfbb0c0624a29f26232326303efff3bf292cdfcc60e705c4a9b109",
+    "7035e50e.c": "cac2be43adcbbb8f7ee3526fba7d14a5b576df2cbb81f62dd4f8062578dde7a7",
+    "7035f150.c": "9fc086c71aa7ad1c48ff804edf7f60cb57eb4a1822f1d5bbd4f4bc32dbffc347",
+    "7036a772.c": "cfb1933882ee387e4caceb9a9ff7a2ef0187184dee5e41b9efcc158522ac6660",
+    "7036a9f8.c": "6c9d1df73790c7c5d57212f6d96f33fe0d6c12cd90593e89e0e022698418946b",
+    "7036edac.c": "73550bda5a4931b92149c81e33666bbb8da68122fbbc3b7114fba166c741336b",
+    "7036f68a.c": "760c2dee90e078ef8c45a905c05d26fe1d33c6b7ace4e11dad79b156c45a52ee",
+    "70370048.c": "f88996ec93ffd5ab6e70a003ef333ea92bd77d2b88858fefe3d91a77a03f281f",
+    "703708c8.c": "dba2f2212cf9d3115be2ea34a6c9c800016bf0f5e24d7ff05aeebca959cf2f0e",
+    "70370cea.c": "c053b9e889e2d768c5ad90c7f1041071dc4e585d603c6d784a653c24e595638e",
+    "703712e6.c": "3d6c3ea58ae60fbb31eac5a86755dd900b13fb2f8d7ac7d4a0ac822b24a985fb",
+    "703715e4.c": "a79ff48df627d4bfdf6301f05e487857e5990743d1ac337f88a305005fc70945",
+    "70373ce6.c": "b62665db4e6816c08b10d8c90839f8f073662359e0edfb8848c7f46877f2efda",
+    "70378be6.c": "0e990af1c2b0da574674a8479b53d92e8d57943e20e7474fef8d73f545d00028",
+    "7037950c.c": "e74b933b0d9a1c72f136526f883c89c49a2e8dc0ff9161eb0a6e6e82049873d2",
+    "7037aa7c.c": "eba900f80fd3d2f2b3af0936cfb524ad889d1f08f575ab7408f375fff545b266",
+    "7037c7e4.c": "3a529b417bf9080502f4e8f60b8fa32a0d7eccd0621157ad9642ded75e472935",
+    "7037d714.c": "f79df10bdb116734b4ef04eb224d2692061620fea97cc075c97ef679e59e471e",
+    "7037f716.c": "bcf1810ad6ab72bfb0a290d99e4c0a46797a805a355ee5f59f7cad3ce2b7c605",
+    "70380732.c": "554809dcb267b2a2858d53e8f9ca8a38b6ba37597ac2f8d8bd1ba953c6ed5dd0",
+    "70382504.c": "e5cf71808883b805689b7eb2d7a85b8895cef2ca043b65afe1ae566e1c0f08d6",
+    "70382da0.c": "4f95ea4f38d101ab796332f5b908e6fe4b13086f0a6c24c9bfe2aed72eb83553",
+    "703836d0.c": "5a11f07fc449ed3ebece7d27761ca6acd0c3de4994a28c11369e0ed072fa3c22",
+    "703844ba.c": "76c8f51c1cb702de5c460c919cb8b90310e223a7ae4b7232c369d91681fe82c0",
+    "7038549e.c": "1d092f6c8b9dd55787e2ace717521ee2bae7feb5a07e2f531e45d298ee321034",
+    "703861fa.c": "46e4cbd6ddfaed8c96d9b98db1ec40039320b991b56e8b43f38340a2a52ba9f8",
+    "70386908.c": "ec584461d7b4884b56b0d6eb80b4862558afd105f38cb188a6f89f815f809ab6",
+    "70388a9e.c": "d163d2f81e77af8adf430aa3ff389362a3be0a5e88eb23042c71d9151dc55290",
+    "7038aab6.c": "d2949869ceb24dad4762d844f95fb67e9ddb5613d05f51621d2f887e0d6254f4",
+    "7038d5ba.c": "2c06a280fbc396ae8bf7143353cfbc982669dc43ea6a048fabe0b9366907e37a",
+    "7038dc06.c": "2b0e91370f2b889596e7d8353205a63d2072b83b849eb951a7c09917c0cf4295",
+    "7038e35c.c": "6b6b570fd7baab1e014a898700e357a72bc58414f4b373bb83d6decd8004255c",
+    "7038ea30.c": "3fad8eca1dec1919cf2df1e36c553355be19c90661b00ba17bfe125f31efbfd0",
+    "70390258.c": "d56b945e2401642905a0b23455679ce8008f32b3c4dd5f0cef875ac2ebb1853f",
+    "703908ee.c": "db84c0e0b7d69fa0a4ba446b614b913df47df7a4e919a733641330a789f6760e",
+    "70391248.c": "f56ce1780fcffec52442c69d024af0d1b001f02ed65c6f1f33c5402bea6c128f",
+    "703922f2.c": "09c5061eb632c49182f62b15d67aa602ef847e5770bfdfa205bd891f67f94e6d",
+    "70392aec.c": "58295c9f36a172a76aa273d3a02977425cbcbd7389dea70015eaac4372db0558",
+    "70393f2a.c": "257ab3b542c73a2cc83d4ccfc5d4f2c371b968064f9386aec9f8b6b2c13f03f9",
+    "70394d2c.c": "71c4a74f676d74945001f5ca440420bf188838d262585fbfd2304f456407abd9",
+    "7039561c.c": "ac85175cba448a2b0e9f34814985ab162be94509caeea08705f240e99926fd57",
+    "70396078.c": "c0eaad1bfe38b4349da249f9d91b8fabf788c44964121d37957a7f43de3bac34",
+    "70396fe0.c": "324bfae30a84445da9a600884f62d6941e1158c1b0100e3180b909a308ba0b00",
+    "703a0c06.c": "8c7e270fcd927f41ec061860f8565787d00cf828dd165b28725d459a850e4e7c",
+    "703a13ec.c": "f121671b79f784b7616d6b00f4354faae5c4d7e1d9178ab754477b8d69b61e13",
+    "703a1aa2.c": "0b26ea221bdb09e6738745c5d3baee590f49179d12606fb13f42d7bfa857974c",
+    "703a3068.c": "7da20b083929e71cf7fca58600372c13014cb6762980206dea44a433fb12d115",
+    "703a3b30.c": "8102a45c6e2872627c5839e991d595eae2770dad9107d50d51f971d8a60ef5a7",
+    "703a4162.c": "1d5fe5246a4ea77aedf7791a195f7ad28440e54532da64567063e408de8bcabf",
+    "703a4aca.c": "818f8763f4e7ca77e51088b96a4cce6b34cfdcd0e16ef774de578d7f531b1ee2",
+    "703a71fe.c": "8fdeab89cb55cc11c0ba0811af9ebb7f1fe7e6b459686522b0a5ef283889552d",
+    "703a7bc0.c": "14d1465c191fd581f1339af0c700ea8b6f3ee6b13df088d6ead678a46cd93342",
+    "703a8592.c": "9217928b557c4718fcc7cdd85b96ea11c6d3b20600ee588f075ec2b0bb6e8311",
+    "703a8c3a.c": "51afb0dcbdf80449735720ca5d337738400cb0063c57efb1e6ebda99bfe4f97f",
+    "70452608.c": "9b4c3ded5bee727f5f863aab485eb6ab34985c81460b51be8da76b33c2aa9614"
+  },
+  "scope": "one native module-0 announcement and bounded explicit descriptor setups; no phone/watch access",
+  "services": [
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsServicesService",
+      "module_id": 0,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882629250,
+            "0x24": 1882629144,
+            "0x2c": 1882629146,
+            "0x38": 1882629148,
+            "0x40": 1882629302
+          },
+          "initializer": 1882630002,
+          "module_id": 0,
+          "receive_callbacks": {
+            "0x40": 1882629302
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 0,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": true,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": null,
+      "module_id": 129,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882630596,
+            "0x40": 1882630294
+          },
+          "initializer": 1882630648,
+          "module_id": 129,
+          "receive_callbacks": {
+            "0x40": 1882630294
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 1,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsConnectionService",
+      "module_id": 21,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882650012,
+            "0x1c": 1882649800,
+            "0x40": 1882650066
+          },
+          "initializer": 1882650250,
+          "module_id": 21,
+          "receive_callbacks": {
+            "0x40": 1882650066
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 0,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": true,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": null,
+      "module_id": 132,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882647634,
+            "0x40": 1882647688
+          },
+          "initializer": 1882647980,
+          "module_id": 132,
+          "receive_callbacks": {
+            "0x40": 1882647688
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 1,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsTimeService",
+      "module_id": 71,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882654216,
+            "0x40": 1882654270
+          },
+          "initializer": 1882654920,
+          "module_id": 71,
+          "receive_callbacks": {
+            "0x40": 1882654270
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 0,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsBatteryService",
+      "module_id": 41,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882574886,
+            "0x08": 1882574738,
+            "0x40": 1882575678
+          },
+          "initializer": 1882576002,
+          "module_id": 41,
+          "receive_callbacks": {
+            "0x40": 1882575678
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 0,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": true,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsUserInfoService",
+      "module_id": 23,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882862282,
+            "0x40": 1882864326
+          },
+          "initializer": 1882864432,
+          "module_id": 23,
+          "receive_callbacks": {
+            "0x40": 1882864326
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 1,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": null,
+      "module_id": 40,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882656362,
+            "0x40": 1882657054
+          },
+          "initializer": 1882657510,
+          "module_id": 40,
+          "receive_callbacks": {
+            "0x40": 1882657054
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 0,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsDeviceInfoService",
+      "module_id": 67,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882658136,
+            "0x40": 1882658152
+          },
+          "initializer": 1882658276,
+          "module_id": 67,
+          "receive_callbacks": {
+            "0x40": 1882658152
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 0,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": true,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsConfigService",
+      "module_id": 10,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882798314,
+            "0x40": 1882798364
+          },
+          "initializer": 1882799914,
+          "module_id": 10,
+          "receive_callbacks": {
+            "0x40": 1882798364
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 1,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": true,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsMapsService",
+      "module_id": 70,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882771804,
+            "0x40": 1882771938
+          },
+          "initializer": 1882772922,
+          "module_id": 70,
+          "receive_callbacks": {
+            "0x40": 1882771938
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 1,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": true,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsDisplayItemsService",
+      "module_id": 38,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882568248,
+            "0x40": 1882568300
+          },
+          "initializer": 1882569246,
+          "module_id": 38,
+          "receive_callbacks": {
+            "0x40": 1882568300
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 1,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": true,
+      "encryption_policy_match": null,
+      "gadgetbridge_label": null,
+      "module_id": 48,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882855350,
+            "0x40": 1882857204
+          },
+          "initializer": 1882856098,
+          "module_id": 48,
+          "receive_callbacks": {
+            "0x40": 1882857204
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": null,
+          "require_encryption_raw": null,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": [
+            1,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsFileTransferService",
+      "module_id": 13,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882683018,
+            "0x44": 1882679808
+          },
+          "initializer": 1882688486,
+          "module_id": 13,
+          "receive_callbacks": {
+            "0x44": 1882679808
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": null,
+      "module_id": 72,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882715424,
+            "0x10": 1882714506,
+            "0x40": 1882715478
+          },
+          "initializer": 1882715926,
+          "module_id": 72,
+          "receive_callbacks": {
+            "0x40": 1882715478
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 0,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsStepsService",
+      "module_id": 22,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882785080,
+            "0x08": 1882785076,
+            "0x2c": 1882784998,
+            "0x40": 1882785134
+          },
+          "initializer": 1882786030,
+          "module_id": 22,
+          "receive_callbacks": {
+            "0x40": 1882785134
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": null,
+      "module_id": 34,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882548768,
+            "0x08": 1882548764,
+            "0x40": 1882550198
+          },
+          "initializer": 1882551994,
+          "module_id": 34,
+          "receive_callbacks": {
+            "0x40": 1882550198
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": null,
+      "module_id": 5,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882737236,
+            "0x08": 1882737232,
+            "0x40": 1882737464
+          },
+          "initializer": 1882739870,
+          "module_id": 5,
+          "raw_prefix_store": {
+            "expression": "&scounteren",
+            "instruction": 1882740484,
+            "instruction_bytes": "930750102312f100",
+            "store_width": 2,
+            "value": 261
+          },
+          "receive_callbacks": {
+            "0x40": 1882737464
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": null,
+      "module_id": 73,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882778772,
+            "0x40": 1882779054
+          },
+          "initializer": 1882784344,
+          "module_id": 73,
+          "receive_callbacks": {
+            "0x40": 1882779054
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": null,
+      "module_id": 50,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882800862,
+            "0x08": 1882800878,
+            "0x40": 1882803314
+          },
+          "initializer": 1882803500,
+          "module_id": 50,
+          "receive_callbacks": {
+            "0x40": 1882803314
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": true,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": null,
+      "module_id": 54,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882787052,
+            "0x08": 1882787068,
+            "0x40": 1882787274
+          },
+          "initializer": 1882788424,
+          "module_id": 54,
+          "receive_callbacks": {
+            "0x40": 1882787274
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 1,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": null,
+      "module_id": 80,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882723222,
+            "0x40": 1882723504
+          },
+          "initializer": 1882727684,
+          "module_id": 80,
+          "receive_callbacks": {
+            "0x40": 1882723504
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": null,
+      "module_id": 81,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882576808,
+            "0x40": 1882576894
+          },
+          "initializer": 1882580238,
+          "module_id": 81,
+          "receive_callbacks": {
+            "0x40": 1882576894
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsHeartRateService",
+      "module_id": 29,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882704776,
+            "0x08": 1882704772,
+            "0x40": 1882705134
+          },
+          "initializer": 1882707732,
+          "module_id": 29,
+          "receive_callbacks": {
+            "0x40": 1882705134
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": null,
+      "module_id": 49,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882865576,
+            "0x08": 1882865180,
+            "0x40": 1882866318
+          },
+          "initializer": 1882866018,
+          "module_id": 49,
+          "receive_callbacks": {
+            "0x40": 1882866318
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": true,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsPhoneService",
+      "module_id": 11,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882582292,
+            "0x40": 1882582346
+          },
+          "initializer": 1882583376,
+          "module_id": 11,
+          "receive_callbacks": {
+            "0x40": 1882582346
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 1,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": true,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsNotificationService",
+      "module_id": 30,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882756092,
+            "0x08": 1882752916,
+            "0x40": 1882756202
+          },
+          "initializer": 1882753694,
+          "module_id": 30,
+          "receive_callbacks": {
+            "0x40": 1882756202
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 1,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": true,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": null,
+      "module_id": 31,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882767534,
+            "0x08": 1882761606,
+            "0x40": 1882768214
+          },
+          "initializer": 1882761910,
+          "module_id": 31,
+          "receive_callbacks": {
+            "0x40": 1882768214
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 1,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsMusicService",
+      "module_id": 27,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882744230,
+            "0x08": 1882743872,
+            "0x10": 1882744068,
+            "0x40": 1882743876
+          },
+          "initializer": 1882745096,
+          "module_id": 27,
+          "receive_callbacks": {
+            "0x40": 1882743876
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsMorningUpdatesService",
+      "module_id": 63,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882742562,
+            "0x08": 1882742558,
+            "0x40": 1882742616
+          },
+          "initializer": 1882743290,
+          "module_id": 63,
+          "receive_callbacks": {
+            "0x40": 1882742616
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 0,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsLogsService",
+      "module_id": 58,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882730704,
+            "0x08": 1882730224,
+            "0x10": 1882730620,
+            "0x40": 1882730756
+          },
+          "initializer": 1882732240,
+          "module_id": 58,
+          "receive_callbacks": {
+            "0x40": 1882730756
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": true,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": null,
+      "module_id": 65,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882850922,
+            "0x08": 1882850770,
+            "0x40": 1882850972
+          },
+          "initializer": 1882852358,
+          "module_id": 65,
+          "receive_callbacks": {
+            "0x40": 1882850972
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 1,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": null,
+      "module_id": 68,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882773392,
+            "0x2c": 1882773442,
+            "0x40": 1882773906
+          },
+          "initializer": 1882774534,
+          "module_id": 68,
+          "raw_prefix_store": {
+            "expression": "&sip",
+            "instruction": 1882775034,
+            "instruction_bytes": "930740142312f100",
+            "store_width": 2,
+            "value": 324
+          },
+          "receive_callbacks": {
+            "0x40": 1882773906
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": true,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsFindDeviceService",
+      "module_id": 26,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882690724,
+            "0x08": 1882690720,
+            "0x40": 1882690012
+          },
+          "initializer": 1882690828,
+          "module_id": 26,
+          "receive_callbacks": {
+            "0x40": 1882690012
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 1,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": true,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsAssistantService",
+      "module_id": 17,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882868372,
+            "0x2c": 1882868340,
+            "0x40": 1882868032
+          },
+          "initializer": 1882868426,
+          "module_id": 17,
+          "receive_callbacks": {
+            "0x40": 1882868032
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 1,
+          "reserved_byte": 0,
+          "review": "manually reviewed branch",
+          "selector_byte": 1,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": true,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsAssistantService",
+      "module_id": 74,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882868372,
+            "0x2c": 1882868324,
+            "0x40": 1882868000
+          },
+          "initializer": 1882868426,
+          "module_id": 74,
+          "receive_callbacks": {
+            "0x40": 1882868000
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 1,
+          "reserved_byte": 0,
+          "review": "manually reviewed branch",
+          "selector_byte": 2,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": true,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsWifiService",
+      "module_id": 3,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882882166,
+            "0x2c": 1882881636,
+            "0x40": 1882882412
+          },
+          "initializer": 1882883474,
+          "module_id": 3,
+          "receive_callbacks": {
+            "0x40": 1882882412
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 1,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": true,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsHttpService",
+      "module_id": 1,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882719134,
+            "0x10": 1882718856,
+            "0x20": 1882719066,
+            "0x38": 1882717504,
+            "0x40": 1882719184
+          },
+          "initializer": 1882720050,
+          "module_id": 1,
+          "receive_callbacks": {
+            "0x40": 1882719184
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 1,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsAgpsService",
+      "module_id": 66,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882562670,
+            "0x08": 1882562666,
+            "0x40": 1882562904
+          },
+          "initializer": 1882563538,
+          "module_id": 66,
+          "raw_prefix_store": {
+            "expression": "&scause",
+            "instruction": 1882564030,
+            "instruction_bytes": "930720142312f100",
+            "store_width": 2,
+            "value": 322
+          },
+          "receive_callbacks": {
+            "0x40": 1882562904
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsLoyaltyCardService",
+      "module_id": 60,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882733528,
+            "0x08": 1882733532,
+            "0x40": 1882734572
+          },
+          "initializer": 1882735802,
+          "module_id": 60,
+          "receive_callbacks": {
+            "0x40": 1882734572
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsAuthenticationService",
+      "module_id": 130,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882569974,
+            "0x14": 1882569934,
+            "0x18": 1882569952,
+            "0x44": 1882570302
+          },
+          "initializer": 1882573656,
+          "module_id": 130,
+          "receive_callbacks": {
+            "0x44": 1882570302
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 0,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": null,
+      "module_id": 37,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882702426,
+            "0x40": 1882700512
+          },
+          "initializer": 1882703844,
+          "module_id": 37,
+          "receive_callbacks": {
+            "0x40": 1882700512
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": null,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": [
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsActivityFetchService",
+      "module_id": 75,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882694028,
+            "0x44": 1882693086
+          },
+          "initializer": 1882696316,
+          "module_id": 75,
+          "receive_callbacks": {
+            "0x44": 1882693086
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": true,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": null,
+      "module_id": 12,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882775698,
+            "0x40": 1882775748
+          },
+          "initializer": 1882776412,
+          "module_id": 12,
+          "receive_callbacks": {
+            "0x40": 1882775748
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 1,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsAppsService",
+      "module_id": 160,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1883579544,
+            "0x08": 1883579864,
+            "0x24": 1883579420,
+            "0x2c": 1883579422,
+            "0x38": 1883579424,
+            "0x40": 1883579426
+          },
+          "initializer": 1883579912,
+          "module_id": 160,
+          "receive_callbacks": {
+            "0x40": 1883579426
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 0,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": true,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsVibrationPatternsService",
+      "module_id": 24,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882655452,
+            "0x08": 1882655448,
+            "0x40": 1882655506
+          },
+          "initializer": 1882655978,
+          "module_id": 24,
+          "receive_callbacks": {
+            "0x40": 1882655506
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 1,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": true,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": null,
+      "module_id": 82,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882794254,
+            "0x40": 1882794304
+          },
+          "initializer": 1882794732,
+          "module_id": 82,
+          "receive_callbacks": {
+            "0x40": 1882794304
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 1,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": true,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": null,
+      "module_id": 62,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882853510,
+            "0x08": 1882853506,
+            "0x40": 1882853560
+          },
+          "initializer": 1882854380,
+          "module_id": 62,
+          "receive_callbacks": {
+            "0x40": 1882853560
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 1,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": true,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsShortcutCardsService",
+      "module_id": 9,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882805090,
+            "0x40": 1882805142
+          },
+          "initializer": 1882805788,
+          "module_id": 9,
+          "receive_callbacks": {
+            "0x40": 1882805142
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 1,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsAlarmsService",
+      "module_id": 15,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882564134,
+            "0x08": 1882564130,
+            "0x40": 1882564858
+          },
+          "initializer": 1882566382,
+          "module_id": 15,
+          "receive_callbacks": {
+            "0x40": 1882564858
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": true,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsWatchfaceService",
+      "module_id": 35,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882667354,
+            "0x08": 1882667350,
+            "0x40": 1882667458
+          },
+          "initializer": 1882668262,
+          "module_id": 35,
+          "receive_callbacks": {
+            "0x40": 1882667458
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 1,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": null,
+      "module_id": 28,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882776868,
+            "0x40": 1882777054
+          },
+          "initializer": 1882778160,
+          "module_id": 28,
+          "receive_callbacks": {
+            "0x40": 1882777054
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": true,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": null,
+      "module_id": 55,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882552776,
+            "0x08": 1882552772,
+            "0x40": 1882553128
+          },
+          "initializer": 1882556360,
+          "module_id": 55,
+          "receive_callbacks": {
+            "0x40": 1882553128
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 1,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": true,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": null,
+      "module_id": 77,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882810322,
+            "0x08": 1882810326,
+            "0x40": 1882810414
+          },
+          "initializer": 1882812384,
+          "module_id": 77,
+          "receive_callbacks": {
+            "0x40": 1882810414
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 1,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsCannedMessagesService",
+      "module_id": 19,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882806338,
+            "0x08": 1882806334,
+            "0x40": 1882807190
+          },
+          "initializer": 1882808440,
+          "module_id": 19,
+          "receive_callbacks": {
+            "0x40": 1882807190
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsCalendarService",
+      "module_id": 7,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882790880,
+            "0x08": 1882790000,
+            "0x40": 1882790932
+          },
+          "initializer": 1882792690,
+          "module_id": 7,
+          "receive_callbacks": {
+            "0x40": 1882790932
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsWeatherService",
+      "module_id": 14,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882880080,
+            "0x08": 1882879162,
+            "0x40": 1882880180
+          },
+          "initializer": 1882880960,
+          "module_id": 14,
+          "receive_callbacks": {
+            "0x40": 1882880180
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": false,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": null,
+      "module_id": 18,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882860504,
+            "0x08": 1882858398,
+            "0x40": 1882859350
+          },
+          "initializer": 1882861672,
+          "module_id": 18,
+          "receive_callbacks": {
+            "0x40": 1882859350
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 0,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": true,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsContactsService",
+      "module_id": 20,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882651886,
+            "0x08": 1882651882,
+            "0x40": 1882651938
+          },
+          "initializer": 1882652744,
+          "module_id": 20,
+          "receive_callbacks": {
+            "0x40": 1882651938
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 1,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": true,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsVoiceMemosService",
+      "module_id": 51,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882963376,
+            "0x08": 1882963548,
+            "0x40": 1882877788
+          },
+          "initializer": 1882878462,
+          "module_id": 51,
+          "receive_callbacks": {
+            "0x40": 1882877788
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 1,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": true,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": null,
+      "module_id": 79,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882729422,
+            "0x40": 1882729476
+          },
+          "initializer": 1882729888,
+          "module_id": 79,
+          "receive_callbacks": {
+            "0x40": 1882729476
+          },
+          "registrar": 1882637878,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 1,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    },
+    {
+      "announced_encrypted": true,
+      "encryption_policy_match": true,
+      "gadgetbridge_label": "ZeppOsWorldClocksService",
+      "module_id": 8,
+      "static_candidates": [
+        {
+          "callbacks": {
+            "0x04": 1882884570,
+            "0x40": 1882884622
+          },
+          "initializer": 1882885178,
+          "module_id": 8,
+          "receive_callbacks": {
+            "0x40": 1882884622
+          },
+          "registrar": 1882638388,
+          "require_authorization_raw": 1,
+          "require_encryption_raw": 1,
+          "reserved_byte": 0,
+          "unknown_byte_offsets": []
+        }
+      ]
+    }
+  ],
+  "static_descriptors": [
+    {
+      "callbacks": {
+        "0x04": 1882548768,
+        "0x08": 1882548764,
+        "0x40": 1882550198
+      },
+      "initializer": 1882551994,
+      "module_id": 34,
+      "receive_callbacks": {
+        "0x40": 1882550198
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882552776,
+        "0x08": 1882552772,
+        "0x40": 1882553128
+      },
+      "initializer": 1882556360,
+      "module_id": 55,
+      "receive_callbacks": {
+        "0x40": 1882553128
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 1,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882562670,
+        "0x08": 1882562666,
+        "0x40": 1882562904
+      },
+      "initializer": 1882563538,
+      "module_id": 66,
+      "raw_prefix_store": {
+        "expression": "&scause",
+        "instruction": 1882564030,
+        "instruction_bytes": "930720142312f100",
+        "store_width": 2,
+        "value": 322
+      },
+      "receive_callbacks": {
+        "0x40": 1882562904
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882564134,
+        "0x08": 1882564130,
+        "0x40": 1882564858
+      },
+      "initializer": 1882566382,
+      "module_id": 15,
+      "receive_callbacks": {
+        "0x40": 1882564858
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882568248,
+        "0x40": 1882568300
+      },
+      "initializer": 1882569246,
+      "module_id": 38,
+      "receive_callbacks": {
+        "0x40": 1882568300
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 1,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882569974,
+        "0x14": 1882569934,
+        "0x18": 1882569952,
+        "0x44": 1882570302
+      },
+      "initializer": 1882573656,
+      "module_id": 130,
+      "receive_callbacks": {
+        "0x44": 1882570302
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 0,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882574886,
+        "0x08": 1882574738,
+        "0x40": 1882575678
+      },
+      "initializer": 1882576002,
+      "module_id": 41,
+      "receive_callbacks": {
+        "0x40": 1882575678
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 0,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882576808,
+        "0x40": 1882576894
+      },
+      "initializer": 1882580238,
+      "module_id": 81,
+      "receive_callbacks": {
+        "0x40": 1882576894
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882582292,
+        "0x40": 1882582346
+      },
+      "initializer": 1882583376,
+      "module_id": 11,
+      "receive_callbacks": {
+        "0x40": 1882582346
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 1,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882629250,
+        "0x24": 1882629144,
+        "0x2c": 1882629146,
+        "0x38": 1882629148,
+        "0x40": 1882629302
+      },
+      "initializer": 1882630002,
+      "module_id": 0,
+      "receive_callbacks": {
+        "0x40": 1882629302
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 0,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882630596,
+        "0x40": 1882630294
+      },
+      "initializer": 1882630648,
+      "module_id": 129,
+      "receive_callbacks": {
+        "0x40": 1882630294
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 1,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882647634,
+        "0x40": 1882647688
+      },
+      "initializer": 1882647980,
+      "module_id": 132,
+      "receive_callbacks": {
+        "0x40": 1882647688
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 1,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882650012,
+        "0x1c": 1882649800,
+        "0x40": 1882650066
+      },
+      "initializer": 1882650250,
+      "module_id": 21,
+      "receive_callbacks": {
+        "0x40": 1882650066
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 0,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882651886,
+        "0x08": 1882651882,
+        "0x40": 1882651938
+      },
+      "initializer": 1882652744,
+      "module_id": 20,
+      "receive_callbacks": {
+        "0x40": 1882651938
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 1,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882654216,
+        "0x40": 1882654270
+      },
+      "initializer": 1882654920,
+      "module_id": 71,
+      "receive_callbacks": {
+        "0x40": 1882654270
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 0,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882655452,
+        "0x08": 1882655448,
+        "0x40": 1882655506
+      },
+      "initializer": 1882655978,
+      "module_id": 24,
+      "receive_callbacks": {
+        "0x40": 1882655506
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 1,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882656362,
+        "0x40": 1882657054
+      },
+      "initializer": 1882657510,
+      "module_id": 40,
+      "receive_callbacks": {
+        "0x40": 1882657054
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 0,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882658136,
+        "0x40": 1882658152
+      },
+      "initializer": 1882658276,
+      "module_id": 67,
+      "receive_callbacks": {
+        "0x40": 1882658152
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 0,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882667354,
+        "0x08": 1882667350,
+        "0x40": 1882667458
+      },
+      "initializer": 1882668262,
+      "module_id": 35,
+      "receive_callbacks": {
+        "0x40": 1882667458
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 1,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882683018,
+        "0x44": 1882679808
+      },
+      "initializer": 1882688486,
+      "module_id": 13,
+      "receive_callbacks": {
+        "0x44": 1882679808
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882690724,
+        "0x08": 1882690720,
+        "0x40": 1882690012
+      },
+      "initializer": 1882690828,
+      "module_id": 26,
+      "receive_callbacks": {
+        "0x40": 1882690012
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 1,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882694028,
+        "0x44": 1882693086
+      },
+      "initializer": 1882696316,
+      "module_id": 75,
+      "receive_callbacks": {
+        "0x44": 1882693086
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882702426,
+        "0x40": 1882700512
+      },
+      "initializer": 1882703844,
+      "module_id": 37,
+      "receive_callbacks": {
+        "0x40": 1882700512
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": null,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": [
+        1
+      ]
+    },
+    {
+      "callbacks": {
+        "0x04": 1882704776,
+        "0x08": 1882704772,
+        "0x40": 1882705134
+      },
+      "initializer": 1882707732,
+      "module_id": 29,
+      "receive_callbacks": {
+        "0x40": 1882705134
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882715424,
+        "0x10": 1882714506,
+        "0x40": 1882715478
+      },
+      "initializer": 1882715926,
+      "module_id": 72,
+      "receive_callbacks": {
+        "0x40": 1882715478
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 0,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882719134,
+        "0x10": 1882718856,
+        "0x20": 1882719066,
+        "0x38": 1882717504,
+        "0x40": 1882719184
+      },
+      "initializer": 1882720050,
+      "module_id": 1,
+      "receive_callbacks": {
+        "0x40": 1882719184
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 1,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882723222,
+        "0x40": 1882723504
+      },
+      "initializer": 1882727684,
+      "module_id": 80,
+      "receive_callbacks": {
+        "0x40": 1882723504
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882729422,
+        "0x40": 1882729476
+      },
+      "initializer": 1882729888,
+      "module_id": 79,
+      "receive_callbacks": {
+        "0x40": 1882729476
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 1,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882730704,
+        "0x08": 1882730224,
+        "0x10": 1882730620,
+        "0x40": 1882730756
+      },
+      "initializer": 1882732240,
+      "module_id": 58,
+      "receive_callbacks": {
+        "0x40": 1882730756
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882733528,
+        "0x08": 1882733532,
+        "0x40": 1882734572
+      },
+      "initializer": 1882735802,
+      "module_id": 60,
+      "receive_callbacks": {
+        "0x40": 1882734572
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882737236,
+        "0x08": 1882737232,
+        "0x40": 1882737464
+      },
+      "initializer": 1882739870,
+      "module_id": 5,
+      "raw_prefix_store": {
+        "expression": "&scounteren",
+        "instruction": 1882740484,
+        "instruction_bytes": "930750102312f100",
+        "store_width": 2,
+        "value": 261
+      },
+      "receive_callbacks": {
+        "0x40": 1882737464
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882742562,
+        "0x08": 1882742558,
+        "0x40": 1882742616
+      },
+      "initializer": 1882743290,
+      "module_id": 63,
+      "receive_callbacks": {
+        "0x40": 1882742616
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 0,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882744230,
+        "0x08": 1882743872,
+        "0x10": 1882744068,
+        "0x40": 1882743876
+      },
+      "initializer": 1882745096,
+      "module_id": 27,
+      "receive_callbacks": {
+        "0x40": 1882743876
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882756092,
+        "0x08": 1882752916,
+        "0x40": 1882756202
+      },
+      "initializer": 1882753694,
+      "module_id": 30,
+      "receive_callbacks": {
+        "0x40": 1882756202
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 1,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882767534,
+        "0x08": 1882761606,
+        "0x40": 1882768214
+      },
+      "initializer": 1882761910,
+      "module_id": 31,
+      "receive_callbacks": {
+        "0x40": 1882768214
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 1,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882771804,
+        "0x40": 1882771938
+      },
+      "initializer": 1882772922,
+      "module_id": 70,
+      "receive_callbacks": {
+        "0x40": 1882771938
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 1,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882773392,
+        "0x2c": 1882773442,
+        "0x40": 1882773906
+      },
+      "initializer": 1882774534,
+      "module_id": 68,
+      "raw_prefix_store": {
+        "expression": "&sip",
+        "instruction": 1882775034,
+        "instruction_bytes": "930740142312f100",
+        "store_width": 2,
+        "value": 324
+      },
+      "receive_callbacks": {
+        "0x40": 1882773906
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882775698,
+        "0x40": 1882775748
+      },
+      "initializer": 1882776412,
+      "module_id": 12,
+      "receive_callbacks": {
+        "0x40": 1882775748
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 1,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882776868,
+        "0x40": 1882777054
+      },
+      "initializer": 1882778160,
+      "module_id": 28,
+      "receive_callbacks": {
+        "0x40": 1882777054
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882778772,
+        "0x40": 1882779054
+      },
+      "initializer": 1882784344,
+      "module_id": 73,
+      "receive_callbacks": {
+        "0x40": 1882779054
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882785080,
+        "0x08": 1882785076,
+        "0x2c": 1882784998,
+        "0x40": 1882785134
+      },
+      "initializer": 1882786030,
+      "module_id": 22,
+      "receive_callbacks": {
+        "0x40": 1882785134
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882787052,
+        "0x08": 1882787068,
+        "0x40": 1882787274
+      },
+      "initializer": 1882788424,
+      "module_id": 54,
+      "receive_callbacks": {
+        "0x40": 1882787274
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 1,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882790880,
+        "0x08": 1882790000,
+        "0x40": 1882790932
+      },
+      "initializer": 1882792690,
+      "module_id": 7,
+      "receive_callbacks": {
+        "0x40": 1882790932
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882794254,
+        "0x40": 1882794304
+      },
+      "initializer": 1882794732,
+      "module_id": 82,
+      "receive_callbacks": {
+        "0x40": 1882794304
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 1,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882798314,
+        "0x40": 1882798364
+      },
+      "initializer": 1882799914,
+      "module_id": 10,
+      "receive_callbacks": {
+        "0x40": 1882798364
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 1,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882800862,
+        "0x08": 1882800878,
+        "0x40": 1882803314
+      },
+      "initializer": 1882803500,
+      "module_id": 50,
+      "receive_callbacks": {
+        "0x40": 1882803314
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882805090,
+        "0x40": 1882805142
+      },
+      "initializer": 1882805788,
+      "module_id": 9,
+      "receive_callbacks": {
+        "0x40": 1882805142
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 1,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882806338,
+        "0x08": 1882806334,
+        "0x40": 1882807190
+      },
+      "initializer": 1882808440,
+      "module_id": 19,
+      "receive_callbacks": {
+        "0x40": 1882807190
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882810322,
+        "0x08": 1882810326,
+        "0x40": 1882810414
+      },
+      "initializer": 1882812384,
+      "module_id": 77,
+      "receive_callbacks": {
+        "0x40": 1882810414
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 1,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882850922,
+        "0x08": 1882850770,
+        "0x40": 1882850972
+      },
+      "initializer": 1882852358,
+      "module_id": 65,
+      "receive_callbacks": {
+        "0x40": 1882850972
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 1,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882853510,
+        "0x08": 1882853506,
+        "0x40": 1882853560
+      },
+      "initializer": 1882854380,
+      "module_id": 62,
+      "receive_callbacks": {
+        "0x40": 1882853560
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 1,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882855350,
+        "0x40": 1882857204
+      },
+      "initializer": 1882856098,
+      "module_id": 48,
+      "receive_callbacks": {
+        "0x40": 1882857204
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": null,
+      "require_encryption_raw": null,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": [
+        1,
+        2
+      ]
+    },
+    {
+      "callbacks": {
+        "0x04": 1882860504,
+        "0x08": 1882858398,
+        "0x40": 1882859350
+      },
+      "initializer": 1882861672,
+      "module_id": 18,
+      "receive_callbacks": {
+        "0x40": 1882859350
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882862282,
+        "0x40": 1882864326
+      },
+      "initializer": 1882864432,
+      "module_id": 23,
+      "receive_callbacks": {
+        "0x40": 1882864326
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 1,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882865576,
+        "0x08": 1882865180,
+        "0x40": 1882866318
+      },
+      "initializer": 1882866018,
+      "module_id": 49,
+      "receive_callbacks": {
+        "0x40": 1882866318
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882868372,
+        "0x2c": 1882868340,
+        "0x40": 1882868032
+      },
+      "initializer": 1882868426,
+      "module_id": 17,
+      "receive_callbacks": {
+        "0x40": 1882868032
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 1,
+      "reserved_byte": 0,
+      "review": "manually reviewed branch",
+      "selector_byte": 1,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882868372,
+        "0x2c": 1882868324,
+        "0x40": 1882868000
+      },
+      "initializer": 1882868426,
+      "module_id": 74,
+      "receive_callbacks": {
+        "0x40": 1882868000
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 1,
+      "reserved_byte": 0,
+      "review": "manually reviewed branch",
+      "selector_byte": 2,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882868372,
+        "0x2c": 1882868356,
+        "0x40": 1882868064
+      },
+      "initializer": 1882868426,
+      "module_id": 16,
+      "receive_callbacks": {
+        "0x40": 1882868064
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 1,
+      "reserved_byte": 0,
+      "review": "manually reviewed branch",
+      "selector_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882963376,
+        "0x08": 1882963548,
+        "0x40": 1882877788
+      },
+      "initializer": 1882878462,
+      "module_id": 51,
+      "receive_callbacks": {
+        "0x40": 1882877788
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 1,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882880080,
+        "0x08": 1882879162,
+        "0x40": 1882880180
+      },
+      "initializer": 1882880960,
+      "module_id": 14,
+      "receive_callbacks": {
+        "0x40": 1882880180
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882882166,
+        "0x2c": 1882881636,
+        "0x40": 1882882412
+      },
+      "initializer": 1882883474,
+      "module_id": 3,
+      "receive_callbacks": {
+        "0x40": 1882882412
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 1,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1882884570,
+        "0x40": 1882884622
+      },
+      "initializer": 1882885178,
+      "module_id": 8,
+      "receive_callbacks": {
+        "0x40": 1882884622
+      },
+      "registrar": 1882638388,
+      "require_authorization_raw": 1,
+      "require_encryption_raw": 1,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    },
+    {
+      "callbacks": {
+        "0x04": 1883579544,
+        "0x08": 1883579864,
+        "0x24": 1883579420,
+        "0x2c": 1883579422,
+        "0x38": 1883579424,
+        "0x40": 1883579426
+      },
+      "initializer": 1883579912,
+      "module_id": 160,
+      "receive_callbacks": {
+        "0x40": 1883579426
+      },
+      "registrar": 1882637878,
+      "require_authorization_raw": 0,
+      "require_encryption_raw": 0,
+      "reserved_byte": 0,
+      "unknown_byte_offsets": []
+    }
+  ],
+  "summary": {
+    "announced_services": 62,
+    "live_encryption_mismatches": 0,
+    "live_services_with_static_candidate": 62,
+    "static_descriptors_recovered": 63
+  },
+  "unresolved_initializers": []
+}
