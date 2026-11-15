@@ -19,8 +19,14 @@ class ClassifyTest(unittest.TestCase):
                          'ams')
 
     def test_unknown_is_custom(self):
-        self.assertEqual(classify('cc353442-be58-4ea2-876e-11d8d6976366')[0],
+        self.assertEqual(classify('12345678-90ab-cdef-1234-567890abcdef')[0],
                          'custom')
+
+    def test_firmware_roles(self):
+        self.assertEqual(classify('7e78aa19-72cd-d3b8-a81f-5b7e589bea0f')[0],
+                         'peripheral')
+        self.assertEqual(classify('cc353442-be58-4ea2-876e-11d8d6976366')[0],
+                         'factory')
 
 
 class InspectTest(unittest.TestCase):
@@ -28,7 +34,7 @@ class InspectTest(unittest.TestCase):
         blob = (b'junk7905F431-B5CE-4E99-A40F-4B1E122D00D0more'
                 b'00000001-0000-3512-2118-0009af100700x'
                 b'00000001-0000-3512-2118-0009AF100700x'  # duplicate, mixed case
-                b'cc353442-be58-4ea2-876e-11d8d6976366end')
+                b'12345678-90ab-cdef-1234-567890abcdefend')
         result = inspect(blob)
         self.assertEqual(result['uuid_count'], 3)  # duplicate collapsed
         self.assertEqual([e['uuid'] for e in result['uuids']],

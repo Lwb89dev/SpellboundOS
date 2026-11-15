@@ -25,7 +25,8 @@ transport bindings. It complements the JS-side ABI and framing in
 | ancs | 4 | Apple Notification Center Service |
 | ams | 4 | Apple Media Service |
 | bt-sig | 1 | Bluetooth SIG base (Serial Port Profile) |
-| custom | 4 | unclassified 128-bit UUIDs |
+| peripheral | 2 | Stryd sensor service and measurement characteristic (watch as client) |
+| factory | 2 | factory-test UUID-table pair, unreferenced in the main image |
 
 ### Huami/Zepp custom identifiers
 
@@ -57,12 +58,15 @@ Firmware strings confirm an ANCS context carrying `app_id`, `title`,
 asset `images/notification/ic_reply_64px.png`. AMS strings reference
 `player_name`, `title`, `artist`, `album`. SMS item assembly is also present.
 
-### Standard and unclassified
+### Standard and firmware-specific
 
-`00001101-0000-1000-8000-00805f9b34fb` is the classic Serial Port Profile. Four
-custom UUIDs remain unclassified: `7e78aa18-…` and `7e78aa19-…` (a
-service/characteristic pair), `c551c36a-…`, and `cc353442-…`. Their roles are
-not established here.
+`00001101-0000-1000-8000-00805f9b34fb` is the classic Serial Port Profile. The
+four custom UUIDs are classified in [SPORT_PERIPHERAL.md](SPORT_PERIPHERAL.md)
+from the firmware's own use. `7e78aa18-…` and `7e78aa19-…` are the Stryd
+service and cadence-sensor measurement characteristic that the
+`bx_sport_peripheral` client subscribes to. `cc353442-…` and `c551c36a-…` occupy
+the service and characteristic slots of the factory-test image's UUID table;
+in the main image they are residual, unreferenced strings.
 
 ## Notification contract summary
 
@@ -93,6 +97,8 @@ A string scan cannot prove a service is advertised, which role is active, or
 which characteristics are actually used; it also cannot order the GATT table or
 recover handles. The follow-up native builder recovers a conditional order,
 but live handles and active state remain unobserved. The four non-Huami custom
-UUIDs remain unclassified, and the native ANCS/AMS and
-Huami-channel handlers have not been decompiled into a reusable implementation.
+UUIDs are classified by use in [SPORT_PERIPHERAL.md](SPORT_PERIPHERAL.md); the
+factory pair's behavior in the factory build is not traced. The native ANCS/AMS
+and Huami-channel handlers have not been decompiled into a reusable
+implementation.
 No Bluetooth connection was made.

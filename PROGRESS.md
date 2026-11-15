@@ -648,6 +648,27 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    arithmetically it omits the ANIM and RATE chunks plus 2. Some header words
    remain uninterpreted. Nothing was rendered.
 
+## 2026-11-15 — sports-peripheral client and the last custom BLE UUIDs
+
+1. Classified the four custom 128-bit UUIDs left open in BLE_IDENTIFIERS.md by
+   their use in the firmware. `7e78aa18`/`7e78aa19` are the Stryd sensor
+   service and cadence-sensor measurement characteristic handled by the
+   `bx_sport_peripheral` GATT client, alongside Running Speed and Cadence,
+   Cycling Power, battery and Device Information. `cc353442`/`c551c36a` occupy
+   the service and characteristic slots of the factory-test image's UUID table
+   and are unreferenced strings in the main image (no data pointer, no
+   `auipc`/`lui` address construction, no export reference).
+2. Walked both images' UUID pointer tables (66 and 48 entries), reproduced the
+   reviewed service and characteristic classifiers, and modelled the two
+   20-byte Stryd measurement layouts (types `0x32`/`0x36`) read by handler
+   `0x7039f5c2`; field meanings remain generic.
+3. Added `analysis_scripts/sport_peripheral.py` with synthetic tests, the report
+   [analysis/SPORT_PERIPHERAL.md](analysis/SPORT_PERIPHERAL.md),
+   [analysis/sport-peripheral.json](analysis/sport-peripheral.json), and
+   firmware-derived roles in `ble_identifiers.py` (regenerated
+   [analysis/ble-identifiers.json](analysis/ble-identifiers.json); no UUID
+   remains "custom"). No device was contacted.
+
 ## Next work
 
 - Regenerate selected native paths with startup-aware mappings, corrected

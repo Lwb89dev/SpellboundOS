@@ -1,0 +1,219 @@
+{
+  "characteristic_classifier": {
+    "address": 1882845836,
+    "otherwise": 0,
+    "returns": {
+      "2a19": 1,
+      "2a53": 1,
+      "2a63": 1,
+      "7e78aa19-72cd-d3b8-a81f-5b7e589bea0f": 1
+    }
+  },
+  "images": {
+    "factory": {
+      "base": 1879048192,
+      "custom_uuids": {
+        "7e78aa18-72cd-d3b8-a81f-5b7e589bea0f": {
+          "in_pointer_table": false,
+          "pointer_references": 0,
+          "string_address": null
+        },
+        "7e78aa19-72cd-d3b8-a81f-5b7e589bea0f": {
+          "in_pointer_table": false,
+          "pointer_references": 0,
+          "string_address": null
+        },
+        "c551c36a-0377-4a29-9657-74ffb655a188": {
+          "in_pointer_table": true,
+          "pointer_references": 1,
+          "string_address": 1881897448
+        },
+        "cc353442-be58-4ea2-876e-11d8d6976366": {
+          "in_pointer_table": true,
+          "pointer_references": 1,
+          "string_address": 1881898400
+        }
+      },
+      "member": "META/extfw/fct_test_sign.bin",
+      "sha256": "fdeaa1d287caa950581a35680762813ea2a3cb4caab444f17d1286c3b52490d3",
+      "table": [
+        "00000022-0000-3512-2118-0009af100700",
+        "2902",
+        "c551c36a-0377-4a29-9657-74ffb655a188",
+        "fede",
+        "fedd",
+        "2a37",
+        "2a4d21",
+        "2a4d11",
+        "2a4c",
+        "2a4a",
+        "2a32",
+        "2a22",
+        "2a4b",
+        "2a4e",
+        "2a50",
+        "2a28",
+        "2a27",
+        "2a25",
+        "2a23",
+        "00001532-0000-3512-2118-0009af100700",
+        "00001531-0000-3512-2118-0009af100700",
+        "2a19",
+        "00000024-0000-3512-2118-0009af100700",
+        "00000023-0000-3512-2118-0009af100700",
+        "00000006-0000-3512-2118-0009af100700",
+        "00000005-0000-3512-2118-0009af100700",
+        "00000004-0000-3512-2118-0009af100700",
+        "00000002-0000-3512-2118-0009af100700",
+        "00000001-0000-3512-2118-0009af100700",
+        "00000017-0000-3512-2118-0009af100700",
+        "00000016-0000-3512-2118-0009af100700",
+        "2a2b",
+        "2a46",
+        "c6b2f38c-23ab-46d8-a6ab-a3a870bbd5d7",
+        "2f7cabce-808d-411f-9a0c-bb92ba96c102",
+        "9b3c81d8-57b1-4a8a-b8df-0e56f7ca51c2",
+        "4a02",
+        "cc353442-be58-4ea2-876e-11d8d6976366",
+        "180d",
+        "1812",
+        "180a",
+        "00001530-0000-3512-2118-0009af100700",
+        "180f",
+        "fee1",
+        "fee0",
+        "1811",
+        "89d3502b-0f36-433a-8ef4-c502ad55f8dc",
+        "3802"
+      ],
+      "table_entries": 48,
+      "table_start": 1882173304
+    },
+    "main": {
+      "base": 1880489984,
+      "custom_uuids": {
+        "7e78aa18-72cd-d3b8-a81f-5b7e589bea0f": {
+          "in_pointer_table": true,
+          "pointer_references": 1,
+          "string_address": 1889906572
+        },
+        "7e78aa19-72cd-d3b8-a81f-5b7e589bea0f": {
+          "in_pointer_table": true,
+          "pointer_references": 1,
+          "string_address": 1889905524
+        },
+        "c551c36a-0377-4a29-9657-74ffb655a188": {
+          "in_pointer_table": false,
+          "pointer_references": 0,
+          "string_address": 1889905484
+        },
+        "cc353442-be58-4ea2-876e-11d8d6976366": {
+          "in_pointer_table": false,
+          "pointer_references": 0,
+          "string_address": 1889906532
+        }
+      },
+      "member": "META/firmware_sign.bin",
+      "sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+      "table": [
+        "00000022-0000-3512-2118-0009af100700",
+        "2902",
+        "7e78aa19-72cd-d3b8-a81f-5b7e589bea0f",
+        "2a53",
+        "fede",
+        "fedd",
+        "2a1d",
+        "2a1c",
+        "2a37",
+        "2a4d21",
+        "2a4d11",
+        "2a4c",
+        "2a4a",
+        "2a32",
+        "2a22",
+        "2a4b",
+        "2a4e",
+        "2ad2",
+        "2ad1",
+        "2a50",
+        "2a29",
+        "2a28",
+        "2a27",
+        "2a26",
+        "2a25",
+        "2a24",
+        "2a23",
+        "00001532-0000-3512-2118-0009af100700",
+        "00001531-0000-3512-2118-0009af100700",
+        "2a63",
+        "2a5b",
+        "2a19",
+        "00000025-0000-3512-2118-0009af100700",
+        "00000024-0000-3512-2118-0009af100700",
+        "00000023-0000-3512-2118-0009af100700",
+        "00000006-0000-3512-2118-0009af100700",
+        "00000005-0000-3512-2118-0009af100700",
+        "00000004-0000-3512-2118-0009af100700",
+        "00000002-0000-3512-2118-0009af100700",
+        "00000001-0000-3512-2118-0009af100700",
+        "00000017-0000-3512-2118-0009af100700",
+        "00000016-0000-3512-2118-0009af100700",
+        "2a2b",
+        "2a46",
+        "22eac6e9-24d6-4bb5-be44-b36ace7c7bfb",
+        "69d1d8f3-45e1-49a8-9821-9bbdfdaad9d9",
+        "9fbf120d-6301-42d9-8c58-25e699a21dbd",
+        "c6b2f38c-23ab-46d8-a6ab-a3a870bbd5d7",
+        "2f7cabce-808d-411f-9a0c-bb92ba96c102",
+        "9b3c81d8-57b1-4a8a-b8df-0e56f7ca51c2",
+        "7e78aa18-72cd-d3b8-a81f-5b7e589bea0f",
+        "1814",
+        "1809",
+        "180d",
+        "1812",
+        "1826",
+        "180a",
+        "00001530-0000-3512-2118-0009af100700",
+        "1818",
+        "1816",
+        "180f",
+        "fee1",
+        "fee0",
+        "1811",
+        "7905f431-b5ce-4e99-a40f-4b1e122d00d0",
+        "89d3502b-0f36-433a-8ef4-c502ad55f8dc"
+      ],
+      "table_entries": 66,
+      "table_start": 1889906836
+    }
+  },
+  "reviewed_source_sha256": {
+    "7039ec4c": "2a0608f4612444e35473c5f501ebdb30cdee90616df224cc3b4a642b33f643e4",
+    "7039ecf6": "ec168afefae119da5fc8dbb39ff2e477450d76dec2dc818d70a0801c022559b7",
+    "7039f28c": "83489624f0840f59073103fff80ba502f2740b349be2682c131c153d70ba4b73",
+    "7039f3c8": "967e47f79dcee37862f44ac3219ccc6c8012e31117d1a35e3cdbd40161196727",
+    "7039f55a": "b21cb488303b54c90e1911f1b160fab0979de7e9423e02dbf8fcd299a0320c50",
+    "7039f5c2": "08f70a7a7bcb9cbc0a341639ac7fbc2c2297ea542be7ef4b5804f940d64b9eb9",
+    "703bd2c0": "8d653c6595059faf281373fa02b1305392d71c24eead0eedcd9273303481beb8",
+    "703d01e4": "d2e49a99e2c97477aa0944cd61a2b81ba0ff9ddca2d58bf6d0d5f308c70f6dab",
+    "703d0418": "93cb5103f08e46a06d1bae1266251d9ae8feff8844de495c090b2f091e05fb34",
+    "703d044a": "baafadef22b7e97fb88696623e19cd24d7147061a34b031cf591b3ee9e9ddbb1",
+    "703d047e": "67205c3517deea3b969d3da8a428e6f57e7923de928f57ef9f256e7926f7f16e",
+    "703d04b0": "44b63e15cec22ecb427b82a1f2c1a6ae94d44396f45d07f33fe5a5fdc9b103e5"
+  },
+  "service_classifier": {
+    "address": 1882846554,
+    "otherwise": 0,
+    "returns": {
+      "180a": 6,
+      "180f": 1,
+      "1814": 1,
+      "1818": 1,
+      "7e78aa18-72cd-d3b8-a81f-5b7e589bea0f": 1
+    }
+  },
+  "stryd_layout_bytes": {
+    "0x32": 20,
+    "0x36": 20
+  }
+}

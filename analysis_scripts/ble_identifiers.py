@@ -41,6 +41,20 @@ AMS = {
 }
 
 
+# Roles established from the firmware's own use, not from a public registry
+# (see SPORT_PERIPHERAL.md).
+FIRMWARE_ROLES = {
+    '7e78aa18-72cd-d3b8-a81f-5b7e589bea0f':
+        ('peripheral', 'Stryd sensor service (watch as client, bx_sport_peripheral)'),
+    '7e78aa19-72cd-d3b8-a81f-5b7e589bea0f':
+        ('peripheral', 'Stryd cadence-sensor measurement characteristic (client)'),
+    'cc353442-be58-4ea2-876e-11d8d6976366':
+        ('factory', 'service slot in the factory-test UUID table; unreferenced in main'),
+    'c551c36a-0377-4a29-9657-74ffb655a188':
+        ('factory', 'characteristic slot in the factory-test UUID table; unreferenced in main'),
+}
+
+
 def classify(uuid):
     """Return ``(category, label, short_id)`` for a lowercase UUID string."""
     if uuid in ANCS:
@@ -58,6 +72,8 @@ def classify(uuid):
         if int(short, 16) == 0x1101:
             return 'bt-sig', 'Serial Port Profile (SPP)', short
         return 'bt-sig', 'Bluetooth SIG assigned', short
+    if uuid in FIRMWARE_ROLES:
+        return FIRMWARE_ROLES[uuid] + (None,)
     return 'custom', 'unclassified custom UUID', None
 
 

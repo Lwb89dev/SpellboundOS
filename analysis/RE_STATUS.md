@@ -47,6 +47,7 @@ Latest detailed findings:
 - [Native channel framing and authentication crypto delegate](NATIVE_CHANNEL.md)
 - [Authentication module, request layouts and ECDH key material](AUTH_SESSION.md)
 - [GAPP compiled UI: complete decode of Application.bin](GAPP_UI.md)
+- [Sports-peripheral client and the four custom BLE UUIDs](SPORT_PERIPHERAL.md)
 
 No device write or installation is justified by the current results. The
 project's existing backup/boot/recovery prerequisites in [GOAL.md](../GOAL.md)
