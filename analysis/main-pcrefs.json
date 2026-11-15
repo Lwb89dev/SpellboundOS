@@ -1,0 +1,120 @@
+{
+  "image_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "base": 1880489984,
+  "offsets": [
+    9562836,
+    9562856,
+    9562948,
+    9562964,
+    9556528,
+    9175120,
+    8857800,
+    8855396
+  ],
+  "hits": [
+    {
+      "instruction_file_offset": 564710,
+      "candidate_address": 1881054694,
+      "target_file_offset": 8855396,
+      "target_address": 1889345380,
+      "auipc_word": "007e8597",
+      "addi_word": "17e58593"
+    },
+    {
+      "instruction_file_offset": 571146,
+      "candidate_address": 1881061130,
+      "target_file_offset": 8857800,
+      "target_address": 1889347784,
+      "auipc_word": "007e7697",
+      "addi_word": "1be68693"
+    },
+    {
+      "instruction_file_offset": 1343042,
+      "candidate_address": 1881833026,
+      "target_file_offset": 9175120,
+      "target_address": 1889665104,
+      "auipc_word": "00778597",
+      "addi_word": "20e58593"
+    },
+    {
+      "instruction_file_offset": 2510460,
+      "candidate_address": 1883000444,
+      "target_file_offset": 9556528,
+      "target_address": 1890046512,
+      "auipc_word": "006b8697",
+      "addi_word": "3b468693"
+    },
+    {
+      "instruction_file_offset": 2526358,
+      "candidate_address": 1883016342,
+      "target_file_offset": 9562964,
+      "target_address": 1890052948,
+      "auipc_word": "006b6717",
+      "addi_word": "ebe70713"
+    },
+    {
+      "instruction_file_offset": 2526454,
+      "candidate_address": 1883016438,
+      "target_file_offset": 9562836,
+      "target_address": 1890052820,
+      "auipc_word": "006b6717",
+      "addi_word": "dde70713"
+    },
+    {
+      "instruction_file_offset": 2526522,
+      "candidate_address": 1883016506,
+      "target_file_offset": 9562836,
+      "target_address": 1890052820,
+      "auipc_word": "006b6717",
+      "addi_word": "d9a70713"
+    },
+    {
+      "instruction_file_offset": 2526624,
+      "candidate_address": 1883016608,
+      "target_file_offset": 9562948,
+      "target_address": 1890052932,
+      "auipc_word": "006b6717",
+      "addi_word": "da470713"
+    },
+    {
+      "instruction_file_offset": 2526742,
+      "candidate_address": 1883016726,
+      "target_file_offset": 9562856,
+      "target_address": 1890052840,
+      "auipc_word": "006b6717",
+      "addi_word": "cd270713"
+    },
+    {
+      "instruction_file_offset": 2526850,
+      "candidate_address": 1883016834,
+      "target_file_offset": 9562856,
+      "target_address": 1890052840,
+      "auipc_word": "006b6717",
+      "addi_word": "c6670713"
+    },
+    {
+      "instruction_file_offset": 2543982,
+      "candidate_address": 1883033966,
+      "target_file_offset": 9175120,
+      "target_address": 1889665104,
+      "auipc_word": "00653717",
+      "addi_word": "ee270713"
+    },
+    {
+      "instruction_file_offset": 2544026,
+      "candidate_address": 1883034010,
+      "target_file_offset": 9175120,
+      "target_address": 1889665104,
+      "auipc_word": "00653517",
+      "addi_word": "eb650513"
+    },
+    {
+      "instruction_file_offset": 2544096,
+      "candidate_address": 1883034080,
+      "target_file_offset": 9175120,
+      "target_address": 1889665104,
+      "auipc_word": "00653517",
+      "addi_word": "e7050513"
+    }
+  ]
+}

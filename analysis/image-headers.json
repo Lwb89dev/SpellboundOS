@@ -1,0 +1,18 @@
+{
+  "archive_sha256": "ee06079610eaf9b4ffbe35c7a6ddc604ee2aba00c3a66d85101ed2a6556d6df4",
+  "main": {
+    "sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+    "size": 13120020,
+    "hdrz_offset": 4,
+    "entry_word": 1880490540
+  },
+  "sensorhub": {
+    "sha256": "06f07541e8bb22b6118f081e791c3a4e40cbff2decd8ee478a7e82df826e9d0f",
+    "size": 626716,
+    "lcpu_offset": 0,
+    "destination_word": 2163613696,
+    "entry_word": 2163613728,
+    "nested_hdrz_offset": 36,
+    "nested_entry_word": 2163614284
+  }
+}

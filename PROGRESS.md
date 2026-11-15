@@ -69,6 +69,23 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    Undecoded custom instructions and unresolved calls prevent a complete driver
    or boot sequence. No device writes or runtime observation were performed.
 
+## 2026-11-15 — integrity and peripheral interface investigation
+
+1. Followed the sensor-hub image validation path to a digest initializer with
+   the SHA-256 initial state and to an unresolved public-key operation; the
+   separate offline ECDSA check remains the independent signature evidence.
+2. Mapped candidate LSM6DSO reset, identification, callback and SPI-like
+   transfer paths in the sensor-hub image, and followed the main image's
+   RTL8763 send/receive paths into indirect transport callbacks. Findings,
+   addresses, assumptions and reproduction instructions are recorded in
+   [analysis/DRIVER_INTERFACES.md](analysis/DRIVER_INTERFACES.md). No device
+   behavior, physical pinout or reusable working driver is claimed.
+3. Added small, tested tools to inspect the observed image headers and find
+   candidate RISC-V PC-relative references, plus reproducible JSON evidence.
+   All six Python tests passed; JSON was reproduced from the OTA and binaries,
+   and the documented Ghidra sensor command succeeded in a fresh project.
+   Ghidra still cannot fully decode custom instructions. No hardware was written.
+
 ## Next work
 
 - Map the signed image formats and the loaders for the sensor hub and radio;
