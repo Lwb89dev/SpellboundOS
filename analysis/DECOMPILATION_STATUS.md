@@ -95,6 +95,7 @@ original archive.
 | Candidate ARM mapping of radio images | [RADIO_NATIVE.md](RADIO_NATIVE.md) |
 | Application container and packaged JS bytecode | [APP_FORMATS.md](APP_FORMATS.md) |
 | JS runtime native ABI and BLE application protocol | [JS_RUNTIME_API.md](JS_RUNTIME_API.md) |
+| GATT identifiers and the notification contract | [BLE_IDENTIFIERS.md](BLE_IDENTIFIERS.md) |
 
 A concrete quality check found truncated control flow in some bulk exports
 around calls inferred as non-returning. Targeted noanalysis imports restore

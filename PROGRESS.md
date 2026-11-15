@@ -200,6 +200,25 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    (`cryptography` installed for the signature suite). This is the shipped API
    and its wire framing, not the native implementations behind each method.
 
+## 2026-11-15 — GATT identifiers and the notification contract
+
+1. Scanned the main firmware member for 128-bit GATT UUID strings and
+   classified all 27: 14 Zepp/Huami custom (base `…-0009af100700`, including the
+   `0x1530/1531/1532` firmware-update group), the four Apple ANCS and four Apple
+   AMS UUIDs, the classic Serial Port Profile, and four unclassified custom
+   UUIDs. The same set also appears in the factory-test image.
+2. Established the device-side notification contract: against iOS the watch is
+   an ANCS/AMS consumer (with an ANCS context carrying app_id/title/sub_title/
+   message/date and positive/negative action labels, a subscribe state machine,
+   stored peer address and a quick-reply asset); against the Zepp Android app it
+   uses the Huami custom channel that carries the JS runtime's framed messages.
+3. Added `analysis_scripts/ble_identifiers.py` with synthetic-input tests, the
+   report [analysis/BLE_IDENTIFIERS.md](analysis/BLE_IDENTIFIERS.md) and
+   reproducible [analysis/ble-identifiers.json](analysis/ble-identifiers.json).
+   JSON regenerates deterministically; all 27 Python tests pass. This is a
+   literal string inventory, not proof that a service is advertised or active,
+   and the custom UUIDs and native handlers remain unresolved.
+
 ## Next work
 
 - Map the signed image formats and the loaders for the sensor hub and radio;
