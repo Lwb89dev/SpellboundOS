@@ -105,9 +105,11 @@ boolean0:u8 [extra_byte:u8 [extra_boolean:u8 [extra_string:NUL]]]
 ```
 
 Strings are preserved as bytes; the native helper `0x703d066c` uses NUL
-termination and does not establish a character encoding. The host model does
-not assign title/body/sender meanings to unnamed fields without further
-evidence. Boolean bytes normalize by nonzero testing. Optional fields must
+termination and does not establish a character encoding. The later dump-helper
+and controlled capture analysis now identifies app ID, title, message, app name,
+phone number, reply and flag fields; see
+[NOTIFICATION_ACTIONS_AND_ROADSTR.md](NOTIFICATION_ACTIONS_AND_ROADSTR.md).
+Boolean bytes normalize by nonzero testing. Optional fields must
 occur consecutively; remaining bytes after the last parsed optional string
 are ignored by the observed branch and preserved by the host decoder.
 

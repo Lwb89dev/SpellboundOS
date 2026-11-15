@@ -1,0 +1,191 @@
+{
+  "android_api_table": {
+    "address": 1895186000,
+    "callbacks": {
+      "initialize": 1882754510,
+      "initialize_with_options": 1882753694,
+      "register_focus": 1882752920,
+      "register_settings": 1882753196,
+      "request_app_logo": 1882752104,
+      "request_message_image": 1882751638,
+      "send_action": 1882751500,
+      "send_text_reply": 1882752620
+    }
+  },
+  "capture_sha256": "4e6cd855b81c44c6570040eb717bde1b7d0b92e82ae640988c2f5d39d1ca91b0",
+  "diagnostic_capture": {
+    "display_observed": false,
+    "logo_transfer_finished_in_client_log": true,
+    "observations": [
+      {
+        "category_id": 250,
+        "encrypted": true,
+        "event_flags": 0,
+        "event_id": 0,
+        "expected_fields_match": true,
+        "extra_string_size": 60,
+        "kind": "synthetic_notification",
+        "message_image_present": false,
+        "payload_size": 158,
+        "reply_available": false,
+        "trailing_size": 0
+      },
+      {
+        "format_raw": 5,
+        "height": 128,
+        "kind": "app_logo_request",
+        "width": 128
+      },
+      {
+        "kind": "app_logo_response",
+        "status_raw": 1
+      }
+    ],
+    "transport": {
+      "auth_api_level_wire": null,
+      "auth_mode": null,
+      "auth_session_key_proof_matches": false,
+      "auth_success_response_observed": false,
+      "completed_transfers": 5,
+      "crypto": "AES-128 ECB; session-byte XOR of all 16 key bytes; CRC-32 and explicit sizes",
+      "encrypted_transfers_verified": 3,
+      "exact_counter_successors": 1,
+      "flags_histogram": {
+        "3": 1,
+        "7": 1,
+        "11": 1,
+        "15": 2
+      },
+      "independent_initial_counter_check": false,
+      "modules_seen": [
+        13,
+        30
+      ],
+      "native_packet_count": 5,
+      "packet_types": {
+        "3": 5
+      },
+      "pending_transfers": 0,
+      "plaintext_transfers_verified": 2,
+      "privacy": "counts and booleans; no key/key hash, counters, plaintext, padding or raw packets",
+      "route_checks_passed": 5,
+      "scope": "one captured Gadgetbridge session, not pairing/key-derivation or replay-security proof",
+      "subsequent_counter_checks_passed": 1,
+      "transfer_directions": {
+        "<@": 2,
+        ">@": 3
+      }
+    },
+    "watch_action_observed": false,
+    "watch_text_reply_observed": false
+  },
+  "field_label_evidence": {
+    "app id": {
+      "address": 1889958444,
+      "sha256": "ca0ff408dceed9f8db641cbeb45195cc779cf846bdaa5cd60cab6d14ab9da46e"
+    },
+    "app name strlen": {
+      "address": 1889958496,
+      "sha256": "4bc1203253af7b0a38dd5030ef2f63fc33d6ca50c36f2208f6e8c2a440ee051f"
+    },
+    "category id": {
+      "address": 1889958412,
+      "sha256": "7726a90be375d6c13131db224de5a85f4dcd560aad9f999db2783b2ab807d285"
+    },
+    "event id": {
+      "address": 1889958428,
+      "sha256": "fb5d2a11fdd6ee6f2b1d5b1fde42e50495569c2e9836706a8ca05e7c280bfed9"
+    },
+    "eventflags": {
+      "address": 1889958568,
+      "sha256": "4454694aa2a643b930f4943bc0c61471e2ac37ff8f45e987ded664a319a4cc81"
+    },
+    "message image flags": {
+      "address": 1889958516,
+      "sha256": "accae801bdcb771b9065d559bf08516847e83e10196edfee38e6441ac7c51028"
+    },
+    "message strlen": {
+      "address": 1889958476,
+      "sha256": "c052bcae1f81ac69e39d6cadd96a4638d90bd98d44033966945cf7020e9eecf9"
+    },
+    "phone number": {
+      "address": 1889958540,
+      "sha256": "be64910dc5241899b2ed8f1582d2e509211ce90b157180fc136367381a859bac"
+    },
+    "reply": {
+      "address": 1889958556,
+      "sha256": "c853fd15987e26a38c9beecd780a2b0e71ab25aafec6dbff28f445018a32d694"
+    },
+    "title strlen": {
+      "address": 1889958456,
+      "sha256": "ac93ad37dcec32ca6895edf93b9456a7cdc69e84093b4c85f04192383b933bdd"
+    },
+    "unique id": {
+      "address": 1889958392,
+      "sha256": "93eb2a8aa634d228c9b2d40f63587ea56b9cd71c32645d48b64b379d59b8ea1a"
+    }
+  },
+  "key_source_capture_sha256": "15a93fea605451b20af814315873f73c76767597318eaaa5dfeb13848dceb56c",
+  "member": "META/firmware_sign.bin",
+  "member_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "prior_session_notification_capabilities": [
+    {
+      "capability_byte": 1,
+      "feature_blob_size": 0,
+      "feature_present": 0,
+      "maximum": 100,
+      "tail_flags": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "version": 5
+    }
+  ],
+  "reviewed_action_roles": {
+    "1": "call UI hangup",
+    "2": "call UI ignore",
+    "3": "carries notification ID; detailed action semantics unverified"
+  },
+  "roadstr_source_evidence": {
+    "body_source": "distance",
+    "bridge_status": "candidate Android notification input; no Roadstr/watch integration executed",
+    "channel_id": "roadstr_navigation",
+    "git_head": "1a354ae11c928c625826396e91e8b5c75342def5",
+    "minimum_distance_update_interval_ms": 3000,
+    "native_canary_scope": "source adapter; active installed build and permissions not observed",
+    "notification_id": 42,
+    "selected_files_clean": true,
+    "source_sha256": {
+      "android/app/src/main/kotlin/app/roadstr/service/navigation/NativeNavigationForegroundService.kt": "89119b76c8d08a40edfc2af07d05b66a29010845ea8147c59232390e5354004c",
+      "android/app/src/main/kotlin/app/roadstr/service/notifications/NativeNavigationNotificationPolicy.kt": "4ee76c43a026595e38c485785696d5f2507b7ee1ddc949c941a3d87cdc22d18a"
+    },
+    "title_source": "instruction"
+  },
+  "scope": "native serializers and selected parsers; no SMS or call action executed",
+  "source_sha256": {
+    "runtime-android-notification/70279f1a.c": "a14a1b8852f75c11eaa7e0b76319a73a86087992d1a7a6185ef54e5db2d006fb",
+    "runtime-android-notification/70279fa8.c": "ca4e6e826caf190241dc8d7ebea6afdcb3fc76ee5d1960aecdc8787f92258870",
+    "runtime-android-notification/7036ccf0.c": "48307daa81d39c2e0514944dc6988555454f9bf8dc86d88276ef9dea9af0b88e",
+    "runtime-android-notification/7038820c.c": "6982778eef990629fd131cc37fbd3f2cbb0e263b7c3633854561c8e6eef38221",
+    "runtime-android-notification/70388296.c": "02b6ac3ac447c8ba2de79dded15d699f804cf047d2a884661073f5196d564792",
+    "runtime-android-notification/70388468.c": "e2b05d97ce0deaacca13557736ea4bdf368db7eadfae8922398d98a4e9b162c3",
+    "runtime-android-notification/7038866c.c": "18d7589960a9d142643599db2950708f0cf94c480f0456980413a17d70a3c4a0",
+    "runtime-android-notification/70388798.c": "18c6adced78471d631bb06a87640f06c6094f7e953ff316474329669b9b80252",
+    "runtime-android-notification/703888ac.c": "d3f6c09f451f3faf696ba147f651318284da5d30a8e532939d7e9a5f3bec6141",
+    "runtime-android-notification/70388dce.c": "ddc984eb9d8a3b1b328ee6d2669a4a857cb3974b75f5778b4fc4a854f4234442",
+    "runtime-android-notification/703d06b6.c": "b8aee34806aec26902b60faa8bc7280705506247925bfc1c70637d2d395f7bad",
+    "runtime-android-notification/703d0ede.c": "901073ae50e3fc1507d8651cb71c9c6b6a04a2ef440d0e30a14dd548e81b8a37",
+    "runtime-android-notification/704d6a5e.c": "e14e3a719039c3ae57dbf2e6e48ab5b0948fa7b3ebd145007a1d9b3394003d6a",
+    "runtime-android-notification/704d6aaa.c": "4633ec145fdb65badfc5f249a2a282c9eb59ae7dbffd66173bc741f87efe4450",
+    "runtime-notification-actions/70388088.c": "3b738f757ebabda814bf0e6b076ae221e898735c047c7239e4d14517c7731d65",
+    "runtime-notification-actions/7038a0dc.c": "3e9502824085119aaf6faab8f820bf2539df86879bfa0a1076caeada25c854f4",
+    "runtime-service-dispatch/7038946a.c": "955d73954a66b601df27ef1880f33f1e01031b03b523989c72b0f94ab056e304"
+  },
+  "synthetic_vectors": {
+    "action_with_id": "050378563412",
+    "action_without_id": "0502",
+    "reply": "04785634124f4b00"
+  }
+}

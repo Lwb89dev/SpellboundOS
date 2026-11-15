@@ -2,6 +2,12 @@
 
 SpellboundOS is a new standalone operating system for the Amazfit Bip 6, developed alongside the SpellboundFit Android companion. See [GOAL.md](GOAL.md) for the project goal and [PROGRESS.md](PROGRESS.md) for the work log.
 
+Stato aggiornato del reverse engineering: [RE_STATUS.md](analysis/RE_STATUS.md).
+Le prove recenti collegano i [62 moduli applicativi](analysis/APPLICATION_SERVICES.md)
+al firmware e verificano una [notifica sintetica sul collegamento reale](analysis/NOTIFICATION_ACTIONS_AND_ROADSTR.md).
+Le sezioni sotto conservano le osservazioni iniziali; il registro e i report
+collegati documentano le verifiche e le correzioni successive.
+
 # Bip 6: acquisizione OTA e analisi iniziale
 
 Per l'analisi con REA/Ghidra, la catena di avvio e l'inventario hardware

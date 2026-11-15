@@ -762,6 +762,36 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    signature dependencies. Reused the existing private capture; no phone/watch
    interaction, pairing, notification delivery or download was performed.
 
+## 2026-11-15 — notification reverse messages and controlled live test
+
+1. Followed the corrected notification dump helper and identified app ID,
+   title, message, app name, category-3 phone number, reply availability and
+   flag offsets. Reconstructed the eight-slot Android notification API table,
+   separately from the adjacent iOS interface, and followed text-reply, image
+   request and control-action serializers. Call UI hangup/ignore use actions
+   1/2; only action 3 includes the notification ID. No call or SMS was executed.
+2. Used Gadgetbridge's notification diagnostic once with a synthetic title/body.
+   The five native transfers include three encrypted notification-service
+   messages. The 158-byte opcode-3 payload exactly matches the expected app ID,
+   title, body and app name, with no trailing bytes. The watch requests its app
+   logo at format 5/128×128; the client completes the icon transfer and replies
+   with status 1. Notification rendering and watch interactions were not observed.
+3. Reused the continuing connection's session key in memory from the earlier
+   private capture. The empty new file log was not treated as evidence; the
+   controlled Logcat window supplies the packets. Restored logging off and the
+   original diagnostic title, removed temporary phone files and verified the
+   watch remains connected. Raw captures stay ignored, with modes 0700/0600.
+4. Read two clean Roadstr source files at commit `1a354ae`: instruction maps to
+   Android title and distance to body, channel `roadstr_navigation`, ID 42 and
+   a 3000 ms distance-update throttle. This is a candidate input surface, not
+   an implemented Roadstr/watch integration or proof of an active installed build.
+5. Added `notification_protocol.py`, a verified-transfer observer, eight tests,
+   [analysis/NOTIFICATION_ACTIONS_AND_ROADSTR.md](analysis/NOTIFICATION_ACTIONS_AND_ROADSTR.md)
+   and reproducible [analysis/notification-protocol.json](analysis/notification-protocol.json).
+   All 197 Python tests pass with signature/cipher dependencies. The earlier
+   native capture report remains byte-identical; public results exclude keys,
+   counter values, notification IDs and message contents.
+
 ## Next work
 
 - Regenerate selected native paths with startup-aware mappings, corrected
@@ -791,3 +821,6 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
 - Follow notification listeners/actions and call/audio backends beyond the now
   matched application-module descriptors; distinguish map download from the
   still-unverified Roadstr navigation contract.
+- Close the notification display/storage listener chain and validate a permitted
+  Roadstr notification handoff before claiming working navigation. Reverse
+  action serializers are recovered; executing replies/call actions is untested.

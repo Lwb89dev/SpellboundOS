@@ -32,7 +32,12 @@ def aes_ecb(key, data, *, encrypt=False):
     return context.update(data) + context.finalize()
 
 
-def verify(text):
+def verify(text, *, on_transfer=None):
+    """Verify a capture; an optional local observer receives private payloads.
+
+    The observer is called only after each transfer's framing/CRC checks. The
+    returned public report continues to exclude payloads and key material.
+    """
     keys = {bytes.fromhex(value) for value in KEY.findall(text)}
     if len(keys) != 1 or len(next(iter(keys))) != 16:
         raise ValueError('requires one captured 16-byte session key')
@@ -97,6 +102,9 @@ def verify(text):
             encrypted_count += 1
         else:
             payload = bytes(body)
+        if on_transfer is not None:
+            on_transfer(module_id=first.module_id_wire, direction=direction,
+                        encrypted=encrypted, payload=payload)
         if first.module_id_wire == 0x82:
             auth.append((direction, payload))
         directions[direction] += 1
