@@ -1,5 +1,10 @@
 # AndeStar v5 decoding investigation
 
+Follow-up: [zrpc branches](ZRPC_BRANCHES_AND_MEMORY.md) identifies a concrete
+Ghidra 12.1.2 `bbs` predicate defect for bit indices above zero. Selected native
+branches are independently decoded there. Profile selection alone does not
+resolve this defect; older affected pseudocode needs review.
+
 The earlier generic `RISCV:LE:32:default` imports decoded many extension words
 as `custom2`, dropping essential register and branch effects. Ghidra 12.1.2
 ships a separate `RISCV:LE:32:AndeStar_v5` language. A fresh import using it

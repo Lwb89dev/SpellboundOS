@@ -110,6 +110,10 @@ bit-1 termination behavior, exact-multiple chunk boundaries, retry policy and
 fragment-list delivery order remain unresolved. The codec exposes descriptor
 fields and raw packed bits without inventing a native reassembler.
 
+Follow-up: [branches and shared memory](ZRPC_BRANCHES_AND_MEMORY.md) identifies
+the Ghidra `bbs` defect, decodes selected branches, assigns packed bit 1 to
+more-fragments and recovers the identical three-pool rpmsg configuration.
+
 Main rpmsg registration `0x704eb7dc` creates a link object with operation table
 at `0x70c0e8e0`. Initializer `0x704eb4c0` creates endpoint callbacks, tracks
 connection notification and updates the link MTU. Allocation `0x704eb350`

@@ -1,0 +1,129 @@
+{
+  "external_source_sha256": {
+    "ghidra_12_1_2": "2ac0f478b9222768994ef5d27a0a72379744ee869ace9c71a25b437057b82a89",
+    "renode_snapshot": "004afe64fbbf815ac1af369753024750e6f8f3c61828fb4b7f066814d5c5373b"
+  },
+  "limitations": [
+    "No patched Ghidra re-export or complete corpus audit performed.",
+    "Initial shared-memory pool configuration; active routing and physical memory unverified.",
+    "Exact-multiple fragment termination remains a native compatibility question."
+  ],
+  "main_sensor_pool_tables_identical": true,
+  "main_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "rpmsg_pools": [
+    {
+      "base": 2163212288,
+      "buffer_stride": 256,
+      "count": 64,
+      "end": 2163230400,
+      "id": 0,
+      "payload_bytes": 240,
+      "ring_bytes": 864,
+      "total_bytes": 18112
+    },
+    {
+      "base": 2163232768,
+      "buffer_stride": 1024,
+      "count": 16,
+      "end": 2163249632,
+      "id": 1,
+      "payload_bytes": 1008,
+      "ring_bytes": 240,
+      "total_bytes": 16864
+    },
+    {
+      "base": 2163253248,
+      "buffer_stride": 4096,
+      "count": 2,
+      "end": 2163261568,
+      "id": 2,
+      "payload_bytes": 4080,
+      "ring_bytes": 64,
+      "total_bytes": 8320
+    }
+  ],
+  "selected_branches": [
+    {
+      "address": 1884196670,
+      "immediate": 1,
+      "mnemonic": "bbs",
+      "offset": 194,
+      "register": 15,
+      "target": 1884196864,
+      "word": "4c17f15b"
+    },
+    {
+      "address": 1884196692,
+      "immediate": 0,
+      "mnemonic": "bbc",
+      "offset": 92,
+      "register": 15,
+      "target": 1884196784,
+      "word": "0407fe5b"
+    },
+    {
+      "address": 1884201634,
+      "immediate": 2,
+      "mnemonic": "bbs",
+      "offset": 262,
+      "register": 15,
+      "target": 1884201896,
+      "word": "5027f35b"
+    },
+    {
+      "address": 1884201638,
+      "immediate": 0,
+      "mnemonic": "bbc",
+      "offset": 374,
+      "register": 15,
+      "target": 1884202012,
+      "word": "1607fb5b"
+    },
+    {
+      "address": 1884199872,
+      "immediate": 1,
+      "mnemonic": "bbc",
+      "offset": 128,
+      "register": 15,
+      "target": 1884200000,
+      "word": "0817f05b"
+    },
+    {
+      "address": 1884199918,
+      "immediate": 1,
+      "mnemonic": "bbs",
+      "offset": 50,
+      "register": 15,
+      "target": 1884199968,
+      "word": "4217f95b"
+    },
+    {
+      "address": 1884200338,
+      "immediate": 0,
+      "mnemonic": "bbs",
+      "offset": 818,
+      "register": 15,
+      "target": 1884201156,
+      "word": "7207f95b"
+    },
+    {
+      "address": 1884200838,
+      "immediate": 1,
+      "mnemonic": "bbs",
+      "offset": -164,
+      "register": 15,
+      "target": 1884200674,
+      "word": "f417fe5b"
+    },
+    {
+      "address": 1884202780,
+      "immediate": 0,
+      "mnemonic": "bbc",
+      "offset": 326,
+      "register": 15,
+      "target": 1884203106,
+      "word": "1407f35b"
+    }
+  ],
+  "sensor_sha256": "06f07541e8bb22b6118f081e791c3a4e40cbff2decd8ee478a7e82df826e9d0f"
+}

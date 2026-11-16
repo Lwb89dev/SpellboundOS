@@ -9,11 +9,11 @@ Disassembly and export counts do not measure behavioral understanding.
 | --- | --- | --- |
 | Package integrity / signatures | Hashes/signatures plus variable-length metadata and raw-recovery validator path; manifest fully verified and the `res_info` mismatch explained (it embeds the manifest's own digest); `fw_info` sizes/CRC-32 match | Observe device enforcement, update-script interpreter and rollback policy |
 | Main/sensor startup | Copy/zero tables reconstructed; startup-aware analysis ELFs | Validate full boot context, aliases, memory protection, retained/device data |
-| Native corpus | Broad exports plus targeted instruction checks | Repair save/restore ABI, logger call effects and relocated-code mappings; validate selected functions |
+| Native corpus | Broad exports plus targeted instruction checks; Ghidra 12.1.2 `bbs` predicate defect identified and selected branches independently decoded | Apply corrected bit semantics and audit affected exports; broaden ABI/logger/startup repairs |
 | App bytecode | 44 members structurally parsed; QuickJS engine fingerprinted; official C reader agrees on nine header fields for all 1,072 functions | Runtime semantics, operand-level validation and independently implemented host |
 | JS/native boundary | Modules, export tables, classes and initializer ownership mapped | Argument/error contracts, object lifetimes and behavior behind each implementation |
 | Optical sensing | MAX8617X driver, initial board data, IRQ/FIFO route, host FIFO model, eight register-table inventories | Exact fitted part, full mode/timing behavior, calibration and measurement chain |
-| Health data | Heart/SpO2 caches and services; sensor process/control payloads; matching main/sensor zrpc link/data/ACK headers and CRC-16; fragment descriptors | Native reassembly/retry bit branches, rpmsg/shared memory, remaining payloads, record formats, algorithms and device validation |
+| Health data | Heart/SpO2 caches and services; sensor process/control payloads; zrpc headers/CRC; more-fragments branch recovered; matching three-pool shared-memory configuration | Patched native exports, exact-multiple fragment case, endpoints/vrings/cache behavior, remaining payloads, algorithms and device validation |
 | Motion / other peripherals | Candidate identities and selected probe paths | Complete configuration, interrupts, power/timing and physical verification |
 | Bluetooth | Static builder/auth/curve models; all 62 announced modules matched; 103 initial transfers/69 AES checks; synthetic notification fields matched on the link and app-logo exchange observed; native reply/action serializers; selected notification listener/queue/store route followed to `NotificationNotifyScreen` request | Full GATT/handle coverage, fresh pairing/key derivation, counter persistence, remaining payloads/JS linkage, actual notification rendering/replies/actions, special storage/rich formats, Roadstr handoff and call/audio behavior |
 | GNSS / touch | Container sections, candidate code and identity clues | Full mappings, loader/command protocols, runtime integration |
@@ -44,6 +44,7 @@ Latest detailed findings:
 - [Targeted corrected native exports](NATIVE_REPAIR.md)
 - [Optical FIFO and initial sensor IPC payloads](PPG_FIFO_AND_IPC.md)
 - [Sensor zrpc packet headers, CRC and rpmsg boundary](ZRPC_PACKETS.md)
+- [AndeStar branch defect, fragment termination and shared-memory pools](ZRPC_BRANCHES_AND_MEMORY.md)
 - [Boot/recovery control flow and signed metadata](BOOT_RECOVERY_AND_METADATA.md)
 - [Native GATT registrations and transport bindings](GATT_REGISTRATION.md)
 - [Native channel framing and authentication crypto delegate](NATIVE_CHANNEL.md)

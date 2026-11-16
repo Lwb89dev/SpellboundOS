@@ -837,6 +837,25 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    undecoded. The temporary Ghidra installation was absent; no corrected fresh
    export is claimed. This pass was offline and performed no device access.
 
+## 2026-11-16 — AndeStar bit-branch defect and rpmsg pools
+
+1. Compared the pinned Ghidra 12.1.2 definition with Renode's independent
+   implementation. Ghidra's `bbs` predicate compares the masked result with 1,
+   losing taken branches at bit indices above zero. Added a bounded independent
+   decoder for RV32 bit/constant branches, with explicit instruction addresses.
+   No patched Ghidra export or full corpus audit is claimed.
+2. Recovered selected CRC, ACK and fragment branches. Packed-state bit 1 means
+   more fragments. Raw sender instructions leave a potential exact-multiple
+   termination defect; caller constraints and device behavior remain unknown.
+3. Matched three rpmsg pool records on main and sensor hub, calculated their
+   sizes and non-overlapping extents below sensor initialized RAM. Physical
+   memory/cache behavior, active endpoints and vrings remain open.
+4. Added `zrpc_control_flow.py`, five tests, reproducible
+   [analysis/zrpc-control-flow.json](analysis/zrpc-control-flow.json) and
+   [analysis/ZRPC_BRANCHES_AND_MEMORY.md](analysis/ZRPC_BRANCHES_AND_MEMORY.md).
+   All 217 Python tests pass with signature/cipher dependencies. External source
+   snapshots remain ignored; no device access or firmware writes occurred.
+
 ## Next work
 
 - Regenerate selected native paths with startup-aware mappings, corrected
@@ -844,8 +863,9 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
   counts must not be treated as semantic coverage.
 - Follow MAX8617X initialization/FIFO paths, interrupt handling and the health
   IPC pipeline; verify HAL flags and timing before implementing hardware code.
-- Repair zrpc AndeStar bit-branch decoding, then recover exact fragment
-  termination/retry behavior and rpmsg shared-memory/endpoint configuration.
+- Apply the identified `bbs` correction to Ghidra, regenerate targeted zrpc
+  paths and audit earlier affected exports. Observe exact-multiple fragment
+  behavior and recover rpmsg endpoints/vrings/cache configuration.
 
 - Follow population of the capability table and the deeper heart/SpO2 service
   backends; distinguish software records from live hardware measurements.
