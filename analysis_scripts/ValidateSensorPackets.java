@@ -23,6 +23,7 @@ public class ValidateSensorPackets extends GhidraScript {
         e.writeRegister("ra",END);e.writeRegister("a0",a0);e.writeRegister("a1",a1);e.writeRegister(e.getPCRegister(),a);
     }
     private boolean range(long pc,long start,long end){return pc>=start&&pc<end;}
+    private long input(JsonObject c,String field,long fallback){return c.has(field)?c.get(field).getAsLong():fallback;}
     private JsonObject optical(EmulatorHelper e){JsonObject o=new JsonObject();
         String[] names={"count","write","read","frame","last_tick"};long[] addresses={0x80f1705cL,0x80f1705eL,0x80f17060L,0x80f17062L,0x80f17050L};
         for(int i=0;i<names.length;++i)o.addProperty(names[i],read(e,addresses[i],i==4?4:2));return o;
@@ -51,10 +52,12 @@ public class ValidateSensorPackets extends GhidraScript {
                 enter(e,0x80f64238L,sensor,129);e.writeRegister("a2",0);e.writeRegister("a3",0);
             }else if(consumer){
                 put(e,0x80f17091L,1,c.get("enabled").getAsBoolean()?1:0);put(e,0x80f17094L,4,4660);
-                put(e,0x80f1706eL,1,1);put(e,0x80f17065L,1,0);put(e,0x80f1706dL,1,2);
-                put(e,0x80f17062L,2,2);put(e,0x80f17070L,2,1);put(e,0x80f17086L,1,c.get("secondary").getAsInt());
+                put(e,0x80f1706eL,1,1);put(e,0x80f17065L,1,input(c,"calibration",0));put(e,0x80f1706dL,1,input(c,"policy",2));
+                put(e,0x80f17062L,2,input(c,"frame",2));put(e,0x80f17070L,2,input(c,"mode",1));put(e,0x80f17086L,1,c.get("secondary").getAsInt());
                 put(e,0x80f1707cL,2,c.get("rate").getAsInt());put(e,0x80f17048L,4,c.get("dac").getAsLong());
-                put(e,0x80f17059L,1,0);put(e,0x80f17066L,2,7);put(e,0x80f17068L,4,5);
+                put(e,0x80f17059L,1,0);put(e,0x80f17066L,2,input(c,"auxiliary",7));put(e,0x80f17068L,4,input(c,"counter",5));
+                put(e,0x80f1706cL,1,input(c,"clip",0));put(e,0x80f516e4L,1,input(c,"channel_offset",0));
+                put(e,0x80f51774L,4,input(c,"maximum",1000000));put(e,0x80f51778L,4,input(c,"minimum",-1000000));
                 JsonArray words=c.getAsJsonArray("words");int index=c.get("read").getAsInt();
                 put(e,0x80f1705cL,2,words.size());put(e,0x80f17060L,2,index);
                 for(int i=0;i<1000;++i)put(e,0x80f5073cL+4L*i,4,0xdeadbeefL);
@@ -86,6 +89,7 @@ public class ValidateSensorPackets extends GhidraScript {
                     actions.add("clock");e.writeRegister("a1",tick>>>32);ret(e,tick);continue;}
                 if(consumer&&pc==0x80f73014L){actions.add("lock:"+reg(e,0));ret(e,c.get("locked").getAsBoolean()?1:0);continue;}
                 if(consumer&&pc==0x80f80382L){actions.add("unlock:"+reg(e,0));ret(e,0);continue;}
+                if(consumer&&pc==0x80f74798L){actions.add("postprocess_reset");ret(e,0);continue;}
                 if(flush&&range(pc,0x70001000L,0x70002000L)){
                     actions.add("callback:"+((pc-0x70001000L)/4)+":"+reg(e,0)+":"+reg(e,1)+":"+reg(e,2));ret(e,0xdeadbeefL);continue;
                 }

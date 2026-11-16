@@ -1,0 +1,650 @@
+{
+  "byte_range_sha256": {
+    "80f6453e_a4": "afec2a8694f2248c350c858baf0b273909a3dfb1300a824909b7e1f5c2628acd",
+    "80f72ea4_bc": "aaf18bb5d4a63017eae223d274edb12691e99c219feab4184cee88446c9e963c",
+    "80f747c0_1436": "fe225471740c916d1cc8e2bf7460bf668bedd07fdfff4c53ce094f46bf3e8cbb"
+  },
+  "export_sha256": "104cef59a26826d2ccf6d4f74d82c80367bb73a97c2d1e83a9ab352138197af5",
+  "limitations": [
+    "Only modes 2/3, frame width 3, optional-stream byte 0/1, channel-count byte 0 and a prefilled ring are executed.",
+    "Lock, allocation, memset, clock, diagnostics and postprocess-reset helper are intercepted; no peripheral or concurrency execution.",
+    "Values are native sample integers; stream meanings, calibrated units, measurement accuracy and other modes remain open."
+  ],
+  "native_steps": 13526,
+  "native_validation": {
+    "bound_per_case": 100000,
+    "case_count": 29,
+    "cases": [
+      {
+        "name": "mode2_two_streams",
+        "observed": {
+          "actions": [
+            "lock:4660",
+            "alloc:4:120:4",
+            "zero:120",
+            "clock",
+            "unlock:4660"
+          ],
+          "heap_sha256": "2ee98bd0ad15b90a8c15d78a2c3e1c695a44d7f12a33d21373d1c0f56b850d7b",
+          "returned": 2164391936,
+          "ring_sha256": "f58ce8d044e5cd0718d45b25b18a0803cc8c98e09e29e19865ecdb016b106f01",
+          "state": {
+            "auxiliary": 1,
+            "count": 0,
+            "counter": 0,
+            "read": 6
+          }
+        },
+        "steps": 547
+      },
+      {
+        "name": "mode2_three_streams",
+        "observed": {
+          "actions": [
+            "lock:4660",
+            "alloc:4:168:4",
+            "zero:168",
+            "clock",
+            "unlock:4660"
+          ],
+          "heap_sha256": "a24c643adee6d0ea03521df371d3f3552d440fcbedc49599f1c6ec1944bd5fd1",
+          "returned": 2164391936,
+          "ring_sha256": "f58ce8d044e5cd0718d45b25b18a0803cc8c98e09e29e19865ecdb016b106f01",
+          "state": {
+            "auxiliary": 1,
+            "count": 0,
+            "counter": 0,
+            "read": 6
+          }
+        },
+        "steps": 620
+      },
+      {
+        "name": "mode3_three_streams",
+        "observed": {
+          "actions": [
+            "lock:4660",
+            "alloc:4:168:4",
+            "zero:168",
+            "clock",
+            "unlock:4660"
+          ],
+          "heap_sha256": "a24c643adee6d0ea03521df371d3f3552d440fcbedc49599f1c6ec1944bd5fd1",
+          "returned": 2164391936,
+          "ring_sha256": "f58ce8d044e5cd0718d45b25b18a0803cc8c98e09e29e19865ecdb016b106f01",
+          "state": {
+            "auxiliary": 1,
+            "count": 0,
+            "counter": 0,
+            "read": 6
+          }
+        },
+        "steps": 620
+      },
+      {
+        "name": "mode2_global_offset",
+        "observed": {
+          "actions": [
+            "lock:4660",
+            "alloc:4:168:4",
+            "zero:168",
+            "clock",
+            "unlock:4660"
+          ],
+          "heap_sha256": "2971f885e29c93bdaf637f71364e4283d339769c126cf27bdb5fd8bf94540a41",
+          "returned": 2164391936,
+          "ring_sha256": "f58ce8d044e5cd0718d45b25b18a0803cc8c98e09e29e19865ecdb016b106f01",
+          "state": {
+            "auxiliary": 1,
+            "count": 0,
+            "counter": 0,
+            "read": 6
+          }
+        },
+        "steps": 620
+      },
+      {
+        "name": "mode2_channel_offset",
+        "observed": {
+          "actions": [
+            "lock:4660",
+            "alloc:4:120:4",
+            "zero:120",
+            "clock",
+            "unlock:4660"
+          ],
+          "heap_sha256": "23da22fec4538382cbae46e42f869b6416e372a3fd935e375f76ef90f993a07e",
+          "returned": 2164391936,
+          "ring_sha256": "f58ce8d044e5cd0718d45b25b18a0803cc8c98e09e29e19865ecdb016b106f01",
+          "state": {
+            "auxiliary": 1,
+            "count": 0,
+            "counter": 0,
+            "read": 6
+          }
+        },
+        "steps": 547
+      },
+      {
+        "name": "mode2_ring_wrap",
+        "observed": {
+          "actions": [
+            "lock:4660",
+            "alloc:4:120:4",
+            "zero:120",
+            "clock",
+            "unlock:4660"
+          ],
+          "heap_sha256": "2ee98bd0ad15b90a8c15d78a2c3e1c695a44d7f12a33d21373d1c0f56b850d7b",
+          "returned": 2164391936,
+          "ring_sha256": "e0e3db48fb05d230da6e1116a95ac984cf0e90ff7e89105410c01455954ff0f3",
+          "state": {
+            "auxiliary": 1,
+            "count": 0,
+            "counter": 0,
+            "read": 5
+          }
+        },
+        "steps": 549
+      },
+      {
+        "name": "mode2_partial_frame",
+        "observed": {
+          "actions": [
+            "lock:4660",
+            "alloc:4:112:4",
+            "zero:112",
+            "clock",
+            "unlock:4660"
+          ],
+          "heap_sha256": "536decf6503b9a5e9185ac022a0cc901045872f68dc54b9f36b0e48f4d2329d8",
+          "returned": 2164391936,
+          "ring_sha256": "7d4f89f91a9382ff24b144bf1f8a2c741f8ab95eed8819b487c1bbe8bde0f680",
+          "state": {
+            "auxiliary": 4,
+            "count": 1,
+            "counter": 0,
+            "read": 3
+          }
+        },
+        "steps": 406
+      },
+      {
+        "name": "mode2_empty",
+        "observed": {
+          "actions": [
+            "lock:4660",
+            "unlock:4660"
+          ],
+          "heap_sha256": null,
+          "returned": 0,
+          "ring_sha256": "bdb8c630bb7515d960ff47110e8f444c143701cc039e2f2ba2d3b360ecf9f640",
+          "state": {
+            "auxiliary": 7,
+            "count": 0,
+            "counter": 5,
+            "read": 0
+          }
+        },
+        "steps": 56
+      },
+      {
+        "name": "mode2_disabled",
+        "observed": {
+          "actions": [],
+          "heap_sha256": null,
+          "returned": 0,
+          "ring_sha256": "f58ce8d044e5cd0718d45b25b18a0803cc8c98e09e29e19865ecdb016b106f01",
+          "state": {
+            "auxiliary": 7,
+            "count": 6,
+            "counter": 5,
+            "read": 0
+          }
+        },
+        "steps": 35
+      },
+      {
+        "name": "mode2_lock_failure",
+        "observed": {
+          "actions": [
+            "lock:4660"
+          ],
+          "heap_sha256": null,
+          "returned": 0,
+          "ring_sha256": "f58ce8d044e5cd0718d45b25b18a0803cc8c98e09e29e19865ecdb016b106f01",
+          "state": {
+            "auxiliary": 7,
+            "count": 6,
+            "counter": 5,
+            "read": 0
+          }
+        },
+        "steps": 41
+      },
+      {
+        "name": "mode2_allocation_failure",
+        "observed": {
+          "actions": [
+            "lock:4660",
+            "alloc:4:120:4",
+            "allocation_log",
+            "unlock:4660"
+          ],
+          "heap_sha256": null,
+          "returned": 0,
+          "ring_sha256": "f58ce8d044e5cd0718d45b25b18a0803cc8c98e09e29e19865ecdb016b106f01",
+          "state": {
+            "auxiliary": 7,
+            "count": 6,
+            "counter": 5,
+            "read": 0
+          }
+        },
+        "steps": 128
+      },
+      {
+        "name": "mode2_zero_rate",
+        "observed": {
+          "actions": [
+            "lock:4660",
+            "clamp_log",
+            "unlock:4660"
+          ],
+          "heap_sha256": null,
+          "returned": 0,
+          "ring_sha256": "f58ce8d044e5cd0718d45b25b18a0803cc8c98e09e29e19865ecdb016b106f01",
+          "state": {
+            "auxiliary": 7,
+            "count": 6,
+            "counter": 5,
+            "read": 0
+          }
+        },
+        "steps": 122
+      },
+      {
+        "name": "mode2_no_auxiliary",
+        "observed": {
+          "actions": [
+            "lock:4660",
+            "alloc:4:120:4",
+            "zero:120",
+            "clock",
+            "unlock:4660"
+          ],
+          "heap_sha256": "9df4cfc94bae478be1db2069ce8fc0a333b53f35ad80aa984f8a9bd6d3a4f67f",
+          "returned": 2164391936,
+          "ring_sha256": "f58ce8d044e5cd0718d45b25b18a0803cc8c98e09e29e19865ecdb016b106f01",
+          "state": {
+            "auxiliary": 0,
+            "count": 0,
+            "counter": 0,
+            "read": 6
+          }
+        },
+        "steps": 499
+      },
+      {
+        "name": "mode2_one_marked_word",
+        "observed": {
+          "actions": [
+            "lock:4660",
+            "alloc:4:120:4",
+            "zero:120",
+            "clock",
+            "unlock:4660"
+          ],
+          "heap_sha256": "2ee98bd0ad15b90a8c15d78a2c3e1c695a44d7f12a33d21373d1c0f56b850d7b",
+          "returned": 2164391936,
+          "ring_sha256": "f58ce8d044e5cd0718d45b25b18a0803cc8c98e09e29e19865ecdb016b106f01",
+          "state": {
+            "auxiliary": 0,
+            "count": 0,
+            "counter": 0,
+            "read": 6
+          }
+        },
+        "steps": 507
+      },
+      {
+        "name": "mode2_policy_non_two",
+        "observed": {
+          "actions": [
+            "lock:4660",
+            "alloc:4:120:4",
+            "zero:120",
+            "clock",
+            "unlock:4660"
+          ],
+          "heap_sha256": "2ee98bd0ad15b90a8c15d78a2c3e1c695a44d7f12a33d21373d1c0f56b850d7b",
+          "returned": 2164391936,
+          "ring_sha256": "f58ce8d044e5cd0718d45b25b18a0803cc8c98e09e29e19865ecdb016b106f01",
+          "state": {
+            "auxiliary": 0,
+            "count": 0,
+            "counter": 0,
+            "read": 6
+          }
+        },
+        "steps": 497
+      },
+      {
+        "name": "mode2_bad_first_tag",
+        "observed": {
+          "actions": [
+            "lock:4660",
+            "alloc:4:112:4",
+            "zero:112",
+            "clock",
+            "sample_tag_log",
+            "unlock:4660"
+          ],
+          "heap_sha256": "536decf6503b9a5e9185ac022a0cc901045872f68dc54b9f36b0e48f4d2329d8",
+          "returned": 2164391936,
+          "ring_sha256": "e70bbda01e90beef85f88f1a12a20243412966f10cee860292e9b395c92ff6e0",
+          "state": {
+            "auxiliary": 4,
+            "count": 0,
+            "counter": 0,
+            "read": 3
+          }
+        },
+        "steps": 417
+      },
+      {
+        "name": "mode2_discarded_second_tag",
+        "observed": {
+          "actions": [
+            "lock:4660",
+            "alloc:4:112:4",
+            "zero:112",
+            "clock",
+            "unlock:4660"
+          ],
+          "heap_sha256": "536decf6503b9a5e9185ac022a0cc901045872f68dc54b9f36b0e48f4d2329d8",
+          "returned": 2164391936,
+          "ring_sha256": "c20b6dceebd9561e694af89e3f6f5aa7eeb6b042c942b9635466664c06a6a0e4",
+          "state": {
+            "auxiliary": 4,
+            "count": 0,
+            "counter": 0,
+            "read": 3
+          }
+        },
+        "steps": 406
+      },
+      {
+        "name": "mode2_checked_second_tag",
+        "observed": {
+          "actions": [
+            "lock:4660",
+            "alloc:4:156:4",
+            "zero:156",
+            "clock",
+            "sample_tag_log",
+            "unlock:4660"
+          ],
+          "heap_sha256": "78f18146dda1c4f5ee04923e96faf8cea671edaa8fe2324cc20eea84603ed02c",
+          "returned": 2164391936,
+          "ring_sha256": "c20b6dceebd9561e694af89e3f6f5aa7eeb6b042c942b9635466664c06a6a0e4",
+          "state": {
+            "auxiliary": 4,
+            "count": 0,
+            "counter": 0,
+            "read": 3
+          }
+        },
+        "steps": 469
+      },
+      {
+        "name": "mode2_ignored_third_tag",
+        "observed": {
+          "actions": [
+            "lock:4660",
+            "alloc:4:156:4",
+            "zero:156",
+            "clock",
+            "unlock:4660"
+          ],
+          "heap_sha256": "78f18146dda1c4f5ee04923e96faf8cea671edaa8fe2324cc20eea84603ed02c",
+          "returned": 2164391936,
+          "ring_sha256": "097708fd7912cf7869e7e1a377587352366f3aa90e0fa65aaa7d36797fb59748",
+          "state": {
+            "auxiliary": 4,
+            "count": 0,
+            "counter": 0,
+            "read": 3
+          }
+        },
+        "steps": 458
+      },
+      {
+        "name": "mode2_clip_raw_7fffe",
+        "observed": {
+          "actions": [
+            "lock:4660",
+            "alloc:4:112:4",
+            "zero:112",
+            "clock",
+            "unlock:4660"
+          ],
+          "heap_sha256": "6e095b2132ac49991e6fe4976bfcb6bd7d844c728a0301c6eedce2ecb57ff84c",
+          "returned": 2164391936,
+          "ring_sha256": "56b22c624cb3f6dcc6fa38fbdd7681debd07c8b81fda51e2deeb38fb8f7d6bcd",
+          "state": {
+            "auxiliary": 4,
+            "count": 0,
+            "counter": 0,
+            "read": 3
+          }
+        },
+        "steps": 415
+      },
+      {
+        "name": "mode2_clip_raw_7ffff",
+        "observed": {
+          "actions": [
+            "lock:4660",
+            "alloc:4:112:4",
+            "zero:112",
+            "clock",
+            "unlock:4660"
+          ],
+          "heap_sha256": "f8a67bc775f58eb8137226aef900c82db0b30fec8f85aede1306e847f84a252b",
+          "returned": 2164391936,
+          "ring_sha256": "bb0eeabcf92237fb0b9c52fb1fe1c05b5ca7eba1f6860a016c5bd49da29712f3",
+          "state": {
+            "auxiliary": 4,
+            "count": 0,
+            "counter": 1,
+            "read": 3
+          }
+        },
+        "steps": 421
+      },
+      {
+        "name": "mode2_clip_raw_80000",
+        "observed": {
+          "actions": [
+            "lock:4660",
+            "alloc:4:112:4",
+            "zero:112",
+            "clock",
+            "unlock:4660"
+          ],
+          "heap_sha256": "a5f84f4abea4477455eea940327cd7f6359af747dd52f494958fb686f884ee31",
+          "returned": 2164391936,
+          "ring_sha256": "57f74ecb789b5426fdb123295090a0946659e0b92d611c1a343427b31a80061f",
+          "state": {
+            "auxiliary": 4,
+            "count": 0,
+            "counter": 1,
+            "read": 3
+          }
+        },
+        "steps": 421
+      },
+      {
+        "name": "mode2_clip_raw_80001",
+        "observed": {
+          "actions": [
+            "lock:4660",
+            "alloc:4:112:4",
+            "zero:112",
+            "clock",
+            "unlock:4660"
+          ],
+          "heap_sha256": "2bbd8814448ac90de7187583dc354a91937dcccc801c5b326896bff809b392a3",
+          "returned": 2164391936,
+          "ring_sha256": "7eccd1e9362fb88280a32a94b5e8659a4a2e09dda10d8e7f4dd2a95ca9eb20e2",
+          "state": {
+            "auxiliary": 4,
+            "count": 0,
+            "counter": 1,
+            "read": 3
+          }
+        },
+        "steps": 421
+      },
+      {
+        "name": "mode2_clip_at_limits",
+        "observed": {
+          "actions": [
+            "lock:4660",
+            "alloc:4:112:4",
+            "zero:112",
+            "clock",
+            "unlock:4660"
+          ],
+          "heap_sha256": "6e1aebc4a619b89589dd19f964a4dd0663d36bc2cdb16ee85519cdecf9192e85",
+          "returned": 2164391936,
+          "ring_sha256": "8cde94b1530c8b0942445d3e71861bb0d82016999ca4b1ffb00f28b8670c8e62",
+          "state": {
+            "auxiliary": 4,
+            "count": 0,
+            "counter": 0,
+            "read": 3
+          }
+        },
+        "steps": 415
+      },
+      {
+        "name": "mode2_clip_past_limit",
+        "observed": {
+          "actions": [
+            "lock:4660",
+            "alloc:4:112:4",
+            "zero:112",
+            "clock",
+            "unlock:4660"
+          ],
+          "heap_sha256": "c8bf13252387ed379f0a013631ffc0bf2f7da0d6d5fd992eb3bcfeaeffc298fb",
+          "returned": 2164391936,
+          "ring_sha256": "53dcdc3d2f52fba2e1105cfc7019ff2d1162abfb78099658436dbe629f51392e",
+          "state": {
+            "auxiliary": 4,
+            "count": 0,
+            "counter": 1,
+            "read": 3
+          }
+        },
+        "steps": 418
+      },
+      {
+        "name": "mode2_all_bad_reset",
+        "observed": {
+          "actions": [
+            "lock:4660",
+            "alloc:4:120:4",
+            "zero:120",
+            "clock",
+            "postprocess_reset",
+            "unlock:4660"
+          ],
+          "heap_sha256": "d558ea25acfb5ea430880a5fb8a9ef113ea0d507c2bcd618e66c600544a91317",
+          "returned": 2164391936,
+          "ring_sha256": "7ae3b3598fbb88b16688410e214a9ac37353d6e05e1970d5fba4d12775d7a4bb",
+          "state": {
+            "auxiliary": 1,
+            "count": 0,
+            "counter": 0,
+            "read": 6
+          }
+        },
+        "steps": 576
+      },
+      {
+        "name": "mode2_calibration_suppresses_reset",
+        "observed": {
+          "actions": [
+            "lock:4660",
+            "alloc:4:120:4",
+            "zero:120",
+            "clock",
+            "unlock:4660"
+          ],
+          "heap_sha256": "d558ea25acfb5ea430880a5fb8a9ef113ea0d507c2bcd618e66c600544a91317",
+          "returned": 2164391936,
+          "ring_sha256": "7ae3b3598fbb88b16688410e214a9ac37353d6e05e1970d5fba4d12775d7a4bb",
+          "state": {
+            "auxiliary": 1,
+            "count": 0,
+            "counter": 0,
+            "read": 6
+          }
+        },
+        "steps": 569
+      },
+      {
+        "name": "mode2_mixed_bad_resets_counter",
+        "observed": {
+          "actions": [
+            "lock:4660",
+            "alloc:4:120:4",
+            "zero:120",
+            "clock",
+            "unlock:4660"
+          ],
+          "heap_sha256": "fbb03f12bbebabdcdf97fe96fb89e507c1691fe62379d54a17225994449fe2f0",
+          "returned": 2164391936,
+          "ring_sha256": "55873dc9d99c96f123d0547e78bb70e4518906a00c206ba4927e4056b11082cf",
+          "state": {
+            "auxiliary": 1,
+            "count": 0,
+            "counter": 0,
+            "read": 6
+          }
+        },
+        "steps": 566
+      },
+      {
+        "name": "mode2_clamped_timestamp_borrow",
+        "observed": {
+          "actions": [
+            "lock:4660",
+            "clamp_log",
+            "alloc:4:200:4",
+            "zero:200",
+            "clock",
+            "unlock:4660"
+          ],
+          "heap_sha256": "8630cbdedabf9e767ebadb483b09df4d40ffc148ec3e2bde52bff814e3df2d16",
+          "returned": 2164391936,
+          "ring_sha256": "148a859db3de746cb193bb47995af73a6c906e49585d22b8f54cea274fc71324",
+          "state": {
+            "auxiliary": 0,
+            "count": 24,
+            "counter": 0,
+            "read": 36
+          }
+        },
+        "steps": 1760
+      }
+    ],
+    "hardware_execution": false
+  },
+  "sensor_sha256": "06f07541e8bb22b6118f081e791c3a4e40cbff2decd8ee478a7e82df826e9d0f",
+  "validation_sha256": "fd2dc407d05ccb85e0d119b0a5617a25f69c5d3b65cf624c2f5af96f11bb06e1",
+  "vectors_sha256": "e3757647016a0c0e423e2e1fd524b697d72cdbf08a25c0e715531fa3915042a3"
+}

@@ -1,0 +1,4456 @@
+{
+  "byte_range_sha256": {
+    "80f635fa_154": "9148f2d51b4966e145dcdf3a815eaa0c891d00bc690b53d03a178df68088617c",
+    "80f637dc_aa": "38c4bd7a2b8f291c872169ddf141f0fe97987feeb2b1c9b4e1cf5bb9c7bf3456",
+    "80f63f7a_1c": "f465b2ed549c8b455f1b667c6ba3ff927addd9240ed2c980764418cef6874a24",
+    "80f63f96_20": "c4487f623ef4bf52f2fb6a355d57af7a16b8a7ef630119fc7aad4f690cfc1319",
+    "80f64622_3e": "b9835d6c053d9c13fbe4e599a8e9bbf43f61a2d4e96b672598489376025cfcb5",
+    "80f649be_5a": "cdd1ce8f1d199f9bc130d363a6fd1064e667fcb36dece997659bbc6f2d561e46",
+    "80f655f8_a": "72b217c0812ec91bbfa9340dc31ea5fe08e293da994a782cb86f2788a0e25b20",
+    "80f65a0e_260": "85f1aa71f12e06d0626f434f8c8153a043ec3cffb84695e26a518b184a834783",
+    "80f80aa2_44": "a370c614222b8f603d0ca1c5a042b4ed57635edb383f3227a43ced901ad62bd1",
+    "80f82fb8_6e": "ac27f44a8de79360f5f586734856fc47dcdd5fd307401e0a14fbd2cc508fbc6e",
+    "80f85cbe_2a": "c17387081f2ddfbc269895b568de6df4dee772448e84fbb9e1b923df2337a197",
+    "80f85d14_2e": "2f433e93934eec35d30cac5be783e0b278a010b2984a22c4717d3955a5c5f63b",
+    "80fa6028_bc": "dbb2171320e7c641e2e7b99f09a4de840a781d0452e6caeb1f3d2aa4f488bcb1",
+    "80fa60e4_e6": "d3ebf9ae2d77dc4363e0fdd98edb515cfcc10c5910e04388128e9c5f25275ca9",
+    "80fd2c3e_1a": "f207acf3996babc0dcd3fa1eac67c084a1ecf94216a884b882550ec4f7a31e3c"
+  },
+  "export_sha256": {
+    "80f635fa.c": "c31672236cd79c318cc996ba8d34e5ea412a9943d15e638e208e7c19044367d9",
+    "80f637dc.c": "3e6977f09857f1b3f47b19603f025337d447b42251f445704ec9cdc869fe6a4c",
+    "80f63f7a.c": "76feb2c8a6bc23d23efb5a83a51069ddda3b232a51f7097de0a5e5cb01b56a31",
+    "80f63f96.c": "e99d8bec5ee3636cc6fb1c59e2bd37588a7784d93aca3979c8bc30a7505dd06e",
+    "80f64622.c": "21ca60363c608c0f944fee5dbd2f1eb46d649ff65a58737051840b27ab4e0da9",
+    "80f6462c.c": "c8421eae07f07de05b9700723fd7a5495d4406d1e22b8e46ecc4ec7beec24d5d",
+    "80f649be.c": "a33e9046603a88849f18834e666d21dce05f9f20fd8466f1c7b8b96f4af9a2bc",
+    "80f655f8.c": "0078ea9d366a7e6376aac1a33d58b6dd6385345b0b5b4425a0061e5142a3fa13",
+    "80f65a0e.c": "d65af76aa82b13b6e8a73bd5c9dcbc147a19e54743556f0148b67015ef4a9e17",
+    "80f80aa2.c": "7d7e0a945694dca44d6cc1058bcd302176160349aeec915c91597d8ce7d94df3",
+    "80f80ace.c": "f8be8d8cab9a4037d82459ed2cf00cca15e6aa98afb9b7bb0de66934154c7a87",
+    "80f82fb8.c": "c101ec85521a9f23c7d736bf6bb243e506f5653944a8c95a265f9c526ff090ea",
+    "80f82fe8.c": "33e272fb4ba3b1104dc3a7c295dd7d659cd1e6bae3e187e56a78790ecdd1196d",
+    "80f85cbe.c": "917d84e5e8625473f3f4f99b39d7988ae870204917384ea320fbb333a41166a1",
+    "80f85d14.c": "32cf6f0a1e9ac593534b1700ea5063bb702fe4190fefb278eb9505f1580990da",
+    "80fa6028.c": "7b6ab4b8f126d96d1c0bd5f9ee637d5b336aefda1b06fb00bca10edb07732de3",
+    "80fa60e4.c": "49c5af5c71387e833fb6640a2211f61ffeb615c04e038118aa7207f214db35b5",
+    "80fd2c3e.c": "4cdd029326c3873f6d0923c7b2c7b3e1d47387962369838f18c0b2a2e6acee79"
+  },
+  "limitations": [
+    "Allocation/free, OS locks, context predicates and memory-pressure readings are supplied; no concurrent execution or hardware access.",
+    "Fanout starts with a supplied read/fusion result and treats cache as a no-op; callback retention policies are synthetic.",
+    "Cache cases execute all-selected/none-selected branches and one queue node; filtering/copy, motion triggers and real pressure flush remain open.",
+    "Successful dequeue transfers the queued reference to the caller; the harness separately invokes native cleanup after inspecting it.",
+    "Reference wrap/underflow cases document instructions and do not establish reachable device misuse or safe ownership guarantees."
+  ],
+  "native_case_counts": {
+    "cache": 12,
+    "fanout": 40,
+    "refs": 97
+  },
+  "native_steps": 29309,
+  "native_validation": {
+    "bound_per_case": 100000,
+    "case_count": 149,
+    "cases": [
+      {
+        "name": "refs_0_0",
+        "observed": {
+          "actions": [
+            "retain:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 1
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 1,
+            "sha256": "a3a790b4868c277b62ebfe9b58f6b42e7883c1605e6be99f773df23878b155b0"
+          }
+        },
+        "steps": 49
+      },
+      {
+        "name": "refs_0_1",
+        "observed": {
+          "actions": [
+            "retain:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 1
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 1,
+            "sha256": "a3a790b4868c277b62ebfe9b58f6b42e7883c1605e6be99f773df23878b155b0"
+          }
+        },
+        "steps": 96
+      },
+      {
+        "name": "refs_0_2",
+        "observed": {
+          "actions": [
+            "retain:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 1
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 1,
+            "sha256": "a3a790b4868c277b62ebfe9b58f6b42e7883c1605e6be99f773df23878b155b0"
+          }
+        },
+        "steps": 96
+      },
+      {
+        "name": "refs_0_3",
+        "observed": {
+          "actions": [
+            "retain:p0"
+          ],
+          "depth": 2,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 2,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 1
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 1,
+            "sha256": "a3a790b4868c277b62ebfe9b58f6b42e7883c1605e6be99f773df23878b155b0"
+          }
+        },
+        "steps": 78
+      },
+      {
+        "name": "refs_0_4",
+        "observed": {
+          "actions": [
+            "retain:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 1
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 1,
+            "sha256": "a3a790b4868c277b62ebfe9b58f6b42e7883c1605e6be99f773df23878b155b0"
+          }
+        },
+        "steps": 57
+      },
+      {
+        "name": "refs_0_5",
+        "observed": {
+          "actions": [
+            "retain:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 1
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 1,
+            "sha256": "a3a790b4868c277b62ebfe9b58f6b42e7883c1605e6be99f773df23878b155b0"
+          }
+        },
+        "steps": 71
+      },
+      {
+        "name": "refs_0_6",
+        "observed": {
+          "actions": [
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 4294967295
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967295,
+            "sha256": "916b977059955519113d8b262f95f8d136e908100221fe88765180060c909998"
+          }
+        },
+        "steps": 60
+      },
+      {
+        "name": "refs_0_7",
+        "observed": {
+          "actions": [
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 4294967295
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967295,
+            "sha256": "916b977059955519113d8b262f95f8d136e908100221fe88765180060c909998"
+          }
+        },
+        "steps": 107
+      },
+      {
+        "name": "refs_0_8",
+        "observed": {
+          "actions": [
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 4294967295
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967295,
+            "sha256": "916b977059955519113d8b262f95f8d136e908100221fe88765180060c909998"
+          }
+        },
+        "steps": 107
+      },
+      {
+        "name": "refs_0_9",
+        "observed": {
+          "actions": [
+            "release:p0"
+          ],
+          "depth": 2,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 2,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 4294967295
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967295,
+            "sha256": "916b977059955519113d8b262f95f8d136e908100221fe88765180060c909998"
+          }
+        },
+        "steps": 89
+      },
+      {
+        "name": "refs_0_10",
+        "observed": {
+          "actions": [
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 4294967295
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967295,
+            "sha256": "916b977059955519113d8b262f95f8d136e908100221fe88765180060c909998"
+          }
+        },
+        "steps": 68
+      },
+      {
+        "name": "refs_0_11",
+        "observed": {
+          "actions": [
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 4294967295
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967295,
+            "sha256": "916b977059955519113d8b262f95f8d136e908100221fe88765180060c909998"
+          }
+        },
+        "steps": 82
+      },
+      {
+        "name": "refs_0_12",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "release:p0",
+            "free:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 1
+            },
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6280,
+              "refs": 0
+            },
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6280,
+              "refs": 4294967295
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 4294967295,
+            "sha256": "696c3dd3911bbfd85e32443606213e585bcb0e1530a9896dcbedaa0ac7d038ff"
+          }
+        },
+        "steps": 174
+      },
+      {
+        "name": "refs_0_13",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "release:p0",
+            "free:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 1
+            },
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6280,
+              "refs": 0
+            },
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6280,
+              "refs": 4294967295
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 4294967295,
+            "sha256": "696c3dd3911bbfd85e32443606213e585bcb0e1530a9896dcbedaa0ac7d038ff"
+          }
+        },
+        "steps": 315
+      },
+      {
+        "name": "refs_0_14",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "release:p0",
+            "free:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 1
+            },
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6280,
+              "refs": 0
+            },
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6280,
+              "refs": 4294967295
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 4294967295,
+            "sha256": "696c3dd3911bbfd85e32443606213e585bcb0e1530a9896dcbedaa0ac7d038ff"
+          }
+        },
+        "steps": 315
+      },
+      {
+        "name": "refs_0_15",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "release:p0",
+            "free:p0",
+            "release:p0"
+          ],
+          "depth": 2,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 2,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 1
+            },
+            {
+              "depth": 2,
+              "descriptor": 0,
+              "mstatus": 6272,
+              "refs": 0
+            },
+            {
+              "depth": 2,
+              "descriptor": 0,
+              "mstatus": 6272,
+              "refs": 4294967295
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 4294967295,
+            "sha256": "696c3dd3911bbfd85e32443606213e585bcb0e1530a9896dcbedaa0ac7d038ff"
+          }
+        },
+        "steps": 261
+      },
+      {
+        "name": "refs_0_16",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "release:p0",
+            "free:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 1
+            },
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6272,
+              "refs": 0
+            },
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6272,
+              "refs": 4294967295
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 4294967295,
+            "sha256": "696c3dd3911bbfd85e32443606213e585bcb0e1530a9896dcbedaa0ac7d038ff"
+          }
+        },
+        "steps": 198
+      },
+      {
+        "name": "refs_0_17",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "release:p0",
+            "free:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 1
+            },
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6280,
+              "refs": 0
+            },
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6280,
+              "refs": 4294967295
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 4294967295,
+            "sha256": "696c3dd3911bbfd85e32443606213e585bcb0e1530a9896dcbedaa0ac7d038ff"
+          }
+        },
+        "steps": 290
+      },
+      {
+        "name": "refs_0_18",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 4294967295
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 4294967294
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967294,
+            "sha256": "91b4c849880c84c17245ff0960acd33744546d9f214cce93ef76b88554cc07ae"
+          }
+        },
+        "steps": 120
+      },
+      {
+        "name": "refs_0_19",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 4294967295
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 4294967294
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967294,
+            "sha256": "91b4c849880c84c17245ff0960acd33744546d9f214cce93ef76b88554cc07ae"
+          }
+        },
+        "steps": 214
+      },
+      {
+        "name": "refs_0_20",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 4294967295
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 4294967294
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967294,
+            "sha256": "91b4c849880c84c17245ff0960acd33744546d9f214cce93ef76b88554cc07ae"
+          }
+        },
+        "steps": 214
+      },
+      {
+        "name": "refs_0_21",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "release:p0"
+          ],
+          "depth": 2,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 2,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 4294967295
+            },
+            {
+              "depth": 2,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 4294967294
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967294,
+            "sha256": "91b4c849880c84c17245ff0960acd33744546d9f214cce93ef76b88554cc07ae"
+          }
+        },
+        "steps": 178
+      },
+      {
+        "name": "refs_0_22",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 4294967295
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 4294967294
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967294,
+            "sha256": "91b4c849880c84c17245ff0960acd33744546d9f214cce93ef76b88554cc07ae"
+          }
+        },
+        "steps": 136
+      },
+      {
+        "name": "refs_0_23",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 4294967295
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 4294967294
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967294,
+            "sha256": "91b4c849880c84c17245ff0960acd33744546d9f214cce93ef76b88554cc07ae"
+          }
+        },
+        "steps": 189
+      },
+      {
+        "name": "refs_1_24",
+        "observed": {
+          "actions": [
+            "retain:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 2
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 2,
+            "sha256": "55fd2ff61b18ff01850d956e33289e9c7a75d543ea0ef14dc52924763e49c9f9"
+          }
+        },
+        "steps": 49
+      },
+      {
+        "name": "refs_1_25",
+        "observed": {
+          "actions": [
+            "retain:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 2
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 2,
+            "sha256": "55fd2ff61b18ff01850d956e33289e9c7a75d543ea0ef14dc52924763e49c9f9"
+          }
+        },
+        "steps": 96
+      },
+      {
+        "name": "refs_1_26",
+        "observed": {
+          "actions": [
+            "retain:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 2
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 2,
+            "sha256": "55fd2ff61b18ff01850d956e33289e9c7a75d543ea0ef14dc52924763e49c9f9"
+          }
+        },
+        "steps": 96
+      },
+      {
+        "name": "refs_1_27",
+        "observed": {
+          "actions": [
+            "retain:p0"
+          ],
+          "depth": 2,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 2,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 2
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 2,
+            "sha256": "55fd2ff61b18ff01850d956e33289e9c7a75d543ea0ef14dc52924763e49c9f9"
+          }
+        },
+        "steps": 78
+      },
+      {
+        "name": "refs_1_28",
+        "observed": {
+          "actions": [
+            "retain:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 2
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 2,
+            "sha256": "55fd2ff61b18ff01850d956e33289e9c7a75d543ea0ef14dc52924763e49c9f9"
+          }
+        },
+        "steps": 57
+      },
+      {
+        "name": "refs_1_29",
+        "observed": {
+          "actions": [
+            "retain:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 2
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 2,
+            "sha256": "55fd2ff61b18ff01850d956e33289e9c7a75d543ea0ef14dc52924763e49c9f9"
+          }
+        },
+        "steps": 71
+      },
+      {
+        "name": "refs_1_30",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "free:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6280,
+              "refs": 0
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 0,
+            "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+          }
+        },
+        "steps": 65
+      },
+      {
+        "name": "refs_1_31",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "free:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6280,
+              "refs": 0
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 0,
+            "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+          }
+        },
+        "steps": 112
+      },
+      {
+        "name": "refs_1_32",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "free:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6280,
+              "refs": 0
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 0,
+            "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+          }
+        },
+        "steps": 112
+      },
+      {
+        "name": "refs_1_33",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "free:p0"
+          ],
+          "depth": 2,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 2,
+              "descriptor": 0,
+              "mstatus": 6272,
+              "refs": 0
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 0,
+            "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+          }
+        },
+        "steps": 94
+      },
+      {
+        "name": "refs_1_34",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "free:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6272,
+              "refs": 0
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 0,
+            "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+          }
+        },
+        "steps": 73
+      },
+      {
+        "name": "refs_1_35",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "free:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6272,
+              "refs": 0
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 0,
+            "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+          }
+        },
+        "steps": 87
+      },
+      {
+        "name": "refs_1_36",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "release:p0",
+            "release:p0",
+            "free:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 2
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 1
+            },
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6280,
+              "refs": 0
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 0,
+            "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+          }
+        },
+        "steps": 174
+      },
+      {
+        "name": "refs_1_37",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "release:p0",
+            "release:p0",
+            "free:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 2
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 1
+            },
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6280,
+              "refs": 0
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 0,
+            "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+          }
+        },
+        "steps": 315
+      },
+      {
+        "name": "refs_1_38",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "release:p0",
+            "release:p0",
+            "free:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 2
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 1
+            },
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6280,
+              "refs": 0
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 0,
+            "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+          }
+        },
+        "steps": 315
+      },
+      {
+        "name": "refs_1_39",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "release:p0",
+            "release:p0",
+            "free:p0"
+          ],
+          "depth": 2,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 2,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 2
+            },
+            {
+              "depth": 2,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 1
+            },
+            {
+              "depth": 2,
+              "descriptor": 0,
+              "mstatus": 6272,
+              "refs": 0
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 0,
+            "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+          }
+        },
+        "steps": 261
+      },
+      {
+        "name": "refs_1_40",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "release:p0",
+            "release:p0",
+            "free:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 2
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 1
+            },
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6272,
+              "refs": 0
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 0,
+            "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+          }
+        },
+        "steps": 198
+      },
+      {
+        "name": "refs_1_41",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "release:p0",
+            "release:p0",
+            "free:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 2
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 1
+            },
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6280,
+              "refs": 0
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 0,
+            "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+          }
+        },
+        "steps": 290
+      },
+      {
+        "name": "refs_1_42",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "free:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6280,
+              "refs": 0
+            },
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6280,
+              "refs": 4294967295
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 4294967295,
+            "sha256": "696c3dd3911bbfd85e32443606213e585bcb0e1530a9896dcbedaa0ac7d038ff"
+          }
+        },
+        "steps": 125
+      },
+      {
+        "name": "refs_1_43",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "free:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6280,
+              "refs": 0
+            },
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6280,
+              "refs": 4294967295
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 4294967295,
+            "sha256": "696c3dd3911bbfd85e32443606213e585bcb0e1530a9896dcbedaa0ac7d038ff"
+          }
+        },
+        "steps": 219
+      },
+      {
+        "name": "refs_1_44",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "free:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6280,
+              "refs": 0
+            },
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6280,
+              "refs": 4294967295
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 4294967295,
+            "sha256": "696c3dd3911bbfd85e32443606213e585bcb0e1530a9896dcbedaa0ac7d038ff"
+          }
+        },
+        "steps": 219
+      },
+      {
+        "name": "refs_1_45",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "free:p0",
+            "release:p0"
+          ],
+          "depth": 2,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 2,
+              "descriptor": 0,
+              "mstatus": 6272,
+              "refs": 0
+            },
+            {
+              "depth": 2,
+              "descriptor": 0,
+              "mstatus": 6272,
+              "refs": 4294967295
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 4294967295,
+            "sha256": "696c3dd3911bbfd85e32443606213e585bcb0e1530a9896dcbedaa0ac7d038ff"
+          }
+        },
+        "steps": 183
+      },
+      {
+        "name": "refs_1_46",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "free:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6272,
+              "refs": 0
+            },
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6272,
+              "refs": 4294967295
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 4294967295,
+            "sha256": "696c3dd3911bbfd85e32443606213e585bcb0e1530a9896dcbedaa0ac7d038ff"
+          }
+        },
+        "steps": 141
+      },
+      {
+        "name": "refs_1_47",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "free:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6272,
+              "refs": 0
+            },
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6280,
+              "refs": 4294967295
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 4294967295,
+            "sha256": "696c3dd3911bbfd85e32443606213e585bcb0e1530a9896dcbedaa0ac7d038ff"
+          }
+        },
+        "steps": 194
+      },
+      {
+        "name": "refs_2_48",
+        "observed": {
+          "actions": [
+            "retain:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 3
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 3,
+            "sha256": "80b52c843a5e776d9774ee63b16d323f761e0d4c06776fae40f3f994456b2f94"
+          }
+        },
+        "steps": 49
+      },
+      {
+        "name": "refs_2_49",
+        "observed": {
+          "actions": [
+            "retain:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 3
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 3,
+            "sha256": "80b52c843a5e776d9774ee63b16d323f761e0d4c06776fae40f3f994456b2f94"
+          }
+        },
+        "steps": 96
+      },
+      {
+        "name": "refs_2_50",
+        "observed": {
+          "actions": [
+            "retain:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 3
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 3,
+            "sha256": "80b52c843a5e776d9774ee63b16d323f761e0d4c06776fae40f3f994456b2f94"
+          }
+        },
+        "steps": 96
+      },
+      {
+        "name": "refs_2_51",
+        "observed": {
+          "actions": [
+            "retain:p0"
+          ],
+          "depth": 2,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 2,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 3
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 3,
+            "sha256": "80b52c843a5e776d9774ee63b16d323f761e0d4c06776fae40f3f994456b2f94"
+          }
+        },
+        "steps": 78
+      },
+      {
+        "name": "refs_2_52",
+        "observed": {
+          "actions": [
+            "retain:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 3
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 3,
+            "sha256": "80b52c843a5e776d9774ee63b16d323f761e0d4c06776fae40f3f994456b2f94"
+          }
+        },
+        "steps": 57
+      },
+      {
+        "name": "refs_2_53",
+        "observed": {
+          "actions": [
+            "retain:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 3
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 3,
+            "sha256": "80b52c843a5e776d9774ee63b16d323f761e0d4c06776fae40f3f994456b2f94"
+          }
+        },
+        "steps": 71
+      },
+      {
+        "name": "refs_2_54",
+        "observed": {
+          "actions": [
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 1
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 1,
+            "sha256": "a3a790b4868c277b62ebfe9b58f6b42e7883c1605e6be99f773df23878b155b0"
+          }
+        },
+        "steps": 60
+      },
+      {
+        "name": "refs_2_55",
+        "observed": {
+          "actions": [
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 1
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 1,
+            "sha256": "a3a790b4868c277b62ebfe9b58f6b42e7883c1605e6be99f773df23878b155b0"
+          }
+        },
+        "steps": 107
+      },
+      {
+        "name": "refs_2_56",
+        "observed": {
+          "actions": [
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 1
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 1,
+            "sha256": "a3a790b4868c277b62ebfe9b58f6b42e7883c1605e6be99f773df23878b155b0"
+          }
+        },
+        "steps": 107
+      },
+      {
+        "name": "refs_2_57",
+        "observed": {
+          "actions": [
+            "release:p0"
+          ],
+          "depth": 2,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 2,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 1
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 1,
+            "sha256": "a3a790b4868c277b62ebfe9b58f6b42e7883c1605e6be99f773df23878b155b0"
+          }
+        },
+        "steps": 89
+      },
+      {
+        "name": "refs_2_58",
+        "observed": {
+          "actions": [
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 1
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 1,
+            "sha256": "a3a790b4868c277b62ebfe9b58f6b42e7883c1605e6be99f773df23878b155b0"
+          }
+        },
+        "steps": 68
+      },
+      {
+        "name": "refs_2_59",
+        "observed": {
+          "actions": [
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 1
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 1,
+            "sha256": "a3a790b4868c277b62ebfe9b58f6b42e7883c1605e6be99f773df23878b155b0"
+          }
+        },
+        "steps": 82
+      },
+      {
+        "name": "refs_2_60",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "release:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 3
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 2
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 1
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 1,
+            "sha256": "a3a790b4868c277b62ebfe9b58f6b42e7883c1605e6be99f773df23878b155b0"
+          }
+        },
+        "steps": 169
+      },
+      {
+        "name": "refs_2_61",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "release:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 3
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 2
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 1
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 1,
+            "sha256": "a3a790b4868c277b62ebfe9b58f6b42e7883c1605e6be99f773df23878b155b0"
+          }
+        },
+        "steps": 310
+      },
+      {
+        "name": "refs_2_62",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "release:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 3
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 2
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 1
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 1,
+            "sha256": "a3a790b4868c277b62ebfe9b58f6b42e7883c1605e6be99f773df23878b155b0"
+          }
+        },
+        "steps": 310
+      },
+      {
+        "name": "refs_2_63",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "release:p0",
+            "release:p0"
+          ],
+          "depth": 2,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 2,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 3
+            },
+            {
+              "depth": 2,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 2
+            },
+            {
+              "depth": 2,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 1
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 1,
+            "sha256": "a3a790b4868c277b62ebfe9b58f6b42e7883c1605e6be99f773df23878b155b0"
+          }
+        },
+        "steps": 256
+      },
+      {
+        "name": "refs_2_64",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "release:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 3
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 2
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 1
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 1,
+            "sha256": "a3a790b4868c277b62ebfe9b58f6b42e7883c1605e6be99f773df23878b155b0"
+          }
+        },
+        "steps": 193
+      },
+      {
+        "name": "refs_2_65",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "release:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 3
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 2
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 1
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 1,
+            "sha256": "a3a790b4868c277b62ebfe9b58f6b42e7883c1605e6be99f773df23878b155b0"
+          }
+        },
+        "steps": 285
+      },
+      {
+        "name": "refs_2_66",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "release:p0",
+            "free:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 1
+            },
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6280,
+              "refs": 0
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 0,
+            "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+          }
+        },
+        "steps": 125
+      },
+      {
+        "name": "refs_2_67",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "release:p0",
+            "free:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 1
+            },
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6280,
+              "refs": 0
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 0,
+            "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+          }
+        },
+        "steps": 219
+      },
+      {
+        "name": "refs_2_68",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "release:p0",
+            "free:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 1
+            },
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6280,
+              "refs": 0
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 0,
+            "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+          }
+        },
+        "steps": 219
+      },
+      {
+        "name": "refs_2_69",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "release:p0",
+            "free:p0"
+          ],
+          "depth": 2,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 2,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 1
+            },
+            {
+              "depth": 2,
+              "descriptor": 0,
+              "mstatus": 6272,
+              "refs": 0
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 0,
+            "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+          }
+        },
+        "steps": 183
+      },
+      {
+        "name": "refs_2_70",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "release:p0",
+            "free:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 1
+            },
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6272,
+              "refs": 0
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 0,
+            "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+          }
+        },
+        "steps": 141
+      },
+      {
+        "name": "refs_2_71",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "release:p0",
+            "free:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 1
+            },
+            {
+              "depth": 0,
+              "descriptor": 0,
+              "mstatus": 6280,
+              "refs": 0
+            }
+          ],
+          "packet": {
+            "descriptor": 0,
+            "refs": 0,
+            "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+          }
+        },
+        "steps": 194
+      },
+      {
+        "name": "refs_ffffffff_72",
+        "observed": {
+          "actions": [
+            "retain:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 0
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 0,
+            "sha256": "3781cc716c8094907301e1bea5ef01e619a830771546e3e243aa461f10d14edd"
+          }
+        },
+        "steps": 49
+      },
+      {
+        "name": "refs_ffffffff_73",
+        "observed": {
+          "actions": [
+            "retain:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 0
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 0,
+            "sha256": "3781cc716c8094907301e1bea5ef01e619a830771546e3e243aa461f10d14edd"
+          }
+        },
+        "steps": 96
+      },
+      {
+        "name": "refs_ffffffff_74",
+        "observed": {
+          "actions": [
+            "retain:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 0
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 0,
+            "sha256": "3781cc716c8094907301e1bea5ef01e619a830771546e3e243aa461f10d14edd"
+          }
+        },
+        "steps": 96
+      },
+      {
+        "name": "refs_ffffffff_75",
+        "observed": {
+          "actions": [
+            "retain:p0"
+          ],
+          "depth": 2,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 2,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 0
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 0,
+            "sha256": "3781cc716c8094907301e1bea5ef01e619a830771546e3e243aa461f10d14edd"
+          }
+        },
+        "steps": 78
+      },
+      {
+        "name": "refs_ffffffff_76",
+        "observed": {
+          "actions": [
+            "retain:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 0
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 0,
+            "sha256": "3781cc716c8094907301e1bea5ef01e619a830771546e3e243aa461f10d14edd"
+          }
+        },
+        "steps": 57
+      },
+      {
+        "name": "refs_ffffffff_77",
+        "observed": {
+          "actions": [
+            "retain:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 0
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 0,
+            "sha256": "3781cc716c8094907301e1bea5ef01e619a830771546e3e243aa461f10d14edd"
+          }
+        },
+        "steps": 71
+      },
+      {
+        "name": "refs_ffffffff_78",
+        "observed": {
+          "actions": [
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 4294967294
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967294,
+            "sha256": "91b4c849880c84c17245ff0960acd33744546d9f214cce93ef76b88554cc07ae"
+          }
+        },
+        "steps": 60
+      },
+      {
+        "name": "refs_ffffffff_79",
+        "observed": {
+          "actions": [
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 4294967294
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967294,
+            "sha256": "91b4c849880c84c17245ff0960acd33744546d9f214cce93ef76b88554cc07ae"
+          }
+        },
+        "steps": 107
+      },
+      {
+        "name": "refs_ffffffff_80",
+        "observed": {
+          "actions": [
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 4294967294
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967294,
+            "sha256": "91b4c849880c84c17245ff0960acd33744546d9f214cce93ef76b88554cc07ae"
+          }
+        },
+        "steps": 107
+      },
+      {
+        "name": "refs_ffffffff_81",
+        "observed": {
+          "actions": [
+            "release:p0"
+          ],
+          "depth": 2,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 2,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 4294967294
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967294,
+            "sha256": "91b4c849880c84c17245ff0960acd33744546d9f214cce93ef76b88554cc07ae"
+          }
+        },
+        "steps": 89
+      },
+      {
+        "name": "refs_ffffffff_82",
+        "observed": {
+          "actions": [
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 4294967294
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967294,
+            "sha256": "91b4c849880c84c17245ff0960acd33744546d9f214cce93ef76b88554cc07ae"
+          }
+        },
+        "steps": 68
+      },
+      {
+        "name": "refs_ffffffff_83",
+        "observed": {
+          "actions": [
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 4294967294
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967294,
+            "sha256": "91b4c849880c84c17245ff0960acd33744546d9f214cce93ef76b88554cc07ae"
+          }
+        },
+        "steps": 82
+      },
+      {
+        "name": "refs_ffffffff_84",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "release:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 0
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 4294967295
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 4294967294
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967294,
+            "sha256": "91b4c849880c84c17245ff0960acd33744546d9f214cce93ef76b88554cc07ae"
+          }
+        },
+        "steps": 169
+      },
+      {
+        "name": "refs_ffffffff_85",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "release:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 0
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 4294967295
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 4294967294
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967294,
+            "sha256": "91b4c849880c84c17245ff0960acd33744546d9f214cce93ef76b88554cc07ae"
+          }
+        },
+        "steps": 310
+      },
+      {
+        "name": "refs_ffffffff_86",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "release:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 0
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 4294967295
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 4294967294
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967294,
+            "sha256": "91b4c849880c84c17245ff0960acd33744546d9f214cce93ef76b88554cc07ae"
+          }
+        },
+        "steps": 310
+      },
+      {
+        "name": "refs_ffffffff_87",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "release:p0",
+            "release:p0"
+          ],
+          "depth": 2,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 2,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 0
+            },
+            {
+              "depth": 2,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 4294967295
+            },
+            {
+              "depth": 2,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 4294967294
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967294,
+            "sha256": "91b4c849880c84c17245ff0960acd33744546d9f214cce93ef76b88554cc07ae"
+          }
+        },
+        "steps": 256
+      },
+      {
+        "name": "refs_ffffffff_88",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "release:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 0
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 4294967295
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 4294967294
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967294,
+            "sha256": "91b4c849880c84c17245ff0960acd33744546d9f214cce93ef76b88554cc07ae"
+          }
+        },
+        "steps": 193
+      },
+      {
+        "name": "refs_ffffffff_89",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "release:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 0
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 4294967295
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 4294967294
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967294,
+            "sha256": "91b4c849880c84c17245ff0960acd33744546d9f214cce93ef76b88554cc07ae"
+          }
+        },
+        "steps": 285
+      },
+      {
+        "name": "refs_ffffffff_90",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 4294967294
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 4294967293
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967293,
+            "sha256": "2c0c0bd386d234c077a1954e6a3b2fb168b96e8ce2e353403c8deba2bde4c419"
+          }
+        },
+        "steps": 120
+      },
+      {
+        "name": "refs_ffffffff_91",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 4294967294
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 4294967293
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967293,
+            "sha256": "2c0c0bd386d234c077a1954e6a3b2fb168b96e8ce2e353403c8deba2bde4c419"
+          }
+        },
+        "steps": 214
+      },
+      {
+        "name": "refs_ffffffff_92",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 4294967294
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 4294967293
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967293,
+            "sha256": "2c0c0bd386d234c077a1954e6a3b2fb168b96e8ce2e353403c8deba2bde4c419"
+          }
+        },
+        "steps": 214
+      },
+      {
+        "name": "refs_ffffffff_93",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "release:p0"
+          ],
+          "depth": 2,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 2,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 4294967294
+            },
+            {
+              "depth": 2,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 4294967293
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967293,
+            "sha256": "2c0c0bd386d234c077a1954e6a3b2fb168b96e8ce2e353403c8deba2bde4c419"
+          }
+        },
+        "steps": 178
+      },
+      {
+        "name": "refs_ffffffff_94",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 4294967294
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 4294967293
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967293,
+            "sha256": "2c0c0bd386d234c077a1954e6a3b2fb168b96e8ce2e353403c8deba2bde4c419"
+          }
+        },
+        "steps": 136
+      },
+      {
+        "name": "refs_ffffffff_95",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "release:p0"
+          ],
+          "depth": 0,
+          "mstatus": 6280,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 4294967294
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6280,
+              "refs": 4294967293
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 4294967293,
+            "sha256": "2c0c0bd386d234c077a1954e6a3b2fb168b96e8ce2e353403c8deba2bde4c419"
+          }
+        },
+        "steps": 189
+      },
+      {
+        "name": "refs_null",
+        "observed": {
+          "actions": [],
+          "depth": 0,
+          "mstatus": 6272,
+          "operations": [
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 1
+            },
+            {
+              "depth": 0,
+              "descriptor": 2164391960,
+              "mstatus": 6272,
+              "refs": 1
+            }
+          ],
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 1,
+            "sha256": "a3a790b4868c277b62ebfe9b58f6b42e7883c1605e6be99f773df23878b155b0"
+          }
+        },
+        "steps": 4
+      },
+      {
+        "name": "fanout_1_0_none",
+        "observed": {
+          "actions": [
+            "read",
+            "sync",
+            "fusion",
+            "cache:p0",
+            "listener_lock",
+            "callback:0:p0",
+            "callback:1:p0",
+            "retain:p0",
+            "callback:8:p0",
+            "retain:p0",
+            "callback:9:p0",
+            "listener_unlock",
+            "release:p0",
+            "release:p0",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "02e0774adb3810e30f93a52fc3461f0edef93a1a604d5fae2adcb4b71658e5a8"
+            },
+            {
+              "descriptor": 2164457496,
+              "refs": 1,
+              "sha256": "7a5520e8ac339dc7f463b3b819ae21db03c1d92ea2df2756048ec6ec03cc19af"
+            }
+          ]
+        },
+        "steps": 518
+      },
+      {
+        "name": "fanout_1_0_ready",
+        "observed": {
+          "actions": [
+            "read",
+            "sync",
+            "fusion",
+            "cache:p1",
+            "listener_lock",
+            "callback:0:p1",
+            "callback:1:p1",
+            "retain:p1",
+            "callback:8:p1",
+            "retain:p1",
+            "callback:9:p1",
+            "listener_unlock",
+            "release:p1",
+            "release:p0",
+            "free:p0",
+            "release:p1",
+            "release:p1",
+            "free:p1"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "02e0774adb3810e30f93a52fc3461f0edef93a1a604d5fae2adcb4b71658e5a8"
+            },
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "2578e24c0c8520962022c5c565daa00c864871f5a688df77a93c6c59ca63550c"
+            }
+          ]
+        },
+        "steps": 586
+      },
+      {
+        "name": "fanout_1_0_empty",
+        "observed": {
+          "actions": [
+            "read",
+            "sync",
+            "fusion",
+            "release:p1",
+            "free:p1",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "02e0774adb3810e30f93a52fc3461f0edef93a1a604d5fae2adcb4b71658e5a8"
+            },
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "238ee826267c1e3b6da8dd79793a27b35021c13ed11c1f4c66d20b09d04fbab4"
+            }
+          ]
+        },
+        "steps": 162
+      },
+      {
+        "name": "fanout_2_0_none",
+        "observed": {
+          "actions": [
+            "read",
+            "sync",
+            "fusion",
+            "cache:p0",
+            "listener_lock",
+            "callback:0:p0",
+            "callback:1:p0",
+            "retain:p0",
+            "callback:8:p0",
+            "retain:p0",
+            "callback:9:p0",
+            "listener_unlock",
+            "release:p0",
+            "release:p0",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "51c4164536d4cefbb0018521e67acc721ba4ce0f79378e4010c478e43f80a39d"
+            },
+            {
+              "descriptor": 2164457496,
+              "refs": 1,
+              "sha256": "381f57c23e9012483cb571458abd1ca239a21a269f3508b9adac7f30f78f833e"
+            }
+          ]
+        },
+        "steps": 518
+      },
+      {
+        "name": "fanout_2_0_ready",
+        "observed": {
+          "actions": [
+            "read",
+            "sync",
+            "fusion",
+            "cache:p1",
+            "listener_lock",
+            "callback:0:p1",
+            "callback:1:p1",
+            "retain:p1",
+            "callback:8:p1",
+            "retain:p1",
+            "callback:9:p1",
+            "listener_unlock",
+            "release:p1",
+            "release:p0",
+            "free:p0",
+            "release:p1",
+            "release:p1",
+            "free:p1"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "51c4164536d4cefbb0018521e67acc721ba4ce0f79378e4010c478e43f80a39d"
+            },
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "83ecfbd67809c58ecf1e7a56ed953950e328cb556062ebbfd28ce092a11978a6"
+            }
+          ]
+        },
+        "steps": 586
+      },
+      {
+        "name": "fanout_2_0_empty",
+        "observed": {
+          "actions": [
+            "read",
+            "sync",
+            "fusion",
+            "release:p1",
+            "free:p1",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "51c4164536d4cefbb0018521e67acc721ba4ce0f79378e4010c478e43f80a39d"
+            },
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "8aedac56e7f284aed6cd8d2f43919925139780813fa255fe401a9ecbfdd3e296"
+            }
+          ]
+        },
+        "steps": 162
+      },
+      {
+        "name": "fanout_3_0_none",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "cache:p0",
+            "listener_lock",
+            "callback:2:p0",
+            "callback:8:p0",
+            "retain:p0",
+            "listener_unlock",
+            "release:p0",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "a50a0c813d75609234d232d8725527fead3c06764b4f0c55976b533d7b37e287"
+            },
+            {
+              "descriptor": 2164457496,
+              "refs": 1,
+              "sha256": "f38dcef3a6f069b215f8d4c224401c6c57f31d87b1e3b90d590381217c16ee48"
+            }
+          ]
+        },
+        "steps": 404
+      },
+      {
+        "name": "fanout_3_0_ready",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "cache:p1",
+            "listener_lock",
+            "callback:2:p1",
+            "callback:8:p1",
+            "retain:p1",
+            "listener_unlock",
+            "release:p1",
+            "release:p0",
+            "free:p0",
+            "release:p1",
+            "free:p1"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "a50a0c813d75609234d232d8725527fead3c06764b4f0c55976b533d7b37e287"
+            },
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "62644d0795711467630e7db923c9d141e7ec081ce67a8ed776269af1dfd7282d"
+            }
+          ]
+        },
+        "steps": 472
+      },
+      {
+        "name": "fanout_3_0_empty",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "release:p1",
+            "free:p1",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "a50a0c813d75609234d232d8725527fead3c06764b4f0c55976b533d7b37e287"
+            },
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "efdf0cc13d97f01bbb2149c908a24dcd1fb43c717ba820c5889edc6eef779b1a"
+            }
+          ]
+        },
+        "steps": 161
+      },
+      {
+        "name": "fanout_6_0_none",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "cache:p0",
+            "listener_lock",
+            "callback:3:p0",
+            "retain:p0",
+            "callback:4:p0",
+            "callback:5:p0",
+            "retain:p0",
+            "callback:8:p0",
+            "retain:p0",
+            "listener_unlock",
+            "release:p0",
+            "release:p0",
+            "release:p0",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+            },
+            {
+              "descriptor": 2164457496,
+              "refs": 1,
+              "sha256": "8f1d76a9be1f894a196ef34ccb0eb318de57432587d356ced6ef1aede920fbcb"
+            }
+          ]
+        },
+        "steps": 631
+      },
+      {
+        "name": "fanout_6_0_ready",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "cache:p1",
+            "listener_lock",
+            "callback:3:p1",
+            "retain:p1",
+            "callback:4:p1",
+            "callback:5:p1",
+            "retain:p1",
+            "callback:8:p1",
+            "retain:p1",
+            "listener_unlock",
+            "release:p1",
+            "release:p0",
+            "free:p0",
+            "release:p1",
+            "release:p1",
+            "release:p1",
+            "free:p1"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+            },
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "ac992df96f59c457196717b7dde41e0344e7c1af4dbbcd989676f3b7f37253ca"
+            }
+          ]
+        },
+        "steps": 699
+      },
+      {
+        "name": "fanout_6_0_empty",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "release:p1",
+            "free:p1",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+            },
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "a35d21c2d33616435371473046330305cb16372062bcaf98afccdb8612b86e22"
+            }
+          ]
+        },
+        "steps": 161
+      },
+      {
+        "name": "fanout_16_0_none",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "cache:p0",
+            "listener_lock",
+            "callback:6:p0",
+            "callback:8:p0",
+            "retain:p0",
+            "listener_unlock",
+            "release:p0",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "331d53d66ccb4f34c849354a1edef3e4fe66f908e3d4c8fde3f1e45a50361654"
+            },
+            {
+              "descriptor": 2164457496,
+              "refs": 1,
+              "sha256": "ecd8345135d78663ecec441131ed95fd96d7eee0b44201a78a9df6ae1c9137c4"
+            }
+          ]
+        },
+        "steps": 404
+      },
+      {
+        "name": "fanout_16_0_ready",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "cache:p1",
+            "listener_lock",
+            "callback:6:p1",
+            "callback:8:p1",
+            "retain:p1",
+            "listener_unlock",
+            "release:p1",
+            "release:p0",
+            "free:p0",
+            "release:p1",
+            "free:p1"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "331d53d66ccb4f34c849354a1edef3e4fe66f908e3d4c8fde3f1e45a50361654"
+            },
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "a6fb2c71d537d1728f64b99ddcce3565d082119b1e0e7f86b92787b2f107936d"
+            }
+          ]
+        },
+        "steps": 472
+      },
+      {
+        "name": "fanout_16_0_empty",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "release:p1",
+            "free:p1",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "331d53d66ccb4f34c849354a1edef3e4fe66f908e3d4c8fde3f1e45a50361654"
+            },
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "72d7b2e18c90066af2e756aa4a0e498d3756efdd8dd6096090e10a584e8bebcd"
+            }
+          ]
+        },
+        "steps": 161
+      },
+      {
+        "name": "fanout_35_0_none",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "cache:p0",
+            "listener_lock",
+            "callback:8:p0",
+            "retain:p0",
+            "listener_unlock",
+            "release:p0",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "9ff1eaa21935a9d35bc640895defede3a1e3b2da5cd9716265e2757c9d75a8ed"
+            },
+            {
+              "descriptor": 2164457496,
+              "refs": 1,
+              "sha256": "3273f47cb0fc69d53f6051d342fadd808138916eef9f08a4e45931ebeeff78c4"
+            }
+          ]
+        },
+        "steps": 406
+      },
+      {
+        "name": "fanout_35_0_ready",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "cache:p1",
+            "listener_lock",
+            "callback:8:p1",
+            "retain:p1",
+            "listener_unlock",
+            "release:p1",
+            "release:p0",
+            "free:p0",
+            "release:p1",
+            "free:p1"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "9ff1eaa21935a9d35bc640895defede3a1e3b2da5cd9716265e2757c9d75a8ed"
+            },
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "6ed4d48e4ebf10fcea5c163e363af750ecc5546d6796967baf91d1d45e994e9f"
+            }
+          ]
+        },
+        "steps": 474
+      },
+      {
+        "name": "fanout_35_0_empty",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "release:p1",
+            "free:p1",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "9ff1eaa21935a9d35bc640895defede3a1e3b2da5cd9716265e2757c9d75a8ed"
+            },
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "b7d82d7c9e05dfbfed0cd17946cf44e88c2ed76897a9d94f97e91edf80fc2968"
+            }
+          ]
+        },
+        "steps": 161
+      },
+      {
+        "name": "fanout_0_0_none",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "cache:p0",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "f21fbf59002fc962de7c9a97997500ae7e90b79f07a142c282aab251a2955d2e"
+            },
+            {
+              "descriptor": 2164457496,
+              "refs": 1,
+              "sha256": "2ff82ee5af662de97e7f2a4a1076a9287bd2678519529272b579250262b77f8d"
+            }
+          ]
+        },
+        "steps": 108
+      },
+      {
+        "name": "fanout_0_0_ready",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "cache:p1",
+            "release:p1",
+            "free:p1",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "f21fbf59002fc962de7c9a97997500ae7e90b79f07a142c282aab251a2955d2e"
+            },
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "5c33bea0b3f9c0834f2949333c86b35a9e81e408d8ade05e5a59e888b05f22b0"
+            }
+          ]
+        },
+        "steps": 176
+      },
+      {
+        "name": "fanout_0_0_empty",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "release:p1",
+            "free:p1",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "f21fbf59002fc962de7c9a97997500ae7e90b79f07a142c282aab251a2955d2e"
+            },
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "2c6dc2586973f5ead968e18fe4cbfe745c26f9ff6aaaf4e55ff0dd435c9548c2"
+            }
+          ]
+        },
+        "steps": 161
+      },
+      {
+        "name": "fanout_36_0_none",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "cache:p0",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "ef4333e07a4bd7ab3f3613d7497dfb9dda228b5f8058251d519867598b159427"
+            },
+            {
+              "descriptor": 2164457496,
+              "refs": 1,
+              "sha256": "fa4bb63f3afad95d2787b15475508a5da4bf3f378db0dc5ec3fd3483f985475d"
+            }
+          ]
+        },
+        "steps": 108
+      },
+      {
+        "name": "fanout_36_0_ready",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "cache:p1",
+            "release:p1",
+            "free:p1",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "ef4333e07a4bd7ab3f3613d7497dfb9dda228b5f8058251d519867598b159427"
+            },
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "90049efbec49a2e711d29c67d6d6bf9939d27828b062af2cdbd87499833b80d7"
+            }
+          ]
+        },
+        "steps": 176
+      },
+      {
+        "name": "fanout_36_0_empty",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "release:p1",
+            "free:p1",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "ef4333e07a4bd7ab3f3613d7497dfb9dda228b5f8058251d519867598b159427"
+            },
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "e744ce9cbdaebebb904f8d753a653f0794fbeaea84be1cece7ff28dddc1e3020"
+            }
+          ]
+        },
+        "steps": 161
+      },
+      {
+        "name": "fanout_6_1_none",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "cache:p0",
+            "listener_lock",
+            "callback:0:p0",
+            "callback:4:p0",
+            "listener_unlock",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "c061622cfce5a06dbd1ae471f5eaf9f800403c530d853e1199ee8e0608de6c4a"
+            },
+            {
+              "descriptor": 2164457496,
+              "refs": 1,
+              "sha256": "53f1adb23bbb1fe72d43886cfe3aeba0ad79f9a283d38d760b5f6acfd5fa0ca8"
+            }
+          ]
+        },
+        "steps": 232
+      },
+      {
+        "name": "fanout_6_1_ready",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "cache:p1",
+            "listener_lock",
+            "callback:0:p1",
+            "callback:4:p1",
+            "listener_unlock",
+            "release:p1",
+            "free:p1",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "c061622cfce5a06dbd1ae471f5eaf9f800403c530d853e1199ee8e0608de6c4a"
+            },
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "94a011c3d91e252bfb9ea2e3b096fb66b650ade74bebdac05e56465074ae6957"
+            }
+          ]
+        },
+        "steps": 300
+      },
+      {
+        "name": "fanout_6_1_empty",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "release:p1",
+            "free:p1",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "c061622cfce5a06dbd1ae471f5eaf9f800403c530d853e1199ee8e0608de6c4a"
+            },
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "04d88f3a7d7fc6073915746af9b96a4c894018554178f15d072bc84025acd74f"
+            }
+          ]
+        },
+        "steps": 161
+      },
+      {
+        "name": "fanout_6_5_none",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "cache:p0",
+            "listener_lock",
+            "callback:3:p0",
+            "retain:p0",
+            "callback:4:p0",
+            "listener_unlock",
+            "release:p0",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "7dfa398958773ccc99ce8d874f9ffea586710c8d8ebe62100ec5c7544ceff558"
+            },
+            {
+              "descriptor": 2164457496,
+              "refs": 1,
+              "sha256": "271036ca2d78e8b900a7ffedc01747501185a58832fa897dcba68795c6b38eca"
+            }
+          ]
+        },
+        "steps": 342
+      },
+      {
+        "name": "fanout_6_5_ready",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "cache:p1",
+            "listener_lock",
+            "callback:3:p1",
+            "retain:p1",
+            "callback:4:p1",
+            "listener_unlock",
+            "release:p1",
+            "release:p0",
+            "free:p0",
+            "release:p1",
+            "free:p1"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "7dfa398958773ccc99ce8d874f9ffea586710c8d8ebe62100ec5c7544ceff558"
+            },
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "3ac4f6d513ada8f1b78295e3f16fdfde3025143d2ad588fde137a32167bf7c59"
+            }
+          ]
+        },
+        "steps": 410
+      },
+      {
+        "name": "fanout_6_5_empty",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "release:p1",
+            "free:p1",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "7dfa398958773ccc99ce8d874f9ffea586710c8d8ebe62100ec5c7544ceff558"
+            },
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "b8f649fc16b7ccd4a6ec75ff0e41fa33a1b25bc08dd2ed3ed1b58125c56ab49b"
+            }
+          ]
+        },
+        "steps": 161
+      },
+      {
+        "name": "fanout_6_6_none",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "cache:p0",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "8441fbc9657338bc41e74d6ff17482cea20d75518f91f19413dd203105a80e7a"
+            },
+            {
+              "descriptor": 2164457496,
+              "refs": 1,
+              "sha256": "68b4b46185726be398af7285df4d04d7a9bd5ec900473d19f6811f770ba660b1"
+            }
+          ]
+        },
+        "steps": 108
+      },
+      {
+        "name": "fanout_6_6_ready",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "cache:p1",
+            "release:p1",
+            "free:p1",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "8441fbc9657338bc41e74d6ff17482cea20d75518f91f19413dd203105a80e7a"
+            },
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "1f5175f2806d67ef9e4c9ff46ff0b453d81dda727e34310b06a24ebc552d6678"
+            }
+          ]
+        },
+        "steps": 176
+      },
+      {
+        "name": "fanout_6_6_empty",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "release:p1",
+            "free:p1",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "8441fbc9657338bc41e74d6ff17482cea20d75518f91f19413dd203105a80e7a"
+            },
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "0ca2cf9f03f6ed3b1a39621af54ba18e514531ffcf2e213c5254bde2c0fd1caf"
+            }
+          ]
+        },
+        "steps": 161
+      },
+      {
+        "name": "fanout_6_256_none",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "cache:p0",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "923a81670039c0c1d39b4458b1db10348a9ee1bf546951e0d8a64fa3c508a240"
+            },
+            {
+              "descriptor": 2164457496,
+              "refs": 1,
+              "sha256": "b446e4d176de3fa32041a2ff6f98c56f44e3979427c6f1dd41d0160962d84dd6"
+            }
+          ]
+        },
+        "steps": 108
+      },
+      {
+        "name": "fanout_6_256_ready",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "cache:p1",
+            "release:p1",
+            "free:p1",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "923a81670039c0c1d39b4458b1db10348a9ee1bf546951e0d8a64fa3c508a240"
+            },
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "46340dd9c7d7f8f4cee1b5dff85b1d5a9f653ae39241644e1282f01b3fb84a80"
+            }
+          ]
+        },
+        "steps": 176
+      },
+      {
+        "name": "fanout_6_256_empty",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "release:p1",
+            "free:p1",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "923a81670039c0c1d39b4458b1db10348a9ee1bf546951e0d8a64fa3c508a240"
+            },
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "8bdfa6a72b98101bcc173f700786445e0fe66b294714c7072b6b6d54dec11618"
+            }
+          ]
+        },
+        "steps": 161
+      },
+      {
+        "name": "fanout_6_257_none",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "cache:p0",
+            "listener_lock",
+            "callback:0:p0",
+            "callback:4:p0",
+            "listener_unlock",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "12aeef4024c545086b5f36a8de9880c27bd0bbdfcd0f255980eb92f30eeb87f3"
+            },
+            {
+              "descriptor": 2164457496,
+              "refs": 1,
+              "sha256": "292e0bdb58682f2cac1c6dc8bfc35fef09b066e7d6958cc4bc827687d2a18776"
+            }
+          ]
+        },
+        "steps": 232
+      },
+      {
+        "name": "fanout_6_257_ready",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "cache:p1",
+            "listener_lock",
+            "callback:0:p1",
+            "callback:4:p1",
+            "listener_unlock",
+            "release:p1",
+            "free:p1",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "12aeef4024c545086b5f36a8de9880c27bd0bbdfcd0f255980eb92f30eeb87f3"
+            },
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "f9df7153bc5f4ec04cf590a6460cd00531bb90de6b5979a373ace9124717703b"
+            }
+          ]
+        },
+        "steps": 300
+      },
+      {
+        "name": "fanout_6_257_empty",
+        "observed": {
+          "actions": [
+            "read",
+            "fusion",
+            "release:p1",
+            "free:p1",
+            "release:p0",
+            "free:p0"
+          ],
+          "packets": [
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "12aeef4024c545086b5f36a8de9880c27bd0bbdfcd0f255980eb92f30eeb87f3"
+            },
+            {
+              "descriptor": 0,
+              "refs": 0,
+              "sha256": "2d0b40fa47c731495e342cbb7a767bdfd64631e551e2b39aede8524ac97dda20"
+            }
+          ]
+        },
+        "steps": 161
+      },
+      {
+        "name": "fanout_no_source",
+        "observed": {
+          "actions": [
+            "read"
+          ],
+          "packets": [
+            {
+              "descriptor": 2164391960,
+              "refs": 1,
+              "sha256": "a3a790b4868c277b62ebfe9b58f6b42e7883c1605e6be99f773df23878b155b0"
+            },
+            {
+              "descriptor": 2164457496,
+              "refs": 1,
+              "sha256": "8f1d76a9be1f894a196ef34ccb0eb318de57432587d356ced6ef1aede920fbcb"
+            }
+          ]
+        },
+        "steps": 12
+      },
+      {
+        "name": "cache_0",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "queue_alloc",
+            "queue_lock",
+            "queue_unlock",
+            "release:p0",
+            "queue_lock",
+            "free:node",
+            "queue_unlock",
+            "release:p0",
+            "free:p0"
+          ],
+          "cached": 68,
+          "get_result": 0,
+          "node_sha256": "bf3b958dac8dd6953fd1dec67332770da6f67ccf86cf40fa7723dd369c790b84",
+          "output_hex": "4400000000000281",
+          "packet": {
+            "descriptor": 0,
+            "refs": 0,
+            "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+          },
+          "queue": {
+            "count": 0,
+            "head": 2164588544,
+            "tail": 2164588544
+          }
+        },
+        "steps": 381
+      },
+      {
+        "name": "cache_1",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "queue_alloc",
+            "queue_lock",
+            "queue_unlock",
+            "release:p0"
+          ],
+          "cached": 68,
+          "get_result": null,
+          "node_sha256": "ee75a0e857a14e86f5c342e081235bbd0a61c0d5cb54a38044c133734d12ae4b",
+          "output_hex": "a5a5a5a5a5a5a5a5",
+          "packet": {
+            "descriptor": 2164391960,
+            "refs": 1,
+            "sha256": "a3a790b4868c277b62ebfe9b58f6b42e7883c1605e6be99f773df23878b155b0"
+          },
+          "queue": {
+            "count": 1,
+            "head": 2164592640,
+            "tail": 2164592640
+          }
+        },
+        "steps": 252
+      },
+      {
+        "name": "cache_2",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "queue_alloc",
+            "queue_lock",
+            "queue_unlock",
+            "release:p0",
+            "queue_lock",
+            "release:p0",
+            "free:p0",
+            "queue_short_log",
+            "free:node",
+            "queue_unlock"
+          ],
+          "cached": 68,
+          "get_result": 1,
+          "node_sha256": "bf3b958dac8dd6953fd1dec67332770da6f67ccf86cf40fa7723dd369c790b84",
+          "output_hex": "a5a5a5a5a5a5a5a5",
+          "packet": {
+            "descriptor": 0,
+            "refs": 0,
+            "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+          },
+          "queue": {
+            "count": 0,
+            "head": 2164588544,
+            "tail": 2164588544
+          }
+        },
+        "steps": 390
+      },
+      {
+        "name": "cache_3",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "free:p0"
+          ],
+          "cached": 0,
+          "get_result": null,
+          "node_sha256": "13acf1f67640cb66febc57ec05fdb5102c27b60453fdcfaf357ddff1f224d058",
+          "output_hex": "a5a5a5a5a5a5a5a5",
+          "packet": {
+            "descriptor": 0,
+            "refs": 0,
+            "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+          },
+          "queue": {
+            "count": 0,
+            "head": 2164588544,
+            "tail": 2164588544
+          }
+        },
+        "steps": 101
+      },
+      {
+        "name": "cache_4",
+        "observed": {
+          "actions": [
+            "release:p0",
+            "free:p0"
+          ],
+          "cached": 0,
+          "get_result": null,
+          "node_sha256": "13acf1f67640cb66febc57ec05fdb5102c27b60453fdcfaf357ddff1f224d058",
+          "output_hex": "a5a5a5a5a5a5a5a5",
+          "packet": {
+            "descriptor": 0,
+            "refs": 0,
+            "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+          },
+          "queue": {
+            "count": 0,
+            "head": 2164588544,
+            "tail": 2164588544
+          }
+        },
+        "steps": 118
+      },
+      {
+        "name": "cache_5",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "cache_failure_log",
+            "release:p0",
+            "release:p0",
+            "free:p0"
+          ],
+          "cached": 0,
+          "get_result": null,
+          "node_sha256": "13acf1f67640cb66febc57ec05fdb5102c27b60453fdcfaf357ddff1f224d058",
+          "output_hex": "a5a5a5a5a5a5a5a5",
+          "packet": {
+            "descriptor": 0,
+            "refs": 0,
+            "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+          },
+          "queue": {
+            "count": 0,
+            "head": 2164588544,
+            "tail": 2164588544
+          }
+        },
+        "steps": 292
+      },
+      {
+        "name": "cache_6",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "queue_alloc",
+            "cache_failure_log",
+            "release:p0",
+            "release:p0",
+            "free:p0"
+          ],
+          "cached": 0,
+          "get_result": null,
+          "node_sha256": "13acf1f67640cb66febc57ec05fdb5102c27b60453fdcfaf357ddff1f224d058",
+          "output_hex": "a5a5a5a5a5a5a5a5",
+          "packet": {
+            "descriptor": 0,
+            "refs": 0,
+            "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+          },
+          "queue": {
+            "count": 0,
+            "head": 2164588544,
+            "tail": 2164588544
+          }
+        },
+        "steps": 302
+      },
+      {
+        "name": "cache_7",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "queue_alloc",
+            "queue_lock",
+            "queue_unlock",
+            "pressure_log",
+            "cache_flush",
+            "release:p0",
+            "queue_lock",
+            "free:node",
+            "queue_unlock",
+            "release:p0",
+            "free:p0"
+          ],
+          "cached": 20548,
+          "get_result": 0,
+          "node_sha256": "bf3b958dac8dd6953fd1dec67332770da6f67ccf86cf40fa7723dd369c790b84",
+          "output_hex": "4400000000000281",
+          "packet": {
+            "descriptor": 0,
+            "refs": 0,
+            "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+          },
+          "queue": {
+            "count": 0,
+            "head": 2164588544,
+            "tail": 2164588544
+          }
+        },
+        "steps": 396
+      },
+      {
+        "name": "cache_8",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "queue_alloc",
+            "queue_lock",
+            "queue_unlock",
+            "pressure_log",
+            "cache_flush",
+            "release:p0",
+            "queue_lock",
+            "free:node",
+            "queue_unlock",
+            "release:p0",
+            "free:p0"
+          ],
+          "cached": 68,
+          "get_result": 0,
+          "node_sha256": "bf3b958dac8dd6953fd1dec67332770da6f67ccf86cf40fa7723dd369c790b84",
+          "output_hex": "4400000000000281",
+          "packet": {
+            "descriptor": 0,
+            "refs": 0,
+            "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+          },
+          "queue": {
+            "count": 0,
+            "head": 2164588544,
+            "tail": 2164588544
+          }
+        },
+        "steps": 400
+      },
+      {
+        "name": "cache_9",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "queue_alloc",
+            "queue_lock",
+            "queue_unlock",
+            "release:p0",
+            "queue_lock",
+            "free:node",
+            "queue_unlock",
+            "release:p0",
+            "free:p0"
+          ],
+          "cached": 68,
+          "get_result": 0,
+          "node_sha256": "bf3b958dac8dd6953fd1dec67332770da6f67ccf86cf40fa7723dd369c790b84",
+          "output_hex": "4400000000000281",
+          "packet": {
+            "descriptor": 0,
+            "refs": 0,
+            "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+          },
+          "queue": {
+            "count": 0,
+            "head": 2164588544,
+            "tail": 2164588544
+          }
+        },
+        "steps": 381
+      },
+      {
+        "name": "cache_10",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "queue_alloc",
+            "queue_lock",
+            "queue_unlock",
+            "release:p0",
+            "queue_lock",
+            "free:node",
+            "queue_unlock",
+            "release:p0",
+            "free:p0"
+          ],
+          "cached": 20479,
+          "get_result": 0,
+          "node_sha256": "bf3b958dac8dd6953fd1dec67332770da6f67ccf86cf40fa7723dd369c790b84",
+          "output_hex": "4400000000000281",
+          "packet": {
+            "descriptor": 0,
+            "refs": 0,
+            "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+          },
+          "queue": {
+            "count": 0,
+            "head": 2164588544,
+            "tail": 2164588544
+          }
+        },
+        "steps": 381
+      },
+      {
+        "name": "cache_11",
+        "observed": {
+          "actions": [
+            "retain:p0",
+            "queue_alloc",
+            "queue_lock",
+            "queue_unlock",
+            "pressure_log",
+            "cache_flush",
+            "release:p0",
+            "queue_lock",
+            "free:node",
+            "queue_unlock",
+            "release:p0",
+            "free:p0"
+          ],
+          "cached": 20480,
+          "get_result": 0,
+          "node_sha256": "bf3b958dac8dd6953fd1dec67332770da6f67ccf86cf40fa7723dd369c790b84",
+          "output_hex": "4400000000000281",
+          "packet": {
+            "descriptor": 0,
+            "refs": 0,
+            "sha256": "e42a90af22ebe1401fdd4711742ce050f1df74e08b8b5d819b44d1f2d45d9a6d"
+          },
+          "queue": {
+            "count": 0,
+            "head": 2164588544,
+            "tail": 2164588544
+          }
+        },
+        "steps": 396
+      }
+    ],
+    "hardware_execution": false
+  },
+  "sensor_sha256": "06f07541e8bb22b6118f081e791c3a4e40cbff2decd8ee478a7e82df826e9d0f",
+  "validation_sha256": "79a61ea6221baf18896fdab76bd436295ed893b8ee3907e8b3ad5a59503d3806",
+  "vectors_sha256": "491dd657ea2edc71a077e7602bb7ac8923a823130a9a6f7906af4405871bb0fd"
+}

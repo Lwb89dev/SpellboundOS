@@ -213,3 +213,8 @@ packet reference/free and asynchronous delivery, fusion algorithms, the
 queue/worker/IPC gap, and physical bus/IRQ/timing validation. The current
 tests establish neither final measurement accuracy nor a working independent
 hardware driver. No phone/watch setting, firmware or hardware was changed.
+
+The subsequent [delivery and modes pass](SENSOR_DELIVERY_AND_MODES.md) covers
+native reference wrappers through the free-call boundary, selected listener
+fanout, cache queue ownership and consumer modes 2/3. Allocator internals,
+cache-flush IPC and other modes remain open.

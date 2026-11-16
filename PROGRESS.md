@@ -1082,6 +1082,39 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    firmware change occurred; other modes, calibration, delivery and physical
    validation remain open.
 
+## 2026-11-16 — packet lifetime, listener/cache delivery and optical modes 2/3
+
+1. Executed null-safe packet retain/release, wrapping reference arithmetic and
+   the last-release pointer clear through the pool-4 free-call boundary.
+   Executed the selected critical wrappers, current-task nesting and MIE CSR
+   operations with supplied context/scheduler state. These helpers balance
+   depth rather than restore a saved MIE bit; no concurrent/hardware exclusion
+   or complete allocator behavior is claimed.
+2. Executed delivery with supplied read/fusion/cache results: original versus
+   fusion-result selection, empty-result suppression, normal/private listener
+   matching and cleanup of both packets. Dispatch does not implicitly retain
+   for callbacks; synthetic retaining listeners call the actual native helper
+   and release those references after owner cleanup.
+3. Executed cache's all-selected/none-selected paths and native one-node queue
+   put/get. The queued eight-byte record owns a packet reference. Successful
+   get transfers it to the receiver; a short buffer invokes cleanup inside the
+   queue instead. Enqueue failures balance the added reference. Checked cache
+   pressure thresholds; actual pressure flush, filtering and IPC are not run.
+4. Executed 29 mode-2/3 consumer cases with three words per frame, optional
+   third output stream, distinct channel/global adjustments, marked-pop flags,
+   sample thresholds and all-out-of-range counter/reset requests. Values are
+   native sample integers, not validated health measurements. Postprocess reset
+   and OS/peripheral services remain supplied boundaries.
+5. All 178 new native cases pass (97 references, 40 listener delivery, 12 cache,
+   29 consumer), totaling 42,835 bounded steps including intercepted calls.
+   All 557 prior packet/flush/consumer cases replay identically after extending
+   the shared harness. Added 28 tests; all 354 Python tests pass. Nineteen fresh
+   exports, full checked results and reproduction are recorded in
+   [analysis/SENSOR_DELIVERY_AND_MODES.md](analysis/SENSOR_DELIVERY_AND_MODES.md),
+   [analysis/sensor-delivery.json](analysis/sensor-delivery.json) and
+   [analysis/ppg-three-word.json](analysis/ppg-three-word.json). Vendor material
+   remains ignored. No phone/watch settings or firmware were changed.
+
 ## Next work
 
 - Regenerate selected native paths with startup-aware mappings, corrected
@@ -1090,7 +1123,9 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
 - Follow the complete MAX8617X mode/consumer/calibration paths and the health
   IPC pipeline; the selected FIFO fault/recovery/cache primitives, coordinated
   flush, packet allocation/rebinding and mode-1 consumer now have bounded
-  native coverage. Follow packet reference/free and asynchronous delivery.
+  native coverage; selected reference/free-call, listener/cache queue and
+  mode-2/3 paths now have coverage too. Follow normalized driver reads, cache
+  filtering, pressure-flush serialization/events/IPC and remaining modes.
   Validate electrical SPI mode/timing, DMA ownership and live
   sensor operation before implementing hardware code. The selected adapter's
   flag/divider/polling arithmetic and bus/completion/reference contracts are
