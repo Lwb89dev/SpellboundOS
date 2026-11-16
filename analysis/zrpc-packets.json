@@ -1,0 +1,54 @@
+{
+  "ack_bytes": 8,
+  "crc": {
+    "all_256_table_entries_match": true,
+    "final_xor": 0,
+    "initial": 65535,
+    "main_sensor_tables_identical": true,
+    "polynomial_reflected": 40961,
+    "table_sha256": "963e1a34acd6fc595c2b6f172e7db638c4ab9d53e6027eb3f0c85fc071794ced",
+    "vector_123456789": "4b37"
+  },
+  "data_header_bytes": 16,
+  "limitations": [
+    "No rpmsg execution, shared-memory/vring implementation or device access.",
+    "No native fragment reassembly/retry emulation; AndeStar bit branches need corrected decoding.",
+    "CRC and packet fields are independently modeled; endpoint and active routing remain unverified."
+  ],
+  "link_header_bytes": 8,
+  "member_sha256": {
+    "META/extfw/sensorhub@mhs003_sign.bin": "06f07541e8bb22b6118f081e791c3a4e40cbff2decd8ee478a7e82df826e9d0f",
+    "META/firmware_sign.bin": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa"
+  },
+  "reviewed_instruction_ranges_sha256": {
+    "704ea652_704ea6bc": "d35f5750a4c1db2da617e77ab5ae8f96fd9a35c4b7cdbf32955c23392ce264c3",
+    "704ea9ee_704eaa3e": "4b16b4042667b092723e8a44178d6de34c59931d153b436d2b268a1c5551ea36",
+    "704eb946_704eb986": "234a993b530e3649cd1359660d2df1f056d4ffcd488b2730c1560ab06e0802fa"
+  },
+  "source_node": {
+    "main": 1,
+    "sensor_hub": 2
+  },
+  "source_sha256": {
+    "main/ram_704e8f28.c": "51d230be54e3b88bcd164e72285f05c25d88cbce312a9f077f5cf92687a09e37",
+    "main/ram_704e9580.c": "a6459890ebd5cdc444c2ce88d3807109e118c9148fe411dbe220e5b758c52916",
+    "main/ram_704e9a48.c": "eb43822b54c705726c792e77af8c30c72fa66ee062d7634c93f6c72aadcd4fbe",
+    "main/ram_704ea184.c": "ddc52736f06154e41bfc0c3b95ef7f8100b56e0c2fcab873c4b8e4116bfd2731",
+    "main/ram_704ea8f2.c": "6bd64fb902b6347b9b6d55b44de95a861c1e6bb27eb7d24ce0f4e852c3ec8371",
+    "main/ram_704eb056.c": "520e7fdc0a0a08f9cbdc4e7975e62cb0f1d9920c4168bdcdbea60173b39f9399",
+    "main/ram_704eb350.c": "c4aa68547602f37d41dd95aa9f0b3e5986da0960847e179acc8d0fda933eda7d",
+    "main/ram_704eb422.c": "33d410ec50368371ef275d28570b754c48eb59d84d495092d7c4e5b7ae874202",
+    "main/ram_704eb476.c": "a1388ee76ae8f360052a8e691d10bbfc730b8330c452c2289ae2da1f7d136e57",
+    "main/ram_704eb4c0.c": "b641e554972ab7f277d94e37a2bf3793402fee119f57ee11c933eb11fe3ea99e",
+    "main/ram_704eb7dc.c": "02424d366e79a89c33ca49dfd923141f3e0675562d39d790f6d991447e0576af",
+    "main/ram_704eb946.c": "99c3cad7b5419906a8032dd4fa0a86b74d06355a19b1516809768a29853945b2",
+    "sensor/ram_80f94c0a.c": "3f5d4024fadd2c87238ba8941fda3b898031a62940cbc3df80827444658efb82",
+    "sensor/ram_80f99c26.c": "a7bdf2ef51100b8cfd46a5b558bd8028fedf49324eecf585399807f1b579861c",
+    "sensor/ram_80f9cfa8.c": "8924a44db37b0999c8a91cbe55756d3e6caf689ae4ff32128ac5830a9555b1d4",
+    "sensor/ram_80f9d4c6.c": "6feec35c7a1d0f101f181b30f133a351aa89c2898c64e37e9c0121431be90679",
+    "sensor/ram_80f9de06.c": "83f6a6bcc77e6675f15a501bd920e56553ebe2e98b142dd975de92c561583452",
+    "sensor/ram_80f9f022.c": "769ca9e6a8397b2504084f61c7f4d78ddc448091a9dd9fb8fbcbdb09bb602607"
+  },
+  "synthetic_optical_process_link_hex": "727a401a00001c000102010207000900010000000200140010060000",
+  "synthetic_scope": "chosen request/session/destination values; not a device capture"
+}

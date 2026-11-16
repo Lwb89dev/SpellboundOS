@@ -816,6 +816,27 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    contains metadata and evidence hashes only. This pass was entirely offline;
    no phone/watch interaction or firmware write was performed.
 
+## 2026-11-16 — sensor zrpc packet framing and CRC
+
+1. Connected sensor send wrapper `0x80f94c0a` to zrpc sender `0x80f9de06`
+   and compared its header construction with main sender `0x704ea184`.
+   Local node IDs are 2 and 1 respectively; recovered the separate 16-byte
+   data header, 8-byte ACK and 8-byte link envelope. Destination/link selection
+   and active device routing remain unverified.
+2. Matched all 256 generated reflected-`0xa001` CRC table entries on both
+   processors and checked the main CRC loop/header stores in LLVM instructions.
+   Recorded fragment descriptor fields, 14-bit chunk sequences, session ACK
+   lookup and rpmsg allocation/send/release wrapper targets.
+3. Added a bounded independent packet codec, eight synthetic tests and
+   [analysis/ZRPC_PACKETS.md](analysis/ZRPC_PACKETS.md) with reproducible
+   [analysis/zrpc-packets.json](analysis/zrpc-packets.json). All 212 Python
+   tests pass with signature/cipher dependencies. The codec does not emulate
+   native fragmentation/retries or run a shared-memory/rpmsg transport.
+4. Preserved unresolved AndeStar bit branches explicitly: broad pseudocode
+   contains impossible mask comparisons and LLVM leaves those instructions
+   undecoded. The temporary Ghidra installation was absent; no corrected fresh
+   export is claimed. This pass was offline and performed no device access.
+
 ## Next work
 
 - Regenerate selected native paths with startup-aware mappings, corrected
@@ -823,6 +844,8 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
   counts must not be treated as semantic coverage.
 - Follow MAX8617X initialization/FIFO paths, interrupt handling and the health
   IPC pipeline; verify HAL flags and timing before implementing hardware code.
+- Repair zrpc AndeStar bit-branch decoding, then recover exact fragment
+  termination/retry behavior and rpmsg shared-memory/endpoint configuration.
 
 - Follow population of the capability table and the deeper heart/SpO2 service
   backends; distinguish software records from live hardware measurements.

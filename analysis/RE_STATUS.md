@@ -13,7 +13,7 @@ Disassembly and export counts do not measure behavioral understanding.
 | App bytecode | 44 members structurally parsed; QuickJS engine fingerprinted; official C reader agrees on nine header fields for all 1,072 functions | Runtime semantics, operand-level validation and independently implemented host |
 | JS/native boundary | Modules, export tables, classes and initializer ownership mapped | Argument/error contracts, object lifetimes and behavior behind each implementation |
 | Optical sensing | MAX8617X driver, initial board data, IRQ/FIFO route, host FIFO model, eight register-table inventories | Exact fitted part, full mode/timing behavior, calibration and measurement chain |
-| Health data | Heart/SpO2 caches and services; sensor process/control IPC payloads modeled | Outer zrpc transport, remaining packet families, record formats, algorithms and validation |
+| Health data | Heart/SpO2 caches and services; sensor process/control payloads; matching main/sensor zrpc link/data/ACK headers and CRC-16; fragment descriptors | Native reassembly/retry bit branches, rpmsg/shared memory, remaining payloads, record formats, algorithms and device validation |
 | Motion / other peripherals | Candidate identities and selected probe paths | Complete configuration, interrupts, power/timing and physical verification |
 | Bluetooth | Static builder/auth/curve models; all 62 announced modules matched; 103 initial transfers/69 AES checks; synthetic notification fields matched on the link and app-logo exchange observed; native reply/action serializers; selected notification listener/queue/store route followed to `NotificationNotifyScreen` request | Full GATT/handle coverage, fresh pairing/key derivation, counter persistence, remaining payloads/JS linkage, actual notification rendering/replies/actions, special storage/rich formats, Roadstr handoff and call/audio behavior |
 | GNSS / touch | Container sections, candidate code and identity clues | Full mappings, loader/command protocols, runtime integration |
@@ -43,6 +43,7 @@ Latest detailed findings:
 - [Compiler ABI and corpus limitations](COMPILER_ABI.md)
 - [Targeted corrected native exports](NATIVE_REPAIR.md)
 - [Optical FIFO and initial sensor IPC payloads](PPG_FIFO_AND_IPC.md)
+- [Sensor zrpc packet headers, CRC and rpmsg boundary](ZRPC_PACKETS.md)
 - [Boot/recovery control flow and signed metadata](BOOT_RECOVERY_AND_METADATA.md)
 - [Native GATT registrations and transport bindings](GATT_REGISTRATION.md)
 - [Native channel framing and authentication crypto delegate](NATIVE_CHANNEL.md)

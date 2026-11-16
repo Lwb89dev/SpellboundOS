@@ -82,8 +82,11 @@ buffer. The host codec takes payload bytes, preserving their exact order.
 
 Serialized payloads go through `0x80f99c26`, the transport interface returned
 by `0x80f95226`, and its send implementation `0x80f94c0a`. Outer zrpc routing,
-sequence, fragmentation, checksums, ACK/retry and rpmsg framing are not yet
-modeled. These sensor payloads are unrelated to the phone-facing BLE framing.
+sequence, fragmentation, checksums, ACK/retry and rpmsg framing were outside
+this initial payload model. The follow-up [zrpc packet analysis](ZRPC_PACKETS.md)
+recovers link/data/ACK headers, CRC and fragment-descriptor fields on main and
+sensor hub; full native reassembly/retry and rpmsg operation remain open.
+These sensor payloads are unrelated to the phone-facing BLE framing.
 
 ## Register configurations and reproducibility
 
