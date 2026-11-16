@@ -1,0 +1,1140 @@
+{
+  "byte_range_sha256": {
+    "80f63c2e_86": "ae26d17613ea566f46b2e2003314109c1a201ca520fd22447c89fdba6eb8d362",
+    "80f6453e_122": "3045b1263a0db4ace34d9bf2f107cc65173a737397ab8914b43c45b6d898bb96",
+    "80f655d2_30": "629e4712e7dfe729c334016cc1705016190c20d7684f900958c37dcf3673eded",
+    "80f657ee_480": "578bdc5ab8723367b9712f7e49a5b303675bf55b7fa632dc9f1d2a7c512e7158",
+    "80f80aa2_44": "a370c614222b8f603d0ca1c5a042b4ed57635edb383f3227a43ced901ad62bd1",
+    "80f85cbe_84": "3f023e9de23f5c7652b9e962afcb58dbb5bb874c925dbc811a38aa0f9d12102d",
+    "80f99c26_dc": "3d3311eb0afded3a99c94dfa739aa3ef97de398e4b7a77190086cad30e0c55d0",
+    "80f9a5e6_a20": "ee03a002d5d3796cd37ef9f1aa25dd1fe0de93c81accd85b678697a3f4a99de8",
+    "80f9b34e_b0": "de001823b4f4051e3465d276d665db520c11aed8de4aff6327c9071326660f31",
+    "80f9ba6e_27c": "378b49fb315e99b0623e2cf35c3459daa7a0bfac781a8048902176f2ce1d463a",
+    "80fa27e6_8": "f365460cd199682c0a44a933f351e89847cff60d0227df3c4c7de88c79be49dc",
+    "80fa5d1e_5b2": "7d9f59af4b06f0d6050c9801c59cbe385fa029989b86faf89c5da1a6e23bd16c",
+    "80fd2c3e_1a": "f207acf3996babc0dcd3fa1eac67c084a1ecf94216a884b882550ec4f7a31e3c"
+  },
+  "export_sha256": {
+    "80f63c2e.c": "6e24756a1f478b473e1b0ff5572309ac035eb0339e3c22d18fc6fdcae25c76a6",
+    "80f655d2.c": "a61860bead27d7ec314afd8b2a15157bc65b4970d46c581a3cc65dae0bf031ee",
+    "80f657ee.c": "44072748b914124fc760ef29a2100ed9abc1f11b3b0ed3b3877f1f2beef57ada",
+    "80f6585e.c": "fab6725b8b1a2c8aac88664990685e6c2edeff14ed11b98e99db9865f16ec61d",
+    "80f65884.c": "f34b41f8dfd5d3314605ae4b03451354f7dfbe3acc28d7f89bdb3ec602b95173",
+    "80f658c6.c": "8ff65936dabfe1c467d159251466dc2bb945002591029c8d2524fcd96df65c24",
+    "80f65920.c": "b6bfa37179153e1288ce15ab450476c31ead4d44d636f5a69df35eef19409633",
+    "80f65a0e.c": "d65af76aa82b13b6e8a73bd5c9dcbc147a19e54743556f0148b67015ef4a9e17",
+    "80f99c26.c": "d91e85a16b5c8b6ddf0be7156710f66a1123f60085fc874e7876acab10b656e7",
+    "80f99ce0.c": "68eb243d477db83d58b808aae1abbf7580ff6a59339da6417d4514f3987eed08",
+    "80f9a5e6.c": "d912355dcc59372d17b4ab6e0c24577f9017ee08466faafa37aeec86f3b694f4",
+    "80f9b34e.c": "f34b41f8dfd5d3314605ae4b03451354f7dfbe3acc28d7f89bdb3ec602b95173",
+    "80f9b390.c": "4bbac6038e00c94f698032223c21adb5e867ee24c5668b466ff912272c2bc192",
+    "80f9ba6e.c": "b358ffb2b8bfc2b282ac8b79ae4a24e6cb56f036e19efeb9884ab222c459a29c",
+    "80fa27e6.c": "fab6725b8b1a2c8aac88664990685e6c2edeff14ed11b98e99db9865f16ec61d",
+    "80fa27ea.c": "f34b41f8dfd5d3314605ae4b03451354f7dfbe3acc28d7f89bdb3ec602b95173",
+    "80fa5d1e.c": "3a1b5eb5776d8cd111e147b01c52d1e3062bf16f970efc648d5997b2ab0a04fe",
+    "80fa5d5e.c": "57f41030a4556c75325fa96b0f15b2c6e59d3b91fcf279b1c342ba4005d77e30",
+    "80fa5dd2.c": "1c3b1ac57588f5c7fd6e6ff7edef80c155841262816477f079aed78e19ffd827",
+    "80fa5e6a.c": "20d4e42c0b10b68fdb3d9dc087e3d2eac3ad64c9af8dde4e20329821c279a4a3",
+    "80fa5eb6.c": "f4b3c5f27ac4ebddb65b3e303aba651a18bf00d715f1269be0c8b917e0e184cf",
+    "80fa6028.c": "7b6ab4b8f126d96d1c0bd5f9ee637d5b336aefda1b06fb00bca10edb07732de3",
+    "80fa60e4.c": "49c5af5c71387e833fb6640a2211f61ffeb615c04e038118aa7207f214db35b5",
+    "80fa61ca.c": "aa05d2b47e6f23876750e825a18fe3497c2f7e0678949bfcceca9ab42ca8340e",
+    "80fa6278.c": "6735838bd8fd96943ae02d515e0133f12f7e535c8a384221c142f3a14f857581"
+  },
+  "limitations": [
+    "Packet fixtures, registrations, allocator/free/copy operations, context, locks, event scheduling and send results are supplied.",
+    "Flush and event handler execute separately across the supplied event scheduler; transport send stops at the configured operation callback.",
+    "Partial filtering uses distinct single-bit stream types with consistent header masks; inconsistent/corrupt descriptor counts are excluded.",
+    "Oversized-head tests supply allocation failure after two iterations; no physical incidence or unbounded device hang is established.",
+    "Native buffer validity/fixup return does not validate complete record shape; the host wire parser enforces stricter bounds."
+  ],
+  "native_steps": 25611,
+  "native_validation": {
+    "bound_per_case": 200000,
+    "case_count": 29,
+    "cases": [
+      {
+        "name": "flush_empty",
+        "observed": {
+          "actions": [],
+          "buffers": [],
+          "cached": 0,
+          "clone_sha256": null,
+          "motion": 0,
+          "packets_sha256": [],
+          "queue_count": 0,
+          "returned": null,
+          "statuses": [],
+          "wires": []
+        },
+        "steps": 50
+      },
+      {
+        "name": "flush_one",
+        "observed": {
+          "actions": [
+            "alloc:b0:4016",
+            "free:n0",
+            "free:p0",
+            "dispatch:0:72",
+            "event:0",
+            "post:0",
+            "wire_alloc:77",
+            "send:0:77",
+            "free:b0"
+          ],
+          "buffers": [
+            {
+              "base": 2165309440,
+              "magic": 0,
+              "refs": 0,
+              "sha256": "194e684eafd745c43b4010b6f22e7db95789c53d75236dff0bc49b18e2a1cd64",
+              "used": 72
+            }
+          ],
+          "cached": 0,
+          "clone_sha256": null,
+          "motion": 0,
+          "packets_sha256": [
+            "ee6c5348f245e5f29fe5461a1e410b277e78a94ab3e3769dd851c36ad9d0c83a"
+          ],
+          "queue_count": 0,
+          "returned": null,
+          "statuses": [],
+          "wires": [
+            {
+              "header_hex": "000102",
+              "length": 77,
+              "prefix_hex": "154800000044000000010004000600000000800000",
+              "sha256": "9ea08a2299ca28aa1c4ffd6a018ecb156779b86447792d3f661eff2f52e7e36c"
+            }
+          ]
+        },
+        "steps": 1175
+      },
+      {
+        "name": "flush_multi",
+        "observed": {
+          "actions": [
+            "alloc:b0:4016",
+            "free:n0",
+            "free:p0",
+            "free:n1",
+            "free:p1",
+            "dispatch:0:252",
+            "event:0",
+            "post:0",
+            "wire_alloc:257",
+            "send:0:257",
+            "free:b0"
+          ],
+          "buffers": [
+            {
+              "base": 2165309440,
+              "magic": 0,
+              "refs": 0,
+              "sha256": "79ef4b5047b52941b5e1f6d3524d6f216360db93092fe12935247c27448cb295",
+              "used": 252
+            }
+          ],
+          "cached": 0,
+          "clone_sha256": null,
+          "motion": 0,
+          "packets_sha256": [
+            "0c5266fa4d8eccd2b19a9513567a4c52a5811ea70c8009ca7f9847615b0dd580",
+            "2bdbd1dcb4dfa7ffd4a0da97fe1247b39d71b6b9f62294e64129a295cd8bfac6"
+          ],
+          "queue_count": 0,
+          "returned": null,
+          "statuses": [],
+          "wires": [
+            {
+              "header_hex": "000102",
+              "length": 257,
+              "prefix_hex": "15fc000000a8000000030008000600000010801000",
+              "sha256": "80b452f65717f3f89b0cab8df7b60fec7a96a3ecda814a3ccaa8f96512b20827"
+            }
+          ]
+        },
+        "steps": 1523
+      },
+      {
+        "name": "flush_multiple_buffers",
+        "observed": {
+          "actions": [
+            "alloc:b0:4016",
+            "free:n0",
+            "free:p0",
+            "free:n1",
+            "free:p1",
+            "free:n2",
+            "free:p2",
+            "dispatch:0:3204",
+            "event:0",
+            "post:0",
+            "alloc:b1:4016",
+            "free:n3",
+            "free:p3",
+            "free:n4",
+            "free:p4",
+            "dispatch:1:2136",
+            "event:1",
+            "post:1",
+            "wire_alloc:3209",
+            "send:0:3209",
+            "free:b0",
+            "wire_alloc:2141",
+            "send:1:2141",
+            "free:b1"
+          ],
+          "buffers": [
+            {
+              "base": 2165309440,
+              "magic": 0,
+              "refs": 0,
+              "sha256": "97d9e4c611b56285fd7bd52a7022824406ef7b22ccece4e0f79cd3da6a5ae69a",
+              "used": 3204
+            },
+            {
+              "base": 2165374976,
+              "magic": 0,
+              "refs": 0,
+              "sha256": "a97044839d698eaff2ab2814c234f4a940d1a8ad8d554442be17b70c92e5587c",
+              "used": 2136
+            }
+          ],
+          "cached": 0,
+          "clone_sha256": null,
+          "motion": 0,
+          "packets_sha256": [
+            "a0fed51b14ff406102bf9a3e77e10d8f1afa2990a40f5cea74c10a0ea37c5e28",
+            "955bbe4567602d76ea7f9528080e295a873d6202e0c0b1a59f8b506c67f58703",
+            "394e33b3192745daa737eefeb58204d0b6bf6b20b911d538d17d5d1d2a046f5d",
+            "e7a41e3593b132c039fa28e47cc1f148f45f3b4dcb3d9c2d3bd34500e3dfab15",
+            "e121659cba3accc5fee07494f328939fb76676b0c2dfb85d11d3f2bd567fdf66"
+          ],
+          "queue_count": 0,
+          "returned": null,
+          "statuses": [],
+          "wires": [
+            {
+              "header_hex": "000102",
+              "length": 3209,
+              "prefix_hex": "15840c0000280400000100e8030600000000800000",
+              "sha256": "bc8ded76160fe64d0cd09839e82bab34819a0f5b4306870a37cf4931b3305fb8"
+            },
+            {
+              "header_hex": "000102",
+              "length": 2141,
+              "prefix_hex": "1558080000280400000100e8030600000000800000",
+              "sha256": "ffd5608222ea644d472e5ddb9eb70d6c48a37ab32138cad2b94498fef361c5d3"
+            }
+          ]
+        },
+        "steps": 3311
+      },
+      {
+        "name": "flush_exact_fit",
+        "observed": {
+          "actions": [
+            "alloc:b0:4016",
+            "free:n0",
+            "free:p0",
+            "dispatch:0:4000",
+            "event:0",
+            "post:0",
+            "wire_alloc:4005",
+            "send:0:4005",
+            "free:b0"
+          ],
+          "buffers": [
+            {
+              "base": 2165309440,
+              "magic": 0,
+              "refs": 0,
+              "sha256": "df8d81c7cfce2c57a59e3534111324f33fb2968b96035a4af775c917ef0ba567",
+              "used": 4000
+            }
+          ],
+          "cached": 0,
+          "clone_sha256": null,
+          "motion": 0,
+          "packets_sha256": [
+            "831ced327daa380058555aa85687cf69248e7e13d1fd53c1e305fc2457ae99a6"
+          ],
+          "queue_count": 0,
+          "returned": null,
+          "statuses": [],
+          "wires": [
+            {
+              "header_hex": "000102",
+              "length": 4005,
+              "prefix_hex": "15a00f00009c0f000001005c0f0600000000800000",
+              "sha256": "c4ffbe14acee7973421460de9c8d6a352a4c102f56bd34fc71e6c707ac35d9ff"
+            }
+          ]
+        },
+        "steps": 1175
+      },
+      {
+        "name": "flush_oversized_no_progress",
+        "observed": {
+          "actions": [
+            "alloc:b0:4016",
+            "dispatch:0:0",
+            "alloc:b1:4016",
+            "dispatch:1:0",
+            "alloc_fail:b2:4016",
+            "log:80fd5134",
+            "log:80fd515c"
+          ],
+          "buffers": [
+            {
+              "base": 2165309440,
+              "magic": 2746533334,
+              "refs": 1,
+              "sha256": "00f9272a743a9c0318ec0d4de9cd60cd38c5b716c159b7a1862647f083ba26da",
+              "used": 0
+            },
+            {
+              "base": 2165374976,
+              "magic": 2746533334,
+              "refs": 1,
+              "sha256": "ef70e2c7878f01f43ebc99890bd701fec1d1d7a09faf1fa032366df2cfb4d108",
+              "used": 0
+            }
+          ],
+          "cached": 123,
+          "clone_sha256": null,
+          "motion": 7,
+          "packets_sha256": [
+            "3a721ee527658697e6dc7d3aede3f7c397d63b72d1891fd12714cc95534be974"
+          ],
+          "queue_count": 1,
+          "returned": null,
+          "statuses": [],
+          "wires": []
+        },
+        "steps": 612
+      },
+      {
+        "name": "flush_prefix_then_oversized",
+        "observed": {
+          "actions": [
+            "alloc:b0:4016",
+            "free:n0",
+            "free:p0",
+            "dispatch:0:72",
+            "free:b0",
+            "alloc:b1:4016",
+            "dispatch:1:0",
+            "alloc_fail:b2:4016",
+            "log:80fd5134",
+            "log:80fd515c"
+          ],
+          "buffers": [
+            {
+              "base": 2165309440,
+              "magic": 0,
+              "refs": 0,
+              "sha256": "194e684eafd745c43b4010b6f22e7db95789c53d75236dff0bc49b18e2a1cd64",
+              "used": 72
+            },
+            {
+              "base": 2165374976,
+              "magic": 2746533334,
+              "refs": 1,
+              "sha256": "ef70e2c7878f01f43ebc99890bd701fec1d1d7a09faf1fa032366df2cfb4d108",
+              "used": 0
+            }
+          ],
+          "cached": 123,
+          "clone_sha256": null,
+          "motion": 7,
+          "packets_sha256": [
+            "ee6c5348f245e5f29fe5461a1e410b277e78a94ab3e3769dd851c36ad9d0c83a",
+            "e291dfed4efbb896aad4472f5e20ae976500461ef5ad86d41d0863cb71d93ae0"
+          ],
+          "queue_count": 1,
+          "returned": null,
+          "statuses": [],
+          "wires": []
+        },
+        "steps": 1018
+      },
+      {
+        "name": "flush_allocation_failure",
+        "observed": {
+          "actions": [
+            "alloc_fail:b0:4016",
+            "log:80fd5134",
+            "log:80fd515c"
+          ],
+          "buffers": [],
+          "cached": 123,
+          "clone_sha256": null,
+          "motion": 7,
+          "packets_sha256": [
+            "dc497c9bca92d99408d95d7287ce2badb09757018fdd041690ef90699b787f73"
+          ],
+          "queue_count": 1,
+          "returned": null,
+          "statuses": [],
+          "wires": []
+        },
+        "steps": 90
+      },
+      {
+        "name": "flush_synchronous_listener",
+        "observed": {
+          "actions": [
+            "alloc:b0:4016",
+            "free:n0",
+            "free:p0",
+            "dispatch:0:72",
+            "free:b0"
+          ],
+          "buffers": [
+            {
+              "base": 2165309440,
+              "magic": 0,
+              "refs": 0,
+              "sha256": "194e684eafd745c43b4010b6f22e7db95789c53d75236dff0bc49b18e2a1cd64",
+              "used": 72
+            }
+          ],
+          "cached": 0,
+          "clone_sha256": null,
+          "motion": 0,
+          "packets_sha256": [
+            "ee6c5348f245e5f29fe5461a1e410b277e78a94ab3e3769dd851c36ad9d0c83a"
+          ],
+          "queue_count": 0,
+          "returned": null,
+          "statuses": [],
+          "wires": []
+        },
+        "steps": 690
+      },
+      {
+        "name": "flush_send_error",
+        "observed": {
+          "actions": [
+            "alloc:b0:4016",
+            "free:n0",
+            "free:p0",
+            "dispatch:0:72",
+            "event:0",
+            "post:0",
+            "wire_alloc:77",
+            "send:0:77",
+            "log:80fe18e0",
+            "log:80fe22dc",
+            "free:b0"
+          ],
+          "buffers": [
+            {
+              "base": 2165309440,
+              "magic": 0,
+              "refs": 0,
+              "sha256": "194e684eafd745c43b4010b6f22e7db95789c53d75236dff0bc49b18e2a1cd64",
+              "used": 72
+            }
+          ],
+          "cached": 0,
+          "clone_sha256": null,
+          "motion": 0,
+          "packets_sha256": [
+            "ee6c5348f245e5f29fe5461a1e410b277e78a94ab3e3769dd851c36ad9d0c83a"
+          ],
+          "queue_count": 0,
+          "returned": null,
+          "statuses": [],
+          "wires": [
+            {
+              "header_hex": "000102",
+              "length": 77,
+              "prefix_hex": "154800000044000000010004000600000000800000",
+              "sha256": "9ea08a2299ca28aa1c4ffd6a018ecb156779b86447792d3f661eff2f52e7e36c"
+            }
+          ]
+        },
+        "steps": 1192
+      },
+      {
+        "name": "filter_0",
+        "observed": {
+          "actions": [
+            "free:p0"
+          ],
+          "buffers": [],
+          "cached": 0,
+          "clone_sha256": null,
+          "motion": 0,
+          "packets_sha256": [
+            "2206fd7685a859d0f444eac0d170a19d35675e3160a5714aa705a5fd83f700fe"
+          ],
+          "queue_count": 0,
+          "returned": null,
+          "statuses": [],
+          "wires": []
+        },
+        "steps": 168
+      },
+      {
+        "name": "filter_1",
+        "observed": {
+          "actions": [
+            "alloc:clone:72",
+            "alloc_node:0",
+            "free:p0",
+            "alloc:b0:4016",
+            "free:n0",
+            "free:clone",
+            "dispatch:0:76",
+            "event:0",
+            "post:0",
+            "wire_alloc:81",
+            "send:0:81",
+            "free:b0"
+          ],
+          "buffers": [
+            {
+              "base": 2165309440,
+              "magic": 0,
+              "refs": 0,
+              "sha256": "97f577ceaa9bc5ee5e09cba060021bacb61fb6ec62fc9d649dad0830fcec0c6e",
+              "used": 76
+            }
+          ],
+          "cached": 0,
+          "clone_sha256": "04b6fd87f84e31a573fb5a4178423ca92b1f6264391993afeb5ca2eaf7bac341",
+          "motion": 0,
+          "packets_sha256": [
+            "2206fd7685a859d0f444eac0d170a19d35675e3160a5714aa705a5fd83f700fe"
+          ],
+          "queue_count": 0,
+          "returned": null,
+          "statuses": [],
+          "wires": [
+            {
+              "header_hex": "000102",
+              "length": 81,
+              "prefix_hex": "154c00000048000000010008000600000010000000",
+              "sha256": "be9c4a729ef14807eda1aaeac4165800c88695489ef07fcd613e4eb2e2b5adea"
+            }
+          ]
+        },
+        "steps": 1493
+      },
+      {
+        "name": "filter_2",
+        "observed": {
+          "actions": [
+            "alloc:clone:72",
+            "alloc_node:0",
+            "free:p0",
+            "alloc:b0:4016",
+            "free:n0",
+            "free:clone",
+            "dispatch:0:76",
+            "event:0",
+            "post:0",
+            "wire_alloc:81",
+            "send:0:81",
+            "free:b0"
+          ],
+          "buffers": [
+            {
+              "base": 2165309440,
+              "magic": 0,
+              "refs": 0,
+              "sha256": "52b0ac6c1e861da05feb7e43b07c8355d51b69761374445b4dbc7f3c9406ac59",
+              "used": 76
+            }
+          ],
+          "cached": 0,
+          "clone_sha256": "e83f3d626a0b9271d1e072c9e315b4660e8eb0dd5ecb573597b172da77ae4218",
+          "motion": 0,
+          "packets_sha256": [
+            "2206fd7685a859d0f444eac0d170a19d35675e3160a5714aa705a5fd83f700fe"
+          ],
+          "queue_count": 0,
+          "returned": null,
+          "statuses": [],
+          "wires": [
+            {
+              "header_hex": "000102",
+              "length": 81,
+              "prefix_hex": "154c00000048000000010008000600000000800000",
+              "sha256": "5a372acdabaf57e49a5813b1e97e9d438acc58aca31985d77e5e6d3007cc56cb"
+            }
+          ]
+        },
+        "steps": 1507
+      },
+      {
+        "name": "filter_3",
+        "observed": {
+          "actions": [
+            "alloc:clone:72",
+            "alloc_node:0",
+            "free:p0",
+            "alloc:b0:4016",
+            "free:n0",
+            "free:clone",
+            "dispatch:0:76",
+            "event:0",
+            "post:0",
+            "wire_alloc:81",
+            "send:0:81",
+            "free:b0"
+          ],
+          "buffers": [
+            {
+              "base": 2165309440,
+              "magic": 0,
+              "refs": 0,
+              "sha256": "d7ebe1181e92af7000b03805095a4c87b86b8cac3b344c41001fd0a24909afbb",
+              "used": 76
+            }
+          ],
+          "cached": 0,
+          "clone_sha256": "e456b36cf8df374cceb9e4e152da1798d3b5cebe5cd27e0579995b01773d9752",
+          "motion": 0,
+          "packets_sha256": [
+            "2206fd7685a859d0f444eac0d170a19d35675e3160a5714aa705a5fd83f700fe"
+          ],
+          "queue_count": 0,
+          "returned": null,
+          "statuses": [],
+          "wires": [
+            {
+              "header_hex": "000102",
+              "length": 81,
+              "prefix_hex": "154c00000048000000010008000600000000001000",
+              "sha256": "1d23498142ff0703c4c9d3829cabff08e2f3be9dafe14d0802d878fcf2b4fbdb"
+            }
+          ]
+        },
+        "steps": 1521
+      },
+      {
+        "name": "filter_4",
+        "observed": {
+          "actions": [
+            "alloc:clone:120",
+            "alloc_node:0",
+            "free:p0",
+            "alloc:b0:4016",
+            "free:n0",
+            "free:clone",
+            "dispatch:0:124",
+            "event:0",
+            "post:0",
+            "wire_alloc:129",
+            "send:0:129",
+            "free:b0"
+          ],
+          "buffers": [
+            {
+              "base": 2165309440,
+              "magic": 0,
+              "refs": 0,
+              "sha256": "f7d80cbcb94dbb3925a7306bf821469997925bdddfca9b53ee6dc2ad901017e5",
+              "used": 124
+            }
+          ],
+          "cached": 0,
+          "clone_sha256": "b363648794601cae2ba89d7999f3c8db064de3d0e7fa6bf983acdbd166c834b3",
+          "motion": 0,
+          "packets_sha256": [
+            "2206fd7685a859d0f444eac0d170a19d35675e3160a5714aa705a5fd83f700fe"
+          ],
+          "queue_count": 0,
+          "returned": null,
+          "statuses": [],
+          "wires": [
+            {
+              "header_hex": "000102",
+              "length": 129,
+              "prefix_hex": "157c00000078000000020008000600000000801000",
+              "sha256": "a1bddd2a2c5814212617e550373cfd470f66fb105e2ca32ff977a1f80dfa69e0"
+            }
+          ]
+        },
+        "steps": 1566
+      },
+      {
+        "name": "filter_5",
+        "observed": {
+          "actions": [
+            "alloc:clone:168",
+            "alloc_node:0",
+            "free:p0",
+            "alloc:b0:4016",
+            "free:n0",
+            "free:clone",
+            "dispatch:0:172",
+            "event:0",
+            "post:0",
+            "wire_alloc:177",
+            "send:0:177",
+            "free:b0"
+          ],
+          "buffers": [
+            {
+              "base": 2165309440,
+              "magic": 0,
+              "refs": 0,
+              "sha256": "3cfe2ace7f4539a6b142b3995e005aa927fe3185c45f9b710f1d5265c263c101",
+              "used": 172
+            }
+          ],
+          "cached": 0,
+          "clone_sha256": "67f16026bed738ba4ba046c1f897b8b015142c96702c9f82924acff34b77b7f5",
+          "motion": 0,
+          "packets_sha256": [
+            "2206fd7685a859d0f444eac0d170a19d35675e3160a5714aa705a5fd83f700fe"
+          ],
+          "queue_count": 0,
+          "returned": null,
+          "statuses": [],
+          "wires": [
+            {
+              "header_hex": "000102",
+              "length": 177,
+              "prefix_hex": "15ac000000a8000000030008000600000010801000",
+              "sha256": "991423c9415187673de3782615696f611ab50b753ee7eb0a7518808581f45d6a"
+            }
+          ]
+        },
+        "steps": 1612
+      },
+      {
+        "name": "filter_6",
+        "observed": {
+          "actions": [
+            "alloc_node:0",
+            "alloc:b0:4016",
+            "free:n0",
+            "free:p0",
+            "dispatch:0:220",
+            "event:0",
+            "post:0",
+            "wire_alloc:225",
+            "send:0:225",
+            "free:b0"
+          ],
+          "buffers": [
+            {
+              "base": 2165309440,
+              "magic": 0,
+              "refs": 0,
+              "sha256": "0c525f9038b942ed25c9d8901de31e52de3e43c2907faad58198d2917a95d0c1",
+              "used": 220
+            }
+          ],
+          "cached": 0,
+          "clone_sha256": null,
+          "motion": 0,
+          "packets_sha256": [
+            "2206fd7685a859d0f444eac0d170a19d35675e3160a5714aa705a5fd83f700fe"
+          ],
+          "queue_count": 0,
+          "returned": null,
+          "statuses": [],
+          "wires": [
+            {
+              "header_hex": "000102",
+              "length": 225,
+              "prefix_hex": "15dc000000d8000000040008000600000010801000",
+              "sha256": "2cb2286db7718761e8d315cb375041c9c7f73dba75ae4fa894fae0280da5f7a2"
+            }
+          ]
+        },
+        "steps": 1457
+      },
+      {
+        "name": "filter_7",
+        "observed": {
+          "actions": [
+            "alloc:clone:72",
+            "alloc_node:0",
+            "free:p0",
+            "alloc:b0:4016",
+            "free:n0",
+            "free:clone",
+            "dispatch:0:76",
+            "event:0",
+            "post:0",
+            "wire_alloc:81",
+            "send:0:81",
+            "free:b0"
+          ],
+          "buffers": [
+            {
+              "base": 2165309440,
+              "magic": 0,
+              "refs": 0,
+              "sha256": "63dabc68ade76572f4672a4f1819e4d5c655b676164d7d3db4ad929ed4d18451",
+              "used": 76
+            }
+          ],
+          "cached": 0,
+          "clone_sha256": "7410fa97eba37c9f66ed2e2f5d4878ed6f6707d48cc4b2a084fd07083cf6d66b",
+          "motion": 0,
+          "packets_sha256": [
+            "2206fd7685a859d0f444eac0d170a19d35675e3160a5714aa705a5fd83f700fe"
+          ],
+          "queue_count": 0,
+          "returned": null,
+          "statuses": [],
+          "wires": [
+            {
+              "header_hex": "000102",
+              "length": 81,
+              "prefix_hex": "154c00000048000000010008000600000000000000",
+              "sha256": "c22aa850c496dc82bb67b2c6862220db0e91f11ff8630e551be3534ac6f8f751"
+            }
+          ]
+        },
+        "steps": 1535
+      },
+      {
+        "name": "filter_8",
+        "observed": {
+          "actions": [
+            "alloc:clone:120",
+            "alloc_node:0",
+            "free:p0",
+            "alloc:b0:4016",
+            "free:n0",
+            "free:clone",
+            "dispatch:0:124",
+            "event:0",
+            "post:0",
+            "wire_alloc:129",
+            "send:0:129",
+            "free:b0"
+          ],
+          "buffers": [
+            {
+              "base": 2165309440,
+              "magic": 0,
+              "refs": 0,
+              "sha256": "e1432bc581a416186fd18e2f8feb6cc76432c3f9c67885d73149f09ce0c78e7b",
+              "used": 124
+            }
+          ],
+          "cached": 0,
+          "clone_sha256": "99737e7649a803a360ff99921c6b63633be31b9f773083a568963cc4e617c423",
+          "motion": 0,
+          "packets_sha256": [
+            "2206fd7685a859d0f444eac0d170a19d35675e3160a5714aa705a5fd83f700fe"
+          ],
+          "queue_count": 0,
+          "returned": null,
+          "statuses": [],
+          "wires": [
+            {
+              "header_hex": "000102",
+              "length": 129,
+              "prefix_hex": "157c00000078000000020008000600000000800000",
+              "sha256": "913405ade4969e09ac79f34c11c51cb98accc57d1a9b6730d5b86654e6033705"
+            }
+          ]
+        },
+        "steps": 1580
+      },
+      {
+        "name": "filter_clone_allocated_failure",
+        "observed": {
+          "actions": [
+            "alloc_fail:clone:72",
+            "log:80fd4b4c",
+            "log:80fd5180",
+            "log:80fd51a4",
+            "free:p0"
+          ],
+          "buffers": [],
+          "cached": 0,
+          "clone_sha256": null,
+          "motion": 0,
+          "packets_sha256": [
+            "0c5266fa4d8eccd2b19a9513567a4c52a5811ea70c8009ca7f9847615b0dd580"
+          ],
+          "queue_count": 0,
+          "returned": null,
+          "statuses": [],
+          "wires": []
+        },
+        "steps": 243
+      },
+      {
+        "name": "filter_node_allocated_failure",
+        "observed": {
+          "actions": [
+            "alloc:clone:72",
+            "alloc_node:0",
+            "log:80fd51c0",
+            "free:clone",
+            "free:p0"
+          ],
+          "buffers": [],
+          "cached": 0,
+          "clone_sha256": "e83f3d626a0b9271d1e072c9e315b4660e8eb0dd5ecb573597b172da77ae4218",
+          "motion": 0,
+          "packets_sha256": [
+            "0c5266fa4d8eccd2b19a9513567a4c52a5811ea70c8009ca7f9847615b0dd580"
+          ],
+          "queue_count": 0,
+          "returned": null,
+          "statuses": [],
+          "wires": []
+        },
+        "steps": 432
+      },
+      {
+        "name": "buffer_valid",
+        "observed": {
+          "actions": [
+            "alloc:b0:144",
+            "free:b0"
+          ],
+          "buffers": [
+            {
+              "base": 2165309440,
+              "magic": 0,
+              "refs": 0,
+              "sha256": "fa286de0ad2476f1f1043cd8e27cc783a66b304de93856c1867e11d2c6091efa",
+              "used": 72
+            }
+          ],
+          "cached": 123,
+          "clone_sha256": null,
+          "motion": 7,
+          "packets_sha256": [],
+          "queue_count": 0,
+          "returned": 2165309448,
+          "statuses": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            0
+          ],
+          "wires": []
+        },
+        "steps": 392
+      },
+      {
+        "name": "buffer_zero_record",
+        "observed": {
+          "actions": [
+            "alloc:b0:144",
+            "free:b0"
+          ],
+          "buffers": [
+            {
+              "base": 2165309440,
+              "magic": 0,
+              "refs": 0,
+              "sha256": "2ffcd5dbda8661156e24cffc6abe9ace4c155e862528596fabeb96d2a7d8329d",
+              "used": 72
+            }
+          ],
+          "cached": 123,
+          "clone_sha256": null,
+          "motion": 7,
+          "packets_sha256": [],
+          "queue_count": 0,
+          "returned": 2165309448,
+          "statuses": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            0
+          ],
+          "wires": []
+        },
+        "steps": 361
+      },
+      {
+        "name": "buffer_overrun_record",
+        "observed": {
+          "actions": [
+            "alloc:b0:144",
+            "free:b0"
+          ],
+          "buffers": [
+            {
+              "base": 2165309440,
+              "magic": 0,
+              "refs": 0,
+              "sha256": "325b5b62ba1d3bf5e68e3f26722888a6d3f451c8c3372a59080ee02c7f165d71",
+              "used": 72
+            }
+          ],
+          "cached": 123,
+          "clone_sha256": null,
+          "motion": 7,
+          "packets_sha256": [],
+          "queue_count": 0,
+          "returned": 2165309448,
+          "statuses": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            0
+          ],
+          "wires": []
+        },
+        "steps": 362
+      },
+      {
+        "name": "buffer_zero_length",
+        "observed": {
+          "actions": [
+            "alloc:b0:144"
+          ],
+          "buffers": [
+            {
+              "base": 2165309440,
+              "magic": 2746533334,
+              "refs": 1,
+              "sha256": "0907dbc29b2885dd6ce4314e65854a330e99235818df6f8681bff819d0e91933",
+              "used": 0
+            }
+          ],
+          "cached": 123,
+          "clone_sha256": null,
+          "motion": 7,
+          "packets_sha256": [],
+          "queue_count": 0,
+          "returned": 2165309448,
+          "statuses": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "wires": []
+        },
+        "steps": 149
+      },
+      {
+        "name": "buffer_bad_magic",
+        "observed": {
+          "actions": [
+            "alloc:b0:144"
+          ],
+          "buffers": [
+            {
+              "base": 2165309440,
+              "magic": 0,
+              "refs": 1,
+              "sha256": "be013a4a9c77ec321791baa872a5d47595965a4893742fc14e751357a26791b2",
+              "used": 72
+            }
+          ],
+          "cached": 123,
+          "clone_sha256": null,
+          "motion": 7,
+          "packets_sha256": [],
+          "queue_count": 0,
+          "returned": 2165309448,
+          "statuses": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "wires": []
+        },
+        "steps": 191
+      },
+      {
+        "name": "buffer_null_pointer",
+        "observed": {
+          "actions": [
+            "alloc:b0:144"
+          ],
+          "buffers": [
+            {
+              "base": 2165309440,
+              "magic": 2746533334,
+              "refs": 1,
+              "sha256": "ee008d706d1e767a483184708abaf45b0382035d693a722d3ef53ec9f5fae3c2",
+              "used": 72
+            }
+          ],
+          "cached": 123,
+          "clone_sha256": null,
+          "motion": 7,
+          "packets_sha256": [],
+          "queue_count": 0,
+          "returned": 2165309448,
+          "statuses": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "wires": []
+        },
+        "steps": 161
+      },
+      {
+        "name": "buffer_allocation_failure",
+        "observed": {
+          "actions": [
+            "alloc_fail:b0:144",
+            "log:80fd5134"
+          ],
+          "buffers": [],
+          "cached": 123,
+          "clone_sha256": null,
+          "motion": 7,
+          "packets_sha256": [],
+          "queue_count": 0,
+          "returned": 0,
+          "statuses": [],
+          "wires": []
+        },
+        "steps": 33
+      },
+      {
+        "name": "buffer_zero_capacity",
+        "observed": {
+          "actions": [],
+          "buffers": [],
+          "cached": 123,
+          "clone_sha256": null,
+          "motion": 7,
+          "packets_sha256": [],
+          "queue_count": 0,
+          "returned": 0,
+          "statuses": [],
+          "wires": []
+        },
+        "steps": 12
+      }
+    ],
+    "hardware_execution": false
+  },
+  "sensor_sha256": "06f07541e8bb22b6118f081e791c3a4e40cbff2decd8ee478a7e82df826e9d0f",
+  "validation_sha256": "0ec387fecda22b5159d01a9125e55fe473089552e03edcfea99cd6dad8862f08",
+  "vectors_sha256": "ba5e9739c3a10a8cc529670f299b7a0a392e607d46a5995ac85c6f28f8dbe6f3"
+}

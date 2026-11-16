@@ -246,3 +246,8 @@ cache filtering, the pressure-flush serializer/event/IPC route, other optical
 modes and calibration, actual listeners and concurrency, allocator internals
 and hardware bus/timing/measurement validation. Boot/recovery and independent
 hardware operation remain unresolved as recorded in [RE_STATUS.md](RE_STATUS.md).
+
+The subsequent [filter/flush/IPC pass](CACHE_FILTER_FLUSH_AND_IPC.md) executes
+selected filtering and queue flush through the opcode-21 send callback, with
+explicit supplied event/transport boundaries. Receiver, concurrency and live
+hardware operation remain open.

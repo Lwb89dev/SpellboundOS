@@ -1115,6 +1115,37 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    [analysis/ppg-three-word.json](analysis/ppg-three-word.json). Vendor material
    remains ignored. No phone/watch settings or firmware were changed.
 
+## 2026-11-16 — cache filtering, packed-buffer flush and opcode-21 send
+
+1. Executed partial 64-bit type filtering through clone allocation, metadata/
+   payload copy, native queue put and flush. Selected descriptor copies stop
+   before their pointer slots; new pointers remain independent and the last
+   word stays zero. Allocation/enqueue failure cases check source/clone cleanup.
+2. Executed cache buffer allocation, shallow validity, pointer reconstruction
+   and reference/free boundaries. Return 1 from reconstruction does not mean
+   every record was valid or rebased: supplied zero/overrun record prefixes
+   stop traversal with the outer validity result preserved. Added a stricter
+   host parser that treats sender pointers as opaque.
+3. Executed native multi-packet queue flush, length-prefix encoding, packet
+   release, embedded-pointer rebasing and buffer dispatch. Exact 4000-byte
+   capacity and multi-buffer cases pass. A synthetic oversized head remains
+   queued while two empty buffers are dispatched without a free call; supplied
+   failure on the next allocation terminates the bounded case. No live hang
+   or reachability through the full producer is established.
+4. Followed actual cache listener/event handler into native opcode `0x15`
+   serialization and the send callback: one byte opcode, four-byte packed
+   length and complete packed records. Buffer retention across supplied event
+   scheduling and cleanup is checked, including send error. Actual event
+   scheduler and transport remain boundaries; receiver/rpmsg operation is not
+   executed. Copied native pointer fields remain sender-buffer addresses.
+5. All 29 native cases pass (11 filter, eight buffer, ten flush), with 25,611
+   bounded steps including intercepted calls and preserved stack/registers.
+   Added 17 host tests; all 371 Python tests pass. Twenty-five fresh export
+   hashes, complete checked results and reproduction are recorded in
+   [analysis/CACHE_FILTER_FLUSH_AND_IPC.md](analysis/CACHE_FILTER_FLUSH_AND_IPC.md)
+   and [analysis/cache-pipeline.json](analysis/cache-pipeline.json). Vendor
+   material remains ignored; no phone/watch configuration or firmware changed.
+
 ## Next work
 
 - Regenerate selected native paths with startup-aware mappings, corrected
@@ -1125,7 +1156,9 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
   flush, packet allocation/rebinding and mode-1 consumer now have bounded
   native coverage; selected reference/free-call, listener/cache queue and
   mode-2/3 paths now have coverage too. Follow normalized driver reads, cache
-  filtering, pressure-flush serialization/events/IPC and remaining modes.
+  receiver parsing/reconstruction, event scheduling/cleanup and transport
+  beyond the now-covered filter/flush/event/opcode-21 send boundary. Continue
+  remaining modes, fusion, malformed input and concurrency paths.
   Validate electrical SPI mode/timing, DMA ownership and live
   sensor operation before implementing hardware code. The selected adapter's
   flag/divider/polling arithmetic and bus/completion/reference contracts are
