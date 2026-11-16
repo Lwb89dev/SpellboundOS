@@ -1177,6 +1177,36 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    and [analysis/cache-receiver.json](analysis/cache-receiver.json). Vendor
    material remains ignored. No phone/watch settings or firmware changed.
 
+## 2026-11-16 — engine cache registration, retained events and HR result policy
+
+1. Executed actual main cache callback registration/removal: duplicate and null
+   callbacks, absent removal, allocation failure, reinsertion, dispatch order
+   and circular-list invariants. Full node hashes check self-links before free.
+2. Registered the actual engine cache listener and executed the existing native
+   receiver through its default bridge into event creation/retention. Executed
+   the real event handler and destructor under supplied scheduling, checking
+   reference/magic/buffer/guard state and registration/event allocation failures.
+   The initializer-to-registration worker association is static; allocation,
+   OS/event post/scheduling and event-object disposal remain boundaries.
+3. Executed native packed-record iteration and engine fanout, including exact
+   state 2, nonzero enabled/cache flags, 64-bit masks, skipped slot 30 and the
+   0..38 iteration bound. The cached branch does not match the packet private
+   field. Engine records/masks/states are supplied; no live activation is proved.
+4. Followed the actual engine-7 callback through descriptor handling, algorithm
+   0x100d enable/record/mask dispatch and HR global updates. Only mathematical
+   backend outputs are supplied. Checked ready/error interaction, acceptance
+   bounds (quality > 3, pulse 30..220), manual/periodic status/logs, control
+   marker and independent 16-bit count/sum wrap. Full 188-byte HR state hashes
+   are checked. Non-type-1 descriptors, no auxiliary/wear/reset work; actual
+   backend math, motion/minute paths and hardware measurements remain open.
+5. All 40 native cases pass (seven registry, 33 receive/event/engine/HR),
+   totaling 54,087 bounded steps including intercepted calls. Added 23 host
+   tests; all 415 Python tests pass. Twenty-one fresh exports, checked results,
+   hashes and reproduction are recorded in
+   [analysis/ENGINE_CACHE_AND_HR_POLICY.md](analysis/ENGINE_CACHE_AND_HR_POLICY.md)
+   and [analysis/engine-cache.json](analysis/engine-cache.json). Vendor material
+   remains ignored; no device access or phone/watch/firmware changes performed.
+
 ## Next work
 
 - Regenerate selected native paths with startup-aware mappings, corrected
@@ -1186,11 +1216,14 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
   IPC pipeline; the selected FIFO fault/recovery/cache primitives, coordinated
   flush, packet allocation/rebinding and mode-1 consumer now have bounded
   native coverage; selected reference/free-call, listener/cache queue and
-  mode-2/3 paths now have coverage too. Follow normalized driver reads, actual
-  cache listener registration/application consumers, event scheduling/cleanup
-  and transport beyond the now-covered opcode-21 send and main/sensor receive
-  boundaries. Continue
-  remaining modes, fusion, malformed input and concurrency paths.
+  mode-2/3 paths now have coverage too. Follow normalized driver reads,
+  remaining cache listener registration/application consumers, actual engine
+  activation/mask transitions, event scheduling/cleanup and transport beyond
+  the now-covered opcode-21 send and main/sensor receive boundaries. Selected
+  main registration, retained engine-cache event, engine fanout and engine-7
+  non-type-1 HR result handling now have bounded native coverage. Follow real
+  algorithm-0x100d registration/math, motion/minute/reset/wear branches, other
+  modes, fusion, malformed input and concurrency paths.
   Validate electrical SPI mode/timing, DMA ownership and live
   sensor operation before implementing hardware code. The selected adapter's
   flag/divider/polling arithmetic and bus/completion/reference contracts are

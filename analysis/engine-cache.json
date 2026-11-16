@@ -1,0 +1,1866 @@
+{
+  "byte_range_sha256": {
+    "701e28d8_1a6": "2c017358e0478f930388e2f8499ad28de254eb52cb22f6ad3728bbb5d4e5a2ab",
+    "701e320e_100": "6c3e2d8a6ebfdf0ac79645c9cca0cad81e2aa6fb7752263b72847557ec8aae5d",
+    "701e330e_a6": "61f89caa36338c3a2dfd70750b5d24b481e7f8ab61406517b06e92779503dd2c",
+    "701e3cb8_40": "0b4826e32a27e6fc52163b9123c6d931a7e92a75647902905451c237a9b139f3",
+    "701e4ce0_26": "e1c2b796a0aac0d76d696e27a3bb9ca5b075406c280c06e195d6ef2e82645667",
+    "701e4f04_146": "23b661794a014a553bbc0df310c1584608c26cc65c67e2099f3273b3e7cad49c",
+    "701e53b0_5e": "47658c2a8ae67c3bd5e1b660d232325691360220eb365274f87a60d5804998da",
+    "70314ba4_550": "9a76d5e5854eef9e2eb811add30dc3468b3a6290b589a01dc3b27ee5ea91476b",
+    "703150f4_38": "a7ab4d1fe1bf35e807c698af59a41ca9c735b544e34148403968a288da167399",
+    "7032db3a_2aa": "afb626ff23bd5ac1b68190b3bec7bdc9076aab241ad50cae86c48884de29fb94",
+    "704c253e_20": "491dfb3f2ae1ded0c2808eb89ce2ab8de742b8a4e906f6d3b52fe90ed346df27",
+    "704c31fc_1c": "771720a5ff886f62c9f513e9a40e35454728822a1b5a768cbedc9100dde935b6",
+    "704c3340_8": "4067d7c96748803547585c1f46e214055c3e601ad7051988499a0a5a8f31d26a",
+    "704c3576_a8": "813bfefd56a5c194405dacac8d3f59e093bca59b770949a22de853d9c0628db7",
+    "704c3e92_32e": "c90329d4721160082863a61798573923b5c91e39c364dae82f35d77d64e8882a",
+    "704c43e6_1e": "7c9a45dba6ec14eda8df272645544fb4cd187315eeb8398f5f9b5f56b5545eda",
+    "704c4c0c_58": "83251693e2d82e791c87b592ff1c0b756ce6ab7ae45c90410b0fdd4bc42295d0",
+    "704c4d44_bc": "1a428d89d34ee9f9ab942ba74d30211ea72f0d2b2bbf8a19c1ade0e9a0105700",
+    "704c586a_28": "69ab5e67dbd3bf4f4cd4d827dd54fc4ad871baf053543e5cc39d77e69d9f05f4",
+    "704c5872_20": "8d3b44c965517c2f921eeae10513d040f513ee4ac0ee38e4716e0f09896366ab",
+    "7071ed94_8": "55740b83652ae2f67f6685cba1cfe74f12a71a707ee6381fa3c24e46a9cbb107",
+    "7071fd60_1ca": "ae2e806a62dc907aa218cd0e04ba0c654f4bc8ce774c4234a3c0e3f7f17c0bf5",
+    "707200f2_74": "ddab4174fc63c4e9dfe9dbd95df4b3173a24a2e9138947219e187b0d9ab3e9c1",
+    "70720ac0_ce0": "f736b76c64b922cff338b0b215da63f2023b06cc251f5c35f40245d747e5c484",
+    "70722a98_8c": "20f9202e4c234f0822f0731226dc24a3b3b95eeefd4b696ff0fb832d2e45ca5f",
+    "80d3d5a2_ae": "bbc939341f56ef45daa4e8e9e8b2a2217f1742e6c8a3331055560f7d9b56b941"
+  },
+  "export_sha256": {
+    "701e28d8.c": "53d00955a77219c1f43b4a282034dbcfc35da4c060ba88e38d5d4476397cee11",
+    "701e29a4.c": "58084fd4faf0051f0de361408a26e89c3a94d48b5a0dc0fea7589030e2d53113",
+    "701e320e.c": "93afbcb4a97bdcbf04f6c0dac82d6d7f43120368c47ffed0a10be2d052c910bb",
+    "701e328e.c": "f1db2b098a5b6797af8731a6d79795ae13f672701d0b7cc84033a732c2084054",
+    "701e53b0.c": "415168a7cbf424bf4210cc7bf1c0c981fb93aae9a905bf8156f51342f8963ffd",
+    "70314ba4.c": "3e7fc2dc8df4bfc3c19c69fec43640b3ac9d7f733a384d8da9f8affaa26875b4",
+    "703150f4.c": "08cf50cb97c5a621bd3ba38934b474503e31664b0604a7af562f28918fe20e58",
+    "70315634.c": "e0333131797ff2661cd650899f76d67af3656f70a922c00e1688dff329787c3b",
+    "704c253e.c": "28790e65a7bc911294cc42743dbcd1de72ebd4ce0321f90349c03d0a558da819",
+    "704c2556.c": "0074d32e15f4d9c3a6dc1f238cae25d8a22f7a3a93c3dc03df26fd79451ff886",
+    "704c31fc.c": "ad94cc04d7b53a6d7305eb448cab4d1c1352fd33c424410637a965524c690672",
+    "704c3340.c": "11f11ba73cdda529d656b3557834fac63ab7352804aed100d83e9deaf9c3f7c2",
+    "704c3576.c": "a2512768c94d11f1759d4c562b4d99726790a1607133679d8bf9595908dc8007",
+    "704c3ea8.c": "8aba76ba3eb322f8469d9986153c9e0d35c593a033798f5b4c77aedc938574dd",
+    "704c3f3a.c": "042d045d78ea798b95b9fe8b0c1d613eff42609f33ae2aeca7dcf662e7d0ee39",
+    "704c4148.c": "3cd8814e25f2ff842a172cf5bd21df1394e5b78da4ef27218c5794adaf751a44",
+    "704c41c0.c": "c98ea0b7a11eb96cf36be3638f79ae02d61a7dbcb578293ac121882b7d905e5b",
+    "704c43e6.c": "60df6d5d6ca2fd196173cc8d031d77b14072d041912a9f9b7a2739ed0e167060",
+    "704c4c0c.c": "14c07e2993b934e0b746d382567a68caca669168d04902cbf0952c8d4b85d0af",
+    "704c4c3a.c": "af4068466a51d6e51ddeeb127d06dc3fff5db78bd76fa9a2dc5249ea34bba0a4",
+    "704c4d44.c": "3029713f6eba077da2b76d7d1b008f36c743439e4b51877157667013224eae98"
+  },
+  "limitations": [
+    "OS context/critical sections, allocation/free/copies, event queue and scheduling are supplied; no hardware or concurrency execution.",
+    "Engine records, handle states and algorithm registration are synthetic; the real engine-7 callback and HR descriptor path execute.",
+    "Algorithm math is intercepted with supplied result fields/status, so the checked HR policy is not a sensor measurement or accuracy validation.",
+    "HR cases use descriptor types other than 1, inactive auxiliary engine 9 and no wear/reset output; motion/minute/reset paths remain open."
+  ],
+  "main_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "native_steps": 54087,
+  "native_validation": {
+    "bound_per_case": 100000,
+    "case_count": 40,
+    "cases": [
+      {
+        "name": "registry_duplicate",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "log:reg_duplicate",
+            "node_alloc:1",
+            "listener:0",
+            "listener:1",
+            "free:node0",
+            "listener:1",
+            "free:node1"
+          ],
+          "algorithm_calls": [],
+          "deliveries": [],
+          "event_returned": null,
+          "final_heap": null,
+          "hr_sha256": "210fbc4c0c1f65d4451999f26ed9d70328f93ec35b8ddf96037261f28905f454",
+          "node_sha256": [
+            "45a8c62b56fbce0bfb0fa4438f91a9855cb5e957d7d1473354d91ef19851153e",
+            "6839e1e1c9f8419ed31c44cb201d87d33ca5671336d18cdf86d450f340cf7b0b"
+          ],
+          "owner_after": null,
+          "receiver_returned": null,
+          "registration": null,
+          "registry": [
+            {
+              "callbacks": [
+                1879048448
+              ],
+              "returned": 1
+            },
+            {
+              "callbacks": [
+                1879048448
+              ],
+              "returned": 1
+            },
+            {
+              "callbacks": [
+                1879048448,
+                1879048452
+              ],
+              "returned": 1
+            },
+            {
+              "callbacks": [
+                1879048448,
+                1879048452
+              ],
+              "returned": null
+            },
+            {
+              "callbacks": [
+                1879048452
+              ],
+              "returned": 1
+            },
+            {
+              "callbacks": [
+                1879048452
+              ],
+              "returned": null
+            },
+            {
+              "callbacks": [],
+              "returned": 1
+            }
+          ],
+          "unregistration": null
+        },
+        "steps": 402
+      },
+      {
+        "name": "registry_missing",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "log:unreg_missing",
+            "free:node0"
+          ],
+          "algorithm_calls": [],
+          "deliveries": [],
+          "event_returned": null,
+          "final_heap": null,
+          "hr_sha256": "210fbc4c0c1f65d4451999f26ed9d70328f93ec35b8ddf96037261f28905f454",
+          "node_sha256": [
+            "45a8c62b56fbce0bfb0fa4438f91a9855cb5e957d7d1473354d91ef19851153e"
+          ],
+          "owner_after": null,
+          "receiver_returned": null,
+          "registration": null,
+          "registry": [
+            {
+              "callbacks": [],
+              "returned": 0
+            },
+            {
+              "callbacks": [
+                1879048448
+              ],
+              "returned": 1
+            },
+            {
+              "callbacks": [
+                1879048448
+              ],
+              "returned": 0
+            },
+            {
+              "callbacks": [],
+              "returned": 1
+            }
+          ],
+          "unregistration": null
+        },
+        "steps": 216
+      },
+      {
+        "name": "registry_null",
+        "observed": {
+          "actions": [],
+          "algorithm_calls": [],
+          "deliveries": [],
+          "event_returned": null,
+          "final_heap": null,
+          "hr_sha256": "210fbc4c0c1f65d4451999f26ed9d70328f93ec35b8ddf96037261f28905f454",
+          "node_sha256": [],
+          "owner_after": null,
+          "receiver_returned": null,
+          "registration": null,
+          "registry": [
+            {
+              "callbacks": [],
+              "returned": 0
+            },
+            {
+              "callbacks": [],
+              "returned": 0
+            }
+          ],
+          "unregistration": null
+        },
+        "steps": 20
+      },
+      {
+        "name": "registry_allocation_failure",
+        "observed": {
+          "actions": [
+            "node_alloc_fail:0",
+            "log:reg_alloc",
+            "node_alloc:1",
+            "listener:1"
+          ],
+          "algorithm_calls": [],
+          "deliveries": [],
+          "event_returned": null,
+          "final_heap": null,
+          "hr_sha256": "210fbc4c0c1f65d4451999f26ed9d70328f93ec35b8ddf96037261f28905f454",
+          "node_sha256": [
+            "80c610b612f4b43df88ac7d81ef1ff38918b9b99858599d683d30be76fe3f59b"
+          ],
+          "owner_after": null,
+          "receiver_returned": null,
+          "registration": null,
+          "registry": [
+            {
+              "callbacks": [],
+              "returned": 0
+            },
+            {
+              "callbacks": [
+                1879048452
+              ],
+              "returned": 1
+            },
+            {
+              "callbacks": [
+                1879048452
+              ],
+              "returned": null
+            }
+          ],
+          "unregistration": null
+        },
+        "steps": 179
+      },
+      {
+        "name": "registry_reinsert",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "free:node0",
+            "node_alloc:1",
+            "listener:0",
+            "free:node1"
+          ],
+          "algorithm_calls": [],
+          "deliveries": [],
+          "event_returned": null,
+          "final_heap": null,
+          "hr_sha256": "210fbc4c0c1f65d4451999f26ed9d70328f93ec35b8ddf96037261f28905f454",
+          "node_sha256": [
+            "45a8c62b56fbce0bfb0fa4438f91a9855cb5e957d7d1473354d91ef19851153e",
+            "d1403a87bad15a30bc946dfc9919ab9ef74121d93cf557a9e921d02244d03c12"
+          ],
+          "owner_after": null,
+          "receiver_returned": null,
+          "registration": null,
+          "registry": [
+            {
+              "callbacks": [
+                1879048448
+              ],
+              "returned": 1
+            },
+            {
+              "callbacks": [],
+              "returned": 1
+            },
+            {
+              "callbacks": [
+                1879048448
+              ],
+              "returned": 1
+            },
+            {
+              "callbacks": [
+                1879048448
+              ],
+              "returned": null
+            },
+            {
+              "callbacks": [],
+              "returned": 1
+            }
+          ],
+          "unregistration": null
+        },
+        "steps": 287
+      },
+      {
+        "name": "registry_reverse",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "node_alloc:1",
+            "free:node1",
+            "listener:0",
+            "free:node0"
+          ],
+          "algorithm_calls": [],
+          "deliveries": [],
+          "event_returned": null,
+          "final_heap": null,
+          "hr_sha256": "210fbc4c0c1f65d4451999f26ed9d70328f93ec35b8ddf96037261f28905f454",
+          "node_sha256": [
+            "45a8c62b56fbce0bfb0fa4438f91a9855cb5e957d7d1473354d91ef19851153e",
+            "6839e1e1c9f8419ed31c44cb201d87d33ca5671336d18cdf86d450f340cf7b0b"
+          ],
+          "owner_after": null,
+          "receiver_returned": null,
+          "registration": null,
+          "registry": [
+            {
+              "callbacks": [
+                1879048448
+              ],
+              "returned": 1
+            },
+            {
+              "callbacks": [
+                1879048448,
+                1879048452
+              ],
+              "returned": 1
+            },
+            {
+              "callbacks": [
+                1879048448
+              ],
+              "returned": 1
+            },
+            {
+              "callbacks": [
+                1879048448
+              ],
+              "returned": null
+            },
+            {
+              "callbacks": [],
+              "returned": 1
+            }
+          ],
+          "unregistration": null
+        },
+        "steps": 304
+      },
+      {
+        "name": "registry_empty_dispatch",
+        "observed": {
+          "actions": [],
+          "algorithm_calls": [],
+          "deliveries": [],
+          "event_returned": null,
+          "final_heap": null,
+          "hr_sha256": "210fbc4c0c1f65d4451999f26ed9d70328f93ec35b8ddf96037261f28905f454",
+          "node_sha256": [],
+          "owner_after": null,
+          "receiver_returned": null,
+          "registration": null,
+          "registry": [
+            {
+              "callbacks": [],
+              "returned": null
+            }
+          ],
+          "unregistration": null
+        },
+        "steps": 27
+      },
+      {
+        "name": "pipeline_hr",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "packet:20",
+            "engine:7:20",
+            "algorithm:44",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [
+            {
+              "descriptor": 2166358060,
+              "payload": 2166358100,
+              "tag": 4109,
+              "type": 32768
+            }
+          ],
+          "deliveries": [
+            {
+              "engine": 7,
+              "packet": 2166358036
+            }
+          ],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "hr_sha256": "3fb0a0810055fc7f06ce86440bb0a10f79272f2c4d65528f967dadc5630649d2",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "3eac646179b231040edf0840f274e11382f15096d4ade27ce77f32318783e810"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 1753
+      },
+      {
+        "name": "pipeline_multi",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:260",
+            "event_alloc",
+            "post:39",
+            "packet:20",
+            "engine:7:20",
+            "algorithm:44",
+            "packet:92",
+            "engine:7:92",
+            "algorithm:116",
+            "algorithm:156",
+            "algorithm:196",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [
+            {
+              "descriptor": 2166358060,
+              "payload": 2166358100,
+              "tag": 4109,
+              "type": 32768
+            },
+            {
+              "descriptor": 2166358132,
+              "payload": 2166358252,
+              "tag": 4109,
+              "type": 16
+            },
+            {
+              "descriptor": 2166358172,
+              "payload": 2166358260,
+              "tag": 4109,
+              "type": 32768
+            },
+            {
+              "descriptor": 2166358212,
+              "payload": 2166358268,
+              "tag": 4109,
+              "type": 1048576
+            }
+          ],
+          "deliveries": [
+            {
+              "engine": 7,
+              "packet": 2166358036
+            },
+            {
+              "engine": 7,
+              "packet": 2166358108
+            }
+          ],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "24a60747a59c89d4653d6c5ff78b4777c4925a4b445ae0dc1e9d0e368a3d5942"
+          },
+          "hr_sha256": "5c3da636a11cf2d99d2ba3c07946df1e3e4692c614bf00f06319024dcb32e02b",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "5d2a63b80e606ca39de6a06f6dda3ecda3f98f6d55673dd60caeb890323aff53"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 3045
+      },
+      {
+        "name": "pipeline_registration_failure",
+        "observed": {
+          "actions": [
+            "node_alloc_fail:0",
+            "log:reg_alloc",
+            "buffer_alloc:88",
+            "free:buffer"
+          ],
+          "algorithm_calls": [],
+          "deliveries": [],
+          "event_returned": null,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "hr_sha256": "210fbc4c0c1f65d4451999f26ed9d70328f93ec35b8ddf96037261f28905f454",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "receiver_returned": 0,
+          "registration": 0,
+          "registry": [],
+          "unregistration": 0
+        },
+        "steps": 572
+      },
+      {
+        "name": "pipeline_event_allocation_failure",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc_fail",
+            "log:event_alloc",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [],
+          "deliveries": [],
+          "event_returned": null,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "hr_sha256": "210fbc4c0c1f65d4451999f26ed9d70328f93ec35b8ddf96037261f28905f454",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 642
+      },
+      {
+        "name": "gate_enabled_0",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "packet:20",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [],
+          "deliveries": [],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "hr_sha256": "210fbc4c0c1f65d4451999f26ed9d70328f93ec35b8ddf96037261f28905f454",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "3eac646179b231040edf0840f274e11382f15096d4ade27ce77f32318783e810"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 1530
+      },
+      {
+        "name": "gate_callback_False",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "packet:20",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [],
+          "deliveries": [],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "hr_sha256": "210fbc4c0c1f65d4451999f26ed9d70328f93ec35b8ddf96037261f28905f454",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "3eac646179b231040edf0840f274e11382f15096d4ade27ce77f32318783e810"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 1528
+      },
+      {
+        "name": "gate_state_1",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "packet:20",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [],
+          "deliveries": [],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "hr_sha256": "210fbc4c0c1f65d4451999f26ed9d70328f93ec35b8ddf96037261f28905f454",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "3eac646179b231040edf0840f274e11382f15096d4ade27ce77f32318783e810"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 1537
+      },
+      {
+        "name": "gate_state_3",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "packet:20",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [],
+          "deliveries": [],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "hr_sha256": "210fbc4c0c1f65d4451999f26ed9d70328f93ec35b8ddf96037261f28905f454",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "3eac646179b231040edf0840f274e11382f15096d4ade27ce77f32318783e810"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 1537
+      },
+      {
+        "name": "gate_cache_0",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "packet:20",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [],
+          "deliveries": [],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "hr_sha256": "210fbc4c0c1f65d4451999f26ed9d70328f93ec35b8ddf96037261f28905f454",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "3eac646179b231040edf0840f274e11382f15096d4ade27ce77f32318783e810"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 1543
+      },
+      {
+        "name": "gate_handle_False",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "packet:20",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [],
+          "deliveries": [],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "hr_sha256": "210fbc4c0c1f65d4451999f26ed9d70328f93ec35b8ddf96037261f28905f454",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "3eac646179b231040edf0840f274e11382f15096d4ade27ce77f32318783e810"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 1537
+      },
+      {
+        "name": "gate_mask_16",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "packet:20",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [],
+          "deliveries": [],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "hr_sha256": "210fbc4c0c1f65d4451999f26ed9d70328f93ec35b8ddf96037261f28905f454",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "3eac646179b231040edf0840f274e11382f15096d4ade27ce77f32318783e810"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 1551
+      },
+      {
+        "name": "gate_index_boundaries",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "packet:20",
+            "engine:0:20",
+            "engine:7:20",
+            "engine:38:20",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [],
+          "deliveries": [
+            {
+              "engine": 0,
+              "packet": 2166358036
+            },
+            {
+              "engine": 7,
+              "packet": 2166358036
+            },
+            {
+              "engine": 38,
+              "packet": 2166358036
+            }
+          ],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "hr_sha256": "210fbc4c0c1f65d4451999f26ed9d70328f93ec35b8ddf96037261f28905f454",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "3eac646179b231040edf0840f274e11382f15096d4ade27ce77f32318783e810"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 1621
+      },
+      {
+        "name": "gate_nonboolean_flags",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "packet:20",
+            "engine:7:20",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [],
+          "deliveries": [
+            {
+              "engine": 7,
+              "packet": 2166358036
+            }
+          ],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "hr_sha256": "210fbc4c0c1f65d4451999f26ed9d70328f93ec35b8ddf96037261f28905f454",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "3eac646179b231040edf0840f274e11382f15096d4ade27ce77f32318783e810"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 1556
+      },
+      {
+        "name": "gate_high_type",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "packet:20",
+            "engine:7:20",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [],
+          "deliveries": [
+            {
+              "engine": 7,
+              "packet": 2166358036
+            }
+          ],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "b753a2bc9f9550ee5d8cc2f778e04e10019bb2ae7f227a812c2ec79acf9bbf4c"
+          },
+          "hr_sha256": "210fbc4c0c1f65d4451999f26ed9d70328f93ec35b8ddf96037261f28905f454",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "cf22100f5654cc516bf38ed2468ef82677ea92db2fb2aff8c1d58a6cc8567085"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 1556
+      },
+      {
+        "name": "gate_private_field",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "packet:20",
+            "engine:7:20",
+            "algorithm:44",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [
+            {
+              "descriptor": 2166358060,
+              "payload": 2166358100,
+              "tag": 4109,
+              "type": 32768
+            }
+          ],
+          "deliveries": [
+            {
+              "engine": 7,
+              "packet": 2166358036
+            }
+          ],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "8ac3477424b8be687f350b77750a55b5fa4d3537088fb9dcea9431076240f751"
+          },
+          "hr_sha256": "3fb0a0810055fc7f06ce86440bb0a10f79272f2c4d65528f967dadc5630649d2",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "112f12cf214d4bd52c603afd5d98bfd44dd4378e78d1a8da0437ee7b66028e7c"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 1753
+      },
+      {
+        "name": "pipeline_zero_record",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [],
+          "deliveries": [],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "a377f8e74858b17b206c8b92d68d0567e3a417eaa88f41e4792388916e58f0e4"
+          },
+          "hr_sha256": "210fbc4c0c1f65d4451999f26ed9d70328f93ec35b8ddf96037261f28905f454",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "469d2c4b9c317ace1e4f2bcc75b1a3ef42d4f3205003b3ea8676038db90e2999"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 847
+      },
+      {
+        "name": "pipeline_overrun_record",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [],
+          "deliveries": [],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "a0ee77a8b3d2a3e5e3c837b628cf49e3d28c64d95f9055cb31dffb5c325edebe"
+          },
+          "hr_sha256": "210fbc4c0c1f65d4451999f26ed9d70328f93ec35b8ddf96037261f28905f454",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "7b9c9128515e59b2f2d5364f4154c84000a8c35f7e66f339fa9355b26a5da3fc"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 884
+      },
+      {
+        "name": "hr_disabled",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "packet:20",
+            "engine:7:20",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [],
+          "deliveries": [
+            {
+              "engine": 7,
+              "packet": 2166358036
+            }
+          ],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "hr_sha256": "7d8dc823ff90e8f994ab28a2b6df0f59f9e985d7e73e8b56a1923c14e6fcc072",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "3eac646179b231040edf0840f274e11382f15096d4ade27ce77f32318783e810"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 1623
+      },
+      {
+        "name": "algorithm_disabled",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "packet:20",
+            "engine:7:20",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [],
+          "deliveries": [
+            {
+              "engine": 7,
+              "packet": 2166358036
+            }
+          ],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "hr_sha256": "210fbc4c0c1f65d4451999f26ed9d70328f93ec35b8ddf96037261f28905f454",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "3eac646179b231040edf0840f274e11382f15096d4ade27ce77f32318783e810"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 1678
+      },
+      {
+        "name": "algorithm_missing",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "packet:20",
+            "engine:7:20",
+            "log:algorithm_missing",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [],
+          "deliveries": [
+            {
+              "engine": 7,
+              "packet": 2166358036
+            }
+          ],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "hr_sha256": "210fbc4c0c1f65d4451999f26ed9d70328f93ec35b8ddf96037261f28905f454",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "3eac646179b231040edf0840f274e11382f15096d4ade27ce77f32318783e810"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 1707
+      },
+      {
+        "name": "algorithm_mask_mismatch",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "packet:20",
+            "engine:7:20",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [],
+          "deliveries": [
+            {
+              "engine": 7,
+              "packet": 2166358036
+            }
+          ],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "hr_sha256": "210fbc4c0c1f65d4451999f26ed9d70328f93ec35b8ddf96037261f28905f454",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "3eac646179b231040edf0840f274e11382f15096d4ade27ce77f32318783e810"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 1704
+      },
+      {
+        "name": "algorithm_result_absent",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "packet:20",
+            "engine:7:20",
+            "algorithm:44",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [
+            {
+              "descriptor": 2166358060,
+              "payload": 2166358100,
+              "tag": 4109,
+              "type": 32768
+            }
+          ],
+          "deliveries": [
+            {
+              "engine": 7,
+              "packet": 2166358036
+            }
+          ],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "hr_sha256": "210fbc4c0c1f65d4451999f26ed9d70328f93ec35b8ddf96037261f28905f454",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "3eac646179b231040edf0840f274e11382f15096d4ade27ce77f32318783e810"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 1713
+      },
+      {
+        "name": "algorithm_error_ready",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "packet:20",
+            "engine:7:20",
+            "algorithm:44",
+            "log:algorithm_error",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [
+            {
+              "descriptor": 2166358060,
+              "payload": 2166358100,
+              "tag": 4109,
+              "type": 32768
+            }
+          ],
+          "deliveries": [
+            {
+              "engine": 7,
+              "packet": 2166358036
+            }
+          ],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "hr_sha256": "3fb0a0810055fc7f06ce86440bb0a10f79272f2c4d65528f967dadc5630649d2",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "3eac646179b231040edf0840f274e11382f15096d4ade27ce77f32318783e810"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 1766
+      },
+      {
+        "name": "hr_pulse_29",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "packet:20",
+            "engine:7:20",
+            "algorithm:44",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [
+            {
+              "descriptor": 2166358060,
+              "payload": 2166358100,
+              "tag": 4109,
+              "type": 32768
+            }
+          ],
+          "deliveries": [
+            {
+              "engine": 7,
+              "packet": 2166358036
+            }
+          ],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "hr_sha256": "60658f433edb5b6f55bd7aea28674f14d6a6802e0d554b55322221e003f024e6",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "3eac646179b231040edf0840f274e11382f15096d4ade27ce77f32318783e810"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 1727
+      },
+      {
+        "name": "hr_pulse_30",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "packet:20",
+            "engine:7:20",
+            "algorithm:44",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [
+            {
+              "descriptor": 2166358060,
+              "payload": 2166358100,
+              "tag": 4109,
+              "type": 32768
+            }
+          ],
+          "deliveries": [
+            {
+              "engine": 7,
+              "packet": 2166358036
+            }
+          ],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "hr_sha256": "d828f5df86f84577743c34f6dd618eae031d65f1392c38e0da8d289459f70fca",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "3eac646179b231040edf0840f274e11382f15096d4ade27ce77f32318783e810"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 1753
+      },
+      {
+        "name": "hr_pulse_220",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "packet:20",
+            "engine:7:20",
+            "algorithm:44",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [
+            {
+              "descriptor": 2166358060,
+              "payload": 2166358100,
+              "tag": 4109,
+              "type": 32768
+            }
+          ],
+          "deliveries": [
+            {
+              "engine": 7,
+              "packet": 2166358036
+            }
+          ],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "hr_sha256": "8d445438de6aea454932838230d89e0a5ffb5eea5ede22beb238a9a75b2bda17",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "3eac646179b231040edf0840f274e11382f15096d4ade27ce77f32318783e810"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 1753
+      },
+      {
+        "name": "hr_pulse_221",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "packet:20",
+            "engine:7:20",
+            "algorithm:44",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [
+            {
+              "descriptor": 2166358060,
+              "payload": 2166358100,
+              "tag": 4109,
+              "type": 32768
+            }
+          ],
+          "deliveries": [
+            {
+              "engine": 7,
+              "packet": 2166358036
+            }
+          ],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "hr_sha256": "4bb2a1e8e626ae78d765c8e7eb777aa40d8fcf718ef2b4ab6198ba9fa5cb41fd",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "3eac646179b231040edf0840f274e11382f15096d4ade27ce77f32318783e810"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 1727
+      },
+      {
+        "name": "hr_quality_3",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "packet:20",
+            "engine:7:20",
+            "algorithm:44",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [
+            {
+              "descriptor": 2166358060,
+              "payload": 2166358100,
+              "tag": 4109,
+              "type": 32768
+            }
+          ],
+          "deliveries": [
+            {
+              "engine": 7,
+              "packet": 2166358036
+            }
+          ],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "hr_sha256": "357a752a39506073c0739f858806d76977fdb7cf039b7894edd7b09a560effa5",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "3eac646179b231040edf0840f274e11382f15096d4ade27ce77f32318783e810"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 1723
+      },
+      {
+        "name": "hr_quality_7",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "packet:20",
+            "engine:7:20",
+            "algorithm:44",
+            "log:period_success",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [
+            {
+              "descriptor": 2166358060,
+              "payload": 2166358100,
+              "tag": 4109,
+              "type": 32768
+            }
+          ],
+          "deliveries": [
+            {
+              "engine": 7,
+              "packet": 2166358036
+            }
+          ],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "hr_sha256": "57cd2e590349b34ae6e88983b6c09e2b476376ae1937223b057f58c034a826d4",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "3eac646179b231040edf0840f274e11382f15096d4ade27ce77f32318783e810"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 1762
+      },
+      {
+        "name": "hr_manual_threshold",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "packet:20",
+            "engine:7:20",
+            "algorithm:44",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [
+            {
+              "descriptor": 2166358060,
+              "payload": 2166358100,
+              "tag": 4109,
+              "type": 32768
+            }
+          ],
+          "deliveries": [
+            {
+              "engine": 7,
+              "packet": 2166358036
+            }
+          ],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "hr_sha256": "276a7a6bade345b4993ff8d5368b230bae36f192086318f67d9fb667e76a3469",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "3eac646179b231040edf0840f274e11382f15096d4ade27ce77f32318783e810"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 1755
+      },
+      {
+        "name": "hr_manual_success",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "packet:20",
+            "engine:7:20",
+            "algorithm:44",
+            "log:manual_success",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [
+            {
+              "descriptor": 2166358060,
+              "payload": 2166358100,
+              "tag": 4109,
+              "type": 32768
+            }
+          ],
+          "deliveries": [
+            {
+              "engine": 7,
+              "packet": 2166358036
+            }
+          ],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "hr_sha256": "d646fe9ba1258f9ceb3b631a2fc5dd9a9603a6428da6487bdc82c69ea09d2a58",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "3eac646179b231040edf0840f274e11382f15096d4ade27ce77f32318783e810"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 1761
+      },
+      {
+        "name": "hr_mark_control",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "packet:20",
+            "engine:7:20",
+            "algorithm:44",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [
+            {
+              "descriptor": 2166358060,
+              "payload": 2166358100,
+              "tag": 4109,
+              "type": 32768
+            }
+          ],
+          "deliveries": [
+            {
+              "engine": 7,
+              "packet": 2166358036
+            }
+          ],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "hr_sha256": "a31462c0168b9580f5b665ff87d7024604c9a48b21f3cc6b37f169b843c7e959",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "3eac646179b231040edf0840f274e11382f15096d4ade27ce77f32318783e810"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 1755
+      },
+      {
+        "name": "hr_aggregate_wrap",
+        "observed": {
+          "actions": [
+            "node_alloc:0",
+            "buffer_alloc:88",
+            "event_alloc",
+            "post:39",
+            "packet:20",
+            "engine:7:20",
+            "algorithm:44",
+            "free:buffer",
+            "free:node0"
+          ],
+          "algorithm_calls": [
+            {
+              "descriptor": 2166358060,
+              "payload": 2166358100,
+              "tag": 4109,
+              "type": 32768
+            }
+          ],
+          "deliveries": [
+            {
+              "engine": 7,
+              "packet": 2166358036
+            }
+          ],
+          "event_returned": 1,
+          "final_heap": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 0,
+            "refs": 0,
+            "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+          },
+          "hr_sha256": "e52e062e281e59e3f2c63b888fc39b31404529ca793b8867f0b485e6ec2a508f",
+          "node_sha256": [],
+          "owner_after": {
+            "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+            "magic": 2746533334,
+            "refs": 1,
+            "sha256": "3eac646179b231040edf0840f274e11382f15096d4ade27ce77f32318783e810"
+          },
+          "receiver_returned": 0,
+          "registration": 1,
+          "registry": [],
+          "unregistration": 1
+        },
+        "steps": 1753
+      }
+    ],
+    "hardware_execution": false
+  },
+  "validation_sha256": "3aad3a6e92dbfa556e40cc6454b5865678c10fe6fa8185067c1403f54c0b2cb7",
+  "vectors_sha256": "8247266e3143bb4d11f9cac52aa948a0b2b6126383816a4fdfba3c67575d712e"
+}

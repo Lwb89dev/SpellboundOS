@@ -216,8 +216,16 @@ logs are rejected; each case has a 100,000-step bound. Runtime main RAM code
 is mapped from the startup copy tables. Vendor bytes, code, tools and databases
 remain ignored.
 
-Remaining work includes actual listener registration and application consumers,
+The follow-up [ENGINE_CACHE_AND_HR_POLICY.md](ENGINE_CACHE_AND_HR_POLICY.md)
+executes actual main cache listener registration, the identified engine-cache
+callback/event/destructor, engine fanout and selected engine-7 HR consumer
+handling with supplied mathematical results. Its 40 native cases extend these
+receiver boundaries; the full registration queue and real engine activation
+remain unexecuted.
+
+Remaining work includes other application consumers and registration,
 transport/event lifetimes and concurrency, complete malformed-input and producer
-constraints, other optical modes, fusion/calibration and physical validation.
+constraints, actual algorithm math, other optical modes, fusion/calibration
+and physical validation.
 These receiver contracts do not close the standalone boot/recovery or live
 hardware requirements in [RE_STATUS.md](RE_STATUS.md).
