@@ -1049,14 +1049,49 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    checked execution results. Vendor images/code/tools/databases remain ignored.
    No phone/watch configuration or firmware change occurred.
 
+## 2026-11-16 — coordinated sensor flush and native optical sample packets
+
+1. Followed command `0x81` into the native sensor backend. Fusion flags select
+   coordinated callbacks in order 1, then 6 when group A is active, then 3
+   when group B is active. The real optical callback tail-calls recovery
+   with notification disabled; the selected path emits no recursive event.
+   Full canary-backed fusion memory checks preserve the actual 16-bit versus
+   32-bit reset widths, wide timestamp writes and missing-handle/callback
+   behavior. The worker/transport gap from the previous request remains open.
+2. Executed native sample-packet allocation and pointer reconstruction after
+   copying to a new synthetic address. Recovered the 24-byte header,
+   40-byte descriptors, payload placement, initial reference value and
+   shared timestamp. Checked allocation failure, size wrapping and the
+   distinction between full-width allocation arguments and truncated header
+   fields. This native object is not a portable wire packet; reference/free
+   and asynchronous ownership are not yet covered.
+3. Executed mode-1 consumer with prefilled ring, frame width 2 and supplied
+   lock/allocator/clock outcomes: optional second stream, signed samples,
+   RV32 offset arithmetic, per-rate frame limit, descriptor metadata and
+   timestamp borrow. Both words are popped per frame even with one output
+   stream; rate-10/20-frame input consumes 12 frames and leaves 16 words.
+   Empty/disabled/lock/allocation failures and ring wrap are covered.
+4. All 557 native cases pass (517 flush, 23 packet, 17 consumer), totaling
+   132,769 bounded steps including synthetic call interception; every case
+   checks stack/callee-saved registers and final state/buffer hashes. Added
+   21 host tests; all 326 Python tests pass. Reproduction, eleven fresh export
+   fingerprints and the complete checked case results are recorded in
+   [analysis/SENSOR_FLUSH_AND_PACKETS.md](analysis/SENSOR_FLUSH_AND_PACKETS.md)
+   and [analysis/sensor-packets.json](analysis/sensor-packets.json).
+   Vendor code/images/tools remain ignored. No device configuration or
+   firmware change occurred; other modes, calibration, delivery and physical
+   validation remain open.
+
 ## Next work
 
 - Regenerate selected native paths with startup-aware mappings, corrected
   logger return behavior and register-save ABI effects. Current pseudocode
   counts must not be treated as semantic coverage.
 - Follow the complete MAX8617X mode/consumer/calibration paths and the health
-  IPC pipeline; the selected FIFO fault/recovery/cache primitives now have
-  bounded native coverage. Validate electrical SPI mode/timing, DMA ownership and live
+  IPC pipeline; the selected FIFO fault/recovery/cache primitives, coordinated
+  flush, packet allocation/rebinding and mode-1 consumer now have bounded
+  native coverage. Follow packet reference/free and asynchronous delivery.
+  Validate electrical SPI mode/timing, DMA ownership and live
   sensor operation before implementing hardware code. The selected adapter's
   flag/divider/polling arithmetic and bus/completion/reference contracts are
   now recorded; generic DMA behavior does not prove a configured optical DMA path.

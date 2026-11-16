@@ -121,6 +121,10 @@ there with a supplied return. Allocation, worker queues, ownership routing,
 IPC transmission and the final command backend are not executed or assigned
 a completed recovery meaning.
 
+The subsequent [flush and packet pass](SENSOR_FLUSH_AND_PACKETS.md) separately
+executes the command backend, optical non-notifying reset and one consumer
+mode. The queue/worker/transport gap between the two harnesses remains open.
+
 ## Cache pop and signed sample primitive
 
 Pop helper `0x80f72ea4` returns zero without changing metadata when empty.
