@@ -12,8 +12,8 @@ Disassembly and export counts do not measure behavioral understanding.
 | Native corpus | Guarded BBS and two Andes DSP semantics, ABI/logger fixes, targeted main/sensor exports; volatile MMIO/CSR metadata; wide division helper checked in 52,294 host executions | Audit remaining affected exports and unsupported DSP forms; runtime/type validation |
 | App bytecode | 44 members structurally parsed; QuickJS engine fingerprinted; official C reader agrees on nine header fields for all 1,072 functions | Runtime semantics, operand-level validation and independently implemented host |
 | JS/native boundary | Modules, export tables, classes and initializer ownership mapped | Argument/error contracts, object lifetimes and behavior behind each implementation |
-| Optical sensing | MAX8617X driver, initial board data, IRQ/FIFO route, host FIFO model, eight register-table inventories | Exact fitted part, full mode/timing behavior, calibration and measurement chain |
-| Health data | Heart/SpO2 caches/services; sensor/zrpc framing and queues; interrupt/wake route; clock formulas; counter/1000 conversion checked by native p-code execution; phase-aware IPC timeout; selected cache commands/transfer callers and shared-address guard | Live IRQ/vring operation, physical timer/cache/coherency, exact-multiple device case, remaining payloads, algorithms and measurement validation |
+| Optical sensing | MAX8617X driver, board/SPI controller and chip-select records; IRQ/FIFO route; SPI clock/flag/divider and polling/error contracts; 23 native adapter cases; host models and eight register-table inventories | Exact fitted part, electrical mode/timing, live bus/IRQ operation, DMA, calibration and measurement chain |
+| Health data | Heart/SpO2 caches/services; sensor/zrpc framing and queues; interrupt/wake route; clock formulas; counter/1000 conversion; distinct main/sensor periodic intervals and suspension conversions; 90 native timer/AON/dispatch cases; phase-aware IPC timeout; selected cache commands/transfer callers and shared-address guard | Live IRQ/vring operation, physical timer/cache/coherency, counter continuity across power states, complete sleep state machine, exact-multiple device case, remaining payloads, algorithms and measurement validation |
 | Motion / other peripherals | Candidate identities and selected probe paths | Complete configuration, interrupts, power/timing and physical verification |
 | Bluetooth | Static builder/auth/curve models; all 62 announced modules matched; 103 initial transfers/69 AES checks; synthetic notification fields matched on the link and app-logo exchange observed; native reply/action serializers; selected notification listener/queue/store route followed to `NotificationNotifyScreen` request | Full GATT/handle coverage, fresh pairing/key derivation, counter persistence, remaining payloads/JS linkage, actual notification rendering/replies/actions, special storage/rich formats, Roadstr handoff and call/audio behavior |
 | GNSS / touch | Container sections, candidate code and identity clues | Full mappings, loader/command protocols, runtime integration |
@@ -49,6 +49,8 @@ Latest detailed findings:
 - [IPC interrupt, volatile MMIO and notification control](IPC_DOORBELL_AND_MMIO.md)
 - [Wide clock readers, CPU frequency formulas and cache range contracts](CLOCK_AND_CACHE_CONTRACTS.md)
 - [Andes DSP repair, native division execution and timer scaling](TIMER_ARITHMETIC.md)
+- [Main/sensor periodic timers, counter consistency and suspension](RTOS_TIMER_AND_SUSPEND.md)
+- [Optical SPI binding, controller configuration and timeout/delay contracts](OPTICAL_SPI_AND_TIMING.md)
 - [Boot/recovery control flow and signed metadata](BOOT_RECOVERY_AND_METADATA.md)
 - [Native GATT registrations and transport bindings](GATT_REGISTRATION.md)
 - [Native channel framing and authentication crypto delegate](NATIVE_CHANNEL.md)

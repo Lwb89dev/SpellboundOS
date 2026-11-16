@@ -1,5 +1,9 @@
 # Andes DSP, unsigned division and IPC timer scaling
 
+Follow-up: [RTOS timer and suspension](RTOS_TIMER_AND_SUSPEND.md) recovers
+distinct main/sensor raw intervals and counter rebasing during sleep.
+The numeric conversion below does not imply continuity across power states.
+
 The previously truncated helper at `0x70945b3c` is now decoded throughout its
 reviewed body and checked by executing its native instructions as corrected
 SLEIGH p-code. The scaled counter reader returns `floor(raw_unsigned_64/1000)`.

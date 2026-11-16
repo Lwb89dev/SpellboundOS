@@ -1,5 +1,10 @@
 # Optical front end and reconstructed sensor-hub initial RAM
 
+Follow-up: [SPI and timing contracts](OPTICAL_SPI_AND_TIMING.md) follows the
+board binding through the hardware adapter, recovers control/divider formulas
+and polling/error semantics, and distinguishes active from scheduler delays.
+Physical timing and complete standalone operation remain unverified.
+
 The sensor-hub member contains a `dev_max8617x` driver with six named optical
 operations, an identification check and a concrete SPI device configuration.
 This resolves the previous optical-front-end search to the **MAX8617X driver

@@ -2,8 +2,9 @@
 
 Clock/cache follow-up: [wide signatures and volatile CSR metadata](CLOCK_AND_CACHE_CONTRACTS.md)
 preserves split-counter return values and separate cache-control writes. A
-wide arithmetic helper still contains unsupported encodings; successful
-typing or profile selection does not imply complete instruction coverage.
+wide arithmetic helper's missing DSP semantics were subsequently repaired and
+checked in bounded native p-code execution; see [timer arithmetic](TIMER_ARITHMETIC.md).
+Successful typing or profile selection does not imply complete instruction coverage.
 
 I/O follow-up: [volatile IPC analysis](IPC_DOORBELL_AND_MMIO.md) shows that
 unmapped nonvolatile register globals also caused missing/transformed side

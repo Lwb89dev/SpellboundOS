@@ -951,15 +951,51 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    report reproduces byte-for-byte. Firmware, vendor-derived exports, tool
    sources and Ghidra databases remain ignored.
 
+## 2026-11-16 — periodic timer, suspension and optical SPI blocks
+
+1. Followed main and sensor periodic setup/interrupt paths. Recovered distinct
+   raw intervals (1000 versus 33), compare-store ordering, saved next-deadline
+   advancement, initial callback-table entry 7 and unconditional re-enabling
+   of `mie` bit 7. Guarded metadata seeding preserves CSR effects and explicit
+   debug/IRQ/scheduler boundaries. Native host execution passes 13 setup and
+   26 interrupt-prefix cases per processor, before scheduler/registration calls.
+   Also followed native trap dispatch: 16-byte callback records, pointer at +0
+   and argument at +4; three native dispatch cases pass per processor.
+2. Recovered identical main/sensor low/high/low/high readers at a second
+   counter bank (`0x910012f8`/`0x910012fc`), restored its volatile window and
+   wide signatures, and passed three native retry/read-order/result cases per
+   processor. Followed 32768/1000 suspension conversions and preserved their
+   integer-width behavior. Selected resume paths write the raw timer itself;
+   continuity across power states and physical oscillator frequency remain
+   unverified. Report: [analysis/RTOS_TIMER_AND_SUSPEND.md](analysis/RTOS_TIMER_AND_SUSPEND.md),
+   with reproducible [analysis/rtos-timer.json](analysis/rtos-timer.json).
+3. Followed optical `sens_spi0_dev0` through controller/chip-select records,
+   bus operation adapters and polling HAL. Recovered forced width field 8,
+   `flags & 6` collapse to control bits 0/3, source/divider/gating formulas,
+   four-/five-argument forwarding and layered error conversion. Strict SPI
+   timeout checking occurs after data movement; it can follow the final byte.
+   Distinguished the probe's cycle busy wait from the RTOS retry delay.
+   Eleven native configuration cases and 12 forwarding/return cases pass;
+   HAL return values are supplied synthetically, with no live bus execution.
+   Report: [analysis/OPTICAL_SPI_AND_TIMING.md](analysis/OPTICAL_SPI_AND_TIMING.md),
+   with reproducible [analysis/optical-spi.json](analysis/optical-spi.json).
+4. Added 20 meaningful host tests: all 272 Python tests pass with cipher/
+   signature dependencies. Across these blocks, 113 new native cases pass.
+   Public reports fingerprint 39 corrected exports and private validation
+   reports; vendor-derived code, images, databases and tools remain ignored.
+   No watch/phone configuration or firmware change occurred.
+
 ## Next work
 
 - Regenerate selected native paths with startup-aware mappings, corrected
   logger return behavior and register-save ABI effects. Current pseudocode
   counts must not be treated as semantic coverage.
 - Follow MAX8617X initialization/FIFO paths, interrupt handling and the health
-  IPC pipeline; verify HAL flags and timing before implementing hardware code.
+  IPC pipeline; validate electrical SPI mode/timing, DMA ownership and live
+  sensor operation before implementing hardware code. The selected adapter's
+  flag/divider/polling arithmetic is now recorded.
 - Audit remaining BBS/volatile-affected exports beyond the selected IPC paths.
-  Establish the physical timer frequency and shared-memory attributes/coherency;
+  Establish physical timer frequency/continuity across power states and shared-memory attributes/coherency;
   extend guarded DSP support only as required by selected paths. Validate live IRQ/wake/endpoint/
   vring operation and observe exact-multiple fragment behavior.
 

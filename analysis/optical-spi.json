@@ -1,0 +1,105 @@
+{
+  "bus": {
+    "adapter_ops": [
+      2163716972,
+      2163716792,
+      2163717072,
+      2163717048,
+      2163717024
+    ],
+    "chip_select_gpio_bank": 2432708608,
+    "chip_select_mask": 512,
+    "clock_gate_mask": 4,
+    "clock_gate_register": 2415951880,
+    "clock_lock_register": 2415952048,
+    "name": "sens_spi0",
+    "register_base": 2415935488,
+    "source_selection_bits": [
+      12,
+      13
+    ],
+    "source_selection_register": 2415951872
+  },
+  "byte_range_sha256": {
+    "80f1533c_18": "e61a45b868d6ebd5c3ed7e40f52c21f3b4cc685b1c3f64a0397e3bd6c95f5bc5",
+    "80f1589c_14": "aa62183922070467d4a2fa2774844616bcc2ee7e8fbacd364b2b1694fc015d86",
+    "80f7b36c_34": "b9d75e291da80ac65979421aab1d4e89b0ea0c8cf6807cb04ddb32d3478030cb",
+    "80f7b36c_7c": "772b23d26a0d2030241441e0c319cfc08d48d0901eeddfa7af751760edaf151d",
+    "80f7ed84_b4": "61e82557fa5b98338a5f2019f4ddce99b04f3908a3a05af72f0e3981671a1964",
+    "80f7ee38_94": "4872e9b8cd2865624a203fd9836b506e37cfa2d6e84377c8d2b6aecdccab409b",
+    "80f7eecc_b8": "b3930ede41fe37bcce2119f6b10504433c4aab2ffe5f56c96ce032f8f63b3a35"
+  },
+  "delay_paths": {
+    "active": 2163618656,
+    "probe_active_argument": 7,
+    "retry_scheduler_argument": 10,
+    "scheduler": 2163736334,
+    "scheduler_clamp": 4294967
+  },
+  "export_sha256": {
+    "80f63360.c": "de1ab34cb1b4d6a383a0ee0abc7940fade3b9eac48e4e42425528767f7ae893c",
+    "80f76ae6.c": "8cdfc9c048a025679466d65bf284a0b373cec95f6ae9276cb60a96fc5550b118",
+    "80f7b36c.c": "e9a1de751920e542c1823fbb4cb2dbfaff3a3720d9918dc4285a29037702868c",
+    "80f7b3a0.c": "597952968824d8fec13b2aac0a23c4264265c39cef98ded0aa8da677bbb244ab",
+    "80f7b3b8.c": "da020ebfb8bf3ef37b461aab8390952b01790c57569cb8a64231a99d81fef72c",
+    "80f7b3d0.c": "799901e3f2dec47f467ce18e44420f47e41704aab862da2715270dd7af9565c0",
+    "80f7e884.c": "1f2d49c83a6b08165ef8728b6a014741e7e75c9ba44e5c4f3bcea605f2538ccc",
+    "80f7e890.c": "1d849b4a98048750eba5d40d860d8d3320417d7d5bbf9bccd244d91e83d1c2d7",
+    "80f7e89c.c": "e5e345fe468ec500ab2d31873ea76a85db4aaf308939eb4bb0c6d90aefc10036",
+    "80f7e8e4.c": "32430d4480aee214d7c7a27f99ef68a563e7906faa069cb8bbf4e652d391d4f5",
+    "80f7eb60.c": "e3c2c73d4c1b1a8ad2186ce2c67c6182a18ae139af2862431ca343dae58b4c4d",
+    "80f7ed84.c": "27653b965c15806a7405de12d4cb3bcddd3ed6b2ef23d244f321f604bb6859db",
+    "80f7ee38.c": "ca84ee31c99605a9a79fde80e458ae1bca0681e151b37f3c6e8ec49df90df319",
+    "80f7eecc.c": "414e30f062ea9b9becf454670eb7aa8ba907999d2f0921f0774cf0f10c8c3214",
+    "80f7fdda.c": "54e8cbfba8937231a3edbac09b9cc94b38319284596d9e6ac176c29ecba3b109",
+    "80f7ff0e.c": "ae2c8d831db26b357d3c6a098d18d642040e0cd35bf2d218b6338f11d1052319",
+    "80f89552.c": "1fc2f7551c93ebc6e62ed995089cdada6579a5d13cff7013beb5a06c4fff2790",
+    "80f897bc.c": "7a53eb9b90e2bc14dd646d83ac5b11d96ede281d3860c68cebe86e0af14ea391",
+    "80f898ae.c": "15597b352e2988ab2b2b0c501e8021d1237388d43dedc9b22ee1d69dc3eab022"
+  },
+  "limitations": [
+    "Compiled SPI clock requests/control bits are not measured bus timing or electrical mode proof.",
+    "Same numeric counter address in main/sensor images does not establish shared physical time.",
+    "DMA paths, bus locking, GPIO routing, native memory lifetime and concurrency are not emulated.",
+    "A timeout may follow final-byte data movement; transfer and probe success remain unobserved.",
+    "Public transfer wrapper returns zero for absent operation callbacks; zero alone does not prove data movement.",
+    "The adapter forces width field 8 and collapses flags & 6 to 0 or 3; other flags are not decoded here.",
+    "The low-level init result and probe SPI-init result are discarded by selected callers.",
+    "Scheduler delay clamp helper includes diagnostics/assertion paths; only its returning path is modeled."
+  ],
+  "poll_contract": {
+    "adapter_error": 2,
+    "busy_mask": 4,
+    "completion": "entry check before polling; timeout after data movement",
+    "data_offset": 24,
+    "public_error": -14,
+    "rx_mask": 1008,
+    "status_offset": 12,
+    "timeout_hal_result": 3,
+    "timeout_predicate": "unsigned64(now_reader-start_reader) > timeout",
+    "tx_mask": 2
+  },
+  "probe_config": {
+    "adapter": {
+      "frequency": 8000000,
+      "low_control_bits": 0,
+      "width_field": 8
+    },
+    "dma_byte": 0,
+    "flags": 2049,
+    "frequency_field": 8000000
+  },
+  "sensor_sha256": "06f07541e8bb22b6118f081e791c3a4e40cbff2decd8ee478a7e82df826e9d0f",
+  "synthetic_48mhz_register_example": {
+    "configuration": 458754,
+    "control": 4108,
+    "enable_mask": 397
+  },
+  "validation": {
+    "adapter_config_cases": 11,
+    "forwarding_return_cases": 12,
+    "hal_execution": false,
+    "hardware_execution": false
+  },
+  "validation_sha256": "edae5e8abe33e3ba461df7dd74817b7f787376c81f138efbd61df216f0d85baf"
+}

@@ -1,0 +1,375 @@
+{
+  "aon_reader_bytes_match": true,
+  "domains": {
+    "main": {
+      "aon_registers": [
+        2432701176,
+        2432701180
+      ],
+      "byte_range_sha256": {
+        "702a2bb0_1e": "aebeb8d2be1fa9fc6e7696e480eb2ea173725542605cd74d7928c6d8eac5944d",
+        "80c009f4_100": "d08318b8dc3e43d0bdadd5e00be3818cb662943ba5d7d9c6d26d24e6f50ee2ca",
+        "80d35b10_14": "88bb46b86233ba7f778a2cea4b4a33f4fb86f3da0671fbf7eab83f80653e018b",
+        "80d37e14_52": "936430accc0369f177732ef790dc8da0b99535bf5ff7c81d92fed4dd0889420e",
+        "80d37f42_4a": "895359a9f0fba3c2780e8243e9ae9282cebaeb9986d272faa8014b40b201da0a"
+      },
+      "callback_stride": 16,
+      "compare_registers": [
+        3858759688,
+        3858759692
+      ],
+      "counter_registers": [
+        3858759680,
+        3858759684
+      ],
+      "dispatcher": 2161335056,
+      "export_sha256": {
+        "702a2bb0.c": "5012f211688b9969961a656eb426fa1bb0283c4f9b1c71026983345f881575e8",
+        "80d37e08.c": "7576fb3afe36a83c6e0ccbb6187af04d6bba65bb529bf3fe5b5053e910441e9d",
+        "80d37e14.c": "b2aee99f66f406b634f0799e916bde0e571376b063756bb41d656029ff452d5e",
+        "80d37eca.c": "bfde4449ea18d54c128f56db0b396041b15137c30c62527f2a4260fb8f32ad3b",
+        "80d37f42.c": "4099d2eba9b68741ebabb67b4c71b10b33ef94a98b4a35f20340d4023ab85166",
+        "80d37fa6.c": "b427ef182a3c42d48712c82fa11b42544b4a374c204be990ac424b746bac8668",
+        "80d37fce.c": "1c2def997ec40fe76704b2dc27f36a41ef7950567d076965e4982d220be73e38",
+        "80d3974e.c": "c2f8a8a0cd00b6b6fa0b0c974c2281bf9d8a4fa5e7237900c0b7061931bf7da2",
+        "80d454b8.c": "c6dcf8a46deeb8e46526dee2b4c674b76eb81cfbc90314ec54ad690217133b64"
+      },
+      "image_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+      "initial_callback_entry_7": 2161344322,
+      "initial_callback_table": 2160069108,
+      "initial_callbacks": {
+        "11": {
+          "argument": 0,
+          "callback": 2161335076,
+          "unclassified_words": [
+            0,
+            0
+          ]
+        },
+        "3": {
+          "argument": 0,
+          "callback": 2161381772,
+          "unclassified_words": [
+            0,
+            0
+          ]
+        },
+        "7": {
+          "argument": 0,
+          "callback": 2161344322,
+          "unclassified_words": [
+            0,
+            0
+          ]
+        }
+      },
+      "interrupt_example": {
+        "mie_after": 128,
+        "mie_during": 0,
+        "next_compare": 4294968295,
+        "writes": [
+          [
+            3858759688,
+            0
+          ],
+          [
+            3858759692,
+            0
+          ],
+          [
+            3858759688,
+            4294967295
+          ]
+        ]
+      },
+      "period_raw": 1000,
+      "setup_examples": [
+        {
+          "compare": 1000,
+          "next_compare": 2000,
+          "raw": 0,
+          "writes": [
+            [
+              3858759688,
+              1000
+            ],
+            [
+              3858759692,
+              0
+            ]
+          ]
+        },
+        {
+          "compare": 4294968295,
+          "next_compare": 4294969295,
+          "raw": 4294967295,
+          "writes": [
+            [
+              3858759688,
+              999
+            ],
+            [
+              3858759692,
+              1
+            ]
+          ]
+        },
+        {
+          "compare": 999,
+          "next_compare": 1999,
+          "raw": 18446744073709551615,
+          "writes": [
+            [
+              3858759688,
+              999
+            ],
+            [
+              3858759692,
+              0
+            ]
+          ]
+        }
+      ],
+      "validation": {
+        "aon_snapshot_cases": 3,
+        "bound_per_call": 512,
+        "dispatch_cases": 3,
+        "domain": "main",
+        "hardware_execution": false,
+        "isr_prefix_cases": 26,
+        "period_raw": 1000,
+        "setup_cases": 13
+      },
+      "validation_sha256": "58d6bee7abc2d0cd42aeb8379add24f35720176186726702486feab3c9e10792"
+    },
+    "sensor": {
+      "aon_registers": [
+        2432701176,
+        2432701180
+      ],
+      "byte_range_sha256": {
+        "80f15914_100": "2c267ec982f34ba0bf98482c5d5fcdba45ded254d67b340ba22b6e78bd610993",
+        "80f7e7b4_1e": "aebeb8d2be1fa9fc6e7696e480eb2ea173725542605cd74d7928c6d8eac5944d",
+        "80f80e42_62": "1722b1fc3e455bf16ac6b8551a9258aa8e2da55d26453ce92b59c01460235193",
+        "80f80f7c_4a": "d8afeb374f608cdd88ccd6637b34c898c8fd39376e9b7d71e1085481bde41bab",
+        "80fd3d18_14": "317caefb3c4694e5ce9d054bd3807e7ac118c3a704c71a5f1011bda0158b7011"
+      },
+      "callback_stride": 16,
+      "compare_registers": [
+        3858759688,
+        3858759692
+      ],
+      "counter_registers": [
+        3858759680,
+        3858759684
+      ],
+      "dispatcher": 2164079896,
+      "export_sha256": {
+        "80f7b594.c": "3de022d2dde2f9282d44ca4674e1983bfe13eb94fff34aada4cb87f1f602ca4c",
+        "80f7b5e4.c": "fd0920768414086a56829544998bff301636132f676077c984699bc8c1922a74",
+        "80f7e7b4.c": "8fe00f233ac08b1f960c4bd7902b57038a3c307933c379f21b06d1c4fb1b507b",
+        "80f80e1c.c": "b40bc4b4dbf563fa842d6499d5ccf37cf58f574d7315adef3a88a5a84f467bd9",
+        "80f80e42.c": "6bfbbbfab8f42e866b6da7f172de687367ba819890d42f1a18bb0bf0eb9bcd1a",
+        "80f80f04.c": "3452ce1376a4cf59a235692670177d757246d2b1dda202069a5b3c3696398abe",
+        "80f80f7c.c": "b57e4f7f3e3d975b8fffd6d204c69aaca953875e75f2ce611609dea01495c74f",
+        "80f80fe0.c": "68fd7f4b17d4991f2b3c8d3e80ac61b90dfe8a006dbbc18040d44db9d7ce1c52",
+        "80f81008.c": "9d17cc3d230ce3dde7f043f74df40722ff116a85c446cd11621757a7d36b791b",
+        "80f826e2.c": "da66ec1883ec3c6159e9745ce2a9a92fc44888f8264116896b7a1445e4f43248",
+        "80fd2c3e.c": "4cdd029326c3873f6d0923c7b2c7b3e1d47387962369838f18c0b2a2e6acee79"
+      },
+      "image_sha256": "06f07541e8bb22b6118f081e791c3a4e40cbff2decd8ee478a7e82df826e9d0f",
+      "initial_callback_entry_7": 2163740540,
+      "initial_callback_table": 2163300628,
+      "initial_callbacks": {
+        "11": {
+          "argument": 0,
+          "callback": 2164079916,
+          "unclassified_words": [
+            0,
+            0
+          ]
+        },
+        "3": {
+          "argument": 0,
+          "callback": 2163733984,
+          "unclassified_words": [
+            0,
+            0
+          ]
+        },
+        "7": {
+          "argument": 0,
+          "callback": 2163740540,
+          "unclassified_words": [
+            0,
+            0
+          ]
+        }
+      },
+      "interrupt_example": {
+        "mie_after": 128,
+        "mie_during": 0,
+        "next_compare": 4294967328,
+        "writes": [
+          [
+            3858759688,
+            0
+          ],
+          [
+            3858759692,
+            0
+          ],
+          [
+            3858759688,
+            4294967295
+          ]
+        ]
+      },
+      "period_raw": 33,
+      "setup_examples": [
+        {
+          "compare": 33,
+          "next_compare": 66,
+          "raw": 0,
+          "writes": [
+            [
+              3858759688,
+              33
+            ],
+            [
+              3858759692,
+              0
+            ]
+          ]
+        },
+        {
+          "compare": 4294967328,
+          "next_compare": 4294967361,
+          "raw": 4294967295,
+          "writes": [
+            [
+              3858759688,
+              32
+            ],
+            [
+              3858759692,
+              1
+            ]
+          ]
+        },
+        {
+          "compare": 32,
+          "next_compare": 65,
+          "raw": 18446744073709551615,
+          "writes": [
+            [
+              3858759688,
+              32
+            ],
+            [
+              3858759692,
+              0
+            ]
+          ]
+        }
+      ],
+      "validation": {
+        "aon_snapshot_cases": 3,
+        "bound_per_call": 512,
+        "dispatch_cases": 3,
+        "domain": "sensor",
+        "hardware_execution": false,
+        "isr_prefix_cases": 26,
+        "period_raw": 33,
+        "setup_cases": 13
+      },
+      "validation_sha256": "ff0f5786c7f20893ffac86c4eb78428d534b7249690db4b27c0d2dd1567738ed"
+    }
+  },
+  "limitations": [
+    "Intervals and conversions are compiled contracts, not measured oscillator rates.",
+    "Same numeric MMIO address across images does not prove shared physical counter identity.",
+    "Prefixes stop before IRQ registration/scheduler calls; no live interrupt or wakeup tested.",
+    "Tickless exports still have wide-register/type artifacts; selected formulas are checked in raw instructions.",
+    "Suspension writes the counter itself; raw counter continuity/monotonicity is not guaranteed.",
+    "AON host bound is 128 attempts; native reader has no such bound."
+  ],
+  "resume_examples": [
+    {
+      "elapsed_aon": 0,
+      "rtos_ticks": 0
+    },
+    {
+      "elapsed_aon": 32,
+      "rtos_ticks": 0
+    },
+    {
+      "elapsed_aon": 33,
+      "rtos_ticks": 1
+    },
+    {
+      "elapsed_aon": 32768,
+      "rtos_ticks": 1000
+    },
+    {
+      "elapsed_aon": 4294967296,
+      "rtos_ticks": 131072000
+    },
+    {
+      "elapsed_aon": 18446744073709551615,
+      "rtos_ticks": 4294967295
+    }
+  ],
+  "suspend_examples": [
+    {
+      "alarm_ticks": 98,
+      "expected_idle": 4,
+      "margin": 1
+    },
+    {
+      "alarm_ticks": 32,
+      "expected_idle": 4,
+      "margin": 3
+    },
+    {
+      "alarm_ticks": 294,
+      "expected_idle": 10,
+      "margin": 1
+    },
+    {
+      "alarm_ticks": 229,
+      "expected_idle": 10,
+      "margin": 3
+    },
+    {
+      "alarm_ticks": 32735,
+      "expected_idle": 1000,
+      "margin": 1
+    },
+    {
+      "alarm_ticks": 32669,
+      "expected_idle": 1000,
+      "margin": 3
+    },
+    {
+      "alarm_ticks": 0,
+      "expected_idle": 131073,
+      "margin": 1
+    },
+    {
+      "alarm_ticks": 4294901,
+      "expected_idle": 131073,
+      "margin": 3
+    },
+    {
+      "alarm_ticks": 4294901,
+      "expected_idle": 4294967295,
+      "margin": 1
+    },
+    {
+      "alarm_ticks": 4294836,
+      "expected_idle": 4294967295,
+      "margin": 3
+    }
+  ]
+}
