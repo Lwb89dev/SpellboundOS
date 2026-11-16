@@ -1,5 +1,10 @@
 # zrpc branches and initial shared-memory pools
 
+Follow-up: [corrected exports, queues and fragments](RPMSG_NATIVE_AND_FRAGMENTS.md)
+applies the guarded local BBS repair, regenerates 36 targets, maps queue and
+endpoint/buffer ownership, and models stock chunk rules with explicit limits.
+Live transport/cache behavior and the exact-multiple device case remain open.
+
 The impossible mask comparisons in earlier zrpc exports have a specific tool
 cause. Ghidra 12.1.2 implements AndeStar `bbs` using `(register & mask) == 1`.
 For bit indices above zero that predicate cannot succeed. The intended operation

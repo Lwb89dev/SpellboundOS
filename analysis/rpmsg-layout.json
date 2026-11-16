@@ -1,0 +1,200 @@
+{
+  "channel_bit2": "forces queue selector 2; send worker scans queues 2, 1, 0",
+  "compiled_language_sha256": "3825e3f48df2678410e8d645799bd84742a54d10805b56cbe895bc34f6a2d988",
+  "corrected_predicates": {
+    "delivery_crc_bit_clear": true,
+    "receiver_more_bit_nonzero": true,
+    "sender_bit2_nonzero": true
+  },
+  "endpoint_roles": "local address is role 0/1; destination is inverse; runtime role is not observed",
+  "limitations": [
+    "Fresh targeted main exports only; remaining corpus and sensor exports need review.",
+    "No live endpoints, cache coherency, vring operation or buffer ownership observed.",
+    "Header decoder is strict; it excludes native allocation and error behavior."
+  ],
+  "main_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "native_buffer_token_offset": 10,
+  "pools": [
+    {
+      "base": 2163212288,
+      "buffer_count": 64,
+      "buffer_stride": 256,
+      "buffers": 2163214016,
+      "end": 2163230400,
+      "instance": 0,
+      "payload_bytes": 240,
+      "queues": [
+        {
+          "available": 2163212800,
+          "descriptors": 2163212288,
+          "entries": 32,
+          "master_role": "rx",
+          "queue_id": 0,
+          "remote_role": "tx",
+          "used": 2163212880,
+          "used_end": 2163213140
+        },
+        {
+          "available": 2163213664,
+          "descriptors": 2163213152,
+          "entries": 32,
+          "master_role": "tx",
+          "queue_id": 1,
+          "remote_role": "rx",
+          "used": 2163213744,
+          "used_end": 2163214004
+        }
+      ],
+      "ring_bytes": 864,
+      "total_bytes": 18112
+    },
+    {
+      "base": 2163232768,
+      "buffer_count": 16,
+      "buffer_stride": 1024,
+      "buffers": 2163233248,
+      "end": 2163249632,
+      "instance": 1,
+      "payload_bytes": 1008,
+      "queues": [
+        {
+          "available": 2163232896,
+          "descriptors": 2163232768,
+          "entries": 8,
+          "master_role": "rx",
+          "queue_id": 2,
+          "remote_role": "tx",
+          "used": 2163232928,
+          "used_end": 2163232996
+        },
+        {
+          "available": 2163233136,
+          "descriptors": 2163233008,
+          "entries": 8,
+          "master_role": "tx",
+          "queue_id": 3,
+          "remote_role": "rx",
+          "used": 2163233168,
+          "used_end": 2163233236
+        }
+      ],
+      "ring_bytes": 240,
+      "total_bytes": 16864
+    },
+    {
+      "base": 2163253248,
+      "buffer_count": 2,
+      "buffer_stride": 4096,
+      "buffers": 2163253376,
+      "end": 2163261568,
+      "instance": 2,
+      "payload_bytes": 4080,
+      "queues": [
+        {
+          "available": 2163253264,
+          "descriptors": 2163253248,
+          "entries": 1,
+          "master_role": "rx",
+          "queue_id": 4,
+          "remote_role": "tx",
+          "used": 2163253280,
+          "used_end": 2163253292
+        },
+        {
+          "available": 2163253328,
+          "descriptors": 2163253312,
+          "entries": 1,
+          "master_role": "tx",
+          "queue_id": 5,
+          "remote_role": "rx",
+          "used": 2163253344,
+          "used_end": 2163253356
+        }
+      ],
+      "ring_bytes": 64,
+      "total_bytes": 8320
+    }
+  ],
+  "receive_ownership": "endpoint callback return 1 retains; other values release",
+  "repaired_source_sha256": "b88e19a2ed21e641c683a1780aa739e1d9662106234a02b37fb4e949b4827a03",
+  "rpmsg_header_bytes": 16,
+  "sensor_sha256": "06f07541e8bb22b6118f081e791c3a4e40cbff2decd8ee478a7e82df826e9d0f",
+  "source_sha256": {
+    "runtime-rpmsg-boundary/704e8e64.c": "8a3071da178e947bf5bf21ed84804cab7a56b748d390bc6e7d9888f0e58353fb",
+    "runtime-rpmsg-boundary/704e8ea0.c": "948e11bce67938059f8de2e400e06dff3d0fc5720dc3e156d1abc29263510dbb",
+    "runtime-rpmsg-boundary/704e9664.c": "1cb9a0ca7b85d818ebeb83e3418db9193a6a921cd4b8e4772b9c1caa4a2bafed",
+    "runtime-rpmsg-boundary/704eb13a.c": "5901884c70445e94f37fa4a80e118a79461768f22b52be6a8e43c7d35bc82f44",
+    "runtime-rpmsg-boundary/704eb422.c": "335a57547f2d73ab2c1709051ffbaf72d22e17358a0cb93d609d6d80e11d84cd",
+    "runtime-rpmsg-boundary/704eb476.c": "6f62e87232ba80499d510db11f2e23a97a30133e023db6bb0bacab7489cec43c",
+    "runtime-rpmsg-boundary/707bf672.c": "c9a02ce1c80ec9c27569f77c7172b9db50255384d8c354fddf998d2979f6c6eb",
+    "runtime-rpmsg-boundary/707bf678.c": "f02e98875c4cb271aac68fb5772b4ecbb1ac9414c8f3b83768d98ca36b07f7e6",
+    "runtime-rpmsg-boundary/707bf67e.c": "3699a266f91b436a50c81542a2b84b58c618864cfdc59c6a998e498d89583310",
+    "runtime-rpmsg-boundary/707bfa00.c": "3699a266f91b436a50c81542a2b84b58c618864cfdc59c6a998e498d89583310",
+    "runtime-rpmsg-boundary/707bfb04.c": "172ecb7193e44bd7cdb718851f167d7907a916c72e7f79896e383621d13ec46b",
+    "runtime-rpmsg-boundary/707bfb88.c": "380de95c0eff0bf5dfbe17fd9f4e5e42793fe6aea3ef0ea7c2c106798c666d53",
+    "runtime-rpmsg-boundary/707bfb98.c": "cb71e297d9d01c7bf39cc67f3814786fe036cb286c5e431d69cfb4850e93dd7c",
+    "runtime-rpmsg-boundary/707c03cc.c": "d4ecdd6cd03d6732075395fb49d99c9f67620d7660dde45dcb756220cbcaffc2",
+    "runtime-rpmsg-boundary/707c040c.c": "63416573aff35e0bf5c9c72d5cebceaa755af8d3c3808091812fcc25485f5972",
+    "runtime-rpmsg-boundary/80d341d8.c": "95b493e71f9ce8231ae1ba7b7a775bfcfaecbe341f69b84cb9fb44df90b7d98f",
+    "runtime-zrpc-bbs/704e8f28.c": "9670fbc66c293410a8ab0e10b0b1d9f7fe54dc48ed0421529c18321d6bf5479a",
+    "runtime-zrpc-bbs/704e9a48.c": "87c016baf291e4fcb5ecac08a5875e78d1db3b20eac1742e33f099ad0b7fae19",
+    "runtime-zrpc-bbs/704ea184.c": "381edd64a440a9c4acba7915cb34e5a0498ace60db7c5eb75270b275395f22bd",
+    "runtime-zrpc-bbs/704ea8f2.c": "843a469dd6996e5d6735520ac056798293af49ec39c1ef4f35bf40d50684b3be",
+    "runtime-zrpc-bbs/704eb4c0.c": "6a7cf01962f8bd792841c6d723958ee3f7ae8c33c218d4b40c2ce43d7475e66d",
+    "runtime-zrpc-bbs/707bf25e.c": "5d145c4b86b100c40ec9ff4aefc79dbb15b052a5900fd543823c92ffd041dfc2",
+    "runtime-zrpc-bbs/707bf746.c": "bcf915e7083fc87873af981a3ce8050f0827d62d6e48e971a109a52214115013",
+    "runtime-zrpc-bbs/707bf982.c": "fbc2c2b9041893f5de3dfcf21156e26b4673e3e06531191be9b564e9ff1db551",
+    "runtime-zrpc-bbs/707bf9be.c": "5bfe8c4f0fe139ab6c9dc992b0f7851ca55d72bb910bb8d5a9c1f59b7ea9b619",
+    "runtime-zrpc-bbs/707bfa74.c": "7588474cf43602978a427dc08defe78a4917f810b14b5376454bf900716bc307",
+    "runtime-zrpc-bbs/707bfc0a.c": "1357bdec16a9026119ac3244a0005479257312db9ef64cf584fe87e3598611c7",
+    "runtime-zrpc-bbs/707bfcc4.c": "445b05aab687866ecb2cfe99cf56f5155f66737ce8061e749e563ec1e4bc9158",
+    "runtime-zrpc-bbs/707bfdf4.c": "7c59cef7d5b3fbad192914737e6199276a56be94ba20c31c8284cacde3b4b1db",
+    "runtime-zrpc-bbs/707bfe94.c": "b42651c77facc7656f43e7e974d620fa954006a004cbdb465dc675f0c44ea394",
+    "runtime-zrpc-bbs/707bff4c.c": "7ca52ddd39d2bd20e84ee6db5201a8420363c68741399d071cc080a7412ab924",
+    "runtime-zrpc-bbs/707bffac.c": "92881b3b0064ca6e6ecf4f8c35a8420ed0e9b2be175e730c2cdfea261c5b2bb9",
+    "runtime-zrpc-bbs/707c024a.c": "858ebcd60dcd201128329b17d107dd16f0e5d733bdaba6ea215da98f66dbc86f",
+    "runtime-zrpc-bbs/707c0442.c": "de6fba5e51b441ecab9fa2e0cfeaefc71e5ef1d313439d44308f35c1bc3cdfaf",
+    "runtime-zrpc-bbs/707c0514.c": "886c5b4028083acc98416a3361d74cde4e00589d3e98fd0c2fc89e2063e0b67b",
+    "runtime-zrpc-bbs/707c06a2.c": "a2f56131b51e36860fe822d8d5b995565893a3426134503e47f8a35367bf9439"
+  },
+  "synthetic_fragment_examples": [
+    {
+      "channel_packets": 4,
+      "delivered_matches": true,
+      "link_mtu": 40,
+      "more": [
+        true,
+        true,
+        true,
+        false
+      ],
+      "payload_size": 35,
+      "remains_pending": false,
+      "sequence": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "channel_packets": 3,
+      "delivered_matches": false,
+      "link_mtu": 40,
+      "more": [
+        true,
+        true,
+        true
+      ],
+      "payload_size": 32,
+      "remains_pending": true,
+      "sequence": [
+        0,
+        1,
+        2
+      ]
+    }
+  ],
+  "synthetic_rpmsg_process_hex": "0100000000000000000000001c000000727a401a00001c000102010207000900010000000200140010060000",
+  "synthetic_scope": "Chosen fields and explicit zero reserved word; not captured native bytes."
+}

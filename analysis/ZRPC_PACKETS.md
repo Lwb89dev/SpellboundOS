@@ -1,5 +1,9 @@
 # Sensor IPC: zrpc packet headers and CRC
 
+Follow-up: [corrected native IPC analysis](RPMSG_NATIVE_AND_FRAGMENTS.md)
+confirms channel bit 2 selects the priority send path, maps lower queues and
+buffer ownership, and adds a bounded host fragment model.
+
 The main and sensor-hub images contain matching zrpc channel/link packet
 layouts. The previously recovered sensor payload now has a concrete outer
 representation: a 16-byte data-channel header inside an 8-byte link header.

@@ -856,6 +856,32 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    All 217 Python tests pass with signature/cipher dependencies. External source
    snapshots remain ignored; no device access or firmware writes occurred.
 
+## 2026-11-16 — consecutive corrected-native, rpmsg and fragment blocks
+
+1. Reacquired official Ghidra 12.1.2 with its published archive hash. Added
+   `repair_ghidra_bbs.py`, applied its guarded/idempotent predicate correction
+   in the temporary installation and rebuilt Sleigh. A fresh startup-aware
+   main project produced 36 targets with ABI/logger fixes in three passes.
+   New exports confirm the CRC/more-fragments branches; original groups remain
+   intact and a full corpus/sensor regeneration is not claimed.
+2. Recovered six queue layouts across the three pools, inverse master/remote
+   TX/RX roles, conditional endpoint 0/1 selection, lower 16-byte header and
+   descriptor-token ownership. Callback return 1 retains a receive buffer;
+   other returns release it. Channel bit 2 selects priority queue 2. Reviewed
+   ordering hooks do not establish complete data-cache/coherency behavior.
+3. Added `rpmsg_layout.py` and `zrpc_fragments.py`: bounded packet/layout and
+   stock chunk-production models, plus a stricter host reassembler. Synthetic
+   nonmultiple chunks complete; the stock exact-multiple case stays pending.
+   Corrected native ACK RX signals a matching session without inspecting its
+   status byte in that branch; receipt alone does not prove app processing.
+4. Added eight tests and reproducible
+   [analysis/rpmsg-layout.json](analysis/rpmsg-layout.json), documented in
+   [analysis/RPMSG_NATIVE_AND_FRAGMENTS.md](analysis/RPMSG_NATIVE_AND_FRAGMENTS.md).
+   All 225 Python tests pass with signature/cipher dependencies. The BBS repair
+   was also checked for exact-source acceptance, idempotence and rejection of
+   altered input. Device-derived code/tool evidence remains ignored. No device
+   access, firmware writing or phone configuration change occurred.
+
 ## Next work
 
 - Regenerate selected native paths with startup-aware mappings, corrected
@@ -863,9 +889,9 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
   counts must not be treated as semantic coverage.
 - Follow MAX8617X initialization/FIFO paths, interrupt handling and the health
   IPC pipeline; verify HAL flags and timing before implementing hardware code.
-- Apply the identified `bbs` correction to Ghidra, regenerate targeted zrpc
-  paths and audit earlier affected exports. Observe exact-multiple fragment
-  behavior and recover rpmsg endpoints/vrings/cache configuration.
+- Audit remaining BBS-affected main/sensor exports beyond the corrected IPC
+  targets. Follow interrupt/doorbell and cache/coherency paths, validate live
+  endpoint/vring operation, and observe exact-multiple fragment behavior.
 
 - Follow population of the capability table and the deeper heart/SpO2 service
   backends; distinguish software records from live hardware measurements.

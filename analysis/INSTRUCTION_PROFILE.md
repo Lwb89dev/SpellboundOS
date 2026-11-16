@@ -1,5 +1,9 @@
 # AndeStar v5 decoding investigation
 
+Latest pass: [corrected native IPC analysis](RPMSG_NATIVE_AND_FRAGMENTS.md)
+records an exact-hash-guarded local BBS repair, rebuilt Sleigh language and
+36 fresh targeted exports. The broader corpus remains unaudited.
+
 Follow-up: [zrpc branches](ZRPC_BRANCHES_AND_MEMORY.md) identifies a concrete
 Ghidra 12.1.2 `bbs` predicate defect for bit indices above zero. Selected native
 branches are independently decoded there. Profile selection alone does not
