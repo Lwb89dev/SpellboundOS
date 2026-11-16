@@ -1,5 +1,10 @@
 # Clock readers, cache commands and shared-address policy
 
+Follow-up: [timer arithmetic](TIMER_ARITHMETIC.md) resolves the missing DSP
+instructions, executes the complete helper on bounded vectors and establishes
+`floor(raw/1000)`. The helper limitations below describe this earlier snapshot;
+physical frequency and cache/coherency remain unresolved.
+
 Three consecutive blocks recover selected wide clock interfaces, cache-control
 operations and their transfer callers, then encode bounded host models.
 The inputs remain OTA 4.6.0.3; all work is offline. Neither cache commands nor

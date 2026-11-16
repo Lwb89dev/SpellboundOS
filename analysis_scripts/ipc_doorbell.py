@@ -69,6 +69,7 @@ def should_notify(*, added, available_index, used_flags=0, event_index=None):
 
 
 def wait_expired(start, now):
+    """Compare already-scaled reader values; raw counter snapshots need /1000 first."""
     uint(start, 64)
     uint(now, 64)
     return ((now - start) & 0xffffffffffffffff) >= 1000

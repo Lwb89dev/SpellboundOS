@@ -3,7 +3,10 @@
 Follow-up: [clock and cache contracts](CLOCK_AND_CACHE_CONTRACTS.md) restores
 wide reader signatures and volatile CSR semantics, recovers CPU clock formulas
 and range-cache operations, and shows that their signed guard skips shared
-pool addresses. The arithmetic helper and physical coherency remain open.
+pool addresses. The later [timer arithmetic pass](TIMER_ARITHMETIC.md) resolves
+the helper to unsigned division and establishes the reader's `floor(raw/1000)`
+conversion. Physical frequency and coherency remain open; the helper limitations
+below describe this earlier snapshot.
 
 Three further blocks connect the recovered rpmsg queues to their native
 notification/interrupt route, preserve previously omitted register writes,

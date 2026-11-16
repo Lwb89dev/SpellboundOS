@@ -926,6 +926,31 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    exports and the reference source remain ignored; no device access or
    firmware, clock, cache or phone configuration change occurred.
 
+## 2026-11-16 — DSP semantics, native arithmetic execution and timeout scale
+
+1. Identified all five previously undecoded sites in the wide timer helper:
+   four Andes opcode-0x7f `pkbb16` instructions and one `maddr32`. Added a
+   guarded, idempotent local RV32 SLEIGH extension preserving the earlier BBS
+   fix, recompiled it and regenerated the helper/reader/selected IPC caller
+   into a separate ignored export directory. Opcode references and exact
+   tool/source/image hashes are recorded; broader DSP support remains open.
+2. Executed the actual helper as corrected SLEIGH p-code against Java's unsigned
+   division oracle: 52,294 nonzero-divisor cases and 200 complete synthetic
+   reader calls pass, totaling 2,213,837 instruction steps, at most 80 per call.
+   Every DSP site executes. Unvisited instructions/conditional edges are
+   reported; this is bounded host validation, not exhaustive or silicon proof.
+3. Established `floor(raw_unsigned_64/1000)` for the selected reader. The IPC
+   limit of 1000 uses separately converted snapshots, so the first numeric
+   threshold occurs after 999,001–1,000,000 raw ticks without raw rollover.
+   Added phase-aware models and nine tests, including all 1000 initial phases,
+   source-repair guards and wrap boundaries. Physical timer frequency, live
+   poll duration and shared-memory coherency remain open. No device changes.
+4. Added [analysis/TIMER_ARITHMETIC.md](analysis/TIMER_ARITHMETIC.md) and
+   reproducible [analysis/timer-arithmetic.json](analysis/timer-arithmetic.json).
+   All 252 Python tests pass with signature/cipher dependencies; the public
+   report reproduces byte-for-byte. Firmware, vendor-derived exports, tool
+   sources and Ghidra databases remain ignored.
+
 ## Next work
 
 - Regenerate selected native paths with startup-aware mappings, corrected
@@ -934,8 +959,8 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
 - Follow MAX8617X initialization/FIFO paths, interrupt handling and the health
   IPC pipeline; verify HAL flags and timing before implementing hardware code.
 - Audit remaining BBS/volatile-affected exports beyond the selected IPC paths.
-  Decode the remaining wide timer helper and establish physical timer units
-  and shared-memory attributes/coherency. Validate live IRQ/wake/endpoint/
+  Establish the physical timer frequency and shared-memory attributes/coherency;
+  extend guarded DSP support only as required by selected paths. Validate live IRQ/wake/endpoint/
   vring operation and observe exact-multiple fragment behavior.
 
 - Follow population of the capability table and the deeper heart/SpO2 service
