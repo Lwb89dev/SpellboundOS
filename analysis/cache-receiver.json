@@ -1,0 +1,2103 @@
+{
+  "byte_range_sha256": {
+    "main": {
+      "701e330e_a6": "61f89caa36338c3a2dfd70750b5d24b481e7f8ab61406517b06e92779503dd2c",
+      "701e3cb8_40": "0b4826e32a27e6fc52163b9123c6d931a7e92a75647902905451c237a9b139f3",
+      "701e4ce0_26": "e1c2b796a0aac0d76d696e27a3bb9ca5b075406c280c06e195d6ef2e82645667",
+      "701e4f04_146": "23b661794a014a553bbc0df310c1584608c26cc65c67e2099f3273b3e7cad49c",
+      "7032db3a_2aa": "afb626ff23bd5ac1b68190b3bec7bdc9076aab241ad50cae86c48884de29fb94",
+      "704c5872_20": "8d3b44c965517c2f921eeae10513d040f513ee4ac0ee38e4716e0f09896366ab",
+      "7071ed94_8": "55740b83652ae2f67f6685cba1cfe74f12a71a707ee6381fa3c24e46a9cbb107",
+      "7071fd60_1ca": "ae2e806a62dc907aa218cd0e04ba0c654f4bc8ce774c4234a3c0e3f7f17c0bf5",
+      "707200f2_74": "ddab4174fc63c4e9dfe9dbd95df4b3173a24a2e9138947219e187b0d9ab3e9c1",
+      "70720ac0_ce0": "f736b76c64b922cff338b0b215da63f2023b06cc251f5c35f40245d747e5c484",
+      "70722a98_8c": "20f9202e4c234f0822f0731226dc24a3b3b95eeefd4b696ff0fb832d2e45ca5f",
+      "80d3d5a2_ae": "bbc939341f56ef45daa4e8e9e8b2a2217f1742e6c8a3331055560f7d9b56b941"
+    },
+    "sensor": {
+      "80f63c2e_86": "ae26d17613ea566f46b2e2003314109c1a201ca520fd22447c89fdba6eb8d362",
+      "80f645e2_40": "0b4826e32a27e6fc52163b9123c6d931a7e92a75647902905451c237a9b139f3",
+      "80f655d2_26": "e1c2b796a0aac0d76d696e27a3bb9ca5b075406c280c06e195d6ef2e82645667",
+      "80f657ee_132": "f4fd9eaaa3563ef1c607fec6f0ad52bee5ed5ab2002ac1117f87cdba1ec91f1d",
+      "80f85cbe_84": "3f023e9de23f5c7652b9e962afcb58dbb5bb874c925dbc811a38aa0f9d12102d",
+      "80f9891c_4": "d3359a164168715ab5ae68ce31d573bc27d9fa8216d3f5c2e702351e20257d98",
+      "80f993d0_122": "fb12e987584d0060c95fca63d7c17d441a72e28209e8c3d2e086400e478e055f",
+      "80f996e4_60": "9f1c22d5edf7fb93362ab1ced0c730a9904d785e4895d431766f30300cf828e6",
+      "80f99ea8_73e": "937a1677dbd5e7586d6d2b42add93887e0d7c935eb8402d4437d971f22232eb2",
+      "80f9afa0_15a": "99fe129dae7ccf17f5f8ff137942540a20bbf0626edc83c7a1d7aa39f1bfe871",
+      "80fa27e2_10": "ee2978f0afc84a840dd58d3ea96f53354c9353a76b7eae519c208ae26112841d",
+      "80fa5ae0_1f0": "83e562dc0e12bf4430a63597c9d19fab1fc7cfd5bae171f4c3726bbc31dfa85b"
+    }
+  },
+  "default_main_callback_setup_sha256": "e8947a841f398e2b9456a38bab9008a90262cc8749e006e5e3770c1d0962a3b4",
+  "default_main_callback_table_sha256": "ae79da74464ab947a51c356c511ab1b851c9a44a331bcf911a705f9d8c38c758",
+  "default_main_callbacks": [
+    "0x7071eda4",
+    "0x7071ed9c",
+    "0x7071ed94",
+    "0x7071ed8c"
+  ],
+  "export_sha256": {
+    "main": {
+      "701e330e.c": "a756fc0e87c620263120ad6f75d608f88959d5fdb117d7277f5d3c6823ef5ba0",
+      "701e3cb8.c": "5a4807c5ce8c434333e4a8a1b21c8b1547e6040fc72b1e308d15b65f68c50fd1",
+      "701e4ce0.c": "92b22307803d8bd45ad43d56a7973291e9199c31326ca7b6be071a89f598de3f",
+      "701e4f04.c": "7624e923d47cc605782d400aa208ca403c29193dba7c143a0c44a45898777a51",
+      "701e4f7c.c": "c6528315132cf0eba7aa96ef2d18524a93c68df27bfa07e1b052859fb9decb5f",
+      "701e4fa6.c": "3f9caeb1ef28a2b9db0f40ac66cb621b690da47c9a4b24ab2007919535f6f4cd",
+      "701e4ff0.c": "dc3732551a3340a2ffc13a3e21b238a58ee8eec0f3ff9687333a8e554bc73ca5",
+      "7032db3a.c": "248a7c26609ea632903f3f83c4a928724f8d81c04ac38c71f1a4840f9aaddb8b",
+      "7032dbae.c": "080f412af2810d81a63044417364590731863f558c2809c018d34ab003afb611",
+      "7032dca6.c": "2532c8b65c5f49321538532e8315a76329b63ab4a4bca16ad26fc422f3ecd02e",
+      "7032dd0c.c": "df0fd5067ee7e1fb827fffbae9715158ec346e23968368fab21ada136ab0f45f",
+      "7032ddaa.c": "7a777478f78a1dce069101b66443f4965522fc5e13ae3dd73b3dfbcd93480928",
+      "7071ed94.c": "6d02b72919c4551836ffea321d1f6c907820b1a50cd98d31a9c7640a558611dc",
+      "7071fd60.c": "ea0065b82dd7d5ff40f414ba1d66fdf438737ee0eab063e02e6e17faf5bbfbf6",
+      "707200f2.c": "2210a138f27168881b6e53c3c580360ac96db8102630eba17114c4c82f244589",
+      "707209e4.c": "5143e7ca445f9226dc478d0b32a1600de8903fa1465bdf905997e5a75b727db5",
+      "70720ac0.c": "aecb8db0c855b0c7c2b4bd8efeac371b01f62347c0a8a5882ed89a45bc666cf7",
+      "70722a98.c": "897469f807ba430cb60dd0fcad075dc3a24f9271fcbb42902fd0b82e03d74a51"
+    },
+    "sensor": {
+      "80f63c2e.c": "6e24756a1f478b473e1b0ff5572309ac035eb0339e3c22d18fc6fdcae25c76a6",
+      "80f645e2.c": "cde656a247d47f0e69b88edff93d458a831979d887ce3a7bf9c2314fb5eb6258",
+      "80f655d2.c": "a61860bead27d7ec314afd8b2a15157bc65b4970d46c581a3cc65dae0bf031ee",
+      "80f657ee.c": "44072748b914124fc760ef29a2100ed9abc1f11b3b0ed3b3877f1f2beef57ada",
+      "80f6585e.c": "fab6725b8b1a2c8aac88664990685e6c2edeff14ed11b98e99db9865f16ec61d",
+      "80f65884.c": "bd8c29a090f01baf6ab5bce7a66e79c60b932f8bdbf439783e6f878c465ca297",
+      "80f658c6.c": "8ff65936dabfe1c467d159251466dc2bb945002591029c8d2524fcd96df65c24",
+      "80f9891c.c": "6e24756a1f478b473e1b0ff5572309ac035eb0339e3c22d18fc6fdcae25c76a6",
+      "80f993d0.c": "f268d8bb3d346fb42cbfd9f988c9479c1320c05dd1cad3f849f8cc211a3e80e1",
+      "80f996e4.c": "e2dcac2ebe8349215a9b589bfba1615dc81d3f08c101a8cd023b835c66e76806",
+      "80f99e0e.c": "927f6675d251556da973b4c6bc5fe638672e8a3399dd0ffa8ba99055c40e1f3d",
+      "80f99ea8.c": "142e82347897752e4c2949b5b48fda55a1eb6bfae9a18d7fe184fc01a7c533ec",
+      "80f9afa0.c": "bce10307350491defc4f596d2e9c3948fa3080b5f21fcc70acbd039865b18daa",
+      "80fa5ae0.c": "632c59972c8e8416c50e79eb0899fbf4f2aa4a7c4009133cdc0bd602436fa367",
+      "80fa5b28.c": "c0783007cbf56c0cfcbd894149492b0603587f54eeb71bde9bc79d700148e325",
+      "80fa5b9a.c": "0f4c2e3ac299b12ff22348be88be6029f9ad2033437f667f259c4116a9f77b97",
+      "80fa5c00.c": "6a6ee65c2ffc0e55456d0fe866be9fee40dc53bd20f02a25d04d2f399dfd008b",
+      "80fa5c96.c": "a624bbfb23ed9f11dfe3da037ee65fd5095b58936ac0f1d9eb14cbf4f6d30a44"
+    }
+  },
+  "limitations": [
+    "Context, allocation/free, copy/memset, critical-section helpers and listener registrations are supplied; reference arithmetic executes natively.",
+    "Receiving starts with a synthetic message in memory, without zrpc/rpmsg or hardware; initializer/default callback evidence is static.",
+    "Malformed record callbacks capture opaque bytes only; inner count is bounded to 2 and a 128-byte synthetic redzone records out-of-allocation fixup writes.",
+    "Consumer listeners and deferred release scheduling are synthetic; no full health algorithm or concurrency guarantee is established."
+  ],
+  "main_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "native_steps": 16439,
+  "native_validation": {
+    "main": {
+      "bound_per_case": 100000,
+      "case_count": 33,
+      "cases": [
+        {
+          "name": "main_parse_one",
+          "observed": {
+            "ack": 165,
+            "actions": [],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "9ea08a2299ca28aa1c4ffd6a018ecb156779b86447792d3f661eff2f52e7e36c",
+            "owner_after": null,
+            "parsed": {
+              "length": 72,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 165
+        },
+        {
+          "name": "main_parse_multi",
+          "observed": {
+            "ack": 165,
+            "actions": [],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "6fa12f0e89fe1f9c7744ba34c42d46292db9bc6ab188bb7a87b88282557185d7",
+            "owner_after": null,
+            "parsed": {
+              "length": 244,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 165
+        },
+        {
+          "name": "main_parse_trailing",
+          "observed": {
+            "ack": 165,
+            "actions": [],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "71e3d131d235d12aa6aa0c07960b78638867ef3e96f81e77a6703593ab2c97e7",
+            "owner_after": null,
+            "parsed": {
+              "length": 72,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 165
+        },
+        {
+          "name": "main_parse_zero",
+          "observed": {
+            "ack": 165,
+            "actions": [
+              "log:parse_cache"
+            ],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "3a3080c473a3e2e5bb6c8857bf5c27606e8ee489a9bebc67afffc0b454171ff9",
+            "owner_after": null,
+            "parsed": {
+              "length": 0,
+              "opcode": 21,
+              "pointer": 0
+            },
+            "returned": 1
+          },
+          "steps": 139
+        },
+        {
+          "name": "main_parse_too_long",
+          "observed": {
+            "ack": 165,
+            "actions": [
+              "log:parse_cache"
+            ],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "eb8f872119193e942e938b4b7e45c82a54cb65d55ee685e809afc03902f5f2c1",
+            "owner_after": null,
+            "parsed": {
+              "length": 73,
+              "opcode": 21,
+              "pointer": 0
+            },
+            "returned": 1
+          },
+          "steps": 175
+        },
+        {
+          "name": "main_parse_huge",
+          "observed": {
+            "ack": 165,
+            "actions": [
+              "log:parse_cache"
+            ],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "3771bc8d99bd3d4c416d3694fbebc8acfc838acfeae7267814c96b3b0103160b",
+            "owner_after": null,
+            "parsed": {
+              "length": 4294967295,
+              "opcode": 21,
+              "pointer": 0
+            },
+            "returned": 1
+          },
+          "steps": 175
+        },
+        {
+          "name": "main_parse_one_byte_payload",
+          "observed": {
+            "ack": 165,
+            "actions": [],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "701c43c46dee05b672a5e3f399676f331b2a813f297675e953ca2f30e1107075",
+            "owner_after": null,
+            "parsed": {
+              "length": 1,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 165
+        },
+        {
+          "name": "main_parse_short_1",
+          "observed": {
+            "ack": 165,
+            "actions": [
+              "log:parse_cache"
+            ],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "2f0fd1e89b8de1d57292742ec380ea47066e307ad645f5bc3adad8a06ff58608",
+            "owner_after": null,
+            "parsed": {
+              "length": 0,
+              "opcode": 21,
+              "pointer": 0
+            },
+            "returned": 1
+          },
+          "steps": 139
+        },
+        {
+          "name": "main_parse_short_2",
+          "observed": {
+            "ack": 165,
+            "actions": [
+              "log:parse_cache"
+            ],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "4aa2a781004e298e65e8ba9aa276b70a6a3e72dd2d87a2bad40d2412b11eba7a",
+            "owner_after": null,
+            "parsed": {
+              "length": 0,
+              "opcode": 21,
+              "pointer": 0
+            },
+            "returned": 1
+          },
+          "steps": 139
+        },
+        {
+          "name": "main_parse_short_3",
+          "observed": {
+            "ack": 165,
+            "actions": [
+              "log:parse_cache"
+            ],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "1e000b68a5073190d9d7e0d55983d95c616d6a80ec40fd47e225045706575aaa",
+            "owner_after": null,
+            "parsed": {
+              "length": 0,
+              "opcode": 21,
+              "pointer": 0
+            },
+            "returned": 1
+          },
+          "steps": 139
+        },
+        {
+          "name": "main_parse_short_4",
+          "observed": {
+            "ack": 165,
+            "actions": [
+              "log:parse_cache"
+            ],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "18b21dadfb6c34fa769b75f558812f41d4d17580b77a0f3b527f9aae306a0cf7",
+            "owner_after": null,
+            "parsed": {
+              "length": 0,
+              "opcode": 21,
+              "pointer": 0
+            },
+            "returned": 1
+          },
+          "steps": 139
+        },
+        {
+          "name": "main_receive_one",
+          "observed": {
+            "ack": 0,
+            "actions": [
+              "alloc:88",
+              "callback:0",
+              "free:buffer"
+            ],
+            "callbacks": [
+              {
+                "data_sha256": "1a5ae2c73bc3af8847250f3be8e58ec1c06721c50c8c95fc649926e7b4ed0605",
+                "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+                "index": 0,
+                "refs": 1
+              }
+            ],
+            "decoder": [],
+            "final_heap": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+            },
+            "input_sha256": "9ea08a2299ca28aa1c4ffd6a018ecb156779b86447792d3f661eff2f52e7e36c",
+            "owner_after": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+            },
+            "parsed": {
+              "length": 72,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 475
+        },
+        {
+          "name": "main_receive_multi",
+          "observed": {
+            "ack": 0,
+            "actions": [
+              "alloc:260",
+              "callback:0",
+              "free:buffer"
+            ],
+            "callbacks": [
+              {
+                "data_sha256": "952554c8540a953e635661e3099b08aaa5e504a90aae3fa3356b2fe47ea4a0c1",
+                "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+                "index": 0,
+                "refs": 1
+              }
+            ],
+            "decoder": [],
+            "final_heap": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "24a60747a59c89d4653d6c5ff78b4777c4925a4b445ae0dc1e9d0e368a3d5942"
+            },
+            "input_sha256": "6fa12f0e89fe1f9c7744ba34c42d46292db9bc6ab188bb7a87b88282557185d7",
+            "owner_after": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "24a60747a59c89d4653d6c5ff78b4777c4925a4b445ae0dc1e9d0e368a3d5942"
+            },
+            "parsed": {
+              "length": 244,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 530
+        },
+        {
+          "name": "main_receive_retained",
+          "observed": {
+            "ack": 0,
+            "actions": [
+              "alloc:88",
+              "callback:0",
+              "retain:0",
+              "drop:0",
+              "free:buffer"
+            ],
+            "callbacks": [
+              {
+                "data_sha256": "1a5ae2c73bc3af8847250f3be8e58ec1c06721c50c8c95fc649926e7b4ed0605",
+                "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+                "index": 0,
+                "refs": 1
+              }
+            ],
+            "decoder": [],
+            "final_heap": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+            },
+            "input_sha256": "9ea08a2299ca28aa1c4ffd6a018ecb156779b86447792d3f661eff2f52e7e36c",
+            "owner_after": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 2746533334,
+              "refs": 1,
+              "sha256": "3eac646179b231040edf0840f274e11382f15096d4ade27ce77f32318783e810"
+            },
+            "parsed": {
+              "length": 72,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 584
+        },
+        {
+          "name": "main_receive_two_listeners",
+          "observed": {
+            "ack": 0,
+            "actions": [
+              "alloc:88",
+              "callback:0",
+              "retain:0",
+              "callback:1",
+              "retain:1",
+              "drop:0",
+              "drop:1",
+              "free:buffer"
+            ],
+            "callbacks": [
+              {
+                "data_sha256": "1a5ae2c73bc3af8847250f3be8e58ec1c06721c50c8c95fc649926e7b4ed0605",
+                "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+                "index": 0,
+                "refs": 1
+              },
+              {
+                "data_sha256": "1a5ae2c73bc3af8847250f3be8e58ec1c06721c50c8c95fc649926e7b4ed0605",
+                "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+                "index": 1,
+                "refs": 2
+              }
+            ],
+            "decoder": [],
+            "final_heap": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+            },
+            "input_sha256": "9ea08a2299ca28aa1c4ffd6a018ecb156779b86447792d3f661eff2f52e7e36c",
+            "owner_after": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 2746533334,
+              "refs": 2,
+              "sha256": "f558faf363194eab3ad1f6a8c54004d7a328f3ca1a81fdae603200e75a6b4b12"
+            },
+            "parsed": {
+              "length": 72,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 701
+        },
+        {
+          "name": "main_receive_no_listeners",
+          "observed": {
+            "ack": 0,
+            "actions": [
+              "alloc:88",
+              "free:buffer"
+            ],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+            },
+            "input_sha256": "9ea08a2299ca28aa1c4ffd6a018ecb156779b86447792d3f661eff2f52e7e36c",
+            "owner_after": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+            },
+            "parsed": {
+              "length": 72,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 467
+        },
+        {
+          "name": "main_receive_no_handler",
+          "observed": {
+            "ack": 0,
+            "actions": [],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "9ea08a2299ca28aa1c4ffd6a018ecb156779b86447792d3f661eff2f52e7e36c",
+            "owner_after": null,
+            "parsed": {
+              "length": 72,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 219
+        },
+        {
+          "name": "main_receive_allocation_failure",
+          "observed": {
+            "ack": 0,
+            "actions": [
+              "alloc_fail:88",
+              "log:buffer_alloc",
+              "log:receive_alloc"
+            ],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "9ea08a2299ca28aa1c4ffd6a018ecb156779b86447792d3f661eff2f52e7e36c",
+            "owner_after": null,
+            "parsed": {
+              "length": 72,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 8
+          },
+          "steps": 284
+        },
+        {
+          "name": "main_receive_trailing",
+          "observed": {
+            "ack": 0,
+            "actions": [
+              "alloc:88",
+              "callback:0",
+              "free:buffer"
+            ],
+            "callbacks": [
+              {
+                "data_sha256": "1a5ae2c73bc3af8847250f3be8e58ec1c06721c50c8c95fc649926e7b4ed0605",
+                "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+                "index": 0,
+                "refs": 1
+              }
+            ],
+            "decoder": [],
+            "final_heap": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+            },
+            "input_sha256": "71e3d131d235d12aa6aa0c07960b78638867ef3e96f81e77a6703593ab2c97e7",
+            "owner_after": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+            },
+            "parsed": {
+              "length": 72,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 475
+        },
+        {
+          "name": "main_receive_zero_prefix",
+          "observed": {
+            "ack": 0,
+            "actions": [
+              "alloc:88",
+              "callback:0",
+              "free:buffer"
+            ],
+            "callbacks": [
+              {
+                "data_sha256": "ba623bd21507246b85bb517846eb36ff28052c017ba8eed2a948f6d1a26b7674",
+                "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+                "index": 0,
+                "refs": 1
+              }
+            ],
+            "decoder": [],
+            "final_heap": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "a377f8e74858b17b206c8b92d68d0567e3a417eaa88f41e4792388916e58f0e4"
+            },
+            "input_sha256": "e84be68a521ca70f45312a9a3db87a674c33d200e9bb5f24fe267c9456f1f9e7",
+            "owner_after": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "a377f8e74858b17b206c8b92d68d0567e3a417eaa88f41e4792388916e58f0e4"
+            },
+            "parsed": {
+              "length": 72,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 444
+        },
+        {
+          "name": "main_receive_overrun_prefix",
+          "observed": {
+            "ack": 0,
+            "actions": [
+              "alloc:88",
+              "callback:0",
+              "free:buffer"
+            ],
+            "callbacks": [
+              {
+                "data_sha256": "c4c98d7db787a2ff3f0d3a9f093cc4f630d26003dfcfaf38a097564b6df33164",
+                "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+                "index": 0,
+                "refs": 1
+              }
+            ],
+            "decoder": [],
+            "final_heap": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "a0ee77a8b3d2a3e5e3c837b628cf49e3d28c64d95f9055cb31dffb5c325edebe"
+            },
+            "input_sha256": "76306574afe471e6e6a45a1b300fad6c4ebd1fd736da5c3bec0fb98f71c5e4ea",
+            "owner_after": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "a0ee77a8b3d2a3e5e3c837b628cf49e3d28c64d95f9055cb31dffb5c325edebe"
+            },
+            "parsed": {
+              "length": 72,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 445
+        },
+        {
+          "name": "main_receive_good_then_bad_record",
+          "observed": {
+            "ack": 0,
+            "actions": [
+              "alloc:160",
+              "callback:0",
+              "free:buffer"
+            ],
+            "callbacks": [
+              {
+                "data_sha256": "3b8f263b12fe21e20698bd215be039941988b58e298a19c2c7db47b20b36c90c",
+                "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+                "index": 0,
+                "refs": 1
+              }
+            ],
+            "decoder": [],
+            "final_heap": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "ee3acdf7e23c87e4a61032434b91f07620448b2f169fb88f223728526ebc43e1"
+            },
+            "input_sha256": "883c66cf019aa2da25048aa05808f99dceedaffb804819117dc8259cfb6c3abe",
+            "owner_after": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "ee3acdf7e23c87e4a61032434b91f07620448b2f169fb88f223728526ebc43e1"
+            },
+            "parsed": {
+              "length": 144,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 480
+        },
+        {
+          "name": "main_receive_inner_count_two",
+          "observed": {
+            "ack": 0,
+            "actions": [
+              "alloc:88",
+              "callback:0",
+              "free:buffer"
+            ],
+            "callbacks": [
+              {
+                "data_sha256": "ab1ff190035918d369b8a06b2cf475ff9c3f5768802e30eb2fa0ee2a521422aa",
+                "guard_sha256": "fe426f4b032b78e544c5f0729ec7e845c539d218beccac577e84016bc063513c",
+                "index": 0,
+                "refs": 1
+              }
+            ],
+            "decoder": [],
+            "final_heap": {
+              "guard_sha256": "fe426f4b032b78e544c5f0729ec7e845c539d218beccac577e84016bc063513c",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "5897412e481b5d0251801ad5f42534a456d10aaf35bf701e52bd88eea3d9c62e"
+            },
+            "input_sha256": "5922c55bcbe9e3789f42dde07de41e4cf778508c2e50479a410a1080f9383152",
+            "owner_after": {
+              "guard_sha256": "fe426f4b032b78e544c5f0729ec7e845c539d218beccac577e84016bc063513c",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "5897412e481b5d0251801ad5f42534a456d10aaf35bf701e52bd88eea3d9c62e"
+            },
+            "parsed": {
+              "length": 72,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 485
+        },
+        {
+          "name": "main_receive_bad_envelope",
+          "observed": {
+            "ack": 0,
+            "actions": [
+              "log:parse_cache",
+              "log:receive_parse"
+            ],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "eb8f872119193e942e938b4b7e45c82a54cb65d55ee685e809afc03902f5f2c1",
+            "owner_after": null,
+            "parsed": {
+              "length": 73,
+              "opcode": 21,
+              "pointer": 0
+            },
+            "returned": 1
+          },
+          "steps": 215
+        },
+        {
+          "name": "main_receive_zero_envelope",
+          "observed": {
+            "ack": 0,
+            "actions": [
+              "log:parse_cache",
+              "log:receive_parse"
+            ],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "3a3080c473a3e2e5bb6c8857bf5c27606e8ee489a9bebc67afffc0b454171ff9",
+            "owner_after": null,
+            "parsed": {
+              "length": 0,
+              "opcode": 21,
+              "pointer": 0
+            },
+            "returned": 1
+          },
+          "steps": 179
+        },
+        {
+          "name": "main_decoder_mixed",
+          "observed": {
+            "ack": 165,
+            "actions": [],
+            "callbacks": [],
+            "decoder": [
+              {
+                "base": 2164326400,
+                "cursor": 2164326401,
+                "error": 0,
+                "length": 6,
+                "operation": "byte",
+                "returned": 1
+              },
+              {
+                "base": 2164326400,
+                "cursor": 2164326405,
+                "error": 0,
+                "length": 6,
+                "operation": "word",
+                "returned": 84148994
+              },
+              {
+                "base": 2164326400,
+                "cursor": 2164326406,
+                "error": 0,
+                "length": 6,
+                "operation": "data:1",
+                "returned": 2164326405
+              },
+              {
+                "base": 2164326400,
+                "cursor": 2164326406,
+                "error": 2,
+                "length": 6,
+                "operation": "byte",
+                "returned": 0
+              }
+            ],
+            "final_heap": null,
+            "input_sha256": "7192385c3c0605de55bb9476ce1d90748190ecb32a8eed7f5207b30cf6a1fe89",
+            "owner_after": null,
+            "parsed": null,
+            "returned": 0
+          },
+          "steps": 151
+        },
+        {
+          "name": "main_decoder_sticky_error",
+          "observed": {
+            "ack": 165,
+            "actions": [],
+            "callbacks": [],
+            "decoder": [
+              {
+                "base": 2164326400,
+                "cursor": 2164326400,
+                "error": 2,
+                "length": 2,
+                "operation": "word",
+                "returned": 0
+              },
+              {
+                "base": 2164326400,
+                "cursor": 2164326401,
+                "error": 2,
+                "length": 2,
+                "operation": "byte",
+                "returned": 97
+              },
+              {
+                "base": 2164326400,
+                "cursor": 2164326402,
+                "error": 2,
+                "length": 2,
+                "operation": "data:1",
+                "returned": 2164326401
+              }
+            ],
+            "final_heap": null,
+            "input_sha256": "fb8e20fc2e4c3f248c60c39bd652f3c1347298bb977b8b4d5903b85055620603",
+            "owner_after": null,
+            "parsed": null,
+            "returned": 2164326401
+          },
+          "steps": 117
+        },
+        {
+          "name": "main_decoder_empty",
+          "observed": {
+            "ack": 165,
+            "actions": [],
+            "callbacks": [],
+            "decoder": [
+              {
+                "base": 0,
+                "cursor": 0,
+                "error": 1,
+                "length": 0,
+                "operation": "byte",
+                "returned": 0
+              },
+              {
+                "base": 0,
+                "cursor": 0,
+                "error": 1,
+                "length": 0,
+                "operation": "word",
+                "returned": 0
+              },
+              {
+                "base": 0,
+                "cursor": 0,
+                "error": 1,
+                "length": 0,
+                "operation": "data:1",
+                "returned": 0
+              },
+              {
+                "base": 0,
+                "cursor": 0,
+                "error": 1,
+                "length": 0,
+                "operation": "data:0",
+                "returned": 0
+              }
+            ],
+            "final_heap": null,
+            "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "owner_after": null,
+            "parsed": null,
+            "returned": 0
+          },
+          "steps": 93
+        },
+        {
+          "name": "main_decoder_zero_slice",
+          "observed": {
+            "ack": 165,
+            "actions": [],
+            "callbacks": [],
+            "decoder": [
+              {
+                "base": 2164326400,
+                "cursor": 2164326400,
+                "error": 0,
+                "length": 2,
+                "operation": "data:0",
+                "returned": 0
+              },
+              {
+                "base": 2164326400,
+                "cursor": 2164326401,
+                "error": 0,
+                "length": 2,
+                "operation": "byte",
+                "returned": 97
+              }
+            ],
+            "final_heap": null,
+            "input_sha256": "fb8e20fc2e4c3f248c60c39bd652f3c1347298bb977b8b4d5903b85055620603",
+            "owner_after": null,
+            "parsed": null,
+            "returned": 97
+          },
+          "steps": 46
+        },
+        {
+          "name": "main_decoder_exact_slice",
+          "observed": {
+            "ack": 165,
+            "actions": [],
+            "callbacks": [],
+            "decoder": [
+              {
+                "base": 2164326400,
+                "cursor": 2164326402,
+                "error": 0,
+                "length": 2,
+                "operation": "data:2",
+                "returned": 2164326400
+              },
+              {
+                "base": 2164326400,
+                "cursor": 2164326402,
+                "error": 2,
+                "length": 2,
+                "operation": "data:1",
+                "returned": 0
+              }
+            ],
+            "final_heap": null,
+            "input_sha256": "fb8e20fc2e4c3f248c60c39bd652f3c1347298bb977b8b4d5903b85055620603",
+            "owner_after": null,
+            "parsed": null,
+            "returned": 0
+          },
+          "steps": 85
+        },
+        {
+          "name": "main_decoder_short_word",
+          "observed": {
+            "ack": 165,
+            "actions": [],
+            "callbacks": [],
+            "decoder": [
+              {
+                "base": 2164326400,
+                "cursor": 2164326400,
+                "error": 2,
+                "length": 3,
+                "operation": "word",
+                "returned": 0
+              }
+            ],
+            "final_heap": null,
+            "input_sha256": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+            "owner_after": null,
+            "parsed": null,
+            "returned": 0
+          },
+          "steps": 44
+        },
+        {
+          "name": "main_decoder_little_endian",
+          "observed": {
+            "ack": 165,
+            "actions": [],
+            "callbacks": [],
+            "decoder": [
+              {
+                "base": 2164326400,
+                "cursor": 2164326404,
+                "error": 0,
+                "length": 4,
+                "operation": "word",
+                "returned": 305419896
+              }
+            ],
+            "final_heap": null,
+            "input_sha256": "1a2de690568587e6cd9adbd7d9f65ef269becd2f89fb89c224975b0c5944b973",
+            "owner_after": null,
+            "parsed": null,
+            "returned": 305419896
+          },
+          "steps": 44
+        },
+        {
+          "name": "main_decoder_huge_slice",
+          "observed": {
+            "ack": 165,
+            "actions": [],
+            "callbacks": [],
+            "decoder": [
+              {
+                "base": 2164326400,
+                "cursor": 2164326400,
+                "error": 2,
+                "length": 2,
+                "operation": "data:4294967295",
+                "returned": 0
+              },
+              {
+                "base": 2164326400,
+                "cursor": 2164326401,
+                "error": 2,
+                "length": 2,
+                "operation": "byte",
+                "returned": 97
+              }
+            ],
+            "final_heap": null,
+            "input_sha256": "fb8e20fc2e4c3f248c60c39bd652f3c1347298bb977b8b4d5903b85055620603",
+            "owner_after": null,
+            "parsed": null,
+            "returned": 97
+          },
+          "steps": 82
+        }
+      ],
+      "hardware_execution": false,
+      "platform": "main"
+    },
+    "sensor": {
+      "bound_per_case": 100000,
+      "case_count": 33,
+      "cases": [
+        {
+          "name": "sensor_parse_one",
+          "observed": {
+            "ack": 165,
+            "actions": [],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "9ea08a2299ca28aa1c4ffd6a018ecb156779b86447792d3f661eff2f52e7e36c",
+            "owner_after": null,
+            "parsed": {
+              "length": 72,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 161
+        },
+        {
+          "name": "sensor_parse_multi",
+          "observed": {
+            "ack": 165,
+            "actions": [],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "6fa12f0e89fe1f9c7744ba34c42d46292db9bc6ab188bb7a87b88282557185d7",
+            "owner_after": null,
+            "parsed": {
+              "length": 244,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 161
+        },
+        {
+          "name": "sensor_parse_trailing",
+          "observed": {
+            "ack": 165,
+            "actions": [],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "71e3d131d235d12aa6aa0c07960b78638867ef3e96f81e77a6703593ab2c97e7",
+            "owner_after": null,
+            "parsed": {
+              "length": 72,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 161
+        },
+        {
+          "name": "sensor_parse_zero",
+          "observed": {
+            "ack": 165,
+            "actions": [
+              "log:parse_cache"
+            ],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "3a3080c473a3e2e5bb6c8857bf5c27606e8ee489a9bebc67afffc0b454171ff9",
+            "owner_after": null,
+            "parsed": {
+              "length": 0,
+              "opcode": 21,
+              "pointer": 0
+            },
+            "returned": 1
+          },
+          "steps": 134
+        },
+        {
+          "name": "sensor_parse_too_long",
+          "observed": {
+            "ack": 165,
+            "actions": [
+              "log:parse_cache"
+            ],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "eb8f872119193e942e938b4b7e45c82a54cb65d55ee685e809afc03902f5f2c1",
+            "owner_after": null,
+            "parsed": {
+              "length": 73,
+              "opcode": 21,
+              "pointer": 0
+            },
+            "returned": 1
+          },
+          "steps": 170
+        },
+        {
+          "name": "sensor_parse_huge",
+          "observed": {
+            "ack": 165,
+            "actions": [
+              "log:parse_cache"
+            ],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "3771bc8d99bd3d4c416d3694fbebc8acfc838acfeae7267814c96b3b0103160b",
+            "owner_after": null,
+            "parsed": {
+              "length": 4294967295,
+              "opcode": 21,
+              "pointer": 0
+            },
+            "returned": 1
+          },
+          "steps": 170
+        },
+        {
+          "name": "sensor_parse_one_byte_payload",
+          "observed": {
+            "ack": 165,
+            "actions": [],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "701c43c46dee05b672a5e3f399676f331b2a813f297675e953ca2f30e1107075",
+            "owner_after": null,
+            "parsed": {
+              "length": 1,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 161
+        },
+        {
+          "name": "sensor_parse_short_1",
+          "observed": {
+            "ack": 165,
+            "actions": [
+              "log:parse_cache"
+            ],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "2f0fd1e89b8de1d57292742ec380ea47066e307ad645f5bc3adad8a06ff58608",
+            "owner_after": null,
+            "parsed": {
+              "length": 0,
+              "opcode": 21,
+              "pointer": 0
+            },
+            "returned": 1
+          },
+          "steps": 134
+        },
+        {
+          "name": "sensor_parse_short_2",
+          "observed": {
+            "ack": 165,
+            "actions": [
+              "log:parse_cache"
+            ],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "4aa2a781004e298e65e8ba9aa276b70a6a3e72dd2d87a2bad40d2412b11eba7a",
+            "owner_after": null,
+            "parsed": {
+              "length": 0,
+              "opcode": 21,
+              "pointer": 0
+            },
+            "returned": 1
+          },
+          "steps": 134
+        },
+        {
+          "name": "sensor_parse_short_3",
+          "observed": {
+            "ack": 165,
+            "actions": [
+              "log:parse_cache"
+            ],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "1e000b68a5073190d9d7e0d55983d95c616d6a80ec40fd47e225045706575aaa",
+            "owner_after": null,
+            "parsed": {
+              "length": 0,
+              "opcode": 21,
+              "pointer": 0
+            },
+            "returned": 1
+          },
+          "steps": 134
+        },
+        {
+          "name": "sensor_parse_short_4",
+          "observed": {
+            "ack": 165,
+            "actions": [
+              "log:parse_cache"
+            ],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "18b21dadfb6c34fa769b75f558812f41d4d17580b77a0f3b527f9aae306a0cf7",
+            "owner_after": null,
+            "parsed": {
+              "length": 0,
+              "opcode": 21,
+              "pointer": 0
+            },
+            "returned": 1
+          },
+          "steps": 134
+        },
+        {
+          "name": "sensor_receive_one",
+          "observed": {
+            "ack": 0,
+            "actions": [
+              "alloc:88",
+              "callback:0",
+              "free:buffer"
+            ],
+            "callbacks": [
+              {
+                "data_sha256": "1a5ae2c73bc3af8847250f3be8e58ec1c06721c50c8c95fc649926e7b4ed0605",
+                "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+                "index": 0,
+                "refs": 1
+              }
+            ],
+            "decoder": [],
+            "final_heap": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+            },
+            "input_sha256": "9ea08a2299ca28aa1c4ffd6a018ecb156779b86447792d3f661eff2f52e7e36c",
+            "owner_after": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+            },
+            "parsed": {
+              "length": 72,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 457
+        },
+        {
+          "name": "sensor_receive_multi",
+          "observed": {
+            "ack": 0,
+            "actions": [
+              "alloc:260",
+              "callback:0",
+              "free:buffer"
+            ],
+            "callbacks": [
+              {
+                "data_sha256": "952554c8540a953e635661e3099b08aaa5e504a90aae3fa3356b2fe47ea4a0c1",
+                "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+                "index": 0,
+                "refs": 1
+              }
+            ],
+            "decoder": [],
+            "final_heap": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "24a60747a59c89d4653d6c5ff78b4777c4925a4b445ae0dc1e9d0e368a3d5942"
+            },
+            "input_sha256": "6fa12f0e89fe1f9c7744ba34c42d46292db9bc6ab188bb7a87b88282557185d7",
+            "owner_after": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "24a60747a59c89d4653d6c5ff78b4777c4925a4b445ae0dc1e9d0e368a3d5942"
+            },
+            "parsed": {
+              "length": 244,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 512
+        },
+        {
+          "name": "sensor_receive_retained",
+          "observed": {
+            "ack": 0,
+            "actions": [
+              "alloc:88",
+              "callback:0",
+              "retain:0",
+              "drop:0",
+              "free:buffer"
+            ],
+            "callbacks": [
+              {
+                "data_sha256": "1a5ae2c73bc3af8847250f3be8e58ec1c06721c50c8c95fc649926e7b4ed0605",
+                "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+                "index": 0,
+                "refs": 1
+              }
+            ],
+            "decoder": [],
+            "final_heap": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+            },
+            "input_sha256": "9ea08a2299ca28aa1c4ffd6a018ecb156779b86447792d3f661eff2f52e7e36c",
+            "owner_after": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 2746533334,
+              "refs": 1,
+              "sha256": "3eac646179b231040edf0840f274e11382f15096d4ade27ce77f32318783e810"
+            },
+            "parsed": {
+              "length": 72,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 564
+        },
+        {
+          "name": "sensor_receive_two_listeners",
+          "observed": {
+            "ack": 0,
+            "actions": [
+              "alloc:88",
+              "callback:0",
+              "retain:0",
+              "callback:1",
+              "retain:1",
+              "drop:0",
+              "drop:1",
+              "free:buffer"
+            ],
+            "callbacks": [
+              {
+                "data_sha256": "1a5ae2c73bc3af8847250f3be8e58ec1c06721c50c8c95fc649926e7b4ed0605",
+                "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+                "index": 0,
+                "refs": 1
+              },
+              {
+                "data_sha256": "1a5ae2c73bc3af8847250f3be8e58ec1c06721c50c8c95fc649926e7b4ed0605",
+                "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+                "index": 1,
+                "refs": 2
+              }
+            ],
+            "decoder": [],
+            "final_heap": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+            },
+            "input_sha256": "9ea08a2299ca28aa1c4ffd6a018ecb156779b86447792d3f661eff2f52e7e36c",
+            "owner_after": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 2746533334,
+              "refs": 2,
+              "sha256": "f558faf363194eab3ad1f6a8c54004d7a328f3ca1a81fdae603200e75a6b4b12"
+            },
+            "parsed": {
+              "length": 72,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 679
+        },
+        {
+          "name": "sensor_receive_no_listeners",
+          "observed": {
+            "ack": 0,
+            "actions": [
+              "alloc:88",
+              "free:buffer"
+            ],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+            },
+            "input_sha256": "9ea08a2299ca28aa1c4ffd6a018ecb156779b86447792d3f661eff2f52e7e36c",
+            "owner_after": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+            },
+            "parsed": {
+              "length": 72,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 449
+        },
+        {
+          "name": "sensor_receive_no_handler",
+          "observed": {
+            "ack": 0,
+            "actions": [],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "9ea08a2299ca28aa1c4ffd6a018ecb156779b86447792d3f661eff2f52e7e36c",
+            "owner_after": null,
+            "parsed": {
+              "length": 72,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 215
+        },
+        {
+          "name": "sensor_receive_allocation_failure",
+          "observed": {
+            "ack": 0,
+            "actions": [
+              "alloc_fail:88",
+              "log:buffer_alloc",
+              "log:receive_alloc"
+            ],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "9ea08a2299ca28aa1c4ffd6a018ecb156779b86447792d3f661eff2f52e7e36c",
+            "owner_after": null,
+            "parsed": {
+              "length": 72,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 8
+          },
+          "steps": 276
+        },
+        {
+          "name": "sensor_receive_trailing",
+          "observed": {
+            "ack": 0,
+            "actions": [
+              "alloc:88",
+              "callback:0",
+              "free:buffer"
+            ],
+            "callbacks": [
+              {
+                "data_sha256": "1a5ae2c73bc3af8847250f3be8e58ec1c06721c50c8c95fc649926e7b4ed0605",
+                "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+                "index": 0,
+                "refs": 1
+              }
+            ],
+            "decoder": [],
+            "final_heap": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+            },
+            "input_sha256": "71e3d131d235d12aa6aa0c07960b78638867ef3e96f81e77a6703593ab2c97e7",
+            "owner_after": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "2757fd1d2ce97b0fa36c7db865a61d231411695b4c433390a572ebae3772d143"
+            },
+            "parsed": {
+              "length": 72,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 457
+        },
+        {
+          "name": "sensor_receive_zero_prefix",
+          "observed": {
+            "ack": 0,
+            "actions": [
+              "alloc:88",
+              "callback:0",
+              "free:buffer"
+            ],
+            "callbacks": [
+              {
+                "data_sha256": "ba623bd21507246b85bb517846eb36ff28052c017ba8eed2a948f6d1a26b7674",
+                "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+                "index": 0,
+                "refs": 1
+              }
+            ],
+            "decoder": [],
+            "final_heap": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "a377f8e74858b17b206c8b92d68d0567e3a417eaa88f41e4792388916e58f0e4"
+            },
+            "input_sha256": "e84be68a521ca70f45312a9a3db87a674c33d200e9bb5f24fe267c9456f1f9e7",
+            "owner_after": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "a377f8e74858b17b206c8b92d68d0567e3a417eaa88f41e4792388916e58f0e4"
+            },
+            "parsed": {
+              "length": 72,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 426
+        },
+        {
+          "name": "sensor_receive_overrun_prefix",
+          "observed": {
+            "ack": 0,
+            "actions": [
+              "alloc:88",
+              "callback:0",
+              "free:buffer"
+            ],
+            "callbacks": [
+              {
+                "data_sha256": "c4c98d7db787a2ff3f0d3a9f093cc4f630d26003dfcfaf38a097564b6df33164",
+                "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+                "index": 0,
+                "refs": 1
+              }
+            ],
+            "decoder": [],
+            "final_heap": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "a0ee77a8b3d2a3e5e3c837b628cf49e3d28c64d95f9055cb31dffb5c325edebe"
+            },
+            "input_sha256": "76306574afe471e6e6a45a1b300fad6c4ebd1fd736da5c3bec0fb98f71c5e4ea",
+            "owner_after": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "a0ee77a8b3d2a3e5e3c837b628cf49e3d28c64d95f9055cb31dffb5c325edebe"
+            },
+            "parsed": {
+              "length": 72,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 427
+        },
+        {
+          "name": "sensor_receive_good_then_bad_record",
+          "observed": {
+            "ack": 0,
+            "actions": [
+              "alloc:160",
+              "callback:0",
+              "free:buffer"
+            ],
+            "callbacks": [
+              {
+                "data_sha256": "3b8f263b12fe21e20698bd215be039941988b58e298a19c2c7db47b20b36c90c",
+                "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+                "index": 0,
+                "refs": 1
+              }
+            ],
+            "decoder": [],
+            "final_heap": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "ee3acdf7e23c87e4a61032434b91f07620448b2f169fb88f223728526ebc43e1"
+            },
+            "input_sha256": "883c66cf019aa2da25048aa05808f99dceedaffb804819117dc8259cfb6c3abe",
+            "owner_after": {
+              "guard_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "ee3acdf7e23c87e4a61032434b91f07620448b2f169fb88f223728526ebc43e1"
+            },
+            "parsed": {
+              "length": 144,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 462
+        },
+        {
+          "name": "sensor_receive_inner_count_two",
+          "observed": {
+            "ack": 0,
+            "actions": [
+              "alloc:88",
+              "callback:0",
+              "free:buffer"
+            ],
+            "callbacks": [
+              {
+                "data_sha256": "ab1ff190035918d369b8a06b2cf475ff9c3f5768802e30eb2fa0ee2a521422aa",
+                "guard_sha256": "fe426f4b032b78e544c5f0729ec7e845c539d218beccac577e84016bc063513c",
+                "index": 0,
+                "refs": 1
+              }
+            ],
+            "decoder": [],
+            "final_heap": {
+              "guard_sha256": "fe426f4b032b78e544c5f0729ec7e845c539d218beccac577e84016bc063513c",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "5897412e481b5d0251801ad5f42534a456d10aaf35bf701e52bd88eea3d9c62e"
+            },
+            "input_sha256": "5922c55bcbe9e3789f42dde07de41e4cf778508c2e50479a410a1080f9383152",
+            "owner_after": {
+              "guard_sha256": "fe426f4b032b78e544c5f0729ec7e845c539d218beccac577e84016bc063513c",
+              "magic": 0,
+              "refs": 0,
+              "sha256": "5897412e481b5d0251801ad5f42534a456d10aaf35bf701e52bd88eea3d9c62e"
+            },
+            "parsed": {
+              "length": 72,
+              "opcode": 21,
+              "pointer": 2164326405
+            },
+            "returned": 0
+          },
+          "steps": 467
+        },
+        {
+          "name": "sensor_receive_bad_envelope",
+          "observed": {
+            "ack": 0,
+            "actions": [
+              "log:parse_cache",
+              "log:receive_parse"
+            ],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "eb8f872119193e942e938b4b7e45c82a54cb65d55ee685e809afc03902f5f2c1",
+            "owner_after": null,
+            "parsed": {
+              "length": 73,
+              "opcode": 21,
+              "pointer": 0
+            },
+            "returned": 1
+          },
+          "steps": 209
+        },
+        {
+          "name": "sensor_receive_zero_envelope",
+          "observed": {
+            "ack": 0,
+            "actions": [
+              "log:parse_cache",
+              "log:receive_parse"
+            ],
+            "callbacks": [],
+            "decoder": [],
+            "final_heap": null,
+            "input_sha256": "3a3080c473a3e2e5bb6c8857bf5c27606e8ee489a9bebc67afffc0b454171ff9",
+            "owner_after": null,
+            "parsed": {
+              "length": 0,
+              "opcode": 21,
+              "pointer": 0
+            },
+            "returned": 1
+          },
+          "steps": 173
+        },
+        {
+          "name": "sensor_decoder_mixed",
+          "observed": {
+            "ack": 165,
+            "actions": [],
+            "callbacks": [],
+            "decoder": [
+              {
+                "base": 2164326400,
+                "cursor": 2164326401,
+                "error": 0,
+                "length": 6,
+                "operation": "byte",
+                "returned": 1
+              },
+              {
+                "base": 2164326400,
+                "cursor": 2164326405,
+                "error": 0,
+                "length": 6,
+                "operation": "word",
+                "returned": 84148994
+              },
+              {
+                "base": 2164326400,
+                "cursor": 2164326406,
+                "error": 0,
+                "length": 6,
+                "operation": "data:1",
+                "returned": 2164326405
+              },
+              {
+                "base": 2164326400,
+                "cursor": 2164326406,
+                "error": 2,
+                "length": 6,
+                "operation": "byte",
+                "returned": 0
+              }
+            ],
+            "final_heap": null,
+            "input_sha256": "7192385c3c0605de55bb9476ce1d90748190ecb32a8eed7f5207b30cf6a1fe89",
+            "owner_after": null,
+            "parsed": null,
+            "returned": 0
+          },
+          "steps": 151
+        },
+        {
+          "name": "sensor_decoder_sticky_error",
+          "observed": {
+            "ack": 165,
+            "actions": [],
+            "callbacks": [],
+            "decoder": [
+              {
+                "base": 2164326400,
+                "cursor": 2164326400,
+                "error": 2,
+                "length": 2,
+                "operation": "word",
+                "returned": 0
+              },
+              {
+                "base": 2164326400,
+                "cursor": 2164326401,
+                "error": 2,
+                "length": 2,
+                "operation": "byte",
+                "returned": 97
+              },
+              {
+                "base": 2164326400,
+                "cursor": 2164326402,
+                "error": 2,
+                "length": 2,
+                "operation": "data:1",
+                "returned": 2164326401
+              }
+            ],
+            "final_heap": null,
+            "input_sha256": "fb8e20fc2e4c3f248c60c39bd652f3c1347298bb977b8b4d5903b85055620603",
+            "owner_after": null,
+            "parsed": null,
+            "returned": 2164326401
+          },
+          "steps": 117
+        },
+        {
+          "name": "sensor_decoder_empty",
+          "observed": {
+            "ack": 165,
+            "actions": [],
+            "callbacks": [],
+            "decoder": [
+              {
+                "base": 0,
+                "cursor": 0,
+                "error": 1,
+                "length": 0,
+                "operation": "byte",
+                "returned": 0
+              },
+              {
+                "base": 0,
+                "cursor": 0,
+                "error": 1,
+                "length": 0,
+                "operation": "word",
+                "returned": 0
+              },
+              {
+                "base": 0,
+                "cursor": 0,
+                "error": 1,
+                "length": 0,
+                "operation": "data:1",
+                "returned": 0
+              },
+              {
+                "base": 0,
+                "cursor": 0,
+                "error": 1,
+                "length": 0,
+                "operation": "data:0",
+                "returned": 0
+              }
+            ],
+            "final_heap": null,
+            "input_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "owner_after": null,
+            "parsed": null,
+            "returned": 0
+          },
+          "steps": 93
+        },
+        {
+          "name": "sensor_decoder_zero_slice",
+          "observed": {
+            "ack": 165,
+            "actions": [],
+            "callbacks": [],
+            "decoder": [
+              {
+                "base": 2164326400,
+                "cursor": 2164326400,
+                "error": 0,
+                "length": 2,
+                "operation": "data:0",
+                "returned": 0
+              },
+              {
+                "base": 2164326400,
+                "cursor": 2164326401,
+                "error": 0,
+                "length": 2,
+                "operation": "byte",
+                "returned": 97
+              }
+            ],
+            "final_heap": null,
+            "input_sha256": "fb8e20fc2e4c3f248c60c39bd652f3c1347298bb977b8b4d5903b85055620603",
+            "owner_after": null,
+            "parsed": null,
+            "returned": 97
+          },
+          "steps": 46
+        },
+        {
+          "name": "sensor_decoder_exact_slice",
+          "observed": {
+            "ack": 165,
+            "actions": [],
+            "callbacks": [],
+            "decoder": [
+              {
+                "base": 2164326400,
+                "cursor": 2164326402,
+                "error": 0,
+                "length": 2,
+                "operation": "data:2",
+                "returned": 2164326400
+              },
+              {
+                "base": 2164326400,
+                "cursor": 2164326402,
+                "error": 2,
+                "length": 2,
+                "operation": "data:1",
+                "returned": 0
+              }
+            ],
+            "final_heap": null,
+            "input_sha256": "fb8e20fc2e4c3f248c60c39bd652f3c1347298bb977b8b4d5903b85055620603",
+            "owner_after": null,
+            "parsed": null,
+            "returned": 0
+          },
+          "steps": 85
+        },
+        {
+          "name": "sensor_decoder_short_word",
+          "observed": {
+            "ack": 165,
+            "actions": [],
+            "callbacks": [],
+            "decoder": [
+              {
+                "base": 2164326400,
+                "cursor": 2164326400,
+                "error": 2,
+                "length": 3,
+                "operation": "word",
+                "returned": 0
+              }
+            ],
+            "final_heap": null,
+            "input_sha256": "ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad",
+            "owner_after": null,
+            "parsed": null,
+            "returned": 0
+          },
+          "steps": 44
+        },
+        {
+          "name": "sensor_decoder_little_endian",
+          "observed": {
+            "ack": 165,
+            "actions": [],
+            "callbacks": [],
+            "decoder": [
+              {
+                "base": 2164326400,
+                "cursor": 2164326404,
+                "error": 0,
+                "length": 4,
+                "operation": "word",
+                "returned": 305419896
+              }
+            ],
+            "final_heap": null,
+            "input_sha256": "1a2de690568587e6cd9adbd7d9f65ef269becd2f89fb89c224975b0c5944b973",
+            "owner_after": null,
+            "parsed": null,
+            "returned": 305419896
+          },
+          "steps": 44
+        },
+        {
+          "name": "sensor_decoder_huge_slice",
+          "observed": {
+            "ack": 165,
+            "actions": [],
+            "callbacks": [],
+            "decoder": [
+              {
+                "base": 2164326400,
+                "cursor": 2164326400,
+                "error": 2,
+                "length": 2,
+                "operation": "data:4294967295",
+                "returned": 0
+              },
+              {
+                "base": 2164326400,
+                "cursor": 2164326401,
+                "error": 2,
+                "length": 2,
+                "operation": "byte",
+                "returned": 97
+              }
+            ],
+            "final_heap": null,
+            "input_sha256": "fb8e20fc2e4c3f248c60c39bd652f3c1347298bb977b8b4d5903b85055620603",
+            "owner_after": null,
+            "parsed": null,
+            "returned": 97
+          },
+          "steps": 82
+        }
+      ],
+      "hardware_execution": false,
+      "platform": "sensor"
+    }
+  },
+  "replayed_sender_wire_sha256": "9ea08a2299ca28aa1c4ffd6a018ecb156779b86447792d3f661eff2f52e7e36c",
+  "sensor_sha256": "06f07541e8bb22b6118f081e791c3a4e40cbff2decd8ee478a7e82df826e9d0f",
+  "validation_sha256": {
+    "main": "b0be0fa10f9432b2aea573da2ca9405cafea884b3afca43255a97b94a3a034f3",
+    "sensor": "e7dfc56a8977e10e5ffed6828e8ac285f3e83049ed38d5d72ade5ed080a69804"
+  },
+  "vectors_sha256": "a3255c81c97ae78bd2b26185b923f69cdc70c7782a78d29c42103b572b6beb26"
+}

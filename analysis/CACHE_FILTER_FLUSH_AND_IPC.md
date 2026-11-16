@@ -233,3 +233,8 @@ actual event registration/scheduling/cleanup, transport/rpmsg operation, queue
 concurrency and corrupted producer records, complete producer/fusion and other
 optical modes, calibration, boot/recovery and physical verification. The
 project is still short of independently booting and operating the watch.
+
+The subsequent [receiver pass](CACHE_RECEIVER_AND_OWNERSHIP.md) replays the
+captured sender fixture on main and sensor, executes copied-buffer fixup and
+listener ownership, and records bounded malformed-input behavior. Actual
+transport, application listeners and hardware operation remain open.

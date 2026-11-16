@@ -1146,6 +1146,37 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    and [analysis/cache-pipeline.json](analysis/cache-pipeline.json). Vendor
    material remains ignored; no phone/watch configuration or firmware changed.
 
+## 2026-11-16 — main/sensor cache receiver and consumer ownership
+
+1. Executed native decoder/parser counterparts on both cores: borrowed slices,
+   little-endian u32, distinct initial/error states and sticky errors that do
+   not suppress later fitting reads. Opcode 21 accepts trailing bytes but
+   rejects zero/oversized declared payloads. One input hash exactly matches
+   the preceding native sender's captured `flush_one` wire.
+2. Executed both receive callbacks and opcode-21 handlers through copy into
+   a new buffer, native pointer reconstruction, configured consumer bridge
+   and listener dispatch. Missing-handler/allocation/error paths are checked.
+   Main uses pool 5, sensor pool 4. Borrowed input stays unchanged; its transport
+   release is not executed. Main default callback setup is recorded statically.
+3. Checked parent-buffer lifetime through actual native reference arithmetic
+   and synthetic capturing/retaining listeners. Before-owner/after-owner and
+   deferred-release snapshots show retained buffers surviving handler return;
+   last release clears magic before the free-service boundary. Critical/OS
+   boundaries and registration remain supplied, not live concurrency evidence.
+4. Executed bounded zero/overrun/partly valid record cases that still reach
+   dispatch. A synthetic inner count of two in a one-descriptor-sized record
+   makes both cores write a pointer 28 bytes into a 128-byte guard beyond the
+   allocation. Valid cases preserve that guard. No live reachability, allocator
+   corruption or device crash is claimed; application callbacks only capture
+   opaque bytes and do not dereference malformed pointers.
+5. All 66 native cases pass (33 per core: eight decoder, eleven parser,
+   fourteen receive), totaling 16,439 bounded steps including intercepted
+   calls. Added 21 host tests; all 392 Python tests pass. Thirty-six fresh
+   exports, code/fixture/result hashes and reproduction are recorded in
+   [analysis/CACHE_RECEIVER_AND_OWNERSHIP.md](analysis/CACHE_RECEIVER_AND_OWNERSHIP.md)
+   and [analysis/cache-receiver.json](analysis/cache-receiver.json). Vendor
+   material remains ignored. No phone/watch settings or firmware changed.
+
 ## Next work
 
 - Regenerate selected native paths with startup-aware mappings, corrected
@@ -1155,9 +1186,10 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
   IPC pipeline; the selected FIFO fault/recovery/cache primitives, coordinated
   flush, packet allocation/rebinding and mode-1 consumer now have bounded
   native coverage; selected reference/free-call, listener/cache queue and
-  mode-2/3 paths now have coverage too. Follow normalized driver reads, cache
-  receiver parsing/reconstruction, event scheduling/cleanup and transport
-  beyond the now-covered filter/flush/event/opcode-21 send boundary. Continue
+  mode-2/3 paths now have coverage too. Follow normalized driver reads, actual
+  cache listener registration/application consumers, event scheduling/cleanup
+  and transport beyond the now-covered opcode-21 send and main/sensor receive
+  boundaries. Continue
   remaining modes, fusion, malformed input and concurrency paths.
   Validate electrical SPI mode/timing, DMA ownership and live
   sensor operation before implementing hardware code. The selected adapter's
