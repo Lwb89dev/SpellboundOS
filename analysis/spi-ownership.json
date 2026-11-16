@@ -1,0 +1,405 @@
+{
+  "byte_range_sha256": {
+    "80f15888_14": "517272d026fa49dcd64667ad30b7deea07b94e1ff39f4e43002403557999d299",
+    "80f1589c_24": "f3d2d26656d566ba5fc722b14a9492ce52f81ffe5da7c4cd70e2102bf90194d4",
+    "80f7304c_40": "a52b14bb5c8cfcd61552322a186b65f96f7d1ee5ccffb686c9c616365295b432",
+    "80f73152_2a": "f416a1469fd4f805fde426e34688721360d18d4909d639e52c96b6986ff4b4ac",
+    "80f7b2d4_98": "64ec0cc26aa1a622b896eb5be81f0cff118bd2bc71073c657a8ef3314f2e54bf",
+    "80f7b3a0_80": "ef6ccf0de52467167ad57336c48a39035a7fc2291b8f402805036b54d0a25ff8",
+    "80f7b3e8_38": "130bf3eaa32a50f8444fcb3e24854dbdd8ab64d186660c10d22bb9053e1b9642",
+    "80f7bdbc_e": "0c779278011a9524660c57136188feacc70bffd6f804bf047d7604bf686a5944",
+    "80f7ed84_200": "6ca39c83319e930d68cc9a754780e037dda86a9b2fa998b95f96f0095a185bda",
+    "80f8965c_34e": "0c9fe44af7d6dbc29c0363ae54729d568f5e950bbaa3be40f93cc58545c6a91e"
+  },
+  "chip_select": {
+    "release": {
+      "address": 2432708624,
+      "value": 512
+    },
+    "take": {
+      "address": 2432708628,
+      "value": 512
+    }
+  },
+  "device_ops": [
+    2163716800,
+    2163717124,
+    2163717096,
+    2163716904,
+    2163716820
+  ],
+  "examples": {
+    "completion": {
+      "result": 0,
+      "trace": [
+        "deselect",
+        "mutex_release",
+        "user_callback"
+      ]
+    },
+    "completion_after_flag_clear": {
+      "result": 0,
+      "trace": [
+        "user_callback"
+      ]
+    },
+    "dma": {
+      "release_deferred": true,
+      "result": 0,
+      "trace": [
+        "mutex_take",
+        "select",
+        "dma_operation"
+      ]
+    },
+    "dma_unavailable": {
+      "release_deferred": false,
+      "result": 0,
+      "trace": []
+    },
+    "mutex_failure": {
+      "release_deferred": false,
+      "result": 0,
+      "trace": [
+        "mutex_take",
+        "select",
+        "poll_operation",
+        "deselect",
+        "mutex_release"
+      ]
+    },
+    "poll": {
+      "release_deferred": false,
+      "result": 0,
+      "trace": [
+        "mutex_take",
+        "select",
+        "poll_operation",
+        "deselect",
+        "mutex_release"
+      ]
+    }
+  },
+  "export_sha256": {
+    "80f7304c.c": "e7d5b6f0dbc5e99c4009d364f37fc9ee7f5d232b14e182b2b22833b330b507e1",
+    "80f73152.c": "a8144a6f8dee7b68784efea3733da8a89519dd7e9d1ab73b28a939172c3d2dfe",
+    "80f7b2c0.c": "3a2b42264c57a3b29145eee71b1172822aefc324984957a2948f923b1abc9e60",
+    "80f7b2d4.c": "a6a34fb640a83cf885e181d3c9f251fac99f93a159fd388be0417cabd78163db",
+    "80f7b328.c": "dd695391cd3c243a34fe2ae687f16c7358039ea9a557fd6580528b3614746f7b",
+    "80f7b3e8.c": "e75dab2a9bd424c25dabb2db90e29dcf4926352164a2e670923c03730c3162bb",
+    "80f7b404.c": "449276356480d486a6d8705046592dd155a67cdacbc61be4b20fdaed92324428",
+    "80f7bdbc.c": "a5134d3564e2fe4caef417f8a9ae0439f5783928075f3f25cf20e4b961713714",
+    "80f802de.c": "e9cf2b4ea4217000626edca0e04d4677232a4f9fde2c1e4f903e4e94a83562df",
+    "80f80382.c": "33b7f35ab24c7014e654244e795cc7d5bcac4b698958c2cc47fae1142fb9086b",
+    "80f8965c.c": "301ff0f476d80942c53adb580066611456d88c25abb36662692501b27b520216",
+    "80f896d8.c": "07536c14316c9090332f744d95a5682f27416a015fbecb567db0efc5e9a5ba49",
+    "80f89756.c": "106fba595ea129baf031c82d0b3627416769982933817e4cbba1e84b38f7de0f",
+    "80f897bc.c": "e2d9775315cc127099772319cc247350799e5e002fec62af24b9037deead76ab",
+    "80f898ae.c": "21b6388268be56ebea90d445ea9e4ff93b59ec831c97868aff0c1243fae63bf9",
+    "80f899aa.c": "ae4ffb35cc4596c8763007d41178061d95e026395a6cfd339f20b69c8be42dd3",
+    "80f89a6a.c": "505f5c7cee4fef06b5d187e67d3155da8c4263bb12a2e731d4b297ba584772ef"
+  },
+  "initial_bus_ops": [
+    2163716972,
+    2163716792,
+    2163717072,
+    2163717048,
+    2163717024,
+    0,
+    0,
+    0,
+    0
+  ],
+  "limitations": [
+    "Native cases stub mutex, diagnostics, operation and user callbacks; no DMA/hardware/scheduler execution.",
+    "Integrated polling cases execute native HAL using synthetic SPI status/data and scaled timestamps.",
+    "Stock initial optical table has no DMA operations; generic DMA examples use synthetic non-null operations.",
+    "No concurrency, cancellation or exactly-once completion guarantee established.",
+    "Callback consults current DMA flag; caller must establish mutation/lifetime contracts separately.",
+    "GPIO offsets/mask are software stores, not a measured pinout or electrical level.",
+    "Reference callbacks and 16-bit arithmetic are reconstructed; actual power state is unobserved."
+  ],
+  "native_validation": {
+    "chip_select_calls": 2,
+    "completion_calls": 8,
+    "hardware_execution": false,
+    "mutex_and_operation_callbacks": "synthetic",
+    "native_invocations": 48,
+    "public_transfer_cases": 26,
+    "reference_cases": 12
+  },
+  "polling_validation": {
+    "case_count": 13,
+    "cases": [
+      {
+        "clock_reads": 4,
+        "events": [
+          "mutex_take",
+          "select",
+          "deselect",
+          "mutex_release"
+        ],
+        "name": "register_read",
+        "output_byte": 70,
+        "result": 0,
+        "rx_reads": 3,
+        "steps": 272,
+        "tx_bytes": [
+          255,
+          128,
+          0
+        ]
+      },
+      {
+        "clock_reads": 4,
+        "events": [
+          "mutex_take",
+          "select",
+          "deselect",
+          "mutex_release"
+        ],
+        "name": "read_at_limit",
+        "output_byte": 70,
+        "result": 0,
+        "rx_reads": 3,
+        "steps": 272,
+        "tx_bytes": [
+          255,
+          128,
+          0
+        ]
+      },
+      {
+        "clock_reads": 4,
+        "events": [
+          "mutex_take",
+          "select",
+          "deselect",
+          "mutex_release"
+        ],
+        "name": "read_timeout_after_final_byte",
+        "output_byte": 165,
+        "result": -14,
+        "rx_reads": 3,
+        "steps": 280,
+        "tx_bytes": [
+          255,
+          128,
+          0
+        ]
+      },
+      {
+        "clock_reads": 2,
+        "events": [
+          "mutex_take",
+          "select",
+          "deselect",
+          "mutex_release"
+        ],
+        "name": "read_timeout_after_first_byte",
+        "output_byte": 165,
+        "result": -14,
+        "rx_reads": 1,
+        "steps": 226,
+        "tx_bytes": [
+          255
+        ]
+      },
+      {
+        "clock_reads": 2,
+        "events": [
+          "mutex_take",
+          "select",
+          "deselect",
+          "mutex_release"
+        ],
+        "name": "read_busy_timeout",
+        "output_byte": 165,
+        "result": -14,
+        "rx_reads": 0,
+        "steps": 211,
+        "tx_bytes": []
+      },
+      {
+        "clock_reads": 4,
+        "events": [
+          "mutex_take",
+          "select",
+          "deselect",
+          "mutex_release"
+        ],
+        "name": "read_tx_only_timeout",
+        "output_byte": 165,
+        "result": -14,
+        "rx_reads": 0,
+        "steps": 265,
+        "tx_bytes": [
+          255,
+          128,
+          0
+        ]
+      },
+      {
+        "clock_reads": 4,
+        "events": [
+          "mutex_take",
+          "select",
+          "deselect",
+          "mutex_release"
+        ],
+        "name": "read_rx_only_timeout",
+        "output_byte": 165,
+        "result": -14,
+        "rx_reads": 3,
+        "steps": 265,
+        "tx_bytes": []
+      },
+      {
+        "clock_reads": 4,
+        "events": [
+          "mutex_take",
+          "select",
+          "deselect",
+          "mutex_release"
+        ],
+        "name": "read_unsigned_clock_wrap",
+        "output_byte": 70,
+        "result": 0,
+        "rx_reads": 3,
+        "steps": 272,
+        "tx_bytes": [
+          255,
+          128,
+          0
+        ]
+      },
+      {
+        "clock_reads": 0,
+        "events": [],
+        "name": "read_missing_operations",
+        "output_byte": 0,
+        "result": 0,
+        "rx_reads": 0,
+        "steps": 46,
+        "tx_bytes": []
+      },
+      {
+        "clock_reads": 0,
+        "events": [],
+        "name": "read_dma_unavailable",
+        "output_byte": 0,
+        "result": 0,
+        "rx_reads": 0,
+        "steps": 48,
+        "tx_bytes": []
+      },
+      {
+        "clock_reads": 4,
+        "events": [
+          "mutex_take",
+          "select",
+          "deselect",
+          "mutex_release"
+        ],
+        "name": "register_write",
+        "output_byte": 165,
+        "result": 0,
+        "rx_reads": 0,
+        "steps": 233,
+        "tx_bytes": [
+          255,
+          0,
+          171
+        ]
+      },
+      {
+        "clock_reads": 4,
+        "events": [
+          "mutex_take",
+          "select",
+          "deselect",
+          "mutex_release"
+        ],
+        "name": "write_timeout_after_final_byte",
+        "output_byte": 165,
+        "result": -14,
+        "rx_reads": 0,
+        "steps": 244,
+        "tx_bytes": [
+          255,
+          0,
+          171
+        ]
+      },
+      {
+        "clock_reads": 1,
+        "events": [],
+        "name": "zero_length_hal",
+        "output_byte": 165,
+        "result": 0,
+        "rx_reads": 0,
+        "steps": 44,
+        "tx_bytes": []
+      }
+    ],
+    "hardware_execution": false,
+    "synthetic_inputs": [
+      "SPI status/data",
+      "scaled timestamps",
+      "mutex outcomes"
+    ]
+  },
+  "polling_validation_sha256": "3e7c0eb6beca799257cc9546c3cf3047b486724716405ce0b68c3213984fc3c8",
+  "reference_examples": [
+    {
+      "before": 0,
+      "count": 0,
+      "enable": false,
+      "invoke_callback": true
+    },
+    {
+      "before": 0,
+      "count": 1,
+      "enable": true,
+      "invoke_callback": true
+    },
+    {
+      "before": 1,
+      "count": 0,
+      "enable": false,
+      "invoke_callback": true
+    },
+    {
+      "before": 1,
+      "count": 2,
+      "enable": true,
+      "invoke_callback": true
+    },
+    {
+      "before": 2,
+      "count": 1,
+      "enable": false,
+      "invoke_callback": false
+    },
+    {
+      "before": 2,
+      "count": 3,
+      "enable": true,
+      "invoke_callback": true
+    },
+    {
+      "before": 65535,
+      "count": 65534,
+      "enable": false,
+      "invoke_callback": false
+    },
+    {
+      "before": 65535,
+      "count": 0,
+      "enable": true,
+      "invoke_callback": false
+    }
+  ],
+  "sensor_sha256": "06f07541e8bb22b6118f081e791c3a4e40cbff2decd8ee478a7e82df826e9d0f",
+  "validation_sha256": "984e4c6edc09cf4cbd8c530205db53ccf694f52b2f79e15adeb5c8bab2892d26"
+}

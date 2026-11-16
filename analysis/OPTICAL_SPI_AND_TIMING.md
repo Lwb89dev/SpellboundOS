@@ -1,5 +1,11 @@
 # Optical SPI backend, polling completion and delay contracts
 
+Follow-up: [bus ownership/completion](SPI_OWNERSHIP_AND_COMPLETION.md) recovers
+selection/release ordering, initial null DMA slots and reference callbacks.
+[Integrated native register execution](SPI_REGISTER_NATIVE_EXECUTION.md) follows
+actual wrappers through polling under synthetic peripheral inputs, including
+final-byte timeouts and zero-result reads with absent operations.
+
 This continues [optical board reconstruction](PPG_AND_SENSOR_MEMORY.md) and
 [FIFO framing](PPG_FIFO_AND_IPC.md) using corrected sensor-hub decompilation
 and runtime-address instructions from OTA 4.6.0.3. It recovers additional

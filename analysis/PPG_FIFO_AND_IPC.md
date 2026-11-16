@@ -3,6 +3,9 @@
 Follow-up: [SPI and timing contracts](OPTICAL_SPI_AND_TIMING.md) resolves the
 lower transfer timeout to a strict `delta > limit` check after data movement,
 and records the selected controller binding/configuration and error conversion.
+[Integrated native register checks](SPI_REGISTER_NATIVE_EXECUTION.md) execute
+that order through the upper register wrappers using synthetic inputs;
+the batching/FIFO reader remains a separate, not fully executed path.
 
 Static analysis of the sensor-hub member in OTA 4.6.0.3, SHA-256
 `06f07541e8bb22b6118f081e791c3a4e40cbff2decd8ee478a7e82df826e9d0f`.

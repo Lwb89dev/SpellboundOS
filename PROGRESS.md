@@ -985,6 +985,39 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    reports; vendor-derived code, images, databases and tools remain ignored.
    No watch/phone configuration or firmware change occurred.
 
+## 2026-11-16 — SPI ownership, references and integrated register transactions
+
+1. Followed public transmit/full-duplex calls through bus take/release and
+   device operations. Confirmed discarded mutex/release outcomes, immediate
+   release after selected failures, and deferred release in the generic DMA
+   success branch. The complete initial optical bus table has four null
+   trailing slots, including every recovered DMA operation/registration slot;
+   the reviewed optical binding supplies polling, not a DMA implementation.
+   Native completion cases confirm current-flag lookup, release-before-user
+   callback, and repeated callback effects without a latch in that body.
+2. Followed actual chip-select adapters to separate full-word GPIO stores at
+   bank offsets `+0x14`/`+0x10`, mask `0x200`. Recovered the 16-bit resource
+   reference field and callback conditions, including increment wrap and
+   repeated disable-at-zero behavior. Forty-eight native invocations pass
+   across transfer, completion, chip-select and reference paths; mutex,
+   operation, critical-section and resource/user outcomes are synthetic.
+3. Executed the actual register wrappers, bus/CS adapters and polling HAL
+   together with synthetic peripheral status/data and timestamps. Thirteen
+   native cases verify exact TX bytes, RX/timestamp counts, result/output,
+   event order and ABI preservation. A final-byte timeout leaves the caller's
+   output unchanged even after all RX bytes are read. An absent operation or
+   unconfigured DMA slot can return zero without a transfer and copy the local
+   dummy byte. The tests neither measure a chip ID nor execute a physical bus.
+4. Added 15 host tests: all 287 Python tests pass with signature/cipher
+   dependencies. Across these blocks, 61 new native invocations pass.
+   [analysis/SPI_OWNERSHIP_AND_COMPLETION.md](analysis/SPI_OWNERSHIP_AND_COMPLETION.md)
+   and [analysis/SPI_REGISTER_NATIVE_EXECUTION.md](analysis/SPI_REGISTER_NATIVE_EXECUTION.md)
+   describe the contracts and limits. Reproducible
+   [analysis/spi-ownership.json](analysis/spi-ownership.json) fingerprints 17
+   selected exports, complete initial tables, instruction ranges and private
+   validation reports. Vendor-derived code/images/tools/databases remain
+   ignored; no phone/watch configuration or firmware change occurred.
+
 ## Next work
 
 - Regenerate selected native paths with startup-aware mappings, corrected
@@ -993,7 +1026,8 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
 - Follow MAX8617X initialization/FIFO paths, interrupt handling and the health
   IPC pipeline; validate electrical SPI mode/timing, DMA ownership and live
   sensor operation before implementing hardware code. The selected adapter's
-  flag/divider/polling arithmetic is now recorded.
+  flag/divider/polling arithmetic and bus/completion/reference contracts are
+  now recorded; generic DMA behavior does not prove a configured optical DMA path.
 - Audit remaining BBS/volatile-affected exports beyond the selected IPC paths.
   Establish physical timer frequency/continuity across power states and shared-memory attributes/coherency;
   extend guarded DSP support only as required by selected paths. Validate live IRQ/wake/endpoint/
