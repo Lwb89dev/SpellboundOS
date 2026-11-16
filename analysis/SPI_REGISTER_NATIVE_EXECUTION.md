@@ -1,5 +1,10 @@
 # Native optical register transactions with synthetic peripheral inputs
 
+Follow-up: [FIFO lifecycle](PPG_FIFO_LIFECYCLE.md) follows supplied SPI outcomes
+into the native batching reader, metadata reset, recovery notification and
+selected cache/sample primitives. The full consumer and actual sensor remain
+outside these host executions.
+
 This pass extends the earlier adapter-only checks by executing the actual
 register wrappers, public SPI transfer, bus acquisition/release, chip-select
 adapters and polling HAL together under corrected SLEIGH. It complements

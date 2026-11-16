@@ -1018,13 +1018,45 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    validation reports. Vendor-derived code/images/tools/databases remain
    ignored; no phone/watch configuration or firmware change occurred.
 
+## 2026-11-16 — native FIFO faults, recovery notification and sample primitives
+
+1. Restored the FIFO reader's kernel-tick return path and the identity helper
+   at `0x80f80aa0`. The entry-to-entry guard uses unsigned 32-bit kernel ticks,
+   not the SPI HAL's scaled memory counter. Recovered status-error fallback,
+   pre-rounding capacity checks, frame-total/auxiliary updates and cache wrap.
+   Supplied burst failures can still cache retained bytes or mixed partial
+   words, because native decoding discards the transfer's result.
+2. Executed actual recovery, metadata reset and register-recovery instructions.
+   Confirmed the active-byte gate, fields/buffers not reset, prefix data retained
+   on frame errors, and reuse of the prior register byte after a supplied
+   recovery read failure. With one synthetic listener registered, the native
+   kind-2/sensor-6 event reaches control request `(6,0x81,0,0)`; execution stops
+   before allocation, worker queues, ownership routing and IPC.
+3. Executed selected cache-pop and signed-sample primitives, including empty
+   results, read-index wrap, auxiliary flag handling, signed 20-bit boundaries
+   and tag diagnostics that still return a sample. The complete consumer,
+   calibration and final health-measurement pipeline remain open.
+4. Forty-five native cases pass against an independently authored state/buffer
+   model: 28 FIFO, six recovery, one reset, four pop and six sample cases.
+   They check complete staging/ring hashes, metadata, call actions, relevant
+   returns/flags and ABI preservation. The run has 19,258 bounded steps,
+   including intercepted calls. SPI/context/tick inputs are synthetic; no
+   physical fault incidence, timing, chip identity or recovery success is claimed.
+5. Added 18 host tests: all 305 Python tests pass with cipher/signature
+   dependencies. [analysis/PPG_FIFO_LIFECYCLE.md](analysis/PPG_FIFO_LIFECYCLE.md)
+   and reproducible [analysis/ppg-fifo-lifecycle.json](analysis/ppg-fifo-lifecycle.json)
+   record 16 export fingerprints, exact native ranges, synthetic vectors and
+   checked execution results. Vendor images/code/tools/databases remain ignored.
+   No phone/watch configuration or firmware change occurred.
+
 ## Next work
 
 - Regenerate selected native paths with startup-aware mappings, corrected
   logger return behavior and register-save ABI effects. Current pseudocode
   counts must not be treated as semantic coverage.
-- Follow MAX8617X initialization/FIFO paths, interrupt handling and the health
-  IPC pipeline; validate electrical SPI mode/timing, DMA ownership and live
+- Follow the complete MAX8617X mode/consumer/calibration paths and the health
+  IPC pipeline; the selected FIFO fault/recovery/cache primitives now have
+  bounded native coverage. Validate electrical SPI mode/timing, DMA ownership and live
   sensor operation before implementing hardware code. The selected adapter's
   flag/divider/polling arithmetic and bus/completion/reference contracts are
   now recorded; generic DMA behavior does not prove a configured optical DMA path.

@@ -1,0 +1,1319 @@
+{
+  "byte_range_sha256": {
+    "80f63aa6_c8": "033701dd09e14f26b22979b56ec46eae80e8151e98764a72a5a7a89b44313944",
+    "80f63f6c_e": "6d92fd44f71c812d9a7f0e4a26fea11cddde2dd3ee90abff0d808129c9eb9f8a",
+    "80f72e86_da": "144bac09340c6d9c88e175034a4682fe5449533b230c1955b12217f45adf5527",
+    "80f738be_8a": "e3e1c41c50337b45eb3d850844d360b6b8851414629def94e105e1c9b8b382fa",
+    "80f74526_272": "98b23e61205b0483933b6d19d41e48df208ad1235e181c2e65b4fa6a4f582e91",
+    "80f7f958_1a": "ce75a6c73072e2051687b5b98ab0cbe95dbd292fdd7a89826b63d745184218e3",
+    "80f80aa0_2": "7529d4e6ceb037815e2664a7277abb404b02f0bf9ddbf5c11658f52448221cba",
+    "80f8263e_14": "5a65cbca233574fcc3d51f8f96ff00b4f78926c24f0f2df94cfab8b1b090395d",
+    "80fa40b0_14": "39d5c6d8d55c4466137cd1d5730fdbd3594697016a8aa15d6fbb70912d1a06d1"
+  },
+  "cache": {
+    "address": 2163541820,
+    "staging": 2163539768,
+    "staging_host_bytes": 2052,
+    "words": 1000
+  },
+  "export_sha256": {
+    "80f63aa6.c": "8bddd3435478a28da93bc71d241fcac0cd5243d35bfd3caf24779bedb845f12c",
+    "80f63f6c.c": "74325bc09365bd230d149c7613748448f6f19f2e430768e0dd9c9e5a9db1c764",
+    "80f72e86.c": "2a64edc791367f6e78f12bb88958b7e9a5d8b5eecb354a6b0a9ca293ab4c0b05",
+    "80f72ea4.c": "6457404148596faed85da782bf43f17f30f7df867aa2b89200e7685961984b61",
+    "80f72f18.c": "de2dae9c98622ddcfbc73efdbf2a6634155713f7c69a78988ebaa53b20b047ef",
+    "80f738be.c": "84d51a7d84fd8230b57143f359e99454d5566560544759e8ac90df36d6cafae5",
+    "80f73906.c": "605b3a566b155623c08337195e9f3569b5d7a796a27b7ffe1ec9e4795ce0cef2",
+    "80f74526.c": "fcccafd26c9e8793845d5b564e281353ae339d49d84e6d120c9a6d14c255b9f3",
+    "80f747c0.c": "8768a69ab8cd0afdaf026519f41dd58a2d7de3264cd41e95cad8e27b76b4f464",
+    "80f75bf6.c": "9b12e087128c9c2d4eb788f56fc78a33c1fc3cf55e8bc507ef36fb631e6aa6c3",
+    "80f7f958.c": "df8c497dacdba7eef48a49b8156dff8b6c41941dde4de8f0dacaecd8cf3b6dcc",
+    "80f80aa0.c": "d7197d4196d4f0be697c599c8fd9a4e41ae9d53fdf501bd77211da2213b84a41",
+    "80f8263e.c": "81c7a69243230bba3ead8522171f2b61cb3e19044c3c3e26e8f16ae8c064fc49",
+    "80f82648.c": "981b18dd0ff4e4ab7d4b628d633b6ccbebb957d12323f56f7a90fd14a6a71b49",
+    "80fa286a.c": "c61fe834e2ea1f0e77934166d6aea27c987a1b71a8a8e6853b51d54d57f388a5",
+    "80fa40b0.c": "d4fa992f33d6ab09654052d5a55e2fd8d75ad0a3dac8d1e961306ab9cf501252"
+  },
+  "kernel_tick_address": 2163306916,
+  "limitations": [
+    "SPI outcomes, contexts, ticks and callback-list registration are synthetic; no device/scheduler execution.",
+    "Native FIFO ignores supplied burst result and decodes remaining staging bytes; no live fault incidence established.",
+    "Event dispatch uses one synthetic registered listener and stops at control request 0x81; worker/IPC effects not executed.",
+    "Frame range 0..32 and valid ring metadata are host bounds; corrupted pointers and concurrency are excluded.",
+    "Sample helper only sign-extends and logs tags; complete consumer, calibration and health algorithms remain open."
+  ],
+  "native_validation": {
+    "bound_per_case": 100000,
+    "case_count": 45,
+    "cases": [
+      {
+        "actions": [
+          "read:3",
+          "read:4",
+          "bulk:10"
+        ],
+        "flags": 160,
+        "kind": "fifo",
+        "name": "complete_frames",
+        "returned": null,
+        "ring_sha256": "6987f2415bd999e0fd6a4267c83d2e78ba1f2e2269a9af7131bf197458f1a120",
+        "stage_sha256": "36d585fe835a6f8eb2f4f8af4e43379d1b72185ded37706c076f725c10575ec8",
+        "state": {
+          "auxiliary": 2,
+          "base_frame": 2,
+          "count": 2,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 10,
+          "last_tick": 100,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 2
+        },
+        "steps": 170
+      },
+      {
+        "actions": [
+          "read:3",
+          "read:4",
+          "bulk:10"
+        ],
+        "flags": 160,
+        "kind": "fifo",
+        "name": "ring_wrap",
+        "returned": null,
+        "ring_sha256": "e152b3043d95ed6a2570f2714f0c975e8ece8db1d1b67a30538214f5c4dfee85",
+        "stage_sha256": "36d585fe835a6f8eb2f4f8af4e43379d1b72185ded37706c076f725c10575ec8",
+        "state": {
+          "auxiliary": 2,
+          "base_frame": 2,
+          "count": 12,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 10,
+          "last_tick": 100,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 989,
+          "write": 1
+        },
+        "steps": 171
+      },
+      {
+        "actions": [
+          "read:3",
+          "read:4",
+          "bulk:10"
+        ],
+        "flags": 160,
+        "kind": "fifo",
+        "name": "burst_failure_stale_payload",
+        "returned": null,
+        "ring_sha256": "1946fbabc43a91753dc377d065fe1b974cd5c2f4dbd772d8af6839c57b1fb809",
+        "stage_sha256": "90a48713bbf15ef73a715151a2d818f9ad162e7bde46b95d5f59f09300e9c895",
+        "state": {
+          "auxiliary": 2,
+          "base_frame": 2,
+          "count": 2,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 10,
+          "last_tick": 100,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 2
+        },
+        "steps": 170
+      },
+      {
+        "actions": [
+          "read:3",
+          "read:4",
+          "bulk:10"
+        ],
+        "flags": 160,
+        "kind": "fifo",
+        "name": "burst_failure_complete_payload",
+        "returned": null,
+        "ring_sha256": "6987f2415bd999e0fd6a4267c83d2e78ba1f2e2269a9af7131bf197458f1a120",
+        "stage_sha256": "36d585fe835a6f8eb2f4f8af4e43379d1b72185ded37706c076f725c10575ec8",
+        "state": {
+          "auxiliary": 2,
+          "base_frame": 2,
+          "count": 2,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 10,
+          "last_tick": 100,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 2
+        },
+        "steps": 170
+      },
+      {
+        "actions": [
+          "read:3",
+          "read:4",
+          "bulk:10"
+        ],
+        "flags": 160,
+        "kind": "fifo",
+        "name": "burst_failure_partial_word",
+        "returned": null,
+        "ring_sha256": "19401a476496b9b22a8de75f581adf07c50154d94b07e1f29ca319af6b3ca19d",
+        "stage_sha256": "5cdc37f5682676c8d726be5937c5bcba7280b28d02a6eb6162c96ac880e66966",
+        "state": {
+          "auxiliary": 2,
+          "base_frame": 2,
+          "count": 2,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 10,
+          "last_tick": 100,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 2
+        },
+        "steps": 170
+      },
+      {
+        "actions": [
+          "read:3",
+          "read:4"
+        ],
+        "flags": 160,
+        "kind": "fifo",
+        "name": "both_status_reads_fail",
+        "returned": null,
+        "ring_sha256": "bdb8c630bb7515d960ff47110e8f444c143701cc039e2f2ba2d3b360ecf9f640",
+        "stage_sha256": "2843c69f0ac1c8d74a7cfdde7cbf9d7a24ff693a61f1eb19c71b017d09fac378",
+        "state": {
+          "auxiliary": 0,
+          "base_frame": 2,
+          "count": 0,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 9,
+          "last_tick": 100,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 0
+        },
+        "steps": 59
+      },
+      {
+        "actions": [
+          "read:3",
+          "read:4",
+          "bulk:10"
+        ],
+        "flags": 160,
+        "kind": "fifo",
+        "name": "high_status_read_fails",
+        "returned": null,
+        "ring_sha256": "6987f2415bd999e0fd6a4267c83d2e78ba1f2e2269a9af7131bf197458f1a120",
+        "stage_sha256": "36d585fe835a6f8eb2f4f8af4e43379d1b72185ded37706c076f725c10575ec8",
+        "state": {
+          "auxiliary": 2,
+          "base_frame": 2,
+          "count": 2,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 10,
+          "last_tick": 100,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 2
+        },
+        "steps": 170
+      },
+      {
+        "actions": [
+          "read:3",
+          "read:4"
+        ],
+        "flags": 160,
+        "kind": "fifo",
+        "name": "low_status_read_fails",
+        "returned": null,
+        "ring_sha256": "bdb8c630bb7515d960ff47110e8f444c143701cc039e2f2ba2d3b360ecf9f640",
+        "stage_sha256": "2843c69f0ac1c8d74a7cfdde7cbf9d7a24ff693a61f1eb19c71b017d09fac378",
+        "state": {
+          "auxiliary": 0,
+          "base_frame": 2,
+          "count": 0,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 9,
+          "last_tick": 100,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 0
+        },
+        "steps": 59
+      },
+      {
+        "actions": [
+          "read:3",
+          "read:4"
+        ],
+        "flags": 160,
+        "kind": "fifo",
+        "name": "no_complete_frame",
+        "returned": null,
+        "ring_sha256": "bdb8c630bb7515d960ff47110e8f444c143701cc039e2f2ba2d3b360ecf9f640",
+        "stage_sha256": "2843c69f0ac1c8d74a7cfdde7cbf9d7a24ff693a61f1eb19c71b017d09fac378",
+        "state": {
+          "auxiliary": 0,
+          "base_frame": 2,
+          "count": 0,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 9,
+          "last_tick": 100,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 0
+        },
+        "steps": 59
+      },
+      {
+        "actions": [
+          "read:3",
+          "read:4"
+        ],
+        "flags": 160,
+        "kind": "fifo",
+        "name": "zero_frame",
+        "returned": null,
+        "ring_sha256": "bdb8c630bb7515d960ff47110e8f444c143701cc039e2f2ba2d3b360ecf9f640",
+        "stage_sha256": "2843c69f0ac1c8d74a7cfdde7cbf9d7a24ff693a61f1eb19c71b017d09fac378",
+        "state": {
+          "auxiliary": 0,
+          "base_frame": 2,
+          "count": 0,
+          "enabled": true,
+          "frame": 0,
+          "frame_total": 9,
+          "last_tick": 100,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 0
+        },
+        "steps": 59
+      },
+      {
+        "actions": [
+          "read:3",
+          "read:4",
+          "bulk:14"
+        ],
+        "flags": 160,
+        "kind": "fifo",
+        "name": "round_to_frame",
+        "returned": null,
+        "ring_sha256": "7cbbf4e3d7377291b126cd90aeaef5b16cb6b4ff039514781d884bb922c67ce5",
+        "stage_sha256": "6031a583d7faaf84774905dee259977ccb8dc53655d443b08006d953c0c8c402",
+        "state": {
+          "auxiliary": 3,
+          "base_frame": 2,
+          "count": 3,
+          "enabled": true,
+          "frame": 3,
+          "frame_total": 10,
+          "last_tick": 100,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 3
+        },
+        "steps": 200
+      },
+      {
+        "actions": [
+          "read:3",
+          "read:4",
+          "read:9",
+          "write:9:21",
+          "read:13",
+          "write:13:18",
+          "write:13:16",
+          "event:0206000000000000",
+          "control:6:129:0:0"
+        ],
+        "flags": 160,
+        "kind": "fifo",
+        "name": "fifo_count_512",
+        "returned": null,
+        "ring_sha256": "bdb8c630bb7515d960ff47110e8f444c143701cc039e2f2ba2d3b360ecf9f640",
+        "stage_sha256": "2843c69f0ac1c8d74a7cfdde7cbf9d7a24ff693a61f1eb19c71b017d09fac378",
+        "state": {
+          "auxiliary": 0,
+          "base_frame": 2,
+          "count": 0,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 9,
+          "last_tick": 0,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 0
+        },
+        "steps": 161
+      },
+      {
+        "actions": [
+          "read:3",
+          "read:4",
+          "read:9",
+          "write:9:21",
+          "read:13",
+          "write:13:18",
+          "write:13:16",
+          "event:0206000000000000",
+          "control:6:129:0:0"
+        ],
+        "flags": 160,
+        "kind": "fifo",
+        "name": "overflow_before_rounding",
+        "returned": null,
+        "ring_sha256": "bdb8c630bb7515d960ff47110e8f444c143701cc039e2f2ba2d3b360ecf9f640",
+        "stage_sha256": "2843c69f0ac1c8d74a7cfdde7cbf9d7a24ff693a61f1eb19c71b017d09fac378",
+        "state": {
+          "auxiliary": 0,
+          "base_frame": 2,
+          "count": 0,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 9,
+          "last_tick": 0,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 0
+        },
+        "steps": 176
+      },
+      {
+        "actions": [
+          "read:3",
+          "read:4",
+          "bulk:10"
+        ],
+        "flags": 160,
+        "kind": "fifo",
+        "name": "cache_exactly_full",
+        "returned": null,
+        "ring_sha256": "9a0545bfc88334772a33e63fab13bad751af6d2c75341c582d1f7a2052c17ce4",
+        "stage_sha256": "36d585fe835a6f8eb2f4f8af4e43379d1b72185ded37706c076f725c10575ec8",
+        "state": {
+          "auxiliary": 2,
+          "base_frame": 2,
+          "count": 1000,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 10,
+          "last_tick": 100,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 0
+        },
+        "steps": 171
+      },
+      {
+        "actions": [
+          "read:3",
+          "read:4",
+          "bulk:2046"
+        ],
+        "flags": 160,
+        "kind": "fifo",
+        "name": "maximum_511_words",
+        "returned": null,
+        "ring_sha256": "6e8f3a94ad2d085c9499ba0f662acd9a6ab30a5c75922872d5b11ccf6415b320",
+        "stage_sha256": "f813b76827fe7abb047a169ac9a7d5c74c854253809f3972b97e6b543dae4158",
+        "state": {
+          "auxiliary": 511,
+          "base_frame": 2,
+          "count": 511,
+          "enabled": true,
+          "frame": 1,
+          "frame_total": 520,
+          "last_tick": 100,
+          "limit": 100,
+          "mode": 0,
+          "policy": 0,
+          "read": 0,
+          "write": 511
+        },
+        "steps": 14416
+      },
+      {
+        "actions": [
+          "read:3",
+          "read:4",
+          "bulk:10",
+          "read:9",
+          "write:9:21",
+          "read:13",
+          "write:13:18",
+          "write:13:16",
+          "event:0206000000000000",
+          "control:6:129:0:0"
+        ],
+        "flags": 160,
+        "kind": "fifo",
+        "name": "frame_error_after_prefix",
+        "returned": null,
+        "ring_sha256": "185c289a71f59b9dc9c205697adcd93391ed51d3588bbce7043e4499fc809873",
+        "stage_sha256": "dc4713c8ca08feea735ba524d9cafbcd29dba71abc8080b67c9d1467563d8a9d",
+        "state": {
+          "auxiliary": 1,
+          "base_frame": 2,
+          "count": 0,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 11,
+          "last_tick": 0,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 0
+        },
+        "steps": 271
+      },
+      {
+        "actions": [
+          "read:3",
+          "read:4",
+          "bulk:10"
+        ],
+        "flags": 160,
+        "kind": "fifo",
+        "name": "frame_error_recovery_disabled",
+        "returned": null,
+        "ring_sha256": "185c289a71f59b9dc9c205697adcd93391ed51d3588bbce7043e4499fc809873",
+        "stage_sha256": "dc4713c8ca08feea735ba524d9cafbcd29dba71abc8080b67c9d1467563d8a9d",
+        "state": {
+          "auxiliary": 1,
+          "base_frame": 2,
+          "count": 1,
+          "enabled": false,
+          "frame": 1,
+          "frame_total": 11,
+          "last_tick": 100,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 1
+        },
+        "steps": 173
+      },
+      {
+        "actions": [
+          "read:3",
+          "read:4",
+          "bulk:10"
+        ],
+        "flags": 160,
+        "kind": "fifo",
+        "name": "frame_error_non_start_allowed",
+        "returned": null,
+        "ring_sha256": "d24bdb1cdd69fc40e6680cd381c08896dd2ec89a916238adaffd05d7a7fbad19",
+        "stage_sha256": "dc4713c8ca08feea735ba524d9cafbcd29dba71abc8080b67c9d1467563d8a9d",
+        "state": {
+          "auxiliary": 2,
+          "base_frame": 2,
+          "count": 2,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 10,
+          "last_tick": 100,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 2
+        },
+        "steps": 170
+      },
+      {
+        "actions": [
+          "read:3",
+          "read:4",
+          "bulk:10"
+        ],
+        "flags": 160,
+        "kind": "fifo",
+        "name": "frame_error_channel_zero_allowed",
+        "returned": null,
+        "ring_sha256": "d98fa36c9212f2017985c96924ba9e11e102dc42de403845c4402acd26394b72",
+        "stage_sha256": "e8e7dc949552adc67660b7f08210bb37f9f46e3ab90b215dae305f508f6136e8",
+        "state": {
+          "auxiliary": 2,
+          "base_frame": 2,
+          "count": 2,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 10,
+          "last_tick": 100,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 2
+        },
+        "steps": 172
+      },
+      {
+        "actions": [
+          "read:3",
+          "read:4",
+          "bulk:10"
+        ],
+        "flags": 160,
+        "kind": "fifo",
+        "name": "mode_one_does_not_mark",
+        "returned": null,
+        "ring_sha256": "6987f2415bd999e0fd6a4267c83d2e78ba1f2e2269a9af7131bf197458f1a120",
+        "stage_sha256": "36d585fe835a6f8eb2f4f8af4e43379d1b72185ded37706c076f725c10575ec8",
+        "state": {
+          "auxiliary": 5,
+          "base_frame": 2,
+          "count": 2,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 10,
+          "last_tick": 100,
+          "limit": 100,
+          "mode": 1,
+          "policy": 0,
+          "read": 0,
+          "write": 2
+        },
+        "steps": 163
+      },
+      {
+        "actions": [
+          "read:3",
+          "read:4",
+          "bulk:10"
+        ],
+        "flags": 160,
+        "kind": "fifo",
+        "name": "policy_two_does_not_mark",
+        "returned": null,
+        "ring_sha256": "6987f2415bd999e0fd6a4267c83d2e78ba1f2e2269a9af7131bf197458f1a120",
+        "stage_sha256": "36d585fe835a6f8eb2f4f8af4e43379d1b72185ded37706c076f725c10575ec8",
+        "state": {
+          "auxiliary": 5,
+          "base_frame": 2,
+          "count": 2,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 10,
+          "last_tick": 100,
+          "limit": 100,
+          "mode": 2,
+          "policy": 2,
+          "read": 0,
+          "write": 2
+        },
+        "steps": 161
+      },
+      {
+        "actions": [
+          "read:3",
+          "read:4",
+          "bulk:10"
+        ],
+        "flags": 160,
+        "kind": "fifo",
+        "name": "auxiliary_wrap",
+        "returned": null,
+        "ring_sha256": "6987f2415bd999e0fd6a4267c83d2e78ba1f2e2269a9af7131bf197458f1a120",
+        "stage_sha256": "36d585fe835a6f8eb2f4f8af4e43379d1b72185ded37706c076f725c10575ec8",
+        "state": {
+          "auxiliary": 1,
+          "base_frame": 2,
+          "count": 2,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 10,
+          "last_tick": 100,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 2
+        },
+        "steps": 170
+      },
+      {
+        "actions": [
+          "read:3",
+          "read:4",
+          "bulk:10"
+        ],
+        "flags": 160,
+        "kind": "fifo",
+        "name": "timeout_at_limit",
+        "returned": null,
+        "ring_sha256": "6987f2415bd999e0fd6a4267c83d2e78ba1f2e2269a9af7131bf197458f1a120",
+        "stage_sha256": "36d585fe835a6f8eb2f4f8af4e43379d1b72185ded37706c076f725c10575ec8",
+        "state": {
+          "auxiliary": 2,
+          "base_frame": 2,
+          "count": 2,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 10,
+          "last_tick": 100,
+          "limit": 50,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 2
+        },
+        "steps": 175
+      },
+      {
+        "actions": [
+          "read:9",
+          "write:9:21",
+          "read:13",
+          "write:13:18",
+          "write:13:16",
+          "event:0206000000000000",
+          "control:6:129:0:0"
+        ],
+        "flags": 160,
+        "kind": "fifo",
+        "name": "timeout_past_limit",
+        "returned": null,
+        "ring_sha256": "bdb8c630bb7515d960ff47110e8f444c143701cc039e2f2ba2d3b360ecf9f640",
+        "stage_sha256": "2843c69f0ac1c8d74a7cfdde7cbf9d7a24ff693a61f1eb19c71b017d09fac378",
+        "state": {
+          "auxiliary": 0,
+          "base_frame": 2,
+          "count": 0,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 9,
+          "last_tick": 0,
+          "limit": 50,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 0
+        },
+        "steps": 158
+      },
+      {
+        "actions": [],
+        "flags": 160,
+        "kind": "fifo",
+        "name": "timeout_recovery_disabled",
+        "returned": null,
+        "ring_sha256": "bdb8c630bb7515d960ff47110e8f444c143701cc039e2f2ba2d3b360ecf9f640",
+        "stage_sha256": "2843c69f0ac1c8d74a7cfdde7cbf9d7a24ff693a61f1eb19c71b017d09fac378",
+        "state": {
+          "auxiliary": 0,
+          "base_frame": 2,
+          "count": 3,
+          "enabled": false,
+          "frame": 2,
+          "frame_total": 9,
+          "last_tick": 49,
+          "limit": 50,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 3
+        },
+        "steps": 60
+      },
+      {
+        "actions": [
+          "read:3",
+          "read:4",
+          "bulk:10"
+        ],
+        "flags": 160,
+        "kind": "fifo",
+        "name": "tick_rollover_at_limit",
+        "returned": null,
+        "ring_sha256": "6987f2415bd999e0fd6a4267c83d2e78ba1f2e2269a9af7131bf197458f1a120",
+        "stage_sha256": "36d585fe835a6f8eb2f4f8af4e43379d1b72185ded37706c076f725c10575ec8",
+        "state": {
+          "auxiliary": 2,
+          "base_frame": 2,
+          "count": 2,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 10,
+          "last_tick": 1,
+          "limit": 3,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 2
+        },
+        "steps": 175
+      },
+      {
+        "actions": [
+          "read:9",
+          "write:9:21",
+          "read:13",
+          "write:13:18",
+          "write:13:16",
+          "event:0206000000000000",
+          "control:6:129:0:0"
+        ],
+        "flags": 160,
+        "kind": "fifo",
+        "name": "tick_rollover_expired",
+        "returned": null,
+        "ring_sha256": "bdb8c630bb7515d960ff47110e8f444c143701cc039e2f2ba2d3b360ecf9f640",
+        "stage_sha256": "2843c69f0ac1c8d74a7cfdde7cbf9d7a24ff693a61f1eb19c71b017d09fac378",
+        "state": {
+          "auxiliary": 0,
+          "base_frame": 2,
+          "count": 0,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 9,
+          "last_tick": 0,
+          "limit": 2,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 0
+        },
+        "steps": 158
+      },
+      {
+        "actions": [
+          "read:3",
+          "read:4",
+          "bulk:10"
+        ],
+        "flags": 160,
+        "kind": "fifo",
+        "name": "zero_timestamp_sentinel",
+        "returned": null,
+        "ring_sha256": "6987f2415bd999e0fd6a4267c83d2e78ba1f2e2269a9af7131bf197458f1a120",
+        "stage_sha256": "36d585fe835a6f8eb2f4f8af4e43379d1b72185ded37706c076f725c10575ec8",
+        "state": {
+          "auxiliary": 2,
+          "base_frame": 2,
+          "count": 2,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 10,
+          "last_tick": 100,
+          "limit": 0,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 2
+        },
+        "steps": 170
+      },
+      {
+        "actions": [
+          "read:9",
+          "write:9:21",
+          "read:13",
+          "write:13:18",
+          "write:13:16",
+          "event:0206000000000000",
+          "control:6:129:0:0"
+        ],
+        "flags": 160,
+        "kind": "recovery",
+        "name": "normal_recovery",
+        "returned": null,
+        "ring_sha256": "bdb8c630bb7515d960ff47110e8f444c143701cc039e2f2ba2d3b360ecf9f640",
+        "stage_sha256": "2843c69f0ac1c8d74a7cfdde7cbf9d7a24ff693a61f1eb19c71b017d09fac378",
+        "state": {
+          "auxiliary": 9,
+          "base_frame": 3,
+          "count": 0,
+          "enabled": true,
+          "frame": 3,
+          "frame_total": 9,
+          "last_tick": 0,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 0
+        },
+        "steps": 112
+      },
+      {
+        "actions": [
+          "read:9",
+          "write:9:21",
+          "read:13",
+          "write:13:7",
+          "write:13:5",
+          "event:0206000000000000",
+          "control:6:129:0:0"
+        ],
+        "flags": 160,
+        "kind": "recovery",
+        "name": "recovery_read13_failure",
+        "returned": null,
+        "ring_sha256": "bdb8c630bb7515d960ff47110e8f444c143701cc039e2f2ba2d3b360ecf9f640",
+        "stage_sha256": "2843c69f0ac1c8d74a7cfdde7cbf9d7a24ff693a61f1eb19c71b017d09fac378",
+        "state": {
+          "auxiliary": 9,
+          "base_frame": 3,
+          "count": 0,
+          "enabled": true,
+          "frame": 3,
+          "frame_total": 9,
+          "last_tick": 0,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 0
+        },
+        "steps": 112
+      },
+      {
+        "actions": [
+          "read:9",
+          "write:9:16",
+          "read:13",
+          "write:13:2",
+          "write:13:0",
+          "event:0206000000000000",
+          "control:6:129:0:0"
+        ],
+        "flags": 160,
+        "kind": "recovery",
+        "name": "recovery_both_reads_fail",
+        "returned": null,
+        "ring_sha256": "bdb8c630bb7515d960ff47110e8f444c143701cc039e2f2ba2d3b360ecf9f640",
+        "stage_sha256": "2843c69f0ac1c8d74a7cfdde7cbf9d7a24ff693a61f1eb19c71b017d09fac378",
+        "state": {
+          "auxiliary": 9,
+          "base_frame": 3,
+          "count": 0,
+          "enabled": true,
+          "frame": 3,
+          "frame_total": 9,
+          "last_tick": 0,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 0
+        },
+        "steps": 112
+      },
+      {
+        "actions": [
+          "read:9",
+          "write:9:21",
+          "read:13",
+          "write:13:18",
+          "write:13:16"
+        ],
+        "flags": 160,
+        "kind": "recovery",
+        "name": "recovery_without_notification",
+        "returned": null,
+        "ring_sha256": "bdb8c630bb7515d960ff47110e8f444c143701cc039e2f2ba2d3b360ecf9f640",
+        "stage_sha256": "2843c69f0ac1c8d74a7cfdde7cbf9d7a24ff693a61f1eb19c71b017d09fac378",
+        "state": {
+          "auxiliary": 0,
+          "base_frame": 2,
+          "count": 0,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 9,
+          "last_tick": 0,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 0
+        },
+        "steps": 56
+      },
+      {
+        "actions": [
+          "read:9",
+          "write:9:21",
+          "read:13",
+          "write:13:18",
+          "write:13:16",
+          "event:0206000000000000"
+        ],
+        "flags": 160,
+        "kind": "recovery",
+        "name": "recovery_without_registered_callback",
+        "returned": null,
+        "ring_sha256": "bdb8c630bb7515d960ff47110e8f444c143701cc039e2f2ba2d3b360ecf9f640",
+        "stage_sha256": "2843c69f0ac1c8d74a7cfdde7cbf9d7a24ff693a61f1eb19c71b017d09fac378",
+        "state": {
+          "auxiliary": 0,
+          "base_frame": 2,
+          "count": 0,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 9,
+          "last_tick": 0,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 0
+        },
+        "steps": 96
+      },
+      {
+        "actions": [],
+        "flags": 160,
+        "kind": "recovery",
+        "name": "inactive_recovery",
+        "returned": null,
+        "ring_sha256": "bdb8c630bb7515d960ff47110e8f444c143701cc039e2f2ba2d3b360ecf9f640",
+        "stage_sha256": "2843c69f0ac1c8d74a7cfdde7cbf9d7a24ff693a61f1eb19c71b017d09fac378",
+        "state": {
+          "auxiliary": 0,
+          "base_frame": 2,
+          "count": 2,
+          "enabled": false,
+          "frame": 2,
+          "frame_total": 9,
+          "last_tick": 0,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 1,
+          "write": 3
+        },
+        "steps": 14
+      },
+      {
+        "actions": [],
+        "flags": 160,
+        "kind": "reset",
+        "name": "metadata_only_reset",
+        "returned": null,
+        "ring_sha256": "bdb8c630bb7515d960ff47110e8f444c143701cc039e2f2ba2d3b360ecf9f640",
+        "stage_sha256": "2843c69f0ac1c8d74a7cfdde7cbf9d7a24ff693a61f1eb19c71b017d09fac378",
+        "state": {
+          "auxiliary": 7,
+          "base_frame": 3,
+          "count": 0,
+          "enabled": true,
+          "frame": 3,
+          "frame_total": 9,
+          "last_tick": 12,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 0
+        },
+        "steps": 8
+      },
+      {
+        "actions": [],
+        "flags": 160,
+        "kind": "pop",
+        "name": "pop_empty",
+        "returned": 0,
+        "ring_sha256": "bdb8c630bb7515d960ff47110e8f444c143701cc039e2f2ba2d3b360ecf9f640",
+        "stage_sha256": "2843c69f0ac1c8d74a7cfdde7cbf9d7a24ff693a61f1eb19c71b017d09fac378",
+        "state": {
+          "auxiliary": 0,
+          "base_frame": 2,
+          "count": 0,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 9,
+          "last_tick": 0,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 0
+        },
+        "steps": 7
+      },
+      {
+        "actions": [],
+        "flags": 161,
+        "kind": "pop",
+        "name": "pop_marked",
+        "returned": 554172416,
+        "ring_sha256": "ac6b510505f33cdd0b9766e0feb4ad1c3144e12c9835f12304131ead34f79713",
+        "stage_sha256": "2843c69f0ac1c8d74a7cfdde7cbf9d7a24ff693a61f1eb19c71b017d09fac378",
+        "state": {
+          "auxiliary": 1,
+          "base_frame": 2,
+          "count": 1,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 9,
+          "last_tick": 0,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 1,
+          "write": 2
+        },
+        "steps": 30
+      },
+      {
+        "actions": [],
+        "flags": 161,
+        "kind": "pop",
+        "name": "pop_ring_wrap",
+        "returned": 554696703,
+        "ring_sha256": "49adca11ea01f5c2d13af97e73ea51b1b400453fa5e81b2ba3ddc9f892d2cea5",
+        "stage_sha256": "2843c69f0ac1c8d74a7cfdde7cbf9d7a24ff693a61f1eb19c71b017d09fac378",
+        "state": {
+          "auxiliary": 0,
+          "base_frame": 2,
+          "count": 0,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 9,
+          "last_tick": 0,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 0
+        },
+        "steps": 32
+      },
+      {
+        "actions": [],
+        "flags": 160,
+        "kind": "pop",
+        "name": "pop_mode_one",
+        "returned": 554172415,
+        "ring_sha256": "0f7f7474cd838847b8ae160d7333b527a4dd15123395d4f5e377cbe73741d047",
+        "stage_sha256": "2843c69f0ac1c8d74a7cfdde7cbf9d7a24ff693a61f1eb19c71b017d09fac378",
+        "state": {
+          "auxiliary": 3,
+          "base_frame": 2,
+          "count": 0,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 9,
+          "last_tick": 0,
+          "limit": 100,
+          "mode": 1,
+          "policy": 0,
+          "read": 1,
+          "write": 1
+        },
+        "steps": 25
+      },
+      {
+        "actions": [],
+        "flags": 160,
+        "kind": "sample",
+        "name": "sample_max",
+        "returned": 524287,
+        "ring_sha256": "bdb8c630bb7515d960ff47110e8f444c143701cc039e2f2ba2d3b360ecf9f640",
+        "stage_sha256": "2843c69f0ac1c8d74a7cfdde7cbf9d7a24ff693a61f1eb19c71b017d09fac378",
+        "state": {
+          "auxiliary": 0,
+          "base_frame": 2,
+          "count": 0,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 9,
+          "last_tick": 0,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 0
+        },
+        "steps": 13
+      },
+      {
+        "actions": [],
+        "flags": 160,
+        "kind": "sample",
+        "name": "sample_min",
+        "returned": 4294443008,
+        "ring_sha256": "bdb8c630bb7515d960ff47110e8f444c143701cc039e2f2ba2d3b360ecf9f640",
+        "stage_sha256": "2843c69f0ac1c8d74a7cfdde7cbf9d7a24ff693a61f1eb19c71b017d09fac378",
+        "state": {
+          "auxiliary": 0,
+          "base_frame": 2,
+          "count": 0,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 9,
+          "last_tick": 0,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 0
+        },
+        "steps": 13
+      },
+      {
+        "actions": [],
+        "flags": 160,
+        "kind": "sample",
+        "name": "sample_minus_one",
+        "returned": 4294967295,
+        "ring_sha256": "bdb8c630bb7515d960ff47110e8f444c143701cc039e2f2ba2d3b360ecf9f640",
+        "stage_sha256": "2843c69f0ac1c8d74a7cfdde7cbf9d7a24ff693a61f1eb19c71b017d09fac378",
+        "state": {
+          "auxiliary": 0,
+          "base_frame": 2,
+          "count": 0,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 9,
+          "last_tick": 0,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 0
+        },
+        "steps": 13
+      },
+      {
+        "actions": [
+          "sample_tag_log"
+        ],
+        "flags": 160,
+        "kind": "sample",
+        "name": "sample_unexpected_tag_logged",
+        "returned": 1,
+        "ring_sha256": "bdb8c630bb7515d960ff47110e8f444c143701cc039e2f2ba2d3b360ecf9f640",
+        "stage_sha256": "2843c69f0ac1c8d74a7cfdde7cbf9d7a24ff693a61f1eb19c71b017d09fac378",
+        "state": {
+          "auxiliary": 0,
+          "base_frame": 2,
+          "count": 0,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 9,
+          "last_tick": 0,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 0
+        },
+        "steps": 24
+      },
+      {
+        "actions": [],
+        "flags": 160,
+        "kind": "sample",
+        "name": "sample_special_tag_21",
+        "returned": 1,
+        "ring_sha256": "bdb8c630bb7515d960ff47110e8f444c143701cc039e2f2ba2d3b360ecf9f640",
+        "stage_sha256": "2843c69f0ac1c8d74a7cfdde7cbf9d7a24ff693a61f1eb19c71b017d09fac378",
+        "state": {
+          "auxiliary": 0,
+          "base_frame": 2,
+          "count": 0,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 9,
+          "last_tick": 0,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 0
+        },
+        "steps": 17
+      },
+      {
+        "actions": [],
+        "flags": 160,
+        "kind": "sample",
+        "name": "sample_special_tag_22",
+        "returned": 1,
+        "ring_sha256": "bdb8c630bb7515d960ff47110e8f444c143701cc039e2f2ba2d3b360ecf9f640",
+        "stage_sha256": "2843c69f0ac1c8d74a7cfdde7cbf9d7a24ff693a61f1eb19c71b017d09fac378",
+        "state": {
+          "auxiliary": 0,
+          "base_frame": 2,
+          "count": 0,
+          "enabled": true,
+          "frame": 2,
+          "frame_total": 9,
+          "last_tick": 0,
+          "limit": 100,
+          "mode": 2,
+          "policy": 0,
+          "read": 0,
+          "write": 0
+        },
+        "steps": 17
+      }
+    ],
+    "hardware_execution": false
+  },
+  "sensor_sha256": "06f07541e8bb22b6118f081e791c3a4e40cbff2decd8ee478a7e82df826e9d0f",
+  "state_addresses": {
+    "auxiliary": 2163306598,
+    "base_frame": 2163305264,
+    "count": 2163306588,
+    "enabled": 2163306641,
+    "frame": 2163306594,
+    "frame_total": 2163306580,
+    "last_tick": 2163306576,
+    "limit": 2163306572,
+    "mode": 2163306608,
+    "policy": 2163306605,
+    "read": 2163306592,
+    "write": 2163306590
+  },
+  "validation_sha256": "725b7a1616893d72421f437d8d28aec52aedfcc92d83d2832ce177b794f285ee",
+  "vectors_sha256": "8a156497b70498e67219aeb18a1e84774ce0ac0a396d4b71e7e4c9f63481eef8"
+}
