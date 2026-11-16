@@ -1,5 +1,10 @@
 # AndeStar v5 decoding investigation
 
+I/O follow-up: [volatile IPC analysis](IPC_DOORBELL_AND_MMIO.md) shows that
+unmapped nonvolatile register globals also caused missing/transformed side
+effects. Guarded volatile windows restore those effects on main and sensor.
+Correct decoding alone is insufficient for these hardware-facing paths.
+
 Latest pass: [corrected native IPC analysis](RPMSG_NATIVE_AND_FRAGMENTS.md)
 records an exact-hash-guarded local BBS repair, rebuilt Sleigh language and
 36 fresh targeted exports. The broader corpus remains unaudited.

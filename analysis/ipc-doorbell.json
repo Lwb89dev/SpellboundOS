@@ -1,0 +1,230 @@
+{
+  "compiled_language_sha256": "3825e3f48df2678410e8d645799bd84742a54d10805b56cbe895bc34f6a2d988",
+  "fence_i_hook_sha256": {
+    "707bf66c": "8471874d4dd3f7de68f1042aaa025471a4defb9828350878c3cc674031a7e032",
+    "707bf672": "8471874d4dd3f7de68f1042aaa025471a4defb9828350878c3cc674031a7e032",
+    "707bf678": "8471874d4dd3f7de68f1042aaa025471a4defb9828350878c3cc674031a7e032"
+  },
+  "irq": {
+    "address": 3825213440,
+    "callback_table": 1895721412,
+    "entries": 32,
+    "handler": 1887172902,
+    "mask": 65536,
+    "number": 16,
+    "register_callback": 2161335404
+  },
+  "limitations": [
+    "No device register access, interrupts, cache maintenance or wake transitions executed.",
+    "Volatile windows are analysis metadata, not a complete hardware register specification.",
+    "Models exclude scheduler, MMIO bus semantics and interrupt races; timer helper return types remain underspecified."
+  ],
+  "main_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "mmio_timeout": {
+    "counter_high": 3858759684,
+    "counter_low": 3858759680,
+    "limit_raw": 1000,
+    "note": "raw high/low/high snapshot then helper with divisor 1000; no physical time unit claimed",
+    "timer": 2161398884
+  },
+  "notice_roles": {
+    "0": {
+      "busy": 2415951988,
+      "receive": 2415951996,
+      "send": 2415951984
+    },
+    "1": {
+      "busy": 2415951996,
+      "receive": 2415951988,
+      "send": 2415951992
+    }
+  },
+  "queue_examples": [
+    {
+      "queue": 0,
+      "role0": {
+        "queue": 0,
+        "register": 2415951996,
+        "steps": [
+          "dispatch",
+          "echo_ack"
+        ]
+      },
+      "role1": {
+        "queue": 0,
+        "register": 2415951988,
+        "steps": [
+          "dispatch",
+          "echo_ack"
+        ]
+      },
+      "token": 1
+    },
+    {
+      "queue": 1,
+      "role0": {
+        "queue": 1,
+        "register": 2415951996,
+        "steps": [
+          "dispatch",
+          "echo_ack"
+        ]
+      },
+      "role1": {
+        "queue": 1,
+        "register": 2415951988,
+        "steps": [
+          "dispatch",
+          "echo_ack"
+        ]
+      },
+      "token": 2
+    },
+    {
+      "queue": 2,
+      "role0": {
+        "queue": 2,
+        "register": 2415951996,
+        "steps": [
+          "dispatch",
+          "echo_ack"
+        ]
+      },
+      "role1": {
+        "queue": 2,
+        "register": 2415951988,
+        "steps": [
+          "dispatch",
+          "echo_ack"
+        ]
+      },
+      "token": 3
+    },
+    {
+      "queue": 3,
+      "role0": {
+        "queue": 3,
+        "register": 2415951996,
+        "steps": [
+          "dispatch",
+          "echo_ack"
+        ]
+      },
+      "role1": {
+        "queue": 3,
+        "register": 2415951988,
+        "steps": [
+          "dispatch",
+          "echo_ack"
+        ]
+      },
+      "token": 4
+    },
+    {
+      "queue": 4,
+      "role0": {
+        "queue": 4,
+        "register": 2415951996,
+        "steps": [
+          "dispatch",
+          "echo_ack"
+        ]
+      },
+      "role1": {
+        "queue": 4,
+        "register": 2415951988,
+        "steps": [
+          "dispatch",
+          "echo_ack"
+        ]
+      },
+      "token": 5
+    },
+    {
+      "queue": 5,
+      "role0": {
+        "queue": 5,
+        "register": 2415951996,
+        "steps": [
+          "dispatch",
+          "echo_ack"
+        ]
+      },
+      "role1": {
+        "queue": 5,
+        "register": 2415951988,
+        "steps": [
+          "dispatch",
+          "echo_ack"
+        ]
+      },
+      "token": 6
+    }
+  ],
+  "reviewed_checks": {
+    "baseline_loses_mode_register": true,
+    "exception_echo_ack_present": true,
+    "main_restores_mode_writes": true,
+    "role_predicate_bytes_match": true,
+    "sensor_restores_mode_writes": true
+  },
+  "sensor_sha256": "06f07541e8bb22b6118f081e791c3a4e40cbff2decd8ee478a7e82df826e9d0f",
+  "source_sha256": {
+    "runtime-rpmsg-doorbell/707bf7e0.c": "08ebb9c9e07c3dd666ce2bfcb94e3bf3fe2d5c96a81fdd71f38d98bd9ae707ef",
+    "runtime-rpmsg-doorbell/707bf926.c": "b2b55a74c4846f81ca9b14172e52ace0079af195f9a06235d2f6102c40114dcf",
+    "runtime-rpmsg-mmio/707bf66c.c": "d4c3d12b79dcbe403ae54410db566618b06cb7abc1ef15b25655b34629081214",
+    "runtime-rpmsg-mmio/707bf672.c": "c9a02ce1c80ec9c27569f77c7172b9db50255384d8c354fddf998d2979f6c6eb",
+    "runtime-rpmsg-mmio/707bf678.c": "f02e98875c4cb271aac68fb5772b4ecbb1ac9414c8f3b83768d98ca36b07f7e6",
+    "runtime-rpmsg-mmio/707bf710.c": "b60569a3f478eb3dab7b8b3616b40ec1eab33f69c7d31cc55eae72f24b9bcb0d",
+    "runtime-rpmsg-mmio/707bf72c.c": "6d5b4df41206755cbb43c2444f33ef2f1b7f11f5edc11bbe3f4fddf24f75391c",
+    "runtime-rpmsg-mmio/707bf746.c": "92dd854092edf7ec699800f7ad8af3531b959db1be4d8b0ac2395954a91d47ef",
+    "runtime-rpmsg-mmio/707bf7e0.c": "2d5163039357ef9725bba21894bb88aa166c3f112850a9f4367bdee7638def89",
+    "runtime-rpmsg-mmio/707bf926.c": "089be44ffff11e709ea7b0596918b6aad3caa2ff9d8bc2d3fcd37bb1064a406f",
+    "runtime-rpmsg-mmio/707bf982.c": "d7407af7d7cee1f8a3213772ff7c4a9c51b3d6c114a22e4e89e456a21cc80d99",
+    "runtime-rpmsg-mmio/707bf9be.c": "d2a7cc049b1794291fda33602ce2bee6540e10236d12d50aefc9f143e57824cc",
+    "runtime-rpmsg-mmio/707bfa00.c": "3699a266f91b436a50c81542a2b84b58c618864cfdc59c6a998e498d89583310",
+    "runtime-rpmsg-mmio/707bfa04.c": "c5986cf17b13242b4b0ad386eb4efe3f4980e6a3f4237eee48d9c81801676fc1",
+    "runtime-rpmsg-mmio/707bfb32.c": "4d53098aee673087e3688bb9b0f5cf3b3d462dfd62ccc24c526c82455f90dab0",
+    "runtime-rpmsg-mmio/707c03cc.c": "d4ecdd6cd03d6732075395fb49d99c9f67620d7660dde45dcb756220cbcaffc2",
+    "runtime-rpmsg-mmio/707c040c.c": "63416573aff35e0bf5c9c72d5cebceaa755af8d3c3808091812fcc25485f5972",
+    "runtime-rpmsg-mmio/707c06f8.c": "6302998e360e4ea676d14b486db53cc6731332afab83230b7b518ac48df14f63",
+    "runtime-rpmsg-mmio/707c0726.c": "8552403cdb737a40547ab8f3393394ad3112ca55f1e20e728ab6ee6b87ec13dc",
+    "runtime-rpmsg-mmio/707c0780.c": "e62ad9bdec0025cf68f5f6a691de0e4b6bf39318065621c81ea53d50ccddd4f7",
+    "runtime-rpmsg-mmio/707c07a4.c": "542dad85ea00e52bc03da8ac864b33ebd2da0536c4fe3acc5a8005185c52d4cd",
+    "runtime-rpmsg-mmio/80d35bcc.c": "e2e0cda6796ba4157571a0d47c6c6dc258cfe5a9568fc5ac69e4c9e5ebb47a6a",
+    "runtime-rpmsg-mmio/80d35c1c.c": "2cf763f8de62c3c5585e4e34e3e8a5cbbf5cdbd263126fdac202419e0e35c1cd",
+    "runtime-rpmsg-mmio/80d35c6c.c": "7e21e1ed7a938858b09c8f2522c342d585111d71e258e9fb40e9c7ed656135a3",
+    "runtime-rpmsg-mmio/80d35d28.c": "83ac6813c4ba16c78959f23da9749997bcb07e30542674cc95c9d0ae47db5f0f",
+    "runtime-rpmsg-mmio/80d35d44.c": "b0e22495114c002a37666cde01304ada8a1f55a783122789e273e2caa9ed19cb",
+    "runtime-rpmsg-mmio/80d453d4.c": "104deef2a872ec255e66acce628a2a44b4b2d76f696828a15ea32b703fe6ec09",
+    "runtime-rpmsg-mmio/80d45464.c": "f8a17651202f2b216b6f875951db30d28ed3aa4930955740e49a15c1b2180125",
+    "runtime-sensor-doorbell/80fa6a0a.c": "34d917b4d94c67662addacc4387577c72e6e37648d0abea963ab6b7270319385",
+    "runtime-sensor-doorbell/80fa6a26.c": "e7c8ab62fe04bd5de268f92f621f36944e881fda47059754e0a707189d9d7169",
+    "runtime-sensor-doorbell/80fa6a40.c": "9576ec5df6397640b668f77337fb1cabb3ae591f69629ff16c8cd8545069d06f",
+    "runtime-sensor-doorbell/80fa6ad6.c": "219fdd24058840e2a357166fc9ba1411396b1a6a54cff54380e024dea72e788b",
+    "runtime-sensor-doorbell/80fa6bec.c": "b4d6de603c00766bf3158a15072583069586bb6eef28137e5827a70a18b9a2bb",
+    "runtime-sensor-doorbell/80fa6c7a.c": "f829f1a1053d7aafd83c3a0e099d5ccdf8c533ce3b5d6d770bbf95ecf32f113f",
+    "runtime-sensor-doorbell/80fa6cce.c": "8aaf0bc52b712a52d7be3b922daa2234918994b148fa09b1c464f4bb3eea42e2",
+    "runtime-sensor-doorbell/80fa6d06.c": "dcc6c67b65cd2f9fc7e9c4469e09909a3270b45b2c74ccb1d86c28fb5a699330",
+    "runtime-sensor-doorbell/80fa7a5a.c": "ea2796e69a3c65db1d42f812b894dfee24bcba0ed6a5aacb3a2bb2249f9650e5",
+    "runtime-sensor-doorbell/80fa7ad8.c": "eeef31e91cc05b8711d4b9ca5c2066a31db1d0192c833aaaab52f78ee05179e3"
+  },
+  "volatile_windows": [
+    {
+      "base": 2415951872,
+      "size": 4096
+    },
+    {
+      "base": 2432696320,
+      "size": 4096
+    },
+    {
+      "base": 3825205248,
+      "size": 16384
+    },
+    {
+      "base": 3858759680,
+      "size": 4096
+    }
+  ]
+}

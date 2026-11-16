@@ -882,6 +882,30 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    altered input. Device-derived code/tool evidence remains ignored. No device
    access, firmware writing or phone configuration change occurred.
 
+## 2026-11-16 — interrupt, volatile MMIO and synchronization blocks
+
+1. Followed queue ID plus one through notify, IRQ 16, token-minus-one lookup
+   and callback dispatch. Recovered role-dependent send/receive register pairs,
+   echo acknowledgement and the role-0 exception sentinel. Fresh sensor
+   exports corroborate the main register/token/wake paths and role-predicate
+   instruction bytes. No live interrupt or register was accessed.
+2. Found missing/transformed I/O effects caused by nonvolatile MMIO metadata.
+   Added guarded `MarkIpcMmio.java`, restored transient wake configuration and
+   exception acknowledgement, and preserved old baseline exports. Main passes
+   emitted 24 baseline and 26 volatile targets; a fresh sensor pass emitted ten
+   targets with the new logger-only exporter. Retained the verified corrected
+   Ghidra installation/archive under ignored `firmware/tools/` for later work.
+3. Modeled bounded token routes, external IRQ-bank arithmetic, nested IRQ
+   reference counts, queue notification suppression and timer rollover. Raw
+   bytes confirm three `fence.i` hooks; full data-cache/coherency and physical
+   timer units remain unresolved. Timeout can occur after a register write,
+   so it does not prove that no notification was published.
+4. Added nine tests and reproducible
+   [analysis/ipc-doorbell.json](analysis/ipc-doorbell.json), fingerprinting 38
+   selected exports, plus [analysis/IPC_DOORBELL_AND_MMIO.md](analysis/IPC_DOORBELL_AND_MMIO.md).
+   All 234 Python tests pass with signature/cipher dependencies. Device code,
+   databases and tool files remain ignored; no firmware/phone changes occurred.
+
 ## Next work
 
 - Regenerate selected native paths with startup-aware mappings, corrected
@@ -889,9 +913,9 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
   counts must not be treated as semantic coverage.
 - Follow MAX8617X initialization/FIFO paths, interrupt handling and the health
   IPC pipeline; verify HAL flags and timing before implementing hardware code.
-- Audit remaining BBS-affected main/sensor exports beyond the corrected IPC
-  targets. Follow interrupt/doorbell and cache/coherency paths, validate live
-  endpoint/vring operation, and observe exact-multiple fragment behavior.
+- Audit remaining BBS/volatile-affected exports beyond the selected IPC paths.
+  Establish cache/coherency and timer units, validate live IRQ/wake/endpoint/
+  vring operation, and observe exact-multiple fragment behavior.
 
 - Follow population of the capability table and the deeper heart/SpO2 service
   backends; distinguish software records from live hardware measurements.

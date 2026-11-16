@@ -1,5 +1,10 @@
 # Corrected zrpc exports, rpmsg queues and host fragment model
 
+Follow-up: [interrupt, volatile I/O and queue control](IPC_DOORBELL_AND_MMIO.md)
+connects queue tokens to the ISR on both processors, restores register side
+effects omitted without volatile metadata, and models selected synchronization
+and notification-suppression decisions. Live cache/coherency remains open.
+
 Three consecutive blocks extend the sensor IPC investigation: a local BBS
 repair with fresh native exports, queue/endpoint/buffer ownership recovery,
 and a bounded independent model of stock chunk production and reassembly.
