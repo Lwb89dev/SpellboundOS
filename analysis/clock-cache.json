@@ -1,0 +1,97 @@
+{
+  "cache_routines": {
+    "7029fe74": "writeback/invalidate all, command 6",
+    "7029fea0": "writeback by address, command 1",
+    "7029ff04": "writeback/invalidate by address, command 2",
+    "7029ff68": "invalidate by address, command 0"
+  },
+  "clock_examples": {
+    "bypass_role0": 48000000,
+    "bypass_role1": 48000000,
+    "fallback_role0": 24000000,
+    "fallback_role1": 24000000
+  },
+  "clock_registers": {
+    "compiled_reference": 48000000,
+    "pll_a": 2432696852,
+    "pll_b": 2432696860,
+    "role0_config": 2583691264,
+    "role1_config": 2415951872
+  },
+  "instruction_range_sha256": {
+    "701637ec_14": "05ee8f2712ef64fc643d149e02ca4bc08283f1fa7adbf4329fdd375e7b39b451",
+    "7029fea0_60": "0f9333adade91dbe22af33574458a0a0eec8c862549bd452f2f16511f96b1032",
+    "80d45464_26": "43196df4f0cc2097e5d10bb271df73e18a49be725fbc3157b1a9d75f6bfd6c15",
+    "80d4548c_10": "2c382a27d9bca1971559cbc30388a4133dc7301cc45c9e65450139a2c6024989",
+    "80d4549c_12": "b88a209372b683ba0f73951ff9069f463ed965182e6c94a9a7ee4955ac060d45"
+  },
+  "limitations": [
+    "Synthetic register inputs; no actual clock rate or elapsed duration measured.",
+    "Wide arithmetic helper remains partly undecoded; timer scaling/physical units are not closed.",
+    "Range guard explains software behavior at shared addresses, not physical cacheability or coherency.",
+    "Zero PLL divider excluded; cache CSR progress and device command completion not emulated."
+  ],
+  "main_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "reference": {
+    "commands": {
+      "CCTL_L1D_VA_INVAL": 0,
+      "CCTL_L1D_VA_WB": 1,
+      "CCTL_L1D_VA_WBINVAL": 2,
+      "CCTL_L1D_WBINVAL_ALL": 6
+    },
+    "sha256": "6794d2076944f533d8acdd0f5e74eb7e1b3b9e326ea4a627efc9309749acd720",
+    "url": "https://github.com/zephyrproject-rtos/zephyr/blob/v4.2.0/drivers/cache/cache_andes.c"
+  },
+  "remaining_undecoded_example": {
+    "address": 1888771028,
+    "bytes_hex": "7f18c80f"
+  },
+  "reviewed_checks": {
+    "cache_command_and_readback": true,
+    "helper_still_partially_undecoded": true,
+    "reader_returns_wide": true,
+    "startup_separate_cache_enables": true
+  },
+  "shared_pool_contract": [
+    {
+      "base": 2163212288,
+      "contract": {
+        "path": "skip_signed_nonpositive"
+      }
+    },
+    {
+      "base": 2163232768,
+      "contract": {
+        "path": "skip_signed_nonpositive"
+      }
+    },
+    {
+      "base": 2163253248,
+      "contract": {
+        "path": "skip_signed_nonpositive"
+      }
+    }
+  ],
+  "source_sha256": {
+    "runtime-clock-cache-followup/702a01c0.c": "d5773e0b26bdcf1785cb53a27029a6f6e8aa1957f369883cdc26cd3b90ca88a8",
+    "runtime-clock-cache-followup/702a0264.c": "2b112fa2d008f87d2110d76676f6932d2142fc6468ccb6b16f49e1f3627fc5cf",
+    "runtime-clock-cache-followup/702a02a0.c": "7c044a02bba3905d68a99bba2db87225fd7d8aa1d01907ca0772c21220c02071",
+    "runtime-clock-cache-followup/702a0338.c": "edff984d2ccc5ec342d19eaa01e331401ad333508f258c8a158fb81deaee38e6",
+    "runtime-clock-cache/701637ec.c": "7619910415a3b02c29c1bf4bacd01b3b7b376b1bfb5a8b4366db8a3e5006d5ca",
+    "runtime-clock-cache/7029fe74.c": "b07d24b9c9d02eaa06ceaf120297ac3307c18c3ca73b070054e3f341e57e1c61",
+    "runtime-clock-cache/7029fea0.c": "eb133bddf90e7509eba5c00d83d20869dd3448c401e4529e213fabedf901823f",
+    "runtime-clock-cache/7029ff04.c": "001f36404a68e5b72c5cb3c50bf0a815418d970331e3d8569a7c5011695626b6",
+    "runtime-clock-cache/7029ff68.c": "f290a5a9b7d5f2f7d6659be38c8f2a20f95dca9eea7437fe62bbf1f32c1a7c5f",
+    "runtime-clock-cache/707bf7e0.c": "f1ae3fb0fe79ee1fef1f04912e4f43ba52b85fa02d7eaff86d10ce9ada221fd5",
+    "runtime-clock-cache/70945b3c.c": "0f62c44b18ab4c969e4e33d48aef82ec0d7a3af58662b6e566ef14c1cd609dbd",
+    "runtime-clock-cache/80d412a8.c": "2617ba4bf2df5dc382ba41f4dd1fa6426ec75a635a2f7ca5eebb4204c19d6c50",
+    "runtime-clock-cache/80d412f0.c": "9d6e2e0e1e13dc90bcff8944f620aa35e05ba308d85ed7f7fa731c673da86514",
+    "runtime-clock-cache/80d41338.c": "8263808ee7807b2f1f9ca5f1292c4ddd0d5290a8a0d24589cd95c45063653e1c",
+    "runtime-clock-cache/80d413a8.c": "2f7929de08f4ede0a3c6c815ac842997cac714fbf336258dc2b8cf4efefa5d2d",
+    "runtime-clock-cache/80d453d4.c": "4169a83fb906754fe5335bc3df3e27835fe1d8105ad07175a18c81de7f6fbed9",
+    "runtime-clock-cache/80d45464.c": "8e77878572309581500429e7e88d504c39f99d8907090125392504f2e19c04d4",
+    "runtime-clock-cache/80d4548c.c": "a2e18fcccf91afd06bb929f471b7fca40ba37701b4f5219dd3e0134850b276c8",
+    "runtime-clock-cache/80d4549c.c": "421709ee9bf1692869ab3a31b69e681ebeae4f6a7fb4536a53af82906f49453d",
+    "runtime-clock-cache/80d454b0.c": "58920896038fdbfc4df4d7b1536eae822b32df980e6726cba2770d25c40f9cca"
+  }
+}

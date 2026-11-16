@@ -1,5 +1,10 @@
 # IPC interrupt, volatile register sequences and notification control
 
+Follow-up: [clock and cache contracts](CLOCK_AND_CACHE_CONTRACTS.md) restores
+wide reader signatures and volatile CSR semantics, recovers CPU clock formulas
+and range-cache operations, and shows that their signed guard skips shared
+pool addresses. The arithmetic helper and physical coherency remain open.
+
 Three further blocks connect the recovered rpmsg queues to their native
 notification/interrupt route, preserve previously omitted register writes,
 and model selected synchronization decisions on the host. The analysis covers

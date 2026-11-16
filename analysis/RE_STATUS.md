@@ -9,11 +9,11 @@ Disassembly and export counts do not measure behavioral understanding.
 | --- | --- | --- |
 | Package integrity / signatures | Hashes/signatures plus variable-length metadata and raw-recovery validator path; manifest fully verified and the `res_info` mismatch explained (it embeds the manifest's own digest); `fw_info` sizes/CRC-32 match | Observe device enforcement, update-script interpreter and rollback policy |
 | Main/sensor startup | Copy/zero tables reconstructed; startup-aware analysis ELFs | Validate full boot context, aliases, memory protection, retained/device data |
-| Native corpus | Guarded BBS repair, ABI/logger fixes and targeted main/sensor exports; volatile IPC windows preserve previously omitted I/O side effects | Audit remaining BBS/volatile-affected exports; broaden type and runtime validation |
+| Native corpus | Guarded BBS repair, ABI/logger fixes, targeted main/sensor exports; volatile MMIO/CSR metadata and wide clock signatures | Audit remaining affected exports; decode remaining arithmetic-helper instructions; runtime/type validation |
 | App bytecode | 44 members structurally parsed; QuickJS engine fingerprinted; official C reader agrees on nine header fields for all 1,072 functions | Runtime semantics, operand-level validation and independently implemented host |
 | JS/native boundary | Modules, export tables, classes and initializer ownership mapped | Argument/error contracts, object lifetimes and behavior behind each implementation |
 | Optical sensing | MAX8617X driver, initial board data, IRQ/FIFO route, host FIFO model, eight register-table inventories | Exact fitted part, full mode/timing behavior, calibration and measurement chain |
-| Health data | Heart/SpO2 caches/services; sensor payloads; zrpc headers/CRC/priority; pools/queues/endpoints; main/sensor interrupt/token/wake route; bounded fragment and notification-control models | Live IRQ/wake/vring operation, cache/coherency, exact-multiple device case, remaining payloads, algorithms and measurement validation |
+| Health data | Heart/SpO2 caches/services; sensor/zrpc framing and queues; interrupt/wake route; clock formulas, selected cache commands/transfer callers and shared-address guard; bounded host models | Live IRQ/vring operation, physical timer/cache/coherency, exact-multiple device case, remaining payloads, algorithms and measurement validation |
 | Motion / other peripherals | Candidate identities and selected probe paths | Complete configuration, interrupts, power/timing and physical verification |
 | Bluetooth | Static builder/auth/curve models; all 62 announced modules matched; 103 initial transfers/69 AES checks; synthetic notification fields matched on the link and app-logo exchange observed; native reply/action serializers; selected notification listener/queue/store route followed to `NotificationNotifyScreen` request | Full GATT/handle coverage, fresh pairing/key derivation, counter persistence, remaining payloads/JS linkage, actual notification rendering/replies/actions, special storage/rich formats, Roadstr handoff and call/audio behavior |
 | GNSS / touch | Container sections, candidate code and identity clues | Full mappings, loader/command protocols, runtime integration |
@@ -47,6 +47,7 @@ Latest detailed findings:
 - [AndeStar branch defect, fragment termination and shared-memory pools](ZRPC_BRANCHES_AND_MEMORY.md)
 - [Corrected native IPC exports, rpmsg queues and host fragments](RPMSG_NATIVE_AND_FRAGMENTS.md)
 - [IPC interrupt, volatile MMIO and notification control](IPC_DOORBELL_AND_MMIO.md)
+- [Wide clock readers, CPU frequency formulas and cache range contracts](CLOCK_AND_CACHE_CONTRACTS.md)
 - [Boot/recovery control flow and signed metadata](BOOT_RECOVERY_AND_METADATA.md)
 - [Native GATT registrations and transport bindings](GATT_REGISTRATION.md)
 - [Native channel framing and authentication crypto delegate](NATIVE_CHANNEL.md)

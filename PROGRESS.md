@@ -906,6 +906,26 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    All 234 Python tests pass with signature/cipher dependencies. Device code,
    databases and tool files remain ignored; no firmware/phone changes occurred.
 
+## 2026-11-16 — wide clock, cache primitives and transfer-contract blocks
+
+1. Added guarded `SeedClockCache.java` to mark CSR/clock registers volatile,
+   restore selected 64-bit return/argument pairs and use the compiler's default
+   convention. Recovered stable high/low/high counter readers and nominal CPU
+   frequency/divider formulas. The timer's wide arithmetic helper still has
+   unsupported encodings, so physical timeout units are not claimed closed.
+2. Recovered cache commands 0/1/2/6 with independent labels from the pinned
+   Zephyr v4.2.0 Andes driver. Confirmed the signed range-address guard skips
+   all three shared-memory pool bases, preserved separate startup enable writes,
+   and followed selected transfer setup/completion callers. Software skipping
+   does not establish physical cacheability, aliases or coherency.
+3. Added `clock_cache.py`, nine host tests and reproducible
+   [analysis/clock-cache.json](analysis/clock-cache.json), fingerprinting 20
+   selected exports. Detailed findings and limits are in
+   [analysis/CLOCK_AND_CACHE_CONTRACTS.md](analysis/CLOCK_AND_CACHE_CONTRACTS.md).
+   All 243 Python tests pass with signature/cipher dependencies. Vendor-derived
+   exports and the reference source remain ignored; no device access or
+   firmware, clock, cache or phone configuration change occurred.
+
 ## Next work
 
 - Regenerate selected native paths with startup-aware mappings, corrected
@@ -914,8 +934,9 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
 - Follow MAX8617X initialization/FIFO paths, interrupt handling and the health
   IPC pipeline; verify HAL flags and timing before implementing hardware code.
 - Audit remaining BBS/volatile-affected exports beyond the selected IPC paths.
-  Establish cache/coherency and timer units, validate live IRQ/wake/endpoint/
-  vring operation, and observe exact-multiple fragment behavior.
+  Decode the remaining wide timer helper and establish physical timer units
+  and shared-memory attributes/coherency. Validate live IRQ/wake/endpoint/
+  vring operation and observe exact-multiple fragment behavior.
 
 - Follow population of the capability table and the deeper heart/SpO2 service
   backends; distinguish software records from live hardware measurements.
