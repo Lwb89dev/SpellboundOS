@@ -169,3 +169,9 @@ chunks, progress, digest/signature/key bridge fields, diagnostics, cleanup and
 returns are compared with an independent host contract. Vendor code, binaries,
 Ghidra databases and tools remain ignored; byte/export counts are provenance,
 not semantic-coverage percentages.
+
+The follow-up [RECOVERY_SELECTION_AND_HANDOFF.md](RECOVERY_SELECTION_AND_HANDOFF.md)
+adds 64 cases for raw header read/write, availability/counter-based selection,
+preparation/completion and actual launch/handoff control flow. Writes mutate
+only synthetic arrays, availability remains supplied, and image execution stops
+at entry or after a single encoded entry jump. No physical recovery is proved.

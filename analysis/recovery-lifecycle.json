@@ -1,0 +1,3699 @@
+{
+  "boot_sha256": "44cd83c0d09864c6101e9825bd3c77d7fac314584d0408b378dd56c2aac5736a",
+  "byte_range_sha256": {
+    "80c0080a_22": "866cc31c043cb86eb6032e50f7559b338784fc23f27a0a31eafb6f597f5c073c",
+    "80c0084a_2c": "1a6a6507b4c988ab79f95ce68fa538e4c8639eace870c97d465f96cd9bb6f5ba",
+    "80c0098c_96": "fc56db9564a9c10657f96d5d2fc813cc7c105bc54a65a232d7d3bff08718f6f4",
+    "80c00b52_26": "9c46c270026616b7f5d480618fb95112f9c400064a7a170d5b10944f144c5cf0",
+    "80c0e438_140": "973f6c8b3467b28ca1cbd01e70a30268e153c3b5a5e622ad8a3ed89a3101e15f",
+    "80c0e9cc_2a2": "e0b542290231f0112999e76adcfd082d06bd5e8fd4865f4df78d698d31e69ff2",
+    "80c16344_8": "141b14ba598565535bdba37e8debb03bd96b34a7859b493d890ed88f28c8cd9e"
+  },
+  "entry_jump_sha256": "d27e70d7443fb6b1fddd835222f83fb0f6a298833146afdad9fe74ef6b23d0f7",
+  "export_sha256": {
+    "80c0080a.c": "da7815b324b87f0f95dbc5caba4ebaa9ec2d4c01c4e2d30d9d02ea3271841401",
+    "80c0084a.c": "80150fd1dad0695302fc88cc8fbf60a7cfbab2e0fd96a30f8a0b625aa18d378d",
+    "80c0098c.c": "187f7aec19b0c00816a806d4f68796d55bd68699b2d4037ed652771a542d58cb",
+    "80c00b52.c": "95dc0be55e1743efb6ca9d3f216e74f0d013fbf01bb5bbf84662bea7ed6e042c",
+    "80c0e438.c": "754479f8d3da727a93e27fd2718d518c3b2ff3a635d8b903268b1a0dacf8d60b",
+    "80c0e4d0.c": "eb7fd67823c5d9190ddd9e1d051c3d7052c32dc8e248dab0c366954544f7e2ab",
+    "80c0e9cc.c": "4af21ccd31d0fc5bd8e9a67c4786d4c235dc0b632b627d20dc20c664fdfaa718",
+    "80c0eaa6.c": "44597ab6afdf8d36618ea5992961b42ed0c9e4184b5dccc279589022c47873a5",
+    "80c0ebd4.c": "b56a19c148d1ae4f4606ff9e2e90e29af1df1f7ab99603bd5a506cfa6efeb2b9",
+    "80c16344.c": "6411e2d3f644043cbc4f7b92c15b66685b36523eef9d06fb8f0b4b8e1b1bdecd"
+  },
+  "limitations": [
+    "Validator availability, partition filesystem/base addresses, string/zero/log services and BSP cleanup are supplied.",
+    "All writes mutate only in-memory synthetic partition fixtures; no flash/environment/device access.",
+    "Actual selection/counter/header/prepare/finish/launch/handoff control code executes; one encoded entry-jump case stops at startup +22c, others before image instructions.",
+    "This does not establish device enforcement, safe physical entry/restoration or a viable independent-code boot path."
+  ],
+  "native_steps": 27713,
+  "native_validation": {
+    "bound_per_case": 100000,
+    "case_count": 64,
+    "cases": [
+      {
+        "name": "get_0",
+        "observed": {
+          "actions": [
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": true,
+              "header_sha256": "a8cb7959ae69d5a7f3bd7be5e87f75b1e1b114b95bcbbe8bb815d78d5a54f82f",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 1
+            }
+          ]
+        },
+        "steps": 29
+      },
+      {
+        "name": "set_0",
+        "observed": {
+          "actions": [
+            "open:0:1",
+            "write:0:72:72",
+            "close:0"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": true,
+              "header_sha256": "f42f7a081d0065e234cd591dce119238d4a9b94482a9ac8b1b1b33e8c91c1669",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 10,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "cc3cb4074961309a345438854dbe71da2491f4d850c7e3df0b478da47fcc5b40"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": null
+            }
+          ]
+        },
+        "steps": 716
+      },
+      {
+        "name": "get_1",
+        "observed": {
+          "actions": [
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": true,
+              "header_sha256": "cd7e73e7a1da185f40a1a4d7fa0d81a6eea39264027c35022457c9c1d8c8070a",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 1
+            }
+          ]
+        },
+        "steps": 29
+      },
+      {
+        "name": "set_1",
+        "observed": {
+          "actions": [
+            "open:1:1",
+            "write:1:72:72",
+            "close:1"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": true,
+              "header_sha256": "f42f7a081d0065e234cd591dce119238d4a9b94482a9ac8b1b1b33e8c91c1669",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 10,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "ba9a420696cdea1ada50680397ee415a8e3acb28ef6fd460746073cb0a7ca747"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": null
+            }
+          ]
+        },
+        "steps": 716
+      },
+      {
+        "name": "get_2",
+        "observed": {
+          "actions": [
+            "open:2:1",
+            "read:2:0:72:72",
+            "close:2"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": true,
+              "header_sha256": "6403e0c5876317d009ad690597f0729cb6f9ce0dbdd39eab6a20095aa2b87887",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 1
+            }
+          ]
+        },
+        "steps": 29
+      },
+      {
+        "name": "set_2",
+        "observed": {
+          "actions": [
+            "open:2:1",
+            "write:2:72:72",
+            "close:2"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": true,
+              "header_sha256": "f42f7a081d0065e234cd591dce119238d4a9b94482a9ac8b1b1b33e8c91c1669",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 10,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "b0ace934e5afdaf53019b36399a2e2588d6f50e410200afee00b891f4ac151ee"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": null
+            }
+          ]
+        },
+        "steps": 716
+      },
+      {
+        "name": "get_open_failure",
+        "observed": {
+          "actions": [
+            "open:0:1",
+            "log:open_error"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 33
+      },
+      {
+        "name": "get_short",
+        "observed": {
+          "actions": [
+            "open:0:1",
+            "read:0:0:72:71",
+            "log:read_error",
+            "close:0"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "f6881988dce365420af6ee6a4e98cf679a5c34af17a85aee77da9c5377b080bc",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 44
+      },
+      {
+        "name": "set_open_failure",
+        "observed": {
+          "actions": [
+            "open:0:1",
+            "log:open_error"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": null
+            }
+          ]
+        },
+        "steps": 30
+      },
+      {
+        "name": "set_short",
+        "observed": {
+          "actions": [
+            "open:0:1",
+            "write:0:72:71",
+            "log:write_error",
+            "close:0"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": true,
+              "header_sha256": "f42f7a081d0065e234cd591dce119238d4a9b94482a9ac8b1b1b33e8c91c1669",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 10,
+                  "complete": 4,
+                  "crc_valid": false,
+                  "magic_hex": "5245434f",
+                  "sha256": "9cfa619c4611839aa84fd87cc4f9d894bb6aa89283f0a4b1e8fc1e626dc256db"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": null
+            }
+          ]
+        },
+        "steps": 730
+      },
+      {
+        "name": "select_available_000",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:0",
+            "validate:1:0",
+            "log:error:379"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 44
+      },
+      {
+        "name": "select_available_100",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:0"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 2160291776
+            }
+          ]
+        },
+        "steps": 70
+      },
+      {
+        "name": "select_available_010",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 2160291788
+            }
+          ]
+        },
+        "steps": 68
+      },
+      {
+        "name": "select_available_110",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 2160291776
+            }
+          ]
+        },
+        "steps": 114
+      },
+      {
+        "name": "select_available_111",
+        "observed": {
+          "actions": [
+            "validate:8:1"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 2160291800
+            }
+          ]
+        },
+        "steps": 16
+      },
+      {
+        "name": "select_delta_0_0",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 4,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "5a6c22957d5456f5e08bde4557824c8ae8c0b8bbe8d4dfd836a05fd9d513c577"
+                },
+                {
+                  "bootup": 4,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "6b7dfe70f06e6e5d21aeb0ea7780ee01342c0f7ab69e8a92ac3aa337ca080223"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 2160291776
+            }
+          ]
+        },
+        "steps": 114
+      },
+      {
+        "name": "select_delta_0_1",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 4,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "5a6c22957d5456f5e08bde4557824c8ae8c0b8bbe8d4dfd836a05fd9d513c577"
+                },
+                {
+                  "bootup": 5,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "5dcba8a22fcbcc1e662e3f532aa3adddf7ac040fdbffa1d0da1e5199ca8ab077"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 2160291776
+            }
+          ]
+        },
+        "steps": 112
+      },
+      {
+        "name": "select_delta_1_0",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 5,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "4fe2d1d5aea739b525718401dae967860523741468dfc1cbd23a8fc9f4b8725d"
+                },
+                {
+                  "bootup": 4,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "6b7dfe70f06e6e5d21aeb0ea7780ee01342c0f7ab69e8a92ac3aa337ca080223"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 2160291788
+            }
+          ]
+        },
+        "steps": 109
+      },
+      {
+        "name": "select_delta_1_1",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 5,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "4fe2d1d5aea739b525718401dae967860523741468dfc1cbd23a8fc9f4b8725d"
+                },
+                {
+                  "bootup": 5,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "5dcba8a22fcbcc1e662e3f532aa3adddf7ac040fdbffa1d0da1e5199ca8ab077"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 2160291788
+            }
+          ]
+        },
+        "steps": 109
+      },
+      {
+        "name": "select_delta_9_9",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 13,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "0a402e4833a5d9aa3226998b9f13cccece3200763e3131ece4d43b282bcdd052"
+                },
+                {
+                  "bootup": 13,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "9ef9ede0c01f1639d6ce9b6a2b07f37b0ab0bc72d152ffb4319cb409a04497f4"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 2160291788
+            }
+          ]
+        },
+        "steps": 109
+      },
+      {
+        "name": "select_delta_9_10",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 13,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "0a402e4833a5d9aa3226998b9f13cccece3200763e3131ece4d43b282bcdd052"
+                },
+                {
+                  "bootup": 14,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "221a95d0dd2696640db2c10cce275f18b193158baea4627b52ef1d741ea8aa06"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 2160291776
+            }
+          ]
+        },
+        "steps": 108
+      },
+      {
+        "name": "select_delta_10_9",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 14,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "66751d8a5ad50476c640371ac40fc18b439e3ff1d0e0873a76fdc109dcd2e51f"
+                },
+                {
+                  "bootup": 13,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "9ef9ede0c01f1639d6ce9b6a2b07f37b0ab0bc72d152ffb4319cb409a04497f4"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 2160291788
+            }
+          ]
+        },
+        "steps": 104
+      },
+      {
+        "name": "select_delta_10_10",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1",
+            "log:error:379"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 14,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "66751d8a5ad50476c640371ac40fc18b439e3ff1d0e0873a76fdc109dcd2e51f"
+                },
+                {
+                  "bootup": 14,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "221a95d0dd2696640db2c10cce275f18b193158baea4627b52ef1d741ea8aa06"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 118
+      },
+      {
+        "name": "select_delta_11_0",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 15,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "429e5386f682174120ebb385f1ed0f1152aa94f9fb6c70949e02d8e7681cfcea"
+                },
+                {
+                  "bootup": 4,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "6b7dfe70f06e6e5d21aeb0ea7780ee01342c0f7ab69e8a92ac3aa337ca080223"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 2160291788
+            }
+          ]
+        },
+        "steps": 104
+      },
+      {
+        "name": "select_delta_0_11",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 4,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "5a6c22957d5456f5e08bde4557824c8ae8c0b8bbe8d4dfd836a05fd9d513c577"
+                },
+                {
+                  "bootup": 15,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8ceba79d6fbda2117145f51e48c81a531ae252f0a8f2d8cf9665fcb9500b76bf"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 2160291776
+            }
+          ]
+        },
+        "steps": 108
+      },
+      {
+        "name": "select_delta_-1_0",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "1a03ab180995253073da7bdcee75e9b89cb9458aad93e39ee43099b596e4c9f7"
+                },
+                {
+                  "bootup": 4,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "6b7dfe70f06e6e5d21aeb0ea7780ee01342c0f7ab69e8a92ac3aa337ca080223"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 2160291776
+            }
+          ]
+        },
+        "steps": 112
+      },
+      {
+        "name": "select_delta_0_-1",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 4,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "5a6c22957d5456f5e08bde4557824c8ae8c0b8bbe8d4dfd836a05fd9d513c577"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "187effb751c70a26727da304280521f11fd7b4f1b88f8ef380c5f88d9cb7264f"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 2160291788
+            }
+          ]
+        },
+        "steps": 109
+      },
+      {
+        "name": "select_delta_-1_-1",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "1a03ab180995253073da7bdcee75e9b89cb9458aad93e39ee43099b596e4c9f7"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "187effb751c70a26727da304280521f11fd7b4f1b88f8ef380c5f88d9cb7264f"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 2160291788
+            }
+          ]
+        },
+        "steps": 109
+      },
+      {
+        "name": "select_generation_1_2",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "5b04876e8a472d7c7f921aa4a4dc99f745691fe10ff48696c6049baba877e28f"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "87fc2bffcb1950b77a98195d625a66581f5079d7e874045299a18ec3fca7e000"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 2160291788
+            }
+          ]
+        },
+        "steps": 111
+      },
+      {
+        "name": "select_generation_2_1",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 2160291776
+            }
+          ]
+        },
+        "steps": 114
+      },
+      {
+        "name": "select_generation_2_2",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "87fc2bffcb1950b77a98195d625a66581f5079d7e874045299a18ec3fca7e000"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 2160291776
+            }
+          ]
+        },
+        "steps": 114
+      },
+      {
+        "name": "select_generation_4294967295_0",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "6076c7be8e9854d8d7645272cb2564d3805f21afd5c2882b287127c47d00d133"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "ade1f98a4d898ae3c33b6a3e5358eaf0966c41b4ad6dcc74a772d2ed0e178875"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 2160291788
+            }
+          ]
+        },
+        "steps": 111
+      },
+      {
+        "name": "select_generation_0_2147483648",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "242d7666d54f4b094ad15d9e15292660d455aee482082ee1b2e85eb49daf4e98"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "98c42a7f300337538b4f20fe855574a36a2dc5f9709ce9dc9f9054adcd676ee4"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 2160291776
+            }
+          ]
+        },
+        "steps": 114
+      },
+      {
+        "name": "select_get_open_failure",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "log:open_error",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 2160291788
+            }
+          ]
+        },
+        "steps": 115
+      },
+      {
+        "name": "select_get_short",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:71",
+            "log:read_error",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 2160291776
+            }
+          ]
+        },
+        "steps": 129
+      },
+      {
+        "name": "prepare_normal",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1",
+            "log:selected",
+            "open:0:2",
+            "read:0:0:72:72",
+            "log:counters",
+            "read:0:4096:512:512",
+            "base:0",
+            "close:0",
+            "open:0:3",
+            "read:0:0:72:72",
+            "close:0",
+            "open:0:4",
+            "write:0:72:72",
+            "close:0"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2416971776,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 4,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "742e9c4f1e19f7ae6f6ecb76133fd9185755fcb2440316fc94776b5f2d576791"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "954f8479bca56da79968f79b895441195488be8460b88594c329c13e2a32f81f",
+              "returned": 1
+            }
+          ]
+        },
+        "steps": 959
+      },
+      {
+        "name": "prepare_ota",
+        "observed": {
+          "actions": [
+            "validate:8:1",
+            "log:selected",
+            "open:2:1",
+            "read:2:0:72:72",
+            "log:counters",
+            "read:2:4096:512:512",
+            "base:2",
+            "close:2",
+            "open:2:2",
+            "write:2:72:72",
+            "close:2"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2419068928,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "00000000",
+                  "sha256": "448b8ce7d1ec0c647fa053693748df2ec0c08c42626c8022de51325100c2e7e1"
+                }
+              ],
+              "ram_sha256": "00c7e9654af40d73c7b872c5dae8cb19c2d5b38cba2ecc2981ea21bba58cebae",
+              "returned": 1
+            }
+          ]
+        },
+        "steps": 825
+      },
+      {
+        "name": "prepare_no_outputs",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 20
+      },
+      {
+        "name": "prepare_mapping_only",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1",
+            "log:selected",
+            "open:0:2",
+            "read:0:0:72:72",
+            "log:counters",
+            "base:0",
+            "close:0",
+            "open:0:3",
+            "read:0:0:72:72",
+            "close:0",
+            "open:0:4",
+            "write:0:72:72",
+            "close:0"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2416971776,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 4,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "742e9c4f1e19f7ae6f6ecb76133fd9185755fcb2440316fc94776b5f2d576791"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 1
+            }
+          ]
+        },
+        "steps": 952
+      },
+      {
+        "name": "prepare_ram_only",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1",
+            "log:selected",
+            "open:0:2",
+            "read:0:0:72:72",
+            "log:counters",
+            "read:0:4096:512:512",
+            "close:0",
+            "open:0:3",
+            "read:0:0:72:72",
+            "close:0",
+            "open:0:4",
+            "write:0:72:72",
+            "close:0"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 4,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "742e9c4f1e19f7ae6f6ecb76133fd9185755fcb2440316fc94776b5f2d576791"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "954f8479bca56da79968f79b895441195488be8460b88594c329c13e2a32f81f",
+              "returned": 1
+            }
+          ]
+        },
+        "steps": 953
+      },
+      {
+        "name": "prepare_none_available",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:0",
+            "validate:1:0",
+            "log:error:379",
+            "log:error:3c5"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 81
+      },
+      {
+        "name": "prepare_open",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1",
+            "log:selected",
+            "open:0:2",
+            "log:error:3d0"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 169
+      },
+      {
+        "name": "prepare_header_short",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1",
+            "log:selected",
+            "open:0:2",
+            "read:0:0:72:71",
+            "log:error:3d8"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [
+                {
+                  "fd": 102,
+                  "partition": "recovery0"
+                }
+              ],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 175
+      },
+      {
+        "name": "prepare_image_short",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1",
+            "log:selected",
+            "open:0:2",
+            "read:0:0:72:72",
+            "log:counters",
+            "read:0:4096:512:511",
+            "log:error:3e3"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [
+                {
+                  "fd": 102,
+                  "partition": "recovery0"
+                }
+              ],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "7cb009b6709f1543de738b86bb16c0c2ad344eeb2ed3c7442e9d0a620e02bc97",
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 196
+      },
+      {
+        "name": "prepare_counter_open",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1",
+            "log:selected",
+            "open:0:2",
+            "read:0:0:72:72",
+            "log:counters",
+            "read:0:4096:512:512",
+            "base:0",
+            "close:0",
+            "open:0:3",
+            "log:open_error",
+            "open:0:4",
+            "write:0:72:72",
+            "close:0"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2416971776,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "00000000",
+                  "sha256": "5b25705cad9006e4a0326bbbf07b976b574a517cd8d7a855353baa7af85ce959"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "954f8479bca56da79968f79b895441195488be8460b88594c329c13e2a32f81f",
+              "returned": 1
+            }
+          ]
+        },
+        "steps": 960
+      },
+      {
+        "name": "prepare_counter_short",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1",
+            "log:selected",
+            "open:0:2",
+            "read:0:0:72:72",
+            "log:counters",
+            "read:0:4096:512:512",
+            "base:0",
+            "close:0",
+            "open:0:3",
+            "read:0:0:72:71",
+            "log:read_error",
+            "close:0",
+            "open:0:4",
+            "write:0:72:72",
+            "close:0"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2416971776,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "954f8479bca56da79968f79b895441195488be8460b88594c329c13e2a32f81f",
+              "returned": 1
+            }
+          ]
+        },
+        "steps": 971
+      },
+      {
+        "name": "prepare_write_open",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1",
+            "log:selected",
+            "open:0:2",
+            "read:0:0:72:72",
+            "log:counters",
+            "read:0:4096:512:512",
+            "base:0",
+            "close:0",
+            "open:0:3",
+            "read:0:0:72:72",
+            "close:0",
+            "open:0:4",
+            "log:open_error"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2416971776,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "954f8479bca56da79968f79b895441195488be8460b88594c329c13e2a32f81f",
+              "returned": 1
+            }
+          ]
+        },
+        "steps": 273
+      },
+      {
+        "name": "prepare_write_short",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1",
+            "log:selected",
+            "open:0:2",
+            "read:0:0:72:72",
+            "log:counters",
+            "read:0:4096:512:512",
+            "base:0",
+            "close:0",
+            "open:0:3",
+            "read:0:0:72:72",
+            "close:0",
+            "open:0:4",
+            "write:0:72:71",
+            "log:write_error",
+            "close:0"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2416971776,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 4,
+                  "complete": 3,
+                  "crc_valid": false,
+                  "magic_hex": "5245434f",
+                  "sha256": "1ac39e4719aa5967d995bec962bdad3acbbd949e9865209fecdba07566acbe4e"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "954f8479bca56da79968f79b895441195488be8460b88594c329c13e2a32f81f",
+              "returned": 1
+            }
+          ]
+        },
+        "steps": 973
+      },
+      {
+        "name": "prepare_counter_wrap",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:0",
+            "log:selected",
+            "open:0:2",
+            "read:0:0:72:72",
+            "log:counters",
+            "read:0:4096:512:512",
+            "base:0",
+            "close:0",
+            "open:0:3",
+            "read:0:0:72:72",
+            "close:0",
+            "open:0:4",
+            "write:0:72:72",
+            "close:0"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2416971776,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 0,
+                  "complete": 4294967295,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "0c3ec4da9705caa2678409a4d1cd86cc0c48ee7b44f2584be27f276991b0b38c"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "954f8479bca56da79968f79b895441195488be8460b88594c329c13e2a32f81f",
+              "returned": 1
+            }
+          ]
+        },
+        "steps": 915
+      },
+      {
+        "name": "prepare_mapping_wrap",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1",
+            "log:selected",
+            "open:0:2",
+            "read:0:0:72:72",
+            "log:counters",
+            "read:0:4096:512:512",
+            "base:0",
+            "close:0",
+            "open:0:3",
+            "read:0:0:72:72",
+            "close:0",
+            "open:0:4",
+            "write:0:72:72",
+            "close:0"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2048,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 4,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "742e9c4f1e19f7ae6f6ecb76133fd9185755fcb2440316fc94776b5f2d576791"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "954f8479bca56da79968f79b895441195488be8460b88594c329c13e2a32f81f",
+              "returned": 1
+            }
+          ]
+        },
+        "steps": 959
+      },
+      {
+        "name": "finish_all",
+        "observed": {
+          "actions": [
+            "log:finish",
+            "open:2:1",
+            "write:2:72:72",
+            "close:2",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "open:0:2",
+            "write:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1",
+            "open:1:2",
+            "write:1:72:72",
+            "close:1"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 5,
+                  "complete": 5,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "0db0b7d081659df41ec4af61f0e1a04c92804e3c3add65c4cf9f4a11a6ed7469"
+                },
+                {
+                  "bootup": 7,
+                  "complete": 7,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "4646f31e058d1e7ce278ae1a758960381637fe60680bddeadfd43e3dc831d8fe"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "00000000",
+                  "sha256": "448b8ce7d1ec0c647fa053693748df2ec0c08c42626c8022de51325100c2e7e1"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 1
+            }
+          ]
+        },
+        "steps": 2263
+      },
+      {
+        "name": "finish_ota_only",
+        "observed": {
+          "actions": [
+            "log:finish",
+            "open:2:1",
+            "write:2:72:72",
+            "close:2"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "00000000",
+                  "sha256": "448b8ce7d1ec0c647fa053693748df2ec0c08c42626c8022de51325100c2e7e1"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 1
+            }
+          ]
+        },
+        "steps": 743
+      },
+      {
+        "name": "finish_invalid_normals",
+        "observed": {
+          "actions": [
+            "log:finish",
+            "open:2:1",
+            "write:2:72:72",
+            "close:2",
+            "validate:0:0",
+            "validate:1:0"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "00000000",
+                  "sha256": "448b8ce7d1ec0c647fa053693748df2ec0c08c42626c8022de51325100c2e7e1"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 1
+            }
+          ]
+        },
+        "steps": 751
+      },
+      {
+        "name": "finish_ota_open_failure",
+        "observed": {
+          "actions": [
+            "log:finish",
+            "open:2:1",
+            "log:open_error",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "open:0:2",
+            "write:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1",
+            "open:1:2",
+            "write:1:72:72",
+            "close:1"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 1
+            }
+          ]
+        },
+        "steps": 1577
+      },
+      {
+        "name": "finish_normal_short",
+        "observed": {
+          "actions": [
+            "log:finish",
+            "open:2:1",
+            "write:2:72:72",
+            "close:2",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:71",
+            "log:read_error",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1",
+            "open:1:2",
+            "write:1:72:72",
+            "close:1"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "00000000",
+                  "sha256": "448b8ce7d1ec0c647fa053693748df2ec0c08c42626c8022de51325100c2e7e1"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 1
+            }
+          ]
+        },
+        "steps": 1556
+      },
+      {
+        "name": "lifecycle_prepare_finish_select",
+        "observed": {
+          "actions": [
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1",
+            "log:selected",
+            "open:0:2",
+            "read:0:0:72:72",
+            "log:counters",
+            "read:0:4096:512:512",
+            "base:0",
+            "close:0",
+            "open:0:3",
+            "read:0:0:72:72",
+            "close:0",
+            "open:0:4",
+            "write:0:72:72",
+            "close:0",
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:5",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:2",
+            "read:1:0:72:72",
+            "close:1",
+            "log:finish",
+            "open:2:1",
+            "write:2:72:72",
+            "close:2",
+            "validate:0:1",
+            "open:0:6",
+            "read:0:0:72:72",
+            "close:0",
+            "open:0:7",
+            "write:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:3",
+            "read:1:0:72:72",
+            "close:1",
+            "open:1:4",
+            "write:1:72:72",
+            "close:1",
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:8",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:5",
+            "read:1:0:72:72",
+            "close:1"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2416971776,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 4,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "742e9c4f1e19f7ae6f6ecb76133fd9185755fcb2440316fc94776b5f2d576791"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "954f8479bca56da79968f79b895441195488be8460b88594c329c13e2a32f81f",
+              "returned": 1
+            },
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2416971776,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 4,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "742e9c4f1e19f7ae6f6ecb76133fd9185755fcb2440316fc94776b5f2d576791"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "954f8479bca56da79968f79b895441195488be8460b88594c329c13e2a32f81f",
+              "returned": 2160291788
+            },
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2416971776,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 4,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "5a6c22957d5456f5e08bde4557824c8ae8c0b8bbe8d4dfd836a05fd9d513c577"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "00000000",
+                  "sha256": "448b8ce7d1ec0c647fa053693748df2ec0c08c42626c8022de51325100c2e7e1"
+                }
+              ],
+              "ram_sha256": "954f8479bca56da79968f79b895441195488be8460b88594c329c13e2a32f81f",
+              "returned": 1
+            },
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2416971776,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 4,
+                  "complete": 4,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "5a6c22957d5456f5e08bde4557824c8ae8c0b8bbe8d4dfd836a05fd9d513c577"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "00000000",
+                  "sha256": "448b8ce7d1ec0c647fa053693748df2ec0c08c42626c8022de51325100c2e7e1"
+                }
+              ],
+              "ram_sha256": "954f8479bca56da79968f79b895441195488be8460b88594c329c13e2a32f81f",
+              "returned": 2160291776
+            }
+          ]
+        },
+        "steps": 3445
+      },
+      {
+        "name": "handoff_console",
+        "observed": {
+          "actions": [
+            "boundary:console_close",
+            "boundary:interrupts",
+            "boundary:teardown",
+            "print:entry",
+            "handoff:stopped"
+          ],
+          "rows": [
+            {
+              "console": 0,
+              "handoff": {
+                "first_word": 19,
+                "pc": 2161115136,
+                "ra": 1879048192,
+                "sp": 2164264960
+              },
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6272,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": null
+            }
+          ]
+        },
+        "steps": 35
+      },
+      {
+        "name": "handoff_console_off",
+        "observed": {
+          "actions": [
+            "boundary:interrupts",
+            "boundary:teardown",
+            "print:entry",
+            "handoff:stopped"
+          ],
+          "rows": [
+            {
+              "console": 0,
+              "handoff": {
+                "first_word": 19,
+                "pc": 2161115136,
+                "ra": 1879048192,
+                "sp": 2164264960
+              },
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6272,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": null
+            }
+          ]
+        },
+        "steps": 27
+      },
+      {
+        "name": "handoff_interrupts_already_off",
+        "observed": {
+          "actions": [
+            "boundary:console_close",
+            "boundary:interrupts",
+            "boundary:teardown",
+            "print:entry",
+            "handoff:stopped"
+          ],
+          "rows": [
+            {
+              "console": 0,
+              "handoff": {
+                "first_word": 19,
+                "pc": 2161115136,
+                "ra": 1879048192,
+                "sp": 2164264960
+              },
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6272,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": null
+            }
+          ]
+        },
+        "steps": 35
+      },
+      {
+        "name": "handoff_entry_trampoline",
+        "observed": {
+          "actions": [
+            "boundary:console_close",
+            "boundary:interrupts",
+            "boundary:teardown",
+            "print:entry",
+            "handoff:stopped"
+          ],
+          "rows": [
+            {
+              "console": 0,
+              "handoff": {
+                "first_word": 583008367,
+                "pc": 2161115692,
+                "ra": 1879048192,
+                "sp": 2164264960
+              },
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6272,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "2e2f6099b9c6d4cfcd7774ca858107e611788a8aac2f9c0ae3b0820c5738ed1c",
+              "returned": null
+            }
+          ]
+        },
+        "steps": 36
+      },
+      {
+        "name": "launch_normal",
+        "observed": {
+          "actions": [
+            "log:launch",
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1",
+            "log:selected",
+            "open:0:2",
+            "read:0:0:72:72",
+            "log:counters",
+            "read:0:4096:512:512",
+            "close:0",
+            "open:0:3",
+            "read:0:0:72:72",
+            "close:0",
+            "open:0:4",
+            "write:0:72:72",
+            "close:0",
+            "log:jump",
+            "boundary:console_close",
+            "boundary:interrupts",
+            "boundary:teardown",
+            "print:entry",
+            "handoff:stopped"
+          ],
+          "rows": [
+            {
+              "console": 0,
+              "handoff": {
+                "first_word": 773919751,
+                "pc": 2161115136,
+                "ra": 2160069074,
+                "sp": 2164264944
+              },
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6272,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 4,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "742e9c4f1e19f7ae6f6ecb76133fd9185755fcb2440316fc94776b5f2d576791"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "954f8479bca56da79968f79b895441195488be8460b88594c329c13e2a32f81f",
+              "returned": null
+            }
+          ]
+        },
+        "steps": 1012
+      },
+      {
+        "name": "launch_ota",
+        "observed": {
+          "actions": [
+            "log:launch",
+            "validate:8:1",
+            "log:selected",
+            "open:2:1",
+            "read:2:0:72:72",
+            "log:counters",
+            "read:2:4096:512:512",
+            "close:2",
+            "open:2:2",
+            "write:2:72:72",
+            "close:2",
+            "log:jump",
+            "boundary:console_close",
+            "boundary:interrupts",
+            "boundary:teardown",
+            "print:entry",
+            "handoff:stopped"
+          ],
+          "rows": [
+            {
+              "console": 0,
+              "handoff": {
+                "first_word": 1346582057,
+                "pc": 2161115136,
+                "ra": 2160069074,
+                "sp": 2164264944
+              },
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6272,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "00000000",
+                  "sha256": "448b8ce7d1ec0c647fa053693748df2ec0c08c42626c8022de51325100c2e7e1"
+                }
+              ],
+              "ram_sha256": "00c7e9654af40d73c7b872c5dae8cb19c2d5b38cba2ecc2981ea21bba58cebae",
+              "returned": null
+            }
+          ]
+        },
+        "steps": 878
+      },
+      {
+        "name": "launch_none",
+        "observed": {
+          "actions": [
+            "log:launch",
+            "validate:8:0",
+            "validate:0:0",
+            "validate:1:0",
+            "log:error:379",
+            "log:error:3c5",
+            "log:launch_error:164",
+            "log:launch_error:167"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "4a94a81710539d63f0b673e28f760138b4c34651cd6661c77bd64770e852e648",
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 121
+      },
+      {
+        "name": "launch_image_short",
+        "observed": {
+          "actions": [
+            "log:launch",
+            "validate:8:0",
+            "validate:0:1",
+            "open:0:1",
+            "read:0:0:72:72",
+            "close:0",
+            "validate:1:1",
+            "open:1:1",
+            "read:1:0:72:72",
+            "close:1",
+            "log:selected",
+            "open:0:2",
+            "read:0:0:72:72",
+            "log:counters",
+            "read:0:4096:512:511",
+            "log:error:3e3",
+            "log:launch_error:164",
+            "log:launch_error:167"
+          ],
+          "rows": [
+            {
+              "console": 1,
+              "handoff": null,
+              "header_crc_valid": false,
+              "header_sha256": "9318f59536929d1f4f541723dd1fb14e45415c9b3d1e58faafc10832acfd12aa",
+              "mapped": 2779096485,
+              "mstatus": 6280,
+              "open_handles": [
+                {
+                  "fd": 102,
+                  "partition": "recovery0"
+                }
+              ],
+              "partitions": [
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "83370fdd96b566a6088829effae8c1e6fa63f49c74c9aa7bace760300057f32d"
+                },
+                {
+                  "bootup": 3,
+                  "complete": 3,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "8f288a81b463e608e8ab6c95000a7ecd1dcc2d1b7e057c718e2decaa3cfdd010"
+                },
+                {
+                  "bootup": 0,
+                  "complete": 0,
+                  "crc_valid": true,
+                  "magic_hex": "5245434f",
+                  "sha256": "3a31627c37879f961c9471b3d7194a6db6d101d594b9fd3211e9ac5e3eeb5d62"
+                }
+              ],
+              "ram_sha256": "7cb009b6709f1543de738b86bb16c0c2ad344eeb2ed3c7442e9d0a620e02bc97",
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 236
+      }
+    ],
+    "hardware_execution": false
+  },
+  "recovery_sha256": "2af5c1c1a1283c0b1d558c7f4df3b77abfbd4a429c1141ec67c751adf904f412",
+  "validation_sha256": "aee76953cf99eb64359ab180a072b26c3d74bf8485f32ac9b8ec0eb29bd03dc9",
+  "vectors_sha256": "c5b19f33399422c0726ce161c67111801acebc402e11cd87c29b1c1cf5729f30"
+}

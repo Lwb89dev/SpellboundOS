@@ -1315,15 +1315,42 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    and [analysis/recovery-validator.json](analysis/recovery-validator.json).
    Vendor material stays ignored; no device access or firmware/settings writes.
 
+## 2026-11-17 — recovery selection, counter writes and stopped handoff
+
+1. Executed raw header getter/setter, native CRC refresh, all three names and
+   open/short-read/short-write cases. Writes affect only synthetic in-memory
+   files; complete header/image hashes and descriptor state are checked.
+2. Executed OTA priority and normal selection using signed32(bootup-complete)
+   < 10. Zero-delta ties use the signed +4 order field and prefer recovery0 on
+   equality; other delta ties prefer recovery1. Raw getter status is ignored
+   by selection; bounded failure cases expose dependence on supplied backing.
+3. Executed preparation/completion and connected counter transitions. Normal
+   preparation increments boot-up; OTA preparation writes a zero header plus
+   CRC. Mapping-only requests still reach writes. Short preparation reads leave
+   the supplied descriptor open; counter reread/write errors can coexist with
+   return 1. Completion acknowledges valid normal headers and attempts OTA clear.
+4. Executed actual launch and handoff to a stopped PC, including console flag
+   handling, emulated mstatus bit-3 clear, supplied BSP teardown and caller-frame
+   checks. One independently encoded JAL x0,+0x22c is matched to the OTA entry
+   and executed once, stopping before startup at 0x80d0022c. No image body runs.
+5. All 64 native cases pass (ten header, 25 selection, 21 prepare/finish/sequence,
+   eight handoff/launch), totaling 27,713 bounded steps including supplied calls.
+   Added 27 host checks; all 522 Python tests pass. Ten fresh exports, boot/recovery
+   hashes, observations and reproduction are in
+   [analysis/RECOVERY_SELECTION_AND_HANDOFF.md](analysis/RECOVERY_SELECTION_AND_HANDOFF.md)
+   and [analysis/recovery-lifecycle.json](analysis/recovery-lifecycle.json).
+   Vendor material stays ignored. No hardware, environment or real flash access.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
   native subsystem work: the signed boot chain and device-specific restoration
   remain unresolved and cannot be closed by additional HR test counts alone.
-  Selected boot header/metadata/signature/partition validators now execute with
-  supplied board/partition/SHA/ECDSA services. Follow partition selection,
-  preparation, write-side counter/environment handling and handoff under bounded
-  synthetic inputs; establish a physical non-destructive entry/backup route.
+  Selected boot validation, selection, header/counter preparation/completion and
+  stopped handoff now execute with supplied board/storage/crypto/BSP services.
+  Follow upgrade environment records, reason/gesture/UI callers, actual VFS/raw
+  storage/base-address/write-atomicity and startup dependencies. Establish a
+  physical non-destructive entry/backup/restoration route before device writes.
 
 - Regenerate selected native paths with startup-aware mappings, corrected
   logger return behavior and register-save ABI effects. Current pseudocode

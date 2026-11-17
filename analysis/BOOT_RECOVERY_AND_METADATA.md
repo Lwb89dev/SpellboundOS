@@ -135,3 +135,9 @@ cases with synthetic partition/service inputs: CRC, hardware/metadata policy,
 signature-read/hash orchestration, embedded key/curve bridge and partition/
 mandatory-wrapper checks. It supplies SHA hardware services and ECDSA arithmetic;
 no physical recovery operation or standalone boot path is established.
+
+The subsequent [selection/counter/handoff pass](RECOVERY_SELECTION_AND_HANDOFF.md)
+adds 64 native cases with synthetic availability and partition/BSP services.
+It checks header writes, signed counter/order selection, completion acknowledgments
+and stopped launch, including the entry jump to startup + `0x22c`. Physical
+entry, backup/restoration, environment lifecycle and independent-code boot remain open.
