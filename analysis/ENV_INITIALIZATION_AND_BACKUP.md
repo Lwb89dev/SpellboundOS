@@ -169,3 +169,9 @@ setup, actual reserve-image provenance/rewrite semantics, real default tables,
 concurrency, permanence across reset and the subsequent boot/recovery/UI consumer
 remain open. These results do not establish physical backup/restoration or an
 independent watch boot through the signed chain.
+
+The following [registry/setup/NVMS pass](ENV_STORAGE_SETUP_AND_NVMS.md) adds 52
+native cases for actual handle selection, partition dispatch, mirror repair,
+write fallback and stopped framework bootstrap. It identifies the bootloader's
+published `boots=0` default. Registry population and physical driver behavior
+remain outside the supplied-descriptor fixtures.

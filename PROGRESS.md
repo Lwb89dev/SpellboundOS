@@ -1492,6 +1492,33 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    cases rerun unchanged. One record search uses explicit erased adjacent read
    backing beyond the logical four sectors. No device or physical flash access.
 
+## 2026-11-17 — storage registry, environment setup and NVMS bootstrap
+
+1. Executed named registry lookup, owner/range validation and read/program/erase/
+   rewrite dispatch against synthetic descriptors. Handles are registry-row
+   pointers; requests clip to the partition span. Physical bases, spans and
+   callback implementations remain supplied fixture data.
+2. Executed environment setup: preferred `easyflash`, optional `envbak`, required
+   fallback `nvms` and required `env` selection, mutex creation and partial
+   failure state. Recovered the original ROM table publishing `boots=0`.
+   Setup ignores the subsequent NVMS mirror-sync return value.
+3. Executed the two 160-byte NVMS mirror comparison/repair paths and the actual
+   rewrite fallback. Allocation failure leaves an unmatched lock acquisition;
+   erase/program failures can be ignored after a successful page read. Fast
+   rewrite and page fallback route a crossing request differently in the supplied
+   geometry. Real driver alignment, mutex and atomicity rules are unproven.
+4. Executed clean bootstrap through actual environment binding/initialization,
+   inner/outer readiness gates and the retained magic/low-byte accessor. The
+   framework caller restores its ABI and stops before its next startup phase
+   at `0x80c0b7b0`, including after setup failure. This is not a complete boot.
+5. All 52 native cases pass, totaling 26,784 bounded steps (maximum 4,024).
+   Added 33 host checks; all 729 Python tests pass. Thirteen fresh exports,
+   32 code-range guards, CRC/default-table hashes and complete traces are in
+   [analysis/ENV_STORAGE_SETUP_AND_NVMS.md](analysis/ENV_STORAGE_SETUP_AND_NVMS.md)
+   and [analysis/env-storage.json](analysis/env-storage.json).
+   Registry population, physical drivers and flash remain outside the fixtures;
+   no device was accessed.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -1507,9 +1534,12 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
   sector-end cache updates now run, including connected reservation after an
   integrity error. Relocation/collection/reformat/default restore, connected
   environment initialization, callbacks, table/readiness binding and dump/reserve
-  copying now execute over synthetic services too. Follow actual handle setup,
-  reserve-image provenance, rewrite-service semantics, real default-table
-  population, broader malformed/stale-cache/concurrency/boundary-read paths,
+  copying now execute over synthetic services too. Named registry validation,
+  handle setup, NVMS mirror repair/rewrite fallback and clean bootstrap now
+  execute as well; the ROM table publishes `boots=0`. Follow registry/device
+  population, the concrete physical partition map and driver callbacks, actual
+  rewrite/mutex constraints, reserve-image provenance and other factory data,
+  broader malformed/stale-cache/concurrency/boundary-read paths,
   real persistence and subsequent boot/recovery/UI
   dispatch, physical reason/gesture behavior, VFS/raw storage/base-address/
   write-atomicity and startup dependencies. Establish a

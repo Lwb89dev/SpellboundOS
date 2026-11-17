@@ -1,0 +1,2509 @@
+{
+  "boot_sha256": "44cd83c0d09864c6101e9825bd3c77d7fac314584d0408b378dd56c2aac5736a",
+  "byte_range_sha256": {
+    "80c00b24_2e": "08e0b6d64fe10875c94c5cb67b140355c1366be7b925e52f18d2b27dac4a6c1f",
+    "80c01704_36": "b50281cc0ec5425083e0e55fe5e08407da9cf0e453b3b4f45917b4172186c49b",
+    "80c0bc28_1ec": "431a1cb2353f4899e3c941ee8c32af151b3a48d1f4f41a212a4b5cd0f49b9f1a",
+    "80c0be14_144": "fefa8b3423d96dc296037f6ad46effffe838b189fab64480199a0a0d29ae3506",
+    "80c0bf58_8a": "5df71ee1e5c1a95510b0d9ae24a48b6e8306d816f108eb7f99aa2ad54cb7b291",
+    "80c0bfe2_8a": "ad86f07ceca51852ab059eebcfe0eb6614ffac510716af38e62e936d9a9fa58d",
+    "80c0c06c_8a": "bb90512ae929e7e9129291ecd6ab0b0b846cbf09b5416593a134db84f1189c80",
+    "80c0c0f6_22": "7076e3bafddb77bfe907f0e8071ef8f6310775756c59bc0ba895bb31b45ea3be",
+    "80c0c118_8": "3b16fea68984f67639901a5c06f406a4e0fbcd21c1b0c588f3647bc8320f98de",
+    "80c0c172_ae": "ba51f197ea5dfefe3d4d5ce463ea61ece57d32845427ec1dd181823be559dbb3",
+    "80c0c27a_76": "4974690a376529658b5df5cca854bdf95df4b400a53f182607e4f33d046ae206",
+    "80c0c2f0_74": "1b2ca84d54a004229377b7e678c5d84f7ae480c062377993d3e058b8dcf84974",
+    "80c0c364_3e": "1cace28b59db3729e0fbc3b3461842a5d7570e251021196d71063e6e41b37177",
+    "80c0c3a2_22a": "84a649085765686ac8c74fcbdc457422f9ca780408b42c62901250c138816630",
+    "80c0c5cc_94": "643357fd979ffc4cc70bde9d88ae0d5d1836bfbf4516699e5ba27a7f6479f779",
+    "80c0c660_74": "c7625c1ddd7a87e0f292a856495be3e5a54b3a8eb78a576c9f3a1edc671dfec5",
+    "80c0c6d4_24": "1efcdb8311e3734144512ce0696388e23320c1b7c618d8ec1b1301197fc962c9",
+    "80c0c6f8_120": "f22d289445ef5b2d88a5d995f7dae3e9dc89278c58b52572c6e288dc4520279c",
+    "80c0c818_3b2": "7a71bf0bc8ede34c0faeb66baa52e75f0ef2b845b5a0c388d8ab4abd38af90e0",
+    "80c0cbca_18c": "4eb6b0c15b4d694f7e12b5fac15dc443ce04812b509a53e2042070db3b9101fd",
+    "80c0cd56_2c": "9f443af6fda7c62fa6b1c45e065541d8a8bafc6228a54eea571addea784b3090",
+    "80c0cd82_154": "2e4b1c0abccddab31aff41becdd1e014f1466b4a767ea8ba5877e643e3dcdaab",
+    "80c0ced6_2ae": "b4179edd19359f0682617450ff139614dae8cae084400ca5321021452437daf8",
+    "80c0d184_1c0": "c7314fb6c4f8a3d72176c4144aa18298fc84cb6148b30b375d6cb4fc976888a5",
+    "80c0d344_70": "b1de8c005c9fc2d7616dc10d4cf2d76f6b52d6b0e82cdb26d0f15cb01555f443",
+    "80c0d494_fa": "f69b3e506f3705a49cc3b58deb408530e07bbc6ba9641074efc10c72496944fa",
+    "80c0d58e_1a8": "8c3c191de7b748955e7e3ad4ca936f754ccfd37144d8ec804f9c13e1938b17c8",
+    "80c0d736_126": "f5f7c3f811da55cd5424cc07594e773cad0ea9a42b82ccbc7c3639b139a72b6c",
+    "80c0d85c_4": "f6b7ef06146c25d1eab3efa185a252b3158a3469ad935742c1ee264db32482f1",
+    "80c1a022_10": "0892d00616b45ece047f78bcbf6b4eef0f6b2b8bc7b1465e12e0b253e729f702",
+    "80c1c51a_ee": "2381eee35f84ee969bae9c74376d79edaeeeeb7a21a9abdf2f3ea05045eba4be",
+    "80c24218_506": "8a50207f4c5a7b93c9283d0a8e467848022b298c1ef876b0edfa631d9597c002"
+  },
+  "crc_table_sha256": "12f3e0576d447eb37b36d82ba0c1c5481b8f0d12fdc70347ce4a076b229d4c86",
+  "default_table": {
+    "address": 2160289048,
+    "key": "boots",
+    "length": 0,
+    "sha256": "2ef4bbc31bd1e39e4fed087359e009acdf6c1af09418fb00da00c5d084735bd3",
+    "value": "0"
+  },
+  "export_sha256": {
+    "80c01704.c": "c81966b961f53226af2da11a81b8c3ebf096960f8161f255b6a6e82aa236a32e",
+    "80c0be14.c": "4e9b09cf872946dda48607f8d6cb516e0c0ee51e82e4f6516a7ccdf698ecf5bc",
+    "80c0c27a.c": "fd3e7d681ed2cefb6fbe56091698aa56da32dc9cccd29a4d9379326f792b8289",
+    "80c0d736.c": "7cedefe7e75be20917520c48c54a65b76060d85df9a2bc944bc2bdd94d9f161e",
+    "80c0d776.c": "9ff139682d14134552bc1bfbd1b0bb4accd378390074eb9209ccdad3323e9af3",
+    "80c1a022.c": "1947abb6abeeb64e6e0ea942c75566934772e5e533b90c16c1d7dfe0148e5488",
+    "80c1c51a.c": "8b893745442b38e073127bd597c84411ba9c1756ac19370e5e1a6521dfe851b0",
+    "80c24218.c": "bf1fc8433bc0e00a189a0ea5ef9fc7ad7134317a23b3f31ef3610f0f73634448",
+    "80c243d6.c": "49d4811c5213ca6a9e79de453ebc677f3000726a1a110f22efb9d5481c1dbcfb",
+    "80c24446.c": "ed59f7c23a1d9f64f6bbbef0d53969a508ff270b07b0d850cb7ada0822921360",
+    "80c24502.c": "074b0e76876cdb6511b9ccaf9522979a2f92ac4f933b26ba1d112399a1133bfc",
+    "80c245be.c": "1d2285ae95cdfca7974cf5d679fc09c9e1072eff5b52b00ee7c6973c973fd2f7",
+    "80c24652.c": "cdcb672d16052ce10f579ba6e3041996ecb961dc7a86e565c26b03df53129847"
+  },
+  "limitations": [
+    "Registry rows/owners/device descriptors, partition bases/spans and driver callbacks are synthetic; named lookup/validation/dispatch execute natively.",
+    "NVMS mirror copy, fallback read-modify-erase-program and setup/bootstrap execute; connected binding uses clean authored EF40 headers.",
+    "Mutex callbacks record depth without blocking. Heap/NOR/erase/rewrite semantics are supplied; no physical flash geometry, atomicity or device boot is proven.",
+    "The framework caller stops before its next startup phase at 80c0b7b0; retained-word fixtures do not establish physical reset-state provenance."
+  ],
+  "native_steps": 26784,
+  "native_validation": {
+    "bound_per_case": 2000000,
+    "case_count": 52,
+    "cases": [
+      {
+        "name": "setup_preferred",
+        "observed": {
+          "actions": [
+            "mutex:create:1",
+            "lookup:easyflash",
+            "lookup:env",
+            "lock",
+            "check:0:16384:160",
+            "read:16384:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "read:65536:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "rewrite:65536:160:0:078c20dfec99ad8d4c77718e4f2cc294549b04a91944c9fe0df53fcdfb885612",
+            "unlock",
+            "log:secondary_repaired"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": 1,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 0,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "5df65d03d2bda2256d19dd9d47cdd19d9e2ebbe2c1cd47133f19e42e22102faa",
+              "table_output": 2160289048
+            }
+          ]
+        },
+        "steps": 653
+      },
+      {
+        "name": "setup_fallback",
+        "observed": {
+          "actions": [
+            "mutex:create:1",
+            "lookup:easyflash",
+            "lookup:envbak",
+            "log:envbak_found",
+            "lookup:nvms",
+            "log:nvms_found",
+            "lookup:env",
+            "lock",
+            "check:2:0:160",
+            "read:40960:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "read:65536:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "rewrite:65536:160:0:078c20dfec99ad8d4c77718e4f2cc294549b04a91944c9fe0df53fcdfb885612",
+            "unlock",
+            "log:secondary_repaired"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": 1,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423612,
+                "fallback": 0,
+                "special": 2166423672
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 0,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "3e28d6b0fdff0dc93afa369ed3dffac19ca5fb3c8b7863394a9c96957c960463",
+              "table_output": 2160289048
+            }
+          ]
+        },
+        "steps": 810
+      },
+      {
+        "name": "setup_without_backup",
+        "observed": {
+          "actions": [
+            "mutex:create:1",
+            "lookup:easyflash",
+            "lookup:envbak",
+            "lookup:nvms",
+            "log:nvms_found",
+            "lookup:env",
+            "lock",
+            "check:2:0:160",
+            "read:40960:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "read:65536:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "rewrite:65536:160:0:078c20dfec99ad8d4c77718e4f2cc294549b04a91944c9fe0df53fcdfb885612",
+            "unlock",
+            "log:secondary_repaired"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": 1,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 0,
+                "fallback": 0,
+                "special": 2166423672
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 0,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "3e28d6b0fdff0dc93afa369ed3dffac19ca5fb3c8b7863394a9c96957c960463",
+              "table_output": 2160289048
+            }
+          ]
+        },
+        "steps": 822
+      },
+      {
+        "name": "setup_mutex_error",
+        "observed": {
+          "actions": [
+            "mutex:create:0"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": 1,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 0,
+                "backup": 0,
+                "fallback": 0,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 0,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 7,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": 2160289048
+            }
+          ]
+        },
+        "steps": 23
+      },
+      {
+        "name": "setup_existing_mutex",
+        "observed": {
+          "actions": [
+            "lookup:easyflash",
+            "lookup:env",
+            "lock",
+            "check:0:16384:160",
+            "read:16384:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "read:65536:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "rewrite:65536:160:0:078c20dfec99ad8d4c77718e4f2cc294549b04a91944c9fe0df53fcdfb885612",
+            "unlock",
+            "log:secondary_repaired"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": 1,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 0,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "5df65d03d2bda2256d19dd9d47cdd19d9e2ebbe2c1cd47133f19e42e22102faa",
+              "table_output": 2160289048
+            }
+          ]
+        },
+        "steps": 646
+      },
+      {
+        "name": "setup_missing_nvms",
+        "observed": {
+          "actions": [
+            "mutex:create:1",
+            "lookup:easyflash",
+            "lookup:envbak",
+            "log:envbak_found",
+            "lookup:nvms",
+            "log:nvms_missing"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": 1,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 0,
+                "backup": 2166423612,
+                "fallback": 0,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 7,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": 2160289048
+            }
+          ]
+        },
+        "steps": 246
+      },
+      {
+        "name": "setup_missing_env",
+        "observed": {
+          "actions": [
+            "mutex:create:1",
+            "lookup:easyflash",
+            "lookup:env",
+            "log:env_missing"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": 1,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 0,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 7,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": 2160289048
+            }
+          ]
+        },
+        "steps": 158
+      },
+      {
+        "name": "setup_registry_unready",
+        "observed": {
+          "actions": [
+            "mutex:create:1",
+            "lookup:easyflash",
+            "log:registry_unready",
+            "lookup:envbak",
+            "log:registry_unready",
+            "lookup:nvms",
+            "log:registry_unready",
+            "log:nvms_missing"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": 1,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 0,
+                "backup": 0,
+                "fallback": 0,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 7,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": 2160289048
+            }
+          ]
+        },
+        "steps": 141
+      },
+      {
+        "name": "setup_ignores_sync_error",
+        "observed": {
+          "actions": [
+            "mutex:create:1",
+            "lookup:easyflash",
+            "lookup:env",
+            "lock",
+            "check:0:16384:160",
+            "read:16384:160:-1",
+            "log:read_error",
+            "log:fdb_read_error",
+            "unlock"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": 1,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 0,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": 2160289048
+            }
+          ]
+        },
+        "steps": 329
+      },
+      {
+        "name": "setup_stale_special",
+        "observed": {
+          "actions": [
+            "mutex:create:1",
+            "lookup:easyflash",
+            "lookup:env",
+            "lock",
+            "check:2:0:160",
+            "read:40960:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "read:65536:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "rewrite:65536:160:0:078c20dfec99ad8d4c77718e4f2cc294549b04a91944c9fe0df53fcdfb885612",
+            "unlock",
+            "log:secondary_repaired"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": 1,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 2166423672
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 0,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "3e28d6b0fdff0dc93afa369ed3dffac19ca5fb3c8b7863394a9c96957c960463",
+              "table_output": 2160289048
+            }
+          ]
+        },
+        "steps": 649
+      },
+      {
+        "name": "sync_equal",
+        "observed": {
+          "actions": [
+            "lock",
+            "check:0:16384:160",
+            "read:16384:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "read:65536:160:160",
+            "unlock",
+            "log:mirrors_equal"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 0,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "5df65d03d2bda2256d19dd9d47cdd19d9e2ebbe2c1cd47133f19e42e22102faa",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 335
+      },
+      {
+        "name": "sync_primary",
+        "observed": {
+          "actions": [
+            "lock",
+            "check:0:16384:160",
+            "read:16384:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "read:65536:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "rewrite:65536:160:0:078c20dfec99ad8d4c77718e4f2cc294549b04a91944c9fe0df53fcdfb885612",
+            "unlock",
+            "log:secondary_repaired"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 0,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "5df65d03d2bda2256d19dd9d47cdd19d9e2ebbe2c1cd47133f19e42e22102faa",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 515
+      },
+      {
+        "name": "sync_secondary",
+        "observed": {
+          "actions": [
+            "lock",
+            "check:0:16384:160",
+            "read:16384:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "read:65536:160:160",
+            "unlock",
+            "lock",
+            "check:0:16384:160",
+            "rewrite:16384:160:0:2292fcba3f7f3403dc2c83a35cd518a30bc9ad5344da79084c605ab40b67a232",
+            "unlock",
+            "log:primary_repaired"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 0,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "66cb896edb2adfdfb5835d63b6f897b9d0c15e004038b1a9e40c3936ad950ade",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 516
+      },
+      {
+        "name": "sync_invalid",
+        "observed": {
+          "actions": [
+            "lock",
+            "check:0:16384:160",
+            "read:16384:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "read:65536:160:160",
+            "unlock",
+            "log:no_valid_mirror"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 4294967282,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "a1fa52d36bad1638fa52f621c3e792a8f3fc57d85c1262e76341d9706d22ee3d",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 332
+      },
+      {
+        "name": "sync_primary_read_error",
+        "observed": {
+          "actions": [
+            "lock",
+            "check:0:16384:160",
+            "read:16384:160:-1",
+            "log:read_error",
+            "log:fdb_read_error",
+            "unlock"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 4294967282,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 191
+      },
+      {
+        "name": "sync_secondary_read_error",
+        "observed": {
+          "actions": [
+            "lock",
+            "check:0:16384:160",
+            "read:16384:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "read:65536:160:-1",
+            "log:read_error",
+            "log:fdb_read_error",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "rewrite:65536:160:0:078c20dfec99ad8d4c77718e4f2cc294549b04a91944c9fe0df53fcdfb885612",
+            "unlock",
+            "log:secondary_repaired"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 0,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "5df65d03d2bda2256d19dd9d47cdd19d9e2ebbe2c1cd47133f19e42e22102faa",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 546
+      },
+      {
+        "name": "sync_fallback",
+        "observed": {
+          "actions": [
+            "lock",
+            "check:0:16384:160",
+            "read:16384:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "read:65536:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "rewrite:65536:160:-1:078c20dfec99ad8d4c77718e4f2cc294549b04a91944c9fe0df53fcdfb885612",
+            "log:rewrite_error",
+            "log:fdb_rewrite_error",
+            "unlock",
+            "lock",
+            "alloc:4096:1",
+            "check:3:20480:4096",
+            "read:65536:4096:4096",
+            "check:3:20480:4096",
+            "erase:65536:4096:0",
+            "check:3:20480:4096",
+            "program:65536:4096:4096:4af44f77e55ace3f8658570a2b5a9cbfd16b998807a4fc51d78829f466618435",
+            "free:4096",
+            "unlock",
+            "log:secondary_repaired"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 0,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "5df65d03d2bda2256d19dd9d47cdd19d9e2ebbe2c1cd47133f19e42e22102faa",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 926
+      },
+      {
+        "name": "sync_fallback_read_error",
+        "observed": {
+          "actions": [
+            "lock",
+            "check:0:16384:160",
+            "read:16384:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "read:65536:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "rewrite:65536:160:-1:078c20dfec99ad8d4c77718e4f2cc294549b04a91944c9fe0df53fcdfb885612",
+            "log:rewrite_error",
+            "log:fdb_rewrite_error",
+            "unlock",
+            "lock",
+            "alloc:4096:1",
+            "check:3:20480:4096",
+            "read:65536:4096:-1",
+            "log:read_error",
+            "log:fdb_read_error",
+            "free:4096",
+            "unlock",
+            "log:secondary_write_error"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 4294967282,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 719
+      },
+      {
+        "name": "sync_fallback_erase_error",
+        "observed": {
+          "actions": [
+            "lock",
+            "check:0:16384:160",
+            "read:16384:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "read:65536:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "rewrite:65536:160:-1:078c20dfec99ad8d4c77718e4f2cc294549b04a91944c9fe0df53fcdfb885612",
+            "log:rewrite_error",
+            "log:fdb_rewrite_error",
+            "unlock",
+            "lock",
+            "alloc:4096:1",
+            "check:3:20480:4096",
+            "read:65536:4096:4096",
+            "check:3:20480:4096",
+            "erase:65536:4096:-1",
+            "log:erase_error",
+            "log:fdb_erase_error",
+            "check:3:20480:4096",
+            "program:65536:4096:4096:4af44f77e55ace3f8658570a2b5a9cbfd16b998807a4fc51d78829f466618435",
+            "free:4096",
+            "unlock",
+            "log:secondary_repaired"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 0,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "08985dc601e37ef47b14a239c42cb281c29192b137f4accb5947ad706c7aaf27",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 952
+      },
+      {
+        "name": "sync_fallback_program_error",
+        "observed": {
+          "actions": [
+            "lock",
+            "check:0:16384:160",
+            "read:16384:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "read:65536:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "rewrite:65536:160:-1:078c20dfec99ad8d4c77718e4f2cc294549b04a91944c9fe0df53fcdfb885612",
+            "log:rewrite_error",
+            "log:fdb_rewrite_error",
+            "unlock",
+            "lock",
+            "alloc:4096:1",
+            "check:3:20480:4096",
+            "read:65536:4096:4096",
+            "check:3:20480:4096",
+            "erase:65536:4096:0",
+            "check:3:20480:4096",
+            "program:65536:4096:-1:4af44f77e55ace3f8658570a2b5a9cbfd16b998807a4fc51d78829f466618435",
+            "log:program_error",
+            "log:fdb_program_error",
+            "free:4096",
+            "unlock",
+            "log:secondary_repaired"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 0,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "c032165a55adcb68b8824c5b8b6ac223f7db18c796b140ec7e5f37d756e7eee6",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 952
+      },
+      {
+        "name": "sync_fallback_alloc_error",
+        "observed": {
+          "actions": [
+            "lock",
+            "check:0:16384:160",
+            "read:16384:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "read:65536:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "rewrite:65536:160:-1:078c20dfec99ad8d4c77718e4f2cc294549b04a91944c9fe0df53fcdfb885612",
+            "log:rewrite_error",
+            "log:fdb_rewrite_error",
+            "unlock",
+            "lock",
+            "alloc:4096:0",
+            "log:secondary_write_error"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 1,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 4294967282,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 553
+      },
+      {
+        "name": "nv_write_missing_callback",
+        "observed": {
+          "actions": [
+            "lock",
+            "check:0:16384:160",
+            "log:rewrite_missing",
+            "log:fdb_rewrite_error",
+            "unlock",
+            "lock",
+            "alloc:4096:1",
+            "check:0:16384:4096",
+            "read:16384:4096:4096",
+            "check:0:16384:4096",
+            "erase:16384:4096:0",
+            "check:0:16384:4096",
+            "program:16384:4096:4096:c9631a33af9988903d848267136b19e4cb2b61de0fb3acb0fafa7fc8783b3a19",
+            "free:4096",
+            "unlock"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 0,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "c756a1bbf3b12ea517a639a6286d053769b2fe79be2667035853ce282b074dcd",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 593
+      },
+      {
+        "name": "nv_write_two_pages",
+        "observed": {
+          "actions": [
+            "lock",
+            "check:0:20464:32",
+            "rewrite:20464:32:-1:630dcd2966c4336691125448bbb25b4ff412a49c732db2c8abc1b8581bd710dd",
+            "log:rewrite_error",
+            "log:fdb_rewrite_error",
+            "unlock",
+            "lock",
+            "alloc:4096:1",
+            "check:0:16384:4096",
+            "read:16384:4096:4096",
+            "check:0:16384:4096",
+            "erase:16384:4096:0",
+            "check:0:16384:4096",
+            "program:16384:4096:4096:5ec1e7730eea6361c381323a9056e61daf1f671ba2b95f637dd8085f9a9696ea",
+            "check:3:20480:4096",
+            "read:65536:4096:4096",
+            "check:3:20480:4096",
+            "erase:65536:4096:0",
+            "check:3:20480:4096",
+            "program:65536:4096:4096:70cf7a35b3abb01005475c5ff78b2616fd8128a1da6972de26c983b6e52fecd7",
+            "free:4096",
+            "unlock"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 0,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "13f07c2748b9f13c64f570a2ecea2283864ab9c653888d65a819baa6a733eaa8",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 956
+      },
+      {
+        "name": "nv_write_cross_fast",
+        "observed": {
+          "actions": [
+            "lock",
+            "check:0:20464:32",
+            "rewrite:20464:32:0:630dcd2966c4336691125448bbb25b4ff412a49c732db2c8abc1b8581bd710dd",
+            "unlock"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 0,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "8f6d408a8556f87955102e3fcc72bd2343f89dff6f3b25b0511d5d3428bb486a",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 176
+      },
+      {
+        "name": "nv_read_zero",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 0,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 3
+      },
+      {
+        "name": "nv_read_range_error",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 2,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 14
+      },
+      {
+        "name": "nv_write_zero",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 0,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 32
+      },
+      {
+        "name": "nv_write_range_error",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 3,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 37
+      },
+      {
+        "name": "read_clip",
+        "observed": {
+          "actions": [
+            "check:3:24560:64",
+            "read:69616:16:16"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "ae7a568c8f08b32ab0e4dbe31846b3329708e8672866cb2fd902a8168b3432fe",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 16,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 88
+      },
+      {
+        "name": "read_error",
+        "observed": {
+          "actions": [
+            "check:3:0:32",
+            "read:45056:32:-1",
+            "log:read_error"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 4294967295,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 96
+      },
+      {
+        "name": "program_clip",
+        "observed": {
+          "actions": [
+            "check:3:24560:64",
+            "program:69616:16:16:be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 16,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "f458d1571909301ce36673090b7d17d4f2640d0bb511a2d9382b21e7a80671e0",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 88
+      },
+      {
+        "name": "program_error",
+        "observed": {
+          "actions": [
+            "check:3:0:32",
+            "program:45056:32:-1:630dcd2966c4336691125448bbb25b4ff412a49c732db2c8abc1b8581bd710dd",
+            "log:program_error"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 4294967295,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 96
+      },
+      {
+        "name": "erase_clip",
+        "observed": {
+          "actions": [
+            "check:3:24560:64",
+            "erase:69616:16:0"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 0,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "fe095494035262f5923a47b80e7a79ce025cb15a7e2491ccf3cd7bb86336c156",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 83
+      },
+      {
+        "name": "erase_error",
+        "observed": {
+          "actions": [
+            "check:3:0:32",
+            "erase:45056:32:-1",
+            "log:erase_error"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 4294967295,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 91
+      },
+      {
+        "name": "rewrite_clip",
+        "observed": {
+          "actions": [
+            "check:3:24560:64",
+            "rewrite:69616:16:0:be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 0,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "77aa16ef24e9ce88373a8c448dd2ba913a2a6028636c71a599c21a0546fc1318",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "rewrite_error",
+        "observed": {
+          "actions": [
+            "check:3:0:32",
+            "rewrite:45056:32:-1:630dcd2966c4336691125448bbb25b4ff412a49c732db2c8abc1b8581bd710dd",
+            "log:rewrite_error"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 4294967295,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 98
+      },
+      {
+        "name": "rewrite_missing",
+        "observed": {
+          "actions": [
+            "check:3:0:32",
+            "log:rewrite_missing"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 4294967295,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "read_owner_missing",
+        "observed": {
+          "actions": [
+            "check:3:0:32",
+            "log:no_owner"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 4294967295,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 71
+      },
+      {
+        "name": "read_derived_span",
+        "observed": {
+          "actions": [
+            "check:3:24576:16",
+            "read:69632:16:16"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e6645d4a45fc1f16171c18d2d49e7d9eb44c657139c34de2f5d9666b13344274",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 16,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "read_at_end",
+        "observed": {
+          "actions": [
+            "check:3:24576:1",
+            "log:bounds"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 4294967295,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 78
+      },
+      {
+        "name": "lookup_hit",
+        "observed": {
+          "actions": [
+            "lookup:env"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 2166423732,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 63
+      },
+      {
+        "name": "lookup_missing",
+        "observed": {
+          "actions": [
+            "lookup:missing"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 0,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 67
+      },
+      {
+        "name": "lookup_unready",
+        "observed": {
+          "actions": [
+            "lookup:env",
+            "log:registry_unready"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 0,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 28
+      },
+      {
+        "name": "bootstrap",
+        "observed": {
+          "actions": [
+            "mutex:create:1",
+            "lookup:easyflash",
+            "lookup:env",
+            "lock",
+            "check:0:16384:160",
+            "read:16384:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "read:65536:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "rewrite:65536:160:0:078c20dfec99ad8d4c77718e4f2cc294549b04a91944c9fe0df53fcdfb885612",
+            "unlock",
+            "log:secondary_repaired",
+            "diagnostic:8fe",
+            "check:3:0:20",
+            "read:45056:20:20",
+            "check:3:4096:20",
+            "read:49152:20:20",
+            "check:3:8192:20",
+            "read:53248:20:20",
+            "check:3:12288:20",
+            "read:57344:20:20",
+            "lock",
+            "check:3:0:20",
+            "read:45056:20:20",
+            "check:3:4096:20",
+            "read:49152:20:20",
+            "check:3:8192:20",
+            "read:53248:20:20",
+            "check:3:12288:20",
+            "read:57344:20:20",
+            "check:3:0:20",
+            "read:45056:20:20",
+            "check:3:4096:20",
+            "read:49152:20:20",
+            "check:3:8192:20",
+            "read:53248:20:20",
+            "check:3:12288:20",
+            "read:57344:20:20",
+            "unlock",
+            "log:bootstrap_ok",
+            "log:bootstrap_banner"
+          ],
+          "rows": [
+            {
+              "bound_count": 1,
+              "bound_pointer": 2160289048,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 1,
+              "key_cache_sha256": "9ab14440c3d168c2d57ef09c673f5e1c80e868b0eaee254d1dfdf7f5e040595c",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 1,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 0,
+              "sector_cache_sha256": "e4ef5704bd2da31431ec0dd6c2220b7808f5d1a72d108973f6d82ac5affb4a8c",
+              "stopped": null,
+              "storage_sha256": "5df65d03d2bda2256d19dd9d47cdd19d9e2ebbe2c1cd47133f19e42e22102faa",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 3855
+      },
+      {
+        "name": "bootstrap_setup_error",
+        "observed": {
+          "actions": [
+            "mutex:create:1",
+            "lookup:easyflash",
+            "lookup:env",
+            "log:env_missing",
+            "log:bootstrap_error",
+            "log:bootstrap_banner"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 0,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 7,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 190
+      },
+      {
+        "name": "bootstrap_fallback",
+        "observed": {
+          "actions": [
+            "mutex:create:1",
+            "lookup:easyflash",
+            "lookup:envbak",
+            "lookup:nvms",
+            "log:nvms_found",
+            "lookup:env",
+            "lock",
+            "check:2:0:160",
+            "read:40960:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "read:65536:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "rewrite:65536:160:0:078c20dfec99ad8d4c77718e4f2cc294549b04a91944c9fe0df53fcdfb885612",
+            "unlock",
+            "log:secondary_repaired",
+            "diagnostic:8fe",
+            "check:3:0:20",
+            "read:45056:20:20",
+            "check:3:4096:20",
+            "read:49152:20:20",
+            "check:3:8192:20",
+            "read:53248:20:20",
+            "check:3:12288:20",
+            "read:57344:20:20",
+            "lock",
+            "check:3:0:20",
+            "read:45056:20:20",
+            "check:3:4096:20",
+            "read:49152:20:20",
+            "check:3:8192:20",
+            "read:53248:20:20",
+            "check:3:12288:20",
+            "read:57344:20:20",
+            "check:3:0:20",
+            "read:45056:20:20",
+            "check:3:4096:20",
+            "read:49152:20:20",
+            "check:3:8192:20",
+            "read:53248:20:20",
+            "check:3:12288:20",
+            "read:57344:20:20",
+            "unlock",
+            "log:bootstrap_ok",
+            "log:bootstrap_banner"
+          ],
+          "rows": [
+            {
+              "bound_count": 1,
+              "bound_pointer": 2160289048,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 0,
+                "fallback": 0,
+                "special": 2166423672
+              },
+              "heap_active": false,
+              "inner_ready": 1,
+              "key_cache_sha256": "9ab14440c3d168c2d57ef09c673f5e1c80e868b0eaee254d1dfdf7f5e040595c",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 1,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 0,
+              "sector_cache_sha256": "e4ef5704bd2da31431ec0dd6c2220b7808f5d1a72d108973f6d82ac5affb4a8c",
+              "stopped": null,
+              "storage_sha256": "3e28d6b0fdff0dc93afa369ed3dffac19ca5fb3c8b7863394a9c96957c960463",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 4024
+      },
+      {
+        "name": "bootstrap_already_outer",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 0,
+                "backup": 0,
+                "fallback": 0,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 0,
+              "outer_ready": 1,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 0,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 16
+      },
+      {
+        "name": "bootstrap_already_inner",
+        "observed": {
+          "actions": [
+            "mutex:create:1",
+            "lookup:easyflash",
+            "lookup:env",
+            "lock",
+            "check:0:16384:160",
+            "read:16384:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "read:65536:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "rewrite:65536:160:0:078c20dfec99ad8d4c77718e4f2cc294549b04a91944c9fe0df53fcdfb885612",
+            "unlock",
+            "log:secondary_repaired",
+            "log:bootstrap_ok",
+            "log:bootstrap_banner"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 1,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 1,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 0,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "5df65d03d2bda2256d19dd9d47cdd19d9e2ebbe2c1cd47133f19e42e22102faa",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 705
+      },
+      {
+        "name": "caller",
+        "observed": {
+          "actions": [
+            "mutex:create:1",
+            "lookup:easyflash",
+            "lookup:env",
+            "lock",
+            "check:0:16384:160",
+            "read:16384:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "read:65536:160:160",
+            "unlock",
+            "lock",
+            "check:3:20480:160",
+            "rewrite:65536:160:0:078c20dfec99ad8d4c77718e4f2cc294549b04a91944c9fe0df53fcdfb885612",
+            "unlock",
+            "log:secondary_repaired",
+            "diagnostic:8fe",
+            "check:3:0:20",
+            "read:45056:20:20",
+            "check:3:4096:20",
+            "read:49152:20:20",
+            "check:3:8192:20",
+            "read:53248:20:20",
+            "check:3:12288:20",
+            "read:57344:20:20",
+            "lock",
+            "check:3:0:20",
+            "read:45056:20:20",
+            "check:3:4096:20",
+            "read:49152:20:20",
+            "check:3:8192:20",
+            "read:53248:20:20",
+            "check:3:12288:20",
+            "read:57344:20:20",
+            "check:3:0:20",
+            "read:45056:20:20",
+            "check:3:4096:20",
+            "read:49152:20:20",
+            "check:3:8192:20",
+            "read:53248:20:20",
+            "check:3:12288:20",
+            "read:57344:20:20",
+            "unlock",
+            "log:bootstrap_ok",
+            "log:bootstrap_banner"
+          ],
+          "rows": [
+            {
+              "bound_count": 1,
+              "bound_pointer": 2160289048,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 1,
+              "key_cache_sha256": "9ab14440c3d168c2d57ef09c673f5e1c80e868b0eaee254d1dfdf7f5e040595c",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 1,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": null,
+              "sector_cache_sha256": "e4ef5704bd2da31431ec0dd6c2220b7808f5d1a72d108973f6d82ac5affb4a8c",
+              "stopped": {
+                "pc": 2160113584,
+                "status": 0
+              },
+              "storage_sha256": "5df65d03d2bda2256d19dd9d47cdd19d9e2ebbe2c1cd47133f19e42e22102faa",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 3862
+      },
+      {
+        "name": "caller_setup_error",
+        "observed": {
+          "actions": [
+            "mutex:create:0",
+            "log:bootstrap_error",
+            "log:bootstrap_banner"
+          ],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 0,
+                "backup": 0,
+                "fallback": 0,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 0,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": null,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": {
+                "pc": 2160113584,
+                "status": 7
+              },
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 62
+      },
+      {
+        "name": "retained_magic_missing",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 0,
+              "returned": 0,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": null
+            },
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 0,
+              "returned": 0,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 22
+      },
+      {
+        "name": "retained_low_byte",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "bound_count": 0,
+              "bound_pointer": 0,
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "count_output": null,
+              "duplicate_guard": 0,
+              "handles": {
+                "active": 2166423732,
+                "backup": 2166423552,
+                "fallback": 2166423552,
+                "special": 0
+              },
+              "heap_active": false,
+              "inner_ready": 0,
+              "key_cache_sha256": "39557315215be0f6922cec45d29336c8f72198032cababdc5ec0672d45e894ad",
+              "lock_depth": 0,
+              "mutex": 2166947840,
+              "outer_ready": 0,
+              "retained_magic": 2882343476,
+              "retained_value": 305419896,
+              "returned": 120,
+              "sector_cache_sha256": "fc8b64001c5fdd0f2f40fb67dae4a865a2c5bd17836676d6d5b58b7917e33717",
+              "stopped": null,
+              "storage_sha256": "61aef842f2c4388b06ab5693c57ec4f61b79c25d2b6c17caa7acc7fe603c545b",
+              "table_output": null
+            }
+          ]
+        },
+        "steps": 9
+      }
+    ],
+    "hardware_execution": false
+  },
+  "validation_sha256": "b5f03f08eee24715e7748dde09328503acfb10750d2853ff77dbc862a7cc6ec7",
+  "vectors_sha256": "68a142011b459d8d8e535fc130b9376bd8afce0ca32880b21866a587e1807ea6"
+}
