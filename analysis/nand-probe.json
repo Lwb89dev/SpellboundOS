@@ -1,0 +1,2898 @@
+{
+  "boot_sha256": "44cd83c0d09864c6101e9825bd3c77d7fac314584d0408b378dd56c2aac5736a",
+  "byte_range_sha256": {
+    "80c025d4_d2": "55342ac4d4119a5165c9a24946539d283cc7975d92929a6d3ad72c3d5658def2",
+    "80c026a6_e4": "0983deee294c69c7ac10c388dc593b2424d00e2dc887f22fa16918fa192a3a76",
+    "80c27524_80": "c16266f05d811f56a45937d903a7fad6695c546226f536580e90fb2ef52a8261",
+    "80c27aac_46": "766be2ba0419ed63f2807e34dc18098a35c6ef027fbc1f0b6ca5f9a907f6c7ce",
+    "80c2819e_5e": "c56ad6cee4e99cbe3f608bf39df386524854e86eb16474abfd77d006a15a53f9",
+    "80c281fc_5e": "0a1dd0b8c83c1c5331f40ddf997c91d8d3e426b105124d98b2fb9bdb2491131f",
+    "80c28318_56": "c7051d507eddb748ca5f04597b8bd8c7d5b164f760b558c0270534c094cceaa6",
+    "80c2874a_314": "bb970f21e8765d548b5877e39ac81ebeac3266c7fb66b1a8857cd2872019dd74",
+    "80c29d4c_48": "04093b1b9d368004296b8da508d08bfe9242d1c2ced22bac32bc0e67db03569f"
+  },
+  "chip_table_sha256": "e6721ddf2a4ebe16c3e92015e6f177c7496e031cbb5ad87b4a452745ac0477e0",
+  "export_sha256": {
+    "80c025d4.c": "d89307ffd4d7535e7a3e6ca9a53791e4bf1ae7a80e81ba54109bfb7d815eb534",
+    "80c026a6.c": "4d6c4d7d50e24b1c65409c78dc91fec3296da0a9635485853f8ec9b1a47ca548",
+    "80c27524.c": "9e516f5950ed949fa9df456777c1de5bc7bd14e2adbd715cbb2d8c2b55ba16a4",
+    "80c27aac.c": "8e3b360a621877ddf58fbe30d023f3427c9952aaf165bea8f0c55aace8770879",
+    "80c2819e.c": "219020eafb92a9faa781f027a1a9fbdd0899150baa5d3c6ebbf047f6ca87312b",
+    "80c281fc.c": "4d3951aa23975ca5efb6716c83f5ad9140ccd7cc8c28e94ff9936142970124f0",
+    "80c28318.c": "06ff871b5874916560abd98f584bd45767b963e06cb612f8bdd3b9b9f071448a",
+    "80c2874a.c": "8eafbd74e5588c4861840a907fb43254dfffb055de22d4af5642e833e13750c1",
+    "80c29d4c.c": "75eceabe99003b79a4fdc160c47bce415360d90af03ebf382ff51e74e9c7542f"
+  },
+  "limitations": [
+    "Original eleven chip descriptors, candidate order, ID/reset command builders, probe, mutex wrapper and driver root setup execute with supplied bus/power/feature/BBT services.",
+    "Candidate IDs and all results are authored; supported geometry is image evidence, not proof of the fitted NAND chip or electrical operation.",
+    "Device-object registration and heap are supplied. Explicit read/reset-helper errors are injections; transport errors stop at assertions before their bodies.",
+    "The fifth-ID-field counterexample uses an authored descriptor copy; all original fifth fields are zero. Physical ID reads/probing, feature behavior, ECC/bus and boot remain open."
+  ],
+  "native_steps": 30716,
+  "native_validation": {
+    "bound_per_case": 100000,
+    "case_count": 60,
+    "cases": [
+      {
+        "name": "probe_candidate_0",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:efba210000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:24:0",
+            "get_feature:176:24:0",
+            "bbt:1024:2048:64:0",
+            "log:boot_guard"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 8,
+              "guard_pages": 512,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160321816,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 283
+      },
+      {
+        "name": "probe_candidate_1",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:efbe210000:0",
+            "bus_init:1:0",
+            "read_id:1:efbe210000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:25:0",
+            "get_feature:176:25:0",
+            "bbt:1024:2048:64:0",
+            "log:boot_guard"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 8,
+              "guard_pages": 512,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160320160,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 342
+      },
+      {
+        "name": "probe_candidate_2",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:efba230000:0",
+            "bus_init:1:0",
+            "read_id:1:efba230000:0",
+            "bus_init:2:0",
+            "read_id:2:efba230000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:25:0",
+            "get_feature:176:25:0",
+            "bbt:4096:2048:64:0",
+            "log:boot_guard"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 8,
+              "guard_pages": 512,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160321632,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 406
+      },
+      {
+        "name": "probe_candidate_3",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:efb2230000:0",
+            "bus_init:1:0",
+            "read_id:1:efb2230000:0",
+            "bus_init:2:0",
+            "read_id:2:efb2230000:0",
+            "bus_init:3:0",
+            "read_id:3:efb2230000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:25:0",
+            "get_feature:176:25:0",
+            "set_feature:208:0:0",
+            "get_feature:208:0:0",
+            "bbt:2048:4096:64:0",
+            "log:boot_guard"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 4,
+              "guard_pages": 256,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160319976,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 490
+      },
+      {
+        "name": "probe_candidate_4",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:e521000000:0",
+            "bus_init:1:0",
+            "read_id:1:e521000000:0",
+            "bus_init:2:0",
+            "read_id:2:e521000000:0",
+            "bus_init:3:0",
+            "read_id:3:e521000000:0",
+            "bus_init:4:0",
+            "read_id:4:e521000000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:17:0",
+            "get_feature:176:17:0",
+            "set_feature:208:96:0",
+            "get_feature:208:96:0",
+            "bbt:1024:2048:64:0",
+            "log:boot_guard"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 8,
+              "guard_pages": 512,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160321448,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 532
+      },
+      {
+        "name": "probe_candidate_5",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:e5a1000000:0",
+            "bus_init:1:0",
+            "read_id:1:e5a1000000:0",
+            "bus_init:2:0",
+            "read_id:2:e5a1000000:0",
+            "bus_init:3:0",
+            "read_id:3:e5a1000000:0",
+            "bus_init:4:0",
+            "read_id:4:e5a1000000:0",
+            "bus_init:5:0",
+            "read_id:5:e5a1000000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:17:0",
+            "get_feature:176:17:0",
+            "set_feature:208:96:0",
+            "get_feature:208:96:0",
+            "bbt:1024:2048:64:0",
+            "log:boot_guard"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 8,
+              "guard_pages": 512,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160321264,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 593
+      },
+      {
+        "name": "probe_candidate_6",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:e522000000:0",
+            "bus_init:1:0",
+            "read_id:1:e522000000:0",
+            "bus_init:2:0",
+            "read_id:2:e522000000:0",
+            "bus_init:3:0",
+            "read_id:3:e522000000:0",
+            "bus_init:4:0",
+            "read_id:4:e522000000:0",
+            "bus_init:5:0",
+            "read_id:5:e522000000:0",
+            "bus_init:6:0",
+            "read_id:6:e522000000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:17:0",
+            "get_feature:176:17:0",
+            "set_feature:208:96:0",
+            "get_feature:208:96:0",
+            "bbt:2048:2048:64:0",
+            "log:boot_guard"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 8,
+              "guard_pages": 512,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160321080,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 650
+      },
+      {
+        "name": "probe_candidate_7",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:e5a2000000:0",
+            "bus_init:1:0",
+            "read_id:1:e5a2000000:0",
+            "bus_init:2:0",
+            "read_id:2:e5a2000000:0",
+            "bus_init:3:0",
+            "read_id:3:e5a2000000:0",
+            "bus_init:4:0",
+            "read_id:4:e5a2000000:0",
+            "bus_init:5:0",
+            "read_id:5:e5a2000000:0",
+            "bus_init:6:0",
+            "read_id:6:e5a2000000:0",
+            "bus_init:7:0",
+            "read_id:7:e5a2000000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:17:0",
+            "get_feature:176:17:0",
+            "set_feature:208:96:0",
+            "get_feature:208:96:0",
+            "bbt:2048:2048:64:0",
+            "log:boot_guard"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 8,
+              "guard_pages": 512,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160320896,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 709
+      },
+      {
+        "name": "probe_candidate_8",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:e564000000:0",
+            "bus_init:1:0",
+            "read_id:1:e564000000:0",
+            "bus_init:2:0",
+            "read_id:2:e564000000:0",
+            "bus_init:3:0",
+            "read_id:3:e564000000:0",
+            "bus_init:4:0",
+            "read_id:4:e564000000:0",
+            "bus_init:5:0",
+            "read_id:5:e564000000:0",
+            "bus_init:6:0",
+            "read_id:6:e564000000:0",
+            "bus_init:7:0",
+            "read_id:7:e564000000:0",
+            "bus_init:8:0",
+            "read_id:8:e564000000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:17:0",
+            "get_feature:176:17:0",
+            "set_feature:208:96:0",
+            "get_feature:208:96:0",
+            "bbt:4096:2048:64:0",
+            "log:boot_guard"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 8,
+              "guard_pages": 512,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160320528,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 770
+      },
+      {
+        "name": "probe_candidate_9",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:e5a4000000:0",
+            "bus_init:1:0",
+            "read_id:1:e5a4000000:0",
+            "bus_init:2:0",
+            "read_id:2:e5a4000000:0",
+            "bus_init:3:0",
+            "read_id:3:e5a4000000:0",
+            "bus_init:4:0",
+            "read_id:4:e5a4000000:0",
+            "bus_init:5:0",
+            "read_id:5:e5a4000000:0",
+            "bus_init:6:0",
+            "read_id:6:e5a4000000:0",
+            "bus_init:7:0",
+            "read_id:7:e5a4000000:0",
+            "bus_init:8:0",
+            "read_id:8:e5a4000000:0",
+            "bus_init:9:0",
+            "read_id:9:e5a4000000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:17:0",
+            "get_feature:176:17:0",
+            "set_feature:208:96:0",
+            "get_feature:208:96:0",
+            "bbt:4096:2048:64:0",
+            "log:boot_guard"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 8,
+              "guard_pages": 512,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160320344,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 829
+      },
+      {
+        "name": "probe_candidate_10",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:2c35000000:0",
+            "bus_init:1:0",
+            "read_id:1:2c35000000:0",
+            "bus_init:2:0",
+            "read_id:2:2c35000000:0",
+            "bus_init:3:0",
+            "read_id:3:2c35000000:0",
+            "bus_init:4:0",
+            "read_id:4:2c35000000:0",
+            "bus_init:5:0",
+            "read_id:5:2c35000000:0",
+            "bus_init:6:0",
+            "read_id:6:2c35000000:0",
+            "bus_init:7:0",
+            "read_id:7:2c35000000:0",
+            "bus_init:8:0",
+            "read_id:8:2c35000000:0",
+            "bus_init:9:0",
+            "read_id:9:2c35000000:0",
+            "bus_init:10:0",
+            "read_id:10:2c35000000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:2:0",
+            "get_feature:160:2:0",
+            "set_feature:176:16:0",
+            "get_feature:176:16:0",
+            "bbt:2048:4096:64:0",
+            "log:boot_guard"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 4,
+              "guard_pages": 256,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160320712,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 840
+      },
+      {
+        "name": "layout_candidate_0",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:efba210000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:24:0",
+            "get_feature:176:24:0",
+            "bbt:1024:2048:64:0",
+            "log:boot_guard",
+            "spare_fill:64"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 8,
+              "guard_pages": 512,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": "01004546",
+              "layout_sha256": "ce93bf4c9ecbaee0e90bdeef40fe956ca1a527ec3a77c5ffe59c3d7df6c76515",
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160321816,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 368
+      },
+      {
+        "name": "layout_candidate_1",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:efbe210000:0",
+            "bus_init:1:0",
+            "read_id:1:efbe210000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:25:0",
+            "get_feature:176:25:0",
+            "bbt:1024:2048:64:0",
+            "log:boot_guard",
+            "spare_fill:64"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 8,
+              "guard_pages": 512,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": "01004546",
+              "layout_sha256": "ce93bf4c9ecbaee0e90bdeef40fe956ca1a527ec3a77c5ffe59c3d7df6c76515",
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160320160,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 427
+      },
+      {
+        "name": "layout_candidate_2",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:efba230000:0",
+            "bus_init:1:0",
+            "read_id:1:efba230000:0",
+            "bus_init:2:0",
+            "read_id:2:efba230000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:25:0",
+            "get_feature:176:25:0",
+            "bbt:4096:2048:64:0",
+            "log:boot_guard",
+            "spare_fill:128"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 8,
+              "guard_pages": 512,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": "01004546",
+              "layout_sha256": "486d6425d3263a2e978dd5555ec722e0197e03417073cfe093a26507c1d0103c",
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160321632,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 491
+      },
+      {
+        "name": "layout_candidate_3",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:efb2230000:0",
+            "bus_init:1:0",
+            "read_id:1:efb2230000:0",
+            "bus_init:2:0",
+            "read_id:2:efb2230000:0",
+            "bus_init:3:0",
+            "read_id:3:efb2230000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:25:0",
+            "get_feature:176:25:0",
+            "set_feature:208:0:0",
+            "get_feature:208:0:0",
+            "bbt:2048:4096:64:0",
+            "log:boot_guard",
+            "spare_fill:256"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 4,
+              "guard_pages": 256,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": "01004546",
+              "layout_sha256": "18a7f69d9c7f96f0c5d0d86b8babf7b20c71b03fc9e96381e523c1388b103447",
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160319976,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 575
+      },
+      {
+        "name": "layout_candidate_4",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:e521000000:0",
+            "bus_init:1:0",
+            "read_id:1:e521000000:0",
+            "bus_init:2:0",
+            "read_id:2:e521000000:0",
+            "bus_init:3:0",
+            "read_id:3:e521000000:0",
+            "bus_init:4:0",
+            "read_id:4:e521000000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:17:0",
+            "get_feature:176:17:0",
+            "set_feature:208:96:0",
+            "get_feature:208:96:0",
+            "bbt:1024:2048:64:0",
+            "log:boot_guard",
+            "spare_fill:64"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 8,
+              "guard_pages": 512,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": "01004546",
+              "layout_sha256": "ce93bf4c9ecbaee0e90bdeef40fe956ca1a527ec3a77c5ffe59c3d7df6c76515",
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160321448,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 617
+      },
+      {
+        "name": "layout_candidate_5",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:e5a1000000:0",
+            "bus_init:1:0",
+            "read_id:1:e5a1000000:0",
+            "bus_init:2:0",
+            "read_id:2:e5a1000000:0",
+            "bus_init:3:0",
+            "read_id:3:e5a1000000:0",
+            "bus_init:4:0",
+            "read_id:4:e5a1000000:0",
+            "bus_init:5:0",
+            "read_id:5:e5a1000000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:17:0",
+            "get_feature:176:17:0",
+            "set_feature:208:96:0",
+            "get_feature:208:96:0",
+            "bbt:1024:2048:64:0",
+            "log:boot_guard",
+            "spare_fill:64"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 8,
+              "guard_pages": 512,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": "01004546",
+              "layout_sha256": "a8110e875296b96b7d870d0746821860ba41b08d980a3c5dbb1e16a5348f4c03",
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160321264,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 678
+      },
+      {
+        "name": "layout_candidate_6",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:e522000000:0",
+            "bus_init:1:0",
+            "read_id:1:e522000000:0",
+            "bus_init:2:0",
+            "read_id:2:e522000000:0",
+            "bus_init:3:0",
+            "read_id:3:e522000000:0",
+            "bus_init:4:0",
+            "read_id:4:e522000000:0",
+            "bus_init:5:0",
+            "read_id:5:e522000000:0",
+            "bus_init:6:0",
+            "read_id:6:e522000000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:17:0",
+            "get_feature:176:17:0",
+            "set_feature:208:96:0",
+            "get_feature:208:96:0",
+            "bbt:2048:2048:64:0",
+            "log:boot_guard",
+            "spare_fill:64"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 8,
+              "guard_pages": 512,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": "01004546",
+              "layout_sha256": "ce93bf4c9ecbaee0e90bdeef40fe956ca1a527ec3a77c5ffe59c3d7df6c76515",
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160321080,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 735
+      },
+      {
+        "name": "layout_candidate_7",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:e5a2000000:0",
+            "bus_init:1:0",
+            "read_id:1:e5a2000000:0",
+            "bus_init:2:0",
+            "read_id:2:e5a2000000:0",
+            "bus_init:3:0",
+            "read_id:3:e5a2000000:0",
+            "bus_init:4:0",
+            "read_id:4:e5a2000000:0",
+            "bus_init:5:0",
+            "read_id:5:e5a2000000:0",
+            "bus_init:6:0",
+            "read_id:6:e5a2000000:0",
+            "bus_init:7:0",
+            "read_id:7:e5a2000000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:17:0",
+            "get_feature:176:17:0",
+            "set_feature:208:96:0",
+            "get_feature:208:96:0",
+            "bbt:2048:2048:64:0",
+            "log:boot_guard",
+            "spare_fill:64"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 8,
+              "guard_pages": 512,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": "01004546",
+              "layout_sha256": "a8110e875296b96b7d870d0746821860ba41b08d980a3c5dbb1e16a5348f4c03",
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160320896,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 794
+      },
+      {
+        "name": "layout_candidate_8",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:e564000000:0",
+            "bus_init:1:0",
+            "read_id:1:e564000000:0",
+            "bus_init:2:0",
+            "read_id:2:e564000000:0",
+            "bus_init:3:0",
+            "read_id:3:e564000000:0",
+            "bus_init:4:0",
+            "read_id:4:e564000000:0",
+            "bus_init:5:0",
+            "read_id:5:e564000000:0",
+            "bus_init:6:0",
+            "read_id:6:e564000000:0",
+            "bus_init:7:0",
+            "read_id:7:e564000000:0",
+            "bus_init:8:0",
+            "read_id:8:e564000000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:17:0",
+            "get_feature:176:17:0",
+            "set_feature:208:96:0",
+            "get_feature:208:96:0",
+            "bbt:4096:2048:64:0",
+            "log:boot_guard",
+            "spare_fill:64"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 8,
+              "guard_pages": 512,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": "01004546",
+              "layout_sha256": "a8110e875296b96b7d870d0746821860ba41b08d980a3c5dbb1e16a5348f4c03",
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160320528,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 855
+      },
+      {
+        "name": "layout_candidate_9",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:e5a4000000:0",
+            "bus_init:1:0",
+            "read_id:1:e5a4000000:0",
+            "bus_init:2:0",
+            "read_id:2:e5a4000000:0",
+            "bus_init:3:0",
+            "read_id:3:e5a4000000:0",
+            "bus_init:4:0",
+            "read_id:4:e5a4000000:0",
+            "bus_init:5:0",
+            "read_id:5:e5a4000000:0",
+            "bus_init:6:0",
+            "read_id:6:e5a4000000:0",
+            "bus_init:7:0",
+            "read_id:7:e5a4000000:0",
+            "bus_init:8:0",
+            "read_id:8:e5a4000000:0",
+            "bus_init:9:0",
+            "read_id:9:e5a4000000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:17:0",
+            "get_feature:176:17:0",
+            "set_feature:208:96:0",
+            "get_feature:208:96:0",
+            "bbt:4096:2048:64:0",
+            "log:boot_guard",
+            "spare_fill:64"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 8,
+              "guard_pages": 512,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": "01004546",
+              "layout_sha256": "a8110e875296b96b7d870d0746821860ba41b08d980a3c5dbb1e16a5348f4c03",
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160320344,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 914
+      },
+      {
+        "name": "layout_candidate_10",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:2c35000000:0",
+            "bus_init:1:0",
+            "read_id:1:2c35000000:0",
+            "bus_init:2:0",
+            "read_id:2:2c35000000:0",
+            "bus_init:3:0",
+            "read_id:3:2c35000000:0",
+            "bus_init:4:0",
+            "read_id:4:2c35000000:0",
+            "bus_init:5:0",
+            "read_id:5:2c35000000:0",
+            "bus_init:6:0",
+            "read_id:6:2c35000000:0",
+            "bus_init:7:0",
+            "read_id:7:2c35000000:0",
+            "bus_init:8:0",
+            "read_id:8:2c35000000:0",
+            "bus_init:9:0",
+            "read_id:9:2c35000000:0",
+            "bus_init:10:0",
+            "read_id:10:2c35000000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:2:0",
+            "get_feature:160:2:0",
+            "set_feature:176:16:0",
+            "get_feature:176:16:0",
+            "bbt:2048:4096:64:0",
+            "log:boot_guard",
+            "spare_fill:128"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 4,
+              "guard_pages": 256,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": "01004546",
+              "layout_sha256": "6fe2857da9fbbc0b1a6b4875937913d800ce71a56dabe21cedca5ecc644a6f27",
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160320712,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 925
+      },
+      {
+        "name": "probe_no_match",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:ffffffffff:0",
+            "bus_init:1:0",
+            "read_id:1:ffffffffff:0",
+            "bus_init:2:0",
+            "read_id:2:ffffffffff:0",
+            "bus_init:3:0",
+            "read_id:3:ffffffffff:0",
+            "bus_init:4:0",
+            "read_id:4:ffffffffff:0",
+            "bus_init:5:0",
+            "read_id:5:ffffffffff:0",
+            "bus_init:6:0",
+            "read_id:6:ffffffffff:0",
+            "bus_init:7:0",
+            "read_id:7:ffffffffff:0",
+            "bus_init:8:0",
+            "read_id:8:ffffffffff:0",
+            "bus_init:9:0",
+            "read_id:9:ffffffffff:0",
+            "bus_init:10:0",
+            "read_id:10:ffffffffff:0",
+            "bus_init:0:0",
+            "read_id:0:ffffffffff:0",
+            "bus_init:1:0",
+            "read_id:1:ffffffffff:0",
+            "bus_init:2:0",
+            "read_id:2:ffffffffff:0",
+            "bus_init:3:0",
+            "read_id:3:ffffffffff:0",
+            "bus_init:4:0",
+            "read_id:4:ffffffffff:0",
+            "bus_init:5:0",
+            "read_id:5:ffffffffff:0",
+            "bus_init:6:0",
+            "read_id:6:ffffffffff:0",
+            "bus_init:7:0",
+            "read_id:7:ffffffffff:0",
+            "bus_init:8:0",
+            "read_id:8:ffffffffff:0",
+            "bus_init:9:0",
+            "read_id:9:ffffffffff:0",
+            "bus_init:10:0",
+            "read_id:10:ffffffffff:0",
+            "bus_init:0:0",
+            "read_id:0:ffffffffff:0",
+            "bus_init:1:0",
+            "read_id:1:ffffffffff:0",
+            "bus_init:2:0",
+            "read_id:2:ffffffffff:0",
+            "bus_init:3:0",
+            "read_id:3:ffffffffff:0",
+            "bus_init:4:0",
+            "read_id:4:ffffffffff:0",
+            "bus_init:5:0",
+            "read_id:5:ffffffffff:0",
+            "bus_init:6:0",
+            "read_id:6:ffffffffff:0",
+            "bus_init:7:0",
+            "read_id:7:ffffffffff:0",
+            "bus_init:8:0",
+            "read_id:8:ffffffffff:0",
+            "bus_init:9:0",
+            "read_id:9:ffffffffff:0",
+            "bus_init:10:0",
+            "read_id:10:ffffffffff:0",
+            "log:no_chip_match",
+            "log:probe_error"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 0,
+              "guard_pages": 0,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 4294967292,
+              "root": 0,
+              "selected": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 1960
+      },
+      {
+        "name": "probe_second_round",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:ffffffffff:0",
+            "bus_init:1:0",
+            "read_id:1:ffffffffff:0",
+            "bus_init:2:0",
+            "read_id:2:ffffffffff:0",
+            "bus_init:3:0",
+            "read_id:3:ffffffffff:0",
+            "bus_init:4:0",
+            "read_id:4:ffffffffff:0",
+            "bus_init:5:0",
+            "read_id:5:ffffffffff:0",
+            "bus_init:6:0",
+            "read_id:6:ffffffffff:0",
+            "bus_init:7:0",
+            "read_id:7:ffffffffff:0",
+            "bus_init:8:0",
+            "read_id:8:ffffffffff:0",
+            "bus_init:9:0",
+            "read_id:9:ffffffffff:0",
+            "bus_init:10:0",
+            "read_id:10:ffffffffff:0",
+            "bus_init:0:0",
+            "read_id:0:efb2230000:0",
+            "bus_init:1:0",
+            "read_id:1:efb2230000:0",
+            "bus_init:2:0",
+            "read_id:2:efb2230000:0",
+            "bus_init:3:0",
+            "read_id:3:efb2230000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:25:0",
+            "get_feature:176:25:0",
+            "set_feature:208:0:0",
+            "get_feature:208:0:0",
+            "bbt:2048:4096:64:0",
+            "log:boot_guard"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 4,
+              "guard_pages": 256,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160319976,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 1114
+      },
+      {
+        "name": "probe_third_round",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:ffffffffff:0",
+            "bus_init:1:0",
+            "read_id:1:ffffffffff:0",
+            "bus_init:2:0",
+            "read_id:2:ffffffffff:0",
+            "bus_init:3:0",
+            "read_id:3:ffffffffff:0",
+            "bus_init:4:0",
+            "read_id:4:ffffffffff:0",
+            "bus_init:5:0",
+            "read_id:5:ffffffffff:0",
+            "bus_init:6:0",
+            "read_id:6:ffffffffff:0",
+            "bus_init:7:0",
+            "read_id:7:ffffffffff:0",
+            "bus_init:8:0",
+            "read_id:8:ffffffffff:0",
+            "bus_init:9:0",
+            "read_id:9:ffffffffff:0",
+            "bus_init:10:0",
+            "read_id:10:ffffffffff:0",
+            "bus_init:0:0",
+            "read_id:0:ffffffffff:0",
+            "bus_init:1:0",
+            "read_id:1:ffffffffff:0",
+            "bus_init:2:0",
+            "read_id:2:ffffffffff:0",
+            "bus_init:3:0",
+            "read_id:3:ffffffffff:0",
+            "bus_init:4:0",
+            "read_id:4:ffffffffff:0",
+            "bus_init:5:0",
+            "read_id:5:ffffffffff:0",
+            "bus_init:6:0",
+            "read_id:6:ffffffffff:0",
+            "bus_init:7:0",
+            "read_id:7:ffffffffff:0",
+            "bus_init:8:0",
+            "read_id:8:ffffffffff:0",
+            "bus_init:9:0",
+            "read_id:9:ffffffffff:0",
+            "bus_init:10:0",
+            "read_id:10:ffffffffff:0",
+            "bus_init:0:0",
+            "read_id:0:efb2230000:0",
+            "bus_init:1:0",
+            "read_id:1:efb2230000:0",
+            "bus_init:2:0",
+            "read_id:2:efb2230000:0",
+            "bus_init:3:0",
+            "read_id:3:efb2230000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:25:0",
+            "get_feature:176:25:0",
+            "set_feature:208:0:0",
+            "get_feature:208:0:0",
+            "bbt:2048:4096:64:0",
+            "log:boot_guard"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 4,
+              "guard_pages": 256,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160319976,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 1738
+      },
+      {
+        "name": "probe_no_regulator",
+        "observed": {
+          "actions": [
+            "regulator:0",
+            "log:regulator_missing",
+            "bus_init:0:0",
+            "read_id:0:efb2230000:0",
+            "bus_init:1:0",
+            "read_id:1:efb2230000:0",
+            "bus_init:2:0",
+            "read_id:2:efb2230000:0",
+            "bus_init:3:0",
+            "read_id:3:efb2230000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:25:0",
+            "get_feature:176:25:0",
+            "set_feature:208:0:0",
+            "get_feature:208:0:0",
+            "bbt:2048:4096:64:0",
+            "log:boot_guard"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 4,
+              "guard_pages": 256,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 0,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160319976,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 490
+      },
+      {
+        "name": "probe_power_status_ignored",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:-9",
+            "delay:20",
+            "enable:-9",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:efb2230000:0",
+            "bus_init:1:0",
+            "read_id:1:efb2230000:0",
+            "bus_init:2:0",
+            "read_id:2:efb2230000:0",
+            "bus_init:3:0",
+            "read_id:3:efb2230000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:25:0",
+            "get_feature:176:25:0",
+            "set_feature:208:0:0",
+            "get_feature:208:0:0",
+            "bbt:2048:4096:64:0",
+            "log:boot_guard"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 4,
+              "guard_pages": 256,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160319976,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 490
+      },
+      {
+        "name": "probe_bus_error",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:-9"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 0,
+              "guard_pages": 0,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": null,
+              "root": 0,
+              "selected": 0,
+              "stopped": {
+                "kind": "assertion",
+                "line": 87,
+                "owner": 2160319600
+              }
+            }
+          ]
+        },
+        "steps": 60
+      },
+      {
+        "name": "probe_id_transfer_assert",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:efb2230000:-9"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 0,
+              "guard_pages": 0,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": null,
+              "root": 0,
+              "selected": 0,
+              "stopped": {
+                "kind": "assertion",
+                "line": 383,
+                "owner": 2160317672
+              }
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "probe_reset_transfer_assert",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:efb2230000:0",
+            "bus_init:1:0",
+            "read_id:1:efb2230000:0",
+            "bus_init:2:0",
+            "read_id:2:efb2230000:0",
+            "bus_init:3:0",
+            "read_id:3:efb2230000:0",
+            "reset:-9"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 0,
+              "guard_pages": 0,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": null,
+              "root": 0,
+              "selected": 2160319976,
+              "stopped": {
+                "kind": "assertion",
+                "line": 402,
+                "owner": 2160317656
+              }
+            }
+          ]
+        },
+        "steps": 328
+      },
+      {
+        "name": "probe_injected_read_error",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "injected_read_error",
+            "log:probe_error"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 0,
+              "guard_pages": 0,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 4294967246,
+              "root": 0,
+              "selected": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 88
+      },
+      {
+        "name": "probe_injected_reset_error",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:efb2230000:0",
+            "bus_init:1:0",
+            "read_id:1:efb2230000:0",
+            "bus_init:2:0",
+            "read_id:2:efb2230000:0",
+            "bus_init:3:0",
+            "read_id:3:efb2230000:0",
+            "injected_reset_error",
+            "log:probe_error"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 0,
+              "guard_pages": 0,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 4294967245,
+              "root": 0,
+              "selected": 2160319976,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 328
+      },
+      {
+        "name": "probe_feature_write_error",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:efb2230000:0",
+            "bus_init:1:0",
+            "read_id:1:efb2230000:0",
+            "bus_init:2:0",
+            "read_id:2:efb2230000:0",
+            "bus_init:3:0",
+            "read_id:3:efb2230000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:25:-9",
+            "log:feature_write_error",
+            "log:probe_error"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 0,
+              "guard_pages": 0,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 4294967291,
+              "root": 0,
+              "selected": 2160319976,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 443
+      },
+      {
+        "name": "probe_feature_read_error",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:efb2230000:0",
+            "bus_init:1:0",
+            "read_id:1:efb2230000:0",
+            "bus_init:2:0",
+            "read_id:2:efb2230000:0",
+            "bus_init:3:0",
+            "read_id:3:efb2230000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:0:0",
+            "get_feature:160:0:-9",
+            "log:feature_read_error",
+            "log:probe_error"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 0,
+              "guard_pages": 0,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 4294967290,
+              "root": 0,
+              "selected": 2160319976,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 417
+      },
+      {
+        "name": "probe_feature_mismatch",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:efb2230000:0",
+            "bus_init:1:0",
+            "read_id:1:efb2230000:0",
+            "bus_init:2:0",
+            "read_id:2:efb2230000:0",
+            "bus_init:3:0",
+            "read_id:3:efb2230000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:25:0",
+            "get_feature:176:24:0",
+            "log:feature_mismatch",
+            "log:probe_error"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 0,
+              "guard_pages": 0,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 4294967289,
+              "root": 0,
+              "selected": 2160319976,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 454
+      },
+      {
+        "name": "probe_workaround_status_ignored",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:efb2230000:0",
+            "bus_init:1:0",
+            "read_id:1:efb2230000:0",
+            "bus_init:2:0",
+            "read_id:2:efb2230000:0",
+            "bus_init:3:0",
+            "read_id:3:efb2230000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:-9",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:25:0",
+            "get_feature:176:25:0",
+            "set_feature:208:0:0",
+            "get_feature:208:0:0",
+            "bbt:2048:4096:64:0",
+            "log:boot_guard"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 4,
+              "guard_pages": 256,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160319976,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 490
+      },
+      {
+        "name": "probe_uid_status_ignored",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:efb2230000:0",
+            "bus_init:1:0",
+            "read_id:1:efb2230000:0",
+            "bus_init:2:0",
+            "read_id:2:efb2230000:0",
+            "bus_init:3:0",
+            "read_id:3:efb2230000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:-9",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:25:0",
+            "get_feature:176:25:0",
+            "set_feature:208:0:0",
+            "get_feature:208:0:0",
+            "bbt:2048:4096:64:0",
+            "log:boot_guard"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 4,
+              "guard_pages": 256,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160319976,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 490
+      },
+      {
+        "name": "probe_bbt_status_ignored",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:efb2230000:0",
+            "bus_init:1:0",
+            "read_id:1:efb2230000:0",
+            "bus_init:2:0",
+            "read_id:2:efb2230000:0",
+            "bus_init:3:0",
+            "read_id:3:efb2230000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:25:0",
+            "get_feature:176:25:0",
+            "set_feature:208:0:0",
+            "get_feature:208:0:0",
+            "bbt:2048:4096:64:-9",
+            "log:boot_guard"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 4,
+              "guard_pages": 256,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160319976,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 490
+      },
+      {
+        "name": "wrapper_success",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:efb2230000:0",
+            "bus_init:1:0",
+            "read_id:1:efb2230000:0",
+            "bus_init:2:0",
+            "read_id:2:efb2230000:0",
+            "bus_init:3:0",
+            "read_id:3:efb2230000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:25:0",
+            "get_feature:176:25:0",
+            "set_feature:208:0:0",
+            "get_feature:208:0:0",
+            "bbt:2048:4096:64:0",
+            "log:boot_guard",
+            "mutex:create:1"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 4,
+              "guard_pages": 256,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 2166620160,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160319976,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 511
+      },
+      {
+        "name": "wrapper_existing_mutex",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:efb2230000:0",
+            "bus_init:1:0",
+            "read_id:1:efb2230000:0",
+            "bus_init:2:0",
+            "read_id:2:efb2230000:0",
+            "bus_init:3:0",
+            "read_id:3:efb2230000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:25:0",
+            "get_feature:176:25:0",
+            "set_feature:208:0:0",
+            "get_feature:208:0:0",
+            "bbt:2048:4096:64:0",
+            "log:boot_guard"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 4,
+              "guard_pages": 256,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 2166620160,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160319976,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 507
+      },
+      {
+        "name": "wrapper_mutex_assert",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:efb2230000:0",
+            "bus_init:1:0",
+            "read_id:1:efb2230000:0",
+            "bus_init:2:0",
+            "read_id:2:efb2230000:0",
+            "bus_init:3:0",
+            "read_id:3:efb2230000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:25:0",
+            "get_feature:176:25:0",
+            "set_feature:208:0:0",
+            "get_feature:208:0:0",
+            "bbt:2048:4096:64:0",
+            "log:boot_guard",
+            "mutex:create:0"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 4,
+              "guard_pages": 256,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": null,
+              "root": 0,
+              "selected": 2160319976,
+              "stopped": {
+                "kind": "assertion",
+                "line": 30,
+                "owner": 2160317492
+              }
+            }
+          ]
+        },
+        "steps": 512
+      },
+      {
+        "name": "wrapper_probe_error",
+        "observed": {
+          "actions": [
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:ffffffffff:0",
+            "bus_init:1:0",
+            "read_id:1:ffffffffff:0",
+            "bus_init:2:0",
+            "read_id:2:ffffffffff:0",
+            "bus_init:3:0",
+            "read_id:3:ffffffffff:0",
+            "bus_init:4:0",
+            "read_id:4:ffffffffff:0",
+            "bus_init:5:0",
+            "read_id:5:ffffffffff:0",
+            "bus_init:6:0",
+            "read_id:6:ffffffffff:0",
+            "bus_init:7:0",
+            "read_id:7:ffffffffff:0",
+            "bus_init:8:0",
+            "read_id:8:ffffffffff:0",
+            "bus_init:9:0",
+            "read_id:9:ffffffffff:0",
+            "bus_init:10:0",
+            "read_id:10:ffffffffff:0",
+            "bus_init:0:0",
+            "read_id:0:ffffffffff:0",
+            "bus_init:1:0",
+            "read_id:1:ffffffffff:0",
+            "bus_init:2:0",
+            "read_id:2:ffffffffff:0",
+            "bus_init:3:0",
+            "read_id:3:ffffffffff:0",
+            "bus_init:4:0",
+            "read_id:4:ffffffffff:0",
+            "bus_init:5:0",
+            "read_id:5:ffffffffff:0",
+            "bus_init:6:0",
+            "read_id:6:ffffffffff:0",
+            "bus_init:7:0",
+            "read_id:7:ffffffffff:0",
+            "bus_init:8:0",
+            "read_id:8:ffffffffff:0",
+            "bus_init:9:0",
+            "read_id:9:ffffffffff:0",
+            "bus_init:10:0",
+            "read_id:10:ffffffffff:0",
+            "bus_init:0:0",
+            "read_id:0:ffffffffff:0",
+            "bus_init:1:0",
+            "read_id:1:ffffffffff:0",
+            "bus_init:2:0",
+            "read_id:2:ffffffffff:0",
+            "bus_init:3:0",
+            "read_id:3:ffffffffff:0",
+            "bus_init:4:0",
+            "read_id:4:ffffffffff:0",
+            "bus_init:5:0",
+            "read_id:5:ffffffffff:0",
+            "bus_init:6:0",
+            "read_id:6:ffffffffff:0",
+            "bus_init:7:0",
+            "read_id:7:ffffffffff:0",
+            "bus_init:8:0",
+            "read_id:8:ffffffffff:0",
+            "bus_init:9:0",
+            "read_id:9:ffffffffff:0",
+            "bus_init:10:0",
+            "read_id:10:ffffffffff:0",
+            "log:no_chip_match",
+            "log:probe_error"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 0,
+              "guard_pages": 0,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 4294967292,
+              "root": 0,
+              "selected": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 1973
+      },
+      {
+        "name": "register_success",
+        "observed": {
+          "actions": [
+            "property:dev_nand:1",
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:efb2230000:0",
+            "bus_init:1:0",
+            "read_id:1:efb2230000:0",
+            "bus_init:2:0",
+            "read_id:2:efb2230000:0",
+            "bus_init:3:0",
+            "read_id:3:efb2230000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:25:0",
+            "get_feature:176:25:0",
+            "set_feature:208:0:0",
+            "get_feature:208:0:0",
+            "bbt:2048:4096:64:0",
+            "log:boot_guard",
+            "mutex:create:1",
+            "alloc:60:2168455168",
+            "fill_object:60",
+            "object_register:dev_nand:23:0"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 4,
+              "guard_pages": 256,
+              "heap_active": true,
+              "heap_sha256": "032751d6531e9baa5db3d1ed414c8b896bfd1f02b45e6ae165130082d99b52c6",
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 2166620160,
+              "regulator": 2166685696,
+              "returned": 0,
+              "root": 2161646376,
+              "selected": 2160319976,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 551
+      },
+      {
+        "name": "register_missing_property",
+        "observed": {
+          "actions": [
+            "property:dev_nand:0"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 0,
+              "guard_pages": 0,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 0,
+              "returned": null,
+              "root": 0,
+              "selected": 0,
+              "stopped": {
+                "kind": "assertion",
+                "line": 49,
+                "owner": 2160316936
+              }
+            }
+          ]
+        },
+        "steps": 18
+      },
+      {
+        "name": "register_missing_operations",
+        "observed": {
+          "actions": [
+            "property:dev_nand:1"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 0,
+              "guard_pages": 0,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 0,
+              "returned": 4294967290,
+              "root": 2161646376,
+              "selected": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 21
+      },
+      {
+        "name": "register_missing_init",
+        "observed": {
+          "actions": [
+            "property:dev_nand:1"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 0,
+              "guard_pages": 0,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 0,
+              "returned": 4294967290,
+              "root": 2161646376,
+              "selected": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 23
+      },
+      {
+        "name": "register_alloc_error",
+        "observed": {
+          "actions": [
+            "property:dev_nand:1",
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:efb2230000:0",
+            "bus_init:1:0",
+            "read_id:1:efb2230000:0",
+            "bus_init:2:0",
+            "read_id:2:efb2230000:0",
+            "bus_init:3:0",
+            "read_id:3:efb2230000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:25:0",
+            "get_feature:176:25:0",
+            "set_feature:208:0:0",
+            "get_feature:208:0:0",
+            "bbt:2048:4096:64:0",
+            "log:boot_guard",
+            "mutex:create:1",
+            "alloc:60:0"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 4,
+              "guard_pages": 256,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 2166620160,
+              "regulator": 2166685696,
+              "returned": 4294967290,
+              "root": 2161646376,
+              "selected": 2160319976,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 541
+      },
+      {
+        "name": "register_object_error",
+        "observed": {
+          "actions": [
+            "property:dev_nand:1",
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:efb2230000:0",
+            "bus_init:1:0",
+            "read_id:1:efb2230000:0",
+            "bus_init:2:0",
+            "read_id:2:efb2230000:0",
+            "bus_init:3:0",
+            "read_id:3:efb2230000:0",
+            "reset:0",
+            "delay:11",
+            "workaround:0",
+            "log:chip_summary",
+            "uid:0",
+            "set_feature:160:0:0",
+            "get_feature:160:0:0",
+            "set_feature:176:25:0",
+            "get_feature:176:25:0",
+            "set_feature:208:0:0",
+            "get_feature:208:0:0",
+            "bbt:2048:4096:64:0",
+            "log:boot_guard",
+            "mutex:create:1",
+            "alloc:60:2168455168",
+            "fill_object:60",
+            "object_register:dev_nand:23:-11"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 4,
+              "guard_pages": 256,
+              "heap_active": true,
+              "heap_sha256": "032751d6531e9baa5db3d1ed414c8b896bfd1f02b45e6ae165130082d99b52c6",
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 2166620160,
+              "regulator": 2166685696,
+              "returned": 4294967285,
+              "root": 2161646376,
+              "selected": 2160319976,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 551
+      },
+      {
+        "name": "register_probe_error",
+        "observed": {
+          "actions": [
+            "property:dev_nand:1",
+            "regulator:1",
+            "disable:0",
+            "delay:20",
+            "enable:0",
+            "delay:20",
+            "bus_init:0:0",
+            "read_id:0:ffffffffff:0",
+            "bus_init:1:0",
+            "read_id:1:ffffffffff:0",
+            "bus_init:2:0",
+            "read_id:2:ffffffffff:0",
+            "bus_init:3:0",
+            "read_id:3:ffffffffff:0",
+            "bus_init:4:0",
+            "read_id:4:ffffffffff:0",
+            "bus_init:5:0",
+            "read_id:5:ffffffffff:0",
+            "bus_init:6:0",
+            "read_id:6:ffffffffff:0",
+            "bus_init:7:0",
+            "read_id:7:ffffffffff:0",
+            "bus_init:8:0",
+            "read_id:8:ffffffffff:0",
+            "bus_init:9:0",
+            "read_id:9:ffffffffff:0",
+            "bus_init:10:0",
+            "read_id:10:ffffffffff:0",
+            "bus_init:0:0",
+            "read_id:0:ffffffffff:0",
+            "bus_init:1:0",
+            "read_id:1:ffffffffff:0",
+            "bus_init:2:0",
+            "read_id:2:ffffffffff:0",
+            "bus_init:3:0",
+            "read_id:3:ffffffffff:0",
+            "bus_init:4:0",
+            "read_id:4:ffffffffff:0",
+            "bus_init:5:0",
+            "read_id:5:ffffffffff:0",
+            "bus_init:6:0",
+            "read_id:6:ffffffffff:0",
+            "bus_init:7:0",
+            "read_id:7:ffffffffff:0",
+            "bus_init:8:0",
+            "read_id:8:ffffffffff:0",
+            "bus_init:9:0",
+            "read_id:9:ffffffffff:0",
+            "bus_init:10:0",
+            "read_id:10:ffffffffff:0",
+            "bus_init:0:0",
+            "read_id:0:ffffffffff:0",
+            "bus_init:1:0",
+            "read_id:1:ffffffffff:0",
+            "bus_init:2:0",
+            "read_id:2:ffffffffff:0",
+            "bus_init:3:0",
+            "read_id:3:ffffffffff:0",
+            "bus_init:4:0",
+            "read_id:4:ffffffffff:0",
+            "bus_init:5:0",
+            "read_id:5:ffffffffff:0",
+            "bus_init:6:0",
+            "read_id:6:ffffffffff:0",
+            "bus_init:7:0",
+            "read_id:7:ffffffffff:0",
+            "bus_init:8:0",
+            "read_id:8:ffffffffff:0",
+            "bus_init:9:0",
+            "read_id:9:ffffffffff:0",
+            "bus_init:10:0",
+            "read_id:10:ffffffffff:0",
+            "log:no_chip_match",
+            "log:probe_error"
+          ],
+          "rows": [
+            {
+              "guard_blocks": 0,
+              "guard_pages": 0,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 2166685696,
+              "returned": 4294967290,
+              "root": 2161646376,
+              "selected": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 1998
+      },
+      {
+        "name": "match_manufacturer",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "guard_blocks": 0,
+              "guard_pages": 0,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 0,
+              "returned": 4294967295,
+              "root": 0,
+              "selected": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 10
+      },
+      {
+        "name": "match_device",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "guard_blocks": 0,
+              "guard_pages": 0,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 0,
+              "returned": 4294967294,
+              "root": 0,
+              "selected": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 13
+      },
+      {
+        "name": "match_third",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "guard_blocks": 0,
+              "guard_pages": 0,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 0,
+              "returned": 4294967293,
+              "root": 0,
+              "selected": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 18
+      },
+      {
+        "name": "match_fourth",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "guard_blocks": 0,
+              "guard_pages": 0,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 0,
+              "returned": 4294967292,
+              "root": 0,
+              "selected": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 22
+      },
+      {
+        "name": "match_fifth_field",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "guard_blocks": 0,
+              "guard_pages": 0,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 0,
+              "returned": 4294967291,
+              "root": 0,
+              "selected": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 27
+      },
+      {
+        "name": "match_fifth_uses_fourth_byte",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "guard_blocks": 0,
+              "guard_pages": 0,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 0,
+              "returned": 0,
+              "root": 0,
+              "selected": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 26
+      },
+      {
+        "name": "match_optional_zero",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "guard_blocks": 0,
+              "guard_pages": 0,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 0,
+              "returned": 0,
+              "root": 0,
+              "selected": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 20
+      },
+      {
+        "name": "match_received_fifth_ignored",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "guard_blocks": 0,
+              "guard_pages": 0,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 0,
+              "returned": 0,
+              "root": 0,
+              "selected": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 23
+      },
+      {
+        "name": "compat_allowed",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "guard_blocks": 0,
+              "guard_pages": 0,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 0,
+              "returned": 0,
+              "root": 0,
+              "selected": 2160319976,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 27
+      },
+      {
+        "name": "compat_rejected",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "guard_blocks": 0,
+              "guard_pages": 0,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 0,
+              "returned": 4294967295,
+              "root": 0,
+              "selected": 2160321816,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 27
+      },
+      {
+        "name": "compat_absent",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "guard_blocks": 0,
+              "guard_pages": 0,
+              "heap_active": false,
+              "heap_sha256": null,
+              "layout_record": null,
+              "layout_sha256": null,
+              "mutex": 0,
+              "regulator": 0,
+              "returned": 4294967295,
+              "root": 0,
+              "selected": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 5
+      }
+    ],
+    "hardware_execution": false
+  },
+  "validation_sha256": "41bb6241d111fdaf597e91fe90176c4e5cc9df30ddeffb3212c99f52f80e86ee",
+  "vectors_sha256": "bc1e469311c15582f0567020e3fdecba91e53275c34b9a2b4291e62734e9089f"
+}

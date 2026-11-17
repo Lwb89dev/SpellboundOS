@@ -32,6 +32,12 @@ configuration; see [PPG_AND_SENSOR_MEMORY.md](PPG_AND_SENSOR_MEMORY.md).
 This narrows the candidate to the MAX8617X family without establishing an
 exact fitted chip suffix.
 
+A later bootloader pass recovers an [11-entry NAND candidate table and native
+probe](NAND_PROBE_AND_CHIP_TABLE.md), including Winbond, DOSILICON and ESMT labels
+with 128/256/512-MiB descriptor geometries. Supplied IDs select each candidate
+in emulation. This is software support evidence, not identification of the
+watch's fitted NAND or a measurement of its physical capacity.
+
 ## SoC identifiers
 
 The literal tokens `AX861`, `MHS002`, `MHS003`/`mhs003` appear in the image.

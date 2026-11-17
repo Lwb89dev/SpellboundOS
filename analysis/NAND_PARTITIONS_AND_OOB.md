@@ -148,3 +148,8 @@ Next work includes actual driver registration/probe and chip-geometry provenance
 lower page/ECC/bus operations, program/erase effects, mapping repair/write paths,
 SFTL and physical persistence. Device-specific backup/restoration and a viable
 standalone boot path through the signed chain remain unresolved.
+
+The subsequent [candidate/probe pass](NAND_PROBE_AND_CHIP_TABLE.md) recovers 11
+original descriptors and executes matching, ID/reset command builders, probe,
+mutex/root setup and original OOB layout round trips in 60 native cases. Bus
+responses remain supplied; no fitted chip is identified by those fixtures.

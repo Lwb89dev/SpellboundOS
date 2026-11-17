@@ -1651,6 +1651,33 @@ limits; the initial observations point to the current status and work log.
    The chip descriptor and page/control results are synthetic. No device or
    physical NAND/ECC/bus was accessed; physical persistence and boot remain open.
 
+## 2026-11-17 — original NAND candidate table, probe and driver-root setup
+
+1. Recovered all 11 original candidate descriptors, ID prefixes, geometry,
+   feature sequences, ECC positions and bus/driver operation bindings. Their
+   128/256/512-MiB geometry values are image facts, not identification of fitted
+   hardware. No physical ID or device-specific data was read.
+2. Executed actual matching, ID/reset command builders, three-round probe,
+   feature write/read/compare paths, error/assertion boundaries and boot counts
+   with supplied power/bus/feature/UID/BBT services. Every original supplied ID
+   selects its descriptor; no-match exhausts 33 candidate attempts.
+3. Executed actual mutex wrapper and outer driver-root initialization, allocation
+   and method binding. Object registration remains supplied; injected failures
+   preserve partial state and can leave the object allocation live. Verified the
+   optional +0x30 match field's fourth-byte comparison on an authored copy;
+   all original +0x30 fields are zero.
+4. Native probe plus actual OOB compose/extract round trips cover every original
+   descriptor's contiguous layout at offsets 16/20/72. Context setup and page
+   data remain authored; no NAND is programmed.
+5. All 60 native cases pass in 30,716 steps (maximum 1,998). Thirty-six new host
+   checks bring the suite to 932 passing tests. Nine fresh exports/code guards,
+   40 original data guards and complete inventory/traces are in
+   [analysis/NAND_PROBE_AND_CHIP_TABLE.md](analysis/NAND_PROBE_AND_CHIP_TABLE.md),
+   [analysis/nand-chips.json](analysis/nand-chips.json) and
+   [analysis/nand-probe.json](analysis/nand-probe.json).
+   Electrical bus behavior, physical chip identity/ECC, persistence and full boot
+   remain open. No watch or phone was accessed.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -1672,7 +1699,10 @@ limits; the initial observations point to the current status and work log.
   16-partition configuration and callback bindings are now recovered statically.
   Registry/device population, lazy EFTL descriptor arithmetic and EFTL logical
   translation/page dispatch now execute with supplied lower services. Follow
-  driver registration/probe and physical chip-geometry provenance. Actual NAND
+  actual bus initialization/transfer, feature protocols and physical ID/geometry
+  corroboration. Original candidate matching/probe and driver-root setup now
+  execute with supplied services; object registry and UID/BBT internals remain
+  open. Actual NAND
   lookup/ioctl/read dispatch, descriptor-backed geometry collection and OOB
   extraction/composition now execute. The selected complete allocation/
   geometry/reset/scan/retry initializer, generic format loops and connected lazy
