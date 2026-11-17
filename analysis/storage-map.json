@@ -1,0 +1,315 @@
+{
+  "boot_sha256": "44cd83c0d09864c6101e9825bd3c77d7fac314584d0408b378dd56c2aac5736a",
+  "byte_range_sha256": {
+    "80c01098_106": "f0d078e5f4546e32b3a2210b0ccca290eef914494101933c71ee19b6a0cabe0a",
+    "80c229ec_24": "0bf070cfe146e8d2f3dcd7bd86dc0c23a47f3af02d3e61e90b682ab89b7e4b3b",
+    "80c231b2_24": "2764cfa7deb4015489a5b1a1e48e77bf08c049c7a3acc8ac18cb987a058cdfc4",
+    "80c231d6_7c": "8c585a2df07a652d6800f435a03991ea412a1ea0a5813565e6459a1828f8da6d",
+    "80c23bd0_11e": "c3ad635cb211be8f9cf0795d6f0a56a9aba3c0e1092836fe77f7396f9d304c38",
+    "80c23cee_aa": "9fd9c9d677216a12cc75db961ee1aabdc9cc120c4b0a108bd27843f7b5f55098",
+    "80c24106_3a": "ab679680653e306e67f4e9d44f773494fe20d740adfc8d25d61014610f9f4c2e",
+    "80c24140_d8": "c8b2b1f8f8ef5f392bde43fbd5fb9d5c527f73d8e3379a7c4c048e21d3ee4773",
+    "80c24340_96": "640905d12b6f31bd4f4dd522a86543308ba48111cac8d3159a4014d606045053"
+  },
+  "export_sha256": {
+    "80c01098.c": "71bc31181bd722e3c31a39ac542584bb67544d4eb69eb58af8c19d610885a5b7",
+    "80c229ec.c": "e71d786b464842d8a84046768b1abd6327206ab710bd5dd9a08ed66b97432c6c",
+    "80c231b2.c": "1f9788ce729cc43b33d0957d164b2c304dca4cbd9e150cb4c0588427eb936d20",
+    "80c231d6.c": "932afcb918ae929af3b62ebbea9a02a7e23a1b2f7804c4d53cc51b6b19d97b98",
+    "80c23bd0.c": "c0969be42072bcfae03b543fb1e46b28b15e511396f067e8f8e2716563bd3b8a",
+    "80c23cee.c": "faccce4bf140e2988387c8261043eaf0dff86738028a1e63ec1b55de77f1698b",
+    "80c24106.c": "0d16add725bab4c505e923d6caf84b9ed1eaba51ddcf41776f2b9d06105e4c68",
+    "80c24140.c": "1584efd85c2f2e468f1902e6ccf8a0ebe8cc31ec37681db1be37e01935f66d4a",
+    "80c24340.c": "0a658453754e5025a5054d821eb26d3f7315ec42333b574f09dd62fda2f36f77"
+  },
+  "hardware_execution": false,
+  "limitations": [
+    "This is original boot ROM/startup configuration, not a live RAM or physical flash dump.",
+    "Partition offsets are relative to nand/nandraw/eftl/sftl backend address spaces; FTL translation is not a physical linear map.",
+    "Descriptor base/capacity/block words are initial values; lazy initialization and runtime geometry can change them.",
+    "The five driver callback addresses are recovered bindings, not independently implemented or electrically validated drivers.",
+    "Registry population and driver control flow are inspected statically here; prior native dispatch tests use synthetic descriptors.",
+    "The extra partition word and two descriptor callbacks remain unclassified; runtime storage availability and persistence are unproven."
+  ],
+  "storage": {
+    "board_configuration_source_address": 2160334848,
+    "board_partition_configuration": 2161646408,
+    "board_partition_count": 16,
+    "board_partition_table": 2160277112,
+    "board_tables_equal": true,
+    "configuration_address": 2161640880,
+    "configuration_source_address": 2160329320,
+    "descriptor_function_word": 2160214278,
+    "descriptor_function_word_address": 2161643772,
+    "device_count": 5,
+    "device_pointer_table": 2161640896,
+    "device_pointer_table_source_address": 2160329336,
+    "devices": [
+      {
+        "address": 2161643524,
+        "callbacks": {
+          "deinitialize": 2160210936,
+          "erase": 2160211224,
+          "initialize": 2160210968,
+          "ioctl": 2160210922,
+          "program": 2160211434,
+          "read": 2160211618,
+          "rewrite": 2160210914,
+          "unclassified_40": 2160210918,
+          "unclassified_44": 2160211802
+        },
+        "initial_base_word": 4294967295,
+        "initial_block_word": 131072,
+        "initial_capacity_word": 2147483647,
+        "initial_word_24": 1,
+        "name": "nand",
+        "sha256": "7d5d92864bf6028de22439a0de4a941e5ecdf33006010456c9c1f5f997baaa6f"
+      },
+      {
+        "address": 2161643600,
+        "callbacks": {
+          "deinitialize": 2160211846,
+          "erase": 2160212118,
+          "initialize": 2160211810,
+          "ioctl": 2160212370,
+          "program": 2160212288,
+          "read": 2160212040,
+          "rewrite": 2160212366,
+          "unclassified_40": 2160211806,
+          "unclassified_44": 2160212438
+        },
+        "initial_base_word": 4294967295,
+        "initial_block_word": 131072,
+        "initial_capacity_word": 2147483647,
+        "initial_word_24": 1,
+        "name": "nandraw",
+        "sha256": "de63615fcaa7e7af164b7fd14c5400bf90f82c97b8a210afdd9761295b2654d7"
+      },
+      {
+        "address": 2161643448,
+        "callbacks": {
+          "deinitialize": 2160210328,
+          "erase": 2160210592,
+          "initialize": 2160210354,
+          "ioctl": 2160210824,
+          "program": 2160210742,
+          "read": 2160210514,
+          "rewrite": 2160210820,
+          "unclassified_40": 2160210350,
+          "unclassified_44": 2160210910
+        },
+        "initial_base_word": 4294967295,
+        "initial_block_word": 131072,
+        "initial_capacity_word": 2147483647,
+        "initial_word_24": 1,
+        "name": "eftl",
+        "sha256": "23c023a72327347e66875b4a7a29d03f75432ca34ffa69c1896631579567c03b"
+      },
+      {
+        "address": 2161643296,
+        "callbacks": {
+          "deinitialize": 2160208544,
+          "erase": 2160210174,
+          "initialize": 2160208400,
+          "ioctl": 2160210188,
+          "program": 2160209918,
+          "read": 2160209442,
+          "rewrite": 2160209934,
+          "unclassified_40": 2160208360,
+          "unclassified_44": 2160210324
+        },
+        "initial_base_word": 4294967295,
+        "initial_block_word": 4096,
+        "initial_capacity_word": 2147483647,
+        "initial_word_24": 1,
+        "name": "disk",
+        "sha256": "0acfd877c044165555e13e81888136354edca4a52c2cc0e7dd67313207e3b28d"
+      },
+      {
+        "address": 2161643372,
+        "callbacks": {
+          "deinitialize": 2160208464,
+          "erase": 2160210160,
+          "initialize": 2160208364,
+          "ioctl": 2160210252,
+          "program": 2160209898,
+          "read": 2160209426,
+          "rewrite": 2160209914,
+          "unclassified_40": 2160210320,
+          "unclassified_44": 2160210316
+        },
+        "initial_base_word": 4294967295,
+        "initial_block_word": 4096,
+        "initial_capacity_word": 2147483647,
+        "initial_word_24": 1,
+        "name": "sftl",
+        "sha256": "456d4ebee6d1f3cf10668899480b5a30d9540f086bee024b671270e0d7c6eb01"
+      }
+    ],
+    "partition_count": 16,
+    "partition_table": 2160278072,
+    "partition_table_sha256": "1d0947000cbb1831ffabda18da3a2ec4b99a175228a1d83e7e82b56ca6f12ad7",
+    "partitions": [
+      {
+        "address": 2160278072,
+        "backend": "nand",
+        "backend_descriptor": 2161643524,
+        "declared_span": 1048576,
+        "derives_span_from_runtime_capacity": false,
+        "name": "raw",
+        "offset": 0,
+        "unclassified_word_38": 0
+      },
+      {
+        "address": 2160278132,
+        "backend": "nand",
+        "backend_descriptor": 2161643524,
+        "declared_span": 11534336,
+        "derives_span_from_runtime_capacity": false,
+        "name": "eftl",
+        "offset": 1048576,
+        "unclassified_word_38": 0
+      },
+      {
+        "address": 2160278192,
+        "backend": "nand",
+        "backend_descriptor": 2161643524,
+        "declared_span": 31457280,
+        "derives_span_from_runtime_capacity": false,
+        "name": "sftl",
+        "offset": 12582912,
+        "unclassified_word_38": 0
+      },
+      {
+        "address": 2160278252,
+        "backend": "nand",
+        "backend_descriptor": 2161643524,
+        "declared_span": 0,
+        "derives_span_from_runtime_capacity": true,
+        "name": "fs",
+        "offset": 44040192,
+        "unclassified_word_38": 0
+      },
+      {
+        "address": 2160278312,
+        "backend": "nandraw",
+        "backend_descriptor": 2161643600,
+        "declared_span": 1048576,
+        "derives_span_from_runtime_capacity": false,
+        "name": "boot",
+        "offset": 0,
+        "unclassified_word_38": 0
+      },
+      {
+        "address": 2160278372,
+        "backend": "eftl",
+        "backend_descriptor": 2161643448,
+        "declared_span": 262144,
+        "derives_span_from_runtime_capacity": false,
+        "name": "nvms",
+        "offset": 0,
+        "unclassified_word_38": 1
+      },
+      {
+        "address": 2160278432,
+        "backend": "eftl",
+        "backend_descriptor": 2161643448,
+        "declared_span": 262144,
+        "derives_span_from_runtime_capacity": false,
+        "name": "envbak",
+        "offset": 262144,
+        "unclassified_word_38": 1
+      },
+      {
+        "address": 2160278492,
+        "backend": "eftl",
+        "backend_descriptor": 2161643448,
+        "declared_span": 524288,
+        "derives_span_from_runtime_capacity": false,
+        "name": "recovery",
+        "offset": 524288,
+        "unclassified_word_38": 1
+      },
+      {
+        "address": 2160278552,
+        "backend": "eftl",
+        "backend_descriptor": 2161643448,
+        "declared_span": 8388608,
+        "derives_span_from_runtime_capacity": false,
+        "name": "backup",
+        "offset": 1048576,
+        "unclassified_word_38": 1
+      },
+      {
+        "address": 2160278612,
+        "backend": "eftl",
+        "backend_descriptor": 2161643448,
+        "declared_span": 524288,
+        "derives_span_from_runtime_capacity": false,
+        "name": "ramdump",
+        "offset": 9437184,
+        "unclassified_word_38": 1
+      },
+      {
+        "address": 2160278672,
+        "backend": "eftl",
+        "backend_descriptor": 2161643448,
+        "declared_span": 262144,
+        "derives_span_from_runtime_capacity": false,
+        "name": "userdata",
+        "offset": 9961472,
+        "unclassified_word_38": 1
+      },
+      {
+        "address": 2160278732,
+        "backend": "eftl",
+        "backend_descriptor": 2161643448,
+        "declared_span": 262144,
+        "derives_span_from_runtime_capacity": false,
+        "name": "coredump",
+        "offset": 10223616,
+        "unclassified_word_38": 1
+      },
+      {
+        "address": 2160278792,
+        "backend": "sftl",
+        "backend_descriptor": 2161643372,
+        "declared_span": 393216,
+        "derives_span_from_runtime_capacity": false,
+        "name": "recovery0",
+        "offset": 0,
+        "unclassified_word_38": 1
+      },
+      {
+        "address": 2160278852,
+        "backend": "sftl",
+        "backend_descriptor": 2161643372,
+        "declared_span": 393216,
+        "derives_span_from_runtime_capacity": false,
+        "name": "recovery1",
+        "offset": 393216,
+        "unclassified_word_38": 1
+      },
+      {
+        "address": 2160278912,
+        "backend": "sftl",
+        "backend_descriptor": 2161643372,
+        "declared_span": 131072,
+        "derives_span_from_runtime_capacity": false,
+        "name": "env",
+        "offset": 786432,
+        "unclassified_word_38": 1
+      },
+      {
+        "address": 2160278972,
+        "backend": "sftl",
+        "backend_descriptor": 2161643372,
+        "declared_span": 20971520,
+        "derives_span_from_runtime_capacity": false,
+        "name": "log",
+        "offset": 917504,
+        "unclassified_word_38": 1
+      }
+    ]
+  }
+}

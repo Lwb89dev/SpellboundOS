@@ -175,3 +175,9 @@ mutex behavior, mirror payload meaning, physical reserve-image provenance and
 persistence, the following startup phase and boot/recovery/UI dispatch remain
 open. Safe device-specific restoration and independent boot through the signed
 chain are still unresolved.
+
+The subsequent [original storage-table pass](STORAGE_MAP_AND_DRIVER_BINDINGS.md)
+recovers five backend descriptors, their callback addresses and two identical
+16-row partition tables. These static bindings replace none of this pass's
+supplied descriptors; FTL translation and native registry initialization remain
+outside its coverage.

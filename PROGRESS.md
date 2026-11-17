@@ -1519,6 +1519,27 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    Registry population, physical drivers and flash remain outside the fixtures;
    no device was accessed.
 
+## 2026-11-17 — original storage tables and five driver bindings
+
+1. Recovered original startup configuration publishing five backends (`nand`,
+   `nandraw`, `eftl`, `disk`, `sftl`) and two identical 16-row partition tables.
+   Startup-copy sources and table/descriptor hashes are checked against the
+   original boot member; these are image values, not a live device dump.
+2. Mapped `env` to `sftl+0xc0000`, `envbak` to `eftl+0x40000`, `nvms` to
+   `eftl+0`, and the recovery/backup/dump/log rows. Recovered actual initializer,
+   read/program/erase/rewrite callback bindings for all five backends. Offsets
+   remain backend-relative; FTL translation and physical NAND placement are open.
+3. Inspected device/partition registry population and lazy EFTL initialization.
+   Generic EFTL/SFTL initializers defer real setup; initial capacity/base words
+   are sentinels, not established runtime geometry. No new native initialization
+   cases are claimed. Corrected the board registration tail-jump metadata before
+   hashing its fresh export; no image bytes were changed.
+4. Added 20 parser/provenance/configuration checks; all 749 Python tests pass.
+   Nine fresh export/code-range hashes and complete recovered facts are in
+   [analysis/STORAGE_MAP_AND_DRIVER_BINDINGS.md](analysis/STORAGE_MAP_AND_DRIVER_BINDINGS.md)
+   and [analysis/storage-map.json](analysis/storage-map.json).
+   No watch, phone or physical storage was accessed.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -1536,9 +1557,12 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
   environment initialization, callbacks, table/readiness binding and dump/reserve
   copying now execute over synthetic services too. Named registry validation,
   handle setup, NVMS mirror repair/rewrite fallback and clean bootstrap now
-  execute as well; the ROM table publishes `boots=0`. Follow registry/device
-  population, the concrete physical partition map and driver callbacks, actual
-  rewrite/mutex constraints, reserve-image provenance and other factory data,
+  execute as well; the ROM table publishes `boots=0`. The original five-backend,
+  16-partition configuration and callback bindings are now recovered statically.
+  Execute registry/device population and lazy backend initialization, follow FTL
+  geometry/translation and the concrete physical partition map, actual driver
+  callback behavior and rewrite/mutex constraints, reserve-image provenance
+  and other factory data,
   broader malformed/stale-cache/concurrency/boundary-read paths,
   real persistence and subsequent boot/recovery/UI
   dispatch, physical reason/gesture behavior, VFS/raw storage/base-address/
