@@ -1701,6 +1701,29 @@ limits; the initial observations point to the current status and work log.
    No device was accessed. Physical QSPI/DMA completion, chip identity, ECC,
    persistence, restoration and standalone boot remain open.
 
+## 2026-11-17 — NAND page read/program/copy/erase and connected busy policy
+
+1. Executed actual page read/write/copy/copy-with-OOB/erase routines with both
+   actual busy loops. Remapping, command builders, status bytes, retry workaround
+   and cache data remain supplied; this pass does not execute lower QSPI HAL.
+2. Confirmed the previous timeout finding in actual callers: all-busy reads run
+   2,000 polls then continue to supplied cache transfer and can return zero.
+   Original ECC mask 0x30 compares against 0x20, so ff does not select that error.
+   Program instead returns -102; polling/tick erase returns -104 after 4,000/20
+   reads. This is software behavior on fixtures, not an observed hardware fault.
+3. Verified geometry/spare bounds, supplied remapping outcomes, first-MiB guards,
+   ECC/workaround precedence, direct/private-buffer selection, source/destination
+   copy ordering, OOB count/column and authored plane-flag behavior. Explicit
+   helper-return injections cover outer errors without claiming natural returns
+   from actual command builders that normally succeed or assert.
+4. All 77 native cases pass in 200,565 steps (maximum 96,107). Thirty-one new host
+   tests bring the suite to 997 passing tests. Eight fresh exports/code guards
+   and three data guards are recorded in
+   [analysis/NAND_PAGE_POLICY.md](analysis/NAND_PAGE_POLICY.md) and
+   [analysis/nand-page.json](analysis/nand-page.json).
+   No device was accessed. Actual BBT/remapping/retry/UID, lower HAL/ROM, physical
+   ECC/persistence, restoration and standalone boot remain open.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -1725,14 +1748,17 @@ limits; the initial observations point to the current status and work log.
   QSPI platform initialization/transfer, selected feature/cache/program/erase
   command builders, ROM-version policy and busy deadlines now execute with
   supplied HAL/pin/DMA services and emulated MMIO. Follow lower RAM HAL/ROM,
-  downstream page/ECC/program/erase timeout handling and physical ID/geometry
+  actual BBT/remapping/retry/UID and physical ID/geometry
   corroboration. Original candidate matching/probe and driver-root setup now
   execute with supplied services; object registry and UID/BBT internals remain
   open. Actual NAND
   lookup/ioctl/read dispatch, descriptor-backed geometry collection and OOB
   extraction/composition now execute. The selected complete allocation/
   geometry/reset/scan/retry initializer, generic format loops and connected lazy
-  publication now execute too, with lower services supplied. Follow lower NAND
+  publication now execute too, with lower services supplied. Actual page read/
+  program/copy/copy-with-OOB/erase now execute with actual busy loops and supplied
+  remap/command/feature/cache services; read timeout can reach a successful cache
+  read while program/erase reject ff status. Follow lower NAND
   page/ECC/bus transport and physical metadata provenance, alternate format
   handling, remaining
   mapping repair/program/erase paths, SFTL and the concrete physical partition

@@ -170,3 +170,9 @@ program/erase error policy, UID/BBT, SFTL and physical metadata provenance.
 Physical chip identity, electrical timing, DMA ownership/completion, actual
 persistence, device-specific restoration and standalone signed-chain boot
 remain unresolved.
+
+The subsequent [page-policy pass](NAND_PAGE_POLICY.md) executes the actual
+read/program/copy/erase callers together with the actual busy loops. It verifies
+that the selected read can proceed after timeout with ff status, while program
+and erase return status failures. Its command/feature/remap services are supplied;
+it does not establish physical NAND behavior.
