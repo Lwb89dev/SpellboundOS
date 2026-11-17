@@ -141,3 +141,9 @@ adds 64 native cases with synthetic availability and partition/BSP services.
 It checks header writes, signed counter/order selection, completion acknowledgments
 and stopped launch, including the entry jump to startup + `0x22c`. Physical
 entry, backup/restoration, environment lifecycle and independent-code boot remain open.
+
+The later [environment and key-policy pass](BOOT_ENVIRONMENT_AND_KEY_POLICY.md)
+executes 64 cases covering environment wrappers, the reason cache/retained copy,
+key polling and the caller prefix constructing the 298-byte `upgrade` record.
+The setter status is ignored by that caller, and its following commit function
+simply returns zero. Backend persistence and subsequent recovery dispatch remain open.

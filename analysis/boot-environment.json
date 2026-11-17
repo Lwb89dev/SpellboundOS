@@ -1,0 +1,2860 @@
+{
+  "boot_sha256": "44cd83c0d09864c6101e9825bd3c77d7fac314584d0408b378dd56c2aac5736a",
+  "byte_range_sha256": {
+    "80c00312_2f8": "9cc7e9af874aa56d31221bc7ee6f3bd1ef97da25c8f96946af0891d01887a46d",
+    "80c01884_1a": "a6c321b91f7117631f99fa891f4929e00b94f85f9fa0d9373cd98edbae2c2727",
+    "80c0d344_150": "96ec9efd27e8cf5624341fde8eb92aa0cc739dc8ef16e3118e3dba715fe6f3b2",
+    "80c0ec70_80": "0df72d90a387b0c6d5613af218e70d655251650c70d74f405e33d6bd689e9398"
+  },
+  "export_sha256": {
+    "80c00312.c": "f07a43f68212798a1531b48ed6175ece506735c470cc66da469c80cdc8fb35cd",
+    "80c00450.c": "600e58206e7c15f7093aa5865870078eb21d442bac50d25c1ea5159e2a71550f",
+    "80c00454.c": "638792237d6ed1e3f275e4217fce888cc029a25ce73b74777f05207cc0e2fe03",
+    "80c01884.c": "9eb4e1192e08f9861753db356d8e12c0e26fefddcc35f7a569f8d8515c65f28e",
+    "80c0d344.c": "c494f9da95b341595ac33ebe2482d7044537fecadf39e380088fcdaed7dcd496",
+    "80c0d3b4.c": "3aa469c4a61fd61869ed68989ed2109d374e3821f0b0f6449df5fb491f344680",
+    "80c0d490.c": "313f844f5c4383b0e59dac3d2293411a0970554cd0e21fc733b542bec5cda45b",
+    "80c0ec70.c": "223f8c912d979446cafc53682f963f511fabbb1c0d4fba5f16dfd973ed6e46e9"
+  },
+  "limitations": [
+    "Storage lookup/read/reserve/append/remove/maintenance, locks, board/keyboard/power/delay/log services are supplied.",
+    "Backend callback traces/data are checked; persistence, visibility, rollback, flash layout/atomicity and locking behavior are not modeled.",
+    "Retained bytes are synthetic; actual reason cache/copy, polling policy and upgrade-record caller prefix execute.",
+    "The prefix stops before dispatch at 80c005b8; no recovery UI, image launch, device I/O or physical gesture/time calibration."
+  ],
+  "native_steps": 11630,
+  "native_validation": {
+    "bound_per_case": 100000,
+    "case_count": 64,
+    "cases": [
+      {
+        "name": "get_truncated",
+        "observed": {
+          "actions": [
+            "env:lock",
+            "env:find:1",
+            "env:read:12:0",
+            "env:unlock"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "7080a97c6979815c4fe0696c7a6b88e43740b7b9ecf620a54f1e45f1bc69fd3d",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 32,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 12,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 39
+      },
+      {
+        "name": "get_full",
+        "observed": {
+          "actions": [
+            "env:lock",
+            "env:find:1",
+            "env:read:32:0",
+            "env:unlock"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "950b49afd1046ac0513d3cf13683d7aea2af6cd4e2535958d74a8827462a330f",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 32,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 32,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 40
+      },
+      {
+        "name": "get_zero_capacity",
+        "observed": {
+          "actions": [
+            "env:lock",
+            "env:find:1",
+            "env:read:0:0",
+            "env:unlock"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 32,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 39
+      },
+      {
+        "name": "get_missing",
+        "observed": {
+          "actions": [
+            "env:lock",
+            "env:find:0",
+            "env:unlock"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 0,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 33
+      },
+      {
+        "name": "get_uninitialized",
+        "observed": {
+          "actions": [
+            "env:uninitialized"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 20
+      },
+      {
+        "name": "get_null_output",
+        "observed": {
+          "actions": [
+            "env:lock",
+            "env:find:1",
+            "env:unlock"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 32,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 12,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 34
+      },
+      {
+        "name": "get_null_size",
+        "observed": {
+          "actions": [
+            "env:lock",
+            "env:find:1",
+            "env:read:12:0",
+            "env:unlock"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "7080a97c6979815c4fe0696c7a6b88e43740b7b9ecf620a54f1e45f1bc69fd3d",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 12,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 38
+      },
+      {
+        "name": "get_null_both",
+        "observed": {
+          "actions": [
+            "env:lock",
+            "env:find:1",
+            "env:unlock"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 12,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 33
+      },
+      {
+        "name": "get_read_failure",
+        "observed": {
+          "actions": [
+            "env:lock",
+            "env:find:1",
+            "env:read:12:2",
+            "env:unlock"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 32,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 12,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 39
+      },
+      {
+        "name": "get_empty_value",
+        "observed": {
+          "actions": [
+            "env:lock",
+            "env:find:1",
+            "env:read:0:0",
+            "env:unlock"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 0,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 40
+      },
+      {
+        "name": "set_existing",
+        "observed": {
+          "actions": [
+            "env:lock",
+            "env:reserve:51",
+            "env:find:1",
+            "env:remove:mark:0",
+            "env:append:0",
+            "env:remove:final:0",
+            "env:unlock"
+          ],
+          "rows": [
+            {
+              "appends": [
+                {
+                  "key": "upgrade",
+                  "sha256": "be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991",
+                  "size": 16,
+                  "status": 0
+                }
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "c4931c9c1c76615f5f9f0835dd8ed0275374ea1ef19ff6fe0a6b27f3ce6286f6",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 76
+      },
+      {
+        "name": "set_new",
+        "observed": {
+          "actions": [
+            "env:lock",
+            "env:reserve:51",
+            "env:find:0",
+            "env:append:0",
+            "env:unlock"
+          ],
+          "rows": [
+            {
+              "appends": [
+                {
+                  "key": "upgrade",
+                  "sha256": "be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991",
+                  "size": 16,
+                  "status": 0
+                }
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 59
+      },
+      {
+        "name": "set_delete",
+        "observed": {
+          "actions": [
+            "env:lock",
+            "env:remove:direct:0",
+            "env:unlock"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 34
+      },
+      {
+        "name": "set_uninitialized",
+        "observed": {
+          "actions": [
+            "env:uninitialized"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 7,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 24
+      },
+      {
+        "name": "set_no_space",
+        "observed": {
+          "actions": [
+            "env:lock",
+            "env:reserve:51",
+            "env:unlock"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 6,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 40
+      },
+      {
+        "name": "set_new_append_failure",
+        "observed": {
+          "actions": [
+            "env:lock",
+            "env:reserve:51",
+            "env:find:0",
+            "env:append:5",
+            "env:unlock"
+          ],
+          "rows": [
+            {
+              "appends": [
+                {
+                  "key": "upgrade",
+                  "sha256": "be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991",
+                  "size": 16,
+                  "status": 5
+                }
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 5,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 59
+      },
+      {
+        "name": "set_mark_failure",
+        "observed": {
+          "actions": [
+            "env:lock",
+            "env:reserve:51",
+            "env:find:1",
+            "env:remove:mark:4",
+            "env:unlock"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "c4931c9c1c76615f5f9f0835dd8ed0275374ea1ef19ff6fe0a6b27f3ce6286f6",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 4,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 58
+      },
+      {
+        "name": "set_old_append_failure",
+        "observed": {
+          "actions": [
+            "env:lock",
+            "env:reserve:51",
+            "env:find:1",
+            "env:remove:mark:0",
+            "env:append:5",
+            "env:unlock"
+          ],
+          "rows": [
+            {
+              "appends": [
+                {
+                  "key": "upgrade",
+                  "sha256": "be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991",
+                  "size": 16,
+                  "status": 5
+                }
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "c4931c9c1c76615f5f9f0835dd8ed0275374ea1ef19ff6fe0a6b27f3ce6286f6",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 5,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 68
+      },
+      {
+        "name": "set_final_failure",
+        "observed": {
+          "actions": [
+            "env:lock",
+            "env:reserve:51",
+            "env:find:1",
+            "env:remove:mark:0",
+            "env:append:0",
+            "env:remove:final:3",
+            "env:unlock"
+          ],
+          "rows": [
+            {
+              "appends": [
+                {
+                  "key": "upgrade",
+                  "sha256": "be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991",
+                  "size": 16,
+                  "status": 0
+                }
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "c4931c9c1c76615f5f9f0835dd8ed0275374ea1ef19ff6fe0a6b27f3ce6286f6",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 3,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 76
+      },
+      {
+        "name": "set_delete_failure",
+        "observed": {
+          "actions": [
+            "env:lock",
+            "env:remove:direct:4",
+            "env:unlock"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 4,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 34
+      },
+      {
+        "name": "set_maintenance",
+        "observed": {
+          "actions": [
+            "env:lock",
+            "env:reserve:51",
+            "env:find:1",
+            "env:remove:mark:0",
+            "env:append:0",
+            "env:remove:final:0",
+            "env:maintenance",
+            "env:unlock"
+          ],
+          "rows": [
+            {
+              "appends": [
+                {
+                  "key": "upgrade",
+                  "sha256": "be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991",
+                  "size": 16,
+                  "status": 0
+                }
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "c4931c9c1c76615f5f9f0835dd8ed0275374ea1ef19ff6fe0a6b27f3ce6286f6",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 79
+      },
+      {
+        "name": "set_mark_failure_maintenance",
+        "observed": {
+          "actions": [
+            "env:lock",
+            "env:reserve:51",
+            "env:find:1",
+            "env:remove:mark:4",
+            "env:maintenance",
+            "env:unlock"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "c4931c9c1c76615f5f9f0835dd8ed0275374ea1ef19ff6fe0a6b27f3ce6286f6",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 4,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 61
+      },
+      {
+        "name": "set_no_space_maintenance",
+        "observed": {
+          "actions": [
+            "env:lock",
+            "env:reserve:51",
+            "env:unlock"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 1,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 6,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 40
+      },
+      {
+        "name": "set_delete_maintenance",
+        "observed": {
+          "actions": [
+            "env:lock",
+            "env:remove:direct:0",
+            "env:unlock"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 1,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 34
+      },
+      {
+        "name": "set_nonnull_empty",
+        "observed": {
+          "actions": [
+            "env:lock",
+            "env:reserve:29",
+            "env:find:0",
+            "env:append:0",
+            "env:unlock"
+          ],
+          "rows": [
+            {
+              "appends": [
+                {
+                  "key": "k",
+                  "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+                  "size": 0,
+                  "status": 0
+                }
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 59
+      },
+      {
+        "name": "commit_only",
+        "observed": {
+          "actions": [
+            "commit:no_op"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 2
+      },
+      {
+        "name": "set_then_commit",
+        "observed": {
+          "actions": [
+            "env:lock",
+            "env:reserve:51",
+            "env:find:1",
+            "env:remove:mark:0",
+            "env:append:0",
+            "env:remove:final:0",
+            "env:unlock",
+            "commit:no_op"
+          ],
+          "rows": [
+            {
+              "appends": [
+                {
+                  "key": "upgrade",
+                  "sha256": "be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991",
+                  "size": 16,
+                  "status": 0
+                }
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "c4931c9c1c76615f5f9f0835dd8ed0275374ea1ef19ff6fe0a6b27f3ce6286f6",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 0,
+              "stopped": null
+            },
+            {
+              "appends": [
+                {
+                  "key": "upgrade",
+                  "sha256": "be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991",
+                  "size": 16,
+                  "status": 0
+                }
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "c4931c9c1c76615f5f9f0835dd8ed0275374ea1ef19ff6fe0a6b27f3ce6286f6",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 78
+      },
+      {
+        "name": "reason_raw_0",
+        "observed": {
+          "actions": [
+            "reason:raw",
+            "reason:retained"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 8,
+              "returned": 8,
+              "stopped": null
+            },
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 8,
+              "returned": 8,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "reason_raw_1",
+        "observed": {
+          "actions": [
+            "reason:raw",
+            "reason:retained"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 0,
+              "returned": 0,
+              "stopped": null
+            },
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "reason_raw_2",
+        "observed": {
+          "actions": [
+            "reason:raw",
+            "reason:retained"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 1,
+              "returned": 1,
+              "stopped": null
+            },
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 1,
+              "returned": 1,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 58
+      },
+      {
+        "name": "reason_raw_3",
+        "observed": {
+          "actions": [
+            "reason:raw",
+            "reason:retained"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 2,
+              "returned": 2,
+              "stopped": null
+            },
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 2,
+              "returned": 2,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 57
+      },
+      {
+        "name": "reason_raw_99",
+        "observed": {
+          "actions": [
+            "reason:raw",
+            "reason:retained"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 8,
+              "returned": 8,
+              "stopped": null
+            },
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 8,
+              "returned": 8,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "reason_cached_0",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 14
+      },
+      {
+        "name": "reason_cached_6",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 6,
+              "returned": 6,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 14
+      },
+      {
+        "name": "reason_cached_8",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 8,
+              "returned": 8,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 14
+      },
+      {
+        "name": "reason_cached_4294967294",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 4294967294,
+              "returned": 4294967294,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 14
+      },
+      {
+        "name": "reason_retained_3",
+        "observed": {
+          "actions": [
+            "reason:raw",
+            "reason:retained"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 3,
+              "returned": 3,
+              "stopped": null
+            },
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 3,
+              "returned": 3,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 54
+      },
+      {
+        "name": "reason_retained_6",
+        "observed": {
+          "actions": [
+            "reason:raw",
+            "reason:retained"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 6,
+              "returned": 6,
+              "stopped": null
+            },
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 6,
+              "returned": 6,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 54
+      },
+      {
+        "name": "reason_retained_4294967295",
+        "observed": {
+          "actions": [
+            "reason:raw",
+            "reason:retained",
+            "reason:raw",
+            "reason:retained"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 4294967295,
+              "stopped": null
+            },
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 4294967295,
+              "returned": 4294967295,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 80
+      },
+      {
+        "name": "key_success",
+        "observed": {
+          "actions": [
+            "reason:raw",
+            "reason:retained",
+            "log:reason",
+            "power",
+            "key:0:0:0",
+            "key:0:1:0",
+            "key:1:1:0",
+            "log:press",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "log:key_pass"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 43,
+              "reason_cache": 0,
+              "returned": 1,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 623
+      },
+      {
+        "name": "key_reason_3",
+        "observed": {
+          "actions": [
+            "reason:raw",
+            "reason:retained",
+            "log:reason"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 3,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 64
+      },
+      {
+        "name": "key_reason_6",
+        "observed": {
+          "actions": [
+            "reason:raw",
+            "reason:retained",
+            "log:reason"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 6,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 63
+      },
+      {
+        "name": "key_power_error",
+        "observed": {
+          "actions": [
+            "reason:raw",
+            "reason:retained",
+            "log:reason",
+            "power",
+            "log:no_power"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 80
+      },
+      {
+        "name": "key_no_power",
+        "observed": {
+          "actions": [
+            "reason:raw",
+            "reason:retained",
+            "log:reason",
+            "power",
+            "log:no_power"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 82
+      },
+      {
+        "name": "key_release_wait",
+        "observed": {
+          "actions": [
+            "reason:raw",
+            "reason:retained",
+            "log:reason",
+            "power",
+            "key:0:2:0",
+            "delay:50",
+            "key:0:3:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:0:1:0",
+            "key:1:1:0",
+            "log:press",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "log:key_pass"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 45,
+              "reason_cache": 0,
+              "returned": 1,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 651
+      },
+      {
+        "name": "key_press_last",
+        "observed": {
+          "actions": [
+            "reason:raw",
+            "reason:retained",
+            "log:reason",
+            "power",
+            "key:0:0:0",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "log:press",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "log:key_pass"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 81,
+              "reason_cache": 0,
+              "returned": 1,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 1060
+      },
+      {
+        "name": "key_press_timeout",
+        "observed": {
+          "actions": [
+            "reason:raw",
+            "reason:retained",
+            "log:reason",
+            "power",
+            "key:0:0:0",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:0:0",
+            "delay:50"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 41,
+              "reason_cache": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 546
+      },
+      {
+        "name": "key_press_nonboolean",
+        "observed": {
+          "actions": [
+            "reason:raw",
+            "reason:retained",
+            "log:reason",
+            "power",
+            "key:0:0:0",
+            "key:0:2:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:1:0",
+            "delay:50"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 41,
+              "reason_cache": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 546
+      },
+      {
+        "name": "key_hold_last_release",
+        "observed": {
+          "actions": [
+            "reason:raw",
+            "reason:retained",
+            "log:reason",
+            "power",
+            "key:0:0:0",
+            "key:0:1:0",
+            "key:1:1:0",
+            "log:press",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:0:0",
+            "key:1:1:0"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 43,
+              "reason_cache": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 607
+      },
+      {
+        "name": "key_hold_second_release",
+        "observed": {
+          "actions": [
+            "reason:raw",
+            "reason:retained",
+            "log:reason",
+            "power",
+            "key:0:0:0",
+            "key:0:1:0",
+            "key:1:1:0",
+            "log:press",
+            "key:0:1:0",
+            "key:1:0:0"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 5,
+              "reason_cache": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 134
+      },
+      {
+        "name": "key_hold_nonboolean",
+        "observed": {
+          "actions": [
+            "reason:raw",
+            "reason:retained",
+            "log:reason",
+            "power",
+            "key:0:0:0",
+            "key:0:1:0",
+            "key:1:1:0",
+            "log:press",
+            "key:0:2:0",
+            "key:1:7:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:7:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:7:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:7:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:7:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:7:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:7:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:7:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:7:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:7:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:7:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:7:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:7:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:7:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:7:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:7:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:7:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:7:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:7:0",
+            "delay:50",
+            "key:0:2:0",
+            "key:1:7:0",
+            "delay:50",
+            "log:key_pass"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 43,
+              "reason_cache": 0,
+              "returned": 1,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 623
+      },
+      {
+        "name": "key_driver_error_0",
+        "observed": {
+          "actions": [
+            "reason:raw",
+            "reason:retained",
+            "log:reason",
+            "power",
+            "key:0:0:5"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 1,
+              "reason_cache": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 82
+      },
+      {
+        "name": "key_driver_error_1",
+        "observed": {
+          "actions": [
+            "reason:raw",
+            "reason:retained",
+            "log:reason",
+            "power",
+            "key:0:0:0",
+            "key:0:1:5"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 2,
+              "reason_cache": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 93
+      },
+      {
+        "name": "key_driver_error_2",
+        "observed": {
+          "actions": [
+            "reason:raw",
+            "reason:retained",
+            "log:reason",
+            "power",
+            "key:0:0:0",
+            "key:0:1:0",
+            "key:1:1:5"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 3,
+              "reason_cache": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 101
+      },
+      {
+        "name": "key_driver_error_3",
+        "observed": {
+          "actions": [
+            "reason:raw",
+            "reason:retained",
+            "log:reason",
+            "power",
+            "key:0:0:0",
+            "key:0:1:0",
+            "key:1:1:0",
+            "log:press",
+            "key:0:1:5"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 4,
+              "reason_cache": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 122
+      },
+      {
+        "name": "key_driver_error_4",
+        "observed": {
+          "actions": [
+            "reason:raw",
+            "reason:retained",
+            "log:reason",
+            "power",
+            "key:0:0:0",
+            "key:0:1:0",
+            "key:1:1:0",
+            "log:press",
+            "key:0:1:0",
+            "key:1:1:5"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 5,
+              "reason_cache": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 130
+      },
+      {
+        "name": "prefix_backup",
+        "observed": {
+          "actions": [
+            "log:build",
+            "boundary:flag:220",
+            "boundary:flag:221",
+            "boundary:flag:222",
+            "boundary:display",
+            "boundary:hw",
+            "boundary:board_init",
+            "log:hw",
+            "keyboard:register",
+            "keyboard:init",
+            "reason:raw",
+            "reason:retained",
+            "log:reason",
+            "power",
+            "key:0:0:0",
+            "key:0:1:0",
+            "key:1:1:0",
+            "log:press",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "log:key_pass",
+            "log:backup_request",
+            "env:lock",
+            "env:reserve:333",
+            "env:find:0",
+            "env:append:0",
+            "env:unlock",
+            "commit:no_op"
+          ],
+          "rows": [
+            {
+              "appends": [
+                {
+                  "key": "upgrade",
+                  "sha256": "533e6704041623a5cc95bcdd21e6f9e63a3cb859865daaf65c9a13f637c5dce2",
+                  "size": 298,
+                  "status": 0
+                }
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 85,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 43,
+              "reason_cache": 0,
+              "returned": null,
+              "stopped": {
+                "key_result": 1,
+                "pc": 2160068024,
+                "record_sha256": "533e6704041623a5cc95bcdd21e6f9e63a3cb859865daaf65c9a13f637c5dce2",
+                "sp": 2164264624
+              }
+            }
+          ]
+        },
+        "steps": 785
+      },
+      {
+        "name": "prefix_env_uninitialized",
+        "observed": {
+          "actions": [
+            "log:build",
+            "boundary:flag:220",
+            "boundary:flag:221",
+            "boundary:flag:222",
+            "boundary:display",
+            "boundary:hw",
+            "boundary:board_init",
+            "log:hw",
+            "keyboard:register",
+            "keyboard:init",
+            "reason:raw",
+            "reason:retained",
+            "log:reason",
+            "power",
+            "key:0:0:0",
+            "key:0:1:0",
+            "key:1:1:0",
+            "log:press",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "log:key_pass",
+            "log:backup_request",
+            "env:uninitialized",
+            "commit:no_op"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 85,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 43,
+              "reason_cache": 0,
+              "returned": null,
+              "stopped": {
+                "key_result": 1,
+                "pc": 2160068024,
+                "record_sha256": "533e6704041623a5cc95bcdd21e6f9e63a3cb859865daaf65c9a13f637c5dce2",
+                "sp": 2164264624
+              }
+            }
+          ]
+        },
+        "steps": 750
+      },
+      {
+        "name": "prefix_reserve_failure",
+        "observed": {
+          "actions": [
+            "log:build",
+            "boundary:flag:220",
+            "boundary:flag:221",
+            "boundary:flag:222",
+            "boundary:display",
+            "boundary:hw",
+            "boundary:board_init",
+            "log:hw",
+            "keyboard:register",
+            "keyboard:init",
+            "reason:raw",
+            "reason:retained",
+            "log:reason",
+            "power",
+            "key:0:0:0",
+            "key:0:1:0",
+            "key:1:1:0",
+            "log:press",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "log:key_pass",
+            "log:backup_request",
+            "env:lock",
+            "env:reserve:333",
+            "env:unlock",
+            "commit:no_op"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 85,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 43,
+              "reason_cache": 0,
+              "returned": null,
+              "stopped": {
+                "key_result": 1,
+                "pc": 2160068024,
+                "record_sha256": "533e6704041623a5cc95bcdd21e6f9e63a3cb859865daaf65c9a13f637c5dce2",
+                "sp": 2164264624
+              }
+            }
+          ]
+        },
+        "steps": 766
+      },
+      {
+        "name": "prefix_append_failure",
+        "observed": {
+          "actions": [
+            "log:build",
+            "boundary:flag:220",
+            "boundary:flag:221",
+            "boundary:flag:222",
+            "boundary:display",
+            "boundary:hw",
+            "boundary:board_init",
+            "log:hw",
+            "keyboard:register",
+            "keyboard:init",
+            "reason:raw",
+            "reason:retained",
+            "log:reason",
+            "power",
+            "key:0:0:0",
+            "key:0:1:0",
+            "key:1:1:0",
+            "log:press",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "log:key_pass",
+            "log:backup_request",
+            "env:lock",
+            "env:reserve:333",
+            "env:find:0",
+            "env:append:5",
+            "env:unlock",
+            "commit:no_op"
+          ],
+          "rows": [
+            {
+              "appends": [
+                {
+                  "key": "upgrade",
+                  "sha256": "533e6704041623a5cc95bcdd21e6f9e63a3cb859865daaf65c9a13f637c5dce2",
+                  "size": 298,
+                  "status": 5
+                }
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 85,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 43,
+              "reason_cache": 0,
+              "returned": null,
+              "stopped": {
+                "key_result": 1,
+                "pc": 2160068024,
+                "record_sha256": "533e6704041623a5cc95bcdd21e6f9e63a3cb859865daaf65c9a13f637c5dce2",
+                "sp": 2164264624
+              }
+            }
+          ]
+        },
+        "steps": 785
+      },
+      {
+        "name": "prefix_register_failure",
+        "observed": {
+          "actions": [
+            "log:build",
+            "boundary:flag:220",
+            "boundary:flag:221",
+            "boundary:flag:222",
+            "boundary:display",
+            "boundary:hw",
+            "boundary:board_init",
+            "log:hw",
+            "keyboard:register",
+            "reason:raw",
+            "reason:retained",
+            "log:fallback_reason"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 0,
+              "returned": null,
+              "stopped": {
+                "key_result": 0,
+                "pc": 2160068024,
+                "record_sha256": "314f47cf9b9e4e05c5e965e82dd2751a934c094b481a00291e9e11f21d0ec4ee",
+                "sp": 2164264624
+              }
+            }
+          ]
+        },
+        "steps": 125
+      },
+      {
+        "name": "prefix_init_failure",
+        "observed": {
+          "actions": [
+            "log:build",
+            "boundary:flag:220",
+            "boundary:flag:221",
+            "boundary:flag:222",
+            "boundary:display",
+            "boundary:hw",
+            "boundary:board_init",
+            "log:hw",
+            "keyboard:register",
+            "keyboard:init",
+            "reason:raw",
+            "reason:retained",
+            "log:fallback_reason"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 0,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 0,
+              "returned": null,
+              "stopped": {
+                "key_result": 0,
+                "pc": 2160068024,
+                "record_sha256": "314f47cf9b9e4e05c5e965e82dd2751a934c094b481a00291e9e11f21d0ec4ee",
+                "sp": 2164264624
+              }
+            }
+          ]
+        },
+        "steps": 132
+      },
+      {
+        "name": "prefix_key_rejected",
+        "observed": {
+          "actions": [
+            "log:build",
+            "boundary:flag:220",
+            "boundary:flag:221",
+            "boundary:flag:222",
+            "boundary:display",
+            "boundary:hw",
+            "boundary:board_init",
+            "log:hw",
+            "keyboard:register",
+            "keyboard:init",
+            "reason:raw",
+            "reason:retained",
+            "log:reason"
+          ],
+          "rows": [
+            {
+              "appends": [],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 85,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 0,
+              "reason_cache": 3,
+              "returned": null,
+              "stopped": {
+                "key_result": 0,
+                "pc": 2160068024,
+                "record_sha256": "314f47cf9b9e4e05c5e965e82dd2751a934c094b481a00291e9e11f21d0ec4ee",
+                "sp": 2164264624
+              }
+            }
+          ]
+        },
+        "steps": 137
+      },
+      {
+        "name": "prefix_stale_handle",
+        "observed": {
+          "actions": [
+            "log:build",
+            "boundary:flag:220",
+            "boundary:flag:221",
+            "boundary:flag:222",
+            "boundary:display",
+            "boundary:hw",
+            "boundary:board_init",
+            "log:hw",
+            "keyboard:register",
+            "reason:raw",
+            "reason:retained",
+            "log:reason",
+            "power",
+            "key:0:0:0",
+            "key:0:1:0",
+            "key:1:1:0",
+            "log:press",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "key:0:1:0",
+            "key:1:1:0",
+            "delay:50",
+            "log:key_pass",
+            "log:backup_request",
+            "env:lock",
+            "env:reserve:333",
+            "env:find:0",
+            "env:append:0",
+            "env:unlock",
+            "commit:no_op"
+          ],
+          "rows": [
+            {
+              "appends": [
+                {
+                  "key": "upgrade",
+                  "sha256": "533e6704041623a5cc95bcdd21e6f9e63a3cb859865daaf65c9a13f637c5dce2",
+                  "size": 298,
+                  "status": 0
+                }
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "descriptor_sha256": "4cf71e2b0aa0fcc0c271f68353026a77b8e50153632a8e4a73833cd64080e92e",
+              "keyboard": 119,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "polls_consumed": 43,
+              "reason_cache": 0,
+              "returned": null,
+              "stopped": {
+                "key_result": 1,
+                "pc": 2160068024,
+                "record_sha256": "533e6704041623a5cc95bcdd21e6f9e63a3cb859865daaf65c9a13f637c5dce2",
+                "sp": 2164264624
+              }
+            }
+          ]
+        },
+        "steps": 780
+      }
+    ],
+    "hardware_execution": false
+  },
+  "validation_sha256": "5a8d9f73ba5e5045d474eb621f32d1d2cd6c6f1da70e06c1dcd9671610cc29e6",
+  "vectors_sha256": "e8dd89ad5770e111696f0a36d345873c44c1ac4eb12343072eecfda517333fab"
+}

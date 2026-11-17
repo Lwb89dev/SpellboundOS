@@ -32,7 +32,7 @@ requires evidence beyond OTA analysis and emulator case counts.
 | Motion / other peripherals | Candidate identities and selected probe paths | Complete configuration, interrupts, power/timing and physical verification |
 | Bluetooth | Static builder/auth/curve models; all 62 announced modules matched; 103 initial transfers/69 AES checks; synthetic notification fields matched on the link and app-logo exchange observed; native reply/action serializers; selected notification listener/queue/store route followed to `NotificationNotifyScreen` request | Full GATT/handle coverage, fresh pairing/key derivation, counter persistence, remaining payloads/JS linkage, actual notification rendering/replies/actions, special storage/rich formats, Roadstr handoff and call/audio behavior |
 | GNSS / touch | Container sections, candidate code and identity clues | Full mappings, loader/command protocols, runtime integration |
-| Boot/debug/recovery | Startup-aware boot/recovery inputs; reset/handoff split and key/UI paths; 62 native validation cases; 64 header I/O, signed counter/order selection, preparation/completion and stopped launch/handoff cases with supplied validation/storage/BSP services; one matched encoded entry jump reaches startup +0x22c | Physical non-destructive entry, upgrade environment/reason/gesture/UI behavior, actual VFS/storage/write atomicity and full startup/device enforcement, full backup/device-specific restoration and viable standalone boot |
+| Boot/debug/recovery | Startup-aware boot/recovery inputs; reset/handoff split and key/UI paths; 62 native validation cases; 64 header I/O, signed counter/order selection, preparation/completion and stopped launch/handoff cases with supplied validation/storage/BSP services; one matched encoded entry jump reaches startup +0x22c; 64 environment wrapper/reason-cache/key-policy and stopped upgrade-record caller cases with supplied backends | Physical non-destructive entry, actual environment backend/persistence and subsequent boot/recovery/UI dispatch, physical reason/gesture behavior, VFS/storage/write atomicity and full startup/device enforcement, full backup/device-specific restoration and viable standalone boot |
 | Standalone OS / companion | Independent QEMU UART prototype; project goal recorded | Hardware boot/drivers, secure transport, Android implementation and device tests |
 
 The remaining native work now has a concrete prerequisite: use the corrected
@@ -80,6 +80,7 @@ Latest detailed findings:
 - [Boot/recovery control flow and signed metadata](BOOT_RECOVERY_AND_METADATA.md)
 - [Native recovery CRC, metadata policy, signed coverage and partition validation](RECOVERY_VALIDATOR_NATIVE.md)
 - [Recovery selection/counter writes, preparation/completion and stopped handoff](RECOVERY_SELECTION_AND_HANDOFF.md)
+- [Boot environment wrappers, reason cache, key policy and stopped upgrade-record caller](BOOT_ENVIRONMENT_AND_KEY_POLICY.md)
 - [Native GATT registrations and transport bindings](GATT_REGISTRATION.md)
 - [Native channel framing and authentication crypto delegate](NATIVE_CHANNEL.md)
 - [Authentication module, request layouts and ECDH key material](AUTH_SESSION.md)

@@ -1341,6 +1341,32 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    and [analysis/recovery-lifecycle.json](analysis/recovery-lifecycle.json).
    Vendor material stays ignored. No hardware, environment or real flash access.
 
+## 2026-11-17 — boot environment, reason cache and key-policy caller
+
+1. Executed actual environment get/set wrappers with supplied backend callbacks.
+   Getter clipping and original length are independent; read status is ignored.
+   Setter paths distinguish new/replace/delete, reserve/mark/append/final errors,
+   nonnull empty values and maintenance branches. The following commit function
+   actually returns zero without other work. Backend persistence is not modeled.
+2. Executed actual reason caching and retained-copy wrapper with synthetic bytes.
+   Retained magic overrides raw-reason mapping; retained reason 0xffffffff causes
+   rereads because it also denotes an uninitialized cache.
+3. Executed actual key policy: reason/power guards, initial release loop, up to
+   20 press attempts requiring exact 1/1 and 20 hold pairs requiring nonzero
+   values. Delay argument 50 and logical indices have no physical calibration.
+4. Executed the boot-main prefix through keyboard setup and construction of the
+   exact 298-byte upgrade record for /mnt/backup/backup_fw_sign.zip, stopping at
+   0x80c005b8 before subsequent dispatch. Caller ignores setter errors; failed
+   registration leaves a seeded prior handle intact, while failed initialization
+   clears it. Full traces, append payload and stopped caller frame are checked.
+5. All 64 native cases pass (ten getter, 16 setter, one commit-only, 12 reason,
+   17 key-policy and eight prefix), totaling 11,630 bounded steps. Added 28 host
+   checks; all 550 Python tests pass. Eight fresh exports, code/member hashes,
+   observations and reproduction are in
+   [analysis/BOOT_ENVIRONMENT_AND_KEY_POLICY.md](analysis/BOOT_ENVIRONMENT_AND_KEY_POLICY.md)
+   and [analysis/boot-environment.json](analysis/boot-environment.json).
+   Vendor material stays ignored; no hardware, real environment or flash access.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -1348,8 +1374,11 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
   remain unresolved and cannot be closed by additional HR test counts alone.
   Selected boot validation, selection, header/counter preparation/completion and
   stopped handoff now execute with supplied board/storage/crypto/BSP services.
-  Follow upgrade environment records, reason/gesture/UI callers, actual VFS/raw
-  storage/base-address/write-atomicity and startup dependencies. Establish a
+  Environment wrappers, cached reason/key policy and the stopped upgrade-record
+  caller prefix now execute with supplied backends too. Follow actual environment
+  lookup/append/remove/maintenance and persistence, subsequent boot/recovery/UI
+  dispatch, physical reason/gesture behavior, VFS/raw storage/base-address/
+  write-atomicity and startup dependencies. Establish a
   physical non-destructive entry/backup/restoration route before device writes.
 
 - Regenerate selected native paths with startup-aware mappings, corrected

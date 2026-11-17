@@ -186,3 +186,8 @@ the header are checked. Vendor code/binaries/tools/databases stay ignored.
 Physical non-destructive entry, backup/device-specific restoration, environment
 lifecycle, actual VFS/raw-storage semantics and independent firmware boot remain
 open; native case counts are not a completion percentage.
+
+The subsequent [environment/reason/key-policy pass](BOOT_ENVIRONMENT_AND_KEY_POLICY.md)
+adds 64 native cases and executes the boot-main prefix that constructs the exact
+298-byte `upgrade` record. Backend storage remains supplied and execution stops
+before later dispatch; neither record persistence nor physical entry is proven.
