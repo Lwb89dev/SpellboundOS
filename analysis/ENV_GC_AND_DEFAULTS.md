@@ -135,7 +135,7 @@ uses a three-attempt maintenance/scan loop, and calls `0x80c0bc28` / `0x80c0bd10
 again on its retry route. The return route clears the duplicate-scan flag.
 
 This caller is exported/hashed but **does not execute in the 35 native cases**.
-The callbacks at `0x80c0d242`, `0x80c0cd56`, `0x80c0d0f4`, storage setup/teardown
+The callbacks at `0x80c0d242`, `0x80c0cd56`, `0x80c0d0f4`, storage dump/copy helpers
 and the outer binding routine still need connected validation. This pass does
 not establish boot initialization, real default-table population or persistence
 across a reset.
@@ -173,3 +173,8 @@ hashes and pending/maintenance flags against an independent host contract. Eight
 export hashes include the separately identified static caller. Vendor material
 stays ignored. Physical backup/restoration, actual storage semantics and viable
 independent boot through the signed chain remain unresolved.
+
+The subsequent [initializer/binding/copy pass](ENV_INITIALIZATION_AND_BACKUP.md)
+adds 34 native cases executing the previously static initializer and callbacks.
+The helpers at `0x80c0bc28` / `0x80c0bd10` are identified as diagnostic dump and
+reserve-image copying. Actual device-handle setup and physical persistence remain open.

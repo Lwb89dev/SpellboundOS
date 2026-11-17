@@ -1468,6 +1468,30 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    and [analysis/env-gc.json](analysis/env-gc.json).
    No hardware, real environment/flash, physical erase or actual boot was accessed.
 
+## 2026-11-17 — connected environment initialization, readiness and reserve copy
+
+1. Executed actual initializer 0x80c0d58e, invalid-header/dirty/record callbacks,
+   GC/default restoration and outer table/readiness binding 0x80c0d67a. Binding
+   invalidates cache addresses while preserving other bytes; readiness is set
+   only on zero return. Selected unresolved repairs can coexist with zero return.
+2. Identified/executed 0x80c0bc28 as diagnostic dump and 0x80c0bd10 as four-block
+   reserve-to-active copy, correcting earlier setup/teardown working names.
+   Supplied heap/read/rewrite services cover missing handles, allocation/I/O
+   errors, short reads and cleanup. Distinct authored source/destination bytes
+   verify actual array copying; a short count can still reach full-block rewrite.
+3. Executed invalid-sector copy/default fallback, duplicate/incomplete record
+   handling, dirty-sector collection, three scan/maintenance attempts followed
+   by dump/copy/restart, and repeated binding after an error. Saved copy errors
+   survive defaults fallback and can leave valid defaults with readiness clear.
+4. All 34 native cases pass (18 initializer-first, five binding, seven copy,
+   four dump), totaling 1,232,662 bounded steps. Added 30 host checks; all 696
+   Python tests pass. Seven fresh exports, code/table/member hashes and traces
+   are in [analysis/ENV_INITIALIZATION_AND_BACKUP.md](analysis/ENV_INITIALIZATION_AND_BACKUP.md)
+   and [analysis/env-initialize.json](analysis/env-initialize.json).
+   Bounded name-copy semantics were corrected in the harness; the prior 35 GC
+   cases rerun unchanged. One record search uses explicit erased adjacent read
+   backing beyond the logical four sectors. No device or physical flash access.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -1481,12 +1505,12 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
   Light sector traversal, empty-cache record filters and reservation/maintenance/
   retry policy now execute too. Actual detailed space/record/tail parsing and
   sector-end cache updates now run, including connected reservation after an
-  integrity error. Follow broader malformed/stale-cache/concurrency paths,
-  Relocation/collection/reformat/default restore now execute over synthetic device
-  services too. Follow connected initialization 0x80c0d58e, callbacks 0x80c0d242,
-  0x80c0cd56/0x80c0d0f4, storage setup/teardown 0x80c0bc28/0x80c0bd10, outer
-  default binding and real
-  persistence, subsequent boot/recovery/UI
+  integrity error. Relocation/collection/reformat/default restore, connected
+  environment initialization, callbacks, table/readiness binding and dump/reserve
+  copying now execute over synthetic services too. Follow actual handle setup,
+  reserve-image provenance, rewrite-service semantics, real default-table
+  population, broader malformed/stale-cache/concurrency/boundary-read paths,
+  real persistence and subsequent boot/recovery/UI
   dispatch, physical reason/gesture behavior, VFS/raw storage/base-address/
   write-atomicity and startup dependencies. Establish a
   physical non-destructive entry/backup/restoration route before device writes.
