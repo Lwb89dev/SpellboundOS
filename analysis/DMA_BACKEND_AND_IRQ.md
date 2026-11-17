@@ -186,3 +186,8 @@ Next work includes connecting actual QSPI wrappers to this backend, live DMA/IRQ
 delivery, real cache maintenance/coherency and remaining board/pin services.
 Physical status-bit meanings, timing, payload movement, storage persistence,
 backup/restoration and standalone signed-chain boot remain unresolved.
+
+The subsequent [connected QSPI/DMA pass](QSPI_DMA_INTEGRATION.md) links actual
+QSPI wrappers and selected NAND private-buffer builders to actual backend
+initialization/setup/wait. The physical DMA data path, cache coherency and IRQ
+delivery remain unvalidated.

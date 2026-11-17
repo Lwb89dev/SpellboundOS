@@ -180,3 +180,8 @@ The subsequent [DMA backend pass](DMA_BACKEND_AND_IRQ.md) executes actual
 initializer/setup/wait/cancel/count/IRQ code, including connected backend flows.
 The earlier QSPI pass retains its supplied DMA boundary. Integration between
 these two executed layers and real DMA/IRQ/coherency remain open.
+
+The later [connected QSPI/DMA pass](QSPI_DMA_INTEGRATION.md) enables actual DMA
+backend execution for explicit new fixtures and connects private-buffer NAND
+builders too. This earlier 90-case native report remains byte-for-byte identical
+with the extended runner; its original DMA services remain supplied.

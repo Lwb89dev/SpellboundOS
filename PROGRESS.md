@@ -1826,6 +1826,30 @@ limits; the initial observations point to the current status and work log.
    services and physical persistence/restoration/boot remain open. No device
    was accessed.
 
+## 2026-11-17 — connected QSPI/DMA backend and NAND private-buffer path
+
+1. Connected actual QSPI command/DMA wrappers to actual DMA initialization,
+   setup and wait over a shared authored peripheral/descriptor model. Both
+   NAND-style channel descriptors are initialized and published. Verified
+   addresses, zero/unaligned counts, status precedence, residual tracking,
+   independent DMA/controller failures and full-counter wrap.
+2. Connected actual private-buffer NAND cache read/write builders through actual
+   bus, HAL and backend. Supplied copy services verify pre-copy/copy-back ordering
+   and exact bytes. DMA payload movement is intentionally not simulated; zero
+   results and sentinel read buffers are control-path fixtures, not NAND data.
+   Actual failures reach distinct private-buffer assertions without read copy-back.
+3. Verified that DMA and controller waits each receive the full timeout budget.
+   Authored timestamp sequences can reach both inclusive limits and still return
+   zero; no physical time calibration or global transfer deadline is claimed.
+4. All 28 cases pass in 11,754 steps (maximum 567). The prior 90-case QSPI native
+   report reproduces byte for byte, and both earlier QSPI/backend reports remain
+   exactly reproducible. Twenty-two new host checks bring the suite to 1,185
+   passing tests. Twenty-four guarded code spans/exports and three data guards
+   are recorded in [analysis/QSPI_DMA_INTEGRATION.md](analysis/QSPI_DMA_INTEGRATION.md)
+   and [analysis/qspi-dma.json](analysis/qspi-dma.json).
+   Complete page/board integration and physical DMA/IRQ/cache coherency,
+   persistence/restoration/standalone boot remain open. No device was accessed.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -1855,8 +1879,11 @@ limits; the initial observations point to the current status and work log.
   feature/cache/write-enable builders connect through actual bus/HAL to the FIFO.
   Actual DMA init/setup/wait/cancel/count/IRQ now execute in a separate guarded
   pass with authored MMIO/cache/timer/callback services. Wait status branches
-  differ in tracking cleanup despite both returning zero. Follow QSPI-to-DMA
-  integration, real DMA/IRQ/cache coherency and remaining board services,
+  differ in tracking cleanup despite both returning zero. Actual QSPI wrappers
+  now connect to actual DMA init/setup/wait, including the selected NAND private-
+  buffer bus path, with authored statuses/cache/copy services. Each wait retains
+  its full timeout budget. Follow complete page/board integration, real DMA/IRQ/
+  cache coherency and remaining board services,
   physical retry/UID, BBT provenance/creation and physical ID/geometry
   corroboration. Original candidate matching/probe and driver-root setup now
   execute with supplied services; object registry remains open. Actual retry/

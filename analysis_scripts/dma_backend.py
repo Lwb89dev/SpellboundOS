@@ -38,6 +38,7 @@ def context(c,channel):
 class Model:
     def __init__(self,c):
         self.c=c;self.actions=[];self.stopped=None;self.output=0xa5a5a5a5;self.ticks=0;self.indices={}
+        self.address=c.get('descriptor_address',D)
         self.slots=c['slots'];self.contexts=[context(c,ch) for ch in self.slots];self.registry=[0]*28
         self.regs={4:c['irq_a'],8:0x100,12:c['irq_b'],16:0x200,20:0,24:0,36:c['enabled']}
         for ch in range(7):
@@ -45,7 +46,7 @@ class Model:
                 self.regs[ch*32+at]=v
         if c['registered'] and c['base'] in BANKS:
             for i,ch in enumerate(self.slots):
-                if ch<7:self.registry[BANKS[c['base']]+ch]=D+i*256
+                if ch<7:self.registry[BANKS[c['base']]+ch]=self.address+i*256
     def word(self,at,i=0):return struct.unpack_from('<I',self.contexts[i],at)[0]
     def put(self,at,value,i=0):struct.pack_into('<I',self.contexts[i],at,value&0xffffffff)
     def read(self,at):
@@ -77,15 +78,15 @@ class Model:
         config|=(int(c['dest_increment']==2)<<13)|(int(c['source_increment']==2)<<7)
         for at,v in ((0x100,ctl),(0x104,config),(0x110,0)):self.write(ch*32+at,v)
         if base not in BANKS:return self.fatal()
-        self.registry[BANKS[base]+ch]=D;return 0
-    def setup(self,irq=False):
-        c=self.c;mode=c['direction'];n=c['size']
-        if mode in (0,1):self.put(60,DEST);self.put(64,n)
-        if mode in (0,2):self.cache(address=SOURCE,n=n)
-        if mode in (0,1):self.cache(address=DEST,n=n)
+        self.registry[BANKS[base]+ch]=self.address;return 0
+    def setup(self,irq=False,source=SOURCE,dest=DEST,size=None):
+        c=self.c;mode=c['direction'];n=c['size'] if size is None else size
+        if mode in (0,1):self.put(60,dest);self.put(64,n)
+        if mode in (0,2):self.cache(address=source,n=n)
+        if mode in (0,1):self.cache(address=dest,n=n)
         if mode==2:self.put(60,0);self.put(64,0)
         ch=c['channel']
-        for at,value in ((0x108,SOURCE),(0x10c,DEST),(0x114,n>>(c['source_width']&31))):self.write(ch*32+at,value)
+        for at,value in ((0x108,source),(0x10c,dest),(0x114,n>>(c['source_width']&31))):self.write(ch*32+at,value)
         if irq:
             self.write(ch*32+0x104,self.read(ch*32+0x104)&~1)
             self.write(ch*32+0x104,self.read(ch*32+0x104)&~2)
@@ -119,7 +120,7 @@ class Model:
             if not (a|b)&(1<<ch):continue
             pointer=self.registry[BANKS[c['base']]+ch]
             if not pointer:raise ValueError('IRQ requires populated active channel')
-            i=(pointer-D)//256;at=ch*32+0x100
+            i=(pointer-self.address)//256;at=ch*32+0x100
             if a&(1<<ch):
                 if not self.word(40,i):self.write(at,self.read(at)&~1)
                 self.cache(True,i=i);self.put(60,0,i);self.put(64,0,i)
