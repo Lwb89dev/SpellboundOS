@@ -137,3 +137,9 @@ floating-point registers after every entry, plus full 192-byte main state,
 contract independently checks the complete observations. Byte/export sizes are
 provenance, not semantic coverage. Vendor material remains ignored; no device
 access, settings or firmware changes were performed.
+
+The follow-up [HR_SETUP_AND_NESTED_CLEANUP.md](HR_SETUP_AND_NESTED_CLEANUP.md)
+executes the selected setup/component allocation/reset and nested cleanup paths,
+leaving initializer `0x708a4818` supplied. Its 37 cases include a deeper outer
+cycle with 89 allocations/101,108 bytes, compared with the explicitly supplied
+setup/cleanup boundaries in this report. Supported signal processing remains open.

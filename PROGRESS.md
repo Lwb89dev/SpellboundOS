@@ -1262,7 +1262,38 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    and [analysis/hr-workspace.json](analysis/hr-workspace.json). Vendor material
    stays ignored. No device access, phone/watch settings or firmware changes.
 
+## 2026-11-17 — native HR setup, component allocations and nested cleanup
+
+1. Executed actual setup's 27 rate-scaled buffer clears, field resets and
+   delegation. Standalone padded fixtures cover software rates 0..100 at ten
+   selected values; full outer cases retain its fixed rate 25. Integer division
+   placement, unchanged tails and guards are checked; no physical rate claim.
+2. Executed inner initialization, coefficient/float defaults, three component
+   allocation paths, existing-buffer reset and extra-workspace initialization.
+   Initializer 0x708a4818 remains supplied; return 7 is ignored by its parent.
+   Extra 8188-byte allocation failure logs but outer init still returns zero
+   and sets initialized. Other failures and subsequent measurements stay open.
+3. Executed actual nested cleanup on fifteen masks over eleven pointer slots.
+   First four slots retain their freed addresses, later slots clear; four free
+   calls are unconditional even for null pointers. Native ordering and complete
+   root/global/allocation state are checked under a supplied free service.
+4. Executed outer init/exit with the deeper selected paths: 89 requests totaling
+   101,108 bytes and 89 distinct releases; restart balances 178 requests across
+   different addresses. This extends the earlier 78-request result, whose
+   whole setup/cleanup functions were supplied boundaries.
+5. All 37 native cases pass (11 setup, six inner init, 15 cleanup, five outer),
+   totaling 27,696 bounded steps including intercepted calls. Added 19 host
+   checks; all 471 Python tests pass. Fourteen fresh exports, code/constant
+   hashes, full observations and reproduction are in
+   [analysis/HR_SETUP_AND_NESTED_CLEANUP.md](analysis/HR_SETUP_AND_NESTED_CLEANUP.md)
+   and [analysis/hr-setup.json](analysis/hr-setup.json). Vendor material stays
+   ignored; no device/settings access or firmware changes performed.
+
 ## Next work
+
+- Keep the standalone boot/backup/recovery feasibility gate a priority alongside
+  native subsystem work: the signed boot chain and device-specific restoration
+  remain unresolved and cannot be closed by additional HR test counts alone.
 
 - Regenerate selected native paths with startup-aware mappings, corrected
   logger return behavior and register-save ABI effects. Current pseudocode
@@ -1277,11 +1308,12 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
   the now-covered opcode-21 send and main/sensor receive boundaries. Selected
   main registration, retained engine-cache event, engine fanout and engine-7
   non-type-1 HR result handling now have bounded native coverage. Follow real
-  algorithm-0x100d numerical workspace setup/internal cleanup, secondary
-  allocation failures, supported signal normalization/math and extension
+  algorithm-0x100d initializer 0x708a4818 and other secondary allocation failures,
+  supported signal normalization/math and extension
   consumers beyond the now-covered outer allocation/free/restart and borrowed
-  view builder. Registration/lifetime/dispatch adapters, configuration copying
-  and selected guards are covered. Follow motion/minute/reset/wear branches, other
+  view builder. Selected actual setup/component allocation/reset and nested
+  cleanup now execute too. Registration/lifetime/dispatch adapters, configuration
+  copying and selected guards are covered. Follow motion/minute/reset/wear branches, other
   modes, fusion, malformed input and concurrency paths.
   Validate electrical SPI mode/timing, DMA ownership and live
   sensor operation before implementing hardware code. The selected adapter's

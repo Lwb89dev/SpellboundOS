@@ -5,6 +5,21 @@ session. It is not a complete physical flash/ROM dump or native execution trace.
 There is no defensible percentage for completion.
 Disassembly and export counts do not measure behavioral understanding.
 
+Completion still depends on four broad work areas:
+
+- Finish the required algorithm/application contracts, including supported sensor
+  inputs, activation, error handling and remaining consumers.
+- Close pairing/authentication, transport lifetimes and the required Bluetooth
+  application behavior with runtime evidence.
+- Verify necessary drivers, electrical/timing assumptions and peripheral firmware
+  behavior on the actual hardware.
+- Establish safe backup, device-specific restoration and a viable standalone
+  boot path through the signed chain. This is still a major feasibility gate.
+
+These areas are not four fixed-size tasks or a time estimate. The current state
+remains targeted contract reconstruction/verification; final device integration
+requires evidence beyond OTA analysis and emulator case counts.
+
 | Area | Current evidence | Still needed to close the area |
 | --- | --- | --- |
 | Package integrity / signatures | Hashes/signatures plus variable-length metadata and raw-recovery validator path; manifest fully verified and the `res_info` mismatch explained (it embeds the manifest's own digest); `fw_info` sizes/CRC-32 match | Observe device enforcement, update-script interpreter and rollback policy |
@@ -13,7 +28,7 @@ Disassembly and export counts do not measure behavioral understanding.
 | App bytecode | 44 members structurally parsed; QuickJS engine fingerprinted; official C reader agrees on nine header fields for all 1,072 functions | Runtime semantics, operand-level validation and independently implemented host |
 | JS/native boundary | Modules, export tables, classes and initializer ownership mapped | Argument/error contracts, object lifetimes and behavior behind each implementation |
 | Optical sensing | MAX8617X driver, board/SPI/chip-select records; clock/flag/divider and polling/error contracts; bus/completion/reference paths; initial DMA slots null; native register/polling checks; 45 FIFO/recovery/cache/sample cases; 557 flush/packet/mode-1 cases; 178 reference/listener/cache-queue and mode-2/3 cases; 29 filter/buffer/flush-to-IPC-send cases; eight register-table inventories | Exact fitted part, electrical mode/timing, live bus/IRQ operation, dynamic DMA bindings/ownership guarantees, remaining consumer modes and concurrency, complete allocator/receiver/event/transport operation, calibration and measurement chain |
-| Health data | Heart/SpO2 caches/services; sensor/zrpc framing and queues; interrupt/wake route; clock formulas; counter/1000 conversion; distinct main/sensor periodic intervals and suspension conversions; 90 native timer/AON/dispatch cases; phase-aware IPC timeout; selected cache commands/transfer callers and shared-address guard; filtering/cache event through opcode-0x15 send callback; 66 main/sensor decoder, receive/reconstruction/listener-ownership and bounded malformed-record cases; 40 main cache registration, retained engine event, fanout and actual HR-consumer/output-policy cases with supplied algorithm results; 48 actual algorithm registration/lifetime/HR-adapter/configuration cases; 21 HR outer workspace/free/restart, unsupported-type reset and extension-view cases | Remaining application consumers/registration and real engine activation/mask transitions; algorithm-0x100d numerical workspace setup/internal cleanup, secondary allocation failures, supported signal normalization/math and extension consumers, HR motion/minute/reset/wear branches; event/transport/IRQ/vring lifetimes and operation, complete malformed-input/producer constraints, physical timer/cache/coherency, counter continuity across power states, complete sleep state machine, exact-multiple device case, remaining payloads and measurement validation |
+| Health data | Heart/SpO2 caches/services; sensor/zrpc framing and queues; interrupt/wake route; clock formulas; counter/1000 conversion; distinct main/sensor periodic intervals and suspension conversions; 90 native timer/AON/dispatch cases; phase-aware IPC timeout; selected cache commands/transfer callers and shared-address guard; filtering/cache event through opcode-0x15 send callback; 66 main/sensor decoder, receive/reconstruction/listener-ownership and bounded malformed-record cases; 40 main cache registration, retained engine event, fanout and actual HR-consumer/output-policy cases with supplied algorithm results; 48 actual algorithm registration/lifetime/HR-adapter/configuration cases; 21 HR outer workspace/free/restart, unsupported-type reset and extension-view cases; 37 actual setup/component allocation/nested-cleanup and 89-request owner cases | Remaining application consumers/registration and real engine activation/mask transitions; algorithm-0x100d initializer 0x708a4818 and other secondary allocation failures, supported signal normalization/math and extension consumers, HR motion/minute/reset/wear branches; event/transport/IRQ/vring lifetimes and operation, complete malformed-input/producer constraints, physical timer/cache/coherency, counter continuity across power states, complete sleep state machine, exact-multiple device case, remaining payloads and measurement validation |
 | Motion / other peripherals | Candidate identities and selected probe paths | Complete configuration, interrupts, power/timing and physical verification |
 | Bluetooth | Static builder/auth/curve models; all 62 announced modules matched; 103 initial transfers/69 AES checks; synthetic notification fields matched on the link and app-logo exchange observed; native reply/action serializers; selected notification listener/queue/store route followed to `NotificationNotifyScreen` request | Full GATT/handle coverage, fresh pairing/key derivation, counter persistence, remaining payloads/JS linkage, actual notification rendering/replies/actions, special storage/rich formats, Roadstr handoff and call/audio behavior |
 | GNSS / touch | Container sections, candidate code and identity clues | Full mappings, loader/command protocols, runtime integration |
@@ -61,6 +76,7 @@ Latest detailed findings:
 - [Main cache registration, retained engine events and native HR result policy](ENGINE_CACHE_AND_HR_POLICY.md)
 - [Actual HR algorithm registration, reference ownership, dispatch and configuration](ALGORITHM_MANAGER_AND_HR_ADAPTER.md)
 - [HR outer workspace allocation/free/restart and borrowed extension views](HR_WORKSPACE_AND_EXTENSION.md)
+- [Actual HR setup, component allocation/reset and nested cleanup](HR_SETUP_AND_NESTED_CLEANUP.md)
 - [Boot/recovery control flow and signed metadata](BOOT_RECOVERY_AND_METADATA.md)
 - [Native GATT registrations and transport bindings](GATT_REGISTRATION.md)
 - [Native channel framing and authentication crypto delegate](NATIVE_CHANNEL.md)
