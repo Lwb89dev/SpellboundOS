@@ -99,3 +99,7 @@ cache/IRQ behavior, backup/restoration and standalone boot remain open.
 The subsequent [registered storage read pass](STORAGE_EFTL_STACK.md) connects
 original owner/bounds/read entry and EFTL callback for selected nvms/envbak/
 recovery records, with authored registry/ready state.
+
+The subsequent [EFTL mutation pass](EFTL_MUTATION_STACK.md) connects selected
+upper program/logical erase/rewrite, full-page/OOB staging and free-block selection
+to original NAND/QSPI/TX DMA. Readback/relocation and physical persistence remain open.

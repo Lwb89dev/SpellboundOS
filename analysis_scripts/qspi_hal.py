@@ -118,7 +118,7 @@ class Model:
             return c['dma_wait_status']&MASK if c['dma_wait_status'] else self.wait(0x24,1)
         offset=c['alignment'];chunks=0
         while self.count():
-            if chunks>=128:raise ValueError('fixture FIFO does not advance')
+            if chunks>=c.get('fifo_iteration_bound',128):raise ValueError('fixture FIFO does not advance')
             if c['stop_chunks'] and chunks==c['stop_chunks']:
                 self.actions.append('stop_no_progress:'+str(chunks));self.stopped=dict(kind='bounded_prefix',chunks=chunks);return None
             chunks+=1

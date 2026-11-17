@@ -91,3 +91,7 @@ registry and map reconstruction, write/erase/rewrite and repair atomicity,
 complete mutex/IRQ/cache/concurrency behavior, physical chip/partition/BBT/ECC/
 data corroboration, persistence, device-specific backup/restoration and
 standalone boot.
+
+The subsequent [EFTL mutation pass](EFTL_MUTATION_STACK.md) connects selected
+upper program/logical erase/rewrite, full-page/OOB staging and free-block selection
+to original NAND/QSPI/TX DMA. Readback/relocation and physical persistence remain open.

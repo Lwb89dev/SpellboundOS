@@ -2022,6 +2022,30 @@ limits; the initial observations point to the current status and work log.
    registry/map reconstruction, write/repair atomicity and physical corroboration/
    concurrency/coherency/persistence/backup/restoration/standalone boot remain open.
 
+## 2026-11-17 — connected upper storage program/logical erase/rewrite and full pages
+
+1. Connected actual upper storage mutation APIs, original EFTL callbacks/writer,
+   OOB packing and free-block selection through NAND partition/callback/context/
+   mutex/BBT/program/erase/bus/QSPI/TX DMA. Partial caller data fills a complete
+   2,048+64-byte page; direct FIFO captures all bytes and private DMA stages the
+   full page. The 2,112-byte private backing is authored, not allocation proof.
+2. Verified existing mapping, first-page erase, actual free-block selection and
+   mapping publication, sequence/no-free failures and logical erase's one-byte-ff
+   writer path. Two-block erase returns caller byte count after two erase/program
+   sequences. Rewrite's original four-byte callback branches to program; it adds
+   no replacement transaction in the existing-page fixture.
+3. Original flag update precedes NAND mutex/transfer and persists after selected
+   assertions. Readback and status-error bad-mark/relocation paths remain deferred
+   and excluded explicitly. Supplied ready registry/map/flags/counters, peripherals
+   and leaf services establish no physical persistence or atomicity.
+4. All 36 cases pass in 266,399 steps (maximum 54,825); prior 449 native cases and
+   metadata-adjusted mutation execution reproduce byte for byte. Twenty new host
+   checks bring the suite to 1,381 passing tests. Seventy-six code/export and
+   twelve data hashes are in [analysis/EFTL_MUTATION_STACK.md](analysis/EFTL_MUTATION_STACK.md)
+   and [analysis/eftl-mutation-stack.json](analysis/eftl-mutation-stack.json).
+   Readback/relocation/bad marking, broader allocator/map reconstruction, complete
+   concurrency/coherency/IRQ, physical corroboration/backup/restoration/boot remain open.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -2069,8 +2093,11 @@ limits; the initial observations point to the current status and work log.
   stale state cases. Original partition/callback/context/mutex wrappers, ready EFTL
   translation/page/OOB reads and selected registered storage API bounds/read now
   connect through the same lower stack. Follow broader callers/partitions, registry
-  and map reconstruction, write/repair atomicity, BBT provenance, concurrency and
-  remaining ECC/board integration, physical pin
+  and map reconstruction. Selected upper program/logical erase/rewrite now connect
+  full-page/OOB staging, original free-block selection and NAND/QSPI/TX DMA too;
+  rewrite aliases program and flag updates precede lower assertions. Follow
+  readback/bad marking/relocation and complete repair atomicity, BBT provenance,
+  concurrency and remaining ECC/board integration, physical pin
   mapping, real DMA/IRQ/cache coherency and remaining board services,
   physical retry/UID, BBT provenance/creation and physical ID/geometry
   corroboration. Original candidate matching/probe and driver-root setup now
