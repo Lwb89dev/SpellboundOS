@@ -91,3 +91,7 @@ Remaining work includes connected program/erase/copy policies, supported-family
 retry through the HAL, physical BBT/chip/geometry/ECC corroboration, board timing,
 pin wiring, IRQ/cache coherency, persistence, restoration and standalone boot.
 The first candidate is a fixture choice, not identification of the fitted chip.
+
+The subsequent [program-stack pass](NAND_PROGRAM_STACK.md) closes selected
+connected program/guard paths and compares their complete timeout behavior with
+this read path. Physical programming remains unvalidated.

@@ -1896,6 +1896,29 @@ limits; the initial observations point to the current status and work log.
    ECC/board/DMA/coherency, persistence/restoration and standalone boot remain
    open. All peripheral/service inputs are authored. No device accessed.
 
+## 2026-11-17 — connected NAND page program, guard, FIFO and DMA
+
+1. Connected actual page program to actual BBT mapping, write-enable, quad
+   cache-load, program-execute and status builders, platform/bus/QSPI/FIFO/DMA.
+   Direct writes capture caller bytes; private writes copy before submission and
+   execute original DMA setup/wait. No hardware movement/persistence is claimed.
+2. Verified the mapped-page guard boundary (logical 319 -> physical 447 rejected;
+   logical 320 -> physical 512 allowed), mapped plane bit and deferred platform
+   initialization. Wrapping column+length arithmetic admits column fffffff0 with
+   length 64 and submits it to QSPI; physical wire/device effects are unverified.
+3. Three complete 2,000-poll cases preserve ff at timeout, including a final ready
+   status. Program returns -102, unlike the connected read's possible success.
+   Lower failures stop at original bus assertions; failed cache transfer never
+   submits program-execute. Status inputs and leaf services remain authored.
+4. All 27 cases pass in 2,087,540 steps (maximum 679,083); previous 90/28/47/31-case
+   reports reproduce byte for byte. Eighteen new host checks bring the suite to
+   1,248 passing tests. Thirty-nine code and eight data ranges, fresh exports,
+   model and observations are recorded in
+   [analysis/NAND_PROGRAM_STACK.md](analysis/NAND_PROGRAM_STACK.md) and
+   [analysis/nand-program-stack.json](analysis/nand-program-stack.json).
+   Connected erase/copy/OOB, supported-family retry through the HAL and physical
+   corroboration/persistence/restoration/standalone boot remain open.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -1933,8 +1956,10 @@ limits; the initial observations point to the current status and work log.
   original adjacent descriptor linking, including bus-triggered reinitialization
   followed by transfer. Actual page read now connects BBT remapping, load/status/
   cache builders, busy loops, direct FIFO and private DMA; full timeout and ECC
-  failure behavior execute across these layers. Follow connected program/erase/
-  copy, supported-family retry, remaining ECC/board integration, physical pin
+  failure behavior execute across these layers. Actual program now connects BBT,
+  guard, enable/cache/program/status builders and FIFO/DMA too, including complete
+  busy timeouts and wrapping column arithmetic. Follow connected erase/copy/OOB,
+  supported-family retry, remaining ECC/board integration, physical pin
   mapping, real DMA/IRQ/cache coherency and remaining board services,
   physical retry/UID, BBT provenance/creation and physical ID/geometry
   corroboration. Original candidate matching/probe and driver-root setup now
