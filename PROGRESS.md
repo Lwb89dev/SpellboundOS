@@ -1418,6 +1418,29 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    and [analysis/env-scan.json](analysis/env-scan.json).
    No hardware, real environment/flash, relocation/erase or reboot was accessed.
 
+## 2026-11-17 — detailed sector space, tail scan and cached reservation
+
+1. Removed the supplied full/detail-sector boundary. Executed actual EF40
+   detailed parser, record walk/CRC, byte-tail scan and sector-end cache handling.
+   Tested one/two records, gaps, incomplete/deleted records, primary states,
+   programmed tail/hole/chunk-boundary/final-byte patterns and warm cache slots.
+2. Confirmed a CRC integrity error can return 2 with positive recomputed free
+   count and a cached cursor. Actual reservation can select that cursor; another
+   parse uses the cached end and returns zero without rechecking the bad record.
+   Exact-size and one-byte-smaller requests preserve the strict size guard.
+3. Executed selected invalid-length/state-5 status programming through actual
+   parser/status/write-adapter code. An erased first slot is marked and consumed
+   in synthetic backing. Injected marker-write failure leaves bytes unchanged
+   while parsing/accounting still proceeds. No actual flash writes occur.
+4. All 36 native cases pass (30 space-first, six reservation-first, including
+   four sequences), totaling 2,484,506 bounded steps. Added 29 host checks;
+   all 636 Python tests pass. Nine fresh exports, guarded code/table/member
+   hashes, complete observations and reproduction are in
+   [analysis/ENV_SPACE_AND_TAIL_SCAN.md](analysis/ENV_SPACE_AND_TAIL_SCAN.md)
+   and [analysis/env-space.json](analysis/env-space.json).
+   Device services remain synthetic. Startup, GC relocation/erase, physical
+   persistence and standalone hardware boot are not established.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -1429,9 +1452,11 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
   caller prefix now execute too. Native environment append/delete, CRC, cached
   lookup/parsing and connected get/set now run with supplied low-level storage.
   Light sector traversal, empty-cache record filters and reservation/maintenance/
-  retry policy now execute too, with detailed free-count/cursor and GC callback
-  boundaries supplied. Follow actual detailed sector/free-space parsing, sector
-  end-cache reconstruction, GC relocation/erase, startup initialization and real
+  retry policy now execute too. Actual detailed space/record/tail parsing and
+  sector-end cache updates now run, including connected reservation after an
+  integrity error. Follow broader malformed/stale-cache/concurrency paths,
+  GC relocation/reclamation (including 0x80c0cfac and 0x80c0d184), startup
+  initialization and real
   persistence, subsequent boot/recovery/UI
   dispatch, physical reason/gesture behavior, VFS/raw storage/base-address/
   write-atomicity and startup dependencies. Establish a

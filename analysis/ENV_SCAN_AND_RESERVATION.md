@@ -176,3 +176,8 @@ and erase, actual initialization/reboot behavior, storage semantics and physical
 persistence remain open. The subsequent boot/recovery/UI consumer, safe physical
 backup/restoration and viable independent boot through the signed chain also
 remain unresolved.
+
+The following [detailed-space/tail pass](ENV_SPACE_AND_TAIL_SCAN.md) removes the
+supplied free-count/cursor boundary in 36 native cases, including cache reuse and
+connected reservation after a CRC error. Low-level storage remains synthetic;
+GC relocation/erase and startup/device persistence remain open.
