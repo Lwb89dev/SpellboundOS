@@ -1540,6 +1540,44 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    and [analysis/storage-map.json](analysis/storage-map.json).
    No watch, phone or physical storage was accessed.
 
+## 2026-11-17 — native original registry population and lazy EFTL
+
+1. Executed device/partition initialization and backend find against the original
+   five descriptors and 16 rows. Actual deferred EFTL/SFTL initializers execute;
+   NAND/nandraw/disk initialization and the owner heap are supplied services.
+   Initializer errors stop setup; allocation failure preserves partial state,
+   and a retry reuses initialized devices before populating all owner slots.
+2. Verified missing owners leave supplied/stale owner words untouched while
+   partition readiness can still be set. The selected signed start comparison
+   accepts a high-bit offset; an oversized span is not checked here. These are
+   bounded malformed fixtures with no subsequent device access.
+3. Executed lazy EFTL descriptor updates from supplied geometry, success/error/
+   repeated-ready guards, 32-bit multiplication/subtraction wrap and the read
+   wrapper with supplied inner read status/data. Real geometry is not inferred.
+4. All 32 native cases pass in 13,890 steps (maximum 1,490); 24 new host checks
+   bring the suite to 773 passing tests. Nine fresh exports and 17 code/data
+   guards are recorded in
+   [analysis/STORAGE_REGISTRY_AND_LAZY_EFTL.md](analysis/STORAGE_REGISTRY_AND_LAZY_EFTL.md)
+   and [analysis/storage-registry.json](analysis/storage-registry.json).
+
+## 2026-11-17 — native EFTL translation and page-read routes
+
+1. Executed the actual translation loop, ready read wrapper and generic/alternate
+   page adapter over authored geometry/u16 mapping slots. Cross-page/block reads
+   select the expected mapped pages; alternate dispatch adds its base page and
+   supplies flag 1. Both lower NAND page services remain supplied.
+2. Verified missing mappings fill all remaining bytes with `ff` and return the
+   processed prefix length; negative page results return `-1` after preserving
+   earlier bytes. Nonnegative status does not validate supplied partial copying.
+   Selected u16 index/column truncation and base-addition wrap execute too.
+3. All 24 native cases pass in 2,159 steps (maximum 199). Twenty new host checks
+   bring the full suite to 793 passing tests. Three fresh exports/code guards,
+   complete traces and byte checks are in
+   [analysis/EFTL_TRANSLATION_AND_PAGE_READ.md](analysis/EFTL_TRANSLATION_AND_PAGE_READ.md)
+   and [analysis/eftl-read.json](analysis/eftl-read.json).
+   Mapping reconstruction, actual NAND/OOB data, bus/ECC/DMA and physical storage
+   remain outside the fixtures. No device was accessed in either pass.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -1559,8 +1597,11 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
   handle setup, NVMS mirror repair/rewrite fallback and clean bootstrap now
   execute as well; the ROM table publishes `boots=0`. The original five-backend,
   16-partition configuration and callback bindings are now recovered statically.
-  Execute registry/device population and lazy backend initialization, follow FTL
-  geometry/translation and the concrete physical partition map, actual driver
+  Registry/device population, lazy EFTL descriptor arithmetic and EFTL logical
+  translation/page dispatch now execute with supplied lower services. Follow
+  geometry discovery and mapping reconstruction from NAND/OOB metadata, deeper
+  allocation/error paths, SFTL behavior and the concrete physical partition map,
+  actual driver
   callback behavior and rewrite/mutex constraints, reserve-image provenance
   and other factory data,
   broader malformed/stale-cache/concurrency/boundary-read paths,

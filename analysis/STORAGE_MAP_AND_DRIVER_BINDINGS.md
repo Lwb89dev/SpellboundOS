@@ -133,3 +133,9 @@ Next: execute registry population and lazy backend initialization with bounded
 services, follow real backend rewrite/read/program/erase behavior, and recover
 FTL geometry/translation before deriving physical locations. Device-specific
 backup/restoration and standalone boot through the signed chain remain open.
+
+Subsequent passes execute [original registry population and lazy EFTL descriptor
+updates](STORAGE_REGISTRY_AND_LAZY_EFTL.md) in 32 native cases and the
+[EFTL translation/read routes](EFTL_TRANSLATION_AND_PAGE_READ.md) in 24 cases,
+with lower initialization/geometry/NAND services supplied. They establish no
+physical geometry or mapping provenance.

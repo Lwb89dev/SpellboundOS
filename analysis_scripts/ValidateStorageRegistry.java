@@ -1,0 +1,83 @@
+// Original registry population, deferred init and lazy EFTL arithmetic.
+//@category SpellboundOS
+import ghidra.app.script.GhidraScript;
+import ghidra.app.emulator.EmulatorHelper;
+import com.google.gson.*;
+import java.nio.file.*;
+import java.security.MessageDigest;
+import java.util.*;
+
+public class ValidateStorageRegistry extends GhidraScript {
+    private static final String CONFIG="{\"setup\":2160214278,\"device\":2160212944,\"find\":2160213230,\"owners\":2160214336,\"partition\":2160214848,\"lazy\":2160210390,\"read\":2160210514,\"alloc\":2160173832,\"compare\":2160256488,\"logger\":2160184698,\"lazy_logger\":2160184464,\"geometry\":2160075416,\"ftl_read\":2160075162,\"ranges\":[[2160212944,286],[2160213230,170],[2160214278,58],[2160214336,216],[2160214848,150],[2160210354,36],[2160210390,124],[2160208364,36],[2160210514,78]],\"devices\":[{\"address\":2161643524,\"callbacks\":{\"deinitialize\":2160210936,\"erase\":2160211224,\"initialize\":2160210968,\"ioctl\":2160210922,\"program\":2160211434,\"read\":2160211618,\"rewrite\":2160210914,\"unclassified_40\":2160210918,\"unclassified_44\":2160211802},\"initial_base_word\":4294967295,\"initial_block_word\":131072,\"initial_capacity_word\":2147483647,\"initial_word_24\":1,\"name\":\"nand\",\"sha256\":\"7d5d92864bf6028de22439a0de4a941e5ecdf33006010456c9c1f5f997baaa6f\"},{\"address\":2161643600,\"callbacks\":{\"deinitialize\":2160211846,\"erase\":2160212118,\"initialize\":2160211810,\"ioctl\":2160212370,\"program\":2160212288,\"read\":2160212040,\"rewrite\":2160212366,\"unclassified_40\":2160211806,\"unclassified_44\":2160212438},\"initial_base_word\":4294967295,\"initial_block_word\":131072,\"initial_capacity_word\":2147483647,\"initial_word_24\":1,\"name\":\"nandraw\",\"sha256\":\"de63615fcaa7e7af164b7fd14c5400bf90f82c97b8a210afdd9761295b2654d7\"},{\"address\":2161643448,\"callbacks\":{\"deinitialize\":2160210328,\"erase\":2160210592,\"initialize\":2160210354,\"ioctl\":2160210824,\"program\":2160210742,\"read\":2160210514,\"rewrite\":2160210820,\"unclassified_40\":2160210350,\"unclassified_44\":2160210910},\"initial_base_word\":4294967295,\"initial_block_word\":131072,\"initial_capacity_word\":2147483647,\"initial_word_24\":1,\"name\":\"eftl\",\"sha256\":\"23c023a72327347e66875b4a7a29d03f75432ca34ffa69c1896631579567c03b\"},{\"address\":2161643296,\"callbacks\":{\"deinitialize\":2160208544,\"erase\":2160210174,\"initialize\":2160208400,\"ioctl\":2160210188,\"program\":2160209918,\"read\":2160209442,\"rewrite\":2160209934,\"unclassified_40\":2160208360,\"unclassified_44\":2160210324},\"initial_base_word\":4294967295,\"initial_block_word\":4096,\"initial_capacity_word\":2147483647,\"initial_word_24\":1,\"name\":\"disk\",\"sha256\":\"0acfd877c044165555e13e81888136354edca4a52c2cc0e7dd67313207e3b28d\"},{\"address\":2161643372,\"callbacks\":{\"deinitialize\":2160208464,\"erase\":2160210160,\"initialize\":2160208364,\"ioctl\":2160210252,\"program\":2160209898,\"read\":2160209426,\"rewrite\":2160209914,\"unclassified_40\":2160210320,\"unclassified_44\":2160210316},\"initial_base_word\":4294967295,\"initial_block_word\":4096,\"initial_capacity_word\":2147483647,\"initial_word_24\":1,\"name\":\"sftl\",\"sha256\":\"456d4ebee6d1f3cf10668899480b5a30d9540f086bee024b671270e0d7c6eb01\"}],\"logs\":{\"2160312152\":\"owner_allocation_error\",\"2160312224\":\"owner_missing\",\"2160312268\":\"partition_start_error\",\"2160310912\":\"eftl_deferred\",\"2160310712\":\"sftl_deferred\",\"2160310936\":\"eftl_ready\"},\"guards\":[{\"address\":2160212944,\"size\":286,\"sha256\":\"c3ad635cb211be8f9cf0795d6f0a56a9aba3c0e1092836fe77f7396f9d304c38\"},{\"address\":2160213230,\"size\":170,\"sha256\":\"9fd9c9d677216a12cc75db961ee1aabdc9cc120c4b0a108bd27843f7b5f55098\"},{\"address\":2160214278,\"size\":58,\"sha256\":\"ab679680653e306e67f4e9d44f773494fe20d740adfc8d25d61014610f9f4c2e\"},{\"address\":2160214336,\"size\":216,\"sha256\":\"c8b2b1f8f8ef5f392bde43fbd5fb9d5c527f73d8e3379a7c4c048e21d3ee4773\"},{\"address\":2160214848,\"size\":150,\"sha256\":\"640905d12b6f31bd4f4dd522a86543308ba48111cac8d3159a4014d606045053\"},{\"address\":2160210354,\"size\":36,\"sha256\":\"2764cfa7deb4015489a5b1a1e48e77bf08c049c7a3acc8ac18cb987a058cdfc4\"},{\"address\":2160210390,\"size\":124,\"sha256\":\"8c585a2df07a652d6800f435a03991ea412a1ea0a5813565e6459a1828f8da6d\"},{\"address\":2160208364,\"size\":36,\"sha256\":\"0bf070cfe146e8d2f3dcd7bd86dc0c23a47f3af02d3e61e90b682ab89b7e4b3b\"},{\"address\":2160210514,\"size\":78,\"sha256\":\"0a69990c6e1b2273d246d277c1302ce0e2366d79fccd911e4768241fc991d972\"},{\"address\":2161640880,\"size\":16,\"sha256\":\"bf3dec7fa89f2f73b97107c1a444b845bface19c06369df2c45d1790c83e88a0\"},{\"address\":2161640896,\"size\":20,\"sha256\":\"92dcbbef50b29aa154f8c866a534990f874bcbab8c230b2896b26de5e40d3417\"},{\"address\":2160278072,\"size\":960,\"sha256\":\"1d0947000cbb1831ffabda18da3a2ec4b99a175228a1d83e7e82b56ca6f12ad7\"},{\"address\":2161643524,\"size\":76,\"sha256\":\"7d5d92864bf6028de22439a0de4a941e5ecdf33006010456c9c1f5f997baaa6f\"},{\"address\":2161643600,\"size\":76,\"sha256\":\"de63615fcaa7e7af164b7fd14c5400bf90f82c97b8a210afdd9761295b2654d7\"},{\"address\":2161643448,\"size\":76,\"sha256\":\"23c023a72327347e66875b4a7a29d03f75432ca34ffa69c1896631579567c03b\"},{\"address\":2161643296,\"size\":76,\"sha256\":\"0acfd877c044165555e13e81888136354edca4a52c2cc0e7dd67313207e3b28d\"},{\"address\":2161643372,\"size\":76,\"sha256\":\"456d4ebee6d1f3cf10668899480b5a30d9540f086bee024b671270e0d7c6eb01\"}]}";
+    private static final long END=0x70000000L,HEAP=0x81220000L,BUFFER=0x81300000L,QUERY=0x81301000L,
+        TABLE=0x80d805c0L,PARTS=0x80c33a38L,CONTEXT=0x80de5fb8L;
+    private JsonObject cfg,c;private JsonArray actions;private int steps,allocs;
+    private long a(String k){return cfg.get(k).getAsLong();}
+    private long r(EmulatorHelper e,int n){return e.readRegister("a"+n).longValue()&0xffffffffL;}
+    private void put(EmulatorHelper e,long at,int n,long v){e.writeMemoryValue(toAddr(at),n,v);}
+    private byte[] mem(EmulatorHelper e,long at,int n){return e.readMemory(toAddr(at),n);}
+    private long word(EmulatorHelper e,long at){byte[] b=mem(e,at,4);long v=0;for(int i=0;i<4;i++)v|=(b[i]&255L)<<(8*i);return v;}
+    private String hash(byte[] b)throws Exception{return HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(b));}
+    private String string(EmulatorHelper e,long at){StringBuilder s=new StringBuilder();for(int i=0;i<24;i++){int v=mem(e,at+i,1)[0]&255;if(v==0)return s.toString();s.append((char)v);}throw new IllegalStateException("String bound");}
+    private void ret(EmulatorHelper e,long value){e.writeRegister("a0",value&0xffffffffL);e.writeRegister(e.getPCRegister(),e.readRegister("ra"));}
+    private JsonArray longs(EmulatorHelper e,long at,int n){JsonArray b=new JsonArray();for(int i=0;i<n;i++)b.add(word(e,at+4*i));return b;}
+    private long device(int i){return cfg.getAsJsonArray("devices").get(i).getAsJsonObject().get("address").getAsLong();}
+    private void abi(EmulatorHelper e){if(e.readRegister("sp").longValue()!=0x81001000L)throw new IllegalStateException("Stack mismatch");for(int i=0;i<12;i++)if(e.readRegister("s"+i).longValue()!=0x45670000L+i)throw new IllegalStateException("Saved register mismatch");}
+    private void entry(EmulatorHelper e,long pc,long... args)throws Exception {
+        e.writeRegister("ra",END);for(int i=0;i<args.length;i++)e.writeRegister("a"+i,args[i]);e.writeRegister(e.getPCRegister(),pc);
+        while((pc=e.getExecutionAddress().getOffset())!=END){
+            if(++steps>100000)throw new IllegalStateException("Execution bound");
+            if(pc==a("find"))actions.add("find:"+string(e,r(e,0)));
+            int driver=-1;for(int i:new int[]{0,1,3})if(pc==cfg.getAsJsonArray("devices").get(i).getAsJsonObject().getAsJsonObject("callbacks").get("initialize").getAsLong())driver=i;
+            if(driver>=0){int result=driver==c.get("driver_fail_index").getAsInt()?c.get("driver_result").getAsInt():0;actions.add("initialize:"+driver+":"+result);ret(e,result);continue;}
+            if(pc==a("alloc")){if(r(e,0)!=64||word(e,0x80d81ed4L)!=0)throw new IllegalStateException("Owner allocation contract");boolean ok=++allocs!=c.get("alloc_fail_at").getAsInt();actions.add("alloc:64:"+(ok?1:0));ret(e,ok?HEAP:0);continue;}
+            if(pc==a("compare")){if(r(e,2)!=24)throw new IllegalStateException("Compare length");boolean query=r(e,0)==QUERY||(r(e,0)>=PARTS+24&&r(e,0)<PARTS+960&&(r(e,0)-PARTS-24)%60==0);boolean target=false;for(int i=0;i<5;i++)if(r(e,1)==device(i))target=true;if(!query||!target)throw new IllegalStateException("Compare pointers");int result=0;for(int i=0;i<24;i++){int x=mem(e,r(e,0)+i,1)[0]&255,y=mem(e,r(e,1)+i,1)[0]&255;result=x-y;if(result!=0||x==0)break;}ret(e,result);continue;}
+            if(pc==a("logger")||pc==a("lazy_logger")){JsonElement label=cfg.getAsJsonObject("logs").get(Long.toString(r(e,3)));if(label==null)throw new IllegalStateException("Unexpected log "+Long.toHexString(r(e,3)));actions.add("log:"+label.getAsString());ret(e,0);continue;}
+            if(pc==a("geometry")){if(r(e,0)!=CONTEXT||r(e,1)!=0||r(e,2)!=0)throw new IllegalStateException("Geometry arguments");int result=c.get("geometry_result").getAsInt();actions.add("geometry:"+result);if(result>=0){JsonArray g=c.getAsJsonArray("geometry");for(int i=0;i<3;i++)put(e,CONTEXT+8+i*4,4,g.get(i).getAsLong());put(e,CONTEXT+0x3c,2,g.get(3).getAsLong());}ret(e,result);continue;}
+            if(pc==a("ftl_read")){int n=c.get("size").getAsInt(),result=c.get("read_result").getAsInt();long offset=c.get("offset").getAsLong();if(r(e,0)!=CONTEXT||r(e,1)!=BUFFER||r(e,2)!=offset||r(e,3)!=n)throw new IllegalStateException("EFTL read arguments");actions.add("ftl_read:"+offset+":"+n+":"+result);if(result>0){byte[] b=new byte[Math.min(n,result)];for(int i=0;i<b.length;i++)b[i]=(byte)(offset+i*7);e.writeMemory(toAddr(BUFFER),b);}ret(e,result);continue;}
+            boolean allowed=false;for(JsonElement span:cfg.getAsJsonArray("ranges")){long first=span.getAsJsonArray().get(0).getAsLong(),n=span.getAsJsonArray().get(1).getAsLong();if(first<=pc&&pc<first+n){allowed=true;break;}}
+            if(!allowed)throw new IllegalStateException(c.get("name")+" escaped at "+Long.toHexString(pc));if(!e.step(monitor))throw new IllegalStateException(c.get("name")+" "+e.getLastError());
+        }abi(e);
+    }
+    private JsonObject snapshot(EmulatorHelper e,String mode)throws Exception {
+        JsonObject row=new JsonObject();row.add("returned",mode.equals("lazy")?JsonNull.INSTANCE:new JsonPrimitive(r(e,0)));
+        for(Object[] field:new Object[][]{{"device_ready",0x80d81ec1L,1},{"device_count",0x80d81ec4L,4},{"device_table",0x80d81ec8L,4},
+            {"outer_count",0x80d81eccL,4},{"outer_table",0x80d81ed0L,4},{"owner_pointer",0x80d81ed4L,4},
+            {"partition_count",0x80d81ed8L,4},{"partition_ready",0x80d81edcL,1},{"partition_table",0x80d81ee0L,4},{"eftl_ready",0x80d81ea2L,1}}){
+            long value=(int)field[2]==1?(mem(e,(long)field[1],1)[0]&255):word(e,(long)field[1]);row.addProperty((String)field[0],value);}
+        row.add("owners",word(e,0x80d81ed4L)==0?JsonNull.INSTANCE:longs(e,HEAP,16));row.addProperty("owner_backing_sha256",hash(mem(e,HEAP,64)));
+        JsonArray caps=new JsonArray(),blocks=new JsonArray();for(int i=0;i<5;i++){caps.add(word(e,device(i)+28));blocks.add(word(e,device(i)+32));}row.add("capacities",caps);row.add("blocks",blocks);row.addProperty("buffer_sha256",hash(mem(e,BUFFER,1024)));return row;
+    }
+    private JsonObject execute(JsonObject input)throws Exception {
+        c=input;steps=0;allocs=0;actions=new JsonArray();EmulatorHelper e=new EmulatorHelper(currentProgram);
+        try{
+            byte[] stack=new byte[4096];Arrays.fill(stack,(byte)0xa5);e.writeMemory(toAddr(0x81000000L),stack);e.writeRegister("sp",0x81001000L);for(int i=0;i<12;i++)e.writeRegister("s"+i,0x45670000L+i);
+            byte[] backing=new byte[96];Arrays.fill(backing,0,64,c.get("owners_present").getAsBoolean()?(byte)0x55:(byte)0xa5);Arrays.fill(backing,64,96,(byte)0xa5);e.writeMemory(toAddr(HEAP),backing);
+            byte[] output=new byte[1056];Arrays.fill(output,(byte)0xa5);e.writeMemory(toAddr(BUFFER),output);e.writeMemory(toAddr(QUERY),(c.get("query").getAsString()+"\0").getBytes(java.nio.charset.StandardCharsets.US_ASCII));
+            for(int i=0;i<5;i++)put(e,device(i)+28,4,c.getAsJsonArray("capacities").get(i).getAsLong());
+            int missing=c.get("missing_device_index").getAsInt();if(missing>=0){byte[] b=new byte[24];System.arraycopy(new byte[]{97,98,115,101,110,116},0,b,0,6);e.writeMemory(toAddr(device(missing)),b);}
+            int modified=c.get("modified_partition").getAsInt();if(modified>=0){put(e,PARTS+modified*60+48,4,c.get("partition_offset").getAsLong());put(e,PARTS+modified*60+52,4,c.get("partition_span").getAsLong());}
+            byte[][] descriptors=new byte[5][];for(int i=0;i<5;i++)descriptors[i]=mem(e,device(i),76);byte[] rows=mem(e,PARTS,960),table=mem(e,TABLE,20);
+            boolean ready=c.get("device_ready").getAsBoolean(),part=c.get("partition_ready").getAsBoolean();put(e,0x80d81ec1L,1,ready?1:0);put(e,0x80d81ec4L,4,ready?5:0);put(e,0x80d81ec8L,4,ready?TABLE:0);put(e,0x80d81eccL,4,0);put(e,0x80d81ed0L,4,0);put(e,0x80d81ed4L,4,c.get("owners_present").getAsBoolean()?HEAP:0);
+            put(e,0x80d81ed8L,4,part?16:0);put(e,0x80d81edcL,1,part?1:0);put(e,0x80d81ee0L,4,part?PARTS:0);put(e,0x80d81ea2L,1,c.get("eftl_ready").getAsBoolean()?1:0);e.writeMemory(toAddr(CONTEXT),new byte[64]);
+            String mode=c.get("mode").getAsString();JsonArray observedRows=new JsonArray();for(int iteration=0;iteration<c.get("repeat").getAsInt();iteration++){
+                if(mode.equals("setup"))entry(e,a(mode),0x80d805b0L);
+                else if(mode.equals("device"))entry(e,a(mode),TABLE,5);
+                else if(mode.equals("partition"))entry(e,a(mode),PARTS,16);
+                else if(mode.equals("find"))entry(e,a(mode),QUERY);
+                else if(mode.equals("read"))entry(e,a(mode),c.get("offset").getAsLong(),BUFFER,c.get("size").getAsLong());
+                else entry(e,a(mode));observedRows.add(snapshot(e,mode));}
+            if(!hash(rows).equals(hash(mem(e,PARTS,960)))||!hash(table).equals(hash(mem(e,TABLE,20))))throw new IllegalStateException("Registry input changed");
+            for(int i=0;i<5;i++){byte[] now=mem(e,device(i),76);for(int j=28;j<36;j++)now[j]=descriptors[i][j];if(!Arrays.equals(now,descriptors[i]))throw new IllegalStateException("Device control bytes changed");}
+            byte[] guard=new byte[32];Arrays.fill(guard,(byte)0xa5);if(!Arrays.equals(guard,mem(e,HEAP+64,32))||!Arrays.equals(guard,mem(e,BUFFER+1024,32)))throw new IllegalStateException("Output guard changed");
+            JsonObject observed=new JsonObject();observed.add("actions",actions);observed.add("rows",observedRows);if(!observed.equals(c.getAsJsonObject("expected"))){Files.writeString(Path.of("firmware/storage-registry-mismatch.json"),observed.toString());throw new IllegalStateException("Mismatch "+c.get("name"));}
+            JsonObject result=new JsonObject();result.addProperty("name",c.get("name").getAsString());result.addProperty("steps",steps);result.add("observed",observed);return result;
+        }finally{e.dispose();}
+    }
+    public void run()throws Exception {
+        if(getScriptArgs().length!=2)throw new IllegalArgumentException("vectors report");cfg=JsonParser.parseString(CONFIG).getAsJsonObject();
+        for(JsonElement item:cfg.getAsJsonArray("guards")){JsonObject g=item.getAsJsonObject();byte[] b=new byte[g.get("size").getAsInt()];currentProgram.getMemory().getBytes(toAddr(g.get("address").getAsLong()),b);if(!hash(b).equals(g.get("sha256").getAsString()))throw new IllegalStateException("Unrecognized registry code/data "+g);}
+        JsonObject input=JsonParser.parseString(Files.readString(Path.of(getScriptArgs()[0]))).getAsJsonObject();if(input.get("schema").getAsInt()!=1||input.getAsJsonArray("cases").size()>64)throw new IllegalArgumentException("Vector bound");JsonArray rows=new JsonArray();for(JsonElement item:input.getAsJsonArray("cases"))rows.add(execute(item.getAsJsonObject()));
+        JsonObject report=new JsonObject();report.addProperty("hardware_execution",false);report.addProperty("case_count",rows.size());report.addProperty("bound_per_case",100000);report.add("cases",rows);Files.writeString(Path.of(getScriptArgs()[1]),new GsonBuilder().setPrettyPrinting().serializeNulls().create().toJson(report)+"\n");println("STORAGE_REGISTRY_VALIDATION cases="+rows.size());
+    }
+}

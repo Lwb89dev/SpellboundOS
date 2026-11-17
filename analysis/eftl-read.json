@@ -1,0 +1,408 @@
+{
+  "boot_sha256": "44cd83c0d09864c6101e9825bd3c77d7fac314584d0408b378dd56c2aac5736a",
+  "byte_range_sha256": {
+    "80c0219a_fe": "3298dbbdd33a76b06d90a940376431281bf0fefe6149262226156ff6f90d16dc",
+    "80c0278a_26": "25ac27a5214407304c10fe7fa30a50d0e2ca097172c8c30b6aebf28228338f4b",
+    "80c23252_4e": "0a69990c6e1b2273d246d277c1302ce0e2366d79fccd911e4768241fc991d972"
+  },
+  "export_sha256": {
+    "80c0219a.c": "bd3b744e2fc8dae25463c9dad54a6e78b03cedb90bdc86d30d9a53012f1e0327",
+    "80c0278a.c": "ae335baa9028bff96d0b1a248a0632bf6d122de92586d02eec2c0eb7c610666c",
+    "80c23252.c": "34c70080b42fdc78e704a18e36b7cb3471b07302a6fc3c2b2c1b6461393c8c6e"
+  },
+  "limitations": [
+    "Actual EFTL translation loop, ready read wrapper and page-dispatch adapter execute over authored geometry and eight u16 mapping slots.",
+    "The two physical-page services supply status and procedural bytes; no NAND geometry, ECC, bus, DMA, physical data or persistence is established.",
+    "The wrapper fixtures start EFTL ready; geometry discovery, mapping reconstruction, writes and full boot are outside this pass.",
+    "Logical-index alias, column truncation and base wrapping use selected synthetic inputs; real geometry/caller constraints remain unknown."
+  ],
+  "native_steps": 2159,
+  "native_validation": {
+    "bound_per_case": 100000,
+    "case_count": 24,
+    "cases": [
+      {
+        "name": "map_single",
+        "observed": {
+          "actions": [
+            "physical:generic:12:4:16:0:16"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "0d64591f84c60d5317e02ff34dc3139f9548f03ba5a78b983369e96eb90a89c2",
+              "returned": 16
+            }
+          ]
+        },
+        "steps": 76
+      },
+      {
+        "name": "map_unaligned",
+        "observed": {
+          "actions": [
+            "physical:generic:12:29:3:0:3",
+            "physical:generic:13:0:5:0:5"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "a0731012d58b17459400220f98dc47942ba67645069906b669c8bdeea57f9f4d",
+              "returned": 8
+            }
+          ]
+        },
+        "steps": 117
+      },
+      {
+        "name": "map_multiblock",
+        "observed": {
+          "actions": [
+            "physical:generic:15:24:8:0:8",
+            "physical:generic:4:0:32:0:32",
+            "physical:generic:5:0:8:0:8"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "60b64fe0a9bab50d2a292c537a66a33b87799837759c79bf3646c9677332a8f9",
+              "returned": 48
+            }
+          ]
+        },
+        "steps": 158
+      },
+      {
+        "name": "map_three_pages",
+        "observed": {
+          "actions": [
+            "physical:generic:12:17:15:0:15",
+            "physical:generic:13:0:32:0:32",
+            "physical:generic:14:0:32:0:32",
+            "physical:generic:15:0:17:0:17"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "ffca5932740e0c1e2aeb3a08b90d773fcaf442763d62330e6ae891c3b4dbf1ce",
+              "returned": 96
+            }
+          ]
+        },
+        "steps": 199
+      },
+      {
+        "name": "map_zero",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 34
+      },
+      {
+        "name": "map_first_unmapped",
+        "observed": {
+          "actions": [
+            "log:unmapped_block"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "495e44fed125ff472c9257c6b7df1fafc01d5567750ff127acedf95188d7fb06",
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 64
+      },
+      {
+        "name": "map_gap_after_prefix",
+        "observed": {
+          "actions": [
+            "physical:generic:15:24:8:0:8",
+            "log:unmapped_block"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "853fc77a9f8fe78e063f1432aa969b5e10336a1456597572735c6d94c2dc7089",
+              "returned": 8
+            }
+          ]
+        },
+        "steps": 104
+      },
+      {
+        "name": "map_all_unmapped",
+        "observed": {
+          "actions": [
+            "log:unmapped_block"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "8abfb75a4cb9d229c5bfe340b73705b729e91e5cae76f49acfc1944dbda40634",
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 63
+      },
+      {
+        "name": "map_first_error",
+        "observed": {
+          "actions": [
+            "physical:generic:12:4:16:-9:0",
+            "log:page_read_error"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "returned": 4294967295
+            }
+          ]
+        },
+        "steps": 82
+      },
+      {
+        "name": "map_second_error",
+        "observed": {
+          "actions": [
+            "physical:generic:12:29:3:0:3",
+            "physical:generic:13:0:5:-9:0",
+            "log:page_read_error"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "a1c65c7f9886f74dad74ff434f65f35f3c395ce0fca74c21b2815aa84eaa3702",
+              "returned": 4294967295
+            }
+          ]
+        },
+        "steps": 123
+      },
+      {
+        "name": "map_positive_status",
+        "observed": {
+          "actions": [
+            "physical:generic:12:4:16:7:16"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "0d64591f84c60d5317e02ff34dc3139f9548f03ba5a78b983369e96eb90a89c2",
+              "returned": 16
+            }
+          ]
+        },
+        "steps": 76
+      },
+      {
+        "name": "map_short_supplied_data",
+        "observed": {
+          "actions": [
+            "physical:generic:12:4:16:0:3"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "c00651af92e9c7288f061ff1f26e179cade24a2b71c5d3c4af643287b8a09184",
+              "returned": 16
+            }
+          ]
+        },
+        "steps": 76
+      },
+      {
+        "name": "map_fast",
+        "observed": {
+          "actions": [
+            "physical:fast:20:4:16:0:16"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "584b57a3b6ffd6ef001d2966042a5400dcf21a7f383f0ab1cdbc7fc2e6f7b119",
+              "returned": 16
+            }
+          ]
+        },
+        "steps": 80
+      },
+      {
+        "name": "map_fast_multiblock",
+        "observed": {
+          "actions": [
+            "physical:fast:23:24:8:0:8",
+            "physical:fast:12:0:32:0:32",
+            "physical:fast:13:0:8:0:8"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "53e56e7a83fefa3bcf20b832f80d10535b3bbccfe9357d0dbdd2836039dc1616",
+              "returned": 48
+            }
+          ]
+        },
+        "steps": 170
+      },
+      {
+        "name": "map_fast_error",
+        "observed": {
+          "actions": [
+            "physical:fast:20:4:16:-9:0",
+            "log:page_read_error"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "returned": 4294967295
+            }
+          ]
+        },
+        "steps": 86
+      },
+      {
+        "name": "map_repeat",
+        "observed": {
+          "actions": [
+            "physical:generic:12:4:16:0:16",
+            "physical:generic:12:4:16:0:16"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "0d64591f84c60d5317e02ff34dc3139f9548f03ba5a78b983369e96eb90a89c2",
+              "returned": 16
+            },
+            {
+              "buffer_sha256": "0d64591f84c60d5317e02ff34dc3139f9548f03ba5a78b983369e96eb90a89c2",
+              "returned": 16
+            }
+          ]
+        },
+        "steps": 152
+      },
+      {
+        "name": "wrapper_read",
+        "observed": {
+          "actions": [
+            "physical:generic:15:24:8:0:8",
+            "physical:generic:4:0:32:0:32",
+            "physical:generic:5:0:8:0:8"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "60b64fe0a9bab50d2a292c537a66a33b87799837759c79bf3646c9677332a8f9",
+              "returned": 48
+            }
+          ]
+        },
+        "steps": 176
+      },
+      {
+        "name": "wrapper_gap",
+        "observed": {
+          "actions": [
+            "physical:generic:19:28:4:0:4",
+            "log:unmapped_block"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "7c123f4962b007dca5a7393c473f8e03a7f2b1a3e5abab3b3d18971845566e96",
+              "returned": 4
+            }
+          ]
+        },
+        "steps": 123
+      },
+      {
+        "name": "page_generic",
+        "observed": {
+          "actions": [
+            "physical:generic:12:4:16:0:16"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "0d64591f84c60d5317e02ff34dc3139f9548f03ba5a78b983369e96eb90a89c2",
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 10
+      },
+      {
+        "name": "page_fast",
+        "observed": {
+          "actions": [
+            "physical:fast:20:4:16:0:16"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "584b57a3b6ffd6ef001d2966042a5400dcf21a7f383f0ab1cdbc7fc2e6f7b119",
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 14
+      },
+      {
+        "name": "page_fast_base_wrap",
+        "observed": {
+          "actions": [
+            "physical:fast:11:4:16:0:16"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "3b0956ecfbf7e77db13bc2f7b5fcf3606a9dff36e28795fa0157fcef5c870f0b",
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 14
+      },
+      {
+        "name": "page_backend_error",
+        "observed": {
+          "actions": [
+            "physical:generic:12:4:16:-9:0"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "returned": 4294967287
+            }
+          ]
+        },
+        "steps": 10
+      },
+      {
+        "name": "map_logical_block_alias",
+        "observed": {
+          "actions": [
+            "physical:generic:12:0:16:0:16"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "747ead65c8c6421f72bf32eec872b60c96a24369054a13e0d96fecddab382c45",
+              "returned": 16
+            }
+          ]
+        },
+        "steps": 76
+      },
+      {
+        "name": "map_column_u16",
+        "observed": {
+          "actions": [
+            "physical:generic:12:0:16:0:16"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "747ead65c8c6421f72bf32eec872b60c96a24369054a13e0d96fecddab382c45",
+              "returned": 16
+            }
+          ]
+        },
+        "steps": 76
+      }
+    ],
+    "hardware_execution": false
+  },
+  "validation_sha256": "e4e23994d90b2556a9df0ec008adcac2ca0f0f146c7d0fcaf35cb5431626abde",
+  "vectors_sha256": "c16812e148e2814e654883192f2fd0c564e65cf9c70af25695aec0c49e7ce0da"
+}

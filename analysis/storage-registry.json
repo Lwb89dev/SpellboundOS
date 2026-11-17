@@ -1,0 +1,1849 @@
+{
+  "boot_sha256": "44cd83c0d09864c6101e9825bd3c77d7fac314584d0408b378dd56c2aac5736a",
+  "byte_range_sha256": {
+    "80c229ec_24": "0bf070cfe146e8d2f3dcd7bd86dc0c23a47f3af02d3e61e90b682ab89b7e4b3b",
+    "80c231b2_24": "2764cfa7deb4015489a5b1a1e48e77bf08c049c7a3acc8ac18cb987a058cdfc4",
+    "80c231d6_7c": "8c585a2df07a652d6800f435a03991ea412a1ea0a5813565e6459a1828f8da6d",
+    "80c23252_4e": "0a69990c6e1b2273d246d277c1302ce0e2366d79fccd911e4768241fc991d972",
+    "80c23bd0_11e": "c3ad635cb211be8f9cf0795d6f0a56a9aba3c0e1092836fe77f7396f9d304c38",
+    "80c23cee_aa": "9fd9c9d677216a12cc75db961ee1aabdc9cc120c4b0a108bd27843f7b5f55098",
+    "80c24106_3a": "ab679680653e306e67f4e9d44f773494fe20d740adfc8d25d61014610f9f4c2e",
+    "80c24140_d8": "c8b2b1f8f8ef5f392bde43fbd5fb9d5c527f73d8e3379a7c4c048e21d3ee4773",
+    "80c24340_96": "640905d12b6f31bd4f4dd522a86543308ba48111cac8d3159a4014d606045053"
+  },
+  "export_sha256": {
+    "80c229ec.c": "e71d786b464842d8a84046768b1abd6327206ab710bd5dd9a08ed66b97432c6c",
+    "80c231b2.c": "1f9788ce729cc43b33d0957d164b2c304dca4cbd9e150cb4c0588427eb936d20",
+    "80c231d6.c": "932afcb918ae929af3b62ebbea9a02a7e23a1b2f7804c4d53cc51b6b19d97b98",
+    "80c23252.c": "5c9e2e2d2966d4af637adf1ea562e8923287402aa1fe0e41fc05f2bc3cba366d",
+    "80c23bd0.c": "c0969be42072bcfae03b543fb1e46b28b15e511396f067e8f8e2716563bd3b8a",
+    "80c23cee.c": "faccce4bf140e2988387c8261043eaf0dff86738028a1e63ec1b55de77f1698b",
+    "80c24106.c": "0d16add725bab4c505e923d6caf84b9ed1eaba51ddcf41776f2b9d06105e4c68",
+    "80c24140.c": "1584efd85c2f2e468f1902e6ccf8a0ebe8cc31ec37681db1be37e01935f66d4a",
+    "80c24340.c": "0a658453754e5025a5054d821eb26d3f7315ec42333b574f09dd62fda2f36f77"
+  },
+  "limitations": [
+    "Original registry/device tables execute with supplied NAND/nandraw/disk initialization and heap services.",
+    "Actual deferred EFTL/SFTL initializers and lazy EFTL geometry arithmetic execute; geometry discovery and EFTL read results/data are supplied.",
+    "Missing-owner, signed-start and unchecked-span cases are bounded emulator fixtures, not observed physical failures.",
+    "Physical NAND capacity, FTL translation, persistence, electrical behavior, recovery and full boot remain unproven."
+  ],
+  "native_steps": 13890,
+  "native_validation": {
+    "bound_per_case": 100000,
+    "case_count": 32,
+    "cases": [
+      {
+        "name": "setup_original",
+        "observed": {
+          "actions": [
+            "initialize:0:0",
+            "initialize:1:0",
+            "log:eftl_deferred",
+            "initialize:3:0",
+            "log:sftl_deferred",
+            "alloc:64:1",
+            "find:nand",
+            "find:nand",
+            "find:nand",
+            "find:nand",
+            "find:nandraw",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:sftl",
+            "find:sftl",
+            "find:sftl",
+            "find:sftl"
+          ],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 5,
+              "device_ready": 1,
+              "device_table": 2161640896,
+              "eftl_ready": 0,
+              "outer_count": 5,
+              "outer_table": 2161640896,
+              "owner_backing_sha256": "952ea2103f25dfe56df73e79ed1ce58557e69329d684223860051d5eff21ee31",
+              "owner_pointer": 2166489088,
+              "owners": [
+                2161643524,
+                2161643524,
+                2161643524,
+                2161643524,
+                2161643600,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643372,
+                2161643372,
+                2161643372,
+                2161643372
+              ],
+              "partition_count": 16,
+              "partition_ready": 1,
+              "partition_table": 2160278072,
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 1396
+      },
+      {
+        "name": "setup_repeat",
+        "observed": {
+          "actions": [
+            "initialize:0:0",
+            "initialize:1:0",
+            "log:eftl_deferred",
+            "initialize:3:0",
+            "log:sftl_deferred",
+            "alloc:64:1",
+            "find:nand",
+            "find:nand",
+            "find:nand",
+            "find:nand",
+            "find:nandraw",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:sftl",
+            "find:sftl",
+            "find:sftl",
+            "find:sftl"
+          ],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 5,
+              "device_ready": 1,
+              "device_table": 2161640896,
+              "eftl_ready": 0,
+              "outer_count": 5,
+              "outer_table": 2161640896,
+              "owner_backing_sha256": "952ea2103f25dfe56df73e79ed1ce58557e69329d684223860051d5eff21ee31",
+              "owner_pointer": 2166489088,
+              "owners": [
+                2161643524,
+                2161643524,
+                2161643524,
+                2161643524,
+                2161643600,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643372,
+                2161643372,
+                2161643372,
+                2161643372
+              ],
+              "partition_count": 16,
+              "partition_ready": 1,
+              "partition_table": 2160278072,
+              "returned": 0
+            },
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 5,
+              "device_ready": 1,
+              "device_table": 2161640896,
+              "eftl_ready": 0,
+              "outer_count": 5,
+              "outer_table": 2161640896,
+              "owner_backing_sha256": "952ea2103f25dfe56df73e79ed1ce58557e69329d684223860051d5eff21ee31",
+              "owner_pointer": 2166489088,
+              "owners": [
+                2161643524,
+                2161643524,
+                2161643524,
+                2161643524,
+                2161643600,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643372,
+                2161643372,
+                2161643372,
+                2161643372
+              ],
+              "partition_count": 16,
+              "partition_ready": 1,
+              "partition_table": 2160278072,
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 1451
+      },
+      {
+        "name": "setup_alloc_error",
+        "observed": {
+          "actions": [
+            "initialize:0:0",
+            "initialize:1:0",
+            "log:eftl_deferred",
+            "initialize:3:0",
+            "log:sftl_deferred",
+            "alloc:64:0",
+            "log:owner_allocation_error"
+          ],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 5,
+              "device_ready": 1,
+              "device_table": 2161640896,
+              "eftl_ready": 0,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+              "owner_pointer": 0,
+              "owners": null,
+              "partition_count": 16,
+              "partition_ready": 0,
+              "partition_table": 2160278072,
+              "returned": 4294967295
+            }
+          ]
+        },
+        "steps": 216
+      },
+      {
+        "name": "setup_alloc_retry",
+        "observed": {
+          "actions": [
+            "initialize:0:0",
+            "initialize:1:0",
+            "log:eftl_deferred",
+            "initialize:3:0",
+            "log:sftl_deferred",
+            "alloc:64:0",
+            "log:owner_allocation_error",
+            "alloc:64:1",
+            "find:nand",
+            "find:nand",
+            "find:nand",
+            "find:nand",
+            "find:nandraw",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:sftl",
+            "find:sftl",
+            "find:sftl",
+            "find:sftl"
+          ],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 5,
+              "device_ready": 1,
+              "device_table": 2161640896,
+              "eftl_ready": 0,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+              "owner_pointer": 0,
+              "owners": null,
+              "partition_count": 16,
+              "partition_ready": 0,
+              "partition_table": 2160278072,
+              "returned": 4294967295
+            },
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 5,
+              "device_ready": 1,
+              "device_table": 2161640896,
+              "eftl_ready": 0,
+              "outer_count": 5,
+              "outer_table": 2161640896,
+              "owner_backing_sha256": "952ea2103f25dfe56df73e79ed1ce58557e69329d684223860051d5eff21ee31",
+              "owner_pointer": 2166489088,
+              "owners": [
+                2161643524,
+                2161643524,
+                2161643524,
+                2161643524,
+                2161643600,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643372,
+                2161643372,
+                2161643372,
+                2161643372
+              ],
+              "partition_count": 16,
+              "partition_ready": 1,
+              "partition_table": 2160278072,
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 1490
+      },
+      {
+        "name": "setup_driver_0_error",
+        "observed": {
+          "actions": [
+            "initialize:0:-14"
+          ],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 5,
+              "device_ready": 0,
+              "device_table": 2161640896,
+              "eftl_ready": 0,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+              "owner_pointer": 0,
+              "owners": null,
+              "partition_count": 0,
+              "partition_ready": 0,
+              "partition_table": 0,
+              "returned": 4294967295
+            }
+          ]
+        },
+        "steps": 54
+      },
+      {
+        "name": "setup_driver_1_error",
+        "observed": {
+          "actions": [
+            "initialize:0:0",
+            "initialize:1:-14"
+          ],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 5,
+              "device_ready": 0,
+              "device_table": 2161640896,
+              "eftl_ready": 0,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+              "owner_pointer": 0,
+              "owners": null,
+              "partition_count": 0,
+              "partition_ready": 0,
+              "partition_table": 0,
+              "returned": 4294967295
+            }
+          ]
+        },
+        "steps": 71
+      },
+      {
+        "name": "setup_driver_3_error",
+        "observed": {
+          "actions": [
+            "initialize:0:0",
+            "initialize:1:0",
+            "log:eftl_deferred",
+            "initialize:3:-14"
+          ],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 5,
+              "device_ready": 0,
+              "device_table": 2161640896,
+              "eftl_ready": 0,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+              "owner_pointer": 0,
+              "owners": null,
+              "partition_count": 0,
+              "partition_ready": 0,
+              "partition_table": 0,
+              "returned": 4294967295
+            }
+          ]
+        },
+        "steps": 118
+      },
+      {
+        "name": "device_original",
+        "observed": {
+          "actions": [
+            "initialize:0:0",
+            "initialize:1:0",
+            "log:eftl_deferred",
+            "initialize:3:0",
+            "log:sftl_deferred"
+          ],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 5,
+              "device_ready": 1,
+              "device_table": 2161640896,
+              "eftl_ready": 0,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+              "owner_pointer": 0,
+              "owners": null,
+              "partition_count": 0,
+              "partition_ready": 0,
+              "partition_table": 0,
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 141
+      },
+      {
+        "name": "device_backend_status",
+        "observed": {
+          "actions": [
+            "initialize:0:0",
+            "initialize:1:-9"
+          ],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 5,
+              "device_ready": 0,
+              "device_table": 2161640896,
+              "eftl_ready": 0,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+              "owner_pointer": 0,
+              "owners": null,
+              "partition_count": 0,
+              "partition_ready": 0,
+              "partition_table": 0,
+              "returned": 4294967287
+            }
+          ]
+        },
+        "steps": 58
+      },
+      {
+        "name": "device_already_ready",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 5,
+              "device_ready": 1,
+              "device_table": 2161640896,
+              "eftl_ready": 0,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+              "owner_pointer": 0,
+              "owners": null,
+              "partition_count": 0,
+              "partition_ready": 0,
+              "partition_table": 0,
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 19
+      },
+      {
+        "name": "partition_original",
+        "observed": {
+          "actions": [
+            "alloc:64:1",
+            "find:nand",
+            "find:nand",
+            "find:nand",
+            "find:nand",
+            "find:nandraw",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:sftl",
+            "find:sftl",
+            "find:sftl",
+            "find:sftl"
+          ],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 5,
+              "device_ready": 1,
+              "device_table": 2161640896,
+              "eftl_ready": 0,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "952ea2103f25dfe56df73e79ed1ce58557e69329d684223860051d5eff21ee31",
+              "owner_pointer": 2166489088,
+              "owners": [
+                2161643524,
+                2161643524,
+                2161643524,
+                2161643524,
+                2161643600,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643372,
+                2161643372,
+                2161643372,
+                2161643372
+              ],
+              "partition_count": 16,
+              "partition_ready": 1,
+              "partition_table": 2160278072,
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 1232
+      },
+      {
+        "name": "partition_existing_owners",
+        "observed": {
+          "actions": [
+            "find:nand",
+            "find:nand",
+            "find:nand",
+            "find:nand",
+            "find:nandraw",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:sftl",
+            "find:sftl",
+            "find:sftl",
+            "find:sftl"
+          ],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 5,
+              "device_ready": 1,
+              "device_table": 2161640896,
+              "eftl_ready": 0,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "952ea2103f25dfe56df73e79ed1ce58557e69329d684223860051d5eff21ee31",
+              "owner_pointer": 2166489088,
+              "owners": [
+                2161643524,
+                2161643524,
+                2161643524,
+                2161643524,
+                2161643600,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643372,
+                2161643372,
+                2161643372,
+                2161643372
+              ],
+              "partition_count": 16,
+              "partition_ready": 1,
+              "partition_table": 2160278072,
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 1227
+      },
+      {
+        "name": "partition_already_ready",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 5,
+              "device_ready": 1,
+              "device_table": 2161640896,
+              "eftl_ready": 0,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "3d9eae666b06b1a975071aca838b4bb5f27a8324eb2ddab0c8eccd71ceae6b50",
+              "owner_pointer": 2166489088,
+              "owners": [
+                1431655765,
+                1431655765,
+                1431655765,
+                1431655765,
+                1431655765,
+                1431655765,
+                1431655765,
+                1431655765,
+                1431655765,
+                1431655765,
+                1431655765,
+                1431655765,
+                1431655765,
+                1431655765,
+                1431655765,
+                1431655765
+              ],
+              "partition_count": 16,
+              "partition_ready": 1,
+              "partition_table": 2160278072,
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 13
+      },
+      {
+        "name": "partition_missing_owner",
+        "observed": {
+          "actions": [
+            "alloc:64:1",
+            "find:nand",
+            "find:nand",
+            "find:nand",
+            "find:nand",
+            "find:nandraw",
+            "find:eftl",
+            "log:owner_missing",
+            "find:eftl",
+            "log:owner_missing",
+            "find:eftl",
+            "log:owner_missing",
+            "find:eftl",
+            "log:owner_missing",
+            "find:eftl",
+            "log:owner_missing",
+            "find:eftl",
+            "log:owner_missing",
+            "find:eftl",
+            "log:owner_missing",
+            "find:sftl",
+            "find:sftl",
+            "find:sftl",
+            "find:sftl"
+          ],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 5,
+              "device_ready": 1,
+              "device_table": 2161640896,
+              "eftl_ready": 0,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "53c422efd0d01789a1fdb3effe4a70315385fbd3f67294702eb3d20f86923415",
+              "owner_pointer": 2166489088,
+              "owners": [
+                2161643524,
+                2161643524,
+                2161643524,
+                2161643524,
+                2161643600,
+                2779096485,
+                2779096485,
+                2779096485,
+                2779096485,
+                2779096485,
+                2779096485,
+                2779096485,
+                2161643372,
+                2161643372,
+                2161643372,
+                2161643372
+              ],
+              "partition_count": 16,
+              "partition_ready": 1,
+              "partition_table": 2160278072,
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 1414
+      },
+      {
+        "name": "partition_missing_stale_owner",
+        "observed": {
+          "actions": [
+            "find:nand",
+            "find:nand",
+            "find:nand",
+            "find:nand",
+            "find:nandraw",
+            "find:eftl",
+            "log:owner_missing",
+            "find:eftl",
+            "log:owner_missing",
+            "find:eftl",
+            "log:owner_missing",
+            "find:eftl",
+            "log:owner_missing",
+            "find:eftl",
+            "log:owner_missing",
+            "find:eftl",
+            "log:owner_missing",
+            "find:eftl",
+            "log:owner_missing",
+            "find:sftl",
+            "find:sftl",
+            "find:sftl",
+            "find:sftl"
+          ],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 5,
+              "device_ready": 1,
+              "device_table": 2161640896,
+              "eftl_ready": 0,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "ac45fc56de4faad8c01702f8669c03cd83514aa5ff38ea77b981ae5bf4853923",
+              "owner_pointer": 2166489088,
+              "owners": [
+                2161643524,
+                2161643524,
+                2161643524,
+                2161643524,
+                2161643600,
+                1431655765,
+                1431655765,
+                1431655765,
+                1431655765,
+                1431655765,
+                1431655765,
+                1431655765,
+                2161643372,
+                2161643372,
+                2161643372,
+                2161643372
+              ],
+              "partition_count": 16,
+              "partition_ready": 1,
+              "partition_table": 2160278072,
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 1409
+      },
+      {
+        "name": "partition_capacity_equal",
+        "observed": {
+          "actions": [
+            "alloc:64:1",
+            "find:nand",
+            "find:nand",
+            "find:nand",
+            "find:nand",
+            "find:nandraw",
+            "find:eftl",
+            "find:eftl",
+            "log:partition_start_error"
+          ],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                262144,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 5,
+              "device_ready": 1,
+              "device_table": 2161640896,
+              "eftl_ready": 0,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "e2fed5c34db1ef7abfa4df471a822ee048c3020ddaca7d8c0b279691f2369745",
+              "owner_pointer": 2166489088,
+              "owners": [
+                2161643524,
+                2161643524,
+                2161643524,
+                2161643524,
+                2161643600,
+                2161643448,
+                2779096485,
+                2779096485,
+                2779096485,
+                2779096485,
+                2779096485,
+                2779096485,
+                2779096485,
+                2779096485,
+                2779096485,
+                2779096485
+              ],
+              "partition_count": 0,
+              "partition_ready": 0,
+              "partition_table": 2160278072,
+              "returned": 4294967295
+            }
+          ]
+        },
+        "steps": 479
+      },
+      {
+        "name": "partition_signed_offset",
+        "observed": {
+          "actions": [
+            "alloc:64:1",
+            "find:nand",
+            "find:nand",
+            "find:nand",
+            "find:nand",
+            "find:nandraw",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:sftl",
+            "find:sftl",
+            "find:sftl",
+            "find:sftl"
+          ],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 5,
+              "device_ready": 1,
+              "device_table": 2161640896,
+              "eftl_ready": 0,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "952ea2103f25dfe56df73e79ed1ce58557e69329d684223860051d5eff21ee31",
+              "owner_pointer": 2166489088,
+              "owners": [
+                2161643524,
+                2161643524,
+                2161643524,
+                2161643524,
+                2161643600,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643372,
+                2161643372,
+                2161643372,
+                2161643372
+              ],
+              "partition_count": 16,
+              "partition_ready": 1,
+              "partition_table": 2160278072,
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 1232
+      },
+      {
+        "name": "partition_span_not_checked",
+        "observed": {
+          "actions": [
+            "alloc:64:1",
+            "find:nand",
+            "find:nand",
+            "find:nand",
+            "find:nand",
+            "find:nandraw",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:eftl",
+            "find:sftl",
+            "find:sftl",
+            "find:sftl",
+            "find:sftl"
+          ],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 5,
+              "device_ready": 1,
+              "device_table": 2161640896,
+              "eftl_ready": 0,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "952ea2103f25dfe56df73e79ed1ce58557e69329d684223860051d5eff21ee31",
+              "owner_pointer": 2166489088,
+              "owners": [
+                2161643524,
+                2161643524,
+                2161643524,
+                2161643524,
+                2161643600,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643448,
+                2161643372,
+                2161643372,
+                2161643372,
+                2161643372
+              ],
+              "partition_count": 16,
+              "partition_ready": 1,
+              "partition_table": 2160278072,
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 1232
+      },
+      {
+        "name": "find_original",
+        "observed": {
+          "actions": [
+            "find:eftl"
+          ],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 5,
+              "device_ready": 1,
+              "device_table": 2161640896,
+              "eftl_ready": 0,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+              "owner_pointer": 0,
+              "owners": null,
+              "partition_count": 0,
+              "partition_ready": 0,
+              "partition_table": 0,
+              "returned": 2161643448
+            }
+          ]
+        },
+        "steps": 57
+      },
+      {
+        "name": "find_missing",
+        "observed": {
+          "actions": [
+            "find:missing"
+          ],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 5,
+              "device_ready": 1,
+              "device_table": 2161640896,
+              "eftl_ready": 0,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+              "owner_pointer": 0,
+              "owners": null,
+              "partition_count": 0,
+              "partition_ready": 0,
+              "partition_table": 0,
+              "returned": 0
+            }
+          ]
+        },
+        "steps": 83
+      },
+      {
+        "name": "lazy_original",
+        "observed": {
+          "actions": [
+            "geometry:0",
+            "log:eftl_ready"
+          ],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                16252928,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 0,
+              "device_ready": 0,
+              "device_table": 0,
+              "eftl_ready": 1,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+              "owner_pointer": 0,
+              "owners": null,
+              "partition_count": 0,
+              "partition_ready": 0,
+              "partition_table": 0,
+              "returned": null
+            }
+          ]
+        },
+        "steps": 40
+      },
+      {
+        "name": "lazy_repeat",
+        "observed": {
+          "actions": [
+            "geometry:0",
+            "log:eftl_ready"
+          ],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                16252928,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 0,
+              "device_ready": 0,
+              "device_table": 0,
+              "eftl_ready": 1,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+              "owner_pointer": 0,
+              "owners": null,
+              "partition_count": 0,
+              "partition_ready": 0,
+              "partition_table": 0,
+              "returned": null
+            },
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                16252928,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 0,
+              "device_ready": 0,
+              "device_table": 0,
+              "eftl_ready": 1,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+              "owner_pointer": 0,
+              "owners": null,
+              "partition_count": 0,
+              "partition_ready": 0,
+              "partition_table": 0,
+              "returned": null
+            }
+          ]
+        },
+        "steps": 51
+      },
+      {
+        "name": "lazy_error",
+        "observed": {
+          "actions": [
+            "geometry:-14"
+          ],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 0,
+              "device_ready": 0,
+              "device_table": 0,
+              "eftl_ready": 0,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+              "owner_pointer": 0,
+              "owners": null,
+              "partition_count": 0,
+              "partition_ready": 0,
+              "partition_table": 0,
+              "returned": null
+            }
+          ]
+        },
+        "steps": 18
+      },
+      {
+        "name": "lazy_positive_status",
+        "observed": {
+          "actions": [
+            "geometry:1",
+            "log:eftl_ready"
+          ],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                16252928,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 0,
+              "device_ready": 0,
+              "device_table": 0,
+              "eftl_ready": 1,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+              "owner_pointer": 0,
+              "owners": null,
+              "partition_count": 0,
+              "partition_ready": 0,
+              "partition_table": 0,
+              "returned": null
+            }
+          ]
+        },
+        "steps": 40
+      },
+      {
+        "name": "lazy_already_ready",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 0,
+              "device_ready": 0,
+              "device_table": 0,
+              "eftl_ready": 1,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+              "owner_pointer": 0,
+              "owners": null,
+              "partition_count": 0,
+              "partition_ready": 0,
+              "partition_table": 0,
+              "returned": null
+            }
+          ]
+        },
+        "steps": 11
+      },
+      {
+        "name": "lazy_arithmetic_wrap",
+        "observed": {
+          "actions": [
+            "geometry:0",
+            "log:eftl_ready"
+          ],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                0,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                0,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 0,
+              "device_ready": 0,
+              "device_table": 0,
+              "eftl_ready": 1,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+              "owner_pointer": 0,
+              "owners": null,
+              "partition_count": 0,
+              "partition_ready": 0,
+              "partition_table": 0,
+              "returned": null
+            }
+          ]
+        },
+        "steps": 40
+      },
+      {
+        "name": "lazy_reserved_underflow",
+        "observed": {
+          "actions": [
+            "geometry:0",
+            "log:eftl_ready"
+          ],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                4294574080,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 0,
+              "device_ready": 0,
+              "device_table": 0,
+              "eftl_ready": 1,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+              "owner_pointer": 0,
+              "owners": null,
+              "partition_count": 0,
+              "partition_ready": 0,
+              "partition_table": 0,
+              "returned": null
+            }
+          ]
+        },
+        "steps": 40
+      },
+      {
+        "name": "read_lazy",
+        "observed": {
+          "actions": [
+            "geometry:0",
+            "log:eftl_ready",
+            "ftl_read:32:32:32"
+          ],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "c0a10525f013c57f36d8fa51b09a6dd202b63f097074d5c7b28d8339c535c9b7",
+              "capacities": [
+                2147483647,
+                2147483647,
+                16252928,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 0,
+              "device_ready": 0,
+              "device_table": 0,
+              "eftl_ready": 1,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+              "owner_pointer": 0,
+              "owners": null,
+              "partition_count": 0,
+              "partition_ready": 0,
+              "partition_table": 0,
+              "returned": 32
+            }
+          ]
+        },
+        "steps": 66
+      },
+      {
+        "name": "read_lazy_error",
+        "observed": {
+          "actions": [
+            "geometry:-1"
+          ],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 0,
+              "device_ready": 0,
+              "device_table": 0,
+              "eftl_ready": 0,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+              "owner_pointer": 0,
+              "owners": null,
+              "partition_count": 0,
+              "partition_ready": 0,
+              "partition_table": 0,
+              "returned": 4294967282
+            }
+          ]
+        },
+        "steps": 41
+      },
+      {
+        "name": "read_already_ready",
+        "observed": {
+          "actions": [
+            "ftl_read:32:32:32"
+          ],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "c0a10525f013c57f36d8fa51b09a6dd202b63f097074d5c7b28d8339c535c9b7",
+              "capacities": [
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 0,
+              "device_ready": 0,
+              "device_table": 0,
+              "eftl_ready": 1,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+              "owner_pointer": 0,
+              "owners": null,
+              "partition_count": 0,
+              "partition_ready": 0,
+              "partition_table": 0,
+              "returned": 32
+            }
+          ]
+        },
+        "steps": 19
+      },
+      {
+        "name": "read_short",
+        "observed": {
+          "actions": [
+            "geometry:0",
+            "log:eftl_ready",
+            "ftl_read:32:32:7"
+          ],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "7a8e01f09525f77cd742423cdfc63ae96b57c4cede2194444fb7de36ade93b9f",
+              "capacities": [
+                2147483647,
+                2147483647,
+                16252928,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 0,
+              "device_ready": 0,
+              "device_table": 0,
+              "eftl_ready": 1,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+              "owner_pointer": 0,
+              "owners": null,
+              "partition_count": 0,
+              "partition_ready": 0,
+              "partition_table": 0,
+              "returned": 7
+            }
+          ]
+        },
+        "steps": 66
+      },
+      {
+        "name": "read_backend_error",
+        "observed": {
+          "actions": [
+            "geometry:0",
+            "log:eftl_ready",
+            "ftl_read:32:32:-9"
+          ],
+          "rows": [
+            {
+              "blocks": [
+                131072,
+                131072,
+                131072,
+                4096,
+                4096
+              ],
+              "buffer_sha256": "e75809e0d15667ce44e6aa5c64689a4917b245eb0920094ff0b017dc0612a17a",
+              "capacities": [
+                2147483647,
+                2147483647,
+                16252928,
+                2147483647,
+                2147483647
+              ],
+              "device_count": 0,
+              "device_ready": 0,
+              "device_table": 0,
+              "eftl_ready": 1,
+              "outer_count": 0,
+              "outer_table": 0,
+              "owner_backing_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+              "owner_pointer": 0,
+              "owners": null,
+              "partition_count": 0,
+              "partition_ready": 0,
+              "partition_table": 0,
+              "returned": 4294967287
+            }
+          ]
+        },
+        "steps": 66
+      }
+    ],
+    "hardware_execution": false
+  },
+  "storage_facts_sha256": "bcc6497b383008aa9663046ae1d08fef23d3c8fae4876dd91cc4962c92ac5a98",
+  "validation_sha256": "196ce1203f3375849fa4d7defd890c4fe7c5b87276f97284dd069cab4f4b3d20",
+  "vectors_sha256": "d45de0487ccdb6092dfc194d6caf26842b7c640527b56acaa598f8553d7c885d"
+}
