@@ -1,0 +1,3826 @@
+{
+  "boot_sha256": "44cd83c0d09864c6101e9825bd3c77d7fac314584d0408b378dd56c2aac5736a",
+  "byte_range_sha256": {
+    "80c106f0_376": "e2ae939cfa8cdeefa0e0672c87e9fb5894fa6fc1d65507d305239a7bd054ab59",
+    "80c27ce8_60": "2fec1eff293a04a76ac7b393c32edfa35c907acfceb78ad3b8d200a5100c1afe",
+    "80c27d48_68": "db25a8f625930987d4de9167e93c764a9d7bc8d50be4fdd13f84f3e61fda4274",
+    "80c27db0_5e": "d52e2947976b3c2b24f6fafa40ecedd9ef3a2f533374ec97374d57b893a5a57a",
+    "80c27e70_66": "083d5c97de97dfdffc36089019e1f5f6851ff794d94c547ff6abcd4ff9d20345",
+    "80c2806c_64": "daf0b6127f69fa6583f5afe6dcfe20f0081bfca1fd68983192c4334bc5847302",
+    "80df8f38_64": "d81728d94ec968a8022bdf7cd2c799cdd65fdbe9c81fe3e8279b0f1750187ca8",
+    "80df9000_98": "5e3259ee308e7647a7df2e3cb4a472029fd2f49be162466fa3e7a823f8f9f694",
+    "80df9098_a0": "6aa9e076be56cc89f1917b42a275a6e4ac4d20a23e43bb88ebed2030ffd8c046",
+    "80df9138_a0": "084d605e2524d044a2b4c98514598e0a7dfe3e8286dd2af6eb0c8bbea6a88662",
+    "80df91d8_24": "23f0432a05059b34c075ae3b853d8042bb22a71cd30f0ee056f8eff3f02b715e",
+    "80df91fc_24": "42c4cd8a20418deeb8f7f9c7568c4df0993e9e95ff0957530f69f313c01f79e8",
+    "80df9220_6c": "00754e5d66f0e683b7574bfe16e58619d92ad41b9f5860c63ed5741d81bea4c3",
+    "80df928c_cc": "a1c08672020fd6b42ac6d1b852bf1fa25324b51155195b8874ac50355029cf6e",
+    "80df93c4_f8": "cf0b858c19fc1abe1f9dd971a2092a1f70f34cf1d891b875ab3778953e5f6ca0",
+    "80df94bc_60": "9133bab78dc6a4b3a1bdd3c931eaab7d8cee2ccd15a659bc2dd9123b8758f24f",
+    "80df951c_f0": "0966f523fba54b2ecace5a0ea517192f39af5b05ba6447e0c35db03513b4a4b2",
+    "80df960c_58": "96431deb8412fc45a4b405daa5936f73444e1f1c86df52a40f599e02af01f631",
+    "80df9f80_34": "da2211e78c9062b051bb9a378882c767596ec7f01c5b6c470bee83ddad1e207a"
+  },
+  "export_sha256": {
+    "80c106f0.c": "a76a8ca246ddaf6ff0eb72c9034f2b1b0d2a6d98769e05409c7d2d2261aa9ea4",
+    "80c27ce8.c": "4e75a1aafad1f65e693e0e94eae904ecedaa242bad982341e88f2ec8b4272bdb",
+    "80c27d48.c": "3123c7b7b84b07e24ebcaf5c9b1a7ea425efc13952904981e7693e64aa1fa79a",
+    "80c27db0.c": "313899ffe2e1f21fbc1d1b85b7b4824a2fca5cedc9fa32108367dfa44d8903a2",
+    "80c27e70.c": "3593a315c68477a08575886544e7851703cd346ee11f0e02ffdfe8da3be9ad32",
+    "80c2806c.c": "3bd1e2f582a35236d40a4d39a6c84226d79c95ba800f62ea534be8226b5e746d",
+    "80df8f38.c": "4bcc67fc0866143ee3a3f273aae321aca9b6fcfb5d14b518619c7cca4250e601",
+    "80df9000.c": "3c1a20e968bf7152b8e099a5c1fcec0388aac4149be258982fe45edc3bb7d12e",
+    "80df9098.c": "c24790a3c02014eadfa045826590668b717b87568c22e420bbfc0975fbc471c8",
+    "80df9138.c": "3964a8fe793e1c664b7f1fa5b758a2c2f301296010a68c386c77676abf5dc69b",
+    "80df91d8.c": "f5e33411bd734c97aa262a677831dafaa5e868c8a745ea9e113da962f81cb350",
+    "80df91fc.c": "4d24648dc50541447ff875596a4f9e4e20166aa0e5dd21b48b2230925b54d0be",
+    "80df9220.c": "fdf65dcf55a80ffe7e7455e8ad57a0207c2afdbe619212e4417b75c407a92fec",
+    "80df928c.c": "840e5ba5e52bb01a0f82e24aca4e1dc3c28700a6e8a2272c65560bf3c63f38bd",
+    "80df93c4.c": "9b5595d738e3c9ca5398b52d36319697e56e4e020bec43c5cfd898c2685e9441",
+    "80df94bc.c": "8744cbde8261f08995f43d40d3f192045a9282315fff8540b4b4ff5fc110e118",
+    "80df951c.c": "0ccec275536285a4f070d7f02509cf4310bb2852f13c180cab9a107b5fd4e168",
+    "80df960c.c": "35b18878689675d26013bb3b2a6d494be6cd9febe1cdb3eb58701430f9819715",
+    "80df9f80.c": "01309040c8203062f53779a5fe87e2d54fb913ad1a47989582f413d529adb172"
+  },
+  "limitations": [
+    "Actual QSPI HAL init/command/FIFO/DMA wrappers, packing/status/count helpers and clock selection execute over authored MMIO and 64-bit timer inputs; selected NAND builders connect through the actual bus wrapper.",
+    "Reset self-clear, status/ready values, FIFO data, completion W1C and DMA setup/wait/copy behavior are supplied; no controller or DMA hardware is accessed.",
+    "Zero-FIFO cases stop at a bounded no-progress prefix; NAND errors stop before assertion bodies. Neither claims normal return ABI. The connected bus uses a supplied ROM-version result and authored initialized context.",
+    "Actual DMA setup/wait internals, electrical bus operation, frequency calibration, coherency, physical persistence and device boot remain open."
+  ],
+  "native_steps": 11326,
+  "native_validation": {
+    "bound_per_case": 100000,
+    "case_count": 90,
+    "cases": [
+      {
+        "name": "init_reset_then_ready",
+        "observed": {
+          "actions": [
+            "w:16:4:256",
+            "r:16:4:256",
+            "r:16:4:0",
+            "r:16:4:0",
+            "w:16:4:0",
+            "r:52:4:257",
+            "w:52:4:769",
+            "w:32:4:13056"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 0,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 769,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 36
+      },
+      {
+        "name": "init_mode_one",
+        "observed": {
+          "actions": [
+            "w:16:4:256",
+            "r:16:4:256",
+            "r:16:4:0",
+            "r:52:4:257",
+            "w:52:4:769",
+            "w:32:4:13056"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000100000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 0,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 769,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 20
+      },
+      {
+        "name": "init_preserves_other_control_bits",
+        "observed": {
+          "actions": [
+            "w:16:4:256",
+            "r:16:4:324",
+            "r:16:4:68",
+            "r:16:4:68",
+            "w:16:4:71",
+            "r:52:4:257",
+            "w:52:4:769",
+            "w:32:4:13056"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a501000000020000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 71,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 769,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 36
+      },
+      {
+        "name": "clock_1",
+        "observed": {
+          "actions": [
+            "clock_read:2779100581",
+            "clock_write:2779059621"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779059621,
+              "clock_word": 2779059621,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 14
+      },
+      {
+        "name": "clock_2",
+        "observed": {
+          "actions": [
+            "clock_read:2779100581",
+            "clock_write:2779063717"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779063717,
+              "clock_word": 2779063717,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 14
+      },
+      {
+        "name": "clock_11",
+        "observed": {
+          "actions": [
+            "clock_read:2779100581"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779100581,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 8
+      },
+      {
+        "name": "clock_17",
+        "observed": {
+          "actions": [
+            "clock_read:2779100581",
+            "clock_write:2779059621"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779059621,
+              "clock_word": 2779059621,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 14
+      },
+      {
+        "name": "pack_1_1_1",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 8
+      },
+      {
+        "name": "pack_1_1_2",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 32,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 10
+      },
+      {
+        "name": "pack_1_1_3",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 64,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 12
+      },
+      {
+        "name": "pack_1_2_1",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 96,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 7
+      },
+      {
+        "name": "pack_1_3_1",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 128,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 9
+      },
+      {
+        "name": "pack_2_1_1",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 160,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 5
+      },
+      {
+        "name": "pack_3_1_1",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 192,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 7
+      },
+      {
+        "name": "pack_0_1_1",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 6
+      },
+      {
+        "name": "pack_1_0_1",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 9
+      },
+      {
+        "name": "pack_1_1_4",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 12
+      },
+      {
+        "name": "tx_count_0",
+        "observed": {
+          "actions": [
+            "r:84:4:773",
+            "r:32:4:0"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 0,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 773
+              },
+              "returned": 2,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 15
+      },
+      {
+        "name": "tx_count_1",
+        "observed": {
+          "actions": [
+            "r:84:4:773",
+            "r:32:4:256"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 256,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 773
+              },
+              "returned": 5,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 15
+      },
+      {
+        "name": "tx_count_2",
+        "observed": {
+          "actions": [
+            "r:84:4:773",
+            "r:32:4:512"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 512,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 773
+              },
+              "returned": 10,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 15
+      },
+      {
+        "name": "tx_count_3",
+        "observed": {
+          "actions": [
+            "r:84:4:773",
+            "r:32:4:768"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 768,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 773
+              },
+              "returned": 20,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 15
+      },
+      {
+        "name": "rx_count_0",
+        "observed": {
+          "actions": [
+            "r:84:4:773",
+            "r:32:4:0"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 0,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 773
+              },
+              "returned": 1,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 15
+      },
+      {
+        "name": "rx_count_1",
+        "observed": {
+          "actions": [
+            "r:84:4:773",
+            "r:32:4:4096"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 4096,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 773
+              },
+              "returned": 3,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 15
+      },
+      {
+        "name": "rx_count_2",
+        "observed": {
+          "actions": [
+            "r:84:4:773",
+            "r:32:4:8192"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 8192,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 773
+              },
+              "returned": 6,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 15
+      },
+      {
+        "name": "rx_count_3",
+        "observed": {
+          "actions": [
+            "r:84:4:773",
+            "r:32:4:12288"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 12288,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 773
+              },
+              "returned": 12,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 15
+      },
+      {
+        "name": "command_read",
+        "observed": {
+          "actions": [
+            "w:0:4:4660",
+            "w:4:4:17301506",
+            "w:8:4:9",
+            "w:12:4:1795162177"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 4660,
+                "12": 1795162177,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 17301506,
+                "52": 257,
+                "8": 9,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 71
+      },
+      {
+        "name": "command_write",
+        "observed": {
+          "actions": [
+            "w:0:4:4660",
+            "w:4:4:17301506",
+            "w:8:4:9",
+            "w:12:4:1795162179"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 4660,
+                "12": 1795162179,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 17301506,
+                "52": 257,
+                "8": 9,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 71
+      },
+      {
+        "name": "command_mode_seven",
+        "observed": {
+          "actions": [
+            "w:0:4:4660",
+            "w:4:4:285736962",
+            "w:8:4:9",
+            "w:12:4:1802174529"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 4660,
+                "12": 1802174529,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 285736962,
+                "52": 257,
+                "8": 9,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 74
+      },
+      {
+        "name": "command_other_base",
+        "observed": {
+          "actions": [
+            "w:0:4:4660",
+            "w:4:4:17301506",
+            "w:8:4:9",
+            "w:12:4:1795162176"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002093a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 4660,
+                "12": 1795162176,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 17301506,
+                "52": 257,
+                "8": 9,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 70
+      },
+      {
+        "name": "command_no_context",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 1,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 3
+      },
+      {
+        "name": "command_no_frame",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 1,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 25
+      },
+      {
+        "name": "command_no_base",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00000000a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 1,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 28
+      },
+      {
+        "name": "command_empty_ready",
+        "observed": {
+          "actions": [
+            "w:0:4:4660",
+            "w:4:4:17301506",
+            "w:8:4:0",
+            "w:12:4:1795162177",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 4660,
+                "12": 1795162177,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 17301506,
+                "52": 257,
+                "8": 0,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 112
+      },
+      {
+        "name": "command_empty_timeout",
+        "observed": {
+          "actions": [
+            "w:0:4:4660",
+            "w:4:4:17301506",
+            "w:8:4:0",
+            "w:12:4:1795162177",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:0",
+            "tick:1001",
+            "r:36:4:0"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 4660,
+                "12": 1795162177,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 17301506,
+                "52": 257,
+                "8": 0,
+                "84": 257
+              },
+              "returned": 3,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 124
+      },
+      {
+        "name": "receive_ready",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:4:1869111642",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:4:2340715894",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:1:146",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "a73e259a56af28cd55d03ddb2b2a5ef9de987f1ed4f5a51c50719dff90a862b0",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 9,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 333
+      },
+      {
+        "name": "command_receive",
+        "observed": {
+          "actions": [
+            "w:0:4:4660",
+            "w:4:4:17301506",
+            "w:8:4:9",
+            "w:12:4:1795162177",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:4:1869111642",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:4:2340715894",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:1:146",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "a73e259a56af28cd55d03ddb2b2a5ef9de987f1ed4f5a51c50719dff90a862b0",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 4660,
+                "12": 1795162177,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 17301506,
+                "52": 257,
+                "8": 9,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 9,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 404
+      },
+      {
+        "name": "receive_empty",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 69
+      },
+      {
+        "name": "transmit_ready",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:4:168231937",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:4:370348045",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:1:25",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": "0104070a0d10131619"
+            }
+          ]
+        },
+        "steps": 347
+      },
+      {
+        "name": "command_transmit",
+        "observed": {
+          "actions": [
+            "w:0:4:4660",
+            "w:4:4:17301506",
+            "w:8:4:9",
+            "w:12:4:1795162179",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:4:168231937",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:4:370348045",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:1:25",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 4660,
+                "12": 1795162179,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 17301506,
+                "52": 257,
+                "8": 9,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": "0104070a0d10131619"
+            }
+          ]
+        },
+        "steps": 418
+      },
+      {
+        "name": "transmit_empty",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 66
+      },
+      {
+        "name": "receive_dma_ready",
+        "observed": {
+          "actions": [
+            "dma_setup:receive:9:13056:0:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "r:32:4:13056",
+            "w:32:4:13057",
+            "dma_wait:1000:13057:0",
+            "r:32:4:13057",
+            "w:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "a73e259a56af28cd55d03ddb2b2a5ef9de987f1ed4f5a51c50719dff90a862b0",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 75
+      },
+      {
+        "name": "command_receive_dma",
+        "observed": {
+          "actions": [
+            "w:0:4:4660",
+            "w:4:4:17301506",
+            "w:8:4:9",
+            "w:12:4:1795162177",
+            "dma_setup:receive:9:13056:0:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "r:32:4:13056",
+            "w:32:4:13057",
+            "dma_wait:1000:13057:0",
+            "r:32:4:13057",
+            "w:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "a73e259a56af28cd55d03ddb2b2a5ef9de987f1ed4f5a51c50719dff90a862b0",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 4660,
+                "12": 1795162177,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 17301506,
+                "52": 257,
+                "8": 9,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 146
+      },
+      {
+        "name": "receive_dma_empty",
+        "observed": {
+          "actions": [
+            "dma_setup:receive:0:13056:0:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "r:32:4:13056",
+            "w:32:4:13057",
+            "dma_wait:1000:13057:0",
+            "r:32:4:13057",
+            "w:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 75
+      },
+      {
+        "name": "transmit_dma_ready",
+        "observed": {
+          "actions": [
+            "r:32:4:13056",
+            "w:32:4:13057",
+            "dma_setup:transmit:9:13057:0:055a1e923f66c1c1069d2d7a706adb1f0f115eca19d2050d23f52a00406ec2ac",
+            "dma_wait:1000:13057:0",
+            "r:32:4:13057",
+            "w:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 73
+      },
+      {
+        "name": "command_transmit_dma",
+        "observed": {
+          "actions": [
+            "w:0:4:4660",
+            "w:4:4:17301506",
+            "w:8:4:9",
+            "w:12:4:1795162179",
+            "r:32:4:13056",
+            "w:32:4:13057",
+            "dma_setup:transmit:9:13057:0:055a1e923f66c1c1069d2d7a706adb1f0f115eca19d2050d23f52a00406ec2ac",
+            "dma_wait:1000:13057:0",
+            "r:32:4:13057",
+            "w:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 4660,
+                "12": 1795162179,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 17301506,
+                "52": 257,
+                "8": 9,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 144
+      },
+      {
+        "name": "transmit_dma_empty",
+        "observed": {
+          "actions": [
+            "r:32:4:13056",
+            "w:32:4:13057",
+            "dma_setup:transmit:0:13057:0:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "dma_wait:1000:13057:0",
+            "r:32:4:13057",
+            "w:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 73
+      },
+      {
+        "name": "receive_count_1",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:1:90",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "4d736b9113e472ada03ee2475ab1a9f51b2457b47fd4f01b23e3362f39eb7933",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 1,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 145
+      },
+      {
+        "name": "receive_count_3",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:1:90",
+            "r:256:1:97",
+            "r:256:1:104",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "856851532ac30ab9d16ad72d976d32d7582f2ce405eaa76fc611111198924805",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 3,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 153
+      },
+      {
+        "name": "receive_count_4",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:4:1869111642",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "7f1284480b1696f5c5e5c3a142b5f8f11c1c875794b587f415a2ce307f0fe7dd",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 4,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 167
+      },
+      {
+        "name": "receive_count_5",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:4:1869111642",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:1:118",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "19d88148451c7ad2080d75f6cd282a6d11cccfd499b1a79375b51fb271d08360",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 5,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 239
+      },
+      {
+        "name": "receive_count_8",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:4:1869111642",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:4:2340715894",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "85b1cb5b6e5976da89b9f40b35e8666be3cdc809791d3bc3f659dd723711b1b1",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 8,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 261
+      },
+      {
+        "name": "receive_unaligned",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:1:90",
+            "r:256:1:97",
+            "r:256:1:104",
+            "r:256:1:111",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:1:118",
+            "r:256:1:125",
+            "r:256:1:132",
+            "r:256:1:139",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:1:146",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "5521e1bb5dfed4df4bdf87c079aaf774ad1623046184a52ac50d589a2aaba076",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 9,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 349
+      },
+      {
+        "name": "receive_data_timeout",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:0",
+            "tick:1001",
+            "r:24:4:0"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 3,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 85
+      },
+      {
+        "name": "receive_completion_timeout",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:1:90",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:0",
+            "tick:1001",
+            "r:36:4:0"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "4d736b9113e472ada03ee2475ab1a9f51b2457b47fd4f01b23e3362f39eb7933",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 3,
+              "rx_bytes": 1,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 157
+      },
+      {
+        "name": "receive_zero_fifo_prefix",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "stop_no_progress:4"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 0
+              },
+              "returned": null,
+              "rx_bytes": 0,
+              "stopped": {
+                "chunks": 4,
+                "kind": "bounded_prefix"
+              },
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 373
+      },
+      {
+        "name": "transmit_count_1",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:1:1",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": "01"
+            }
+          ]
+        },
+        "steps": 151
+      },
+      {
+        "name": "transmit_count_3",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:1:1",
+            "w:256:1:4",
+            "w:256:1:7",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": "010407"
+            }
+          ]
+        },
+        "steps": 169
+      },
+      {
+        "name": "transmit_count_4",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:4:168231937",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": "0104070a"
+            }
+          ]
+        },
+        "steps": 166
+      },
+      {
+        "name": "transmit_count_5",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:4:168231937",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:1:13",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": "0104070a0d"
+            }
+          ]
+        },
+        "steps": 249
+      },
+      {
+        "name": "transmit_count_8",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:4:168231937",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:4:370348045",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": "0104070a0d101316"
+            }
+          ]
+        },
+        "steps": 264
+      },
+      {
+        "name": "transmit_unaligned",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:1:4",
+            "w:256:1:7",
+            "w:256:1:10",
+            "w:256:1:13",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:1:16",
+            "w:256:1:19",
+            "w:256:1:22",
+            "w:256:1:25",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:1:28",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": "04070a0d101316191c"
+            }
+          ]
+        },
+        "steps": 397
+      },
+      {
+        "name": "transmit_data_timeout",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:0",
+            "tick:1001",
+            "r:24:4:0"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 3,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 81
+      },
+      {
+        "name": "transmit_completion_timeout",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:1:1",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:0",
+            "tick:1001",
+            "r:36:4:0"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 3,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": "01"
+            }
+          ]
+        },
+        "steps": 163
+      },
+      {
+        "name": "transmit_zero_fifo_prefix",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "stop_no_progress:4"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 0
+              },
+              "returned": null,
+              "rx_bytes": 0,
+              "stopped": {
+                "chunks": 4,
+                "kind": "bounded_prefix"
+              },
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 382
+      },
+      {
+        "name": "receive_dma_wait_error",
+        "observed": {
+          "actions": [
+            "dma_setup:receive:9:13057:0:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "r:32:4:13057",
+            "w:32:4:13057",
+            "dma_wait:1000:13057:-9",
+            "r:32:4:13057",
+            "w:32:4:13056"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "a73e259a56af28cd55d03ddb2b2a5ef9de987f1ed4f5a51c50719dff90a862b0",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 4294967287,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 34
+      },
+      {
+        "name": "receive_dma_setup_error_ignored",
+        "observed": {
+          "actions": [
+            "dma_setup:receive:9:13056:-9:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "r:32:4:13056",
+            "w:32:4:13057",
+            "dma_wait:1000:13057:0",
+            "r:32:4:13057",
+            "w:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 75
+      },
+      {
+        "name": "receive_dma_completion_timeout",
+        "observed": {
+          "actions": [
+            "dma_setup:receive:9:13056:0:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "r:32:4:13056",
+            "w:32:4:13057",
+            "dma_wait:1000:13057:0",
+            "r:32:4:13057",
+            "w:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:0",
+            "tick:1001",
+            "r:36:4:0"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "a73e259a56af28cd55d03ddb2b2a5ef9de987f1ed4f5a51c50719dff90a862b0",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 3,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 87
+      },
+      {
+        "name": "transmit_dma_wait_error",
+        "observed": {
+          "actions": [
+            "r:32:4:13057",
+            "w:32:4:13057",
+            "dma_setup:transmit:9:13057:0:055a1e923f66c1c1069d2d7a706adb1f0f115eca19d2050d23f52a00406ec2ac",
+            "dma_wait:1000:13057:-9",
+            "r:32:4:13057",
+            "w:32:4:13056"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 4294967287,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 32
+      },
+      {
+        "name": "transmit_dma_setup_error_ignored",
+        "observed": {
+          "actions": [
+            "r:32:4:13056",
+            "w:32:4:13057",
+            "dma_setup:transmit:9:13057:-9:055a1e923f66c1c1069d2d7a706adb1f0f115eca19d2050d23f52a00406ec2ac",
+            "dma_wait:1000:13057:0",
+            "r:32:4:13057",
+            "w:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 73
+      },
+      {
+        "name": "transmit_dma_completion_timeout",
+        "observed": {
+          "actions": [
+            "r:32:4:13056",
+            "w:32:4:13057",
+            "dma_setup:transmit:9:13057:0:055a1e923f66c1c1069d2d7a706adb1f0f115eca19d2050d23f52a00406ec2ac",
+            "dma_wait:1000:13057:0",
+            "r:32:4:13057",
+            "w:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:0",
+            "tick:1001",
+            "r:36:4:0"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 3,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 85
+      },
+      {
+        "name": "complete_ready",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 39
+      },
+      {
+        "name": "complete_timeout",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:0",
+            "tick:1001",
+            "r:36:4:0"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 3,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 51
+      },
+      {
+        "name": "complete_ready_on_recheck",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:0",
+            "tick:1001",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 54
+      },
+      {
+        "name": "complete_exact_deadline",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:0",
+            "tick:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 53
+      },
+      {
+        "name": "complete_low_word_wrap",
+        "observed": {
+          "actions": [
+            "tick:4294967294",
+            "frequency:1000",
+            "r:36:4:0",
+            "tick:4294967297",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 53
+      },
+      {
+        "name": "complete_full_counter_wrap",
+        "observed": {
+          "actions": [
+            "tick:18446744073709551614",
+            "frequency:1000",
+            "r:36:4:0",
+            "tick:1",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 53
+      },
+      {
+        "name": "complete_high_word_elapsed",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:0",
+            "tick:4294967296",
+            "r:36:4:0"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 3,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 50
+      },
+      {
+        "name": "complete_sub_khz_frequency",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:999",
+            "r:36:4:0",
+            "tick:1",
+            "r:36:4:0"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 3,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 51
+      },
+      {
+        "name": "complete_limit_multiply_wrap",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:4000000000",
+            "r:36:4:0",
+            "tick:3705032705",
+            "r:36:4:0"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 3,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 51
+      },
+      {
+        "name": "wait_receive_ready_recheck",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:0",
+            "tick:1001",
+            "r:24:4:2"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 2,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 49
+      },
+      {
+        "name": "wait_transmit_ready_recheck",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:0",
+            "tick:1001",
+            "r:24:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 1,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 49
+      },
+      {
+        "name": "nand_feature_read",
+        "observed": {
+          "actions": [
+            "version:2",
+            "w:0:4:176",
+            "w:4:4:16777217",
+            "w:8:4:1",
+            "w:12:4:251658241",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:1:90",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "4d736b9113e472ada03ee2475ab1a9f51b2457b47fd4f01b23e3362f39eb7933",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 176,
+                "12": 251658241,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 16777217,
+                "52": 257,
+                "8": 1,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 1,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 315
+      },
+      {
+        "name": "nand_feature_write",
+        "observed": {
+          "actions": [
+            "version:2",
+            "w:0:4:176",
+            "w:4:4:16777217",
+            "w:8:4:1",
+            "w:12:4:520093699",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:1:165",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 176,
+                "12": 520093699,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 16777217,
+                "52": 257,
+                "8": 1,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": "a5"
+            }
+          ]
+        },
+        "steps": 320
+      },
+      {
+        "name": "nand_cache_read",
+        "observed": {
+          "actions": [
+            "version:2",
+            "w:0:4:4660",
+            "w:4:4:17301506",
+            "w:8:4:9",
+            "w:12:4:50331649",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:4:1869111642",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:4:2340715894",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:1:146",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "a73e259a56af28cd55d03ddb2b2a5ef9de987f1ed4f5a51c50719dff90a862b0",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 4660,
+                "12": 50331649,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 17301506,
+                "52": 257,
+                "8": 9,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 9,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 505
+      },
+      {
+        "name": "nand_cache_write",
+        "observed": {
+          "actions": [
+            "version:2",
+            "w:0:4:4660",
+            "w:4:4:16777218",
+            "w:8:4:9",
+            "w:12:4:838860867",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:4:168231937",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:4:370348045",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:1:25",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 4660,
+                "12": 838860867,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 16777218,
+                "52": 257,
+                "8": 9,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": "0104070a0d10131619"
+            }
+          ]
+        },
+        "steps": 522
+      },
+      {
+        "name": "nand_feature_read_timeout",
+        "observed": {
+          "actions": [
+            "version:2",
+            "w:0:4:176",
+            "w:4:4:16777217",
+            "w:8:4:1",
+            "w:12:4:251658241",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:1:90",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:0",
+            "tick:1001",
+            "r:36:4:0",
+            "log:receive_poll_error",
+            "diagnostic"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "4d736b9113e472ada03ee2475ab1a9f51b2457b47fd4f01b23e3362f39eb7933",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 176,
+                "12": 251658241,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 16777217,
+                "52": 257,
+                "8": 1,
+                "84": 257
+              },
+              "returned": null,
+              "rx_bytes": 1,
+              "stopped": {
+                "kind": "assertion",
+                "line": 298,
+                "owner": 2160294780
+              },
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 328
+      },
+      {
+        "name": "nand_feature_write_timeout",
+        "observed": {
+          "actions": [
+            "version:2",
+            "w:0:4:176",
+            "w:4:4:16777217",
+            "w:8:4:1",
+            "w:12:4:520093699",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:1:165",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:0",
+            "tick:1001",
+            "r:36:4:0",
+            "log:transmit_poll_error",
+            "diagnostic"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 176,
+                "12": 520093699,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 16777217,
+                "52": 257,
+                "8": 1,
+                "84": 257
+              },
+              "returned": null,
+              "rx_bytes": 0,
+              "stopped": {
+                "kind": "assertion",
+                "line": 306,
+                "owner": 2160294780
+              },
+              "tx_hex": "a5"
+            }
+          ]
+        },
+        "steps": 333
+      },
+      {
+        "name": "nand_write_enable_timeout",
+        "observed": {
+          "actions": [
+            "version:2",
+            "w:0:4:0",
+            "w:4:4:16777216",
+            "w:8:4:0",
+            "w:12:4:100663299",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:0",
+            "tick:1001",
+            "r:36:4:0",
+            "log:command_error",
+            "diagnostic"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 0,
+                "12": 100663299,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 16777216,
+                "52": 257,
+                "8": 0,
+                "84": 257
+              },
+              "returned": null,
+              "rx_bytes": 0,
+              "stopped": {
+                "kind": "assertion",
+                "line": 287,
+                "owner": 2160294780
+              },
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 210
+      },
+      {
+        "name": "receive_zero_fifo_advancing_prefix",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "tick:1001",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "tick:2002",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "tick:3003",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "stop_no_progress:4"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 0
+              },
+              "returned": null,
+              "rx_bytes": 0,
+              "stopped": {
+                "chunks": 4,
+                "kind": "bounded_prefix"
+              },
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 373
+      },
+      {
+        "name": "transmit_zero_fifo_advancing_prefix",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "tick:1001",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "tick:2002",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "tick:3003",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "stop_no_progress:4"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 0
+              },
+              "returned": null,
+              "rx_bytes": 0,
+              "stopped": {
+                "chunks": 4,
+                "kind": "bounded_prefix"
+              },
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 382
+      }
+    ],
+    "hardware_execution": false
+  },
+  "validation_sha256": "c5c179afcff50ec8b5e266f5054a384bd248e9b2f15d7f3cbb0a695f7d3be65b",
+  "vectors_sha256": "9b6a55d80f04c11d14eb5a80a0523a1df490df2bb8d58d41c6ae20be1410243d"
+}

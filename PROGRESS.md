@@ -1777,6 +1777,32 @@ limits; the initial observations point to the current status and work log.
    Lower HAL/ROM, physical retry/UID, BBT provenance/creation, persistence,
    restoration and standalone boot remain open. No device was accessed.
 
+## 2026-11-17 — QSPI HAL/FIFO/DMA wrappers and connected NAND commands
+
+1. Executed actual RAM QSPI controller init, command construction, phase/count/
+   status helpers, direct FIFO paths, DMA wrappers and clock selection over an
+   authored peripheral model and supplied timer/DMA services. Traces pin reset
+   self-clear, register masks, aligned-word/byte-tail and unaligned-byte accesses,
+   software count updates and completion acknowledgement.
+2. Verified timeout quantization/wrap/inclusive boundary and final status recheck.
+   Four-iteration zero-FIFO prefixes keep the count unchanged and restart each
+   wait even with advancing start times; they stop before the fifth wait and
+   claim no normal return. DMA wait errors propagate after clearing enable;
+   setup return is ignored in the selected wrappers. Physical DMA is unvalidated.
+3. Connected actual feature/cache/write-enable builders through actual NAND bus
+   transfer and HAL to the authored FIFO. Actual HAL timeouts now reach distinct
+   platform command/receive/transmit assertion boundaries, with logs/diagnostics
+   before stopping. These direct-mode cases use a supplied ROM-version result
+   and initialized context; complete board/page/private-buffer integration is open.
+4. All 90 cases pass in 11,326 steps (maximum 522). The original 81 cases remain
+   identical after connected cases were added. Thirty-seven new host checks bring
+   the suite to 1,128 passing tests. Nineteen exports/code guards and three data
+   guards are recorded in [analysis/QSPI_HAL_AND_FIFO.md](analysis/QSPI_HAL_AND_FIFO.md)
+   and [analysis/qspi-hal.json](analysis/qspi-hal.json).
+   Actual DMA initialization/setup/wait/IRQ, remaining pin/board services and
+   physical timing/coherency/persistence remain open. No device was accessed;
+   backup/restoration and standalone boot remain unresolved.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -1800,7 +1826,11 @@ limits; the initial observations point to the current status and work log.
   translation/page dispatch now execute with supplied lower services. Actual
   QSPI platform initialization/transfer, selected feature/cache/program/erase
   command builders, ROM-version policy and busy deadlines now execute with
-  supplied HAL/pin/DMA services and emulated MMIO. Follow lower RAM HAL/ROM,
+  supplied HAL/pin/DMA services and emulated MMIO. Selected actual RAM QSPI HAL
+  init/command/direct-FIFO/DMA-wrapper and phase/count/status/clock routines now
+  execute too, with supplied timer/DMA internals and authored MMIO. Selected NAND
+  feature/cache/write-enable builders connect through actual bus/HAL to the FIFO.
+  Follow actual DMA initialization/setup/wait/IRQ and remaining board services,
   physical retry/UID, BBT provenance/creation and physical ID/geometry
   corroboration. Original candidate matching/probe and driver-root setup now
   execute with supplied services; object registry remains open. Actual retry/
