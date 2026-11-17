@@ -153,6 +153,12 @@ control, aggregate wrap and error-with-ready. HR cases exclude descriptor type
 Motion/minute reporting, resets, wear/fusion dependencies, actual backend
 registration/math and remaining health consumers stay open.
 
+The follow-up [ALGORITHM_MANAGER_AND_HR_ADAPTER.md](ALGORITHM_MANAGER_AND_HR_ADAPTER.md)
+identifies and executes registration of the actual `0x100d` record, whose initial
+mask is `0x82012`, and verifies lifetime, dispatch adapters, real configuration
+copying and the uninitialized-processing guard in 48 additional native cases.
+Mathematical initialization, normal processing and teardown remain supplied.
+
 ## Reproduction and provenance
 
 Use the startup-aware `main-bbs` project / `main-runtime.elf` with the existing

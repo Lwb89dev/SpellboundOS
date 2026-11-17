@@ -1207,6 +1207,36 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    and [analysis/engine-cache.json](analysis/engine-cache.json). Vendor material
    remains ignored; no device access or phone/watch/firmware changes performed.
 
+## 2026-11-16 — actual HR algorithm registration, lifetime and configuration
+
+1. Identified the actual 48-byte algorithm-0x100d record and executed its real
+   registration wrapper. Its initial mask is 0x82012 (2/0x10/0x2000/0x80000),
+   distinct from the prior broad synthetic mask. Checked raw/operations
+   registration, original-pointer identity, duplicates, ID limits, missing
+   process callback, default lifecycle callbacks and full table/record hashes.
+2. Executed native enable/disable reference ownership: two users share init,
+   failed init retains the incremented reference and retries, HR init errors
+   normalize to Boolean while generic callback errors retain their value,
+   and last disable calls exit regardless of its return. Explicit synthetic
+   states check zero refs and 16-bit wrap; no live balancing/concurrency claim.
+3. Executed dispatch through the actual HR adapter with the actual record/mask,
+   including high-word mask mutation, disabled/mismatched/null cases and
+   error-with-ready behavior. Executed the real uninitialized-processing guard;
+   mathematical initialization, normal processing and teardown remain supplied.
+4. Executed real HR configuration copying, including the 56-byte clear,
+   separate source-byte-6 destination, three ten-byte arrays, optional extension
+   arguments and exact return-1 branch. Control runs while disabled; the actual
+   adapter discards the copier's return. Full 160-byte state hashes and source
+   immutability are checked, including repeated control and extension 0/1/7.
+5. All 48 native cases pass (14 registration/lookup, eight lifetime, 16 dispatch/
+   mask, ten control), totaling 7,672 bounded steps including intercepted calls.
+   Stack, saved integer registers and four used saved FP registers are checked.
+   Added 23 host checks; all 438 Python tests pass. Twenty-one fresh exports,
+   observations, hashes and reproduction are recorded in
+   [analysis/ALGORITHM_MANAGER_AND_HR_ADAPTER.md](analysis/ALGORITHM_MANAGER_AND_HR_ADAPTER.md)
+   and [analysis/algorithm-manager.json](analysis/algorithm-manager.json).
+   Vendor material stays ignored; no device access or firmware/settings changes.
+
 ## Next work
 
 - Regenerate selected native paths with startup-aware mappings, corrected
@@ -1222,7 +1252,9 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
   the now-covered opcode-21 send and main/sensor receive boundaries. Selected
   main registration, retained engine-cache event, engine fanout and engine-7
   non-type-1 HR result handling now have bounded native coverage. Follow real
-  algorithm-0x100d registration/math, motion/minute/reset/wear branches, other
+  algorithm-0x100d mathematical initialization/process/teardown and extension
+  logic beyond the now-covered actual registration/lifetime/dispatch adapters,
+  configuration copying and uninitialized guard. Follow motion/minute/reset/wear branches, other
   modes, fusion, malformed input and concurrency paths.
   Validate electrical SPI mode/timing, DMA ownership and live
   sensor operation before implementing hardware code. The selected adapter's
