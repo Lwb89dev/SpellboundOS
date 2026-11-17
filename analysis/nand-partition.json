@@ -1,0 +1,1569 @@
+{
+  "boot_sha256": "44cd83c0d09864c6101e9825bd3c77d7fac314584d0408b378dd56c2aac5736a",
+  "byte_range_sha256": {
+    "80c02460_174": "c635128654def095216de8bb7d3b428fb174fa17b10b2a38e042882715ea6cc6",
+    "80c025d4_d2": "55342ac4d4119a5165c9a24946539d283cc7975d92929a6d3ad72c3d5658def2",
+    "80c026a6_e4": "0983deee294c69c7ac10c388dc593b2424d00e2dc887f22fa16918fa192a3a76",
+    "80c027b0_56": "a91470da9ce883ab4e387ecc84745b11489a1d67edac99de4089d793d366da5c",
+    "80c243d6_70": "6eb26889ef08c4087094304a647d038ad09b3c757f9e89f98f5d3258492feb08",
+    "80c275ce_20": "13d584453632685dfd15c10eab70e4f47079811deccb7c75846001cc480fe75b",
+    "80c27646_1c": "ca379288a9d8a6f2f461d381fa773047cb92d44b49943507362da124b514b481",
+    "80c292ee_18a": "b6e52b407b668858305eb17bad9d83913f542daafec867d12a6cc69b56202fbe",
+    "80c29478_ba": "13f48285dc8d18104b1a3afe10a6da3f60d5a8a995761589741f11aeeb3bafc3",
+    "80c29532_44": "2fd8036a571a295969f38a803aa4cfca4eb680336381c8d6cf69ab942374453a",
+    "80c2964c_10e": "ec5f1d25374014f7a999a83a1f3a9cdf1c3ed702b6f8406c4bcdb45c7428dccc"
+  },
+  "export_sha256": {
+    "80c02460.c": "f1003126897576e3e645f4450f71a1bfdbd262b3cef64f06b548ab3232d19367",
+    "80c025d4.c": "d89307ffd4d7535e7a3e6ca9a53791e4bf1ae7a80e81ba54109bfb7d815eb534",
+    "80c026a6.c": "4d6c4d7d50e24b1c65409c78dc91fec3296da0a9635485853f8ec9b1a47ca548",
+    "80c027b0.c": "ab82db359352173f7590d3f383cefb9a5d6ebff8d1afa1334c857fd7d8772d50",
+    "80c243d6.c": "49d4811c5213ca6a9e79de453ebc677f3000726a1a110f22efb9d5481c1dbcfb",
+    "80c275ce.c": "7fb0165807bf82707b7265cf432f14aa307853005b63f01d294479e64d714be2",
+    "80c27646.c": "d70399838d95e3857e26d6f8c5468ed42d51f135b42b35d3787840b9c9f074c1",
+    "80c292ee.c": "efcc00657a501e079bfb6800fdc74ab047cc7aa401c58aabc93e9c53bf16e323",
+    "80c29478.c": "3877262ca43d628e87c4b5eaf467b3b40929a4089f088f46354e270ad4fa8072",
+    "80c29532.c": "d869068e2348b934a9a7f4d88ed57039f3176d9d7b86b9f044f3d2caac71abf5",
+    "80c2964c.c": "3e0ddacba4aae575d7d2786f8f05c821bb5a2700f446a7f22a023c0a1fa3f383"
+  },
+  "limitations": [
+    "Actual ROM partition lookup, NAND partition/ioctl/read dispatch, descriptor-backed chip geometry and EFTL geometry/OOB extraction/packing execute.",
+    "Driver root, chip descriptor, board-property return, low page/control services and bytes are authored; physical NAND/ECC/bus/erase are not accessed.",
+    "Injected query error and malformed extent/ECC cases are bounded fixtures, not measured device faults. OOB assertion stops before its body.",
+    "Actual driver registration/probe, electrical geometry/ECC, persistence, SFTL and standalone boot remain open."
+  ],
+  "native_steps": 5983,
+  "native_validation": {
+    "bound_per_case": 100000,
+    "case_count": 58,
+    "cases": [
+      {
+        "name": "lookup_registry",
+        "observed": {
+          "actions": [
+            "lookup:eftl",
+            "partition_lookup:eftl",
+            "log:partition_found",
+            "dispatch_ioctl:nand:2",
+            "chip_ioctl:2",
+            "dispatch_ioctl:nand:1",
+            "chip_ioctl:1",
+            "dispatch_ioctl:nand:3",
+            "chip_ioctl:3"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 2160278132,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 215
+      },
+      {
+        "name": "lookup_board_fallback",
+        "observed": {
+          "actions": [
+            "lookup:eftl",
+            "partition_lookup:eftl",
+            "log:registry_unready",
+            "board:nand_partition:1",
+            "dispatch_ioctl:nand:2",
+            "chip_ioctl:2",
+            "dispatch_ioctl:nand:1",
+            "chip_ioctl:1",
+            "dispatch_ioctl:nand:3",
+            "chip_ioctl:3"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 2160277172,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 219
+      },
+      {
+        "name": "lookup_board_missing",
+        "observed": {
+          "actions": [
+            "lookup:eftl",
+            "partition_lookup:eftl",
+            "log:registry_unready",
+            "board:nand_partition:0"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "lookup_missing_name",
+        "observed": {
+          "actions": [
+            "lookup:missing",
+            "partition_lookup:missing",
+            "board:nand_partition:1"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 395
+      },
+      {
+        "name": "lookup_chip_absent",
+        "observed": {
+          "actions": [
+            "lookup:eftl",
+            "partition_lookup:eftl",
+            "log:partition_found",
+            "dispatch_ioctl:nand:2",
+            "chip_ioctl:2",
+            "log:chip_error"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 123
+      },
+      {
+        "name": "lookup_partial_refresh",
+        "observed": {
+          "actions": [
+            "lookup:eftl",
+            "partition_lookup:eftl",
+            "log:partition_found",
+            "dispatch_ioctl:nand:2",
+            "chip_ioctl:2",
+            "dispatch_ioctl:nand:1",
+            "chip_ioctl:1",
+            "injected_ioctl_error:1"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000002000000000040000000000000000000000040000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                1024,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 140
+      },
+      {
+        "name": "lookup_root_missing",
+        "observed": {
+          "actions": [
+            "lookup:eftl",
+            "partition_lookup:eftl",
+            "log:partition_found",
+            "dispatch_ioctl:nand:2"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "lookup_ops_missing",
+        "observed": {
+          "actions": [
+            "lookup:eftl",
+            "partition_lookup:eftl",
+            "log:partition_found",
+            "dispatch_ioctl:nand:2"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 91
+      },
+      {
+        "name": "lookup_callback_missing",
+        "observed": {
+          "actions": [
+            "lookup:eftl",
+            "partition_lookup:eftl",
+            "log:partition_found",
+            "dispatch_ioctl:nand:2"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 93
+      },
+      {
+        "name": "ioctl_partition_pages",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "argument_hex": "00160000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 32
+      },
+      {
+        "name": "ioctl_derived_pages",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "argument_hex": "007e0000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 36
+      },
+      {
+        "name": "ioctl_null_handle",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 4294967286,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 3
+      },
+      {
+        "name": "ioctl_null_page_output",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 4294967286,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 29
+      },
+      {
+        "name": "ioctl_bad_base",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 4294967286,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 20
+      },
+      {
+        "name": "ioctl_bad_span",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 4294967286,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 24
+      },
+      {
+        "name": "ioctl_ecc_positions",
+        "observed": {
+          "actions": [
+            "dispatch_ioctl:nand:21",
+            "chip_ioctl:21"
+          ],
+          "rows": [
+            {
+              "argument_hex": "02000000080000001000000018000000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 73
+      },
+      {
+        "name": "ioctl_chip_absent",
+        "observed": {
+          "actions": [
+            "dispatch_ioctl:nand:2",
+            "chip_ioctl:2",
+            "log:chip_error"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 4294967294,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 70
+      },
+      {
+        "name": "ioctl_unknown",
+        "observed": {
+          "actions": [
+            "dispatch_ioctl:nand:99",
+            "chip_ioctl:99",
+            "log:chip_error"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 4294967287,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 70
+      },
+      {
+        "name": "ioctl_bad_block_rebase",
+        "observed": {
+          "actions": [
+            "dispatch_ioctl:nand:10",
+            "chip_ioctl:10",
+            "bad:13:-9"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 4294967287,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 79
+      },
+      {
+        "name": "ioctl_erase_rebase",
+        "observed": {
+          "actions": [
+            "dispatch_ioctl:nand:12",
+            "chip_ioctl:12",
+            "erase:13:0"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 79
+      },
+      {
+        "name": "ioctl_bad_block_alignment",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000001000000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 4294967286,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 34
+      },
+      {
+        "name": "ioctl_range_rebase",
+        "observed": {
+          "actions": [
+            "dispatch_ioctl:nand:15",
+            "chip_ioctl:15",
+            "range:517:521:286331153:572662306:0"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05020000090200001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 84
+      },
+      {
+        "name": "ioctl_range_error",
+        "observed": {
+          "actions": [
+            "dispatch_ioctl:nand:15",
+            "chip_ioctl:15",
+            "range:517:521:286331153:572662306:-9",
+            "log:chip_error"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05020000090200001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 4294967287,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 97
+      },
+      {
+        "name": "ioctl_range_missing_driver",
+        "observed": {
+          "actions": [
+            "dispatch_ioctl:nand:15"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05020000090200001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 4294967290,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 45
+      },
+      {
+        "name": "ioctl_format_ignores_errors",
+        "observed": {
+          "actions": [
+            "dispatch_ioctl:nand:12",
+            "chip_ioctl:12",
+            "erase:8:-9",
+            "dispatch_ioctl:nand:12",
+            "chip_ioctl:12",
+            "erase:9:-9"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 140
+      },
+      {
+        "name": "ioctl_format_bad_alignment",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000001000000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 4294967286,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 36
+      },
+      {
+        "name": "chip_page_count",
+        "observed": {
+          "actions": [
+            "chip_ioctl:1"
+          ],
+          "rows": [
+            {
+              "argument_hex": "00800000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 30
+      },
+      {
+        "name": "chip_mark_error",
+        "observed": {
+          "actions": [
+            "chip_ioctl:11",
+            "mark:5:-9",
+            "log:chip_error"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 4294967287,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 45
+      },
+      {
+        "name": "read_rebased",
+        "observed": {
+          "actions": [
+            "dispatch_read:nand:519:3:32",
+            "page:generic:519:3:32:0"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "c04b6b15f7d8c276940c4ed47cf448a259b0cb68cb8ed5b4c3f9e2f45ada6ba7",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 29
+      },
+      {
+        "name": "read_error",
+        "observed": {
+          "actions": [
+            "dispatch_read:nand:519:3:32",
+            "page:generic:519:3:32:-9"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 4294967287,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 29
+      },
+      {
+        "name": "read_positive_status",
+        "observed": {
+          "actions": [
+            "dispatch_read:nand:519:3:32",
+            "page:generic:519:3:32:7"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "c04b6b15f7d8c276940c4ed47cf448a259b0cb68cb8ed5b4c3f9e2f45ada6ba7",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 7,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 29
+      },
+      {
+        "name": "read_missing_driver",
+        "observed": {
+          "actions": [
+            "dispatch_read:nand:519:3:32"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 4294967290,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 29
+      },
+      {
+        "name": "read_null_output",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 4294967286,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 4
+      },
+      {
+        "name": "read_derived_span",
+        "observed": {
+          "actions": [
+            "dispatch_read:nand:519:3:32",
+            "page:generic:519:3:32:0"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "c04b6b15f7d8c276940c4ed47cf448a259b0cb68cb8ed5b4c3f9e2f45ada6ba7",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 33
+      },
+      {
+        "name": "read_beyond_span",
+        "observed": {
+          "actions": [
+            "dispatch_read:nand:10511:3:32",
+            "page:generic:10511:3:32:0"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "4d72f55dabb351dfff824fd5d71ce2f8b089124d6d8838635c20c49e17cc2857",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 29
+      },
+      {
+        "name": "read_zero",
+        "observed": {
+          "actions": [
+            "dispatch_read:nand:519:3:0",
+            "page:generic:519:3:0:0"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 29
+      },
+      {
+        "name": "geometry_connected",
+        "observed": {
+          "actions": [
+            "lookup:eftl",
+            "partition_lookup:eftl",
+            "log:partition_found",
+            "dispatch_ioctl:nand:2",
+            "chip_ioctl:2",
+            "dispatch_ioctl:nand:1",
+            "chip_ioctl:1",
+            "dispatch_ioctl:nand:3",
+            "chip_ioctl:3",
+            "dispatch_ioctl:nand:2",
+            "chip_ioctl:2",
+            "dispatch_ioctl:nand:3",
+            "chip_ioctl:3",
+            "dispatch_ioctl:nand:18",
+            "chip_ioctl:18",
+            "dispatch_ioctl:nand:19",
+            "chip_ioctl:19",
+            "dispatch_ioctl:nand:20",
+            "chip_ioctl:20",
+            "dispatch_ioctl:nand:21",
+            "chip_ioctl:21"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "743ac380000000004000000000080000580000000016000000020000400008000200020008001000180000000000000000000000000000000000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 742
+      },
+      {
+        "name": "geometry_fallback",
+        "observed": {
+          "actions": [
+            "lookup:eftl",
+            "partition_lookup:eftl",
+            "log:registry_unready",
+            "board:nand_partition:1",
+            "dispatch_ioctl:nand:2",
+            "chip_ioctl:2",
+            "dispatch_ioctl:nand:1",
+            "chip_ioctl:1",
+            "dispatch_ioctl:nand:3",
+            "chip_ioctl:3",
+            "dispatch_ioctl:nand:2",
+            "chip_ioctl:2",
+            "dispatch_ioctl:nand:3",
+            "chip_ioctl:3",
+            "dispatch_ioctl:nand:18",
+            "chip_ioctl:18",
+            "dispatch_ioctl:nand:19",
+            "chip_ioctl:19",
+            "dispatch_ioctl:nand:20",
+            "chip_ioctl:20",
+            "dispatch_ioctl:nand:21",
+            "chip_ioctl:21"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "b436c380000000004000000000080000580000000016000000020000400008000200020008001000180000000000000000000000000000000000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 746
+      },
+      {
+        "name": "oob_segmented",
+        "observed": {
+          "actions": [
+            "dispatch_read:nand:519:2048:64",
+            "page:generic:519:2048:64:0",
+            "copy:0:2050:2",
+            "copy:2:2056:2"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "cdfb412da98087c0705300780762b9e8da28909a5b4a14aaa0957b86317dd02d",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "e7a6ed44c4e42e4065183952133017367f5a8b99e26fa26c31a422b784913442",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 134
+      },
+      {
+        "name": "oob_contiguous",
+        "observed": {
+          "actions": [
+            "dispatch_read:nand:519:2048:64",
+            "page:generic:519:2048:64:0"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "71b5947b4b88f85bfcce8a4131b39cc1bc7d153ecd1658f9618ad2e97225bb02",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000400020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "e7a6ed44c4e42e4065183952133017367f5a8b99e26fa26c31a422b784913442",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 96
+      },
+      {
+        "name": "oob_fast",
+        "observed": {
+          "actions": [
+            "page:fast:519:2048:64:0",
+            "copy:0:2050:2",
+            "copy:2:2056:2"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "cdfb412da98087c0705300780762b9e8da28909a5b4a14aaa0957b86317dd02d",
+              "context_hex": "00023081000001004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "e7a6ed44c4e42e4065183952133017367f5a8b99e26fa26c31a422b784913442",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 103
+      },
+      {
+        "name": "oob_error",
+        "observed": {
+          "actions": [
+            "dispatch_read:nand:519:2048:64",
+            "page:generic:519:2048:64:-9"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 4294967287,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 55
+      },
+      {
+        "name": "oob_positive_status",
+        "observed": {
+          "actions": [
+            "dispatch_read:nand:519:2048:64",
+            "page:generic:519:2048:64:7"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 7,
+              "scratch_sha256": "e7a6ed44c4e42e4065183952133017367f5a8b99e26fa26c31a422b784913442",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 55
+      },
+      {
+        "name": "oob_short_supplied_read",
+        "observed": {
+          "actions": [
+            "dispatch_read:nand:519:2048:64",
+            "page:generic:519:2048:64:0",
+            "copy:0:2050:2",
+            "copy:2:2056:2"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "9214c71cd69491e6b59f394aa8428f48bc5b46a8069b781aae423099359de69b",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "6dad1005196ef415640104f97df88998cd860b57433298f5b65ad3dfcb979212",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 134
+      },
+      {
+        "name": "extract_segmented",
+        "observed": {
+          "actions": [
+            "copy:0:2050:2",
+            "copy:2:2056:2"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "ac80e178b4eaf386e9f62bccd437b3cc102542e77b13c59943f49fc17a8163a3",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 77
+      },
+      {
+        "name": "extract_contiguous",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "3c5c944c4bc56aa694f0358b2900a1fde6ab0ae9ce0f935a3a8cf866ee55c4f6",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000400020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 39
+      },
+      {
+        "name": "extract_skip_marker",
+        "observed": {
+          "actions": [
+            "copy:0:2050:0",
+            "copy:0:2056:2",
+            "copy:2:2064:2"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "e83fadf8f90e83242ad6f2855db2c5c6c90a492265717055d8439bb49acda267",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200000008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 98
+      },
+      {
+        "name": "extract_unit_one_zero_position",
+        "observed": {
+          "actions": [
+            "copy:0:2050:4"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "e4d1d374d3aceeb3ce35b889f776f749feed837ea408dc1a378e4d7948594d2e",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000100000008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 60
+      },
+      {
+        "name": "extract_zero_unit",
+        "observed": {
+          "actions": [
+            "copy:0:2050:0",
+            "copy:0:2056:0",
+            "copy:0:2064:0",
+            "copy:0:2072:0"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000000020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 121
+      },
+      {
+        "name": "extract_insufficient_ecc",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400002000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": null,
+              "scratch_sha256": "f57b4cc040c681b709c036987ccebebebe92d8d3e17a986d489843c1f39040b4",
+              "stopped": {
+                "kind": "assertion",
+                "line": 72
+              }
+            }
+          ]
+        },
+        "steps": 23
+      },
+      {
+        "name": "pack_segmented",
+        "observed": {
+          "actions": [
+            "spare_fill:2048:64",
+            "pack_copy:2050:0:2",
+            "pack_copy:2056:2:2"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "3aa15518c866e08e08991a33a7c20b7f64373b75a2b11de4304152b03b03365c",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "a3b73d5693c325141f20a3b6d83d7964d9bae9a4ff70059de196c48e47202935",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 84
+      },
+      {
+        "name": "pack_contiguous",
+        "observed": {
+          "actions": [
+            "spare_fill:2048:64"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "3aa15518c866e08e08991a33a7c20b7f64373b75a2b11de4304152b03b03365c",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000400020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "8b6ccc64aa822ef9a525b311a60943f657a53199e50aa00da9df4f762477c08e",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 46
+      },
+      {
+        "name": "pack_skip_marker",
+        "observed": {
+          "actions": [
+            "spare_fill:2048:64",
+            "pack_copy:2050:0:0",
+            "pack_copy:2056:0:2",
+            "pack_copy:2064:2:2"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "3aa15518c866e08e08991a33a7c20b7f64373b75a2b11de4304152b03b03365c",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200000008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "389d6edbcd2a8fdf3cf4fe77db5287268bea560b327ea5b49fc9b1e29f4a095b",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 105
+      },
+      {
+        "name": "pack_zero_unit",
+        "observed": {
+          "actions": [
+            "spare_fill:2048:64",
+            "pack_copy:2050:0:0",
+            "pack_copy:2056:0:0",
+            "pack_copy:2064:0:0",
+            "pack_copy:2072:0:0"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "3aa15518c866e08e08991a33a7c20b7f64373b75a2b11de4304152b03b03365c",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000000020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "f6a32b2962643acf3c341af70f48632b3d28be98e6737b0d1b1001f62e9faf54",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 128
+      },
+      {
+        "name": "pack_insufficient_ecc",
+        "observed": {
+          "actions": [
+            "spare_fill:2048:64"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "3aa15518c866e08e08991a33a7c20b7f64373b75a2b11de4304152b03b03365c",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400002000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": null,
+              "scratch_sha256": "f6a32b2962643acf3c341af70f48632b3d28be98e6737b0d1b1001f62e9faf54",
+              "stopped": {
+                "kind": "assertion",
+                "line": 112
+              }
+            }
+          ]
+        },
+        "steps": 30
+      },
+      {
+        "name": "roundtrip_segmented",
+        "observed": {
+          "actions": [
+            "spare_fill:2048:64",
+            "pack_copy:2050:0:2",
+            "pack_copy:2056:2:2",
+            "copy:0:2050:2",
+            "copy:2:2056:2"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "3aa15518c866e08e08991a33a7c20b7f64373b75a2b11de4304152b03b03365c",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "a3b73d5693c325141f20a3b6d83d7964d9bae9a4ff70059de196c48e47202935",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 161
+      },
+      {
+        "name": "roundtrip_contiguous",
+        "observed": {
+          "actions": [
+            "spare_fill:2048:64"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "3aa15518c866e08e08991a33a7c20b7f64373b75a2b11de4304152b03b03365c",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000400020008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "8b6ccc64aa822ef9a525b311a60943f657a53199e50aa00da9df4f762477c08e",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 85
+      },
+      {
+        "name": "roundtrip_marker_skip",
+        "observed": {
+          "actions": [
+            "spare_fill:2048:64",
+            "pack_copy:2050:0:0",
+            "pack_copy:2056:0:2",
+            "pack_copy:2064:2:2",
+            "copy:0:2050:0",
+            "copy:0:2056:2",
+            "copy:2:2064:2"
+          ],
+          "rows": [
+            {
+              "argument_hex": "05000000090000001111111122222222a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "buffer_sha256": "3aa15518c866e08e08991a33a7c20b7f64373b75a2b11de4304152b03b03365c",
+              "context_hex": "00023081000000004000000000080000000000000000000000020000400008000200000008001000180000000000000000000000002030810000000000000000",
+              "dimensions": [
+                2048,
+                32768,
+                64
+              ],
+              "returned": 0,
+              "scratch_sha256": "389d6edbcd2a8fdf3cf4fe77db5287268bea560b327ea5b49fc9b1e29f4a095b",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 203
+      }
+    ],
+    "hardware_execution": false
+  },
+  "storage_facts_sha256": "bcc6497b383008aa9663046ae1d08fef23d3c8fae4876dd91cc4962c92ac5a98",
+  "validation_sha256": "0144ee9052cb3793a4e98d56c5339bb3fe64a4e727c4d01993a3b5c116031a94",
+  "vectors_sha256": "56a5f64fa09522e9f12afd2c5083264c4b8fd17da0f8d7cc9120f25ac7301e35"
+}

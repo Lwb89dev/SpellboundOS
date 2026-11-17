@@ -139,3 +139,8 @@ Remaining work includes the actual NAND lookup/ioctl and OOB transport,
 alternate format handling, physical geometry/ECC/bus behavior, mapping repair/
 program/erase semantics, SFTL, persistence and device-specific backup/restoration.
 Full boot through the signed chain remains unresolved.
+
+The subsequent [NAND partition/OOB pass](NAND_PARTITIONS_AND_OOB.md) executes
+actual lookup, descriptor-backed ioctls/read dispatch, geometry collection and
+OOB extraction/composition in 58 cases. Driver roots and chip/page data remain
+authored; real probing, physical geometry and NAND behavior remain open.

@@ -1629,6 +1629,28 @@ limits; the initial observations point to the current status and work log.
    No device was accessed. Physical geometry, actual NAND/ECC/bus behavior,
    persistence, restoration and full boot remain open.
 
+## 2026-11-17 — NAND partition dispatch and EFTL OOB serialization
+
+1. Executed actual primary/board-fallback lookup using original ROM partition
+   rows, driver geometry refresh, NAND partition read/ioctl wrappers and driver
+   dispatch. Actual chip-ioctl code reads authored descriptor fields; root/probe
+   and physical data remain supplied. A failed query can leave partial refresh.
+2. Verified partition-vs-total page counts, block/page rebasing, alignment and
+   zero-span derivation. Range requests mutate both caller words before dispatch,
+   including on errors; format can ignore erase failures. Selected read requests
+   beyond the span still reach the supplied service; physical bounds are open.
+3. Connected actual EFTL geometry collection through lookup, partition ioctls
+   and descriptor reads. Executed generic/alternate OOB fetch and actual ECC
+   extraction/composition, including native round trips in three selected
+   layouts. Direct malformed ECC cases and assertion stops remain bounded.
+4. All 58 native cases pass in 5,983 steps (maximum 746). Forty-three new host
+   checks bring the suite to 896 passing tests. Eleven fresh exports/code guards,
+   three original table/configuration guards and complete traces/hashes are in
+   [analysis/NAND_PARTITIONS_AND_OOB.md](analysis/NAND_PARTITIONS_AND_OOB.md)
+   and [analysis/nand-partition.json](analysis/nand-partition.json).
+   The chip descriptor and page/control results are synthetic. No device or
+   physical NAND/ECC/bus was accessed; physical persistence and boot remain open.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -1650,10 +1672,13 @@ limits; the initial observations point to the current status and work log.
   16-partition configuration and callback bindings are now recovered statically.
   Registry/device population, lazy EFTL descriptor arithmetic and EFTL logical
   translation/page dispatch now execute with supplied lower services. Follow
-  actual NAND lookup/ioctl geometry discovery. The selected complete allocation/
+  driver registration/probe and physical chip-geometry provenance. Actual NAND
+  lookup/ioctl/read dispatch, descriptor-backed geometry collection and OOB
+  extraction/composition now execute. The selected complete allocation/
   geometry/reset/scan/retry initializer, generic format loops and connected lazy
-  publication now execute too, with lower services supplied. Follow actual NAND/
-  OOB transport and metadata provenance, alternate format handling, remaining
+  publication now execute too, with lower services supplied. Follow lower NAND
+  page/ECC/bus transport and physical metadata provenance, alternate format
+  handling, remaining
   mapping repair/program/erase paths, SFTL and the concrete physical partition
   map, actual driver callback behavior and rewrite/mutex constraints,
   reserve-image provenance and other factory data,
