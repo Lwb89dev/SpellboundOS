@@ -1585,6 +1585,26 @@ report into English. Renamed the latter to `analysis/ANALYSIS.md` and updated it
 links. Preserved the historical dates, commands, identifiers, hashes and evidence
 limits; the initial observations point to the current status and work log.
 
+## 2026-11-17 — native EFTL OOB mapping reconstruction
+
+1. Executed actual block scan `0x80c01d8a` and four-byte OOB checksum verifier
+   `0x80c01a0a` over authored bad-block, erase and first-page metadata services.
+   Verified the `E` tag, modulo-256 checksum and u16 logical-to-block mapping.
+2. Covered initial/repair bad-block handling, nonzero OOB errors, partial state,
+   invalid tag/checksum, first-mapping-wins duplicate handling and existing slots.
+   Initial completion can request retry; repair completion can set ready marker
+   even when all blocks remain reserved. The full initializer is not executed.
+3. Verified direct repeats accumulating counters, u16 counter wraps, byte flag
+   truncation and a logical index beyond the declared block count but inside
+   explicitly supplied backing. These are bounded fixtures, not device faults.
+4. All 27 native cases pass in 2,988 steps (maximum 426). Twenty-six new host
+   checks bring the full suite to 819 passing tests. Two fresh exports/code
+   guards, complete traces and state hashes are in
+   [analysis/EFTL_OOB_MAPPING_RESUME.md](analysis/EFTL_OOB_MAPPING_RESUME.md)
+   and [analysis/eftl-resume.json](analysis/eftl-resume.json).
+   Physical NAND/OOB/ECC, real geometry, erase effects and full boot remain open;
+   no device was accessed.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -1606,11 +1626,12 @@ limits; the initial observations point to the current status and work log.
   16-partition configuration and callback bindings are now recovered statically.
   Registry/device population, lazy EFTL descriptor arithmetic and EFTL logical
   translation/page dispatch now execute with supplied lower services. Follow
-  geometry discovery and mapping reconstruction from NAND/OOB metadata, deeper
-  allocation/error paths, SFTL behavior and the concrete physical partition map,
-  actual driver
-  callback behavior and rewrite/mutex constraints, reserve-image provenance
-  and other factory data,
+  geometry discovery and the full allocation/reset/scan/retry initializer.
+  Selected OOB-to-mapping reconstruction now executes too, with lower services
+  supplied. Follow actual NAND/OOB transport and metadata provenance, remaining
+  mapping repair/program/erase paths, SFTL and the concrete physical partition
+  map, actual driver callback behavior and rewrite/mutex constraints,
+  reserve-image provenance and other factory data,
   broader malformed/stale-cache/concurrency/boundary-read paths,
   real persistence and subsequent boot/recovery/UI
   dispatch, physical reason/gesture behavior, VFS/raw storage/base-address/

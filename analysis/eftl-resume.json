@@ -1,0 +1,929 @@
+{
+  "boot_sha256": "44cd83c0d09864c6101e9825bd3c77d7fac314584d0408b378dd56c2aac5736a",
+  "byte_range_sha256": {
+    "80c01a0a_50": "eae8f359810bcc1382c84110bb2c4b4ee0b893a9a279491618fd314994a019be",
+    "80c01d8a_160": "627b6414298e79230eb17db6291f05d99573c740082fe86d720f61b914e1b2f4"
+  },
+  "export_sha256": {
+    "80c01a0a.c": "7f6660bf1c1c5335282fb9320af1790029b2c5cd8324569efefbab2fbb96040e",
+    "80c01d8a.c": "6196c93cd35606434931b2ba2bb4e9634bc2594955a83bb04e901f7a721ba194"
+  },
+  "limitations": [
+    "Actual EFTL resume/checksum code executes over authored bad-block, erase and first-page OOB services.",
+    "Geometry, translation/flag backing, OOB records and counters are synthetic; no physical NAND, ECC, bus or erase is accessed.",
+    "Direct repeat/malformed logical-index/counter-wrap fixtures do not establish caller invariants or observed hardware failures.",
+    "Full initializer allocation/retry, actual geometry discovery, NAND/OOB transport, other mapping repair/write paths and boot remain open."
+  ],
+  "native_steps": 2988,
+  "native_validation": {
+    "bound_per_case": 100000,
+    "case_count": 27,
+    "cases": [
+      {
+        "name": "resume_mixed",
+        "observed": {
+          "actions": [
+            "bad:0:0",
+            "oob:0:0:02004547",
+            "bad:1:0",
+            "oob:4:0:fffffffd",
+            "bad:2:0",
+            "oob:8:0:00004545",
+            "bad:3:1",
+            "log:bad_block"
+          ],
+          "rows": [
+            {
+              "context_sha256": "44cea7be610c25070e4dcdaac397d447341b91443bd57b208c3d7aa1943cdff0",
+              "flags": "08fe08ff00000000",
+              "free": 1,
+              "mapping": [
+                2,
+                65535,
+                0,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535
+              ],
+              "marker": 165,
+              "reserved": 1,
+              "returned": 0,
+              "used": 2
+            }
+          ]
+        },
+        "steps": 226
+      },
+      {
+        "name": "resume_repeat",
+        "observed": {
+          "actions": [
+            "bad:0:0",
+            "oob:0:0:02004547",
+            "bad:1:0",
+            "oob:4:0:fffffffd",
+            "bad:2:0",
+            "oob:8:0:00004545",
+            "bad:3:1",
+            "log:bad_block",
+            "bad:0:0",
+            "oob:0:0:02004547",
+            "bad:1:0",
+            "oob:4:0:fffffffd",
+            "bad:2:0",
+            "oob:8:0:00004545",
+            "bad:3:1",
+            "log:bad_block"
+          ],
+          "rows": [
+            {
+              "context_sha256": "44cea7be610c25070e4dcdaac397d447341b91443bd57b208c3d7aa1943cdff0",
+              "flags": "08fe08ff00000000",
+              "free": 1,
+              "mapping": [
+                2,
+                65535,
+                0,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535
+              ],
+              "marker": 165,
+              "reserved": 1,
+              "returned": 0,
+              "used": 2
+            },
+            {
+              "context_sha256": "2b2602329277f5687711bd306f55eaabe5ea7a287528acdfd368e1655126e7a6",
+              "flags": "fefefeff00000000",
+              "free": 2,
+              "mapping": [
+                2,
+                65535,
+                0,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535
+              ],
+              "marker": 165,
+              "reserved": 2,
+              "returned": 0,
+              "used": 2
+            }
+          ]
+        },
+        "steps": 426
+      },
+      {
+        "name": "resume_empty_count",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "context_sha256": "4c5a8fd9fcfaef2f650eaabb6040d8ed35101cf5b039723a9f300d783f1d12d3",
+              "flags": "0000000000000000",
+              "free": 0,
+              "mapping": [
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535
+              ],
+              "marker": 165,
+              "reserved": 0,
+              "returned": 0,
+              "used": 0
+            }
+          ]
+        },
+        "steps": 44
+      },
+      {
+        "name": "resume_all_unmapped",
+        "observed": {
+          "actions": [
+            "bad:0:0",
+            "oob:0:0:fffffffd",
+            "bad:1:0",
+            "oob:4:0:fffffffd",
+            "bad:2:0",
+            "oob:8:0:fffffffd",
+            "bad:3:0",
+            "oob:12:0:fffffffd"
+          ],
+          "rows": [
+            {
+              "context_sha256": "e6a3b7760d7d70808b8a021affc4b453f4b06ada9c342368a532648212a852af",
+              "flags": "fefefefe00000000",
+              "free": 4,
+              "mapping": [
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535
+              ],
+              "marker": 165,
+              "reserved": 0,
+              "returned": 0,
+              "used": 0
+            }
+          ]
+        },
+        "steps": 169
+      },
+      {
+        "name": "resume_all_reserved_retry",
+        "observed": {
+          "actions": [
+            "bad:0:1",
+            "log:bad_block",
+            "bad:1:1",
+            "log:bad_block",
+            "bad:2:1",
+            "log:bad_block",
+            "bad:3:1",
+            "log:bad_block"
+          ],
+          "rows": [
+            {
+              "context_sha256": "0026f99b1e881a0612faed94e04872406e47511010352352ed19286cc4de4f2b",
+              "flags": "ffffffff00000000",
+              "free": 0,
+              "mapping": [
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535
+              ],
+              "marker": 0,
+              "reserved": 4,
+              "returned": 1,
+              "used": 0
+            }
+          ]
+        },
+        "steps": 180
+      },
+      {
+        "name": "resume_all_reserved_repair",
+        "observed": {
+          "actions": [
+            "bad:0:1",
+            "log:bad_block",
+            "erase:0:-9",
+            "bad:1:1",
+            "log:bad_block",
+            "erase:1:-9",
+            "bad:2:1",
+            "log:bad_block",
+            "erase:2:-9",
+            "bad:3:1",
+            "log:bad_block",
+            "erase:3:-9"
+          ],
+          "rows": [
+            {
+              "context_sha256": "7742d84ca442f5ae37a21b43f35548ac89d2539ea91d655975a2a90b1d67ce29",
+              "flags": "ffffffff00000000",
+              "free": 0,
+              "mapping": [
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535
+              ],
+              "marker": 165,
+              "reserved": 4,
+              "returned": 0,
+              "used": 0
+            }
+          ]
+        },
+        "steps": 199
+      },
+      {
+        "name": "resume_repair_positive_bad",
+        "observed": {
+          "actions": [
+            "bad:0:1",
+            "log:bad_block",
+            "erase:0:0",
+            "oob:0:0:01004546"
+          ],
+          "rows": [
+            {
+              "context_sha256": "ba373c8e365257cf857d076194fc35595048f4810ed1a7ea66f30cd15c5b8e3b",
+              "flags": "0800000000000000",
+              "free": 0,
+              "mapping": [
+                65535,
+                0,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535
+              ],
+              "marker": 165,
+              "reserved": 0,
+              "returned": 0,
+              "used": 1
+            }
+          ]
+        },
+        "steps": 114
+      },
+      {
+        "name": "resume_negative_bad_erased",
+        "observed": {
+          "actions": [
+            "bad:0:-9",
+            "log:bad_block",
+            "erase:0:0",
+            "oob:0:0:01004546"
+          ],
+          "rows": [
+            {
+              "context_sha256": "ba373c8e365257cf857d076194fc35595048f4810ed1a7ea66f30cd15c5b8e3b",
+              "flags": "0800000000000000",
+              "free": 0,
+              "mapping": [
+                65535,
+                0,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535
+              ],
+              "marker": 165,
+              "reserved": 0,
+              "returned": 0,
+              "used": 1
+            }
+          ]
+        },
+        "steps": 118
+      },
+      {
+        "name": "resume_negative_bad_erase_error",
+        "observed": {
+          "actions": [
+            "bad:0:-9",
+            "log:bad_block",
+            "erase:0:-1"
+          ],
+          "rows": [
+            {
+              "context_sha256": "823a55dedcc00de91ee1eef2002576fa56d9f7d79c275d3c2a6201b13699647d",
+              "flags": "ff00000000000000",
+              "free": 0,
+              "mapping": [
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535
+              ],
+              "marker": 0,
+              "reserved": 1,
+              "returned": 1,
+              "used": 0
+            }
+          ]
+        },
+        "steps": 79
+      },
+      {
+        "name": "resume_negative_bad_positive_erase",
+        "observed": {
+          "actions": [
+            "bad:0:-9",
+            "log:bad_block",
+            "erase:0:1"
+          ],
+          "rows": [
+            {
+              "context_sha256": "823a55dedcc00de91ee1eef2002576fa56d9f7d79c275d3c2a6201b13699647d",
+              "flags": "ff00000000000000",
+              "free": 0,
+              "mapping": [
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535
+              ],
+              "marker": 0,
+              "reserved": 1,
+              "returned": 1,
+              "used": 0
+            }
+          ]
+        },
+        "steps": 79
+      },
+      {
+        "name": "resume_first_oob_error",
+        "observed": {
+          "actions": [
+            "bad:0:0",
+            "oob:0:-9:01004546",
+            "log:oob_read_error"
+          ],
+          "rows": [
+            {
+              "context_sha256": "1d9251c0cdf641fcad998e394a285f56db3b6360d39691c42956985e8f7779f7",
+              "flags": "fe00000000000000",
+              "free": 0,
+              "mapping": [
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535
+              ],
+              "marker": 0,
+              "reserved": 0,
+              "returned": 4294967295,
+              "used": 0
+            }
+          ]
+        },
+        "steps": 67
+      },
+      {
+        "name": "resume_positive_oob_error",
+        "observed": {
+          "actions": [
+            "bad:0:0",
+            "oob:0:1:01004546",
+            "log:oob_read_error"
+          ],
+          "rows": [
+            {
+              "context_sha256": "1d9251c0cdf641fcad998e394a285f56db3b6360d39691c42956985e8f7779f7",
+              "flags": "fe00000000000000",
+              "free": 0,
+              "mapping": [
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535
+              ],
+              "marker": 0,
+              "reserved": 0,
+              "returned": 4294967295,
+              "used": 0
+            }
+          ]
+        },
+        "steps": 67
+      },
+      {
+        "name": "resume_later_oob_error",
+        "observed": {
+          "actions": [
+            "bad:0:0",
+            "oob:0:0:02004547",
+            "bad:1:0",
+            "oob:4:-1:01004546",
+            "log:oob_read_error"
+          ],
+          "rows": [
+            {
+              "context_sha256": "6639a2f812fdfcf2c8cf3c841e3dd955038b86ebeb3347d978fd85c0ec9272bb",
+              "flags": "08fe000000000000",
+              "free": 0,
+              "mapping": [
+                65535,
+                65535,
+                0,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535
+              ],
+              "marker": 0,
+              "reserved": 0,
+              "returned": 4294967295,
+              "used": 1
+            }
+          ]
+        },
+        "steps": 126
+      },
+      {
+        "name": "resume_bad_checksum",
+        "observed": {
+          "actions": [
+            "bad:0:0",
+            "oob:0:0:01004547",
+            "log:checksum_error"
+          ],
+          "rows": [
+            {
+              "context_sha256": "fe965d28e1085d13818a66d39046ceff260f3915fa5f1ce68b3eab2ff74c6f2e",
+              "flags": "fe00000000000000",
+              "free": 1,
+              "mapping": [
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535
+              ],
+              "marker": 165,
+              "reserved": 0,
+              "returned": 0,
+              "used": 0
+            }
+          ]
+        },
+        "steps": 101
+      },
+      {
+        "name": "resume_wrong_tag",
+        "observed": {
+          "actions": [
+            "bad:0:0",
+            "oob:0:0:01004445"
+          ],
+          "rows": [
+            {
+              "context_sha256": "fe965d28e1085d13818a66d39046ceff260f3915fa5f1ce68b3eab2ff74c6f2e",
+              "flags": "fe00000000000000",
+              "free": 1,
+              "mapping": [
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535
+              ],
+              "marker": 165,
+              "reserved": 0,
+              "returned": 0,
+              "used": 0
+            }
+          ]
+        },
+        "steps": 73
+      },
+      {
+        "name": "resume_wrong_tag_bad_checksum",
+        "observed": {
+          "actions": [
+            "bad:0:0",
+            "oob:0:0:01004446"
+          ],
+          "rows": [
+            {
+              "context_sha256": "fe965d28e1085d13818a66d39046ceff260f3915fa5f1ce68b3eab2ff74c6f2e",
+              "flags": "fe00000000000000",
+              "free": 1,
+              "mapping": [
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535
+              ],
+              "marker": 165,
+              "reserved": 0,
+              "returned": 0,
+              "used": 0
+            }
+          ]
+        },
+        "steps": 73
+      },
+      {
+        "name": "resume_duplicate_mapping",
+        "observed": {
+          "actions": [
+            "bad:0:0",
+            "oob:0:0:02004547",
+            "bad:1:0",
+            "oob:4:0:02004547"
+          ],
+          "rows": [
+            {
+              "context_sha256": "819f07f6d4d614a8e90a2b4c636b321c704d2f832733882cc4f1da4a028e7f87",
+              "flags": "08fe000000000000",
+              "free": 0,
+              "mapping": [
+                65535,
+                65535,
+                0,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535
+              ],
+              "marker": 165,
+              "reserved": 0,
+              "returned": 0,
+              "used": 1
+            }
+          ]
+        },
+        "steps": 149
+      },
+      {
+        "name": "resume_existing_mapping",
+        "observed": {
+          "actions": [
+            "bad:0:0",
+            "oob:0:0:01004546"
+          ],
+          "rows": [
+            {
+              "context_sha256": "23c12060865a9307278482727b80ceab9ef5950534f4e211ff6f9acbb8d0be3c",
+              "flags": "fe00000000000000",
+              "free": 0,
+              "mapping": [
+                65535,
+                7,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535
+              ],
+              "marker": 165,
+              "reserved": 0,
+              "returned": 0,
+              "used": 0
+            }
+          ]
+        },
+        "steps": 90
+      },
+      {
+        "name": "resume_logical_beyond_count",
+        "observed": {
+          "actions": [
+            "bad:0:0",
+            "oob:0:0:0700454c"
+          ],
+          "rows": [
+            {
+              "context_sha256": "ba373c8e365257cf857d076194fc35595048f4810ed1a7ea66f30cd15c5b8e3b",
+              "flags": "0800000000000000",
+              "free": 0,
+              "mapping": [
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                0
+              ],
+              "marker": 165,
+              "reserved": 0,
+              "returned": 0,
+              "used": 1
+            }
+          ]
+        },
+        "steps": 103
+      },
+      {
+        "name": "resume_preserve_low_flag",
+        "observed": {
+          "actions": [
+            "bad:0:0",
+            "oob:0:0:01004546"
+          ],
+          "rows": [
+            {
+              "context_sha256": "ba373c8e365257cf857d076194fc35595048f4810ed1a7ea66f30cd15c5b8e3b",
+              "flags": "0900000000000000",
+              "free": 0,
+              "mapping": [
+                65535,
+                0,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535
+              ],
+              "marker": 165,
+              "reserved": 0,
+              "returned": 0,
+              "used": 1
+            }
+          ]
+        },
+        "steps": 103
+      },
+      {
+        "name": "resume_used_counter_wrap",
+        "observed": {
+          "actions": [
+            "bad:0:0",
+            "oob:0:0:01004546"
+          ],
+          "rows": [
+            {
+              "context_sha256": "23c12060865a9307278482727b80ceab9ef5950534f4e211ff6f9acbb8d0be3c",
+              "flags": "0800000000000000",
+              "free": 0,
+              "mapping": [
+                65535,
+                0,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535
+              ],
+              "marker": 165,
+              "reserved": 0,
+              "returned": 0,
+              "used": 0
+            }
+          ]
+        },
+        "steps": 103
+      },
+      {
+        "name": "resume_free_counter_wrap",
+        "observed": {
+          "actions": [
+            "bad:0:0",
+            "oob:0:0:fffffffd"
+          ],
+          "rows": [
+            {
+              "context_sha256": "823a55dedcc00de91ee1eef2002576fa56d9f7d79c275d3c2a6201b13699647d",
+              "flags": "fe00000000000000",
+              "free": 0,
+              "mapping": [
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535
+              ],
+              "marker": 0,
+              "reserved": 1,
+              "returned": 1,
+              "used": 0
+            }
+          ]
+        },
+        "steps": 72
+      },
+      {
+        "name": "resume_reserved_counter_wrap",
+        "observed": {
+          "actions": [
+            "bad:0:1",
+            "log:bad_block"
+          ],
+          "rows": [
+            {
+              "context_sha256": "23c12060865a9307278482727b80ceab9ef5950534f4e211ff6f9acbb8d0be3c",
+              "flags": "ff00000000000000",
+              "free": 0,
+              "mapping": [
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535
+              ],
+              "marker": 165,
+              "reserved": 0,
+              "returned": 0,
+              "used": 0
+            }
+          ]
+        },
+        "steps": 79
+      },
+      {
+        "name": "resume_page_count_flag_wrap",
+        "observed": {
+          "actions": [
+            "bad:0:0",
+            "oob:0:0:01004546"
+          ],
+          "rows": [
+            {
+              "context_sha256": "4b95c374530610b6ade72355759c0560d13672909386c32105d36d4528f6a3d3",
+              "flags": "0000000000000000",
+              "free": 0,
+              "mapping": [
+                65535,
+                0,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535
+              ],
+              "marker": 165,
+              "reserved": 0,
+              "returned": 0,
+              "used": 1
+            }
+          ]
+        },
+        "steps": 103
+      },
+      {
+        "name": "checksum_valid",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "context_sha256": "f2e8fd758146b6cd5617f8b3dd2d9cb30193b3eb911dbb0219d875b4af03be9b",
+              "flags": "0000000000000000",
+              "free": 0,
+              "mapping": [
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535
+              ],
+              "marker": 0,
+              "reserved": 0,
+              "returned": 1,
+              "used": 0
+            }
+          ]
+        },
+        "steps": 10
+      },
+      {
+        "name": "checksum_invalid",
+        "observed": {
+          "actions": [
+            "log:checksum_error"
+          ],
+          "rows": [
+            {
+              "context_sha256": "f2e8fd758146b6cd5617f8b3dd2d9cb30193b3eb911dbb0219d875b4af03be9b",
+              "flags": "0000000000000000",
+              "free": 0,
+              "mapping": [
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535
+              ],
+              "marker": 0,
+              "reserved": 0,
+              "returned": 0,
+              "used": 0
+            }
+          ]
+        },
+        "steps": 25
+      },
+      {
+        "name": "checksum_other_tag",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "context_sha256": "f2e8fd758146b6cd5617f8b3dd2d9cb30193b3eb911dbb0219d875b4af03be9b",
+              "flags": "0000000000000000",
+              "free": 0,
+              "mapping": [
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535,
+                65535
+              ],
+              "marker": 0,
+              "reserved": 0,
+              "returned": 1,
+              "used": 0
+            }
+          ]
+        },
+        "steps": 10
+      }
+    ],
+    "hardware_execution": false
+  },
+  "validation_sha256": "f5156301f3fb53923c56edb435bd9483bb2510ccb463dd813b353e61165b3f08",
+  "vectors_sha256": "ab2db19240246cd7bc0456b7b89a1b21b910157665f20bb7ab83974b9ec98bd1"
+}

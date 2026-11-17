@@ -124,3 +124,7 @@ Next work includes actual geometry discovery and mapping reconstruction from
 NAND/OOB metadata, allocation/error paths there, program/erase/rewrite semantics,
 the lower NAND services and SFTL behavior. Full boot, device-specific restoration
 and physical persistence remain open.
+
+The subsequent [OOB reconstruction pass](EFTL_OOB_MAPPING_RESUME.md) executes
+the actual mapping scan and checksum verifier in 27 cases with supplied metadata
+services. Physical OOB provenance and the complete initializer remain open.
