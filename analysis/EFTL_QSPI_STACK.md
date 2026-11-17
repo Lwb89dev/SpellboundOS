@@ -95,3 +95,7 @@ mapping sizes or the full storage address space.
 Higher storage entry/bounds integration, mapping reconstruction/provenance,
 program/repair atomicity, physical chip/BBT/ECC/OOB/persistence, concurrency and
 cache/IRQ behavior, backup/restoration and standalone boot remain open.
+
+The subsequent [registered storage read pass](STORAGE_EFTL_STACK.md) connects
+original owner/bounds/read entry and EFTL callback for selected nvms/envbak/
+recovery records, with authored registry/ready state.

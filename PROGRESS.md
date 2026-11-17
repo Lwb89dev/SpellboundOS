@@ -2002,6 +2002,26 @@ limits; the initial observations point to the current status and work log.
    Higher storage entry/bounds, mapping reconstruction/provenance, physical
    persistence/restoration/boot and concurrency/coherency remain open.
 
+## 2026-11-17 — registered storage read/bounds through ready EFTL and NAND/QSPI
+
+1. Connected original storage read and owner/bounds helper through the original
+   EFTL descriptor callback, ready logical map, page/partition/callback/context/
+   BBT/page/bus/QSPI/FIFO and selected DMA. Original 16-row partition/backend
+   bytes are cloned and verified; nvms/envbak/recovery are selected. Registry
+   binding, ready map, one-MiB runtime capacity and span variants are authored.
+2. Verified end/overflow count clipping, zero-size interior versus end behavior,
+   missing-owner and original handle/output assertions. The upper storage wrapper
+   accepts EFTL short/zero returns after gap fill; negative lower errors cross
+   both layers and may follow caller-buffer modification.
+3. All 24 cases pass in 37,927 steps (maximum 3,765); prior 425 native cases
+   reproduce byte for byte. Eighteen new host checks bring the suite to 1,361
+   passing tests. Sixty-two code/export and twelve data hashes are in
+   [analysis/STORAGE_EFTL_STACK.md](analysis/STORAGE_EFTL_STACK.md) and
+   [analysis/storage-eftl-stack.json](analysis/storage-eftl-stack.json).
+   Selected storage reads now reach original lower control code. Broader callers,
+   registry/map reconstruction, write/repair atomicity and physical corroboration/
+   concurrency/coherency/persistence/backup/restoration/standalone boot remain open.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -2046,8 +2066,11 @@ limits; the initial observations point to the current status and work log.
   Source-copy timeout can still return success; destination/erase timeouts fail.
   Supported-family retry/setter/reset checks, page-read recovery and UID/selected
   export now connect through actual bus/HAL/FIFO too, including full timeout and
-  stale state cases. Follow higher storage integration, BBT provenance/repair,
-  concurrency and remaining ECC/board integration, physical pin
+  stale state cases. Original partition/callback/context/mutex wrappers, ready EFTL
+  translation/page/OOB reads and selected registered storage API bounds/read now
+  connect through the same lower stack. Follow broader callers/partitions, registry
+  and map reconstruction, write/repair atomicity, BBT provenance, concurrency and
+  remaining ECC/board integration, physical pin
   mapping, real DMA/IRQ/cache coherency and remaining board services,
   physical retry/UID, BBT provenance/creation and physical ID/geometry
   corroboration. Original candidate matching/probe and driver-root setup now
