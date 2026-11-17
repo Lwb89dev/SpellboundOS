@@ -1441,6 +1441,33 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    Device services remain synthetic. Startup, GC relocation/erase, physical
    persistence and standalone hardware boot are not established.
 
+## 2026-11-17 — record relocation, sector collection and defaults restoration
+
+1. Executed actual raw relocation, detailed reservation, status/copy/cache/source
+   finalization and duplicate-name guard. Positive fixtures provide enough empty
+   sectors to perform the copy; independent final-byte checks distinguish those
+   from no-space rejection. Errors cover all seven ordinary move writes, short
+   copy, already-marked sources and duplicate-present/absent paths.
+2. Executed actual collection and maintenance callbacks, including one/two-record
+   moves, deleted/CRC-bad filtering and final source reformat. Collection still
+   attempts reformat after move failure and returns zero after format failure
+   under supplied error cases. Device erase/program services mutate arrays only.
+3. Executed the aligned, below-0x4000 sector formatter and four-sector defaults
+   restoration. Logical base is zero; earlier arbitrary-base scan models are
+   parameterized without changing their existing fixtures. Formatting errors
+   propagate; defaults restoration ignores per-entry append errors. Synthetic
+   default table covers derived string length and explicit length.
+4. Followed initialization caller 0x80c0d58e statically through its repair/default
+   fallback and three-attempt scan/maintenance loop. Its export/hash is included;
+   it does not execute in these cases. Connected setup/callbacks remain open.
+5. All 35 native cases pass (13 move, ten collect, five format, two maintenance,
+   five defaults), totaling 874,556 bounded steps. Added 30 independent host
+   checks; all 666 Python tests pass. Eight fresh exports, code/table/member
+   hashes, complete traces and reproduction are in
+   [analysis/ENV_GC_AND_DEFAULTS.md](analysis/ENV_GC_AND_DEFAULTS.md)
+   and [analysis/env-gc.json](analysis/env-gc.json).
+   No hardware, real environment/flash, physical erase or actual boot was accessed.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -1455,8 +1482,10 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
   retry policy now execute too. Actual detailed space/record/tail parsing and
   sector-end cache updates now run, including connected reservation after an
   integrity error. Follow broader malformed/stale-cache/concurrency paths,
-  GC relocation/reclamation (including 0x80c0cfac and 0x80c0d184), startup
-  initialization and real
+  Relocation/collection/reformat/default restore now execute over synthetic device
+  services too. Follow connected initialization 0x80c0d58e, callbacks 0x80c0d242,
+  0x80c0cd56/0x80c0d0f4, storage setup/teardown 0x80c0bc28/0x80c0bd10, outer
+  default binding and real
   persistence, subsequent boot/recovery/UI
   dispatch, physical reason/gesture behavior, VFS/raw storage/base-address/
   write-atomicity and startup dependencies. Establish a

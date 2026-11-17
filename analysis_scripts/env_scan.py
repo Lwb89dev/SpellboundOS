@@ -42,6 +42,7 @@ def sector(primary=1,dirty=1,link=0xffffffff,valid=True,free=4076,cursor=0):
 
 
 class Model:
+    base=BASE
     def __init__(self,c):
         self.c=c;self.flash=bytearray(b'\xff'*0x4000);self.actions=[];self.flag=c['maintenance_flag']
         self.output=bytearray(b'\xa5'*256);self.length=0xa5a5a5a5;self.desc=bytearray(56)
@@ -54,17 +55,17 @@ class Model:
             if entry['bad_crc']:data[16]^=1
             self.flash[entry['offset']:entry['offset']+len(data)]=data
     def read(self,at,n):
-        if not BASE<=at or at+n>BASE+len(self.flash):raise ValueError('synthetic storage extent')
-        self.actions.append(f'read:{at}:{n}');return bytes(self.flash[at-BASE:at-BASE+n])
+        if not self.base<=at or at+n>self.base+len(self.flash):raise ValueError('synthetic storage extent')
+        self.actions.append(f'read:{at}:{n}');return bytes(self.flash[at-self.base:at-self.base+n])
     def header_at(self,at,destination):
         data=self.read(at,20);put(destination,4,at);put(destination,8,word(data,8))
         if data[8:12]!=b'EF40':destination[0]=0;put(destination,12,0xffffffff);return 7
         destination[0]=1;destination[1]=state(data,4);destination[2]=state(data[3:],4);put(destination,12,word(data,12));return 0
     def next_address(self,context):
         at=word(context,4)
-        if at==0xffffffff:return BASE
+        if at==0xffffffff:return self.base
         link=word(context,12);candidate=at+(4096 if link==0xffffffff else link*4096)
-        return candidate if candidate<BASE+0x4000 else 0xffffffff
+        return candidate if candidate<self.base+0x4000 else 0xffffffff
     def contexts(self):
         context=bytearray(24);put(context,4,0xffffffff)
         for _ in range(4):
@@ -108,7 +109,7 @@ class Model:
             else:raise ValueError('bounded record count')
         return 0
     def details(self,context):
-        at=word(context,4);s=self.c['sectors'][(at-BASE)//4096]
+        at=word(context,4);s=self.c['sectors'][(at-self.base)//4096]
         self.actions.append('details:'+str(at));put(context,16,s['free']);put(context,20,s['cursor'] or at+20)
     def reserve(self):
         empty=opened=0
@@ -143,7 +144,7 @@ class Model:
             else:self.length=0;returned=0
         elif op=='next':
             context=bytearray(24);put(context,4,c['current']);put(context,12,c['link']);returned=self.next_address(context)
-        elif op=='header':returned=self.header_at(BASE+c['header_sector']*4096,self.header)
+        elif op=='header':returned=self.header_at(self.base+c['header_sector']*4096,self.header)
         elif op=='reserve':returned=self.reserve()
         elif op=='retry':
             returned=self.reserve()

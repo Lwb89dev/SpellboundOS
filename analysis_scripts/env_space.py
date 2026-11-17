@@ -32,14 +32,14 @@ class Model(ScanModel):
         for patch in c['patches']:
             data=bytes.fromhex(patch['hex']);self.flash[patch['offset']:patch['offset']+len(data)]=data
         for entry in c['warm_cache']:
-            put(self.ends,entry['slot']*8,BASE+entry['sector']*4096);put(self.ends,entry['slot']*8+4,entry['cursor'])
+            put(self.ends,entry['slot']*8,self.base+entry['sector']*4096);put(self.ends,entry['slot']*8+4,entry['cursor'])
     def write_marker(self,at):
         self.write_count+=1;result=-1 if self.c['write_error'] and self.write_count==1 else 1
         self.actions.append(f'write:{at}:1:{result}:{digest(bytes(1))}')
         if result<0:self.actions.append('log:write_error');return
-        self.flash[at-BASE]=0
+        self.flash[at-self.base]=0
     def decode(self,at):
-        total=word(self.flash,at-BASE+12)
+        total=word(self.flash,at-self.base+12)
         if 28<=total<=512:return super().decode(at)
         if total not in (0,0xffffffff):raise ValueError('bounded invalid length fixture')
         data=self.read(at,28);status=state(data,6);self.desc[0]=status;put(self.desc,8,28)
@@ -90,7 +90,7 @@ class Model(ScanModel):
     def result(self):
         rows=[]
         for operation in self.c['operations']:
-            returned=self.full_at(BASE+self.c['space_sector']*4096,self.header) if operation=='space' else self.reserve()
+            returned=self.full_at(self.base+self.c['space_sector']*4096,self.header) if operation=='space' else self.reserve()
             rows.append(dict(returned=returned,header_sha256=digest(self.header),free=word(self.header,16),cursor=word(self.header,20),
                 sector_cache_sha256=digest(self.ends),maintenance_flag=self.flag,flash_sha256=digest(self.flash)))
         return dict(actions=self.actions,rows=rows)

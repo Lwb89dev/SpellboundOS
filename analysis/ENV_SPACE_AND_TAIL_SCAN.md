@@ -133,3 +133,8 @@ executes the actual detailed branch and callers. Broader malformed inputs,
 stale-cache provenance, concurrency, GC relocation/erase, startup initialization
 and actual device semantics remain open. Safe device-specific backup/restoration
 and viable independent boot through the signed chain are still unresolved.
+
+The subsequent [GC/defaults pass](ENV_GC_AND_DEFAULTS.md) adds 35 native cases
+executing actual relocation, collection, sector formatting and defaults restore
+over synthetic low-level device services. Initialization is followed statically;
+connected startup and physical persistence remain open.
