@@ -1750,6 +1750,33 @@ limits; the initial observations point to the current status and work log.
    BBT provenance/creation, lower HAL/ROM, UID/retry, physical persistence,
    restoration and standalone boot remain open. No device was accessed.
 
+## 2026-11-17 — NAND retry levels, UID acquisition and connected ioctl export
+
+1. Executed actual compatibility/level/retry/reset-check/UID routines through
+   actual command builders and the actual busy loop over a supplied bus.
+   Extracted all eleven original UID configurations: eight flags enabled,
+   32-byte copies, 16 attempts, page zero and original feature sequences.
+2. Verified that exhausting five level write/readback attempts can still return
+   zero; actual unchanged readback confirms this without helper-error injection.
+   Retry restores level zero but does not replace a successful result when
+   restore fails. Reset-check fallback shares the setter's behavior. Actual
+   busy timeout with ff status can be accepted by retry/UID error-mask policy.
+3. Executed complement checks and first/second/last-copy selection. Early UID
+   errors preserve prior length; cache errors occur after length clearing.
+   Seven cases connect acquisition to actual ioctl 0x18: it can export authored
+   prior data with return zero after acquisition failure, or return zero with
+   length zero. It rejects descriptors whose UID flag is off. No physical UID
+   or successful hardware correction is claimed.
+4. All 86 cases pass in 334,591 steps (maximum 100,723); the original 79 cases
+   remain identical after adding ioctl export. Forty-four new host tests bring
+   the suite to 1,091 passing tests. Fifteen code/37 data guards and fourteen
+   fresh exports are recorded in
+   [analysis/NAND_RETRY_AND_UID.md](analysis/NAND_RETRY_AND_UID.md),
+   [analysis/nand-identity.json](analysis/nand-identity.json) and
+   [analysis/nand-identity-native.json](analysis/nand-identity-native.json).
+   Lower HAL/ROM, physical retry/UID, BBT provenance/creation, persistence,
+   restoration and standalone boot remain open. No device was accessed.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -1774,10 +1801,13 @@ limits; the initial observations point to the current status and work log.
   QSPI platform initialization/transfer, selected feature/cache/program/erase
   command builders, ROM-version policy and busy deadlines now execute with
   supplied HAL/pin/DMA services and emulated MMIO. Follow lower RAM HAL/ROM,
-  retry/UID, BBT provenance/creation and physical ID/geometry
+  physical retry/UID, BBT provenance/creation and physical ID/geometry
   corroboration. Original candidate matching/probe and driver-root setup now
-  execute with supplied services; object registry and UID internals remain
-  open. BBT verifier/resume and block/page remapping now execute with actual CRC
+  execute with supplied services; object registry remains open. Actual retry/
+  UID setup/acquisition and UID ioctl export now execute through actual command
+  builders and busy loops over a supplied bus. Setter retry exhaustion can return
+  zero, and UID ioctl can export prior state after early acquisition errors.
+  Physical correction/UID provenance and remaining consumers are open. BBT verifier/resume and block/page remapping now execute with actual CRC
   and supplied storage. Backup repair errors can leave an active RAM table while
   returning zero. Actual remappers also connect to page/program/copy/OOB/erase
   and busy loops over an authored immutable BBT. Actual NAND

@@ -189,3 +189,8 @@ Remaining work includes physical BBT provenance and initial creation, complete
 page-to-QSPI integration, actual lower HAL/ROM, UID and retry workaround, SFTL,
 mapping repair and persistence across failed writes/power loss. Device-specific
 backup/restoration and standalone boot through the signed chain remain open.
+
+The subsequent [retry/UID pass](NAND_RETRY_AND_UID.md) executes actual level
+control, retry/reset policy and UID acquisition through actual command builders
+and the busy loop, and connects UID acquisition to ioctl export. Physical ECC
+correction, UID provenance and lower HAL behavior remain unvalidated.
