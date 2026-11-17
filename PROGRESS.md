@@ -1966,6 +1966,24 @@ limits; the initial observations point to the current status and work log.
    BBT provenance/repair, concurrency/coherency/IRQ, persistence, device-specific
    backup/restoration and standalone boot remain open.
 
+## 2026-11-17 — connected NAND partition and RTOS-context dispatch
+
+1. Connected original partition read/ioctl and original operation-table read/ioctl
+   callbacks through context selection, mutex wrappers and actual lower BBT/page/
+   command/platform/QSPI/DMA. IRQ/context leaves and mutex results are supplied;
+   actual selection/lock/unlock bodies execute. Root/ops/callback missing paths
+   are covered without replacing a valid callback.
+2. Confirmed page rebasing before BBT, extent-independent reads, wrapping page
+   addition and caller argument rebasing before missing-driver failure. Format
+   executes two actual guarded erase calls, ignores both errors and returns zero.
+3. All 39 cases pass in 63,953 steps (maximum 7,925); prior 354 native cases
+   reproduce byte for byte. Nineteen new host checks bring
+   the suite to 1,324 passing tests. Fifty-five code/export and ten data hashes
+   are recorded in [analysis/NAND_DISPATCH_STACK.md](analysis/NAND_DISPATCH_STACK.md)
+   and [analysis/nand-dispatch-stack.json](analysis/nand-dispatch-stack.json).
+   EFTL mapped/page/OOB integration is next. Driver binding/RTOS/peripheral inputs
+   remain authored; concurrency, physical persistence/restoration/boot are open.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
