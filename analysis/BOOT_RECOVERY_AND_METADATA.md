@@ -52,8 +52,10 @@ to `0x80c0e6ea`. That validator:
 
 1. Chooses `recovery0`, `recovery1` or `recovery_ota` from a selector.
 2. Reads a 72-byte partition header, checks `RECO` and compares a checksum
-   over its first 68 bytes. The checksum routine's exact model is not yet
-   independently recovered.
+   over its first 68 bytes. The follow-up
+   [RECOVERY_VALIDATOR_NATIVE.md](RECOVERY_VALIDATOR_NATIVE.md) independently
+   recovers this as raw reflected CRC-32, seed `0xffffffff`, without final
+   complement, and executes the selected validator paths.
 3. Examines the recovery image at partition offset `0x1000`, using the image
    length from the header. It checks the 48-byte `HMRVYSIG` metadata and,
    on this wrapper's path, invokes the signature-validation branch.
@@ -127,3 +129,9 @@ Then process it with `-preScript SeedBootFlow.java` and
 LLVM inspection of `0x80c007b0`–`0x80c00876` independently confirms the loop
 and separate handoff frame. Physical entry/recovery, actual raw-partition
 backups, device-specific data and any independent-code boot path remain open.
+
+The later [native validation pass](RECOVERY_VALIDATOR_NATIVE.md) adds 62 passing
+cases with synthetic partition/service inputs: CRC, hardware/metadata policy,
+signature-read/hash orchestration, embedded key/curve bridge and partition/
+mandatory-wrapper checks. It supplies SHA hardware services and ECDSA arithmetic;
+no physical recovery operation or standalone boot path is established.

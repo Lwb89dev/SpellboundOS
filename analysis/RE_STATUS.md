@@ -32,7 +32,7 @@ requires evidence beyond OTA analysis and emulator case counts.
 | Motion / other peripherals | Candidate identities and selected probe paths | Complete configuration, interrupts, power/timing and physical verification |
 | Bluetooth | Static builder/auth/curve models; all 62 announced modules matched; 103 initial transfers/69 AES checks; synthetic notification fields matched on the link and app-logo exchange observed; native reply/action serializers; selected notification listener/queue/store route followed to `NotificationNotifyScreen` request | Full GATT/handle coverage, fresh pairing/key derivation, counter persistence, remaining payloads/JS linkage, actual notification rendering/replies/actions, special storage/rich formats, Roadstr handoff and call/audio behavior |
 | GNSS / touch | Container sections, candidate code and identity clues | Full mappings, loader/command protocols, runtime integration |
-| Boot/debug/recovery | Startup-aware boot/recovery inputs; reset/handoff split and key/UI/validation paths | Proven non-destructive debug/boot path, full backup and device-specific restoration |
+| Boot/debug/recovery | Startup-aware boot/recovery inputs; reset/handoff split and key/UI paths; 62 native CRC, hardware/metadata, signed-coverage/key-bridge and partition/wrapper cases with supplied partition/SHA/ECDSA services | Physical non-destructive entry, availability/counter-based partition selection and preparation/environment/handoff behavior, device enforcement, full backup/device-specific restoration and viable standalone boot |
 | Standalone OS / companion | Independent QEMU UART prototype; project goal recorded | Hardware boot/drivers, secure transport, Android implementation and device tests |
 
 The remaining native work now has a concrete prerequisite: use the corrected
@@ -78,6 +78,7 @@ Latest detailed findings:
 - [HR outer workspace allocation/free/restart and borrowed extension views](HR_WORKSPACE_AND_EXTENSION.md)
 - [Actual HR setup, component allocation/reset and nested cleanup](HR_SETUP_AND_NESTED_CLEANUP.md)
 - [Boot/recovery control flow and signed metadata](BOOT_RECOVERY_AND_METADATA.md)
+- [Native recovery CRC, metadata policy, signed coverage and partition validation](RECOVERY_VALIDATOR_NATIVE.md)
 - [Native GATT registrations and transport bindings](GATT_REGISTRATION.md)
 - [Native channel framing and authentication crypto delegate](NATIVE_CHANNEL.md)
 - [Authentication module, request layouts and ECDH key material](AUTH_SESSION.md)

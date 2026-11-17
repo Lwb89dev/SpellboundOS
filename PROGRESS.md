@@ -1289,11 +1289,41 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    and [analysis/hr-setup.json](analysis/hr-setup.json). Vendor material stays
    ignored; no device/settings access or firmware changes performed.
 
+## 2026-11-17 — native boot recovery validation and signed coverage
+
+1. Recovered and executed both boot CRC forms and independently generated the
+   256-entry table. Recovery header compares raw CRC-32, polynomial 0xedb88320,
+   seed 0xffffffff, over its first 68 bytes without final complement.
+2. Executed selected metadata policy: hardware nibble comparison/unknown value,
+   magic/product checks, HMZPSIGN-specific variant requirement and diagnostic-only
+   missing OTA property. This fixed 48-byte path does not inspect metadata/body
+   size fields; it does not implement the host inspector's variable-size format.
+3. Executed image validation and signature-read/hash orchestration through the
+   actual key/curve bridge. Checked 4096-byte boundaries, metadata-inclusive
+   signed coverage, final-64-byte signature exclusion, buffer cleanup and
+   progress. SHA hardware services and ECDSA arithmetic remain supplied. Short
+   body/signature read results still reach the verifier; no bypass is claimed.
+4. Executed partition selection by input selector, header magic/CRC, image checks,
+   version comparison/output and error cleanup. Actual wrapper 0x80c0e9c2 forces
+   verification on. Recovery selection/preparation/counter writes/handoff and
+   live entry/backup/restoration/standalone boot remain unexecuted/unproved.
+5. All 62 native cases pass (seven CRC, 13 metadata, 13 signature, ten image,
+   19 partition/wrapper), totaling 24,438 bounded steps including supplied calls.
+   Added 24 host checks; all 495 Python tests pass. Ten fresh exports, code/table/
+   key hashes, observations and reproduction are in
+   [analysis/RECOVERY_VALIDATOR_NATIVE.md](analysis/RECOVERY_VALIDATOR_NATIVE.md)
+   and [analysis/recovery-validator.json](analysis/recovery-validator.json).
+   Vendor material stays ignored; no device access or firmware/settings writes.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
   native subsystem work: the signed boot chain and device-specific restoration
   remain unresolved and cannot be closed by additional HR test counts alone.
+  Selected boot header/metadata/signature/partition validators now execute with
+  supplied board/partition/SHA/ECDSA services. Follow partition selection,
+  preparation, write-side counter/environment handling and handoff under bounded
+  synthetic inputs; establish a physical non-destructive entry/backup route.
 
 - Regenerate selected native paths with startup-aware mappings, corrected
   logger return behavior and register-save ABI effects. Current pseudocode

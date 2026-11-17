@@ -1,0 +1,1767 @@
+{
+  "boot_sha256": "44cd83c0d09864c6101e9825bd3c77d7fac314584d0408b378dd56c2aac5736a",
+  "byte_range_sha256": {
+    "80c00b24_54": "4eb88ef657bf687d1f4f783909cdfdb382e2d1e448adb4099e6b2a28060a918d",
+    "80c0e144_2ac": "93ca276368ff8642b09a07f594bc7e78b48095796d006235eb35db56542a41f1",
+    "80c0e578_454": "909f7190db39df3157b2464c8656f0b4ca8d11b5a398abee741a0ca1bc718665",
+    "80c2c5aa_a": "861b635a88f3c06e729b36f7fbc81130e516f6ba92affd0340a83e66a888f06c"
+  },
+  "crc_table_sha256": "12f3e0576d447eb37b36d82ba0c1c5481b8f0d12fdc70347ce4a076b229d4c86",
+  "export_sha256": {
+    "80c00b24.c": "81e7fc8f028b44aea57b01775c4a34dacece03bfdce1c5a7af8b7a815446d7ae",
+    "80c00b52.c": "95dc0be55e1743efb6ca9d3f216e74f0d013fbf01bb5bbf84662bea7ed6e042c",
+    "80c0e144.c": "d8bcd32d6b2eeecd6aacf17a7bd15b58356d7dfc1c87ce493e0bb1a35dba60e6",
+    "80c0e180.c": "874086429b62e11329fcf440277467ac2d5261447e7294f781a8ddc9dd3bf27d",
+    "80c0e38c.c": "f7e1c92b15d178c4463898cc54b6125371cb14fac6839dc5edd956f0750d8ff8",
+    "80c0e3c2.c": "01e8e064fb2538139f98bf289c24b2564ad36d9a56427c82b74c0dd3e02aa44c",
+    "80c0e578.c": "2b9428a9454b3309155a3ecca610e3a6adbc11fc852a39ce0eeafb6ecffedf3f",
+    "80c0e6ea.c": "c5403de3c1be22366d25192369417e7a330706a3a7a8009185322ab2125fde6b",
+    "80c0e7e0.c": "e5887cf1b03296b720f9fb1f1534e39574b91754c3a6435b371845c38ec3fe22",
+    "80c0e9c2.c": "5d00d04d091d5ce9e44c5babf5ca98db50d586df6e0eb894001e9cff093f515d"
+  },
+  "key_sha256": "436da64f07264e8d1ddf568e7ec0edce6e52ea0f469af4ca54a36a2761aff547",
+  "limitations": [
+    "Partition I/O, allocation/memory/string services, board properties, time, SHA hardware wrappers and ECDSA arithmetic are supplied.",
+    "Native CRC, metadata policy, SHA chunk orchestration, key/curve bridge and partition/wrapper control flow execute against synthetic inputs.",
+    "Short reads are bounded synthetic service results; they do not establish a signature bypass or device reachability.",
+    "No flash writes, counter/environment updates, recovery entry, hardware execution or viable standalone boot path are performed/proved."
+  ],
+  "native_steps": 24438,
+  "native_validation": {
+    "bound_per_case": 100000,
+    "case_count": 62,
+    "cases": [
+      {
+        "name": "crc_0_False",
+        "observed": {
+          "actions": [],
+          "allocations": [],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 0
+        },
+        "steps": 7
+      },
+      {
+        "name": "crc_0_True",
+        "observed": {
+          "actions": [],
+          "allocations": [],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 4294967295
+        },
+        "steps": 5
+      },
+      {
+        "name": "crc_9_False",
+        "observed": {
+          "actions": [],
+          "allocations": [],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 3421780262
+        },
+        "steps": 97
+      },
+      {
+        "name": "crc_9_True",
+        "observed": {
+          "actions": [],
+          "allocations": [],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 873187033
+        },
+        "steps": 95
+      },
+      {
+        "name": "crc_256_False",
+        "observed": {
+          "actions": [],
+          "allocations": [],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 688229491
+        },
+        "steps": 2567
+      },
+      {
+        "name": "crc_256_True",
+        "observed": {
+          "actions": [],
+          "allocations": [],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 3606737804
+        },
+        "steps": 2565
+      },
+      {
+        "name": "crc_custom_seed",
+        "observed": {
+          "actions": [],
+          "allocations": [],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 3622352487
+        },
+        "steps": 55
+      },
+      {
+        "name": "metadata_valid",
+        "observed": {
+          "actions": [
+            "board:ota",
+            "board:hw",
+            "log:hw_unknown"
+          ],
+          "allocations": [],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 1
+        },
+        "steps": 53
+      },
+      {
+        "name": "metadata_no_ota",
+        "observed": {
+          "actions": [
+            "board:ota",
+            "log:ota_absent",
+            "board:hw",
+            "log:hw_unknown"
+          ],
+          "allocations": [],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 1
+        },
+        "steps": 61
+      },
+      {
+        "name": "metadata_hw_33_33",
+        "observed": {
+          "actions": [
+            "board:ota",
+            "board:hw",
+            "log:hw_compare"
+          ],
+          "allocations": [],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 1
+        },
+        "steps": 60
+      },
+      {
+        "name": "metadata_hw_33_34",
+        "observed": {
+          "actions": [
+            "board:ota",
+            "board:hw",
+            "log:hw_compare"
+          ],
+          "allocations": [],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 1
+        },
+        "steps": 60
+      },
+      {
+        "name": "metadata_hw_34_33",
+        "observed": {
+          "actions": [
+            "board:ota",
+            "board:hw",
+            "log:hw_compare",
+            "log:error:ba"
+          ],
+          "allocations": [],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 0
+        },
+        "steps": 70
+      },
+      {
+        "name": "metadata_hw_33_49",
+        "observed": {
+          "actions": [
+            "board:ota",
+            "board:hw",
+            "log:hw_compare",
+            "log:error:b4"
+          ],
+          "allocations": [],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 0
+        },
+        "steps": 66
+      },
+      {
+        "name": "metadata_hw_33_255",
+        "observed": {
+          "actions": [
+            "board:ota",
+            "board:hw",
+            "log:hw_compare",
+            "log:error:b4"
+          ],
+          "allocations": [],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 0
+        },
+        "steps": 66
+      },
+      {
+        "name": "metadata_magic",
+        "observed": {
+          "actions": [
+            "board:ota",
+            "board:hw",
+            "log:hw_unknown",
+            "log:magic"
+          ],
+          "allocations": [],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 0
+        },
+        "steps": 62
+      },
+      {
+        "name": "metadata_product",
+        "observed": {
+          "actions": [
+            "board:ota",
+            "board:hw",
+            "log:hw_unknown",
+            "log:product"
+          ],
+          "allocations": [],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 0
+        },
+        "steps": 72
+      },
+      {
+        "name": "metadata_recovery_variant_ignored",
+        "observed": {
+          "actions": [
+            "board:ota",
+            "board:hw",
+            "log:hw_unknown"
+          ],
+          "allocations": [],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 1
+        },
+        "steps": 53
+      },
+      {
+        "name": "metadata_main_variant",
+        "observed": {
+          "actions": [
+            "board:ota",
+            "board:hw",
+            "log:hw_unknown",
+            "log:product"
+          ],
+          "allocations": [],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 0
+        },
+        "steps": 77
+      },
+      {
+        "name": "metadata_main_valid",
+        "observed": {
+          "actions": [
+            "board:ota",
+            "board:hw",
+            "log:hw_unknown"
+          ],
+          "allocations": [],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 1
+        },
+        "steps": 58
+      },
+      {
+        "name": "metadata_size_body_ignored",
+        "observed": {
+          "actions": [
+            "board:ota",
+            "board:hw",
+            "log:hw_unknown"
+          ],
+          "allocations": [],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 1
+        },
+        "steps": 53
+      },
+      {
+        "name": "signature_size_0",
+        "observed": {
+          "actions": [
+            "log:signature_short"
+          ],
+          "allocations": [],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 0
+        },
+        "steps": 21
+      },
+      {
+        "name": "signature_size_64",
+        "observed": {
+          "actions": [
+            "log:signature_short"
+          ],
+          "allocations": [],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 0
+        },
+        "steps": 21
+      },
+      {
+        "name": "signature_size_65",
+        "observed": {
+          "actions": [
+            "read:4097:64:64",
+            "alloc:4096",
+            "sha:init",
+            "read:4096:1:1",
+            "sha:update:1",
+            "sha:final",
+            "free:4096",
+            "crypto"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "fe300f5c43d193c405ffa5008d56b1e5a75ffd1acc6d240a13132e7a15858ec3",
+              "size": 4096
+            }
+          ],
+          "crypto": [
+            {
+              "curve": 2160325496,
+              "digest_hex": "084fed08b978af4d7d196a7446a86b58009e636b611db16211b65a9aadff29c5",
+              "key_sha256": "436da64f07264e8d1ddf568e7ec0edce6e52ea0f469af4ca54a36a2761aff547",
+              "length": 32,
+              "signature_sha256": "31870e8dab125bcb257dc2d6346fafb39c3f4e6e20f17a6e9d75f40d39203533"
+            }
+          ],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 1
+        },
+        "steps": 133
+      },
+      {
+        "name": "signature_size_4159",
+        "observed": {
+          "actions": [
+            "read:8191:64:64",
+            "alloc:4096",
+            "sha:init",
+            "read:4096:4095:4095",
+            "sha:update:4095",
+            "sha:final",
+            "free:4096",
+            "crypto"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "4c8064a9c32ad83df838825eb5a7bb3da6f07f29b81962650afa523b9d3019fd",
+              "size": 4096
+            }
+          ],
+          "crypto": [
+            {
+              "curve": 2160325496,
+              "digest_hex": "dfaa09268d339e3c567f770dadcb9a568c0e3f0adfc2ae4a9ea3c55b50aa31ad",
+              "key_sha256": "436da64f07264e8d1ddf568e7ec0edce6e52ea0f469af4ca54a36a2761aff547",
+              "length": 32,
+              "signature_sha256": "31870e8dab125bcb257dc2d6346fafb39c3f4e6e20f17a6e9d75f40d39203533"
+            }
+          ],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 1
+        },
+        "steps": 133
+      },
+      {
+        "name": "signature_size_4160",
+        "observed": {
+          "actions": [
+            "read:8192:64:64",
+            "alloc:4096",
+            "sha:init",
+            "read:4096:4096:4096",
+            "sha:update:4096",
+            "sha:final",
+            "free:4096",
+            "crypto"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "e7ae7e4a24224d07e0b59afaccea3d23f0466048fc464a5a54494dd979e9e172",
+              "size": 4096
+            }
+          ],
+          "crypto": [
+            {
+              "curve": 2160325496,
+              "digest_hex": "e7ae7e4a24224d07e0b59afaccea3d23f0466048fc464a5a54494dd979e9e172",
+              "key_sha256": "436da64f07264e8d1ddf568e7ec0edce6e52ea0f469af4ca54a36a2761aff547",
+              "length": 32,
+              "signature_sha256": "31870e8dab125bcb257dc2d6346fafb39c3f4e6e20f17a6e9d75f40d39203533"
+            }
+          ],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 1
+        },
+        "steps": 132
+      },
+      {
+        "name": "signature_size_4161",
+        "observed": {
+          "actions": [
+            "read:8193:64:64",
+            "alloc:4096",
+            "sha:init",
+            "read:4096:4096:4096",
+            "sha:update:4096",
+            "read:8192:1:1",
+            "sha:update:1",
+            "sha:final",
+            "free:4096",
+            "crypto"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "095a1afa0ba5953bdecdb6528dc7c1c377acb91cfcb36ea85991bcce89d3338b",
+              "size": 4096
+            }
+          ],
+          "crypto": [
+            {
+              "curve": 2160325496,
+              "digest_hex": "2f34023e78c2b824fde35b829084f71d521d4adde505bf156c0dd289a565f24e",
+              "key_sha256": "436da64f07264e8d1ddf568e7ec0edce6e52ea0f469af4ca54a36a2761aff547",
+              "length": 32,
+              "signature_sha256": "31870e8dab125bcb257dc2d6346fafb39c3f4e6e20f17a6e9d75f40d39203533"
+            }
+          ],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 1
+        },
+        "steps": 168
+      },
+      {
+        "name": "signature_size_8256",
+        "observed": {
+          "actions": [
+            "read:12288:64:64",
+            "alloc:4096",
+            "sha:init",
+            "read:4096:4096:4096",
+            "sha:update:4096",
+            "read:8192:4096:4096",
+            "sha:update:4096",
+            "sha:final",
+            "free:4096",
+            "crypto"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "e7ae7e4a24224d07e0b59afaccea3d23f0466048fc464a5a54494dd979e9e172",
+              "size": 4096
+            }
+          ],
+          "crypto": [
+            {
+              "curve": 2160325496,
+              "digest_hex": "106fbb1cad658df644eadcca849ef0f820f1e389e83dc9b783e61dff15c31b6f",
+              "key_sha256": "436da64f07264e8d1ddf568e7ec0edce6e52ea0f469af4ca54a36a2761aff547",
+              "length": 32,
+              "signature_sha256": "31870e8dab125bcb257dc2d6346fafb39c3f4e6e20f17a6e9d75f40d39203533"
+            }
+          ],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 1
+        },
+        "steps": 167
+      },
+      {
+        "name": "signature_callback",
+        "observed": {
+          "actions": [
+            "read:8193:64:64",
+            "alloc:4096",
+            "sha:init",
+            "read:4096:4096:4096",
+            "sha:update:4096",
+            "progress:4096:4161",
+            "read:8192:1:1",
+            "sha:update:1",
+            "progress:4097:4161",
+            "sha:final",
+            "free:4096",
+            "crypto"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "095a1afa0ba5953bdecdb6528dc7c1c377acb91cfcb36ea85991bcce89d3338b",
+              "size": 4096
+            }
+          ],
+          "crypto": [
+            {
+              "curve": 2160325496,
+              "digest_hex": "2f34023e78c2b824fde35b829084f71d521d4adde505bf156c0dd289a565f24e",
+              "key_sha256": "436da64f07264e8d1ddf568e7ec0edce6e52ea0f469af4ca54a36a2761aff547",
+              "length": 32,
+              "signature_sha256": "31870e8dab125bcb257dc2d6346fafb39c3f4e6e20f17a6e9d75f40d39203533"
+            }
+          ],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 1
+        },
+        "steps": 176
+      },
+      {
+        "name": "signature_alloc_failure",
+        "observed": {
+          "actions": [
+            "read:4544:64:64",
+            "alloc_fail:4096",
+            "log:signature_alloc"
+          ],
+          "allocations": [],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 0
+        },
+        "steps": 61
+      },
+      {
+        "name": "signature_rejected",
+        "observed": {
+          "actions": [
+            "read:4544:64:64",
+            "alloc:4096",
+            "sha:init",
+            "read:4096:448:448",
+            "sha:update:448",
+            "sha:final",
+            "free:4096",
+            "crypto",
+            "log:signature_rejected"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "e9f7fd220592eea4bb221d8d5d1d7af983184417e613561ee7e12f50022ee267",
+              "size": 4096
+            }
+          ],
+          "crypto": [
+            {
+              "curve": 2160325496,
+              "digest_hex": "61979c5e2c0a5240487c97cfe72c7eecc980e9b9e96f8544f69153689679ad0d",
+              "key_sha256": "436da64f07264e8d1ddf568e7ec0edce6e52ea0f469af4ca54a36a2761aff547",
+              "length": 32,
+              "signature_sha256": "31870e8dab125bcb257dc2d6346fafb39c3f4e6e20f17a6e9d75f40d39203533"
+            }
+          ],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 0
+        },
+        "steps": 145
+      },
+      {
+        "name": "signature_nonzero_result",
+        "observed": {
+          "actions": [
+            "read:4544:64:64",
+            "alloc:4096",
+            "sha:init",
+            "read:4096:448:448",
+            "sha:update:448",
+            "sha:final",
+            "free:4096",
+            "crypto"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "e9f7fd220592eea4bb221d8d5d1d7af983184417e613561ee7e12f50022ee267",
+              "size": 4096
+            }
+          ],
+          "crypto": [
+            {
+              "curve": 2160325496,
+              "digest_hex": "61979c5e2c0a5240487c97cfe72c7eecc980e9b9e96f8544f69153689679ad0d",
+              "key_sha256": "436da64f07264e8d1ddf568e7ec0edce6e52ea0f469af4ca54a36a2761aff547",
+              "length": 32,
+              "signature_sha256": "31870e8dab125bcb257dc2d6346fafb39c3f4e6e20f17a6e9d75f40d39203533"
+            }
+          ],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 1
+        },
+        "steps": 133
+      },
+      {
+        "name": "signature_short_signature",
+        "observed": {
+          "actions": [
+            "read:8193:64:63",
+            "alloc:4096",
+            "sha:init",
+            "read:4096:4096:4096",
+            "sha:update:4096",
+            "read:8192:1:1",
+            "sha:update:1",
+            "sha:final",
+            "free:4096",
+            "crypto",
+            "log:signature_rejected"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "095a1afa0ba5953bdecdb6528dc7c1c377acb91cfcb36ea85991bcce89d3338b",
+              "size": 4096
+            }
+          ],
+          "crypto": [
+            {
+              "curve": 2160325496,
+              "digest_hex": "2f34023e78c2b824fde35b829084f71d521d4adde505bf156c0dd289a565f24e",
+              "key_sha256": "436da64f07264e8d1ddf568e7ec0edce6e52ea0f469af4ca54a36a2761aff547",
+              "length": 32,
+              "signature_sha256": "52d26a20de760f9591e171da3c2a64cd7d9f102e5edfd4ac9398bcf90d711a09"
+            }
+          ],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 0
+        },
+        "steps": 180
+      },
+      {
+        "name": "signature_short_body",
+        "observed": {
+          "actions": [
+            "read:8193:64:64",
+            "alloc:4096",
+            "sha:init",
+            "read:4096:4096:4095",
+            "sha:update:4096",
+            "read:8192:1:0",
+            "sha:update:1",
+            "sha:final",
+            "free:4096",
+            "crypto",
+            "log:signature_rejected"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "bcf1f2b9af18c3d33e2019745f9621cf6fa86ece3798d5ada91aeb5ad7ae885f",
+              "size": 4096
+            }
+          ],
+          "crypto": [
+            {
+              "curve": 2160325496,
+              "digest_hex": "7d0218fc4a124d2240fdf159926e82a26e00e85e79a87ef4b2f1c6bc092636dc",
+              "key_sha256": "436da64f07264e8d1ddf568e7ec0edce6e52ea0f469af4ca54a36a2761aff547",
+              "length": 32,
+              "signature_sha256": "31870e8dab125bcb257dc2d6346fafb39c3f4e6e20f17a6e9d75f40d39203533"
+            }
+          ],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 0
+        },
+        "steps": 180
+      },
+      {
+        "name": "image_valid",
+        "observed": {
+          "actions": [
+            "log:image",
+            "read:4496:48:48",
+            "board:ota",
+            "board:hw",
+            "log:hw_unknown",
+            "read:4544:64:64",
+            "alloc:4096",
+            "sha:init",
+            "read:4096:448:448",
+            "sha:update:448",
+            "sha:final",
+            "free:4096",
+            "crypto"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "e9f7fd220592eea4bb221d8d5d1d7af983184417e613561ee7e12f50022ee267",
+              "size": 4096
+            }
+          ],
+          "crypto": [
+            {
+              "curve": 2160325496,
+              "digest_hex": "61979c5e2c0a5240487c97cfe72c7eecc980e9b9e96f8544f69153689679ad0d",
+              "key_sha256": "436da64f07264e8d1ddf568e7ec0edce6e52ea0f469af4ca54a36a2761aff547",
+              "length": 32,
+              "signature_sha256": "31870e8dab125bcb257dc2d6346fafb39c3f4e6e20f17a6e9d75f40d39203533"
+            }
+          ],
+          "output_sha256": "c1eb851fc27ccfd4cff2a3d11776ee5341af834e61e1a79768c00f2c858a1943",
+          "returned": 1
+        },
+        "steps": 265
+      },
+      {
+        "name": "image_small",
+        "observed": {
+          "actions": [
+            "log:image",
+            "log:error:245"
+          ],
+          "allocations": [],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 0
+        },
+        "steps": 59
+      },
+      {
+        "name": "image_minimum",
+        "observed": {
+          "actions": [
+            "log:image",
+            "read:4096:48:48",
+            "board:ota",
+            "board:hw",
+            "log:hw_unknown",
+            "read:4144:64:64",
+            "alloc:4096",
+            "sha:init",
+            "read:4096:48:48",
+            "sha:update:48",
+            "sha:final",
+            "free:4096",
+            "crypto"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "c2dc2a83d26a994c57bdbaffc06e1caf953ed9018d61279b61743767269cc344",
+              "size": 4096
+            }
+          ],
+          "crypto": [
+            {
+              "curve": 2160325496,
+              "digest_hex": "879741c6d9fdab23c0dfa6e03584f848567fa2349b09cce54342d3ec1e2025e2",
+              "key_sha256": "436da64f07264e8d1ddf568e7ec0edce6e52ea0f469af4ca54a36a2761aff547",
+              "length": 32,
+              "signature_sha256": "31870e8dab125bcb257dc2d6346fafb39c3f4e6e20f17a6e9d75f40d39203533"
+            }
+          ],
+          "output_sha256": "c1eb851fc27ccfd4cff2a3d11776ee5341af834e61e1a79768c00f2c858a1943",
+          "returned": 1
+        },
+        "steps": 265
+      },
+      {
+        "name": "image_metadata_short",
+        "observed": {
+          "actions": [
+            "log:image",
+            "read:4496:48:47",
+            "log:error:24e"
+          ],
+          "allocations": [],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 0
+        },
+        "steps": 68
+      },
+      {
+        "name": "image_bad_magic",
+        "observed": {
+          "actions": [
+            "log:image",
+            "read:4496:48:48",
+            "board:ota",
+            "board:hw",
+            "log:hw_unknown",
+            "log:magic"
+          ],
+          "allocations": [],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 0
+        },
+        "steps": 124
+      },
+      {
+        "name": "image_crypto_rejected",
+        "observed": {
+          "actions": [
+            "log:image",
+            "read:4496:48:48",
+            "board:ota",
+            "board:hw",
+            "log:hw_unknown",
+            "read:4544:64:64",
+            "alloc:4096",
+            "sha:init",
+            "read:4096:448:448",
+            "sha:update:448",
+            "sha:final",
+            "free:4096",
+            "crypto",
+            "log:signature_rejected",
+            "log:error:259"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "e9f7fd220592eea4bb221d8d5d1d7af983184417e613561ee7e12f50022ee267",
+              "size": 4096
+            }
+          ],
+          "crypto": [
+            {
+              "curve": 2160325496,
+              "digest_hex": "61979c5e2c0a5240487c97cfe72c7eecc980e9b9e96f8544f69153689679ad0d",
+              "key_sha256": "436da64f07264e8d1ddf568e7ec0edce6e52ea0f469af4ca54a36a2761aff547",
+              "length": 32,
+              "signature_sha256": "31870e8dab125bcb257dc2d6346fafb39c3f4e6e20f17a6e9d75f40d39203533"
+            }
+          ],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 0
+        },
+        "steps": 282
+      },
+      {
+        "name": "image_verify_disabled",
+        "observed": {
+          "actions": [
+            "log:image",
+            "read:4496:48:48",
+            "board:ota",
+            "board:hw",
+            "log:hw_unknown"
+          ],
+          "allocations": [],
+          "crypto": [],
+          "output_sha256": "c1eb851fc27ccfd4cff2a3d11776ee5341af834e61e1a79768c00f2c858a1943",
+          "returned": 1
+        },
+        "steps": 126
+      },
+      {
+        "name": "image_no_output",
+        "observed": {
+          "actions": [
+            "log:image",
+            "read:4496:48:48",
+            "board:ota",
+            "board:hw",
+            "log:hw_unknown",
+            "read:4544:64:64",
+            "alloc:4096",
+            "sha:init",
+            "read:4096:448:448",
+            "sha:update:448",
+            "sha:final",
+            "free:4096",
+            "crypto"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "e9f7fd220592eea4bb221d8d5d1d7af983184417e613561ee7e12f50022ee267",
+              "size": 4096
+            }
+          ],
+          "crypto": [
+            {
+              "curve": 2160325496,
+              "digest_hex": "61979c5e2c0a5240487c97cfe72c7eecc980e9b9e96f8544f69153689679ad0d",
+              "key_sha256": "436da64f07264e8d1ddf568e7ec0edce6e52ea0f469af4ca54a36a2761aff547",
+              "length": 32,
+              "signature_sha256": "31870e8dab125bcb257dc2d6346fafb39c3f4e6e20f17a6e9d75f40d39203533"
+            }
+          ],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 1
+        },
+        "steps": 256
+      },
+      {
+        "name": "image_version_zero",
+        "observed": {
+          "actions": [
+            "log:image",
+            "read:4496:48:48",
+            "board:ota",
+            "board:hw",
+            "log:hw_unknown",
+            "read:4544:64:64",
+            "alloc:4096",
+            "sha:init",
+            "read:4096:448:448",
+            "sha:update:448",
+            "sha:final",
+            "free:4096",
+            "crypto"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "e9f7fd220592eea4bb221d8d5d1d7af983184417e613561ee7e12f50022ee267",
+              "size": 4096
+            }
+          ],
+          "crypto": [
+            {
+              "curve": 2160325496,
+              "digest_hex": "61979c5e2c0a5240487c97cfe72c7eecc980e9b9e96f8544f69153689679ad0d",
+              "key_sha256": "436da64f07264e8d1ddf568e7ec0edce6e52ea0f469af4ca54a36a2761aff547",
+              "length": 32,
+              "signature_sha256": "31870e8dab125bcb257dc2d6346fafb39c3f4e6e20f17a6e9d75f40d39203533"
+            }
+          ],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 1
+        },
+        "steps": 257
+      },
+      {
+        "name": "image_size_field_ignored",
+        "observed": {
+          "actions": [
+            "log:image",
+            "read:4496:48:48",
+            "board:ota",
+            "board:hw",
+            "log:hw_unknown",
+            "read:4544:64:64",
+            "alloc:4096",
+            "sha:init",
+            "read:4096:448:448",
+            "sha:update:448",
+            "sha:final",
+            "free:4096",
+            "crypto"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "2a6038e46687bfef9624112494b12e1b8674042504dfe053ecfadc53778d9bd6",
+              "size": 4096
+            }
+          ],
+          "crypto": [
+            {
+              "curve": 2160325496,
+              "digest_hex": "ae1a23b50d749807d0353b4c1686f4b5fee58485feb32282f0b9b0958e4587ec",
+              "key_sha256": "436da64f07264e8d1ddf568e7ec0edce6e52ea0f469af4ca54a36a2761aff547",
+              "length": 32,
+              "signature_sha256": "31870e8dab125bcb257dc2d6346fafb39c3f4e6e20f17a6e9d75f40d39203533"
+            }
+          ],
+          "output_sha256": "c1eb851fc27ccfd4cff2a3d11776ee5341af834e61e1a79768c00f2c858a1943",
+          "returned": 1
+        },
+        "steps": 265
+      },
+      {
+        "name": "partition_selector_0",
+        "observed": {
+          "actions": [
+            "alloc:72",
+            "open:recovery0",
+            "read:0:72:72",
+            "log:image",
+            "read:4496:48:48",
+            "board:ota",
+            "board:hw",
+            "log:hw_unknown",
+            "read:4544:64:64",
+            "alloc:4096",
+            "sha:init",
+            "read:4096:448:448",
+            "sha:update:448",
+            "sha:final",
+            "free:4096",
+            "crypto",
+            "close",
+            "free:72"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "6403e0c5876317d009ad690597f0729cb6f9ce0dbdd39eab6a20095aa2b87887",
+              "size": 72
+            },
+            {
+              "freed": true,
+              "sha256": "e9f7fd220592eea4bb221d8d5d1d7af983184417e613561ee7e12f50022ee267",
+              "size": 4096
+            }
+          ],
+          "crypto": [
+            {
+              "curve": 2160325496,
+              "digest_hex": "61979c5e2c0a5240487c97cfe72c7eecc980e9b9e96f8544f69153689679ad0d",
+              "key_sha256": "436da64f07264e8d1ddf568e7ec0edce6e52ea0f469af4ca54a36a2761aff547",
+              "length": 32,
+              "signature_sha256": "31870e8dab125bcb257dc2d6346fafb39c3f4e6e20f17a6e9d75f40d39203533"
+            }
+          ],
+          "output_sha256": "ad12fbc5d007cb9820e94e89718931c0420e37c75ad8b91fccf521e4eed5adf9",
+          "returned": 1
+        },
+        "steps": 1051
+      },
+      {
+        "name": "partition_selector_1",
+        "observed": {
+          "actions": [
+            "alloc:72",
+            "open:recovery1",
+            "read:0:72:72",
+            "log:image",
+            "read:4496:48:48",
+            "board:ota",
+            "board:hw",
+            "log:hw_unknown",
+            "read:4544:64:64",
+            "alloc:4096",
+            "sha:init",
+            "read:4096:448:448",
+            "sha:update:448",
+            "sha:final",
+            "free:4096",
+            "crypto",
+            "close",
+            "free:72"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "6403e0c5876317d009ad690597f0729cb6f9ce0dbdd39eab6a20095aa2b87887",
+              "size": 72
+            },
+            {
+              "freed": true,
+              "sha256": "e9f7fd220592eea4bb221d8d5d1d7af983184417e613561ee7e12f50022ee267",
+              "size": 4096
+            }
+          ],
+          "crypto": [
+            {
+              "curve": 2160325496,
+              "digest_hex": "61979c5e2c0a5240487c97cfe72c7eecc980e9b9e96f8544f69153689679ad0d",
+              "key_sha256": "436da64f07264e8d1ddf568e7ec0edce6e52ea0f469af4ca54a36a2761aff547",
+              "length": 32,
+              "signature_sha256": "31870e8dab125bcb257dc2d6346fafb39c3f4e6e20f17a6e9d75f40d39203533"
+            }
+          ],
+          "output_sha256": "ad12fbc5d007cb9820e94e89718931c0420e37c75ad8b91fccf521e4eed5adf9",
+          "returned": 1
+        },
+        "steps": 1049
+      },
+      {
+        "name": "partition_selector_8",
+        "observed": {
+          "actions": [
+            "alloc:72",
+            "open:recovery_ota",
+            "read:0:72:72",
+            "log:image",
+            "read:4496:48:48",
+            "board:ota",
+            "board:hw",
+            "log:hw_unknown",
+            "read:4544:64:64",
+            "alloc:4096",
+            "sha:init",
+            "read:4096:448:448",
+            "sha:update:448",
+            "sha:final",
+            "free:4096",
+            "crypto",
+            "close",
+            "free:72"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "6403e0c5876317d009ad690597f0729cb6f9ce0dbdd39eab6a20095aa2b87887",
+              "size": 72
+            },
+            {
+              "freed": true,
+              "sha256": "e9f7fd220592eea4bb221d8d5d1d7af983184417e613561ee7e12f50022ee267",
+              "size": 4096
+            }
+          ],
+          "crypto": [
+            {
+              "curve": 2160325496,
+              "digest_hex": "61979c5e2c0a5240487c97cfe72c7eecc980e9b9e96f8544f69153689679ad0d",
+              "key_sha256": "436da64f07264e8d1ddf568e7ec0edce6e52ea0f469af4ca54a36a2761aff547",
+              "length": 32,
+              "signature_sha256": "31870e8dab125bcb257dc2d6346fafb39c3f4e6e20f17a6e9d75f40d39203533"
+            }
+          ],
+          "output_sha256": "ad12fbc5d007cb9820e94e89718931c0420e37c75ad8b91fccf521e4eed5adf9",
+          "returned": 1
+        },
+        "steps": 1051
+      },
+      {
+        "name": "partition_selector_7",
+        "observed": {
+          "actions": [
+            "alloc:72",
+            "log:error:2b1",
+            "free:72"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "834a709ba2534ebe3ee1397fd4f7bd288b2acc1d20a08d6c862dcd99b6f04400",
+              "size": 72
+            }
+          ],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 0
+        },
+        "steps": 56
+      },
+      {
+        "name": "partition_header_alloc_failure",
+        "observed": {
+          "actions": [
+            "alloc_fail:72",
+            "log:error:29a"
+          ],
+          "allocations": [],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 0
+        },
+        "steps": 42
+      },
+      {
+        "name": "partition_open_failure",
+        "observed": {
+          "actions": [
+            "alloc:72",
+            "open:recovery0",
+            "log:error:2b7",
+            "free:72"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "834a709ba2534ebe3ee1397fd4f7bd288b2acc1d20a08d6c862dcd99b6f04400",
+              "size": 72
+            }
+          ],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 0
+        },
+        "steps": 61
+      },
+      {
+        "name": "partition_header_short",
+        "observed": {
+          "actions": [
+            "alloc:72",
+            "open:recovery0",
+            "read:0:72:71",
+            "log:error:2c2",
+            "close",
+            "free:72"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "4ab45a3c5994608e28ec9df77b0ce566739c713c4df30878e7036a8bdaab6b60",
+              "size": 72
+            }
+          ],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 0
+        },
+        "steps": 70
+      },
+      {
+        "name": "partition_magic",
+        "observed": {
+          "actions": [
+            "alloc:72",
+            "open:recovery0",
+            "read:0:72:72",
+            "log:error:2c8",
+            "close",
+            "free:72"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "144f23a39375bd23cceaa18253ecc92370a6cf83cbfb9aa0a48facf0bec316e0",
+              "size": 72
+            }
+          ],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 0
+        },
+        "steps": 75
+      },
+      {
+        "name": "partition_crc",
+        "observed": {
+          "actions": [
+            "alloc:72",
+            "open:recovery0",
+            "read:0:72:72",
+            "log:error:2cf",
+            "close",
+            "free:72"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "ad8ed3aa5bf4da7496be813ede8835741db584a30133b6241f94a7a4d60ef52f",
+              "size": 72
+            }
+          ],
+          "crypto": [],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 0
+        },
+        "steps": 766
+      },
+      {
+        "name": "partition_version_mismatch",
+        "observed": {
+          "actions": [
+            "alloc:72",
+            "open:recovery0",
+            "read:0:72:72",
+            "log:image",
+            "read:4496:48:48",
+            "board:ota",
+            "board:hw",
+            "log:hw_unknown",
+            "read:4544:64:64",
+            "alloc:4096",
+            "sha:init",
+            "read:4096:448:448",
+            "sha:update:448",
+            "sha:final",
+            "free:4096",
+            "crypto",
+            "log:error:2e9",
+            "close",
+            "free:72"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "1a5898a1b297425611e216866cdf119c28632eb66c0996977e62c289c5bb087c",
+              "size": 72
+            },
+            {
+              "freed": true,
+              "sha256": "e9f7fd220592eea4bb221d8d5d1d7af983184417e613561ee7e12f50022ee267",
+              "size": 4096
+            }
+          ],
+          "crypto": [
+            {
+              "curve": 2160325496,
+              "digest_hex": "61979c5e2c0a5240487c97cfe72c7eecc980e9b9e96f8544f69153689679ad0d",
+              "key_sha256": "436da64f07264e8d1ddf568e7ec0edce6e52ea0f469af4ca54a36a2761aff547",
+              "length": 32,
+              "signature_sha256": "31870e8dab125bcb257dc2d6346fafb39c3f4e6e20f17a6e9d75f40d39203533"
+            }
+          ],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 0
+        },
+        "steps": 1055
+      },
+      {
+        "name": "partition_crypto_rejected",
+        "observed": {
+          "actions": [
+            "alloc:72",
+            "open:recovery0",
+            "read:0:72:72",
+            "log:image",
+            "read:4496:48:48",
+            "board:ota",
+            "board:hw",
+            "log:hw_unknown",
+            "read:4544:64:64",
+            "alloc:4096",
+            "sha:init",
+            "read:4096:448:448",
+            "sha:update:448",
+            "sha:final",
+            "free:4096",
+            "crypto",
+            "log:signature_rejected",
+            "log:error:259",
+            "log:error:2e1",
+            "close",
+            "free:72"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "6403e0c5876317d009ad690597f0729cb6f9ce0dbdd39eab6a20095aa2b87887",
+              "size": 72
+            },
+            {
+              "freed": true,
+              "sha256": "e9f7fd220592eea4bb221d8d5d1d7af983184417e613561ee7e12f50022ee267",
+              "size": 4096
+            }
+          ],
+          "crypto": [
+            {
+              "curve": 2160325496,
+              "digest_hex": "61979c5e2c0a5240487c97cfe72c7eecc980e9b9e96f8544f69153689679ad0d",
+              "key_sha256": "436da64f07264e8d1ddf568e7ec0edce6e52ea0f469af4ca54a36a2761aff547",
+              "length": 32,
+              "signature_sha256": "31870e8dab125bcb257dc2d6346fafb39c3f4e6e20f17a6e9d75f40d39203533"
+            }
+          ],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 0
+        },
+        "steps": 1066
+      },
+      {
+        "name": "partition_no_output",
+        "observed": {
+          "actions": [
+            "alloc:72",
+            "open:recovery0",
+            "read:0:72:72",
+            "log:image",
+            "read:4496:48:48",
+            "board:ota",
+            "board:hw",
+            "log:hw_unknown",
+            "read:4544:64:64",
+            "alloc:4096",
+            "sha:init",
+            "read:4096:448:448",
+            "sha:update:448",
+            "sha:final",
+            "free:4096",
+            "crypto",
+            "close",
+            "free:72"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "6403e0c5876317d009ad690597f0729cb6f9ce0dbdd39eab6a20095aa2b87887",
+              "size": 72
+            },
+            {
+              "freed": true,
+              "sha256": "e9f7fd220592eea4bb221d8d5d1d7af983184417e613561ee7e12f50022ee267",
+              "size": 4096
+            }
+          ],
+          "crypto": [
+            {
+              "curve": 2160325496,
+              "digest_hex": "61979c5e2c0a5240487c97cfe72c7eecc980e9b9e96f8544f69153689679ad0d",
+              "key_sha256": "436da64f07264e8d1ddf568e7ec0edce6e52ea0f469af4ca54a36a2761aff547",
+              "length": 32,
+              "signature_sha256": "31870e8dab125bcb257dc2d6346fafb39c3f4e6e20f17a6e9d75f40d39203533"
+            }
+          ],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 1
+        },
+        "steps": 1041
+      },
+      {
+        "name": "partition_output_1",
+        "observed": {
+          "actions": [
+            "alloc:72",
+            "open:recovery0",
+            "read:0:72:72",
+            "log:image",
+            "read:4496:48:48",
+            "board:ota",
+            "board:hw",
+            "log:hw_unknown",
+            "read:4544:64:64",
+            "alloc:4096",
+            "sha:init",
+            "read:4096:448:448",
+            "sha:update:448",
+            "sha:final",
+            "free:4096",
+            "crypto",
+            "close",
+            "free:72"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "6403e0c5876317d009ad690597f0729cb6f9ce0dbdd39eab6a20095aa2b87887",
+              "size": 72
+            },
+            {
+              "freed": true,
+              "sha256": "e9f7fd220592eea4bb221d8d5d1d7af983184417e613561ee7e12f50022ee267",
+              "size": 4096
+            }
+          ],
+          "crypto": [
+            {
+              "curve": 2160325496,
+              "digest_hex": "61979c5e2c0a5240487c97cfe72c7eecc980e9b9e96f8544f69153689679ad0d",
+              "key_sha256": "436da64f07264e8d1ddf568e7ec0edce6e52ea0f469af4ca54a36a2761aff547",
+              "length": 32,
+              "signature_sha256": "31870e8dab125bcb257dc2d6346fafb39c3f4e6e20f17a6e9d75f40d39203533"
+            }
+          ],
+          "output_sha256": "d5c804ac15470fb9092c91a5f2bebb8a43e6d9711bae8512af3732634c27d3a0",
+          "returned": 1
+        },
+        "steps": 1051
+      },
+      {
+        "name": "partition_output_8",
+        "observed": {
+          "actions": [
+            "alloc:72",
+            "open:recovery0",
+            "read:0:72:72",
+            "log:image",
+            "read:4496:48:48",
+            "board:ota",
+            "board:hw",
+            "log:hw_unknown",
+            "read:4544:64:64",
+            "alloc:4096",
+            "sha:init",
+            "read:4096:448:448",
+            "sha:update:448",
+            "sha:final",
+            "free:4096",
+            "crypto",
+            "close",
+            "free:72"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "6403e0c5876317d009ad690597f0729cb6f9ce0dbdd39eab6a20095aa2b87887",
+              "size": 72
+            },
+            {
+              "freed": true,
+              "sha256": "e9f7fd220592eea4bb221d8d5d1d7af983184417e613561ee7e12f50022ee267",
+              "size": 4096
+            }
+          ],
+          "crypto": [
+            {
+              "curve": 2160325496,
+              "digest_hex": "61979c5e2c0a5240487c97cfe72c7eecc980e9b9e96f8544f69153689679ad0d",
+              "key_sha256": "436da64f07264e8d1ddf568e7ec0edce6e52ea0f469af4ca54a36a2761aff547",
+              "length": 32,
+              "signature_sha256": "31870e8dab125bcb257dc2d6346fafb39c3f4e6e20f17a6e9d75f40d39203533"
+            }
+          ],
+          "output_sha256": "484fc2aabd1c1cb4da870bdea26103a762313c36de8b0420aa6483a80c9472a9",
+          "returned": 1
+        },
+        "steps": 1051
+      },
+      {
+        "name": "partition_output_20",
+        "observed": {
+          "actions": [
+            "alloc:72",
+            "open:recovery0",
+            "read:0:72:72",
+            "log:image",
+            "read:4496:48:48",
+            "board:ota",
+            "board:hw",
+            "log:hw_unknown",
+            "read:4544:64:64",
+            "alloc:4096",
+            "sha:init",
+            "read:4096:448:448",
+            "sha:update:448",
+            "sha:final",
+            "free:4096",
+            "crypto",
+            "close",
+            "free:72"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "6403e0c5876317d009ad690597f0729cb6f9ce0dbdd39eab6a20095aa2b87887",
+              "size": 72
+            },
+            {
+              "freed": true,
+              "sha256": "e9f7fd220592eea4bb221d8d5d1d7af983184417e613561ee7e12f50022ee267",
+              "size": 4096
+            }
+          ],
+          "crypto": [
+            {
+              "curve": 2160325496,
+              "digest_hex": "61979c5e2c0a5240487c97cfe72c7eecc980e9b9e96f8544f69153689679ad0d",
+              "key_sha256": "436da64f07264e8d1ddf568e7ec0edce6e52ea0f469af4ca54a36a2761aff547",
+              "length": 32,
+              "signature_sha256": "31870e8dab125bcb257dc2d6346fafb39c3f4e6e20f17a6e9d75f40d39203533"
+            }
+          ],
+          "output_sha256": "ad12fbc5d007cb9820e94e89718931c0420e37c75ad8b91fccf521e4eed5adf9",
+          "returned": 1
+        },
+        "steps": 1052
+      },
+      {
+        "name": "partition_verify_disabled",
+        "observed": {
+          "actions": [
+            "alloc:72",
+            "open:recovery0",
+            "read:0:72:72",
+            "log:image",
+            "read:4496:48:48",
+            "board:ota",
+            "board:hw",
+            "log:hw_unknown",
+            "close",
+            "free:72"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "6403e0c5876317d009ad690597f0729cb6f9ce0dbdd39eab6a20095aa2b87887",
+              "size": 72
+            }
+          ],
+          "crypto": [],
+          "output_sha256": "ad12fbc5d007cb9820e94e89718931c0420e37c75ad8b91fccf521e4eed5adf9",
+          "returned": 1
+        },
+        "steps": 912
+      },
+      {
+        "name": "partition_wrapper_forces_verify",
+        "observed": {
+          "actions": [
+            "alloc:72",
+            "open:recovery0",
+            "read:0:72:72",
+            "log:image",
+            "read:4496:48:48",
+            "board:ota",
+            "board:hw",
+            "log:hw_unknown",
+            "read:4544:64:64",
+            "alloc:4096",
+            "sha:init",
+            "read:4096:448:448",
+            "sha:update:448",
+            "sha:final",
+            "free:4096",
+            "crypto",
+            "log:signature_rejected",
+            "log:error:259",
+            "log:error:2e1",
+            "close",
+            "free:72"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "6403e0c5876317d009ad690597f0729cb6f9ce0dbdd39eab6a20095aa2b87887",
+              "size": 72
+            },
+            {
+              "freed": true,
+              "sha256": "e9f7fd220592eea4bb221d8d5d1d7af983184417e613561ee7e12f50022ee267",
+              "size": 4096
+            }
+          ],
+          "crypto": [
+            {
+              "curve": 2160325496,
+              "digest_hex": "61979c5e2c0a5240487c97cfe72c7eecc980e9b9e96f8544f69153689679ad0d",
+              "key_sha256": "436da64f07264e8d1ddf568e7ec0edce6e52ea0f469af4ca54a36a2761aff547",
+              "length": 32,
+              "signature_sha256": "31870e8dab125bcb257dc2d6346fafb39c3f4e6e20f17a6e9d75f40d39203533"
+            }
+          ],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 0
+        },
+        "steps": 1070
+      },
+      {
+        "name": "partition_wrapper_valid",
+        "observed": {
+          "actions": [
+            "alloc:72",
+            "open:recovery0",
+            "read:0:72:72",
+            "log:image",
+            "read:4496:48:48",
+            "board:ota",
+            "board:hw",
+            "log:hw_unknown",
+            "read:4544:64:64",
+            "alloc:4096",
+            "sha:init",
+            "read:4096:448:448",
+            "sha:update:448",
+            "sha:final",
+            "free:4096",
+            "crypto",
+            "close",
+            "free:72"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "6403e0c5876317d009ad690597f0729cb6f9ce0dbdd39eab6a20095aa2b87887",
+              "size": 72
+            },
+            {
+              "freed": true,
+              "sha256": "e9f7fd220592eea4bb221d8d5d1d7af983184417e613561ee7e12f50022ee267",
+              "size": 4096
+            }
+          ],
+          "crypto": [
+            {
+              "curve": 2160325496,
+              "digest_hex": "61979c5e2c0a5240487c97cfe72c7eecc980e9b9e96f8544f69153689679ad0d",
+              "key_sha256": "436da64f07264e8d1ddf568e7ec0edce6e52ea0f469af4ca54a36a2761aff547",
+              "length": 32,
+              "signature_sha256": "31870e8dab125bcb257dc2d6346fafb39c3f4e6e20f17a6e9d75f40d39203533"
+            }
+          ],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 1
+        },
+        "steps": 1045
+      },
+      {
+        "name": "partition_long_version",
+        "observed": {
+          "actions": [
+            "alloc:72",
+            "open:recovery0",
+            "read:0:72:72",
+            "log:image",
+            "read:4496:48:48",
+            "board:ota",
+            "board:hw",
+            "log:hw_unknown",
+            "read:4544:64:64",
+            "alloc:4096",
+            "sha:init",
+            "read:4096:448:448",
+            "sha:update:448",
+            "sha:final",
+            "free:4096",
+            "crypto",
+            "log:error:2e9",
+            "close",
+            "free:72"
+          ],
+          "allocations": [
+            {
+              "freed": true,
+              "sha256": "cff40facf300e36241881d9c5dcd9fbf32493df08b91a9b74a765a0a92ed615b",
+              "size": 72
+            },
+            {
+              "freed": true,
+              "sha256": "bf9933b729656e6e8220c7c2e2050b026f59a103f4d1f80a5533479d507a4ead",
+              "size": 4096
+            }
+          ],
+          "crypto": [
+            {
+              "curve": 2160325496,
+              "digest_hex": "021d8c889b518be250e587d7d439acf6b5f2d30d5ef51abd3a9b792821d368d6",
+              "key_sha256": "436da64f07264e8d1ddf568e7ec0edce6e52ea0f469af4ca54a36a2761aff547",
+              "length": 32,
+              "signature_sha256": "31870e8dab125bcb257dc2d6346fafb39c3f4e6e20f17a6e9d75f40d39203533"
+            }
+          ],
+          "output_sha256": "bb626e5577021df95ea17eb6339e75904855b80087e40660931c4a89b302f74a",
+          "returned": 0
+        },
+        "steps": 1055
+      }
+    ],
+    "hardware_execution": false
+  },
+  "validation_sha256": "1dc933d6d4daec21f594f857a450eadcb989e167a02915a58ff046ab74bc86e2",
+  "vectors_sha256": "8ac2d613da1cb154d427c8dfb0a8ef7e1cfbb4145183d1977bcbc0be9555d6ec"
+}
