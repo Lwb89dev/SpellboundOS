@@ -1,0 +1,1829 @@
+{
+  "boot_sha256": "44cd83c0d09864c6101e9825bd3c77d7fac314584d0408b378dd56c2aac5736a",
+  "byte_range_sha256": {
+    "80c00b24_2e": "08e0b6d64fe10875c94c5cb67b140355c1366be7b925e52f18d2b27dac4a6c1f",
+    "80c0bf58_114": "21a1b4f5cd9656531ea80fdaa2a12a636292499104fc732d8bfbe8581c997cdb",
+    "80c0c0f6_22": "7076e3bafddb77bfe907f0e8071ef8f6310775756c59bc0ba895bb31b45ea3be",
+    "80c0c2f0_74": "1b2ca84d54a004229377b7e678c5d84f7ae480c062377993d3e058b8dcf84974",
+    "80c0c3a2_aa": "330a84a951d47f46aa93b118c66704b90a6a6405ce54203afd00a02afcd539d1",
+    "80c0c5cc_108": "3c268f64fe00f3dd2fad4807df47b0773b5f11020e1037f7c3a2c67476fa04dc",
+    "80c0c6f8_120": "f22d289445ef5b2d88a5d995f7dae3e9dc89278c58b52572c6e288dc4520279c",
+    "80c0cbca_18c": "4eb6b0c15b4d694f7e12b5fac15dc443ce04812b509a53e2042070db3b9101fd",
+    "80c0cdf6_1b6": "fbbe29b33af05145ae0545f3888874c8ccd79187d2c1defb1b66729415ba2aba",
+    "80c0d344_150": "96ec9efd27e8cf5624341fde8eb92aa0cc739dc8ef16e3118e3dba715fe6f3b2",
+    "80c0d85c_4": "f6b7ef06146c25d1eab3efa185a252b3158a3469ad935742c1ee264db32482f1"
+  },
+  "crc_table_sha256": "12f3e0576d447eb37b36d82ba0c1c5481b8f0d12fdc70347ce4a076b229d4c86",
+  "export_sha256": {
+    "80c0bf58.c": "36c00e8365c0802caef245378276af33d3475c471bbb18990ee3581b94517561",
+    "80c0bfe2.c": "0455f59281d994ab0248515256986fb32ccab1ce45d80998e54dae70f47c59d7",
+    "80c0c2f0.c": "378a754b3769eb1505b573814add45569f99cd49b3b2ccea1a2191e150701350",
+    "80c0c30a.c": "bbbda406b02cc1e49fa7f20a4706d72c997034a5846656f0611a85a049cdcf69",
+    "80c0c3a2.c": "7d79feb7dae00b2c5b94de6086b5440401c030d956a64f0fd042f74bb22ef841",
+    "80c0c5cc.c": "04de254100f163507a4ea606f25a3db79d758eeb97e949b83f86f0325268fe92",
+    "80c0c660.c": "66b9837b2c7cb33e6dd8c1c812c7d3f408210cbd0d9209135727de7760967d40",
+    "80c0c6f8.c": "a68166164812028acbdd6c26c85b07e16b7b985f86de3d3f18175a1fcb9e160f",
+    "80c0cbca.c": "1c2e9816b988882e2a57be6807b40b48c88b6c1bacb543e3fb89702caf60d56d",
+    "80c0cdf6.c": "c03d13f5ef3de67eb59082d49e6c46a2480c26d12bdb888ddaceee7307beade4",
+    "80c0ced6.c": "02b91ba0e0614956292a6e5dfe88143d4d56c8583ddc57d6cadc0d2ae42a1e61"
+  },
+  "limitations": [
+    "Low-level device read/write services use synthetic NOR-like arrays; real flash/device semantics and durability remain unknown.",
+    "Reservation, sector-scan miss and maintenance are supplied; sector enumeration/GC/reboot cache reconstruction do not execute.",
+    "Native CRC, cached lookup, descriptor parsing, status updates, sector/key cache updates, append/delete and get/set wrappers execute.",
+    "One key/cache slot per case; bounded valid record extents, complete structured reads; no physical I/O or power-loss simulation."
+  ],
+  "native_steps": 136410,
+  "native_validation": {
+    "bound_per_case": 200000,
+    "case_count": 57,
+    "cases": [
+      {
+        "name": "append",
+        "observed": {
+          "actions": [
+            "write:34:28692:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:28700:20:20:0dfd9edff433dd5f28a0d9f8cc917c57b260842a4d2f58440845ab0cbe7ee3f1",
+            "write:34:28720:7:7:7fef9479c8bc5a3c86891cb82969cbf2ffc73c7350366c82286345d8292eebf5",
+            "write:34:28727:16:16:be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991",
+            "write:34:28693:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "15dbc8b9b4f9b0d40141a47ce99f87c87cd4e04cb935600f052721d02dc921e2",
+              "key_cache_record": 28692,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 28743
+            }
+          ]
+        },
+        "steps": 957
+      },
+      {
+        "name": "append_get",
+        "observed": {
+          "actions": [
+            "write:34:28692:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:28700:20:20:0dfd9edff433dd5f28a0d9f8cc917c57b260842a4d2f58440845ab0cbe7ee3f1",
+            "write:34:28720:7:7:7fef9479c8bc5a3c86891cb82969cbf2ffc73c7350366c82286345d8292eebf5",
+            "write:34:28727:16:16:be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991",
+            "write:34:28693:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "read:34:28720:32:32",
+            "read:34:28692:28:28",
+            "read:34:28712:31:31",
+            "read:34:28720:7:7",
+            "read:34:28727:16:16"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "15dbc8b9b4f9b0d40141a47ce99f87c87cd4e04cb935600f052721d02dc921e2",
+              "key_cache_record": 28692,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 28743
+            },
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "15dbc8b9b4f9b0d40141a47ce99f87c87cd4e04cb935600f052721d02dc921e2",
+              "key_cache_record": 28692,
+              "length_output": 16,
+              "maintenance_flag": 0,
+              "output_sha256": "f36608e612ccaa97994a6927071b44cdf134883d2310cdbac7ce28430efcc395",
+              "pending_replace": 0,
+              "returned": 16,
+              "sector_cache_end": 28743
+            }
+          ]
+        },
+        "steps": 1692
+      },
+      {
+        "name": "set_get_new",
+        "observed": {
+          "actions": [
+            "boundary:reserve:51",
+            "boundary:scan_miss",
+            "write:34:28692:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:28700:20:20:0dfd9edff433dd5f28a0d9f8cc917c57b260842a4d2f58440845ab0cbe7ee3f1",
+            "write:34:28720:7:7:7fef9479c8bc5a3c86891cb82969cbf2ffc73c7350366c82286345d8292eebf5",
+            "write:34:28727:16:16:be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991",
+            "write:34:28693:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "read:34:28720:32:32",
+            "read:34:28692:28:28",
+            "read:34:28712:31:31",
+            "read:34:28720:7:7",
+            "read:34:28727:16:16"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "15dbc8b9b4f9b0d40141a47ce99f87c87cd4e04cb935600f052721d02dc921e2",
+              "key_cache_record": 28692,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 28743
+            },
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "15dbc8b9b4f9b0d40141a47ce99f87c87cd4e04cb935600f052721d02dc921e2",
+              "key_cache_record": 28692,
+              "length_output": 16,
+              "maintenance_flag": 0,
+              "output_sha256": "f36608e612ccaa97994a6927071b44cdf134883d2310cdbac7ce28430efcc395",
+              "pending_replace": 0,
+              "returned": 16,
+              "sector_cache_end": 28743
+            }
+          ]
+        },
+        "steps": 1960
+      },
+      {
+        "name": "set_get_replace",
+        "observed": {
+          "actions": [
+            "boundary:reserve:51",
+            "read:34:24624:32:32",
+            "read:34:24596:28:28",
+            "read:34:24616:23:23",
+            "read:34:24624:7:7",
+            "write:34:24598:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "read:34:24579:3:3",
+            "write:34:28692:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:28700:20:20:0dfd9edff433dd5f28a0d9f8cc917c57b260842a4d2f58440845ab0cbe7ee3f1",
+            "write:34:28720:7:7:7fef9479c8bc5a3c86891cb82969cbf2ffc73c7350366c82286345d8292eebf5",
+            "write:34:28727:16:16:be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991",
+            "write:34:28693:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:24599:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "read:34:24579:3:3",
+            "read:34:28720:32:32",
+            "read:34:28692:28:28",
+            "read:34:28712:31:31",
+            "read:34:28720:7:7",
+            "read:34:28727:16:16"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "59a08ec587ea467f6ec2a5985c4851a3c3d19ba137b4ce2223abd67a995eaa1a",
+              "key_cache_record": 28692,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 28743
+            },
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "59a08ec587ea467f6ec2a5985c4851a3c3d19ba137b4ce2223abd67a995eaa1a",
+              "key_cache_record": 28692,
+              "length_output": 16,
+              "maintenance_flag": 0,
+              "output_sha256": "f36608e612ccaa97994a6927071b44cdf134883d2310cdbac7ce28430efcc395",
+              "pending_replace": 0,
+              "returned": 16,
+              "sector_cache_end": 28743
+            }
+          ]
+        },
+        "steps": 2480
+      },
+      {
+        "name": "set_upgrade_record",
+        "observed": {
+          "actions": [
+            "boundary:reserve:333",
+            "boundary:scan_miss",
+            "write:34:28692:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:28700:20:20:d613d0ac6955a35e01c21823779544f4aeb22131da5e739ccd580c6c9a93ab2a",
+            "write:34:28720:7:7:7fef9479c8bc5a3c86891cb82969cbf2ffc73c7350366c82286345d8292eebf5",
+            "write:34:28727:298:298:533e6704041623a5cc95bcdd21e6f9e63a3cb859865daaf65c9a13f637c5dce2",
+            "write:34:28693:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "read:34:28720:32:32",
+            "read:34:28692:28:28",
+            "read:34:28712:32:32",
+            "read:34:28744:32:32",
+            "read:34:28776:32:32",
+            "read:34:28808:32:32",
+            "read:34:28840:32:32",
+            "read:34:28872:32:32",
+            "read:34:28904:32:32",
+            "read:34:28936:32:32",
+            "read:34:28968:32:32",
+            "read:34:29000:25:25",
+            "read:34:28720:7:7",
+            "read:34:28727:298:298"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "227f1370ce451c3399d67cdf9314a7839da1396be37343d8005a10b622d33aad",
+              "key_cache_record": 28692,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 29025
+            },
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "227f1370ce451c3399d67cdf9314a7839da1396be37343d8005a10b622d33aad",
+              "key_cache_record": 28692,
+              "length_output": 298,
+              "maintenance_flag": 0,
+              "output_sha256": "3546d0d886fc16d9694d3dca0135f2f235a6cf6826f2d4661e7314a0d84926ed",
+              "pending_replace": 0,
+              "returned": 298,
+              "sector_cache_end": 29025
+            }
+          ]
+        },
+        "steps": 8040
+      },
+      {
+        "name": "append_empty",
+        "observed": {
+          "actions": [
+            "write:34:28692:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:28700:20:20:51d6a8db8e46e8e94f32d2f87439f3524bb3277d74b95d5c676ce36650612a9c",
+            "write:34:28720:7:7:7fef9479c8bc5a3c86891cb82969cbf2ffc73c7350366c82286345d8292eebf5",
+            "write:34:28727:0:0:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "write:34:28693:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "read:34:28720:32:32",
+            "read:34:28692:28:28",
+            "read:34:28712:15:15",
+            "read:34:28720:7:7",
+            "read:34:28727:0:0"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "0a40ec8d8f846399bb622f7d9e8cdb853a8d5c80ac48c6795e2c445b5fab09c8",
+              "key_cache_record": 28692,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 28727
+            },
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "0a40ec8d8f846399bb622f7d9e8cdb853a8d5c80ac48c6795e2c445b5fab09c8",
+              "key_cache_record": 28692,
+              "length_output": 0,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 28727
+            }
+          ]
+        },
+        "steps": 1372
+      },
+      {
+        "name": "append_key32",
+        "observed": {
+          "actions": [
+            "write:34:28692:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:28700:20:20:e051eef4b216ab1108ebf33632a1e673e04068d0568019e91f62b9a229c34fc1",
+            "write:34:28720:32:32:c62e4615bd39e222572f3a1bf7c2132ea1e65b17ec805047bd6b2842c593493f",
+            "write:34:28752:16:16:be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991",
+            "write:34:28693:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "read:34:28720:32:32",
+            "read:34:28692:28:28",
+            "read:34:28712:32:32",
+            "read:34:28744:24:24",
+            "read:34:28720:32:32",
+            "read:34:28752:16:16"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "760cb1a52d26d8846d922a2a3b2a45932da13ee9f727fc0611c807590dd567a5",
+              "key_cache_record": 28692,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 28768
+            },
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "760cb1a52d26d8846d922a2a3b2a45932da13ee9f727fc0611c807590dd567a5",
+              "key_cache_record": 28692,
+              "length_output": 16,
+              "maintenance_flag": 0,
+              "output_sha256": "f36608e612ccaa97994a6927071b44cdf134883d2310cdbac7ce28430efcc395",
+              "pending_replace": 0,
+              "returned": 16,
+              "sector_cache_end": 28768
+            }
+          ]
+        },
+        "steps": 2741
+      },
+      {
+        "name": "append_key33",
+        "observed": {
+          "actions": [
+            "warn:key_length"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "cfebdd6b45224dd6fba0c1f1e8a10136ca87529d40d48278fe82e16f8ae6ead1",
+              "key_cache_record": 4294967295,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 4,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 34
+      },
+      {
+        "name": "append_record_max",
+        "observed": {
+          "actions": [
+            "write:34:28674:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:28692:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:28700:20:20:fd53f79db4223626e327ef70588ecf56dac7c4118bbdbf42084f817ebc997ad7",
+            "write:34:28720:7:7:7fef9479c8bc5a3c86891cb82969cbf2ffc73c7350366c82286345d8292eebf5",
+            "write:34:28727:4041:4041:bc99f2525a353d844abb3bc0397e2bc8d664791d822398da5675ca1bb5baa43f",
+            "write:34:28693:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "diagnostic:68c",
+            "read:34:28720:32:32",
+            "read:34:28692:28:28",
+            "read:34:28712:32:32",
+            "read:34:28744:32:32",
+            "read:34:28776:32:32",
+            "read:34:28808:32:32",
+            "read:34:28840:32:32",
+            "read:34:28872:32:32",
+            "read:34:28904:32:32",
+            "read:34:28936:32:32",
+            "read:34:28968:32:32",
+            "read:34:29000:32:32",
+            "read:34:29032:32:32",
+            "read:34:29064:32:32",
+            "read:34:29096:32:32",
+            "read:34:29128:32:32",
+            "read:34:29160:32:32",
+            "read:34:29192:32:32",
+            "read:34:29224:32:32",
+            "read:34:29256:32:32",
+            "read:34:29288:32:32",
+            "read:34:29320:32:32",
+            "read:34:29352:32:32",
+            "read:34:29384:32:32",
+            "read:34:29416:32:32",
+            "read:34:29448:32:32",
+            "read:34:29480:32:32",
+            "read:34:29512:32:32",
+            "read:34:29544:32:32",
+            "read:34:29576:32:32",
+            "read:34:29608:32:32",
+            "read:34:29640:32:32",
+            "read:34:29672:32:32",
+            "read:34:29704:32:32",
+            "read:34:29736:32:32",
+            "read:34:29768:32:32",
+            "read:34:29800:32:32",
+            "read:34:29832:32:32",
+            "read:34:29864:32:32",
+            "read:34:29896:32:32",
+            "read:34:29928:32:32",
+            "read:34:29960:32:32",
+            "read:34:29992:32:32",
+            "read:34:30024:32:32",
+            "read:34:30056:32:32",
+            "read:34:30088:32:32",
+            "read:34:30120:32:32",
+            "read:34:30152:32:32",
+            "read:34:30184:32:32",
+            "read:34:30216:32:32",
+            "read:34:30248:32:32",
+            "read:34:30280:32:32",
+            "read:34:30312:32:32",
+            "read:34:30344:32:32",
+            "read:34:30376:32:32",
+            "read:34:30408:32:32",
+            "read:34:30440:32:32",
+            "read:34:30472:32:32",
+            "read:34:30504:32:32",
+            "read:34:30536:32:32",
+            "read:34:30568:32:32",
+            "read:34:30600:32:32",
+            "read:34:30632:32:32",
+            "read:34:30664:32:32",
+            "read:34:30696:32:32",
+            "read:34:30728:32:32",
+            "read:34:30760:32:32",
+            "read:34:30792:32:32",
+            "read:34:30824:32:32",
+            "read:34:30856:32:32",
+            "read:34:30888:32:32",
+            "read:34:30920:32:32",
+            "read:34:30952:32:32",
+            "read:34:30984:32:32",
+            "read:34:31016:32:32",
+            "read:34:31048:32:32",
+            "read:34:31080:32:32",
+            "read:34:31112:32:32",
+            "read:34:31144:32:32",
+            "read:34:31176:32:32",
+            "read:34:31208:32:32",
+            "read:34:31240:32:32",
+            "read:34:31272:32:32",
+            "read:34:31304:32:32",
+            "read:34:31336:32:32",
+            "read:34:31368:32:32",
+            "read:34:31400:32:32",
+            "read:34:31432:32:32",
+            "read:34:31464:32:32",
+            "read:34:31496:32:32",
+            "read:34:31528:32:32",
+            "read:34:31560:32:32",
+            "read:34:31592:32:32",
+            "read:34:31624:32:32",
+            "read:34:31656:32:32",
+            "read:34:31688:32:32",
+            "read:34:31720:32:32",
+            "read:34:31752:32:32",
+            "read:34:31784:32:32",
+            "read:34:31816:32:32",
+            "read:34:31848:32:32",
+            "read:34:31880:32:32",
+            "read:34:31912:32:32",
+            "read:34:31944:32:32",
+            "read:34:31976:32:32",
+            "read:34:32008:32:32",
+            "read:34:32040:32:32",
+            "read:34:32072:32:32",
+            "read:34:32104:32:32",
+            "read:34:32136:32:32",
+            "read:34:32168:32:32",
+            "read:34:32200:32:32",
+            "read:34:32232:32:32",
+            "read:34:32264:32:32",
+            "read:34:32296:32:32",
+            "read:34:32328:32:32",
+            "read:34:32360:32:32",
+            "read:34:32392:32:32",
+            "read:34:32424:32:32",
+            "read:34:32456:32:32",
+            "read:34:32488:32:32",
+            "read:34:32520:32:32",
+            "read:34:32552:32:32",
+            "read:34:32584:32:32",
+            "read:34:32616:32:32",
+            "read:34:32648:32:32",
+            "read:34:32680:32:32",
+            "read:34:32712:32:32",
+            "read:34:32744:24:24",
+            "read:34:28720:7:7",
+            "read:34:28727:64:64"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "abd0529413707ee57037e9e634dbc2712550f38359600095664753afaf976d71",
+              "key_cache_record": 28692,
+              "length_output": 2779096485,
+              "maintenance_flag": 1,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 4294967295
+            },
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "abd0529413707ee57037e9e634dbc2712550f38359600095664753afaf976d71",
+              "key_cache_record": 28692,
+              "length_output": 4041,
+              "maintenance_flag": 1,
+              "output_sha256": "d8fb232320fd74b86caf51d022d8dec18559869396ec1497c5141c596697bec6",
+              "pending_replace": 0,
+              "returned": 64,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 88419
+      },
+      {
+        "name": "append_record_large",
+        "observed": {
+          "actions": [
+            "warn:record_length"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "cfebdd6b45224dd6fba0c1f1e8a10136ca87529d40d48278fe82e16f8ae6ead1",
+              "key_cache_record": 4294967295,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 6,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 55
+      },
+      {
+        "name": "append_reserve",
+        "observed": {
+          "actions": [
+            "boundary:reserve:51",
+            "write:34:28692:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:28700:20:20:0dfd9edff433dd5f28a0d9f8cc917c57b260842a4d2f58440845ab0cbe7ee3f1",
+            "write:34:28720:7:7:7fef9479c8bc5a3c86891cb82969cbf2ffc73c7350366c82286345d8292eebf5",
+            "write:34:28727:16:16:be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991",
+            "write:34:28693:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "15dbc8b9b4f9b0d40141a47ce99f87c87cd4e04cb935600f052721d02dc921e2",
+              "key_cache_record": 28692,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 28743
+            }
+          ]
+        },
+        "steps": 963
+      },
+      {
+        "name": "append_no_space",
+        "observed": {
+          "actions": [
+            "boundary:reserve:51"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "cfebdd6b45224dd6fba0c1f1e8a10136ca87529d40d48278fe82e16f8ae6ead1",
+              "key_cache_record": 4294967295,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 6,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 57
+      },
+      {
+        "name": "append_sector_open",
+        "observed": {
+          "actions": [
+            "write:34:28673:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:28692:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:28700:20:20:0dfd9edff433dd5f28a0d9f8cc917c57b260842a4d2f58440845ab0cbe7ee3f1",
+            "write:34:28720:7:7:7fef9479c8bc5a3c86891cb82969cbf2ffc73c7350366c82286345d8292eebf5",
+            "write:34:28727:16:16:be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991",
+            "write:34:28693:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "7f1888a895e9cf7f5dc5ca5e1fe3c87996b698405c743d5cd25ef49627f32be3",
+              "key_cache_record": 28692,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 28743
+            }
+          ]
+        },
+        "steps": 1003
+      },
+      {
+        "name": "append_sector_full",
+        "observed": {
+          "actions": [
+            "write:34:28674:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:28692:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:28700:20:20:0dfd9edff433dd5f28a0d9f8cc917c57b260842a4d2f58440845ab0cbe7ee3f1",
+            "write:34:28720:7:7:7fef9479c8bc5a3c86891cb82969cbf2ffc73c7350366c82286345d8292eebf5",
+            "write:34:28727:16:16:be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991",
+            "write:34:28693:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "diagnostic:68c"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "6f1119007cc1020e8628bbb18d2472053f6494fc0ba6493f429ca189b39621ed",
+              "key_cache_record": 28692,
+              "length_output": 2779096485,
+              "maintenance_flag": 1,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 1011
+      },
+      {
+        "name": "append_free_underflow",
+        "observed": {
+          "actions": [
+            "write:34:28692:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:28700:20:20:5f7f3f46e8205dbf2282c5f51aa65357be5b92f9c303a4a5508ec0b0828121f2",
+            "write:34:28720:7:7:7fef9479c8bc5a3c86891cb82969cbf2ffc73c7350366c82286345d8292eebf5",
+            "write:34:28727:64:64:7ce100971f64e7001e8fe5a51973ecdfe1ced42befe7ee8d5fd6219506b5393c",
+            "write:34:28693:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "fa7659f43f34bde7188e6776394267a6ff55b6244e0516507bf520fcf837897e",
+              "key_cache_record": 28692,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 28791
+            }
+          ]
+        },
+        "steps": 1437
+      },
+      {
+        "name": "append_free_below_60",
+        "observed": {
+          "actions": [
+            "write:34:28674:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:28692:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:28700:20:20:0dfd9edff433dd5f28a0d9f8cc917c57b260842a4d2f58440845ab0cbe7ee3f1",
+            "write:34:28720:7:7:7fef9479c8bc5a3c86891cb82969cbf2ffc73c7350366c82286345d8292eebf5",
+            "write:34:28727:16:16:be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991",
+            "write:34:28693:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "diagnostic:68c"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "6f1119007cc1020e8628bbb18d2472053f6494fc0ba6493f429ca189b39621ed",
+              "key_cache_record": 28692,
+              "length_output": 2779096485,
+              "maintenance_flag": 1,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 1009
+      },
+      {
+        "name": "append_free_60",
+        "observed": {
+          "actions": [
+            "write:34:28692:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:28700:20:20:0dfd9edff433dd5f28a0d9f8cc917c57b260842a4d2f58440845ab0cbe7ee3f1",
+            "write:34:28720:7:7:7fef9479c8bc5a3c86891cb82969cbf2ffc73c7350366c82286345d8292eebf5",
+            "write:34:28727:16:16:be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991",
+            "write:34:28693:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "15dbc8b9b4f9b0d40141a47ce99f87c87cd4e04cb935600f052721d02dc921e2",
+              "key_cache_record": 28692,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 28743
+            }
+          ]
+        },
+        "steps": 957
+      },
+      {
+        "name": "append_free_59",
+        "observed": {
+          "actions": [
+            "write:34:28674:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:28692:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:28700:20:20:0dfd9edff433dd5f28a0d9f8cc917c57b260842a4d2f58440845ab0cbe7ee3f1",
+            "write:34:28720:7:7:7fef9479c8bc5a3c86891cb82969cbf2ffc73c7350366c82286345d8292eebf5",
+            "write:34:28727:16:16:be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991",
+            "write:34:28693:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "diagnostic:68c"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "6f1119007cc1020e8628bbb18d2472053f6494fc0ba6493f429ca189b39621ed",
+              "key_cache_record": 28692,
+              "length_output": 2779096485,
+              "maintenance_flag": 1,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 1011
+      },
+      {
+        "name": "append_error_1",
+        "observed": {
+          "actions": [
+            "write:34:28692:1:-1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "log:write_error"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "cfebdd6b45224dd6fba0c1f1e8a10136ca87529d40d48278fe82e16f8ae6ead1",
+              "key_cache_record": 4294967295,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 3,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 503
+      },
+      {
+        "name": "append_error_2",
+        "observed": {
+          "actions": [
+            "write:34:28692:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:28700:20:-1:0dfd9edff433dd5f28a0d9f8cc917c57b260842a4d2f58440845ab0cbe7ee3f1",
+            "log:write_error"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "0c8f66f825d37cb934d145128652abfeb9c8fbbcc3224bfb35c816b901e8d990",
+              "key_cache_record": 4294967295,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 3,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 534
+      },
+      {
+        "name": "append_error_3",
+        "observed": {
+          "actions": [
+            "write:34:28692:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:28700:20:20:0dfd9edff433dd5f28a0d9f8cc917c57b260842a4d2f58440845ab0cbe7ee3f1",
+            "write:34:28720:7:-1:7fef9479c8bc5a3c86891cb82969cbf2ffc73c7350366c82286345d8292eebf5",
+            "log:write_error"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "df0e93d13eb93b4ebb9c094cd35791e37e73735597f337f3532a0910c2c83518",
+              "key_cache_record": 28692,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 3,
+              "sector_cache_end": 28743
+            }
+          ]
+        },
+        "steps": 880
+      },
+      {
+        "name": "append_error_4",
+        "observed": {
+          "actions": [
+            "write:34:28692:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:28700:20:20:0dfd9edff433dd5f28a0d9f8cc917c57b260842a4d2f58440845ab0cbe7ee3f1",
+            "write:34:28720:7:7:7fef9479c8bc5a3c86891cb82969cbf2ffc73c7350366c82286345d8292eebf5",
+            "write:34:28727:16:-1:be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991",
+            "log:write_error"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "560e71b356912d5a3eeb18fd2dedb757e952f5cdbddf043da0cd9e038721fa0c",
+              "key_cache_record": 28692,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 3,
+              "sector_cache_end": 28743
+            }
+          ]
+        },
+        "steps": 913
+      },
+      {
+        "name": "append_error_5",
+        "observed": {
+          "actions": [
+            "write:34:28692:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:28700:20:20:0dfd9edff433dd5f28a0d9f8cc917c57b260842a4d2f58440845ab0cbe7ee3f1",
+            "write:34:28720:7:7:7fef9479c8bc5a3c86891cb82969cbf2ffc73c7350366c82286345d8292eebf5",
+            "write:34:28727:16:16:be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991",
+            "write:34:28693:1:-1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "log:write_error",
+            "read:34:28720:32:32",
+            "read:34:28692:28:28",
+            "read:34:28712:31:31",
+            "read:34:28720:7:7",
+            "read:34:28727:16:16"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "1cdbc2f1cbc5a2160939a2992228799bb08191e30f25a23cc1ac43e2e8ce170a",
+              "key_cache_record": 28692,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 3,
+              "sector_cache_end": 28743
+            },
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "1cdbc2f1cbc5a2160939a2992228799bb08191e30f25a23cc1ac43e2e8ce170a",
+              "key_cache_record": 28692,
+              "length_output": 16,
+              "maintenance_flag": 0,
+              "output_sha256": "f36608e612ccaa97994a6927071b44cdf134883d2310cdbac7ce28430efcc395",
+              "pending_replace": 0,
+              "returned": 16,
+              "sector_cache_end": 28743
+            }
+          ]
+        },
+        "steps": 1712
+      },
+      {
+        "name": "append_short_2",
+        "observed": {
+          "actions": [
+            "write:34:28692:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:28700:20:0:0dfd9edff433dd5f28a0d9f8cc917c57b260842a4d2f58440845ab0cbe7ee3f1",
+            "write:34:28720:7:7:7fef9479c8bc5a3c86891cb82969cbf2ffc73c7350366c82286345d8292eebf5",
+            "write:34:28727:16:16:be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991",
+            "write:34:28693:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "aca1d5c647d35ac95fac1652f6938e234afa8861546b055559a938c9a3429b92",
+              "key_cache_record": 28692,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 28743
+            }
+          ]
+        },
+        "steps": 957
+      },
+      {
+        "name": "append_short_3",
+        "observed": {
+          "actions": [
+            "write:34:28692:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:28700:20:20:0dfd9edff433dd5f28a0d9f8cc917c57b260842a4d2f58440845ab0cbe7ee3f1",
+            "write:34:28720:7:0:7fef9479c8bc5a3c86891cb82969cbf2ffc73c7350366c82286345d8292eebf5",
+            "write:34:28727:16:16:be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991",
+            "write:34:28693:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "fbd428c4bf6f196c6ef6ccc3901e82a6c93b267964603d750c592526f9e5dfa2",
+              "key_cache_record": 28692,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 28743
+            }
+          ]
+        },
+        "steps": 957
+      },
+      {
+        "name": "append_short_4",
+        "observed": {
+          "actions": [
+            "write:34:28692:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:28700:20:20:0dfd9edff433dd5f28a0d9f8cc917c57b260842a4d2f58440845ab0cbe7ee3f1",
+            "write:34:28720:7:7:7fef9479c8bc5a3c86891cb82969cbf2ffc73c7350366c82286345d8292eebf5",
+            "write:34:28727:16:0:be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991",
+            "write:34:28693:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "1db89b12d0b4293f6e39dea4f561ed8574fd3030573a66b040f6bf3e4308634f",
+              "key_cache_record": 28692,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 28743
+            }
+          ]
+        },
+        "steps": 957
+      },
+      {
+        "name": "append_short_5",
+        "observed": {
+          "actions": [
+            "write:34:28692:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:28700:20:20:0dfd9edff433dd5f28a0d9f8cc917c57b260842a4d2f58440845ab0cbe7ee3f1",
+            "write:34:28720:7:7:7fef9479c8bc5a3c86891cb82969cbf2ffc73c7350366c82286345d8292eebf5",
+            "write:34:28727:16:16:be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991",
+            "write:34:28693:1:0:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "read:34:28720:32:32",
+            "read:34:28692:28:28",
+            "read:34:28712:31:31",
+            "read:34:28720:7:7",
+            "read:34:28727:16:16"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "1cdbc2f1cbc5a2160939a2992228799bb08191e30f25a23cc1ac43e2e8ce170a",
+              "key_cache_record": 28692,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 28743
+            },
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "1cdbc2f1cbc5a2160939a2992228799bb08191e30f25a23cc1ac43e2e8ce170a",
+              "key_cache_record": 28692,
+              "length_output": 16,
+              "maintenance_flag": 0,
+              "output_sha256": "f36608e612ccaa97994a6927071b44cdf134883d2310cdbac7ce28430efcc395",
+              "pending_replace": 0,
+              "returned": 16,
+              "sector_cache_end": 28743
+            }
+          ]
+        },
+        "steps": 1698
+      },
+      {
+        "name": "replace_final_error",
+        "observed": {
+          "actions": [
+            "boundary:reserve:51",
+            "read:34:24624:32:32",
+            "read:34:24596:28:28",
+            "read:34:24616:23:23",
+            "read:34:24624:7:7",
+            "write:34:24598:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "read:34:24579:3:3",
+            "write:34:28692:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:28700:20:20:0dfd9edff433dd5f28a0d9f8cc917c57b260842a4d2f58440845ab0cbe7ee3f1",
+            "write:34:28720:7:7:7fef9479c8bc5a3c86891cb82969cbf2ffc73c7350366c82286345d8292eebf5",
+            "write:34:28727:16:16:be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991",
+            "write:34:28693:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "write:34:24599:1:-1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "log:write_error",
+            "read:34:28720:32:32",
+            "read:34:28692:28:28",
+            "read:34:28712:31:31",
+            "read:34:28720:7:7",
+            "read:34:28727:16:16"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "550d4dd6eb75b3ebde8b39d1f3def41cea2f2100753d01ab07d5675bcdc142ad",
+              "key_cache_record": 28692,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 3,
+              "sector_cache_end": 28743
+            },
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "550d4dd6eb75b3ebde8b39d1f3def41cea2f2100753d01ab07d5675bcdc142ad",
+              "key_cache_record": 28692,
+              "length_output": 16,
+              "maintenance_flag": 0,
+              "output_sha256": "f36608e612ccaa97994a6927071b44cdf134883d2310cdbac7ce28430efcc395",
+              "pending_replace": 0,
+              "returned": 16,
+              "sector_cache_end": 28743
+            }
+          ]
+        },
+        "steps": 2443
+      },
+      {
+        "name": "replace_mark_error",
+        "observed": {
+          "actions": [
+            "boundary:reserve:51",
+            "read:34:24624:32:32",
+            "read:34:24596:28:28",
+            "read:34:24616:23:23",
+            "read:34:24624:7:7",
+            "write:34:24598:1:-1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "log:write_error",
+            "read:34:24624:32:32",
+            "read:34:24596:28:28",
+            "read:34:24616:23:23",
+            "read:34:24624:7:7",
+            "read:34:24631:8:8"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "89ad2c37ae59f49bee4dcb0a7f3b7be68cc134f0a0ac7fb599d55bfda7aa6040",
+              "key_cache_record": 24596,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 1,
+              "returned": 3,
+              "sector_cache_end": 4294967295
+            },
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "89ad2c37ae59f49bee4dcb0a7f3b7be68cc134f0a0ac7fb599d55bfda7aa6040",
+              "key_cache_record": 24596,
+              "length_output": 8,
+              "maintenance_flag": 0,
+              "output_sha256": "7c82c9f404e7748a1ca69ca698403e34f4cff9cb0a98546b95cc8e024cde88e2",
+              "pending_replace": 1,
+              "returned": 8,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 1400
+      },
+      {
+        "name": "remove_missing",
+        "observed": {
+          "actions": [
+            "boundary:scan_miss",
+            "diagnostic:526"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "cfebdd6b45224dd6fba0c1f1e8a10136ca87529d40d48278fe82e16f8ae6ead1",
+              "key_cache_record": 4294967295,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 4,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 236
+      },
+      {
+        "name": "remove",
+        "observed": {
+          "actions": [
+            "read:34:24624:32:32",
+            "read:34:24596:28:28",
+            "read:34:24616:23:23",
+            "read:34:24624:7:7",
+            "write:34:24599:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "read:34:24579:3:3",
+            "boundary:scan_miss"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "8d61437b5c7ae67a42997a43ef3532ffa176178caa0ee9bea542fcefd6e4f082",
+              "key_cache_record": 4294967295,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 4294967295
+            },
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "8d61437b5c7ae67a42997a43ef3532ffa176178caa0ee9bea542fcefd6e4f082",
+              "key_cache_record": 4294967295,
+              "length_output": 0,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 1086
+      },
+      {
+        "name": "mark_then_get",
+        "observed": {
+          "actions": [
+            "read:34:24624:32:32",
+            "read:34:24596:28:28",
+            "read:34:24616:23:23",
+            "read:34:24624:7:7",
+            "write:34:24598:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "read:34:24579:3:3",
+            "read:34:24624:32:32",
+            "read:34:24596:28:28",
+            "read:34:24616:23:23",
+            "read:34:24624:7:7",
+            "read:34:24631:8:8"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "f593796e5bec3a87cf85864ddbe3b887fae5543f62c549234108712c590634d9",
+              "key_cache_record": 24596,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 1,
+              "returned": 0,
+              "sector_cache_end": 4294967295
+            },
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "f593796e5bec3a87cf85864ddbe3b887fae5543f62c549234108712c590634d9",
+              "key_cache_record": 24596,
+              "length_output": 8,
+              "maintenance_flag": 0,
+              "output_sha256": "7c82c9f404e7748a1ca69ca698403e34f4cff9cb0a98546b95cc8e024cde88e2",
+              "pending_replace": 1,
+              "returned": 8,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 1373
+      },
+      {
+        "name": "remove_error",
+        "observed": {
+          "actions": [
+            "read:34:24624:32:32",
+            "read:34:24596:28:28",
+            "read:34:24616:23:23",
+            "read:34:24624:7:7",
+            "write:34:24599:1:-1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "log:write_error",
+            "read:34:24624:32:32",
+            "read:34:24596:28:28",
+            "read:34:24616:23:23",
+            "read:34:24624:7:7",
+            "read:34:24631:8:8"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "89ad2c37ae59f49bee4dcb0a7f3b7be68cc134f0a0ac7fb599d55bfda7aa6040",
+              "key_cache_record": 24596,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 3,
+              "sector_cache_end": 4294967295
+            },
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "89ad2c37ae59f49bee4dcb0a7f3b7be68cc134f0a0ac7fb599d55bfda7aa6040",
+              "key_cache_record": 24596,
+              "length_output": 8,
+              "maintenance_flag": 0,
+              "output_sha256": "7c82c9f404e7748a1ca69ca698403e34f4cff9cb0a98546b95cc8e024cde88e2",
+              "pending_replace": 0,
+              "returned": 8,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 1346
+      },
+      {
+        "name": "remove_sector_update",
+        "observed": {
+          "actions": [
+            "read:34:24624:32:32",
+            "read:34:24596:28:28",
+            "read:34:24616:23:23",
+            "read:34:24624:7:7",
+            "write:34:24599:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "read:34:24579:3:3",
+            "write:34:24580:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "533eaf7624b249f07012ac157c44492533d8fa851e25a2f067340b73df032f89",
+              "key_cache_record": 4294967295,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 907
+      },
+      {
+        "name": "remove_sector_error",
+        "observed": {
+          "actions": [
+            "read:34:24624:32:32",
+            "read:34:24596:28:28",
+            "read:34:24616:23:23",
+            "read:34:24624:7:7",
+            "write:34:24599:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "read:34:24579:3:3",
+            "write:34:24580:1:-1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d",
+            "log:write_error"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "ef841d6882fd176b9a859fb4dfa65be5e80b63946f92c970ba0594aa37417c81",
+              "key_cache_record": 4294967295,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 3,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 923
+      },
+      {
+        "name": "decode",
+        "observed": {
+          "actions": [
+            "read:34:24596:28:28",
+            "read:34:24616:23:23",
+            "read:34:24624:7:7"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "e8d13a4728e817f9687e37582286d25ae0dfc99beeb0276562c62fac6cb6a2af",
+              "flash_sha256": "89ad2c37ae59f49bee4dcb0a7f3b7be68cc134f0a0ac7fb599d55bfda7aa6040",
+              "key_cache_record": 24596,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": null,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 416
+      },
+      {
+        "name": "decode_bad_crc",
+        "observed": {
+          "actions": [
+            "read:34:24596:28:28",
+            "read:34:24616:23:23"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "11b3d3216a639ee24f4b8282ceee09be46ea5b70c57c233d1344df59a8709962",
+              "flash_sha256": "ca481d347782eaae297832c65b96be555d6eefac7e7c7fefbe3466a83cd3209d",
+              "key_cache_record": 24596,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": null,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 377
+      },
+      {
+        "name": "decode_bad_magic",
+        "observed": {
+          "actions": [
+            "read:34:24596:28:28",
+            "read:34:24616:23:23",
+            "read:34:24624:7:7"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "e8d13a4728e817f9687e37582286d25ae0dfc99beeb0276562c62fac6cb6a2af",
+              "flash_sha256": "19b69b7ffffa9323315bc9a52b46a0a9e7e493a6734c51952f45913dc197bfb4",
+              "key_cache_record": 24596,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": null,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 416
+      },
+      {
+        "name": "get_clip",
+        "observed": {
+          "actions": [
+            "read:34:24624:32:32",
+            "read:34:24596:28:28",
+            "read:34:24616:23:23",
+            "read:34:24624:7:7",
+            "read:34:24631:3:3"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "89ad2c37ae59f49bee4dcb0a7f3b7be68cc134f0a0ac7fb599d55bfda7aa6040",
+              "key_cache_record": 24596,
+              "length_output": 8,
+              "maintenance_flag": 0,
+              "output_sha256": "95cc8856a219d772a8cb2dd3cb2d0a5019709f46dbaac5d7d1daff41ba97b5db",
+              "pending_replace": 0,
+              "returned": 3,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 654
+      },
+      {
+        "name": "read_general",
+        "observed": {
+          "actions": [
+            "read:34:20736:64:64"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "cfebdd6b45224dd6fba0c1f1e8a10136ca87529d40d48278fe82e16f8ae6ead1",
+              "key_cache_record": 4294967295,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "4e6455224bd6b8812cdb310ac9e22589ba79b3b72b614a8071616a8f10f627f1",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 25
+      },
+      {
+        "name": "read_special",
+        "observed": {
+          "actions": [
+            "read:17:256:64:64"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "cfebdd6b45224dd6fba0c1f1e8a10136ca87529d40d48278fe82e16f8ae6ead1",
+              "key_cache_record": 4294967295,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "4e6455224bd6b8812cdb310ac9e22589ba79b3b72b614a8071616a8f10f627f1",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 26
+      },
+      {
+        "name": "read_special_end",
+        "observed": {
+          "actions": [
+            "read:17:4095:1:1"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "cfebdd6b45224dd6fba0c1f1e8a10136ca87529d40d48278fe82e16f8ae6ead1",
+              "key_cache_record": 4294967295,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "6e59f62abcd66235975c2a1b43aae20618a649c6531dc8953064b3b7295e6966",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 26
+      },
+      {
+        "name": "read_general_boundary",
+        "observed": {
+          "actions": [
+            "read:34:20480:64:64"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "cfebdd6b45224dd6fba0c1f1e8a10136ca87529d40d48278fe82e16f8ae6ead1",
+              "key_cache_record": 4294967295,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "4e6455224bd6b8812cdb310ac9e22589ba79b3b72b614a8071616a8f10f627f1",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 25
+      },
+      {
+        "name": "read_fallback",
+        "observed": {
+          "actions": [
+            "read:51:16640:64:64"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "cfebdd6b45224dd6fba0c1f1e8a10136ca87529d40d48278fe82e16f8ae6ead1",
+              "key_cache_record": 4294967295,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "4e6455224bd6b8812cdb310ac9e22589ba79b3b72b614a8071616a8f10f627f1",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 30
+      },
+      {
+        "name": "read_missing_special",
+        "observed": {
+          "actions": [
+            "log:read_error"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "cfebdd6b45224dd6fba0c1f1e8a10136ca87529d40d48278fe82e16f8ae6ead1",
+              "key_cache_record": 4294967295,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 2,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 39
+      },
+      {
+        "name": "read_zero_general",
+        "observed": {
+          "actions": [
+            "read:0:20736:64:64"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "cfebdd6b45224dd6fba0c1f1e8a10136ca87529d40d48278fe82e16f8ae6ead1",
+              "key_cache_record": 4294967295,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "4e6455224bd6b8812cdb310ac9e22589ba79b3b72b614a8071616a8f10f627f1",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 25
+      },
+      {
+        "name": "write_general",
+        "observed": {
+          "actions": [
+            "write:34:20736:16:16:be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "121a792e83ea9c041eb49fc6a8c1bac5c175f0f0c8a1d3c6ade9a1e67002c456",
+              "key_cache_record": 4294967295,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 25
+      },
+      {
+        "name": "write_special",
+        "observed": {
+          "actions": [
+            "write:17:256:16:16:be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "889b38fd24a095375146372c19a777af35567a90933c23730e6137e87aef0f2d",
+              "key_cache_record": 4294967295,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 26
+      },
+      {
+        "name": "write_special_end",
+        "observed": {
+          "actions": [
+            "write:17:4095:1:1:6e340b9cffb37a989ca544e6bb780a2c78901d3fb33738768511a30617afa01d"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "1019815f06eec1f3110b21a266e2a2bf49f4e70f8454bcc5cbb2da1e6af12d70",
+              "key_cache_record": 4294967295,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 26
+      },
+      {
+        "name": "write_general_boundary",
+        "observed": {
+          "actions": [
+            "write:34:20480:16:16:be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "a7a4da58035450b7c5d5e064aa599e753d3ab28b31d654da569c5bb5a79b41f6",
+              "key_cache_record": 4294967295,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 25
+      },
+      {
+        "name": "write_fallback",
+        "observed": {
+          "actions": [
+            "write:51:16640:16:16:be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "889b38fd24a095375146372c19a777af35567a90933c23730e6137e87aef0f2d",
+              "key_cache_record": 4294967295,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 30
+      },
+      {
+        "name": "write_missing_special",
+        "observed": {
+          "actions": [
+            "log:write_error"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "cfebdd6b45224dd6fba0c1f1e8a10136ca87529d40d48278fe82e16f8ae6ead1",
+              "key_cache_record": 4294967295,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 3,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 39
+      },
+      {
+        "name": "write_zero_general",
+        "observed": {
+          "actions": [
+            "write:0:20736:16:16:be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "121a792e83ea9c041eb49fc6a8c1bac5c175f0f0c8a1d3c6ade9a1e67002c456",
+              "key_cache_record": 4294967295,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 25
+      },
+      {
+        "name": "read_error",
+        "observed": {
+          "actions": [
+            "read:34:20736:64:-1",
+            "log:read_error"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "cfebdd6b45224dd6fba0c1f1e8a10136ca87529d40d48278fe82e16f8ae6ead1",
+              "key_cache_record": 4294967295,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 2,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 41
+      },
+      {
+        "name": "read_short",
+        "observed": {
+          "actions": [
+            "read:34:20736:64:3"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "cfebdd6b45224dd6fba0c1f1e8a10136ca87529d40d48278fe82e16f8ae6ead1",
+              "key_cache_record": 4294967295,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "c151b43ce630487e4f3cb32965cd53433b9ad74da51187fd3527d05f201248cb",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 25
+      },
+      {
+        "name": "write_error",
+        "observed": {
+          "actions": [
+            "write:34:20736:16:-1:be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991",
+            "log:write_error"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "cfebdd6b45224dd6fba0c1f1e8a10136ca87529d40d48278fe82e16f8ae6ead1",
+              "key_cache_record": 4294967295,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 3,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 41
+      },
+      {
+        "name": "write_short",
+        "observed": {
+          "actions": [
+            "write:34:20736:16:3:be45cb2605bf36bebde684841a28f0fd43c69850a3dce5fedba69928ee3a8991"
+          ],
+          "rows": [
+            {
+              "descriptor_sha256": "6b14625ebe7fb3caa6454296577c0f3dd88d4a79923ef383aff54bd65f6221c9",
+              "flash_sha256": "5b0e05b984fcb6b4cb54aa82646a307353c54002da8458ef29d79fd70363b583",
+              "key_cache_record": 4294967295,
+              "length_output": 2779096485,
+              "maintenance_flag": 0,
+              "output_sha256": "f600eca824e84a43f0691b267bd620e462c50da165c5b80e17aecb7a924f1fa8",
+              "pending_replace": 0,
+              "returned": 0,
+              "sector_cache_end": 4294967295
+            }
+          ]
+        },
+        "steps": 25
+      }
+    ],
+    "hardware_execution": false
+  },
+  "validation_sha256": "8fba034d50d51a054dec12ddde066a933215688330c1ede0e7f3f7dc53d900d9",
+  "vectors_sha256": "5162703ca1094453fdf39b81d806a8174efe713b90a6ec2e0e9d8571f7c5454d"
+}

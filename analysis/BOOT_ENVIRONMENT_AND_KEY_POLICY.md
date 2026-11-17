@@ -170,3 +170,8 @@ Remaining work includes the environment backend layout, actual lookup/append/
 remove/maintenance and write-atomicity semantics, the subsequent boot/recovery
 dispatch and UI consumers, retained-state provenance, physical key/timing
 behavior, non-destructive backup/restoration and signed-chain standalone boot.
+
+The subsequent [record/backend pass](ENV_RECORDS_AND_STORAGE.md) adds 57 native
+cases for actual append/delete, CRC, status updates, cache paths and connected
+get/set with synthetic low-level storage. Reservation, full scans, maintenance,
+post-reset persistence and physical behavior remain open.

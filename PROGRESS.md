@@ -1367,6 +1367,33 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    and [analysis/boot-environment.json](analysis/boot-environment.json).
    Vendor material stays ignored; no hardware, real environment or flash access.
 
+## 2026-11-17 — native environment records, cached reads and staged writes
+
+1. Executed actual read/write adapters with supplied device services. The special
+   0x4000–0x4fff window uses a rebased dedicated handle or unrevised fallback;
+   outside it, even a zero general handle is forwarded. Negative service results
+   become read error 2/write error 3; nonnegative short counts become success.
+2. Executed actual KV40 append, native CRC, status parser/writer and sector/key
+   cache updates. Checked 32/33-byte keys, total record 4076/4077, empty payload,
+   reservation sentinel, sector status/free thresholds and unsigned underflow.
+   Separate primary/dirty sector markers and exact serialized bytes are recorded.
+3. Injected errors into all five record writes and zero-byte results into later
+   stages. Key-cache publication occurs before payload/final status, including
+   after a failed key write. A failed final status write can coexist with a
+   subsequent successful cached read; this does not prove post-reset acceptance.
+4. Executed actual cached lookup/descriptor CRC parsing, delete and connected
+   get/set replacement. Pending-replacement state preserves the new cache during
+   old-record final removal. Connected native storage writes/reads the previously
+   checked 298-byte upgrade payload inside a 333-byte KV40 record. Underlying
+   arrays impose synthetic NOR-like writes; actual flash semantics remain open.
+5. All 57 native cases pass, totaling 136,410 bounded steps. Added 28 host checks;
+   all 578 Python tests pass. Eleven fresh exports, guarded code/table/member
+   hashes, complete traces and reproduction are in
+   [analysis/ENV_RECORDS_AND_STORAGE.md](analysis/ENV_RECORDS_AND_STORAGE.md)
+   and [analysis/env-records.json](analysis/env-records.json).
+   Reservation, full sector scan and maintenance remain supplied. No hardware,
+   real environment, flash or power-loss/reboot operation was accessed/executed.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -1375,8 +1402,10 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
   Selected boot validation, selection, header/counter preparation/completion and
   stopped handoff now execute with supplied board/storage/crypto/BSP services.
   Environment wrappers, cached reason/key policy and the stopped upgrade-record
-  caller prefix now execute with supplied backends too. Follow actual environment
-  lookup/append/remove/maintenance and persistence, subsequent boot/recovery/UI
+  caller prefix now execute too. Native environment append/delete, CRC, cached
+  lookup/parsing and connected get/set now run with supplied low-level storage.
+  Follow reservation, sector enumeration/scan filters, GC/maintenance, startup
+  cache reconstruction and actual persistence, subsequent boot/recovery/UI
   dispatch, physical reason/gesture behavior, VFS/raw storage/base-address/
   write-atomicity and startup dependencies. Establish a
   physical non-destructive entry/backup/restoration route before device writes.
