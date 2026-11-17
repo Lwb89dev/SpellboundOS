@@ -1605,6 +1605,30 @@ limits; the initial observations point to the current status and work log.
    Physical NAND/OOB/ECC, real geometry, erase effects and full boot remain open;
    no device was accessed.
 
+## 2026-11-17 — connected EFTL initializer, geometry and buffer lifetime
+
+1. Executed the actual initializer, NAND geometry collector, OOB scan/checksum,
+   counter/table reset and second scan together. Supplied ioctl outputs provide
+   geometry; statuses are ignored by the selected collector. Direct cases cover
+   missing/zero fields, assertion stops, integer division and u16 metadata stores.
+2. Executed marker/force cleanup, three allocations and stopped null fills at
+   each allocator failure. Scan errors leave buffers live with the marker clear;
+   a repeated failed initialization can overwrite their bindings without freeing
+   them. Successful repeats skip work. No address-zero writes are performed.
+3. Executed four actual generic format-loop cases with supplied lower ioctls;
+   nonzero bad-block status skips erase for kind zero, and erase results are
+   ignored. Alternate format and physical erase/OOB effects remain open.
+4. Connected actual outer lazy initialization to the complete selected inner
+   path, verifying readiness/capacity publication and failure preservation.
+   Geometry and all lower NAND/heap/clock services remain synthetic.
+5. All 38 native cases pass in 10,603 steps (maximum 752). Thirty-four new host
+   checks bring the full suite to 853 passing tests. Six fresh exports/code
+   guards, complete state/lifetime traces and stopped boundaries are in
+   [analysis/EFTL_INITIALIZATION_AND_GEOMETRY.md](analysis/EFTL_INITIALIZATION_AND_GEOMETRY.md)
+   and [analysis/eftl-initialize.json](analysis/eftl-initialize.json).
+   No device was accessed. Physical geometry, actual NAND/ECC/bus behavior,
+   persistence, restoration and full boot remain open.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -1626,9 +1650,10 @@ limits; the initial observations point to the current status and work log.
   16-partition configuration and callback bindings are now recovered statically.
   Registry/device population, lazy EFTL descriptor arithmetic and EFTL logical
   translation/page dispatch now execute with supplied lower services. Follow
-  geometry discovery and the full allocation/reset/scan/retry initializer.
-  Selected OOB-to-mapping reconstruction now executes too, with lower services
-  supplied. Follow actual NAND/OOB transport and metadata provenance, remaining
+  actual NAND lookup/ioctl geometry discovery. The selected complete allocation/
+  geometry/reset/scan/retry initializer, generic format loops and connected lazy
+  publication now execute too, with lower services supplied. Follow actual NAND/
+  OOB transport and metadata provenance, alternate format handling, remaining
   mapping repair/program/erase paths, SFTL and the concrete physical partition
   map, actual driver callback behavior and rewrite/mutex constraints,
   reserve-image provenance and other factory data,

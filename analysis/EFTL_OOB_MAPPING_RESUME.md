@@ -112,3 +112,8 @@ Next work is the full allocator/geometry/scan/retry initializer, actual geometry
 discovery and OOB transport, the remaining mapping repair/program/erase paths
 and SFTL. Physical backup/restoration, signed boot and hardware persistence
 remain open.
+
+The subsequent [connected initializer pass](EFTL_INITIALIZATION_AND_GEOMETRY.md)
+executes the allocation/geometry/reset/scan/retry path and outer lazy publication
+in 38 cases, including selected generic format loops. Lower NAND services and
+physical geometry remain supplied.

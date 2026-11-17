@@ -1,0 +1,2840 @@
+{
+  "boot_sha256": "44cd83c0d09864c6101e9825bd3c77d7fac314584d0408b378dd56c2aac5736a",
+  "byte_range_sha256": {
+    "80c01a0a_50": "eae8f359810bcc1382c84110bb2c4b4ee0b893a9a279491618fd314994a019be",
+    "80c01d8a_160": "627b6414298e79230eb17db6291f05d99573c740082fe86d720f61b914e1b2f4",
+    "80c02298_1c8": "2f0cc83e90ee2e8654f2b2e173599b9fb152246b2cb83ecbfdb93d56b939395c",
+    "80c02460_174": "c635128654def095216de8bb7d3b428fb174fa17b10b2a38e042882715ea6cc6",
+    "80c0285a_7e": "4f145deeed5f93d95ba09222107892b24d164c7b65e7b6c675f430dcc227952e",
+    "80c231d6_7c": "8c585a2df07a652d6800f435a03991ea412a1ea0a5813565e6459a1828f8da6d"
+  },
+  "export_sha256": {
+    "80c01a0a.c": "7f6660bf1c1c5335282fb9320af1790029b2c5cd8324569efefbab2fbb96040e",
+    "80c01d8a.c": "6196c93cd35606434931b2ba2bb4e9634bc2594955a83bb04e901f7a721ba194",
+    "80c02298.c": "68e0dd562566f1c452c6b37a14c8d96d3bfa89956f6e1fffe8e57af7e875a9f0",
+    "80c02460.c": "f1003126897576e3e645f4450f71a1bfdbd262b3cef64f06b548ab3232d19367",
+    "80c0285a.c": "58915c0c47770087418b08de75197475be14e9d92edaec098645fe8a312bc40e",
+    "80c231d6.c": "1a2a5a0044e89aaed3d0d810b3a6148fdfca3475eb8216d14ade8bab539e954d"
+  },
+  "limitations": [
+    "Actual EFTL initializer, geometry collection, OOB scan/checksum, retry/reset and selected generic format loops execute; NAND discovery/ioctl data, erase/OOB, heap and clocks are supplied. Format is supplied in the explicit format-error cases.",
+    "Allocation failure stops at the attempted null memset before any address-zero write; assertion cases stop before the assert body without returning ABI claims.",
+    "Authored geometry/OOB/heap lifetime fixtures do not establish physical NAND geometry, allocation failure incidence or actual device faults.",
+    "Physical NAND/ECC/bus, lower format/OOB transport, other mapping repair/write paths, SFTL and boot remain open."
+  ],
+  "native_steps": 10603,
+  "native_validation": {
+    "bound_per_case": 100000,
+    "case_count": 38,
+    "cases": [
+      {
+        "name": "initialize_mixed",
+        "observed": {
+          "actions": [
+            "fill:2162057144:0:64",
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0",
+            "log:geometry_summary",
+            "clock:1000",
+            "millis:1000:10",
+            "alloc:4:2168455168",
+            "fill:2168455168:0:4",
+            "alloc:8:2168459264",
+            "fill:2168459264:255:8",
+            "alloc:48:2168463360",
+            "fill:2168463360:255:48",
+            "scan:0",
+            "bad:0:0",
+            "oob:0:0:02004547",
+            "bad:1:0",
+            "oob:4:0:fffffffd",
+            "bad:2:0",
+            "oob:8:0:00004545",
+            "bad:3:1",
+            "log:bad_block",
+            "clock:2000",
+            "millis:2000:20",
+            "log:capacity_summary",
+            "log:block_summary"
+          ],
+          "rows": [
+            {
+              "allocations": [
+                {
+                  "active": true,
+                  "pointer": 2168455168,
+                  "sha256": "7e41b47ceb8ad15dbe3c00c7f79d518463442dedcd28f1a48d3cd1f3a5d48a35",
+                  "size": 4
+                },
+                {
+                  "active": true,
+                  "pointer": 2168459264,
+                  "sha256": "4be7bca9641499a8dd2535c9a7486fd89c914c3fc07ac40857d3aab99e81cb40",
+                  "size": 8
+                },
+                {
+                  "active": true,
+                  "pointer": 2168463360,
+                  "sha256": "80a76a18acf8cb64fec3a659ffc4bab4a87cd9a6fde4dab2161a8751d136c9d2",
+                  "size": 48
+                }
+              ],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "00002381a501000004000000200000000400000010000000008000001000080002000200040008000c0000000000408100104081002040810100020001000000",
+              "context_sha256": "b67269fc1185e2399064feb53eb6fa942c48b6e803055ba64a7c5703b433ef9a",
+              "counters": [
+                1,
+                2,
+                1
+              ],
+              "eftl_ready": 0,
+              "marker": 165,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                2168455168,
+                2168459264,
+                2168463360
+              ],
+              "read_behavior": 1,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 442
+      },
+      {
+        "name": "initialize_repeat",
+        "observed": {
+          "actions": [
+            "fill:2162057144:0:64",
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0",
+            "log:geometry_summary",
+            "clock:1000",
+            "millis:1000:10",
+            "alloc:4:2168455168",
+            "fill:2168455168:0:4",
+            "alloc:8:2168459264",
+            "fill:2168459264:255:8",
+            "alloc:48:2168463360",
+            "fill:2168463360:255:48",
+            "scan:0",
+            "bad:0:0",
+            "oob:0:0:02004547",
+            "bad:1:0",
+            "oob:4:0:fffffffd",
+            "bad:2:0",
+            "oob:8:0:00004545",
+            "bad:3:1",
+            "log:bad_block",
+            "clock:2000",
+            "millis:2000:20",
+            "log:capacity_summary",
+            "log:block_summary"
+          ],
+          "rows": [
+            {
+              "allocations": [
+                {
+                  "active": true,
+                  "pointer": 2168455168,
+                  "sha256": "7e41b47ceb8ad15dbe3c00c7f79d518463442dedcd28f1a48d3cd1f3a5d48a35",
+                  "size": 4
+                },
+                {
+                  "active": true,
+                  "pointer": 2168459264,
+                  "sha256": "4be7bca9641499a8dd2535c9a7486fd89c914c3fc07ac40857d3aab99e81cb40",
+                  "size": 8
+                },
+                {
+                  "active": true,
+                  "pointer": 2168463360,
+                  "sha256": "80a76a18acf8cb64fec3a659ffc4bab4a87cd9a6fde4dab2161a8751d136c9d2",
+                  "size": 48
+                }
+              ],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "00002381a501000004000000200000000400000010000000008000001000080002000200040008000c0000000000408100104081002040810100020001000000",
+              "context_sha256": "b67269fc1185e2399064feb53eb6fa942c48b6e803055ba64a7c5703b433ef9a",
+              "counters": [
+                1,
+                2,
+                1
+              ],
+              "eftl_ready": 0,
+              "marker": 165,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                2168455168,
+                2168459264,
+                2168463360
+              ],
+              "read_behavior": 1,
+              "returned": 0,
+              "stopped": null
+            },
+            {
+              "allocations": [
+                {
+                  "active": true,
+                  "pointer": 2168455168,
+                  "sha256": "7e41b47ceb8ad15dbe3c00c7f79d518463442dedcd28f1a48d3cd1f3a5d48a35",
+                  "size": 4
+                },
+                {
+                  "active": true,
+                  "pointer": 2168459264,
+                  "sha256": "4be7bca9641499a8dd2535c9a7486fd89c914c3fc07ac40857d3aab99e81cb40",
+                  "size": 8
+                },
+                {
+                  "active": true,
+                  "pointer": 2168463360,
+                  "sha256": "80a76a18acf8cb64fec3a659ffc4bab4a87cd9a6fde4dab2161a8751d136c9d2",
+                  "size": 48
+                }
+              ],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "00002381a501000004000000200000000400000010000000008000001000080002000200040008000c0000000000408100104081002040810100020001000000",
+              "context_sha256": "b67269fc1185e2399064feb53eb6fa942c48b6e803055ba64a7c5703b433ef9a",
+              "counters": [
+                1,
+                2,
+                1
+              ],
+              "eftl_ready": 0,
+              "marker": 165,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                2168455168,
+                2168459264,
+                2168463360
+              ],
+              "read_behavior": 1,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 464
+      },
+      {
+        "name": "initialize_marker_guard",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "allocations": [
+                {
+                  "active": true,
+                  "pointer": 2166620160,
+                  "sha256": "4d14fc3a1e801a58092fc214d17cc547a9bf1c54ab9ae1fe447ae7741471c53d",
+                  "size": 4
+                },
+                {
+                  "active": true,
+                  "pointer": 2166624256,
+                  "sha256": "e0b5711a5b1bed6b8669816f9b4d9e2a92805ef2ec987fc98e6dcf9b93de1b5e",
+                  "size": 8
+                },
+                {
+                  "active": true,
+                  "pointer": 2166628352,
+                  "sha256": "3e618007bcd9decb9affc0f30fde564ff6f8862a658f78b99cecf8bd5926d7cd",
+                  "size": 48
+                }
+              ],
+              "base_page": 0,
+              "block_count": 0,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "00000000a50000000000000000000000000000000000000000000000000000000000000000000000000000000000248100102481002024810000000000000000",
+              "context_sha256": "2bc7b7da5345d4c568c88400c5585772f05814adc1862720a38dcb6e75a96df9",
+              "counters": [
+                0,
+                0,
+                0
+              ],
+              "eftl_ready": 0,
+              "marker": 165,
+              "page_size": 0,
+              "pages_per_block": 0,
+              "pointers": [
+                2166620160,
+                2166624256,
+                2166628352
+              ],
+              "read_behavior": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 22
+      },
+      {
+        "name": "initialize_force_cleanup",
+        "observed": {
+          "actions": [
+            "free:2166620160",
+            "free:2166624256",
+            "free:2166628352",
+            "fill:2162057144:0:64",
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0",
+            "log:geometry_summary",
+            "format:0:0",
+            "clock:1000",
+            "millis:1000:10",
+            "alloc:4:2168455168",
+            "fill:2168455168:0:4",
+            "alloc:8:2168459264",
+            "fill:2168459264:255:8",
+            "alloc:48:2168463360",
+            "fill:2168463360:255:48",
+            "scan:0",
+            "bad:0:0",
+            "oob:0:0:02004547",
+            "bad:1:0",
+            "oob:4:0:fffffffd",
+            "bad:2:0",
+            "oob:8:0:00004545",
+            "bad:3:1",
+            "log:bad_block",
+            "clock:2000",
+            "millis:2000:20",
+            "log:capacity_summary",
+            "log:block_summary"
+          ],
+          "rows": [
+            {
+              "allocations": [
+                {
+                  "active": false,
+                  "pointer": 2166620160,
+                  "sha256": "4d14fc3a1e801a58092fc214d17cc547a9bf1c54ab9ae1fe447ae7741471c53d",
+                  "size": 4
+                },
+                {
+                  "active": false,
+                  "pointer": 2166624256,
+                  "sha256": "e0b5711a5b1bed6b8669816f9b4d9e2a92805ef2ec987fc98e6dcf9b93de1b5e",
+                  "size": 8
+                },
+                {
+                  "active": false,
+                  "pointer": 2166628352,
+                  "sha256": "3e618007bcd9decb9affc0f30fde564ff6f8862a658f78b99cecf8bd5926d7cd",
+                  "size": 48
+                },
+                {
+                  "active": true,
+                  "pointer": 2168455168,
+                  "sha256": "7e41b47ceb8ad15dbe3c00c7f79d518463442dedcd28f1a48d3cd1f3a5d48a35",
+                  "size": 4
+                },
+                {
+                  "active": true,
+                  "pointer": 2168459264,
+                  "sha256": "4be7bca9641499a8dd2535c9a7486fd89c914c3fc07ac40857d3aab99e81cb40",
+                  "size": 8
+                },
+                {
+                  "active": true,
+                  "pointer": 2168463360,
+                  "sha256": "80a76a18acf8cb64fec3a659ffc4bab4a87cd9a6fde4dab2161a8751d136c9d2",
+                  "size": 48
+                }
+              ],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "00002381a501000004000000200000000400000010000000008000001000080002000200040008000c0000000000408100104081002040810100020001000000",
+              "context_sha256": "b67269fc1185e2399064feb53eb6fa942c48b6e803055ba64a7c5703b433ef9a",
+              "counters": [
+                1,
+                2,
+                1
+              ],
+              "eftl_ready": 0,
+              "marker": 165,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                2168455168,
+                2168459264,
+                2168463360
+              ],
+              "read_behavior": 1,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 458
+      },
+      {
+        "name": "initialize_force_partial_cleanup",
+        "observed": {
+          "actions": [
+            "free:2166620160",
+            "free:2166628352",
+            "fill:2162057144:0:64",
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0",
+            "log:geometry_summary",
+            "format:0:0",
+            "clock:1000",
+            "millis:1000:10",
+            "alloc:4:2168455168",
+            "fill:2168455168:0:4",
+            "alloc:8:2168459264",
+            "fill:2168459264:255:8",
+            "alloc:48:2168463360",
+            "fill:2168463360:255:48",
+            "scan:0",
+            "bad:0:0",
+            "oob:0:0:02004547",
+            "bad:1:0",
+            "oob:4:0:fffffffd",
+            "bad:2:0",
+            "oob:8:0:00004545",
+            "bad:3:1",
+            "log:bad_block",
+            "clock:2000",
+            "millis:2000:20",
+            "log:capacity_summary",
+            "log:block_summary"
+          ],
+          "rows": [
+            {
+              "allocations": [
+                {
+                  "active": false,
+                  "pointer": 2166620160,
+                  "sha256": "4d14fc3a1e801a58092fc214d17cc547a9bf1c54ab9ae1fe447ae7741471c53d",
+                  "size": 4
+                },
+                {
+                  "active": false,
+                  "pointer": 2166628352,
+                  "sha256": "3e618007bcd9decb9affc0f30fde564ff6f8862a658f78b99cecf8bd5926d7cd",
+                  "size": 48
+                },
+                {
+                  "active": true,
+                  "pointer": 2168455168,
+                  "sha256": "7e41b47ceb8ad15dbe3c00c7f79d518463442dedcd28f1a48d3cd1f3a5d48a35",
+                  "size": 4
+                },
+                {
+                  "active": true,
+                  "pointer": 2168459264,
+                  "sha256": "4be7bca9641499a8dd2535c9a7486fd89c914c3fc07ac40857d3aab99e81cb40",
+                  "size": 8
+                },
+                {
+                  "active": true,
+                  "pointer": 2168463360,
+                  "sha256": "80a76a18acf8cb64fec3a659ffc4bab4a87cd9a6fde4dab2161a8751d136c9d2",
+                  "size": 48
+                }
+              ],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "00002381a501000004000000200000000400000010000000008000001000080002000200040008000c0000000000408100104081002040810100020001000000",
+              "context_sha256": "b67269fc1185e2399064feb53eb6fa942c48b6e803055ba64a7c5703b433ef9a",
+              "counters": [
+                1,
+                2,
+                1
+              ],
+              "eftl_ready": 0,
+              "marker": 165,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                2168455168,
+                2168459264,
+                2168463360
+              ],
+              "read_behavior": 1,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 456
+      },
+      {
+        "name": "initialize_force_format_error",
+        "observed": {
+          "actions": [
+            "free:2166620160",
+            "free:2166624256",
+            "free:2166628352",
+            "fill:2162057144:0:64",
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0",
+            "log:geometry_summary",
+            "format:0:-9",
+            "log:format_error"
+          ],
+          "rows": [
+            {
+              "allocations": [
+                {
+                  "active": false,
+                  "pointer": 2166620160,
+                  "sha256": "4d14fc3a1e801a58092fc214d17cc547a9bf1c54ab9ae1fe447ae7741471c53d",
+                  "size": 4
+                },
+                {
+                  "active": false,
+                  "pointer": 2166624256,
+                  "sha256": "e0b5711a5b1bed6b8669816f9b4d9e2a92805ef2ec987fc98e6dcf9b93de1b5e",
+                  "size": 8
+                },
+                {
+                  "active": false,
+                  "pointer": 2166628352,
+                  "sha256": "3e618007bcd9decb9affc0f30fde564ff6f8862a658f78b99cecf8bd5926d7cd",
+                  "size": 48
+                }
+              ],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "000023810001000004000000200000000400000010000000008000001000080002000200040008000c0000000000000000000000000000000000000000000000",
+              "context_sha256": "0e4df67ffc86504719f891035871db8e7967a551aeae31fa9e066038699f8ea0",
+              "counters": [
+                0,
+                0,
+                0
+              ],
+              "eftl_ready": 0,
+              "marker": 0,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                0,
+                0,
+                0
+              ],
+              "read_behavior": 1,
+              "returned": 4294967295,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 161
+      },
+      {
+        "name": "initialize_force_positive_format_error",
+        "observed": {
+          "actions": [
+            "fill:2162057144:0:64",
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0",
+            "log:geometry_summary",
+            "format:0:1",
+            "log:format_error"
+          ],
+          "rows": [
+            {
+              "allocations": [],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "000023810001000004000000200000000400000010000000008000001000080002000200040008000c0000000000000000000000000000000000000000000000",
+              "context_sha256": "0e4df67ffc86504719f891035871db8e7967a551aeae31fa9e066038699f8ea0",
+              "counters": [
+                0,
+                0,
+                0
+              ],
+              "eftl_ready": 0,
+              "marker": 0,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                0,
+                0,
+                0
+              ],
+              "read_behavior": 1,
+              "returned": 4294967295,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 149
+      },
+      {
+        "name": "initialize_unmarked_old_buffers",
+        "observed": {
+          "actions": [
+            "fill:2162057144:0:64",
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0",
+            "log:geometry_summary",
+            "clock:1000",
+            "millis:1000:10",
+            "alloc:4:2168455168",
+            "fill:2168455168:0:4",
+            "alloc:8:2168459264",
+            "fill:2168459264:255:8",
+            "alloc:48:2168463360",
+            "fill:2168463360:255:48",
+            "scan:0",
+            "bad:0:0",
+            "oob:0:0:02004547",
+            "bad:1:0",
+            "oob:4:0:fffffffd",
+            "bad:2:0",
+            "oob:8:0:00004545",
+            "bad:3:1",
+            "log:bad_block",
+            "clock:2000",
+            "millis:2000:20",
+            "log:capacity_summary",
+            "log:block_summary"
+          ],
+          "rows": [
+            {
+              "allocations": [
+                {
+                  "active": true,
+                  "pointer": 2166620160,
+                  "sha256": "4d14fc3a1e801a58092fc214d17cc547a9bf1c54ab9ae1fe447ae7741471c53d",
+                  "size": 4
+                },
+                {
+                  "active": true,
+                  "pointer": 2166624256,
+                  "sha256": "e0b5711a5b1bed6b8669816f9b4d9e2a92805ef2ec987fc98e6dcf9b93de1b5e",
+                  "size": 8
+                },
+                {
+                  "active": true,
+                  "pointer": 2166628352,
+                  "sha256": "3e618007bcd9decb9affc0f30fde564ff6f8862a658f78b99cecf8bd5926d7cd",
+                  "size": 48
+                },
+                {
+                  "active": true,
+                  "pointer": 2168455168,
+                  "sha256": "7e41b47ceb8ad15dbe3c00c7f79d518463442dedcd28f1a48d3cd1f3a5d48a35",
+                  "size": 4
+                },
+                {
+                  "active": true,
+                  "pointer": 2168459264,
+                  "sha256": "4be7bca9641499a8dd2535c9a7486fd89c914c3fc07ac40857d3aab99e81cb40",
+                  "size": 8
+                },
+                {
+                  "active": true,
+                  "pointer": 2168463360,
+                  "sha256": "80a76a18acf8cb64fec3a659ffc4bab4a87cd9a6fde4dab2161a8751d136c9d2",
+                  "size": 48
+                }
+              ],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "00002381a501000004000000200000000400000010000000008000001000080002000200040008000c0000000000408100104081002040810100020001000000",
+              "context_sha256": "b67269fc1185e2399064feb53eb6fa942c48b6e803055ba64a7c5703b433ef9a",
+              "counters": [
+                1,
+                2,
+                1
+              ],
+              "eftl_ready": 0,
+              "marker": 165,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                2168455168,
+                2168459264,
+                2168463360
+              ],
+              "read_behavior": 1,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 442
+      },
+      {
+        "name": "initialize_alloc_1_error",
+        "observed": {
+          "actions": [
+            "fill:2162057144:0:64",
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0",
+            "log:geometry_summary",
+            "clock:1000",
+            "millis:1000:10",
+            "alloc:4:0",
+            "fill:0:0:4"
+          ],
+          "rows": [
+            {
+              "allocations": [],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "000023810001000004000000200000000400000010000000008000001000080002000200040008000c0000000000000000000000000000000000000000000000",
+              "context_sha256": "0e4df67ffc86504719f891035871db8e7967a551aeae31fa9e066038699f8ea0",
+              "counters": [
+                0,
+                0,
+                0
+              ],
+              "eftl_ready": 0,
+              "marker": 0,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                0,
+                0,
+                0
+              ],
+              "read_behavior": 1,
+              "returned": null,
+              "stopped": {
+                "fill": 0,
+                "kind": "null_memset",
+                "size": 4
+              }
+            }
+          ]
+        },
+        "steps": 138
+      },
+      {
+        "name": "initialize_alloc_2_error",
+        "observed": {
+          "actions": [
+            "fill:2162057144:0:64",
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0",
+            "log:geometry_summary",
+            "clock:1000",
+            "millis:1000:10",
+            "alloc:4:2168455168",
+            "fill:2168455168:0:4",
+            "alloc:8:0",
+            "fill:0:255:8"
+          ],
+          "rows": [
+            {
+              "allocations": [
+                {
+                  "active": true,
+                  "pointer": 2168455168,
+                  "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+                  "size": 4
+                }
+              ],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "000023810001000004000000200000000400000010000000008000001000080002000200040008000c0000000000408100000000000000000000000000000000",
+              "context_sha256": "5d9475f30fb83cf996a7bf331d0d08a546d6bf83e74e0a17670c386e1451f168",
+              "counters": [
+                0,
+                0,
+                0
+              ],
+              "eftl_ready": 0,
+              "marker": 0,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                2168455168,
+                0,
+                0
+              ],
+              "read_behavior": 1,
+              "returned": null,
+              "stopped": {
+                "fill": 255,
+                "kind": "null_memset",
+                "size": 8
+              }
+            }
+          ]
+        },
+        "steps": 148
+      },
+      {
+        "name": "initialize_alloc_3_error",
+        "observed": {
+          "actions": [
+            "fill:2162057144:0:64",
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0",
+            "log:geometry_summary",
+            "clock:1000",
+            "millis:1000:10",
+            "alloc:4:2168455168",
+            "fill:2168455168:0:4",
+            "alloc:8:2168459264",
+            "fill:2168459264:255:8",
+            "alloc:48:0",
+            "fill:0:255:48"
+          ],
+          "rows": [
+            {
+              "allocations": [
+                {
+                  "active": true,
+                  "pointer": 2168455168,
+                  "sha256": "df3f619804a92fdb4057192dc43dd748ea778adc52bc498ce80524c014b81119",
+                  "size": 4
+                },
+                {
+                  "active": true,
+                  "pointer": 2168459264,
+                  "sha256": "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+                  "size": 8
+                }
+              ],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "000023810001000004000000200000000400000010000000008000001000080002000200040008000c0000000000408100104081000000000000000000000000",
+              "context_sha256": "5e26631a605a0dadf41112a86e36f4efe28cbcc64e4ca24d61192b8bbb561a15",
+              "counters": [
+                0,
+                0,
+                0
+              ],
+              "eftl_ready": 0,
+              "marker": 0,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                2168455168,
+                2168459264,
+                0
+              ],
+              "read_behavior": 1,
+              "returned": null,
+              "stopped": {
+                "fill": 255,
+                "kind": "null_memset",
+                "size": 48
+              }
+            }
+          ]
+        },
+        "steps": 160
+      },
+      {
+        "name": "initialize_oob_error",
+        "observed": {
+          "actions": [
+            "fill:2162057144:0:64",
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0",
+            "log:geometry_summary",
+            "clock:1000",
+            "millis:1000:10",
+            "alloc:4:2168455168",
+            "fill:2168455168:0:4",
+            "alloc:8:2168459264",
+            "fill:2168459264:255:8",
+            "alloc:48:2168463360",
+            "fill:2168463360:255:48",
+            "scan:0",
+            "bad:0:0",
+            "oob:0:-9:00004545",
+            "log:oob_read_error"
+          ],
+          "rows": [
+            {
+              "allocations": [
+                {
+                  "active": true,
+                  "pointer": 2168455168,
+                  "sha256": "afbf07b0be4592ae583232113e2ef631ca37b9e6b608cfa6d511e4ec3c372383",
+                  "size": 4
+                },
+                {
+                  "active": true,
+                  "pointer": 2168459264,
+                  "sha256": "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+                  "size": 8
+                },
+                {
+                  "active": true,
+                  "pointer": 2168463360,
+                  "sha256": "80a76a18acf8cb64fec3a659ffc4bab4a87cd9a6fde4dab2161a8751d136c9d2",
+                  "size": 48
+                }
+              ],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "000023810001000004000000200000000400000010000000008000001000080002000200040008000c0000000000408100104081002040810000000000000000",
+              "context_sha256": "761cc90908d81653fe6ee390061c2d8431675e571f2b6b7a5eb2155d5f88ecee",
+              "counters": [
+                0,
+                0,
+                0
+              ],
+              "eftl_ready": 0,
+              "marker": 0,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                2168455168,
+                2168459264,
+                2168463360
+              ],
+              "read_behavior": 1,
+              "returned": 4294967295,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 241
+      },
+      {
+        "name": "initialize_error_repeat_leaks",
+        "observed": {
+          "actions": [
+            "fill:2162057144:0:64",
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0",
+            "log:geometry_summary",
+            "clock:1000",
+            "millis:1000:10",
+            "alloc:4:2168455168",
+            "fill:2168455168:0:4",
+            "alloc:8:2168459264",
+            "fill:2168459264:255:8",
+            "alloc:48:2168463360",
+            "fill:2168463360:255:48",
+            "scan:0",
+            "bad:0:0",
+            "oob:0:-9:00004545",
+            "log:oob_read_error",
+            "fill:2162057144:0:64",
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0",
+            "log:geometry_summary",
+            "clock:2000",
+            "millis:2000:20",
+            "alloc:4:2168467456",
+            "fill:2168467456:0:4",
+            "alloc:8:2168471552",
+            "fill:2168471552:255:8",
+            "alloc:48:2168475648",
+            "fill:2168475648:255:48",
+            "scan:0",
+            "bad:0:0",
+            "oob:0:-9:00004545",
+            "log:oob_read_error"
+          ],
+          "rows": [
+            {
+              "allocations": [
+                {
+                  "active": true,
+                  "pointer": 2168455168,
+                  "sha256": "afbf07b0be4592ae583232113e2ef631ca37b9e6b608cfa6d511e4ec3c372383",
+                  "size": 4
+                },
+                {
+                  "active": true,
+                  "pointer": 2168459264,
+                  "sha256": "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+                  "size": 8
+                },
+                {
+                  "active": true,
+                  "pointer": 2168463360,
+                  "sha256": "80a76a18acf8cb64fec3a659ffc4bab4a87cd9a6fde4dab2161a8751d136c9d2",
+                  "size": 48
+                }
+              ],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "000023810001000004000000200000000400000010000000008000001000080002000200040008000c0000000000408100104081002040810000000000000000",
+              "context_sha256": "761cc90908d81653fe6ee390061c2d8431675e571f2b6b7a5eb2155d5f88ecee",
+              "counters": [
+                0,
+                0,
+                0
+              ],
+              "eftl_ready": 0,
+              "marker": 0,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                2168455168,
+                2168459264,
+                2168463360
+              ],
+              "read_behavior": 1,
+              "returned": 4294967295,
+              "stopped": null
+            },
+            {
+              "allocations": [
+                {
+                  "active": true,
+                  "pointer": 2168455168,
+                  "sha256": "afbf07b0be4592ae583232113e2ef631ca37b9e6b608cfa6d511e4ec3c372383",
+                  "size": 4
+                },
+                {
+                  "active": true,
+                  "pointer": 2168459264,
+                  "sha256": "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+                  "size": 8
+                },
+                {
+                  "active": true,
+                  "pointer": 2168463360,
+                  "sha256": "80a76a18acf8cb64fec3a659ffc4bab4a87cd9a6fde4dab2161a8751d136c9d2",
+                  "size": 48
+                },
+                {
+                  "active": true,
+                  "pointer": 2168467456,
+                  "sha256": "afbf07b0be4592ae583232113e2ef631ca37b9e6b608cfa6d511e4ec3c372383",
+                  "size": 4
+                },
+                {
+                  "active": true,
+                  "pointer": 2168471552,
+                  "sha256": "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+                  "size": 8
+                },
+                {
+                  "active": true,
+                  "pointer": 2168475648,
+                  "sha256": "80a76a18acf8cb64fec3a659ffc4bab4a87cd9a6fde4dab2161a8751d136c9d2",
+                  "size": 48
+                }
+              ],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "000023810001000004000000200000000400000010000000008000001000080002000200040008000c0000000030408100404081005040810000000000000000",
+              "context_sha256": "2b1f6d137dee87406faec9eb6b3b07ba44313e031ef5718d3db17a64e0e517fd",
+              "counters": [
+                0,
+                0,
+                0
+              ],
+              "eftl_ready": 0,
+              "marker": 0,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                2168467456,
+                2168471552,
+                2168475648
+              ],
+              "read_behavior": 1,
+              "returned": 4294967295,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 482
+      },
+      {
+        "name": "initialize_retry_rebuild",
+        "observed": {
+          "actions": [
+            "fill:2162057144:0:64",
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0",
+            "log:geometry_summary",
+            "clock:1000",
+            "millis:1000:10",
+            "alloc:4:2168455168",
+            "fill:2168455168:0:4",
+            "alloc:8:2168459264",
+            "fill:2168459264:255:8",
+            "alloc:48:2168463360",
+            "fill:2168463360:255:48",
+            "scan:0",
+            "bad:0:1",
+            "log:bad_block",
+            "bad:1:1",
+            "log:bad_block",
+            "bad:2:1",
+            "log:bad_block",
+            "bad:3:1",
+            "log:bad_block",
+            "fill:2168455168:0:4",
+            "fill:2168459264:255:8",
+            "scan:1",
+            "bad:0:1",
+            "log:bad_block",
+            "erase:0:0",
+            "oob:0:0:00004545",
+            "bad:1:1",
+            "log:bad_block",
+            "erase:1:0",
+            "oob:4:0:01004546",
+            "bad:2:1",
+            "log:bad_block",
+            "erase:2:0",
+            "oob:8:0:02004547",
+            "bad:3:1",
+            "log:bad_block",
+            "erase:3:0",
+            "oob:12:0:03004548",
+            "clock:2000",
+            "millis:2000:20",
+            "log:capacity_summary",
+            "log:block_summary"
+          ],
+          "rows": [
+            {
+              "allocations": [
+                {
+                  "active": true,
+                  "pointer": 2168455168,
+                  "sha256": "918bd027f59087bef8e055f9b587b25486d58c606d8658d4ce7b1199274f6744",
+                  "size": 4
+                },
+                {
+                  "active": true,
+                  "pointer": 2168459264,
+                  "sha256": "245bbd9d484dcf27c714e2690cd6544973de5d54aa9cd82eab23d6046a65faa8",
+                  "size": 8
+                },
+                {
+                  "active": true,
+                  "pointer": 2168463360,
+                  "sha256": "80a76a18acf8cb64fec3a659ffc4bab4a87cd9a6fde4dab2161a8751d136c9d2",
+                  "size": 48
+                }
+              ],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "00002381a501000004000000200000000400000010000000008000001000080002000200040008000c0000000000408100104081002040810000040000000000",
+              "context_sha256": "9f96ff085acfd43c70728b86cdabe979252dc629f5d38daf2a34e9ee7883023a",
+              "counters": [
+                0,
+                4,
+                0
+              ],
+              "eftl_ready": 0,
+              "marker": 165,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                2168455168,
+                2168459264,
+                2168463360
+              ],
+              "read_behavior": 1,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 752
+      },
+      {
+        "name": "initialize_retry_all_reserved",
+        "observed": {
+          "actions": [
+            "fill:2162057144:0:64",
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0",
+            "log:geometry_summary",
+            "clock:1000",
+            "millis:1000:10",
+            "alloc:4:2168455168",
+            "fill:2168455168:0:4",
+            "alloc:8:2168459264",
+            "fill:2168459264:255:8",
+            "alloc:48:2168463360",
+            "fill:2168463360:255:48",
+            "scan:0",
+            "bad:0:1",
+            "log:bad_block",
+            "bad:1:1",
+            "log:bad_block",
+            "bad:2:1",
+            "log:bad_block",
+            "bad:3:1",
+            "log:bad_block",
+            "fill:2168455168:0:4",
+            "fill:2168459264:255:8",
+            "scan:1",
+            "bad:0:1",
+            "log:bad_block",
+            "erase:0:-9",
+            "bad:1:1",
+            "log:bad_block",
+            "erase:1:-9",
+            "bad:2:1",
+            "log:bad_block",
+            "erase:2:-9",
+            "bad:3:1",
+            "log:bad_block",
+            "erase:3:-9",
+            "clock:2000",
+            "millis:2000:20",
+            "log:capacity_summary",
+            "log:block_summary"
+          ],
+          "rows": [
+            {
+              "allocations": [
+                {
+                  "active": true,
+                  "pointer": 2168455168,
+                  "sha256": "ad95131bc0b799c0b1af477fb14fcf26a6a9f76079e48bf090acb7e8367bfd0e",
+                  "size": 4
+                },
+                {
+                  "active": true,
+                  "pointer": 2168459264,
+                  "sha256": "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+                  "size": 8
+                },
+                {
+                  "active": true,
+                  "pointer": 2168463360,
+                  "sha256": "80a76a18acf8cb64fec3a659ffc4bab4a87cd9a6fde4dab2161a8751d136c9d2",
+                  "size": 48
+                }
+              ],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "00002381a501000004000000200000000400000010000000008000001000080002000200040008000c0000000000408100104081002040810000000004000000",
+              "context_sha256": "c4a81b08088099686f9dad22c92355800ae6b87e4239b6263e9ba2edde1a6b42",
+              "counters": [
+                0,
+                0,
+                4
+              ],
+              "eftl_ready": 0,
+              "marker": 165,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                2168455168,
+                2168459264,
+                2168463360
+              ],
+              "read_behavior": 1,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 612
+      },
+      {
+        "name": "initialize_retry_read_error",
+        "observed": {
+          "actions": [
+            "fill:2162057144:0:64",
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0",
+            "log:geometry_summary",
+            "clock:1000",
+            "millis:1000:10",
+            "alloc:4:2168455168",
+            "fill:2168455168:0:4",
+            "alloc:8:2168459264",
+            "fill:2168459264:255:8",
+            "alloc:48:2168463360",
+            "fill:2168463360:255:48",
+            "scan:0",
+            "bad:0:1",
+            "log:bad_block",
+            "bad:1:1",
+            "log:bad_block",
+            "bad:2:1",
+            "log:bad_block",
+            "bad:3:1",
+            "log:bad_block",
+            "fill:2168455168:0:4",
+            "fill:2168459264:255:8",
+            "scan:1",
+            "bad:0:1",
+            "log:bad_block",
+            "erase:0:0",
+            "oob:0:0:00004545",
+            "bad:1:1",
+            "log:bad_block",
+            "erase:1:0",
+            "oob:4:-9:01004546",
+            "log:oob_read_error"
+          ],
+          "rows": [
+            {
+              "allocations": [
+                {
+                  "active": true,
+                  "pointer": 2168455168,
+                  "sha256": "2cf2f6e1af58722be10cb797862ef07bf038375d92bb5ddbc6a23ddcd1ba2a86",
+                  "size": 4
+                },
+                {
+                  "active": true,
+                  "pointer": 2168459264,
+                  "sha256": "0df26faa23256f168ca98f8fcb1f0d0723b1a73df3dae97bbbc336753b62b0f6",
+                  "size": 8
+                },
+                {
+                  "active": true,
+                  "pointer": 2168463360,
+                  "sha256": "80a76a18acf8cb64fec3a659ffc4bab4a87cd9a6fde4dab2161a8751d136c9d2",
+                  "size": 48
+                }
+              ],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "000023810001000004000000200000000400000010000000008000001000080002000200040008000c0000000000408100104081002040810000010000000000",
+              "context_sha256": "081f174c2c1e40eab7e680e7a9d0c3b39f1ec1ce89ff6615abf59bb35f42d231",
+              "counters": [
+                0,
+                1,
+                0
+              ],
+              "eftl_ready": 0,
+              "marker": 0,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                2168455168,
+                2168459264,
+                2168463360
+              ],
+              "read_behavior": 1,
+              "returned": 4294967295,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 529
+      },
+      {
+        "name": "initialize_ioctl_status_ignored",
+        "observed": {
+          "actions": [
+            "fill:2162057144:0:64",
+            "find:eftl:1",
+            "ioctl:1:-9",
+            "ioctl:2:-9",
+            "ioctl:3:-9",
+            "ioctl:18:-9",
+            "ioctl:19:-9",
+            "ioctl:20:-9",
+            "ioctl:21:-9",
+            "log:geometry_summary",
+            "clock:1000",
+            "millis:1000:10",
+            "alloc:4:2168455168",
+            "fill:2168455168:0:4",
+            "alloc:8:2168459264",
+            "fill:2168459264:255:8",
+            "alloc:48:2168463360",
+            "fill:2168463360:255:48",
+            "scan:0",
+            "bad:0:0",
+            "oob:0:0:02004547",
+            "bad:1:0",
+            "oob:4:0:fffffffd",
+            "bad:2:0",
+            "oob:8:0:00004545",
+            "bad:3:1",
+            "log:bad_block",
+            "clock:2000",
+            "millis:2000:20",
+            "log:capacity_summary",
+            "log:block_summary"
+          ],
+          "rows": [
+            {
+              "allocations": [
+                {
+                  "active": true,
+                  "pointer": 2168455168,
+                  "sha256": "7e41b47ceb8ad15dbe3c00c7f79d518463442dedcd28f1a48d3cd1f3a5d48a35",
+                  "size": 4
+                },
+                {
+                  "active": true,
+                  "pointer": 2168459264,
+                  "sha256": "4be7bca9641499a8dd2535c9a7486fd89c914c3fc07ac40857d3aab99e81cb40",
+                  "size": 8
+                },
+                {
+                  "active": true,
+                  "pointer": 2168463360,
+                  "sha256": "80a76a18acf8cb64fec3a659ffc4bab4a87cd9a6fde4dab2161a8751d136c9d2",
+                  "size": 48
+                }
+              ],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "00002381a501000004000000200000000400000010000000008000001000080002000200040008000c0000000000408100104081002040810100020001000000",
+              "context_sha256": "b67269fc1185e2399064feb53eb6fa942c48b6e803055ba64a7c5703b433ef9a",
+              "counters": [
+                1,
+                2,
+                1
+              ],
+              "eftl_ready": 0,
+              "marker": 165,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                2168455168,
+                2168459264,
+                2168463360
+              ],
+              "read_behavior": 1,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 442
+      },
+      {
+        "name": "lazy_connected",
+        "observed": {
+          "actions": [
+            "fill:2162057144:0:64",
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0",
+            "log:geometry_summary",
+            "clock:1000",
+            "millis:1000:10",
+            "alloc:4:2168455168",
+            "fill:2168455168:0:4",
+            "alloc:8:2168459264",
+            "fill:2168459264:255:8",
+            "alloc:48:2168463360",
+            "fill:2168463360:255:48",
+            "scan:0",
+            "bad:0:0",
+            "oob:0:0:02004547",
+            "bad:1:0",
+            "oob:4:0:fffffffd",
+            "bad:2:0",
+            "oob:8:0:00004545",
+            "bad:3:1",
+            "log:bad_block",
+            "clock:2000",
+            "millis:2000:20",
+            "log:capacity_summary",
+            "log:block_summary",
+            "log:eftl_ready"
+          ],
+          "rows": [
+            {
+              "allocations": [
+                {
+                  "active": true,
+                  "pointer": 2168455168,
+                  "sha256": "7e41b47ceb8ad15dbe3c00c7f79d518463442dedcd28f1a48d3cd1f3a5d48a35",
+                  "size": 4
+                },
+                {
+                  "active": true,
+                  "pointer": 2168459264,
+                  "sha256": "4be7bca9641499a8dd2535c9a7486fd89c914c3fc07ac40857d3aab99e81cb40",
+                  "size": 8
+                },
+                {
+                  "active": true,
+                  "pointer": 2168463360,
+                  "sha256": "80a76a18acf8cb64fec3a659ffc4bab4a87cd9a6fde4dab2161a8751d136c9d2",
+                  "size": 48
+                }
+              ],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 128,
+              "capacity_word": 384,
+              "context_hex": "00002381a501000004000000200000000400000010000000008000001000080002000200040008000c0000000000408100104081002040810100020001000000",
+              "context_sha256": "b67269fc1185e2399064feb53eb6fa942c48b6e803055ba64a7c5703b433ef9a",
+              "counters": [
+                1,
+                2,
+                1
+              ],
+              "eftl_ready": 1,
+              "marker": 165,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                2168455168,
+                2168459264,
+                2168463360
+              ],
+              "read_behavior": 1,
+              "returned": null,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 481
+      },
+      {
+        "name": "lazy_connected_repeat",
+        "observed": {
+          "actions": [
+            "fill:2162057144:0:64",
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0",
+            "log:geometry_summary",
+            "clock:1000",
+            "millis:1000:10",
+            "alloc:4:2168455168",
+            "fill:2168455168:0:4",
+            "alloc:8:2168459264",
+            "fill:2168459264:255:8",
+            "alloc:48:2168463360",
+            "fill:2168463360:255:48",
+            "scan:0",
+            "bad:0:0",
+            "oob:0:0:02004547",
+            "bad:1:0",
+            "oob:4:0:fffffffd",
+            "bad:2:0",
+            "oob:8:0:00004545",
+            "bad:3:1",
+            "log:bad_block",
+            "clock:2000",
+            "millis:2000:20",
+            "log:capacity_summary",
+            "log:block_summary",
+            "log:eftl_ready"
+          ],
+          "rows": [
+            {
+              "allocations": [
+                {
+                  "active": true,
+                  "pointer": 2168455168,
+                  "sha256": "7e41b47ceb8ad15dbe3c00c7f79d518463442dedcd28f1a48d3cd1f3a5d48a35",
+                  "size": 4
+                },
+                {
+                  "active": true,
+                  "pointer": 2168459264,
+                  "sha256": "4be7bca9641499a8dd2535c9a7486fd89c914c3fc07ac40857d3aab99e81cb40",
+                  "size": 8
+                },
+                {
+                  "active": true,
+                  "pointer": 2168463360,
+                  "sha256": "80a76a18acf8cb64fec3a659ffc4bab4a87cd9a6fde4dab2161a8751d136c9d2",
+                  "size": 48
+                }
+              ],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 128,
+              "capacity_word": 384,
+              "context_hex": "00002381a501000004000000200000000400000010000000008000001000080002000200040008000c0000000000408100104081002040810100020001000000",
+              "context_sha256": "b67269fc1185e2399064feb53eb6fa942c48b6e803055ba64a7c5703b433ef9a",
+              "counters": [
+                1,
+                2,
+                1
+              ],
+              "eftl_ready": 1,
+              "marker": 165,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                2168455168,
+                2168459264,
+                2168463360
+              ],
+              "read_behavior": 1,
+              "returned": null,
+              "stopped": null
+            },
+            {
+              "allocations": [
+                {
+                  "active": true,
+                  "pointer": 2168455168,
+                  "sha256": "7e41b47ceb8ad15dbe3c00c7f79d518463442dedcd28f1a48d3cd1f3a5d48a35",
+                  "size": 4
+                },
+                {
+                  "active": true,
+                  "pointer": 2168459264,
+                  "sha256": "4be7bca9641499a8dd2535c9a7486fd89c914c3fc07ac40857d3aab99e81cb40",
+                  "size": 8
+                },
+                {
+                  "active": true,
+                  "pointer": 2168463360,
+                  "sha256": "80a76a18acf8cb64fec3a659ffc4bab4a87cd9a6fde4dab2161a8751d136c9d2",
+                  "size": 48
+                }
+              ],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 128,
+              "capacity_word": 384,
+              "context_hex": "00002381a501000004000000200000000400000010000000008000001000080002000200040008000c0000000000408100104081002040810100020001000000",
+              "context_sha256": "b67269fc1185e2399064feb53eb6fa942c48b6e803055ba64a7c5703b433ef9a",
+              "counters": [
+                1,
+                2,
+                1
+              ],
+              "eftl_ready": 1,
+              "marker": 165,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                2168455168,
+                2168459264,
+                2168463360
+              ],
+              "read_behavior": 1,
+              "returned": null,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 492
+      },
+      {
+        "name": "lazy_connected_error",
+        "observed": {
+          "actions": [
+            "fill:2162057144:0:64",
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0",
+            "log:geometry_summary",
+            "clock:1000",
+            "millis:1000:10",
+            "alloc:4:2168455168",
+            "fill:2168455168:0:4",
+            "alloc:8:2168459264",
+            "fill:2168459264:255:8",
+            "alloc:48:2168463360",
+            "fill:2168463360:255:48",
+            "scan:0",
+            "bad:0:0",
+            "oob:0:-9:00004545",
+            "log:oob_read_error"
+          ],
+          "rows": [
+            {
+              "allocations": [
+                {
+                  "active": true,
+                  "pointer": 2168455168,
+                  "sha256": "afbf07b0be4592ae583232113e2ef631ca37b9e6b608cfa6d511e4ec3c372383",
+                  "size": 4
+                },
+                {
+                  "active": true,
+                  "pointer": 2168459264,
+                  "sha256": "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+                  "size": 8
+                },
+                {
+                  "active": true,
+                  "pointer": 2168463360,
+                  "sha256": "80a76a18acf8cb64fec3a659ffc4bab4a87cd9a6fde4dab2161a8751d136c9d2",
+                  "size": 48
+                }
+              ],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "000023810001000004000000200000000400000010000000008000001000080002000200040008000c0000000000408100104081002040810000000000000000",
+              "context_sha256": "761cc90908d81653fe6ee390061c2d8431675e571f2b6b7a5eb2155d5f88ecee",
+              "counters": [
+                0,
+                0,
+                0
+              ],
+              "eftl_ready": 0,
+              "marker": 0,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                2168455168,
+                2168459264,
+                2168463360
+              ],
+              "read_behavior": 1,
+              "returned": null,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 258
+      },
+      {
+        "name": "lazy_already_ready",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "allocations": [],
+              "base_page": 0,
+              "block_count": 0,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "context_sha256": "f5a5fd42d16a20302798ef6ed309979b43003d2320d9f0e8ea9831a92759fb4b",
+              "counters": [
+                0,
+                0,
+                0
+              ],
+              "eftl_ready": 1,
+              "marker": 0,
+              "page_size": 0,
+              "pages_per_block": 0,
+              "pointers": [
+                0,
+                0,
+                0
+              ],
+              "read_behavior": 0,
+              "returned": null,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 11
+      },
+      {
+        "name": "initialize_native_format",
+        "observed": {
+          "actions": [
+            "fill:2162057144:0:64",
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0",
+            "log:geometry_summary",
+            "format_native:0",
+            "format_bad:0:0",
+            "format_erase:0:0",
+            "format_bad:1:0",
+            "format_erase:1:0",
+            "format_bad:2:0",
+            "format_erase:2:0",
+            "format_bad:3:1",
+            "clock:1000",
+            "millis:1000:10",
+            "alloc:4:2168455168",
+            "fill:2168455168:0:4",
+            "alloc:8:2168459264",
+            "fill:2168459264:255:8",
+            "alloc:48:2168463360",
+            "fill:2168463360:255:48",
+            "scan:0",
+            "bad:0:0",
+            "oob:0:0:02004547",
+            "bad:1:0",
+            "oob:4:0:fffffffd",
+            "bad:2:0",
+            "oob:8:0:00004545",
+            "bad:3:1",
+            "log:bad_block",
+            "clock:2000",
+            "millis:2000:20",
+            "log:capacity_summary",
+            "log:block_summary"
+          ],
+          "rows": [
+            {
+              "allocations": [
+                {
+                  "active": true,
+                  "pointer": 2168455168,
+                  "sha256": "7e41b47ceb8ad15dbe3c00c7f79d518463442dedcd28f1a48d3cd1f3a5d48a35",
+                  "size": 4
+                },
+                {
+                  "active": true,
+                  "pointer": 2168459264,
+                  "sha256": "4be7bca9641499a8dd2535c9a7486fd89c914c3fc07ac40857d3aab99e81cb40",
+                  "size": 8
+                },
+                {
+                  "active": true,
+                  "pointer": 2168463360,
+                  "sha256": "80a76a18acf8cb64fec3a659ffc4bab4a87cd9a6fde4dab2161a8751d136c9d2",
+                  "size": 48
+                }
+              ],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "00002381a501000004000000200000000400000010000000008000001000080002000200040008000c0000000000408100104081002040810100020001000000",
+              "context_sha256": "b67269fc1185e2399064feb53eb6fa942c48b6e803055ba64a7c5703b433ef9a",
+              "counters": [
+                1,
+                2,
+                1
+              ],
+              "eftl_ready": 0,
+              "marker": 165,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                2168455168,
+                2168459264,
+                2168463360
+              ],
+              "read_behavior": 1,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 563
+      },
+      {
+        "name": "initialize_native_format_erase_errors",
+        "observed": {
+          "actions": [
+            "fill:2162057144:0:64",
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0",
+            "log:geometry_summary",
+            "format_native:1",
+            "format_erase:0:-9",
+            "format_erase:1:-9",
+            "format_erase:2:-9",
+            "format_erase:3:-9",
+            "clock:1000",
+            "millis:1000:10",
+            "alloc:4:2168455168",
+            "fill:2168455168:0:4",
+            "alloc:8:2168459264",
+            "fill:2168459264:255:8",
+            "alloc:48:2168463360",
+            "fill:2168463360:255:48",
+            "scan:0",
+            "bad:0:0",
+            "oob:0:0:02004547",
+            "bad:1:0",
+            "oob:4:0:fffffffd",
+            "bad:2:0",
+            "oob:8:0:00004545",
+            "bad:3:1",
+            "log:bad_block",
+            "clock:2000",
+            "millis:2000:20",
+            "log:capacity_summary",
+            "log:block_summary"
+          ],
+          "rows": [
+            {
+              "allocations": [
+                {
+                  "active": true,
+                  "pointer": 2168455168,
+                  "sha256": "7e41b47ceb8ad15dbe3c00c7f79d518463442dedcd28f1a48d3cd1f3a5d48a35",
+                  "size": 4
+                },
+                {
+                  "active": true,
+                  "pointer": 2168459264,
+                  "sha256": "4be7bca9641499a8dd2535c9a7486fd89c914c3fc07ac40857d3aab99e81cb40",
+                  "size": 8
+                },
+                {
+                  "active": true,
+                  "pointer": 2168463360,
+                  "sha256": "80a76a18acf8cb64fec3a659ffc4bab4a87cd9a6fde4dab2161a8751d136c9d2",
+                  "size": 48
+                }
+              ],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "00002381a501000004000000200000000400000010000000008000001000080002000200040008000c0000000000408100104081002040810100020001000000",
+              "context_sha256": "b67269fc1185e2399064feb53eb6fa942c48b6e803055ba64a7c5703b433ef9a",
+              "counters": [
+                1,
+                2,
+                1
+              ],
+              "eftl_ready": 0,
+              "marker": 165,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                2168455168,
+                2168459264,
+                2168463360
+              ],
+              "read_behavior": 1,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 535
+      },
+      {
+        "name": "initialize_native_format_negative_bad",
+        "observed": {
+          "actions": [
+            "fill:2162057144:0:64",
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0",
+            "log:geometry_summary",
+            "format_native:0",
+            "format_bad:0:-9",
+            "format_bad:1:0",
+            "format_erase:1:0",
+            "format_bad:2:0",
+            "format_erase:2:0",
+            "format_bad:3:1",
+            "clock:1000",
+            "millis:1000:10",
+            "alloc:4:2168455168",
+            "fill:2168455168:0:4",
+            "alloc:8:2168459264",
+            "fill:2168459264:255:8",
+            "alloc:48:2168463360",
+            "fill:2168463360:255:48",
+            "scan:0",
+            "bad:0:-9",
+            "log:bad_block",
+            "erase:0:0",
+            "oob:0:0:02004547",
+            "bad:1:0",
+            "oob:4:0:fffffffd",
+            "bad:2:0",
+            "oob:8:0:00004545",
+            "bad:3:1",
+            "log:bad_block",
+            "clock:2000",
+            "millis:2000:20",
+            "log:capacity_summary",
+            "log:block_summary"
+          ],
+          "rows": [
+            {
+              "allocations": [
+                {
+                  "active": true,
+                  "pointer": 2168455168,
+                  "sha256": "7e41b47ceb8ad15dbe3c00c7f79d518463442dedcd28f1a48d3cd1f3a5d48a35",
+                  "size": 4
+                },
+                {
+                  "active": true,
+                  "pointer": 2168459264,
+                  "sha256": "4be7bca9641499a8dd2535c9a7486fd89c914c3fc07ac40857d3aab99e81cb40",
+                  "size": 8
+                },
+                {
+                  "active": true,
+                  "pointer": 2168463360,
+                  "sha256": "80a76a18acf8cb64fec3a659ffc4bab4a87cd9a6fde4dab2161a8751d136c9d2",
+                  "size": 48
+                }
+              ],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "00002381a501000004000000200000000400000010000000008000001000080002000200040008000c0000000000408100104081002040810100020001000000",
+              "context_sha256": "b67269fc1185e2399064feb53eb6fa942c48b6e803055ba64a7c5703b433ef9a",
+              "counters": [
+                1,
+                2,
+                1
+              ],
+              "eftl_ready": 0,
+              "marker": 165,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                2168455168,
+                2168459264,
+                2168463360
+              ],
+              "read_behavior": 1,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 570
+      },
+      {
+        "name": "initialize_native_format_all_reserved",
+        "observed": {
+          "actions": [
+            "fill:2162057144:0:64",
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0",
+            "log:geometry_summary",
+            "format_native:0",
+            "format_bad:0:1",
+            "format_bad:1:1",
+            "format_bad:2:1",
+            "format_bad:3:1",
+            "clock:1000",
+            "millis:1000:10",
+            "alloc:4:2168455168",
+            "fill:2168455168:0:4",
+            "alloc:8:2168459264",
+            "fill:2168459264:255:8",
+            "alloc:48:2168463360",
+            "fill:2168463360:255:48",
+            "scan:0",
+            "bad:0:1",
+            "log:bad_block",
+            "bad:1:1",
+            "log:bad_block",
+            "bad:2:1",
+            "log:bad_block",
+            "bad:3:1",
+            "log:bad_block",
+            "fill:2168455168:0:4",
+            "fill:2168459264:255:8",
+            "scan:1",
+            "bad:0:1",
+            "log:bad_block",
+            "erase:0:-9",
+            "bad:1:1",
+            "log:bad_block",
+            "erase:1:-9",
+            "bad:2:1",
+            "log:bad_block",
+            "erase:2:-9",
+            "bad:3:1",
+            "log:bad_block",
+            "erase:3:-9",
+            "clock:2000",
+            "millis:2000:20",
+            "log:capacity_summary",
+            "log:block_summary"
+          ],
+          "rows": [
+            {
+              "allocations": [
+                {
+                  "active": true,
+                  "pointer": 2168455168,
+                  "sha256": "ad95131bc0b799c0b1af477fb14fcf26a6a9f76079e48bf090acb7e8367bfd0e",
+                  "size": 4
+                },
+                {
+                  "active": true,
+                  "pointer": 2168459264,
+                  "sha256": "12a3ae445661ce5dee78d0650d33362dec29c4f82af05e7e57fb595bbbacf0ca",
+                  "size": 8
+                },
+                {
+                  "active": true,
+                  "pointer": 2168463360,
+                  "sha256": "80a76a18acf8cb64fec3a659ffc4bab4a87cd9a6fde4dab2161a8751d136c9d2",
+                  "size": 48
+                }
+              ],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "00002381a501000004000000200000000400000010000000008000001000080002000200040008000c0000000000408100104081002040810000000004000000",
+              "context_sha256": "c4a81b08088099686f9dad22c92355800ae6b87e4239b6263e9ba2edde1a6b42",
+              "counters": [
+                0,
+                0,
+                4
+              ],
+              "eftl_ready": 0,
+              "marker": 165,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                2168455168,
+                2168459264,
+                2168463360
+              ],
+              "read_behavior": 1,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 709
+      },
+      {
+        "name": "geometry_original",
+        "observed": {
+          "actions": [
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0"
+          ],
+          "rows": [
+            {
+              "allocations": [],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "000023810000000004000000200000000400000010000000008000001000080002000200040008000c0000000000000000000000000000000000000000000000",
+              "context_sha256": "b930bb5416be2ef5dfc69e774242d6a0132823757e42e2cb77622c18b9f7ed0f",
+              "counters": [
+                0,
+                0,
+                0
+              ],
+              "eftl_ready": 0,
+              "marker": 0,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                0,
+                0,
+                0
+              ],
+              "read_behavior": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "geometry_existing_handle",
+        "observed": {
+          "actions": [
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0"
+          ],
+          "rows": [
+            {
+              "allocations": [],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "000023810000000004000000200000000400000010000000008000001000080002000200040008000c0000000000000000000000000000000000000000000000",
+              "context_sha256": "b930bb5416be2ef5dfc69e774242d6a0132823757e42e2cb77622c18b9f7ed0f",
+              "counters": [
+                0,
+                0,
+                0
+              ],
+              "eftl_ready": 0,
+              "marker": 0,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                0,
+                0,
+                0
+              ],
+              "read_behavior": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 83
+      },
+      {
+        "name": "geometry_unaligned_partition",
+        "observed": {
+          "actions": [
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0"
+          ],
+          "rows": [
+            {
+              "allocations": [],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "000023810000000004000000200000000400000010000000008000001000080002000200040008000c0000000000000000000000000000000000000000000000",
+              "context_sha256": "b930bb5416be2ef5dfc69e774242d6a0132823757e42e2cb77622c18b9f7ed0f",
+              "counters": [
+                0,
+                0,
+                0
+              ],
+              "eftl_ready": 0,
+              "marker": 0,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                0,
+                0,
+                0
+              ],
+              "read_behavior": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "geometry_page_count_truncation",
+        "observed": {
+          "actions": [
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0"
+          ],
+          "rows": [
+            {
+              "allocations": [],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "000023810000000004000000200000000400000013000000008000001000080002000200040008000c0000000000000000000000000000000000000000000000",
+              "context_sha256": "9840942bccc94a1c38451f9fe304cb888a1a3eae7b2a10f0115630b9e1630ee6",
+              "counters": [
+                0,
+                0,
+                0
+              ],
+              "eftl_ready": 0,
+              "marker": 0,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                0,
+                0,
+                0
+              ],
+              "read_behavior": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "geometry_ioctl_status_ignored",
+        "observed": {
+          "actions": [
+            "find:eftl:1",
+            "ioctl:1:-9",
+            "ioctl:2:-9",
+            "ioctl:3:-9",
+            "ioctl:18:-9",
+            "ioctl:19:-9",
+            "ioctl:20:-9",
+            "ioctl:21:-9"
+          ],
+          "rows": [
+            {
+              "allocations": [],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "000023810000000004000000200000000400000010000000008000001000080002000200040008000c0000000000000000000000000000000000000000000000",
+              "context_sha256": "b930bb5416be2ef5dfc69e774242d6a0132823757e42e2cb77622c18b9f7ed0f",
+              "counters": [
+                0,
+                0,
+                0
+              ],
+              "eftl_ready": 0,
+              "marker": 0,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                0,
+                0,
+                0
+              ],
+              "read_behavior": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "geometry_find_error",
+        "observed": {
+          "actions": [
+            "find:eftl:0"
+          ],
+          "rows": [
+            {
+              "allocations": [],
+              "base_page": 0,
+              "block_count": 0,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "context_sha256": "f5a5fd42d16a20302798ef6ed309979b43003d2320d9f0e8ea9831a92759fb4b",
+              "counters": [
+                0,
+                0,
+                0
+              ],
+              "eftl_ready": 0,
+              "marker": 0,
+              "page_size": 0,
+              "pages_per_block": 0,
+              "pointers": [
+                0,
+                0,
+                0
+              ],
+              "read_behavior": 0,
+              "returned": null,
+              "stopped": {
+                "kind": "assertion",
+                "line": 26
+              }
+            }
+          ]
+        },
+        "steps": 19
+      },
+      {
+        "name": "geometry_zero_pages",
+        "observed": {
+          "actions": [
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0"
+          ],
+          "rows": [
+            {
+              "allocations": [],
+              "base_page": 0,
+              "block_count": 0,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "00002381000000000400000020000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "context_sha256": "c71d500e0e652e38d2dc4be26934a567f9bdc7d1266eaf5de26a0b7c04ea4281",
+              "counters": [
+                0,
+                0,
+                0
+              ],
+              "eftl_ready": 0,
+              "marker": 0,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                0,
+                0,
+                0
+              ],
+              "read_behavior": 0,
+              "returned": null,
+              "stopped": {
+                "kind": "assertion",
+                "line": 35
+              }
+            }
+          ]
+        },
+        "steps": 40
+      },
+      {
+        "name": "geometry_metadata_u16",
+        "observed": {
+          "actions": [
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0"
+          ],
+          "rows": [
+            {
+              "allocations": [],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "000023810000000004000000200000000400000010000000008000001000080002000200040008000c0000000000000000000000000000000000000000000000",
+              "context_sha256": "b930bb5416be2ef5dfc69e774242d6a0132823757e42e2cb77622c18b9f7ed0f",
+              "counters": [
+                0,
+                0,
+                0
+              ],
+              "eftl_ready": 0,
+              "marker": 0,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                0,
+                0,
+                0
+              ],
+              "read_behavior": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "geometry_zero_page_size",
+        "observed": {
+          "actions": [
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0"
+          ],
+          "rows": [
+            {
+              "allocations": [],
+              "base_page": 0,
+              "block_count": 0,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "00002381000000000400000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "context_sha256": "286796b135db7fff334c464c28acae407b10ed44c53157bed8451aaf7fdcc542",
+              "counters": [
+                0,
+                0,
+                0
+              ],
+              "eftl_ready": 0,
+              "marker": 0,
+              "page_size": 0,
+              "pages_per_block": 4,
+              "pointers": [
+                0,
+                0,
+                0
+              ],
+              "read_behavior": 0,
+              "returned": null,
+              "stopped": {
+                "kind": "assertion",
+                "line": 33
+              }
+            }
+          ]
+        },
+        "steps": 36
+      },
+      {
+        "name": "geometry_zero_pages_per_block",
+        "observed": {
+          "actions": [
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0"
+          ],
+          "rows": [
+            {
+              "allocations": [],
+              "base_page": 0,
+              "block_count": 0,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "00002381000000000000000020000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "context_sha256": "bfa414c6c50941d13ebb954b9c4d0efc5fc3216b644f2da981de2669de9b1c62",
+              "counters": [
+                0,
+                0,
+                0
+              ],
+              "eftl_ready": 0,
+              "marker": 0,
+              "page_size": 32,
+              "pages_per_block": 0,
+              "pointers": [
+                0,
+                0,
+                0
+              ],
+              "read_behavior": 0,
+              "returned": null,
+              "stopped": {
+                "kind": "assertion",
+                "line": 34
+              }
+            }
+          ]
+        },
+        "steps": 38
+      },
+      {
+        "name": "geometry_zero_spare",
+        "observed": {
+          "actions": [
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0"
+          ],
+          "rows": [
+            {
+              "allocations": [],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "00002381000000000400000020000000040000001000000000800000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "context_sha256": "ece886d05bcdf52d2b22707454a207c83255cb772b8f4e7521ed63168e1b56b7",
+              "counters": [
+                0,
+                0,
+                0
+              ],
+              "eftl_ready": 0,
+              "marker": 0,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                0,
+                0,
+                0
+              ],
+              "read_behavior": 0,
+              "returned": null,
+              "stopped": {
+                "kind": "assertion",
+                "line": 53
+              }
+            }
+          ]
+        },
+        "steps": 73
+      },
+      {
+        "name": "geometry_zero_ecc_total",
+        "observed": {
+          "actions": [
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0"
+          ],
+          "rows": [
+            {
+              "allocations": [],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "00002381000000000400000020000000040000001000000000800000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "context_sha256": "ece886d05bcdf52d2b22707454a207c83255cb772b8f4e7521ed63168e1b56b7",
+              "counters": [
+                0,
+                0,
+                0
+              ],
+              "eftl_ready": 0,
+              "marker": 0,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                0,
+                0,
+                0
+              ],
+              "read_behavior": 0,
+              "returned": null,
+              "stopped": {
+                "kind": "assertion",
+                "line": 54
+              }
+            }
+          ]
+        },
+        "steps": 75
+      },
+      {
+        "name": "geometry_zero_ecc_unit",
+        "observed": {
+          "actions": [
+            "find:eftl:1",
+            "ioctl:1:0",
+            "ioctl:2:0",
+            "ioctl:3:0",
+            "ioctl:18:0",
+            "ioctl:19:0",
+            "ioctl:20:0",
+            "ioctl:21:0"
+          ],
+          "rows": [
+            {
+              "allocations": [],
+              "base_page": 32768,
+              "block_count": 4,
+              "block_word": 131072,
+              "capacity_word": 2147483647,
+              "context_hex": "00002381000000000400000020000000040000001000000000800000000000000000000000000000000000000000000000000000000000000000000000000000",
+              "context_sha256": "ece886d05bcdf52d2b22707454a207c83255cb772b8f4e7521ed63168e1b56b7",
+              "counters": [
+                0,
+                0,
+                0
+              ],
+              "eftl_ready": 0,
+              "marker": 0,
+              "page_size": 32,
+              "pages_per_block": 4,
+              "pointers": [
+                0,
+                0,
+                0
+              ],
+              "read_behavior": 0,
+              "returned": null,
+              "stopped": {
+                "kind": "assertion",
+                "line": 55
+              }
+            }
+          ]
+        },
+        "steps": 77
+      }
+    ],
+    "hardware_execution": false
+  },
+  "validation_sha256": "fa77aff691a3e7e1943f4b69b65b1a4986350f6f9ce37b4f49d09e5ae3fb44d0",
+  "vectors_sha256": "da0cdf5b555c4f770f2dee6a85bd82cf2b4657b8e3861945fd34e41b91030dee"
+}
