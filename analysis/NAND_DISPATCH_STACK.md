@@ -84,3 +84,6 @@ Next integration work connects EFTL page/OOB adapters and logical mapped reads t
 this dispatch path. Physical chip/partition/BBT provenance, full concurrency,
 cache/IRQ behavior, persistence, backup/restoration and standalone boot remain
 open.
+
+The subsequent [EFTL/QSPI pass](EFTL_QSPI_STACK.md) connects ready logical reads,
+multi-page output, gaps and OOB extraction to this dispatch path.

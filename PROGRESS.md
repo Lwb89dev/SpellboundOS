@@ -1984,6 +1984,24 @@ limits; the initial observations point to the current status and work log.
    EFTL mapped/page/OOB integration is next. Driver binding/RTOS/peripheral inputs
    remain authored; concurrency, physical persistence/restoration/boot are open.
 
+## 2026-11-17 — connected ready EFTL translation and OOB extraction to QSPI
+
+1. Connected actual ready EFTL read/translation/page/OOB/extraction through
+   partition, original callbacks/context/mutex, BBT/page, bus/QSPI/FIFO/DMA.
+   Original 2,048-byte/64-page geometry is used with authored eight-slot mapping
+   and explicitly identified OOB metadata variants. Ready state is supplied.
+2. Verified multi-page/cross-block output offsets, gap ff fill/prefix return,
+   missing-driver fast bypass and lower ECC failure after buffer modification.
+   OOB scratch reaches actual extraction; page errors skip output extraction
+   even after scratch changes. Direct FIFO data and DMA sentinel remain fixtures.
+3. All 32 cases pass in 78,825 steps (maximum 4,224); prior 393 native cases
+   reproduce byte for byte. Nineteen new host checks bring the suite to 1,343
+   passing tests. Sixty code/export and ten data hashes are in
+   [analysis/EFTL_QSPI_STACK.md](analysis/EFTL_QSPI_STACK.md) and
+   [analysis/eftl-qspi-stack.json](analysis/eftl-qspi-stack.json).
+   Higher storage entry/bounds, mapping reconstruction/provenance, physical
+   persistence/restoration/boot and concurrency/coherency remain open.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
