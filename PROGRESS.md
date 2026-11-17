@@ -1678,6 +1678,29 @@ limits; the initial observations point to the current status and work log.
    Electrical bus behavior, physical chip identity/ECC, persistence and full boot
    remain open. No watch or phone was accessed.
 
+## 2026-11-17 — NAND QSPI platform, command packets and busy deadlines
+
+1. Executed actual bus initialization, packet conversion and ROM-version query.
+   Descriptor word +0x0c selects clock argument 1/2 at threshold 100; emulated
+   MMIO, controller fields and both DMA configurations match. Fences are recorded
+   ordering markers; lower clock/pin/DMA/HAL services remain supplied.
+2. Executed eleven feature/cache/write-enable/program/erase builders through the
+   actual bus transfer. Verified packet/frame fields, direct/private-buffer
+   selection at 31/32 bytes with ROM policy, input/output copies, reinitialization
+   and distinct nonzero-HAL-status assertion stops. Original opcode bytes agree
+   across all eleven candidate descriptors; executed builders use the first.
+3. Executed both busy loops: deadline checking precedes checking the busy bit.
+   A supplied successful feature read at timeout leaves output ff and returns
+   zero after logging; an exactly-on-deadline ready response still times out.
+   Downstream page/program/erase handling remains to be followed.
+4. All 51 native cases pass in 67,695 steps (maximum 30,838). Thirty-four new host
+   checks bring the full suite to 966 passing tests. Eighteen fresh exports/code
+   guards and five data guards are recorded in
+   [analysis/NAND_BUS_AND_COMMANDS.md](analysis/NAND_BUS_AND_COMMANDS.md) and
+   [analysis/nand-bus.json](analysis/nand-bus.json).
+   No device was accessed. Physical QSPI/DMA completion, chip identity, ECC,
+   persistence, restoration and standalone boot remain open.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -1698,8 +1721,11 @@ limits; the initial observations point to the current status and work log.
   execute as well; the ROM table publishes `boots=0`. The original five-backend,
   16-partition configuration and callback bindings are now recovered statically.
   Registry/device population, lazy EFTL descriptor arithmetic and EFTL logical
-  translation/page dispatch now execute with supplied lower services. Follow
-  actual bus initialization/transfer, feature protocols and physical ID/geometry
+  translation/page dispatch now execute with supplied lower services. Actual
+  QSPI platform initialization/transfer, selected feature/cache/program/erase
+  command builders, ROM-version policy and busy deadlines now execute with
+  supplied HAL/pin/DMA services and emulated MMIO. Follow lower RAM HAL/ROM,
+  downstream page/ECC/program/erase timeout handling and physical ID/geometry
   corroboration. Original candidate matching/probe and driver-root setup now
   execute with supplied services; object registry and UID/BBT internals remain
   open. Actual NAND

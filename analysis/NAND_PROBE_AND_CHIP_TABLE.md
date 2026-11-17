@@ -157,3 +157,8 @@ Remaining work includes the actual bus initializer/transfer and feature protocol
 UID/BBT internals, object registry, physical ID and timing/ECC corroboration,
 mapping repair/write paths, SFTL and persistence. Device-specific restoration
 and standalone boot through the signed chain remain unresolved.
+
+The subsequent [QSPI platform and command pass](NAND_BUS_AND_COMMANDS.md)
+executes the actual bus initializer/transfer, selected feature/cache/program/erase
+builders, ROM policy and busy loops. Its 51 cases use supplied lower HAL/pin/DMA
+services and emulator-only MMIO. It does not establish physical bus operation.
