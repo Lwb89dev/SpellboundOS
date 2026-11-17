@@ -95,3 +95,8 @@ The first candidate is a fixture choice, not identification of the fitted chip.
 The subsequent [program-stack pass](NAND_PROGRAM_STACK.md) closes selected
 connected program/guard paths and compares their complete timeout behavior with
 this read path. Physical programming remains unvalidated.
+
+The subsequent [erase/copy/OOB stack pass](NAND_ERASE_COPY_STACK.md) connects
+those selected policies through actual BBT, builders, busy loops, platform, bus
+and QSPI/FIFO, including a source-copy timeout followed by successful return.
+Peripheral inputs remain authored; physical flash effects remain unvalidated.

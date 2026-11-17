@@ -149,3 +149,8 @@ BBT verification/resume/remapping and connects actual remappers to all five page
 operations. The extended page runner additionally guards the two remapper code
 ranges when reproducing this earlier pass; the original 77-case report remains
 byte-for-byte unchanged. Physical BBT provenance and persistence remain open.
+
+The subsequent [erase/copy/OOB stack pass](NAND_ERASE_COPY_STACK.md) connects
+those selected policies through actual BBT, builders, busy loops, platform, bus
+and QSPI/FIFO, including a source-copy timeout followed by successful return.
+Peripheral inputs remain authored; physical flash effects remain unvalidated.

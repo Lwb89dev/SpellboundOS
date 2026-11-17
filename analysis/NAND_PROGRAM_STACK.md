@@ -93,3 +93,8 @@ remain open, along with physical ID/geometry/BBT/ECC corroboration, IRQ/coherenc
 board timing/pins, persistence, recovery/restoration and standalone boot. The
 first original candidate is a fixture choice, not identification of the fitted
 chip or proof that a successful program control path persists data.
+
+The subsequent [erase/copy/OOB stack pass](NAND_ERASE_COPY_STACK.md) connects
+those selected policies through actual BBT, builders, busy loops, platform, bus
+and QSPI/FIFO, including a source-copy timeout followed by successful return.
+Peripheral inputs remain authored; physical flash effects remain unvalidated.

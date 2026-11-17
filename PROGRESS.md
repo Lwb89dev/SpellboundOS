@@ -1919,6 +1919,29 @@ limits; the initial observations point to the current status and work log.
    Connected erase/copy/OOB, supported-family retry through the HAL and physical
    corroboration/persistence/restoration/standalone boot remain open.
 
+## 2026-11-17 — connected NAND erase, copy and OOB patch
+
+1. Connected actual erase/page-copy/copy-with-OOB roots to original BBT mapping,
+   builders, both busy loops, platform, bus and QSPI/FIFO. OOB uses hardcoded
+   opcode 0x34 and forced-direct quad data; the mapped source page selects its
+   plane bit. Zero OOB length still submits the patch; count 65 is rejected.
+2. Verified mapped source/destination protection, geometry/reserved boundaries,
+   deferred initialization, ECC rejection before enable and original assertions.
+   Complete erase budgets (4,000 delay or 20 sleep polls) reject final ready
+   status at the limit. Both copy phases retain their own 2,000-poll budget.
+3. A source timeout can still reach program-execute and return zero if the
+   destination later reports ready; destination timeout returns -102. The case
+   with both timeouts executes 4,000 actual status transactions. No physical
+   cache, copy, erase, persistence or hardware access is claimed.
+4. All 64 cases pass in 5,534,722 steps (maximum 1,353,573). Prior 90/28/47/31/27
+   native reports reproduce byte for byte. Twenty-seven new host tests bring
+   the suite to 1,275 passing tests. Forty-five code ranges/exports and eight
+   data ranges are recorded in
+   [analysis/NAND_ERASE_COPY_STACK.md](analysis/NAND_ERASE_COPY_STACK.md) and
+   [analysis/nand-maintenance-stack.json](analysis/nand-maintenance-stack.json).
+   Supported-family retry/UID through the HAL, higher storage and physical
+   corroboration/persistence/restoration/standalone boot remain open.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -1958,8 +1981,11 @@ limits; the initial observations point to the current status and work log.
   cache builders, busy loops, direct FIFO and private DMA; full timeout and ECC
   failure behavior execute across these layers. Actual program now connects BBT,
   guard, enable/cache/program/status builders and FIFO/DMA too, including complete
-  busy timeouts and wrapping column arithmetic. Follow connected erase/copy/OOB,
-  supported-family retry, remaining ECC/board integration, physical pin
+  busy timeouts and wrapping column arithmetic. Actual erase/copy/OOB now connect
+  both busy loops and original builders through the bus and polling HAL too.
+  Source-copy timeout can still return success; destination/erase timeouts fail.
+  Follow supported-family retry/UID through the HAL, higher storage integration,
+  remaining ECC/board integration, physical pin
   mapping, real DMA/IRQ/cache coherency and remaining board services,
   physical retry/UID, BBT provenance/creation and physical ID/geometry
   corroboration. Original candidate matching/probe and driver-root setup now
@@ -1975,9 +2001,9 @@ limits; the initial observations point to the current status and work log.
   extraction/composition now execute. The selected complete allocation/
   geometry/reset/scan/retry initializer, generic format loops and connected lazy
   publication now execute too, with lower services supplied. Actual page read/
-  program/copy/copy-with-OOB/erase now execute with actual busy loops and supplied
-  remap/command/feature/cache services; read timeout can reach a successful cache
-  read while program/erase reject ff status. Follow lower NAND
+  program/copy/copy-with-OOB/erase now also connect actual BBT remapping, builders,
+  busy loops, platform, bus and HAL over authored peripheral inputs; read/source-
+  copy timeout can reach success while program/erase reject ff status. Follow lower NAND
   page/ECC/bus transport and physical metadata provenance, alternate format
   handling, remaining
   mapping repair/program/erase paths, SFTL and the concrete physical partition
