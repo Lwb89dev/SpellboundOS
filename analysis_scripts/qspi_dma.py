@@ -39,10 +39,12 @@ class Model(qspi.Model):
         result=backend.wait();self.drain();self.write(32,self.read(32)&~1)
         return result if result else self.wait(36,1)
     def run(self):
-        c=self.c;mode=c['mode']
         for backend in self.backends:
             if backend.init()!=0:raise ValueError('bounded DMA initializer')
             self.drain()
+        return self.transfer()
+    def transfer(self):
+        c=self.c;mode=c['mode']
         receive='receive' in mode or 'read' in mode
         if mode.endswith('_bounce'):
             self.actions.append('version:2')
@@ -57,6 +59,8 @@ class Model(qspi.Model):
                 self.actions.extend(('log:'+stage,'diagnostic'));self.stopped=dict(kind='assertion',owner=0x80c37b98,line=0x16f if receive else 0x17b);result=None
             elif receive:
                 self.actions.append('copy_from_bounce:'+str(c['count']));self.buffer[:c['count']]=self.bounce[:c['count']]
+        return self.snapshot(result)
+    def snapshot(self,result):
         return dict(actions=self.actions,rows=[dict(returned=result,stopped=self.stopped,context_hex=self.context.hex(),
             buffer_sha256=qspi.digest(self.buffer),tx_hex='',rx_bytes=0,mmio={str(k):v for k,v in sorted(self.regs.items())},
             clock_word=self.clock,clock_shadow=self.shadow,dma_contexts_hex=[b.contexts[0].hex() for b in self.backends],

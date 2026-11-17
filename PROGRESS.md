@@ -1850,6 +1850,31 @@ limits; the initial observations point to the current status and work log.
    Complete page/board integration and physical DMA/IRQ/cache coherency,
    persistence/restoration/standalone boot remain open. No device was accessed.
 
+## 2026-11-17 — original NAND platform initialization and pin controls
+
+1. Executed actual grouped six-bit and 23-record table-driven pin helpers.
+   Verified shared fields, selector bounds, ignored P1 bit 11, unmasked
+   table-helper values and distinct paired read-modify-write sequences. The
+   records identify software fields, not physical package/PCB pin mappings.
+2. Executed complete selected NAND bus initialization through actual clock,
+   pin controls, QSPI and DMA init. Register 0x9a00000c bit 0x200 is cleared
+   then set in two operations; fences remain recorded ordering markers.
+   Original adjacent DMA descriptors at 0x80de645c/0x80de64a0 use 68-byte observed
+   backing and original registry/owner/context links. Startup-zero provenance
+   is pinned by the original zero-table record, not unreadable Ghidra BSS bytes.
+3. Connected initialization to private-buffer read/write and executed the actual
+   bus-triggered reinitialization path before transfer. Lower cache/copy/clock
+   inputs and peripheral effects remain authored; no physical DMA or board boot
+   is established.
+4. All 47 cases pass in 11,934 steps (maximum 1,037). The prior 90/28-case native
+   reports remain byte-for-byte identical. Twenty-five new host checks bring
+   the suite to 1,210 passing tests. Twenty-eight code guards/exports and five
+   data guards are in [analysis/NAND_PLATFORM_AND_PINS.md](analysis/NAND_PLATFORM_AND_PINS.md),
+   [analysis/nand-pins.json](analysis/nand-pins.json) and
+   [analysis/nand-platform.json](analysis/nand-platform.json).
+   Complete page/ECC/board integration, physical pin/DMA/IRQ/coherency,
+   persistence/restoration and standalone boot remain open. No device accessed.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -1882,8 +1907,11 @@ limits; the initial observations point to the current status and work log.
   differ in tracking cleanup despite both returning zero. Actual QSPI wrappers
   now connect to actual DMA init/setup/wait, including the selected NAND private-
   buffer bus path, with authored statuses/cache/copy services. Each wait retains
-  its full timeout budget. Follow complete page/board integration, real DMA/IRQ/
-  cache coherency and remaining board services,
+  its full timeout budget. Selected full NAND bus initialization now executes
+  actual grouped/table-driven pin controls, clock/QSPI/DMA initialization and
+  original adjacent descriptor linking, including bus-triggered reinitialization
+  followed by transfer. Follow complete page/ECC/board integration, physical pin
+  mapping, real DMA/IRQ/cache coherency and remaining board services,
   physical retry/UID, BBT provenance/creation and physical ID/geometry
   corroboration. Original candidate matching/probe and driver-root setup now
   execute with supplied services; object registry remains open. Actual retry/

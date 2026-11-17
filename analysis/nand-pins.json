@@ -1,0 +1,130 @@
+{
+  "boot_sha256": "44cd83c0d09864c6101e9825bd3c77d7fac314584d0408b378dd56c2aac5736a",
+  "dma_startup_table_address": 2160067204,
+  "dma_startup_zero_region": {
+    "destination": 2161646824,
+    "kind": "zero",
+    "size": 485760,
+    "source": null
+  },
+  "hardware_execution": false,
+  "records": [
+    {
+      "index": 0,
+      "register": 2432696500,
+      "shift": 24
+    },
+    {
+      "index": 1,
+      "register": 2432696500,
+      "shift": 28
+    },
+    {
+      "index": 2,
+      "register": 2432696504,
+      "shift": 0
+    },
+    {
+      "index": 3,
+      "register": 2432696504,
+      "shift": 4
+    },
+    {
+      "index": 4,
+      "register": 2432696504,
+      "shift": 8
+    },
+    {
+      "index": 5,
+      "register": 2432696504,
+      "shift": 12
+    },
+    {
+      "index": 6,
+      "register": 2432696500,
+      "shift": 0
+    },
+    {
+      "index": 7,
+      "register": 2432696500,
+      "shift": 4
+    },
+    {
+      "index": 8,
+      "register": 2432696500,
+      "shift": 8
+    },
+    {
+      "index": 9,
+      "register": 2432696500,
+      "shift": 12
+    },
+    {
+      "index": 10,
+      "register": 2432696500,
+      "shift": 16
+    },
+    {
+      "index": 11,
+      "register": 2432696500,
+      "shift": 20
+    },
+    {
+      "index": 12,
+      "register": 2432696504,
+      "shift": 16
+    },
+    {
+      "index": 13,
+      "register": 2432696504,
+      "shift": 20
+    },
+    {
+      "index": 14,
+      "register": 2432696504,
+      "shift": 24
+    },
+    {
+      "index": 15,
+      "register": 2432696508,
+      "shift": 0
+    },
+    {
+      "index": 16,
+      "register": 2432696508,
+      "shift": 4
+    },
+    {
+      "index": 17,
+      "register": 2432696508,
+      "shift": 8
+    },
+    {
+      "index": 18,
+      "register": 2432696508,
+      "shift": 12
+    },
+    {
+      "index": 19,
+      "register": 2432696508,
+      "shift": 16
+    },
+    {
+      "index": 20,
+      "register": 2432696508,
+      "shift": 20
+    },
+    {
+      "index": 21,
+      "register": 2432696508,
+      "shift": 24
+    },
+    {
+      "index": 22,
+      "register": 2432696508,
+      "shift": 28
+    }
+  ],
+  "sha256": "17b573beccd13a7fbabc3c12675435de2add3e8aa8d9d8e0ee1bf97eedc00620",
+  "table_address": 2161646640
+}

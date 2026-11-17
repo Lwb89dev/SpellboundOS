@@ -159,3 +159,9 @@ Remaining work includes complete page/board integration, original factory-data
 and BBT provenance, SFTL, physical DMA payload movement, IRQ delivery and cache
 coherency. Physical status meanings, timing, persistence, device-specific backup/
 restoration and standalone signed-chain boot remain unresolved.
+
+The subsequent [NAND platform pass](NAND_PLATFORM_AND_PINS.md) executes actual
+pin controls and complete selected bus initialization at the original adjacent
+DMA addresses, including initialization-to-transfer and nested reinitialization.
+This earlier pass retains its relocated descriptor fixtures; physical DMA,
+coherency and complete board startup remain unvalidated.

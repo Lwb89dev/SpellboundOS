@@ -176,3 +176,8 @@ read/program/copy/erase callers together with the actual busy loops. It verifies
 that the selected read can proceed after timeout with ff status, while program
 and erase return status failures. Its command/feature/remap services are supplied;
 it does not establish physical NAND behavior.
+
+The later [platform/pin pass](NAND_PLATFORM_AND_PINS.md) executes actual lower
+pin, clock, QSPI and DMA initialization. Its finer MMIO trace shows bit 0x200 at
+0x9a00000c being cleared and then set in separate operations; the earlier report
+verified only its final set state. Physical reset/pin semantics remain open.
