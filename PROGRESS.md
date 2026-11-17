@@ -2,7 +2,7 @@
 
 This log records completed work, evidence, and limitations. Dates refer to the
 local work session. See [GOAL.md](GOAL.md) for the intended outcome and
-[analysis/ANALISI.md](analysis/ANALISI.md) for detailed earlier findings.
+[analysis/ANALYSIS.md](analysis/ANALYSIS.md) for detailed earlier findings.
 
 ## 2026-11-14 — acquisition and initial investigation
 
@@ -1577,6 +1577,13 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    and [analysis/eftl-read.json](analysis/eftl-read.json).
    Mapping reconstruction, actual NAND/OOB data, bus/ECC/DMA and physical storage
    remain outside the fixtures. No device was accessed in either pass.
+
+## 2026-11-17 — English documentation
+
+Translated the remaining Italian prose in the README and initial static-analysis
+report into English. Renamed the latter to `analysis/ANALYSIS.md` and updated its
+links. Preserved the historical dates, commands, identifiers, hashes and evidence
+limits; the initial observations point to the current status and work log.
 
 ## Next work
 
