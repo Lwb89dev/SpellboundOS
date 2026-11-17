@@ -1237,6 +1237,31 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    and [analysis/algorithm-manager.json](analysis/algorithm-manager.json).
    Vendor material stays ignored; no device access or firmware/settings changes.
 
+## 2026-11-17 — HR outer workspace, restart and borrowed extension views
+
+1. Executed actual HR outer initialization: 78 successful requests totaling
+   89,556 bytes, root/66-child/eleven-scratch pointer layout, rate/mode fields,
+   initialized flag and primary-root allocation failure. Numerical setup remains
+   a supplied boundary; secondary allocation failures stay open.
+2. Executed native outer cleanup through all 78 free boundaries and pointer
+   clearing. Repeated init/exit are no-ops. A restart uses different addresses
+   and frees both generations' 156 allocations exactly once. Internal cleanup
+   and allocator implementation remain supplied; allocation guards are checked.
+3. Executed actual initialized unsupported-type processing: preparatory state
+   words and eleven scratch arrays clear, return is zero, output is untouched.
+   Supported signal normalization and numerical processing remain unexecuted.
+4. Executed the actual configuration extension: copies its header and installs
+   24 borrowed views before checking both sizes against 0x1a1d0. Invalid sizes
+   return zero after modifying metadata; a rejected rebind replaces old views.
+   Complete source backing is supplied; no pointed-to data/consumer use tested.
+5. All 21 native cases pass (eight workspace, five process, eight extension),
+   totaling 16,586 bounded steps including intercepted calls. Stack and twelve
+   saved integer/FP registers are checked. Added 14 host checks; all 452 Python
+   tests pass. Six fresh export hashes, full observations and reproduction are in
+   [analysis/HR_WORKSPACE_AND_EXTENSION.md](analysis/HR_WORKSPACE_AND_EXTENSION.md)
+   and [analysis/hr-workspace.json](analysis/hr-workspace.json). Vendor material
+   stays ignored. No device access, phone/watch settings or firmware changes.
+
 ## Next work
 
 - Regenerate selected native paths with startup-aware mappings, corrected
@@ -1252,9 +1277,11 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
   the now-covered opcode-21 send and main/sensor receive boundaries. Selected
   main registration, retained engine-cache event, engine fanout and engine-7
   non-type-1 HR result handling now have bounded native coverage. Follow real
-  algorithm-0x100d mathematical initialization/process/teardown and extension
-  logic beyond the now-covered actual registration/lifetime/dispatch adapters,
-  configuration copying and uninitialized guard. Follow motion/minute/reset/wear branches, other
+  algorithm-0x100d numerical workspace setup/internal cleanup, secondary
+  allocation failures, supported signal normalization/math and extension
+  consumers beyond the now-covered outer allocation/free/restart and borrowed
+  view builder. Registration/lifetime/dispatch adapters, configuration copying
+  and selected guards are covered. Follow motion/minute/reset/wear branches, other
   modes, fusion, malformed input and concurrency paths.
   Validate electrical SPI mode/timing, DMA ownership and live
   sensor operation before implementing hardware code. The selected adapter's

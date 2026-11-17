@@ -190,3 +190,9 @@ Mathematical init/process/exit, extension logic, full engine activation, the
 HR motion/minute/reset/wear paths, other health algorithms, transport/concurrency
 and physical validation remain open. Vendor code/binaries/tools/databases stay
 ignored. No phone/watch access or firmware changes were performed.
+
+The follow-up [HR_WORKSPACE_AND_EXTENSION.md](HR_WORKSPACE_AND_EXTENSION.md)
+executes outer HR allocation/free, repeated lifecycle and restart, initialized
+unsupported-type processing and the actual extension header/view builder in
+21 additional native cases. Numerical setup/internal cleanup and supported
+mathematical processing remain boundaries.
