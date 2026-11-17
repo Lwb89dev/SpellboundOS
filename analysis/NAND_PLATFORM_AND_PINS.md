@@ -174,3 +174,8 @@ Remaining work includes complete page/ECC and board/regulator/IRQ integration,
 physical pin/package mapping and electrical verification, DMA payload movement,
 cache coherency and persistence. BBT/factory-data provenance, SFTL,
 device-specific backup/restoration and standalone boot remain open.
+
+The later [connected page-read pass](NAND_READ_STACK.md) executes actual page
+read and BBT mapping through status/cache builders, platform, QSPI and DMA,
+including full busy-timeout and selected ECC/assertion behavior. Hardware inputs
+remain authored.

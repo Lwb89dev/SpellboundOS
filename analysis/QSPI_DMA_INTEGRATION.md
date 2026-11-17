@@ -165,3 +165,8 @@ pin controls and complete selected bus initialization at the original adjacent
 DMA addresses, including initialization-to-transfer and nested reinitialization.
 This earlier pass retains its relocated descriptor fixtures; physical DMA,
 coherency and complete board startup remain unvalidated.
+
+The later [connected page-read pass](NAND_READ_STACK.md) executes actual page
+read and BBT mapping through status/cache builders, platform, QSPI and DMA,
+including full busy-timeout and selected ECC/assertion behavior. Hardware inputs
+remain authored.

@@ -1875,6 +1875,27 @@ limits; the initial observations point to the current status and work log.
    Complete page/ECC/board integration, physical pin/DMA/IRQ/coherency,
    persistence/restoration and standalone boot remain open. No device accessed.
 
+## 2026-11-17 — connected NAND page read, BBT, status FIFO and DMA
+
+1. Connected actual page read to actual BBT page/block remapping, page-load,
+   status and quad-cache builders, busy loop, bus, QSPI/FIFO/DMA and selected
+   full platform initialization. Deferred initialization occurs inside the
+   first bus after remapping. No intermediate command helper is replaced.
+2. Verified direct/private threshold 31/32, mapped plane-bit changes, reserved
+   and geometry boundaries, unsupported-family retry selection, ECC transfer
+   before -101, alternate DMA tracking and original failure assertions.
+3. Both complete 2,000-poll cases confirm timeout can still lead to read success:
+   the busy helper preserves ff and returns zero. An ECC-bad final status is
+   discarded before the caller's ECC policy. Physical data delivery is unproven.
+4. All 31 cases pass in 1,418,115 steps (maximum 678,807); prior 90/28/47-case
+   native reports reproduce byte for byte. Twenty host checks bring the suite
+   to 1,230 passing tests. Thirty-seven code/export and eight data ranges are
+   pinned in [analysis/NAND_READ_STACK.md](analysis/NAND_READ_STACK.md) and
+   [analysis/nand-read-stack.json](analysis/nand-read-stack.json).
+   Connected program/erase/copy and supported-family retry, physical chip/BBT/
+   ECC/board/DMA/coherency, persistence/restoration and standalone boot remain
+   open. All peripheral/service inputs are authored. No device accessed.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -1910,7 +1931,10 @@ limits; the initial observations point to the current status and work log.
   its full timeout budget. Selected full NAND bus initialization now executes
   actual grouped/table-driven pin controls, clock/QSPI/DMA initialization and
   original adjacent descriptor linking, including bus-triggered reinitialization
-  followed by transfer. Follow complete page/ECC/board integration, physical pin
+  followed by transfer. Actual page read now connects BBT remapping, load/status/
+  cache builders, busy loops, direct FIFO and private DMA; full timeout and ECC
+  failure behavior execute across these layers. Follow connected program/erase/
+  copy, supported-family retry, remaining ECC/board integration, physical pin
   mapping, real DMA/IRQ/cache coherency and remaining board services,
   physical retry/UID, BBT provenance/creation and physical ID/geometry
   corroboration. Original candidate matching/probe and driver-root setup now
