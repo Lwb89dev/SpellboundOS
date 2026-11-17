@@ -1803,6 +1803,29 @@ limits; the initial observations point to the current status and work log.
    physical timing/coherency/persistence remain open. No device was accessed;
    backup/restoration and standalone boot remain unresolved.
 
+## 2026-11-17 — DMA backend setup/wait/cancel and IRQ dispatch
+
+1. Executed actual DMA initializer, two setup variants, cancellation, count query,
+   polling wait and IRQ handler across four authored controller banks. Verified
+   channel bounds/registry indexing, NAND-style transmit/receive settings,
+   descriptor masks, cache-request direction, transfer-count shifts/truncation
+   and partial changes before unknown-base fatal stops.
+2. Actual wait can return zero on either tested status bit: A requests cache
+   finalization and clears tracking; B preserves tracking without that request.
+   Both-bit cases prefer A. Timeout/recheck/wrap cases and common channel-disable
+   writes match. Physical meanings of the status bits remain unverified.
+3. Executed IRQ registry dispatch, linked/nonlinked behavior, optional/dual
+   callbacks and multi-channel ordering. Connected init/setup/wait and
+   init/setup/IRQ cases pass. Cache bodies, timestamps and callbacks remain
+   supplied; no physical DMA data movement or interrupt delivery is established.
+4. All 60 cases pass in 4,898 steps (maximum 280). Thirty-five new host checks
+   bring the suite to 1,163 passing tests. Seven code guards/fresh exports and
+   full traces are in [analysis/DMA_BACKEND_AND_IRQ.md](analysis/DMA_BACKEND_AND_IRQ.md)
+   and [analysis/dma-backend.json](analysis/dma-backend.json).
+   QSPI-to-backend integration, live DMA/IRQ/cache coherency, remaining board
+   services and physical persistence/restoration/boot remain open. No device
+   was accessed.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -1830,7 +1853,10 @@ limits; the initial observations point to the current status and work log.
   init/command/direct-FIFO/DMA-wrapper and phase/count/status/clock routines now
   execute too, with supplied timer/DMA internals and authored MMIO. Selected NAND
   feature/cache/write-enable builders connect through actual bus/HAL to the FIFO.
-  Follow actual DMA initialization/setup/wait/IRQ and remaining board services,
+  Actual DMA init/setup/wait/cancel/count/IRQ now execute in a separate guarded
+  pass with authored MMIO/cache/timer/callback services. Wait status branches
+  differ in tracking cleanup despite both returning zero. Follow QSPI-to-DMA
+  integration, real DMA/IRQ/cache coherency and remaining board services,
   physical retry/UID, BBT provenance/creation and physical ID/geometry
   corroboration. Original candidate matching/probe and driver-root setup now
   execute with supplied services; object registry remains open. Actual retry/

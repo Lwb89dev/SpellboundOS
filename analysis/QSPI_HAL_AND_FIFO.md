@@ -175,3 +175,8 @@ pin/board services and complete page/private-buffer-to-HAL integration. Physical
 timing, FIFO/ready/W1C semantics, clock calibration, coherency and persistence
 remain unverified. BBT creation/provenance, SFTL, device-specific backup/
 restoration and standalone signed-chain boot remain open.
+
+The subsequent [DMA backend pass](DMA_BACKEND_AND_IRQ.md) executes actual
+initializer/setup/wait/cancel/count/IRQ code, including connected backend flows.
+The earlier QSPI pass retains its supplied DMA boundary. Integration between
+these two executed layers and real DMA/IRQ/coherency remain open.
