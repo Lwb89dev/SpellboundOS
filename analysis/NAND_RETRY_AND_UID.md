@@ -191,3 +191,9 @@ The subsequent [QSPI HAL pass](QSPI_HAL_AND_FIFO.md) executes the actual HAL and
 connects selected NAND builders through actual bus transfer to an authored FIFO.
 This earlier retry/UID pass still uses its supplied bus boundary. Physical timing,
 DMA internals and complete page/private-buffer integration remain open.
+
+The subsequent [connected retry/UID pass](NAND_RETRY_UID_STACK.md) executes
+supported-family retry, page-read recovery, UID acquisition and selected ioctl
+through original platform/bus/QSPI/FIFO, with selected private-read DMA.
+Feature/UID/peripheral effects remain authored; physical correction and identity
+provenance are unvalidated.

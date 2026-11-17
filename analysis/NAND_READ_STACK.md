@@ -100,3 +100,9 @@ The subsequent [erase/copy/OOB stack pass](NAND_ERASE_COPY_STACK.md) connects
 those selected policies through actual BBT, builders, busy loops, platform, bus
 and QSPI/FIFO, including a source-copy timeout followed by successful return.
 Peripheral inputs remain authored; physical flash effects remain unvalidated.
+
+The subsequent [connected retry/UID pass](NAND_RETRY_UID_STACK.md) executes
+supported-family retry, page-read recovery, UID acquisition and selected ioctl
+through original platform/bus/QSPI/FIFO, with selected private-read DMA.
+Feature/UID/peripheral effects remain authored; physical correction and identity
+provenance are unvalidated.

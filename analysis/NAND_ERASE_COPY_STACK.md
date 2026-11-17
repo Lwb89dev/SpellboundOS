@@ -123,3 +123,9 @@ bus and QSPI layers. Supported-family retry/UID through the HAL, higher storage
 integration, BBT provenance/repair, real cache/IRQ/coherency and physical
 ID/geometry/ECC/OOB/persistence remain open. Device-specific backup/restoration
 and standalone boot are still unresolved.
+
+The subsequent [connected retry/UID pass](NAND_RETRY_UID_STACK.md) executes
+supported-family retry, page-read recovery, UID acquisition and selected ioctl
+through original platform/bus/QSPI/FIFO, with selected private-read DMA.
+Feature/UID/peripheral effects remain authored; physical correction and identity
+provenance are unvalidated.

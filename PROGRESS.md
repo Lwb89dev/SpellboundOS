@@ -1942,6 +1942,30 @@ limits; the initial observations point to the current status and work log.
    Supported-family retry/UID through the HAL, higher storage and physical
    corroboration/persistence/restoration/standalone boot remain open.
 
+## 2026-11-17 — connected supported-family retry, page recovery and UID export
+
+1. Connected actual retry setter/compatibility/retry/reset check, page-read ECC
+   recovery, UID acquisition and selected ioctl export through original platform,
+   builders, bus and QSPI/FIFO. A recovered private read also connects actual
+   DMA. Eleven original descriptor/name/sequence sets are guarded; only candidate
+   3 matches retry compatibility. Feature/UID/peripheral effects remain authored.
+2. Confirmed five verification mismatches still return zero, allowing retry/reset
+   checks to report success with unchanged level. Real restoration HAL failure
+   instead asserts after retry_valid. Complete busy timeouts can still produce
+   successful retry or UID publication through the connected stack.
+3. Original UID complement selection executes through first/second/sixteenth or
+   sixteen invalid FIFO copies. Actual ioctl exports fresh, stale or zero-length
+   state. Cache assertion follows length clear/zeroing; earlier failure preserves
+   prior bytes. Combined external BBT/UID guards respect their exact adjacency.
+4. All 67 cases pass in 1,565,265 steps (maximum 679,078); prior 90/28/47/31/27/64
+   native reports reproduce byte for byte. Thirty new host tests bring the suite
+   to 1,305 passing tests. Fifty-two code ranges/exports and 39 data ranges are in
+   [analysis/NAND_RETRY_UID_STACK.md](analysis/NAND_RETRY_UID_STACK.md) and
+   [analysis/nand-identity-stack.json](analysis/nand-identity-stack.json).
+   No physical UID/ECC/flash evidence or device access is claimed. Higher storage,
+   BBT provenance/repair, concurrency/coherency/IRQ, persistence, device-specific
+   backup/restoration and standalone boot remain open.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -1984,8 +2008,10 @@ limits; the initial observations point to the current status and work log.
   busy timeouts and wrapping column arithmetic. Actual erase/copy/OOB now connect
   both busy loops and original builders through the bus and polling HAL too.
   Source-copy timeout can still return success; destination/erase timeouts fail.
-  Follow supported-family retry/UID through the HAL, higher storage integration,
-  remaining ECC/board integration, physical pin
+  Supported-family retry/setter/reset checks, page-read recovery and UID/selected
+  export now connect through actual bus/HAL/FIFO too, including full timeout and
+  stale state cases. Follow higher storage integration, BBT provenance/repair,
+  concurrency and remaining ECC/board integration, physical pin
   mapping, real DMA/IRQ/cache coherency and remaining board services,
   physical retry/UID, BBT provenance/creation and physical ID/geometry
   corroboration. Original candidate matching/probe and driver-root setup now
