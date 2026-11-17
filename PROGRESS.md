@@ -1394,6 +1394,30 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
    Reservation, full sector scan and maintenance remain supplied. No hardware,
    real environment, flash or power-loss/reboot operation was accessed/executed.
 
+## 2026-11-17 — empty-cache sector lookup and reservation/retry policy
+
+1. Executed light EF40 header parsing, primary/dirty status decoding and the
+   linked next-sector walker over synthetic headers. Covered bad header, next
+   boundary and a relative two-sector link that skips an intermediate sector.
+2. Executed actual empty-cache lookup, byte-window record search, descriptor
+   CRC parsing and comparison filter. State must be 2 with matching key length,
+   name and validity. Deleted/CRC-bad first records are skipped for a later
+   match; duplicate eligible keys return the first encountered. Connected getter
+   returns payload and clipped count with original length. No startup/reset runs.
+3. Executed reservation enumeration/callbacks with supplied detailed free-count/
+   cursor views. Request must be strictly smaller than free count. Dirty state 2
+   depends on the maintenance flag; a last primary-state-1 sector can set the
+   flag and fail instead of being selected. Detailed space decoding remains open.
+4. Executed maintenance counting and retry scheduling. The GC relocation callback
+   remains supplied. Maintenance clears the flag, after which retry may fail and
+   rearm it, or select a previously flag-blocked cursor without any compaction.
+5. All 41 native cases pass, totaling 503,936 bounded steps. Added 29 host checks;
+   all 607 Python tests pass. Twelve fresh exports, code/table/member hashes,
+   complete traces, explicit boundaries and reproduction are in
+   [analysis/ENV_SCAN_AND_RESERVATION.md](analysis/ENV_SCAN_AND_RESERVATION.md)
+   and [analysis/env-scan.json](analysis/env-scan.json).
+   No hardware, real environment/flash, relocation/erase or reboot was accessed.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -1404,8 +1428,11 @@ local work session. See [GOAL.md](GOAL.md) for the intended outcome and
   Environment wrappers, cached reason/key policy and the stopped upgrade-record
   caller prefix now execute too. Native environment append/delete, CRC, cached
   lookup/parsing and connected get/set now run with supplied low-level storage.
-  Follow reservation, sector enumeration/scan filters, GC/maintenance, startup
-  cache reconstruction and actual persistence, subsequent boot/recovery/UI
+  Light sector traversal, empty-cache record filters and reservation/maintenance/
+  retry policy now execute too, with detailed free-count/cursor and GC callback
+  boundaries supplied. Follow actual detailed sector/free-space parsing, sector
+  end-cache reconstruction, GC relocation/erase, startup initialization and real
+  persistence, subsequent boot/recovery/UI
   dispatch, physical reason/gesture behavior, VFS/raw storage/base-address/
   write-atomicity and startup dependencies. Establish a
   physical non-destructive entry/backup/restoration route before device writes.

@@ -208,3 +208,8 @@ Reservation and sector enumeration/scan filters, garbage collection/maintenance,
 startup cache reconstruction, actual storage/device semantics, reset/power-loss
 behavior and subsequent recovery/UI consumers remain open. Physical backup,
 device-specific restoration and standalone signed-chain boot are still unresolved.
+
+The subsequent [empty-cache scan/reservation pass](ENV_SCAN_AND_RESERVATION.md)
+adds 41 native cases for light EF40 parsing, traversal, record filtering, policy
+and retry scheduling. Detailed free-space decoding and GC relocation remain
+supplied; the pass does not execute startup or establish post-reset persistence.
