@@ -1,0 +1,1396 @@
+{
+  "boot_sha256": "44cd83c0d09864c6101e9825bd3c77d7fac314584d0408b378dd56c2aac5736a",
+  "byte_range_sha256": {
+    "80c00b24_2e": "08e0b6d64fe10875c94c5cb67b140355c1366be7b925e52f18d2b27dac4a6c1f",
+    "80c27662_1f8": "67c2bdad43087d25f9063303a9b989bc452717ad3924c25a11c0841a630727cf",
+    "80c2785a_17e": "2e7ee54a742ebc46999ecdd53bcd7c5a6207379a0895c7cd8cf6e112beeacdca",
+    "80c279d8_40": "2ce1d78c21e8c515ae5cecc8cde1e2d792ef3d10a8043712d76171be680039f6",
+    "80c27a18_60": "e3a36c868b1c4e9ab4247450a8e552beebdfffbdfc75749fd718d3e578331223",
+    "80c27a78_18": "d66a3e5a83fdb0c1c7a78617ceef0c106a24dfdf9de626b3349e06ee3b8dc912"
+  },
+  "export_sha256": {
+    "80c00b24.c": "81e7fc8f028b44aea57b01775c4a34dacece03bfdce1c5a7af8b7a815446d7ae",
+    "80c27662.c": "9400aa9bb7621375888a568fe2b1eec32b39e075b66aabc6f5055d705669c051",
+    "80c2785a.c": "a4bd4de1188c2b0272e6ca5adcdc3233ce2e3e95fb3ad96651ea3808756656c6",
+    "80c279d8.c": "054baf4c74fe0ca99702baa21e016095bbb691a675c4ac3092674a110e97cf2e",
+    "80c27a18.c": "e26de06c17a14278f4c6de17958083f2cee0038f2a1148590e39a17e696c5d2d",
+    "80c27a78.c": "e925c885427c8d1b100ee5bc8153b29d2b137cfcfdcc1e3f3858186bc5701c9f"
+  },
+  "limitations": [
+    "Actual BBT verifier/resume/remappers/active query and CRC execute over authored records and RAM state; page read/write/erase, bad-block checks and formatting are supplied.",
+    "Malformed ordering/duplicates and wrapping inputs are bounded counterexamples; no corresponding physical table corruption is observed.",
+    "Repair callbacks simulate storage effects only. Assertion cases stop before the assertion body and claim no return ABI.",
+    "Physical BBT provenance, initial table creation, repair atomicity, ECC, UID, lower HAL/ROM and standalone device boot remain open."
+  ],
+  "native_steps": 11561,
+  "native_validation": {
+    "bound_per_case": 100000,
+    "case_count": 58,
+    "cases": [
+      {
+        "name": "inactive_block_passthrough",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 4294967295,
+              "returned": 0,
+              "state_hex": "00000000030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 10
+      },
+      {
+        "name": "inactive_page_passthrough",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 4294967295,
+              "returned": 0,
+              "state_hex": "00000000030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 21
+      },
+      {
+        "name": "active_true",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 1,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 7
+      },
+      {
+        "name": "active_false",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 0,
+              "state_hex": "00000000030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 7
+      },
+      {
+        "name": "block_0",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 0,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 20
+      },
+      {
+        "name": "block_1",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 2,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 26
+      },
+      {
+        "name": "block_2",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 4,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 32
+      },
+      {
+        "name": "block_3",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 5,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 32
+      },
+      {
+        "name": "block_4",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 6,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 32
+      },
+      {
+        "name": "block_5",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 8,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 35
+      },
+      {
+        "name": "block_7",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 10,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 35
+      },
+      {
+        "name": "block_8",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 11,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 35
+      },
+      {
+        "name": "block_1018",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 1021,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 35
+      },
+      {
+        "name": "block_1019",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 4294967295,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 33
+      },
+      {
+        "name": "block_1021",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 4294967295,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 33
+      },
+      {
+        "name": "block_1022",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 4294967295,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 33
+      },
+      {
+        "name": "block_1023",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 4294967295,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 33
+      },
+      {
+        "name": "empty_table",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 1021,
+              "returned": 0,
+              "state_hex": "426274000000000000000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 17
+      },
+      {
+        "name": "duplicate_entries",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 3,
+              "returned": 0,
+              "state_hex": "42627400020000003889e38001000100ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 29
+      },
+      {
+        "name": "unsorted_entries",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 1,
+              "returned": 0,
+              "state_hex": "4262740002000000e4d688a507000100ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 20
+      },
+      {
+        "name": "block_wraps_to_zero",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 0,
+              "returned": 0,
+              "state_hex": "4262740001000000be23c2580100ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 23
+      },
+      {
+        "name": "page_0",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 0,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 52
+      },
+      {
+        "name": "page_63",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 63,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 52
+      },
+      {
+        "name": "page_64",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 128,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 58
+      },
+      {
+        "name": "page_65",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 129,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 58
+      },
+      {
+        "name": "page_127",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 191,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 58
+      },
+      {
+        "name": "page_128",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 256,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 64
+      },
+      {
+        "name": "page_191",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 319,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 64
+      },
+      {
+        "name": "page_511",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 703,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 67
+      },
+      {
+        "name": "page_65215",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 65407,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 67
+      },
+      {
+        "name": "page_65216",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 4294967295,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 60
+      },
+      {
+        "name": "page_different_ppb",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "output": 257,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800008000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 58
+      },
+      {
+        "name": "verify_valid",
+        "observed": {
+          "actions": [
+            "read:65472:140:0:0",
+            "log:record",
+            "crc:6:b83353b57bd0f7a98493ab2b932f4f961c5799d107b14e3dc605d80f8e5d1ed0",
+            "publish:140",
+            "log:loaded",
+            "format:1",
+            "format:3",
+            "format:7",
+            "log:entries"
+          ],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 1,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 248
+      },
+      {
+        "name": "verify_empty",
+        "observed": {
+          "actions": [
+            "read:65472:140:7627330:0",
+            "log:record",
+            "crc:0:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "publish:140",
+            "log:loaded"
+          ],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 1,
+              "state_hex": "426274000000000000000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 115
+      },
+      {
+        "name": "verify_bad_magic",
+        "observed": {
+          "actions": [
+            "read:65472:140:7627330:0",
+            "log:record",
+            "log:magic_error"
+          ],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 81
+      },
+      {
+        "name": "verify_bad_crc",
+        "observed": {
+          "actions": [
+            "read:65472:140:7627330:0",
+            "log:record",
+            "crc:2:47dc540c94ceb704a23875c11273e16bb0b8a87aed84de911f2133568115f254",
+            "log:crc_error"
+          ],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 120
+      },
+      {
+        "name": "verify_count_limit",
+        "observed": {
+          "actions": [
+            "read:65472:140:7627330:0",
+            "log:record",
+            "crc:28:39e6aeaa4616ef7a41f955c695b23ad16a7061c64c83153d60160fa2199b4e0d",
+            "publish:140",
+            "log:loaded",
+            "format:0",
+            "format:1",
+            "format:2",
+            "format:3",
+            "format:4",
+            "format:5",
+            "format:6",
+            "format:7",
+            "format:8",
+            "format:9",
+            "format:10",
+            "format:11",
+            "format:12",
+            "format:13",
+            "log:entries"
+          ],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 1,
+              "state_hex": "426274000e000000618903e500000100020003000400050006000700080009000a000b000c000d00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 644
+      },
+      {
+        "name": "verify_count_exceeds",
+        "observed": {
+          "actions": [
+            "read:65472:140:7627330:0",
+            "log:record",
+            "log:count_error"
+          ],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 86
+      },
+      {
+        "name": "verify_read_error",
+        "observed": {
+          "actions": [
+            "read:65472:140:7627330:-9"
+          ],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 48
+      },
+      {
+        "name": "verify_two_log_groups",
+        "observed": {
+          "actions": [
+            "read:65472:140:7627330:0",
+            "log:record",
+            "crc:42:fe54fda7e23a5937bd9aaad61ead689529f248dedc3c9b91e033797914534691",
+            "publish:140",
+            "log:loaded",
+            "format:0",
+            "format:1",
+            "format:2",
+            "format:3",
+            "format:4",
+            "format:5",
+            "format:6",
+            "format:7",
+            "format:8",
+            "format:9",
+            "format:10",
+            "format:11",
+            "format:12",
+            "format:13",
+            "format:14",
+            "format:15",
+            "format:16",
+            "format:17",
+            "format:18",
+            "format:19",
+            "log:entries",
+            "format:20",
+            "log:entries"
+          ],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 1,
+              "state_hex": "42627400150000006a13c6ca00000100020003000400050006000700080009000a000b000c000d000e000f0010001100120013001400ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000040000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 919
+      },
+      {
+        "name": "verify_max_reserved_count",
+        "observed": {
+          "actions": [
+            "read:65472:140:7627330:0",
+            "log:record",
+            "crc:124:6dc6d24cde98dfa7eab546641c7b52c9e51df45d931d13b926ff2280e2ccd060",
+            "publish:140",
+            "log:loaded",
+            "format:0",
+            "format:1",
+            "format:2",
+            "format:3",
+            "format:4",
+            "format:5",
+            "format:6",
+            "format:7",
+            "format:8",
+            "format:9",
+            "format:10",
+            "format:11",
+            "format:12",
+            "format:13",
+            "format:14",
+            "format:15",
+            "format:16",
+            "format:17",
+            "format:18",
+            "format:19",
+            "log:entries",
+            "format:20",
+            "format:21",
+            "format:22",
+            "format:23",
+            "format:24",
+            "format:25",
+            "format:26",
+            "format:27",
+            "format:28",
+            "format:29",
+            "format:30",
+            "format:31",
+            "format:32",
+            "format:33",
+            "format:34",
+            "format:35",
+            "format:36",
+            "format:37",
+            "format:38",
+            "format:39",
+            "log:entries",
+            "format:40",
+            "format:41",
+            "format:42",
+            "format:43",
+            "format:44",
+            "format:45",
+            "format:46",
+            "format:47",
+            "format:48",
+            "format:49",
+            "format:50",
+            "format:51",
+            "format:52",
+            "format:53",
+            "format:54",
+            "format:55",
+            "format:56",
+            "format:57",
+            "format:58",
+            "format:59",
+            "log:entries",
+            "format:60",
+            "format:61",
+            "log:entries"
+          ],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 1,
+              "state_hex": "426274003e0000009842dabf00000100020003000400050006000700080009000a000b000c000d000e000f0010001100120013001400150016001700180019001a001b001c001d001e001f0020002100220023002400250026002700280029002a002b002c002d002e002f0030003100320033003400350036003700380039003a003b003c003d00ffffffff00100000000800004000000040000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 2441
+      },
+      {
+        "name": "verify_then_map",
+        "observed": {
+          "actions": [
+            "read:65472:140:0:0",
+            "log:record",
+            "crc:6:b83353b57bd0f7a98493ab2b932f4f961c5799d107b14e3dc605d80f8e5d1ed0",
+            "publish:140",
+            "log:loaded",
+            "format:1",
+            "format:3",
+            "format:7",
+            "log:entries"
+          ],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 1,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            },
+            {
+              "output": 5,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 280
+      },
+      {
+        "name": "verify_then_page",
+        "observed": {
+          "actions": [
+            "read:65472:140:0:0",
+            "log:record",
+            "crc:6:b83353b57bd0f7a98493ab2b932f4f961c5799d107b14e3dc605d80f8e5d1ed0",
+            "publish:140",
+            "log:loaded",
+            "format:1",
+            "format:3",
+            "format:7",
+            "log:entries"
+          ],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 1,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            },
+            {
+              "output": 321,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 312
+      },
+      {
+        "name": "verify_unsorted_then_map",
+        "observed": {
+          "actions": [
+            "read:65472:140:0:0",
+            "log:record",
+            "crc:4:2f91863e166a6cc59ea422dcb7704b65fdd58ebe1f35af973d07c194eb8881cc",
+            "publish:140",
+            "log:loaded",
+            "format:7",
+            "format:1",
+            "log:entries"
+          ],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 1,
+              "state_hex": "4262740002000000e4d688a507000100ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            },
+            {
+              "output": 1,
+              "returned": 0,
+              "state_hex": "4262740002000000e4d688a507000100ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 232
+      },
+      {
+        "name": "verify_duplicate_then_map",
+        "observed": {
+          "actions": [
+            "read:65472:140:0:0",
+            "log:record",
+            "crc:4:507503b51960cceda8d924904fb85377fe7d177fb8dfcf56b24e4557644ed486",
+            "publish:140",
+            "log:loaded",
+            "format:1",
+            "format:1",
+            "log:entries"
+          ],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 1,
+              "state_hex": "42627400020000003889e38001000100ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            },
+            {
+              "output": 3,
+              "returned": 0,
+              "state_hex": "42627400020000003889e38001000100ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 241
+      },
+      {
+        "name": "resume_primary",
+        "observed": {
+          "actions": [
+            "bad_check:1023:1:0",
+            "bad_check:1022:1:0",
+            "read:65472:140:0:0",
+            "log:record",
+            "crc:6:b83353b57bd0f7a98493ab2b932f4f961c5799d107b14e3dc605d80f8e5d1ed0",
+            "publish:140",
+            "log:loaded",
+            "format:1",
+            "format:3",
+            "format:7",
+            "log:entries"
+          ],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            },
+            {
+              "output": 5,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 344
+      },
+      {
+        "name": "resume_backup",
+        "observed": {
+          "actions": [
+            "bad_check:1023:1:0",
+            "bad_check:1022:1:0",
+            "read:65472:140:0:0",
+            "log:record",
+            "log:magic_error",
+            "read:65408:140:0:0",
+            "log:record",
+            "crc:6:b83353b57bd0f7a98493ab2b932f4f961c5799d107b14e3dc605d80f8e5d1ed0",
+            "publish:140",
+            "log:loaded",
+            "format:1",
+            "format:3",
+            "format:7",
+            "log:entries",
+            "read:65408:140:0:0",
+            "erase:1023:1:0:0",
+            "write:65472:140:0:28b45a1e46cf6f02fb450f686c60435a030f4c8575afd652d685e49441363c2f:0"
+          ],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            },
+            {
+              "output": 5,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 460
+      },
+      {
+        "name": "resume_backup_reread_error",
+        "observed": {
+          "actions": [
+            "bad_check:1023:1:0",
+            "bad_check:1022:1:0",
+            "read:65472:140:0:0",
+            "log:record",
+            "log:magic_error",
+            "read:65408:140:0:0",
+            "log:record",
+            "crc:6:b83353b57bd0f7a98493ab2b932f4f961c5799d107b14e3dc605d80f8e5d1ed0",
+            "publish:140",
+            "log:loaded",
+            "format:1",
+            "format:3",
+            "format:7",
+            "log:entries",
+            "read:65408:140:0:-9",
+            "log:repair_failed"
+          ],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            },
+            {
+              "output": 5,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 456
+      },
+      {
+        "name": "resume_backup_erase_error",
+        "observed": {
+          "actions": [
+            "bad_check:1023:1:0",
+            "bad_check:1022:1:0",
+            "read:65472:140:0:0",
+            "log:record",
+            "log:magic_error",
+            "read:65408:140:0:0",
+            "log:record",
+            "crc:6:b83353b57bd0f7a98493ab2b932f4f961c5799d107b14e3dc605d80f8e5d1ed0",
+            "publish:140",
+            "log:loaded",
+            "format:1",
+            "format:3",
+            "format:7",
+            "log:entries",
+            "read:65408:140:0:0",
+            "erase:1023:1:0:-9",
+            "log:repair_failed"
+          ],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            },
+            {
+              "output": 5,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 461
+      },
+      {
+        "name": "resume_backup_write_error",
+        "observed": {
+          "actions": [
+            "bad_check:1023:1:0",
+            "bad_check:1022:1:0",
+            "read:65472:140:0:0",
+            "log:record",
+            "log:magic_error",
+            "read:65408:140:0:0",
+            "log:record",
+            "crc:6:b83353b57bd0f7a98493ab2b932f4f961c5799d107b14e3dc605d80f8e5d1ed0",
+            "publish:140",
+            "log:loaded",
+            "format:1",
+            "format:3",
+            "format:7",
+            "log:entries",
+            "read:65408:140:0:0",
+            "erase:1023:1:0:0",
+            "write:65472:140:0:28b45a1e46cf6f02fb450f686c60435a030f4c8575afd652d685e49441363c2f:-9",
+            "log:repair_failed"
+          ],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            },
+            {
+              "output": 5,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 470
+      },
+      {
+        "name": "resume_both_invalid",
+        "observed": {
+          "actions": [
+            "bad_check:1023:1:0",
+            "bad_check:1022:1:0",
+            "read:65472:140:0:0",
+            "log:record",
+            "log:magic_error",
+            "read:65408:140:0:0",
+            "log:record",
+            "log:magic_error",
+            "log:no_bbt"
+          ],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 1,
+              "state_hex": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            },
+            {
+              "output": 3,
+              "returned": 0,
+              "state_hex": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 251
+      },
+      {
+        "name": "resume_primary_crc_error",
+        "observed": {
+          "actions": [
+            "bad_check:1023:1:0",
+            "bad_check:1022:1:0",
+            "read:65472:140:0:0",
+            "log:record",
+            "crc:2:47dc540c94ceb704a23875c11273e16bb0b8a87aed84de911f2133568115f254",
+            "log:crc_error",
+            "read:65408:140:0:0",
+            "log:record",
+            "crc:6:b83353b57bd0f7a98493ab2b932f4f961c5799d107b14e3dc605d80f8e5d1ed0",
+            "publish:140",
+            "log:loaded",
+            "format:1",
+            "format:3",
+            "format:7",
+            "log:entries",
+            "read:65408:140:0:0",
+            "erase:1023:1:0:0",
+            "write:65472:140:0:28b45a1e46cf6f02fb450f686c60435a030f4c8575afd652d685e49441363c2f:0"
+          ],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 0,
+              "state_hex": "42627400030000002f4b6a27010003000700ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000ff030000fe030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 467
+      },
+      {
+        "name": "resume_skips_bad_tail",
+        "observed": {
+          "actions": [
+            "bad_check:1023:1:103",
+            "bad_check:1023:1:103",
+            "bad_check:1022:1:0",
+            "bad_check:1021:1:103",
+            "bad_check:1020:1:0",
+            "read:65408:140:0:0",
+            "log:record",
+            "crc:2:47dc540c94ceb704a23875c11273e16bb0b8a87aed84de911f2133568115f254",
+            "publish:140",
+            "log:loaded",
+            "format:1",
+            "log:entries"
+          ],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 0,
+              "state_hex": "4262740001000000be23c2580100ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000fe030000fc030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 273
+      },
+      {
+        "name": "resume_last_reserved_pair",
+        "observed": {
+          "actions": [
+            "bad_check:1023:1:103",
+            "bad_check:1023:1:103",
+            "bad_check:1022:1:103",
+            "bad_check:1022:1:103",
+            "bad_check:1021:1:103",
+            "bad_check:1021:1:103",
+            "bad_check:1020:1:103",
+            "bad_check:1020:1:103",
+            "bad_check:1019:1:103",
+            "bad_check:1019:1:103",
+            "bad_check:1018:1:103",
+            "bad_check:1018:1:103",
+            "bad_check:1017:1:103",
+            "bad_check:1017:1:103",
+            "bad_check:1016:1:103",
+            "bad_check:1016:1:103",
+            "bad_check:1015:1:103",
+            "bad_check:1015:1:103",
+            "bad_check:1014:1:103",
+            "bad_check:1014:1:103",
+            "bad_check:1013:1:103",
+            "bad_check:1013:1:103",
+            "bad_check:1012:1:103",
+            "bad_check:1012:1:103",
+            "bad_check:1011:1:103",
+            "bad_check:1011:1:103",
+            "bad_check:1010:1:103",
+            "bad_check:1010:1:103",
+            "bad_check:1009:1:0",
+            "bad_check:1008:1:0",
+            "read:64576:140:0:0",
+            "log:record",
+            "crc:0:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "publish:140",
+            "log:loaded"
+          ],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 0,
+              "state_hex": "426274000000000000000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00040000000800004000000010000000f1030000f0030000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 445
+      },
+      {
+        "name": "resume_no_good",
+        "observed": {
+          "actions": [
+            "bad_check:1023:1:103",
+            "bad_check:1023:1:103",
+            "bad_check:1022:1:103",
+            "bad_check:1022:1:103",
+            "bad_check:1021:1:103",
+            "bad_check:1021:1:103",
+            "bad_check:1020:1:103",
+            "bad_check:1020:1:103",
+            "bad_check:1019:1:103",
+            "bad_check:1019:1:103",
+            "bad_check:1018:1:103",
+            "bad_check:1018:1:103",
+            "bad_check:1017:1:103",
+            "bad_check:1017:1:103",
+            "bad_check:1016:1:103",
+            "bad_check:1016:1:103",
+            "bad_check:1015:1:103",
+            "bad_check:1015:1:103",
+            "bad_check:1014:1:103",
+            "bad_check:1014:1:103",
+            "bad_check:1013:1:103",
+            "bad_check:1013:1:103",
+            "bad_check:1012:1:103",
+            "bad_check:1012:1:103",
+            "bad_check:1011:1:103",
+            "bad_check:1011:1:103",
+            "bad_check:1010:1:103",
+            "bad_check:1010:1:103",
+            "bad_check:1009:1:103",
+            "bad_check:1009:1:103",
+            "bad_check:1008:1:103",
+            "bad_check:1008:1:103",
+            "log:too_many_bad"
+          ],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": null,
+              "state_hex": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000008000040000000100000000000000000000000",
+              "stopped": {
+                "kind": "assertion",
+                "line": 172,
+                "owner": 2160317360
+              }
+            }
+          ]
+        },
+        "steps": 351
+      },
+      {
+        "name": "resume_only_one_good",
+        "observed": {
+          "actions": [
+            "bad_check:1023:1:0",
+            "bad_check:1022:1:103",
+            "bad_check:1021:1:103",
+            "bad_check:1020:1:103",
+            "bad_check:1019:1:103",
+            "bad_check:1018:1:103",
+            "bad_check:1017:1:103",
+            "bad_check:1016:1:103",
+            "bad_check:1015:1:103",
+            "bad_check:1014:1:103",
+            "bad_check:1013:1:103",
+            "bad_check:1012:1:103",
+            "bad_check:1011:1:103",
+            "bad_check:1010:1:103",
+            "bad_check:1009:1:103",
+            "bad_check:1008:1:103",
+            "log:too_many_bad"
+          ],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": null,
+              "state_hex": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040000000800004000000010000000ff03000000000000",
+              "stopped": {
+                "kind": "assertion",
+                "line": 172,
+                "owner": 2160317360
+              }
+            }
+          ]
+        },
+        "steps": 272
+      },
+      {
+        "name": "resume_one_reserved_block",
+        "observed": {
+          "actions": [
+            "bad_check:63:1:0",
+            "log:too_many_bad"
+          ],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": null,
+              "state_hex": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000400000000008000040000000010000003f00000000000000",
+              "stopped": {
+                "kind": "assertion",
+                "line": 172,
+                "owner": 2160317360
+              }
+            }
+          ]
+        },
+        "steps": 62
+      },
+      {
+        "name": "resume_4096_blocks",
+        "observed": {
+          "actions": [
+            "bad_check:4095:1:0",
+            "bad_check:4094:1:0",
+            "read:262080:140:0:0",
+            "log:record",
+            "crc:4:7b11c1133330cd161071bf23a0c9b6ce5320a8f3a0f83620035a72be46df4104",
+            "publish:140",
+            "log:loaded",
+            "format:1",
+            "format:2",
+            "log:entries"
+          ],
+          "rows": [
+            {
+              "output": 2779096485,
+              "returned": 0,
+              "state_hex": "4262740002000000fbdaceab01000200ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00100000001000004000000040000000ff0f0000fe0f0000",
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 276
+      }
+    ],
+    "hardware_execution": false
+  },
+  "validation_sha256": "cffbd9f21351629b8a546dd56ecef41f18c4df7de69fb3d291c651e2229f297b",
+  "vectors_sha256": "4edc3b740edbb2999cc14a4c5f6c3a1dac4cf7f4e27a9017aa6e273e18cf6a41"
+}

@@ -143,3 +143,9 @@ RAM HAL/ROM implementations; complete page-to-HAL integration and other chip
 status policies; SFTL, mapping repair and physical partition provenance.
 Electrical operation, real ECC correction, persistence, device-specific backup/
 restoration and standalone boot through the signed chain remain unresolved.
+
+The subsequent [BBT and mapping pass](NAND_BBT_AND_MAPPING.md) executes actual
+BBT verification/resume/remapping and connects actual remappers to all five page
+operations. The extended page runner additionally guards the two remapper code
+ranges when reproducing this earlier pass; the original 77-case report remains
+byte-for-byte unchanged. Physical BBT provenance and persistence remain open.

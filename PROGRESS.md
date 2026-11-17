@@ -1724,6 +1724,32 @@ limits; the initial observations point to the current status and work log.
    No device was accessed. Actual BBT/remapping/retry/UID, lower HAL/ROM, physical
    ECC/persistence, restoration and standalone boot remain open.
 
+## 2026-11-17 — NAND BBT verification/resume and connected page remapping
+
+1. Executed actual BBT verifier/resume, block/page remappers, active query and
+   CRC over authored records. Pinned the 140-byte record and 164-byte context;
+   acceptance checks magic, reserved-count-minus-two limit and entry CRC.
+   Connected verification/mapping accepts bounded unsorted/duplicate records;
+   ordering and uniqueness are not validated by this selected verifier.
+2. Verified tail good-block selection, primary/backup validation and repair
+   requests with mapping temporarily disabled. Reread/erase/write errors log
+   repair failure but resume restores the backup-derived RAM table and returns
+   zero. Both invalid records return one with mapping inactive. Insufficient
+   good reserved blocks stop at an assertion. Physical storage services remain
+   supplied; no device repair is performed.
+3. All 58 BBT cases pass in 11,561 steps (maximum 2,441). A second set connects
+   actual remapping to all five actual page operations and busy loops: 21 cases
+   pass in 51,756 steps (maximum 48,179). First-MiB guards inspect mapped
+   addresses; reserved mapped blocks fail before issuing page commands.
+4. The prior 77-case page native report reproduces byte for byte with the
+   extended runner. Fifty new host checks bring the suite to 1,047 passing tests.
+   Six/ten export and code-range hashes, eight/thirteen runner guards and all
+   traces are in [analysis/NAND_BBT_AND_MAPPING.md](analysis/NAND_BBT_AND_MAPPING.md),
+   [analysis/nand-bbt.json](analysis/nand-bbt.json) and
+   [analysis/nand-page-mapping.json](analysis/nand-page-mapping.json).
+   BBT provenance/creation, lower HAL/ROM, UID/retry, physical persistence,
+   restoration and standalone boot remain open. No device was accessed.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -1748,10 +1774,13 @@ limits; the initial observations point to the current status and work log.
   QSPI platform initialization/transfer, selected feature/cache/program/erase
   command builders, ROM-version policy and busy deadlines now execute with
   supplied HAL/pin/DMA services and emulated MMIO. Follow lower RAM HAL/ROM,
-  actual BBT/remapping/retry/UID and physical ID/geometry
+  retry/UID, BBT provenance/creation and physical ID/geometry
   corroboration. Original candidate matching/probe and driver-root setup now
-  execute with supplied services; object registry and UID/BBT internals remain
-  open. Actual NAND
+  execute with supplied services; object registry and UID internals remain
+  open. BBT verifier/resume and block/page remapping now execute with actual CRC
+  and supplied storage. Backup repair errors can leave an active RAM table while
+  returning zero. Actual remappers also connect to page/program/copy/OOB/erase
+  and busy loops over an authored immutable BBT. Actual NAND
   lookup/ioctl/read dispatch, descriptor-backed geometry collection and OOB
   extraction/composition now execute. The selected complete allocation/
   geometry/reset/scan/retry initializer, generic format loops and connected lazy
