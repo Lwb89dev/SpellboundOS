@@ -118,3 +118,8 @@ map/BBT reconstruction, complete persistence/atomicity and concurrency remain
 open. Device-specific backup/restoration and a viable standalone boot path
 remain prerequisites for hardware writes; additional emulator cases cannot
 close those gates.
+
+The subsequent [combined repair/readback pass](EFTL_REPAIR_READBACK.md) covers
+selected enabled-readback and repeated-relocation branches, including OOB
+scratch reuse and failures after prefix publication. Broader persistence and
+atomicity remain open.

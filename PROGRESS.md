@@ -2103,6 +2103,27 @@ limits; the initial observations point to the current status and work log.
    Larger/combined readback-repair paths, persistent atomicity/concurrency and
    physical corroboration/backup/restoration/standalone boot remain open.
 
+## 2026-11-18 — combined prefix repair, readback and repeated relocation
+
+1. Connected prefix migration with enabled current-page readback. Bad final
+   tag/checksum returns `-2` without rolling back the prefix's already published
+   RAM map. Retry I/O/program failure with no free block can leave that map
+   naming a block whose flag is now bad. A second free block permits another
+   selected outer relocation; inner recursive-prefix repair is covered too.
+2. Traced failed OOB readback updating shared scratch before repair saves it:
+   captured pending-page retries contain those supplied OOB bytes. Final
+   readback inputs are independent authored bytes; this establishes data flow,
+   not physical corruption, persistence or a device accepting inconsistent media.
+3. All 20 native cases pass in 4,426,280 steps (maximum 381,917). The runner and
+   eighty original guarded code ranges are unchanged from the prefix pass.
+   Sixteen host checks bring the suite to 1,443 passing tests. Evidence and the
+   same code/export plus twelve data hashes are in
+   [analysis/EFTL_REPAIR_READBACK.md](analysis/EFTL_REPAIR_READBACK.md) and
+   [analysis/eftl-repair-readback.json](analysis/eftl-repair-readback.json).
+   Generic DMA still models no movement and can expose stale buffer data.
+   Larger/further failure paths, persistent atomicity/concurrency, physical
+   corroboration/backup/restoration/standalone boot remain open.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -2156,8 +2177,9 @@ limits; the initial observations point to the current status and work log.
   readback, actual bad marking and zero-prefix relocation now connect too; prefix
   allocation failure executes to its original assert. Selected one/two-page
   prefix copying, temporary-buffer lifetime and recursive relocation now execute
-  too. Follow larger migrations, combined readback/repair and complete repair
-  atomicity, BBT provenance,
+  too. Selected combined enabled-readback, repeated outer relocation and scratch
+  OOB reuse now execute too. Follow larger migrations, further readback/repair
+  branches and complete repair atomicity, BBT provenance,
   concurrency and remaining ECC/board integration, physical pin
   mapping, real DMA/IRQ/cache coherency and remaining board services,
   physical retry/UID, BBT provenance/creation and physical ID/geometry
