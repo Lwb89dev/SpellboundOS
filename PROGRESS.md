@@ -2166,6 +2166,27 @@ limits; the initial observations point to the current status and work log.
    Registry/probe/BBT startup, wider partitions/heap generations, persistence,
    concurrency, physical backup/restoration and standalone boot remain open.
 
+## 2026-11-18 — original NAND candidate probing through QSPI FIFO
+
+1. Connected original per-candidate platform/clock/pin/DMA setup, five-byte ID
+   transport/matching, reset and feature write/readback through the actual bus
+   and QSPI HAL. All eleven original candidates are exercised with authored
+   FIFO IDs. Candidate bus words 104/83 select different original clock branches;
+   these are software selector observations, not physical clock measurements.
+2. Distinguished real ID/reset/feature bus assertion stops from earlier supplied
+   helper-error returns. Feature mismatch retains descriptor selection without
+   setting boot guards. Operation-wrapper mutex creation occurs after successful
+   probing; supplied power/workaround/UID/BBT error results remain unpropagated.
+3. All 26 native cases pass in 256,313 steps (maximum 38,801, success on the
+   33rd/final candidate attempt); all 608 previous native reports reproduce byte
+   for byte. Eighteen host checks bring the suite to 1,498 passing tests.
+   Native observations and 42 code/export plus 30 data hashes are recorded in
+   [analysis/NAND_PROBE_STACK.md](analysis/NAND_PROBE_STACK.md) and
+   [analysis/nand-probe-stack.json](analysis/nand-probe-stack.json).
+   ID/register/MMIO/timer inputs, power/mutex and auxiliary UID/workaround/BBT
+   services remain authored. Actual auxiliary/BBT startup, driver registry,
+   physical identification, persistence and backup/restoration/boot remain open.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -2234,7 +2255,10 @@ limits; the initial observations point to the current status and work log.
   mapping, real DMA/IRQ/cache coherency and remaining board services,
   physical retry/UID, BBT provenance/creation and physical ID/geometry
   corroboration. Original candidate matching/probe and driver-root setup now
-  execute with supplied services; object registry remains open. Actual retry/
+  execute with supplied services; candidate platform/ID/reset/feature paths now
+  also connect through actual QSPI/FIFO for all eleven original descriptors.
+  Join auxiliary UID/workaround/BBT bodies and broader startup; object registry
+  remains open. Actual retry/
   UID setup/acquisition and UID ioctl export now execute through actual command
   builders and busy loops over a supplied bus. Setter retry exhaustion can return
   zero, and UID ioctl can export prior state after early acquisition errors.

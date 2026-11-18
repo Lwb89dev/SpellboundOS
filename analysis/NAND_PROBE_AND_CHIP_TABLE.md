@@ -162,3 +162,8 @@ The subsequent [QSPI platform and command pass](NAND_BUS_AND_COMMANDS.md)
 executes the actual bus initializer/transfer, selected feature/cache/program/erase
 builders, ROM policy and busy loops. Its 51 cases use supplied lower HAL/pin/DMA
 services and emulator-only MMIO. It does not establish physical bus operation.
+
+The later [connected probe pass](NAND_PROBE_STACK.md) executes per-candidate
+platform initialization, ID/reset/feature builders, bus and QSPI FIFO together
+for all eleven original candidates. Power/UID/workaround/BBT and mutex services
+remain supplied; actual physical chip identification is still unproven.
