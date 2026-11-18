@@ -2143,6 +2143,29 @@ limits; the initial observations point to the current status and work log.
    Full initializer/geometry/scan/retry connection to this lower stack, physical
    persistence/BBT provenance, concurrency and backup/restoration/boot remain open.
 
+## 2026-11-18 — full selected EFTL initialization through NAND/QSPI
+
+1. Connected original lookup/geometry, context reset, allocation/fill, generic
+   format, scan/retry and lazy readiness through original NAND/BBT/QSPI. The
+   registry row and eight-block partition are authored; geometry ioctls execute
+   against the original chip descriptor. IRQ-context FIFO and normal-context
+   stale-DMA cases remain distinct, without invented physical DMA movement.
+2. Verified forced marked-buffer cleanup/reuse, all three null-allocation fill
+   stops, marker/repeated-call guards, missing-registry assertion and scan-error
+   live buffers. Positive first-scan reset reaches actual repair scan. A repair
+   returning zero with eight reserved blocks can publish global readiness with
+   capacity zero. OOB error leaves an initially clear ready byte clear, while
+   failed forced eager reinitialization retains an already-set ready byte and
+   the old capacity even though its context marker is zero.
+3. All 23 native cases pass in 648,613 steps (maximum 83,438); all 585 previous
+   native cases reproduce byte for byte. Nineteen host checks bring the suite to
+   1,480 passing tests. Eighty-nine code/export and
+   twelve data hashes are in
+   [analysis/EFTL_BOOTSTRAP_STACK.md](analysis/EFTL_BOOTSTRAP_STACK.md) and
+   [analysis/eftl-bootstrap-stack.json](analysis/eftl-bootstrap-stack.json).
+   Registry/probe/BBT startup, wider partitions/heap generations, persistence,
+   concurrency, physical backup/restoration and standalone boot remain open.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -2201,8 +2224,11 @@ limits; the initial observations point to the current status and work log.
   branches and complete repair atomicity. The original map scanner now also
   connects three-page bad-marker checking, erase and OOB extraction through
   NAND/BBT/QSPI; duplicate retention and partial scan results are covered with
-  authored FIFO records. Follow the full initializer/geometry/scan/retry
-  connection to that lower stack, persistent write/retire/reboot reconstruction,
+  authored FIFO records. The selected full initializer/lookup/geometry/format/
+  scan/retry and lazy readiness now connect through the lower stack too, over an
+  authored eight-block partition and supplied heap/clock services. Follow broader
+  registry/probe/BBT startup, distinct heap generations on repeated failures,
+  persistent write/retire/reboot reconstruction,
   BBT provenance,
   concurrency and remaining ECC/board integration, physical pin
   mapping, real DMA/IRQ/cache coherency and remaining board services,

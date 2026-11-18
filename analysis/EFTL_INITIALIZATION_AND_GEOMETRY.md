@@ -144,3 +144,8 @@ The subsequent [NAND partition/OOB pass](NAND_PARTITIONS_AND_OOB.md) executes
 actual lookup, descriptor-backed ioctls/read dispatch, geometry collection and
 OOB extraction/composition in 58 cases. Driver roots and chip/page data remain
 authored; real probing, physical geometry and NAND behavior remain open.
+
+The later [NAND/QSPI bootstrap integration](EFTL_BOOTSTRAP_STACK.md) connects the
+selected initializer, geometry, lookup, format/scan/retry and lazy readiness to
+original NAND/BBT/bus/QSPI execution. Its registry binding/partition, heap,
+clocks and peripheral inputs remain authored; physical persistence is unproven.

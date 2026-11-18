@@ -128,3 +128,8 @@ Next work includes full initializer/geometry/scan/retry connection to this lower
 stack, larger scans and BBT provenance, persistent write/retire/reboot
 reconstruction, power-loss behavior, concurrency/coherency and hardware/boot
 feasibility. Independent authored inputs cannot establish persistence.
+
+The subsequent [connected bootstrap pass](EFTL_BOOTSTRAP_STACK.md) executes the
+full selected lookup/geometry/initializer/format/scan/retry and lazy readiness
+path through this stack, with an authored eight-block partition and supplied
+heap/clock services. Physical persistence and complete device startup remain open.
