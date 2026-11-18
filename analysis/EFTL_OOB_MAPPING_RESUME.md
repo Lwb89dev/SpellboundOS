@@ -117,3 +117,8 @@ The subsequent [connected initializer pass](EFTL_INITIALIZATION_AND_GEOMETRY.md)
 executes the allocation/geometry/reset/scan/retry path and outer lazy publication
 in 38 cases, including selected generic format loops. Lower NAND services and
 physical geometry remain supplied.
+
+The subsequent [connected scan pass](EFTL_SCAN_STACK.md) replaces the scan's
+supplied bad-block/erase/OOB services with original NAND/BBT/bus/QSPI code for
+22 bounded cases. Marker/OOB FIFO bytes and peripheral inputs remain authored;
+physical erase effects and reboot reconstruction are not established.

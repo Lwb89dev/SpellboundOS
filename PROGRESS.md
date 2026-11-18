@@ -2124,6 +2124,25 @@ limits; the initial observations point to the current status and work log.
    Larger/further failure paths, persistent atomicity/concurrency, physical
    corroboration/backup/restoration/standalone boot remain open.
 
+## 2026-11-18 — EFTL map scan through original NAND marker and OOB reads
+
+1. Connected the original scanner and bad-block adapter through ioctl 10, actual
+   three-page NAND marker checking, OOB extraction, partition/context/mutex,
+   BBT/page/bus/QSPI and selected DMA control. The first non-ff marker pair
+   returns 103; negative marker-read errors trigger erase even in first-scan mode.
+2. Verified first-encountered duplicate retention through actual OOB transport,
+   skipping a marked old candidate, partial mapping after OOB errors, positive
+   marker handling in repair mode and erase-failure retry/zero-return behavior.
+   Source marker/OOB bytes and erase outcomes are independent authored inputs;
+   this is direct scan execution, not persistent reboot recovery.
+3. All 22 native cases pass in 156,671 steps (maximum 19,315); all 563 previous
+   native cases reproduce byte for byte with the extended runner. Eighteen host
+   checks bring the suite to 1,461 passing tests. Eighty-three code/export and
+   twelve data hashes are in [analysis/EFTL_SCAN_STACK.md](analysis/EFTL_SCAN_STACK.md)
+   and [analysis/eftl-scan-stack.json](analysis/eftl-scan-stack.json).
+   Full initializer/geometry/scan/retry connection to this lower stack, physical
+   persistence/BBT provenance, concurrency and backup/restoration/boot remain open.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -2179,7 +2198,12 @@ limits; the initial observations point to the current status and work log.
   prefix copying, temporary-buffer lifetime and recursive relocation now execute
   too. Selected combined enabled-readback, repeated outer relocation and scratch
   OOB reuse now execute too. Follow larger migrations, further readback/repair
-  branches and complete repair atomicity, BBT provenance,
+  branches and complete repair atomicity. The original map scanner now also
+  connects three-page bad-marker checking, erase and OOB extraction through
+  NAND/BBT/QSPI; duplicate retention and partial scan results are covered with
+  authored FIFO records. Follow the full initializer/geometry/scan/retry
+  connection to that lower stack, persistent write/retire/reboot reconstruction,
+  BBT provenance,
   concurrency and remaining ECC/board integration, physical pin
   mapping, real DMA/IRQ/cache coherency and remaining board services,
   physical retry/UID, BBT provenance/creation and physical ID/geometry
