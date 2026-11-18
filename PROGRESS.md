@@ -2573,6 +2573,44 @@ limits; the initial observations point to the current status and work log.
    main platform/DMA linkage and reinitialization, full probe/root through this
    backend, main IRQ/cache and UID/workaround/BBT/media, plus physical restoration/boot.
 
+## 2026-11-18 — original main platform and adjacent DMA descriptor publication
+
+1. Executed actual main platform/clock/QSPI/DMA initialization at original
+   adjacent TX/RX addresses, with reciprocal controller links and actual main
+   registry slots 26/27. Startup-aware facts independently place both observed
+   68-byte records in a zero-table region. The record extent is an access
+   boundary, not a complete allocation claim; controller initial state remains
+   authored and pin/GPIO/cache/copy bodies remain supplied.
+2. Covered clock boundaries, original clear-then-set board accesses, ignored
+   supplied pin errors, mode-one controller retention, unchanged private bytes,
+   tracking cleanup and retained pending/disabled flags. A cloned first chip
+   descriptor varies only its bus word; original source/binding bytes are guarded.
+3. All eight native cases pass in 2,802 steps (maximum 353), with 21 code/export
+   and four data hashes. See [analysis/MAIN_NAND_PLATFORM.md](analysis/MAIN_NAND_PLATFORM.md),
+   [analysis/main-nand-platform.json](analysis/main-nand-platform.json) and
+   [analysis/main-nand-platform-facts.json](analysis/main-nand-platform-facts.json).
+
+## 2026-11-18 — main platform/DMA links and reinitialized NAND bounce transfers
+
+1. Joined actual main platform initialization and original descriptor addresses
+   to NAND bus/revision/QSPI/DMA-backend bounce transfers. Deferred initialization
+   follows the actual pending-flag branch. A separate case initializes first,
+   then performs real reinitialization at the same addresses with preserved
+   private fields. Disabled transfer retains the pending flag both before and
+   after an explicit successful initialization.
+2. Primary/alternate status, backend/later-QSPI timeout and retained registry/
+   tracking/request-bit states execute. Physical movement is not simulated;
+   successful receive may copy unchanged authored bounce sentinels. No full
+   candidate probe/root, actual UID/BBT/media, IRQ/cache or hardware proof follows.
+3. All 14 native cases pass in 9,235 steps (maximum 1,057), with 21 code/export
+   and four data hashes. See [analysis/MAIN_NAND_PLATFORM_TRANSFER.md](analysis/MAIN_NAND_PLATFORM_TRANSFER.md)
+   and [analysis/main-nand-platform-transfer.json](analysis/main-nand-platform-transfer.json).
+   Startup facts, vectors and both evidence files reproduce; all 347 earlier
+   main native cases reproduce byte for byte. Existing harness configuration/
+   guards remain unchanged through narrow pointer/backing/I/O extension hooks.
+   Twenty-four new host checks join the passing 1,774-test suite. Next: full main
+   probe/root through this platform/HAL/backend and actual UID/workaround/BBT/media.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -2662,10 +2700,10 @@ limits; the initial observations point to the current status and work log.
   and auxiliary bodies supplied. Actual main command/FIFO/count/timer/clock/
   revision and DMA wrappers now also execute separately, and original main bus/
   feature packets join them over an authored initialized controller. Follow
-  main platform/DMA descriptor linkage and reinitialization: actual main DMA
-  initializer/setup/wait now joins the QSPI wrappers and selected NAND bounce
-  packets over authored descriptor bindings. Main IRQ/cache bodies remain open.
-  Then connect full main platform/probe/root through this HAL/backend.
+  full main candidate probe/root through this HAL/backend. Actual main platform/
+  clock/QSPI/DMA initialization now publishes the original adjacent descriptors
+  and joins selected bounce transfers, including repeated initialization and
+  disabled-before-reinit ordering. Main pin/GPIO/cache bodies and IRQ remain open.
   Then follow actual main UID/workaround/BBT,
   wider storage and PM callers,
   broader close callers, removal/reclamation/concurrency and real property/heap/

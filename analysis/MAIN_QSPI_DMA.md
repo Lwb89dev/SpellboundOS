@@ -1,5 +1,9 @@
 # Actual main QSPI/DMA backend and NAND bounce packets
 
+The later [main NAND platform scope](MAIN_NAND_PLATFORM.md) and
+[reinitialized transfer scope](MAIN_NAND_PLATFORM_TRANSFER.md) use the original
+adjacent DMA addresses. This earlier evidence preserves its authored descriptors.
+
 All **28 native cases** pass in **11,758 instruction/service steps** (maximum
 **574**, NAND bounce transmit with QSPI completion timeout). Actual main DMA
 init/setup/wait now joins original main QSPI command/completion/DMA wrappers

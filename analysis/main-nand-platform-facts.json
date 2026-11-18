@@ -1,0 +1,26 @@
+{
+  "board_addresses": [
+    2583691268,
+    2583691276
+  ],
+  "controller": 2161724000,
+  "disabled": 2160135737,
+  "dma_addresses": [
+    2160135668,
+    2160135600
+  ],
+  "hardware_execution": false,
+  "main_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "observed_record_bytes": 68,
+  "reinit": 2160135736,
+  "startup_sha256": [
+    "1751ac12e70e15b4f76c16775cd329ae55973b612521dab2de828a5cdb6c8ab3",
+    "1751ac12e70e15b4f76c16775cd329ae55973b612521dab2de828a5cdb6c8ab3"
+  ],
+  "startup_zero_region": {
+    "destination": 2160077416,
+    "kind": "zero",
+    "size": 511180,
+    "source": null
+  }
+}
