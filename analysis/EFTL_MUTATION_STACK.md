@@ -125,3 +125,7 @@ Remaining work includes readback and relocation/bad marking, broader allocator
 and map reconstruction, repair/write atomicity, full concurrency/cache/IRQ
 behavior and physical chip/geometry/BBT/ECC/data/persistence corroboration.
 Device-specific backup/restoration and standalone boot remain unresolved.
+
+The subsequent [bounded repair pass](EFTL_REPAIR_STACK.md) executes original bad
+marking, erase reselection and zero-prefix relocation, plus prefix allocation
+failure. Successful earlier-page migration and physical persistence remain open.

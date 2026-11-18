@@ -2063,6 +2063,25 @@ limits; the initial observations point to the current status and work log.
    I/O-error relocation/bad marking, prefix copying, atomicity and physical
    corroboration/restoration/standalone boot remain open.
 
+## 2026-11-18 — original bad marking and bounded zero-prefix relocation
+
+1. Connected original repair, bad-mark adapter and three-page NAND marker writes
+   through the actual lower stack. Generic ioctl/context/mutex and fast paths
+   execute. Marker failure is not propagated by the void EFTL adapter; repair
+   can return a selected block while marking the old block failed.
+2. Verified no-free retirement, erase-failure mark/reselect and successful first-
+   page relocation/retry/publication. Readback I/O error enters real repair, unlike
+   tag/checksum rejection. Prefix allocation failure stops at the original assert
+   after RAM bad-flag update and new-block erase; successful prefix copy is deferred.
+3. All 22 cases pass in 801,098 steps (maximum 112,664); prior 501 native cases
+   reproduce byte for byte. Sixteen host checks bring the suite to 1,409 passing
+   tests. Eighty code/export and twelve data hashes are in
+   [analysis/EFTL_REPAIR_STACK.md](analysis/EFTL_REPAIR_STACK.md) and
+   [analysis/eftl-repair-stack.json](analysis/eftl-repair-stack.json).
+   Ready maps/flags, statuses/peripherals and leaf services remain authored.
+   Successful prefix migration, recursive repair, complete atomicity/concurrency,
+   physical marking/persistence/backup/restoration/standalone boot remain open.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -2112,8 +2131,10 @@ limits; the initial observations point to the current status and work log.
   connect through the same lower stack. Follow broader callers/partitions, registry
   and map reconstruction. Selected upper program/logical erase/rewrite now connect
   full-page/OOB staging, original free-block selection and NAND/QSPI/TX DMA too;
-  rewrite aliases program and flag updates precede lower assertions. Follow
-  readback/bad marking/relocation and complete repair atomicity, BBT provenance,
+  rewrite aliases program and flag updates precede lower assertions. Enabled
+  readback, actual bad marking and zero-prefix relocation now connect too; prefix
+  allocation failure executes to its original assert. Follow successful prefix
+  copying, recursive relocation and complete repair atomicity, BBT provenance,
   concurrency and remaining ECC/board integration, physical pin
   mapping, real DMA/IRQ/cache coherency and remaining board services,
   physical retry/UID, BBT provenance/creation and physical ID/geometry

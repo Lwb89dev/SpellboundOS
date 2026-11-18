@@ -46,3 +46,7 @@ A cache-receive failure stops at the original bus assertion before checksum.
 Caller input, scratch, mapping, flags, guards and ABI on normal returns are
 checked alongside the lower traces. Readback I/O errors entering relocation,
 bad marking and prefix-copy repair are handled in subsequent work.
+
+The subsequent [bounded repair pass](EFTL_REPAIR_STACK.md) executes original bad
+marking, erase reselection and zero-prefix relocation, plus prefix allocation
+failure. Successful earlier-page migration and physical persistence remain open.
