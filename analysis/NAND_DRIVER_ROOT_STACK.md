@@ -63,6 +63,10 @@ Selected registry mutex failure cases also retain the supplied-lock-service
 limitations from [the registry report](NAND_OBJECT_REGISTRY.md). No actual
 RTOS synchronization, electrical operation or persistent repair is claimed.
 
+The subsequent [consumer pass](NAND_OBJECT_CONSUMER.md) follows this root's
+registered object through original opening, geometry ioctl and selected
+read/write methods, with explicit caller operations after root completion.
+
 ## Reproduction and remaining work
 
 ```sh

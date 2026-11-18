@@ -2297,6 +2297,46 @@ limits; the initial observations point to the current status and work log.
    creation, wider geometry, registry removal/lifetimes/concurrency, broader
    storage/startup, real persistence and safe backup/restoration remain open.
 
+## 2026-11-18 — original object opening, reference counters and ioctl policy
+
+1. Executed original register-and-open/open/ioctl bodies with authored method
+   callbacks. Missing open callback/table can return zero without incrementing
+   count; subsequent ioctl rejects the unopened object. Repeated positive-count
+   open skips the callback. Negative and signed-overflow count fixtures also
+   distinguish success from a usable positive reference count.
+2. Real registration precedes open: callback error leaves a linked zero-count
+   object; duplicate registration's -11 becomes wrapper -1 without reopening.
+   Ioctl forwarding preserves supplied callback output even when it returns an
+   error. Null object inputs stop at their original assertions.
+3. All 17 native cases pass in 12,660 steps (maximum 922). Forty-seven code/export
+   and 35 data hashes accompany [analysis/NAND_OBJECT_OPEN.md](analysis/NAND_OBJECT_OPEN.md)
+   and [analysis/nand-object-open.json](analysis/nand-object-open.json). Close,
+   decrement, removal and concurrent ownership are still outside this pass.
+
+## 2026-11-18 — consumers of the actual registered NAND object
+
+1. Added explicit post-root consumer calls through original generic open/ioctl,
+   original NAND methods, context/mutex wrappers and chip geometry/BBT queries.
+   Original root/probe/UID/BBT/registration still execute first. Successful root
+   return and later consumer returns/assertions are recorded separately.
+2. Geometry commands 0x1001/0x1002 issue actual queries 13/2/1/14, publishing the
+   selected descriptor ID, page-size times count and actual active-BBT byte.
+   No-BBT startup can publish capacity with active byte zero. IRQ/scheduler
+   contexts bypass locks; acquire/release assertions leave output unpublished.
+3. Commands 0x1003, invalid command and null output cover selected no-op/error
+   paths. Original suspend/resume methods return zero without transfers for
+   the selected non-null object; original owner strings identify those methods.
+   Other NAND partition/data paths remain separate.
+   Authored callback/RTOS/peripheral/media inputs do not prove physical operation.
+4. All 15 native cases pass in 261,061 steps (maximum 21,629). One hundred eight
+   code/export and 44 data hashes accompany
+   [analysis/NAND_OBJECT_CONSUMER.md](analysis/NAND_OBJECT_CONSUMER.md) and
+   [analysis/nand-object-consumer.json](analysis/nand-object-consumer.json). The
+   two scopes add 26 host tests to the 1,596-test suite. All 721 preceding shared-
+   runner native reports reproduce byte for byte; both evidence files reproduce.
+   Close/removal/reclamation/concurrency, wider startup/storage integration,
+   initial BBT provenance, persistence and safe device restoration remain open.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -2374,8 +2414,9 @@ limits; the initial observations point to the current status and work log.
   BBT still supplied. Follow wider BBT geometry, initial BBT creation and broader
   startup. Selected root/property/callback/probe/UID/BBT/object registration now
   also connects, including actual lookup/list insertion and retained allocation
-  after duplicate rejection. Follow registry removal/lifetimes/concurrency and
-  real property/heap/mutex services. Actual retry/
+  after duplicate rejection. Original object open/reference/ioctl policy and
+  post-root NAND geometry/context/BBT consumers now also execute. Follow close/
+  decrement/removal/reclamation/concurrency and real property/heap/mutex services. Actual retry/
   UID setup/acquisition and UID ioctl export now execute through actual command
   builders and busy loops over a supplied bus. Setter retry exhaustion can return
   zero, and UID ioctl can export prior state after early acquisition errors.

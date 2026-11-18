@@ -91,3 +91,7 @@ guarded; object buffers have surrounding sentinels and query backing stays
 immutable. The [connected root pass](NAND_DRIVER_ROOT_STACK.md) uses this real
 registry after original NAND probe/UID/BBT startup. Both scopes share 25 host
 tests; all **688 preceding shared-runner native cases reproduce byte for byte**.
+
+The subsequent [object-open pass](NAND_OBJECT_OPEN.md) verifies selected opening,
+reference-count and ioctl contracts. Close/decrement/removal/reclamation and
+concurrent ownership remain unverified.

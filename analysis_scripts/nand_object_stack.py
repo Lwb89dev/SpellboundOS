@@ -112,6 +112,8 @@ class RootModel(RegistryMixin,aux.BbtModel):
         if not self.stopped:
             self.object_results.append(value&0xffffffff)
             if self.c['root_follow_lookup']:self.object_results.append(self.object_find('dev_nand',23))
+        return self.root_followups(value)
+    def root_followups(self,value):
         return value
     def root_entry(self):
         present=self.c['root_property_present'];self.actions.append(f'root_property:{int(present)}');self.driver_root=PROPERTY if present else 0
