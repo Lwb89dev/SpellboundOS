@@ -1,5 +1,9 @@
 # Actual main probe, bus/platform and feature packets through root consumers
 
+The later [main HAL/FIFO scope](MAIN_QSPI_HAL.md) and
+[connected bus/feature scope](MAIN_QSPI_BUS.md) execute those lower bodies
+separately. This earlier full probe/root scope keeps its supplied HAL boundary.
+
 All **25 native cases** pass in **44,902 instruction/service steps** (maximum
 **4,202**, original candidate 9). Actual main probe, matcher, ID/reset/feature
 builders and [main bus/platform conversion](MAIN_NAND_BUS.md) now join original

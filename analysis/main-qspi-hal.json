@@ -1,0 +1,3640 @@
+{
+  "byte_range_sha256": {
+    "80d34800_64": "d81728d94ec968a8022bdf7cd2c799cdd65fdbe9c81fe3e8279b0f1750187ca8",
+    "80d348c8_8c": "5c43692373eb63fa3689c149a3da5e14cbb9a5c247aa784f9393216514a8d657",
+    "80d34954_94": "fb54106945149f0adcc42b5e19f04eb33712bdade8b67aa871b3a2443a971dd8",
+    "80d349e8_94": "613d4f163b6098fac11a43c891069db3f3570485369f0035548fb9f688d855c7",
+    "80d34a7c_24": "23f0432a05059b34c075ae3b853d8042bb22a71cd30f0ee056f8eff3f02b715e",
+    "80d34aa0_24": "42c4cd8a20418deeb8f7f9c7568c4df0993e9e95ff0957530f69f313c01f79e8",
+    "80d34ac4_6c": "00754e5d66f0e683b7574bfe16e58619d92ad41b9f5860c63ed5741d81bea4c3",
+    "80d34b30_cc": "29a15157d715409e04279787c466da24e5fa0699d76bec9d38ff649924ff16ca",
+    "80d34c68_f8": "4b3d8e3416cf27b727cd8744bbe60327ef3a453df6be3dd556da6cfddbb1ad38",
+    "80d34d60_60": "e516225b2455b37107ba00bb52832e92d49b3ac79f47b13b1a5ad593d041fdc6",
+    "80d34dc0_f0": "c1d5acbaf50138e8f02ad63d68a24ba9fe92f5774ba8b1b8f9eaf3ed7a9d1f0d",
+    "80d34eb0_58": "1e61b977e0fbafed189155c36bf3b8eb64481da377f24ff541aff3ad413f71cc",
+    "80d3580c_34": "8c398da0431498ac449a53359d83ea8b99c00d97dd6cce6465cad08955b9ce67",
+    "80d4556c_56": "4bf62f942d22c8f8bf9f51d44c03d03f5b811851a2184355173f036ae9e76f4e"
+  },
+  "data_range_sha256": {
+    "709a84d4_8": "c04da2a2ed09a7b3bcbb243d672f998255800572ba63f514839d255d1a1d2255",
+    "709a84dc_8": "ba0f00ea8eed52463c26f35110d25090713fe37859f813dbc3cf397f9a604848"
+  },
+  "export_sha256": {
+    "80d34800.c": "11e2c37def55d7502d26431015fcc13f4cc2e8fd016c11a2388091e47ba8e95d",
+    "80d348c8.c": "86e25de37e38d788ac4bf450ab79dcc6bd1c222f973a3e516ed2f3c1ea51c25d",
+    "80d34954.c": "b935926ce0e082117803b996ef74a72a945bbccbb7d63f1ab01790b7f6e3a628",
+    "80d349e8.c": "aa3c9b803698ec7a9b2b370b33e9249c037b6fb271389b8bcae7a578abf7ba87",
+    "80d34a7c.c": "1e31366ba8f81945d530ca405182fad659d57a31743ff4909feca0c2c374b983",
+    "80d34aa0.c": "285641da2938dca141e66986f375f3d93e0cc9d7d22b50f6297bc783f694ee10",
+    "80d34ac4.c": "a87c51dbc048b8060bf177e2ba0e8072a7df562a78845a9a7b78e97ab395aba6",
+    "80d34b30.c": "891b46958d712add60c1deff2b9f91b7d22dd235b0588c922dcc122260b7a4f5",
+    "80d34c68.c": "3c8bf728903003156212b425839e4cb08ccb933e530650e26505912f5da146fd",
+    "80d34d60.c": "e1ef284d4f80ddd1b45f26eea338ab5bd981545370bc8004e5dcd06b93c100c5",
+    "80d34dc0.c": "677335b8b9e4f187bce04184eddce65dcfbd4ce196b9b1c512dfb461063a2239",
+    "80d34eb0.c": "9969b581b84eae38aacc80fbb5b5f2416be37a5c10b34c7781cb6ad1b8bec83c",
+    "80d3580c.c": "2342037f8b8d9f59d26806ebc1c33e1349c20deb155e99d4887ccc751f923e14",
+    "80d4556c.c": "1258493594794865336548029ed0b0b19062c99cfb2d7965ff6fcb856bde114f"
+  },
+  "limitations": [
+    "Original main QSPI init/command/FIFO/status/count/clock/revision and DMA wrappers execute over authored MMIO, 64-bit ticks/frequency, ROM string and DMA setup/wait/copy services.",
+    "Reset self-clear, ready/completion/FIFO data and W1C behavior are authored. Zero-FIFO cases stop at a bounded non-progress prefix; no normal-return ABI is claimed for stopped cases.",
+    "The standalone context and DMA pointers are fixtures. Actual DMA backend/cache coherency, peripheral timing, UID/BBT/media, persistence, restoration and standalone boot remain open."
+  ],
+  "main_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "native_steps": 8704,
+  "native_validation": {
+    "bound_per_case": 10000,
+    "case_count": 89,
+    "cases": [
+      {
+        "name": "main_hal_init_reset_then_ready",
+        "observed": {
+          "actions": [
+            "w:16:4:256",
+            "r:16:4:256",
+            "r:16:4:0",
+            "r:16:4:0",
+            "w:16:4:0",
+            "r:52:4:257",
+            "w:52:4:769",
+            "w:32:4:13056"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 0,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 769,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 36
+      },
+      {
+        "name": "main_hal_init_mode_one",
+        "observed": {
+          "actions": [
+            "w:16:4:256",
+            "r:16:4:256",
+            "r:16:4:0",
+            "r:52:4:257",
+            "w:52:4:769",
+            "w:32:4:13056"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000100000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 0,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 769,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 20
+      },
+      {
+        "name": "main_hal_init_preserves_other_control_bits",
+        "observed": {
+          "actions": [
+            "w:16:4:256",
+            "r:16:4:324",
+            "r:16:4:68",
+            "r:16:4:68",
+            "w:16:4:71",
+            "r:52:4:257",
+            "w:52:4:769",
+            "w:32:4:13056"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a501000000020000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 71,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 769,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 36
+      },
+      {
+        "name": "main_hal_clock_1",
+        "observed": {
+          "actions": [
+            "clock_read:2779100581",
+            "clock_write:2779059621"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779059621,
+              "clock_word": 2779059621,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 14
+      },
+      {
+        "name": "main_hal_clock_2",
+        "observed": {
+          "actions": [
+            "clock_read:2779100581",
+            "clock_write:2779063717"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779063717,
+              "clock_word": 2779063717,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 14
+      },
+      {
+        "name": "main_hal_clock_11",
+        "observed": {
+          "actions": [
+            "clock_read:2779100581"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779100581,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 8
+      },
+      {
+        "name": "main_hal_clock_17",
+        "observed": {
+          "actions": [
+            "clock_read:2779100581",
+            "clock_write:2779059621"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779059621,
+              "clock_word": 2779059621,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 14
+      },
+      {
+        "name": "main_hal_pack_1_1_1",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 8
+      },
+      {
+        "name": "main_hal_pack_1_1_2",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 32,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 10
+      },
+      {
+        "name": "main_hal_pack_1_1_3",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 64,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 12
+      },
+      {
+        "name": "main_hal_pack_1_2_1",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 96,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 7
+      },
+      {
+        "name": "main_hal_pack_1_3_1",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 128,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 9
+      },
+      {
+        "name": "main_hal_pack_2_1_1",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 160,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 5
+      },
+      {
+        "name": "main_hal_pack_3_1_1",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 192,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 7
+      },
+      {
+        "name": "main_hal_pack_0_1_1",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 6
+      },
+      {
+        "name": "main_hal_pack_1_0_1",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 9
+      },
+      {
+        "name": "main_hal_pack_1_1_4",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 12
+      },
+      {
+        "name": "main_hal_tx_count_0",
+        "observed": {
+          "actions": [
+            "r:84:4:773",
+            "r:32:4:0"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 0,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 773
+              },
+              "returned": 2,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 15
+      },
+      {
+        "name": "main_hal_tx_count_1",
+        "observed": {
+          "actions": [
+            "r:84:4:773",
+            "r:32:4:256"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 256,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 773
+              },
+              "returned": 5,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 15
+      },
+      {
+        "name": "main_hal_tx_count_2",
+        "observed": {
+          "actions": [
+            "r:84:4:773",
+            "r:32:4:512"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 512,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 773
+              },
+              "returned": 10,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 15
+      },
+      {
+        "name": "main_hal_tx_count_3",
+        "observed": {
+          "actions": [
+            "r:84:4:773",
+            "r:32:4:768"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 768,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 773
+              },
+              "returned": 20,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 15
+      },
+      {
+        "name": "main_hal_rx_count_0",
+        "observed": {
+          "actions": [
+            "r:84:4:773",
+            "r:32:4:0"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 0,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 773
+              },
+              "returned": 1,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 15
+      },
+      {
+        "name": "main_hal_rx_count_1",
+        "observed": {
+          "actions": [
+            "r:84:4:773",
+            "r:32:4:4096"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 4096,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 773
+              },
+              "returned": 3,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 15
+      },
+      {
+        "name": "main_hal_rx_count_2",
+        "observed": {
+          "actions": [
+            "r:84:4:773",
+            "r:32:4:8192"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 8192,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 773
+              },
+              "returned": 6,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 15
+      },
+      {
+        "name": "main_hal_rx_count_3",
+        "observed": {
+          "actions": [
+            "r:84:4:773",
+            "r:32:4:12288"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 12288,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 773
+              },
+              "returned": 12,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 15
+      },
+      {
+        "name": "main_hal_command_read",
+        "observed": {
+          "actions": [
+            "w:0:4:4660",
+            "w:4:4:17301506",
+            "w:8:4:9",
+            "w:12:4:1795162177"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 4660,
+                "12": 1795162177,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 17301506,
+                "52": 257,
+                "8": 9,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 71
+      },
+      {
+        "name": "main_hal_command_write",
+        "observed": {
+          "actions": [
+            "w:0:4:4660",
+            "w:4:4:17301506",
+            "w:8:4:9",
+            "w:12:4:1795162179"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 4660,
+                "12": 1795162179,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 17301506,
+                "52": 257,
+                "8": 9,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 71
+      },
+      {
+        "name": "main_hal_command_mode_seven",
+        "observed": {
+          "actions": [
+            "w:0:4:4660",
+            "w:4:4:285736962",
+            "w:8:4:9",
+            "w:12:4:1802174529"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 4660,
+                "12": 1802174529,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 285736962,
+                "52": 257,
+                "8": 9,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 74
+      },
+      {
+        "name": "main_hal_command_other_base",
+        "observed": {
+          "actions": [
+            "w:0:4:4660",
+            "w:4:4:17301506",
+            "w:8:4:9",
+            "w:12:4:1795162176"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002093a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 4660,
+                "12": 1795162176,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 17301506,
+                "52": 257,
+                "8": 9,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 70
+      },
+      {
+        "name": "main_hal_command_no_context",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 1,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 3
+      },
+      {
+        "name": "main_hal_command_no_frame",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 1,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 25
+      },
+      {
+        "name": "main_hal_command_no_base",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00000000a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 1,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 28
+      },
+      {
+        "name": "main_hal_command_empty_ready",
+        "observed": {
+          "actions": [
+            "w:0:4:4660",
+            "w:4:4:17301506",
+            "w:8:4:0",
+            "w:12:4:1795162177",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 4660,
+                "12": 1795162177,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 17301506,
+                "52": 257,
+                "8": 0,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 110
+      },
+      {
+        "name": "main_hal_command_empty_timeout",
+        "observed": {
+          "actions": [
+            "w:0:4:4660",
+            "w:4:4:17301506",
+            "w:8:4:0",
+            "w:12:4:1795162177",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:0",
+            "tick:1001",
+            "r:36:4:0"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 4660,
+                "12": 1795162177,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 17301506,
+                "52": 257,
+                "8": 0,
+                "84": 257
+              },
+              "returned": 3,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 121
+      },
+      {
+        "name": "main_hal_receive_ready",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:4:1869111642",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:4:2340715894",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:1:146",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "a73e259a56af28cd55d03ddb2b2a5ef9de987f1ed4f5a51c50719dff90a862b0",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 9,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 325
+      },
+      {
+        "name": "main_hal_command_receive",
+        "observed": {
+          "actions": [
+            "w:0:4:4660",
+            "w:4:4:17301506",
+            "w:8:4:9",
+            "w:12:4:1795162177",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:4:1869111642",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:4:2340715894",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:1:146",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "a73e259a56af28cd55d03ddb2b2a5ef9de987f1ed4f5a51c50719dff90a862b0",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 4660,
+                "12": 1795162177,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 17301506,
+                "52": 257,
+                "8": 9,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 9,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 396
+      },
+      {
+        "name": "main_hal_receive_empty",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 67
+      },
+      {
+        "name": "main_hal_transmit_ready",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:4:168231937",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:4:370348045",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:1:25",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": "0104070a0d10131619"
+            }
+          ]
+        },
+        "steps": 339
+      },
+      {
+        "name": "main_hal_command_transmit",
+        "observed": {
+          "actions": [
+            "w:0:4:4660",
+            "w:4:4:17301506",
+            "w:8:4:9",
+            "w:12:4:1795162179",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:4:168231937",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:4:370348045",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:1:25",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 4660,
+                "12": 1795162179,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 17301506,
+                "52": 257,
+                "8": 9,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": "0104070a0d10131619"
+            }
+          ]
+        },
+        "steps": 410
+      },
+      {
+        "name": "main_hal_transmit_empty",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 64
+      },
+      {
+        "name": "main_hal_receive_dma_ready",
+        "observed": {
+          "actions": [
+            "dma_setup:receive:9:13056:0:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "r:32:4:13056",
+            "w:32:4:13057",
+            "dma_wait:1000:13057:0",
+            "r:32:4:13057",
+            "w:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "a73e259a56af28cd55d03ddb2b2a5ef9de987f1ed4f5a51c50719dff90a862b0",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 73
+      },
+      {
+        "name": "main_hal_command_receive_dma",
+        "observed": {
+          "actions": [
+            "w:0:4:4660",
+            "w:4:4:17301506",
+            "w:8:4:9",
+            "w:12:4:1795162177",
+            "dma_setup:receive:9:13056:0:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "r:32:4:13056",
+            "w:32:4:13057",
+            "dma_wait:1000:13057:0",
+            "r:32:4:13057",
+            "w:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "a73e259a56af28cd55d03ddb2b2a5ef9de987f1ed4f5a51c50719dff90a862b0",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 4660,
+                "12": 1795162177,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 17301506,
+                "52": 257,
+                "8": 9,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 144
+      },
+      {
+        "name": "main_hal_receive_dma_empty",
+        "observed": {
+          "actions": [
+            "dma_setup:receive:0:13056:0:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "r:32:4:13056",
+            "w:32:4:13057",
+            "dma_wait:1000:13057:0",
+            "r:32:4:13057",
+            "w:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 73
+      },
+      {
+        "name": "main_hal_transmit_dma_ready",
+        "observed": {
+          "actions": [
+            "r:32:4:13056",
+            "w:32:4:13057",
+            "dma_setup:transmit:9:13057:0:055a1e923f66c1c1069d2d7a706adb1f0f115eca19d2050d23f52a00406ec2ac",
+            "dma_wait:1000:13057:0",
+            "r:32:4:13057",
+            "w:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 71
+      },
+      {
+        "name": "main_hal_command_transmit_dma",
+        "observed": {
+          "actions": [
+            "w:0:4:4660",
+            "w:4:4:17301506",
+            "w:8:4:9",
+            "w:12:4:1795162179",
+            "r:32:4:13056",
+            "w:32:4:13057",
+            "dma_setup:transmit:9:13057:0:055a1e923f66c1c1069d2d7a706adb1f0f115eca19d2050d23f52a00406ec2ac",
+            "dma_wait:1000:13057:0",
+            "r:32:4:13057",
+            "w:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 4660,
+                "12": 1795162179,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 17301506,
+                "52": 257,
+                "8": 9,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 142
+      },
+      {
+        "name": "main_hal_transmit_dma_empty",
+        "observed": {
+          "actions": [
+            "r:32:4:13056",
+            "w:32:4:13057",
+            "dma_setup:transmit:0:13057:0:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "dma_wait:1000:13057:0",
+            "r:32:4:13057",
+            "w:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 71
+      },
+      {
+        "name": "main_hal_receive_count_1",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:1:90",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "4d736b9113e472ada03ee2475ab1a9f51b2457b47fd4f01b23e3362f39eb7933",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 1,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 141
+      },
+      {
+        "name": "main_hal_receive_count_3",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:1:90",
+            "r:256:1:97",
+            "r:256:1:104",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "856851532ac30ab9d16ad72d976d32d7582f2ce405eaa76fc611111198924805",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 3,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 149
+      },
+      {
+        "name": "main_hal_receive_count_4",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:4:1869111642",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "7f1284480b1696f5c5e5c3a142b5f8f11c1c875794b587f415a2ce307f0fe7dd",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 4,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 163
+      },
+      {
+        "name": "main_hal_receive_count_5",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:4:1869111642",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:1:118",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "19d88148451c7ad2080d75f6cd282a6d11cccfd499b1a79375b51fb271d08360",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 5,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 233
+      },
+      {
+        "name": "main_hal_receive_count_8",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:4:1869111642",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:4:2340715894",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "85b1cb5b6e5976da89b9f40b35e8666be3cdc809791d3bc3f659dd723711b1b1",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 8,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 255
+      },
+      {
+        "name": "main_hal_receive_unaligned",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:1:90",
+            "r:256:1:97",
+            "r:256:1:104",
+            "r:256:1:111",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:1:118",
+            "r:256:1:125",
+            "r:256:1:132",
+            "r:256:1:139",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:1:146",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "5521e1bb5dfed4df4bdf87c079aaf774ad1623046184a52ac50d589a2aaba076",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 9,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 341
+      },
+      {
+        "name": "main_hal_receive_data_timeout",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:0",
+            "tick:1001",
+            "r:24:4:0"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 3,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 82
+      },
+      {
+        "name": "main_hal_receive_completion_timeout",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:256:1:90",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:0",
+            "tick:1001",
+            "r:36:4:0"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "4d736b9113e472ada03ee2475ab1a9f51b2457b47fd4f01b23e3362f39eb7933",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 3,
+              "rx_bytes": 1,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 152
+      },
+      {
+        "name": "main_hal_receive_zero_fifo_prefix",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "stop_no_progress:4"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 0
+              },
+              "returned": null,
+              "rx_bytes": 0,
+              "stopped": {
+                "chunks": 4,
+                "kind": "bounded_prefix"
+              },
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 365
+      },
+      {
+        "name": "main_hal_transmit_count_1",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:1:1",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": "01"
+            }
+          ]
+        },
+        "steps": 147
+      },
+      {
+        "name": "main_hal_transmit_count_3",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:1:1",
+            "w:256:1:4",
+            "w:256:1:7",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": "010407"
+            }
+          ]
+        },
+        "steps": 165
+      },
+      {
+        "name": "main_hal_transmit_count_4",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:4:168231937",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": "0104070a"
+            }
+          ]
+        },
+        "steps": 162
+      },
+      {
+        "name": "main_hal_transmit_count_5",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:4:168231937",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:1:13",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": "0104070a0d"
+            }
+          ]
+        },
+        "steps": 243
+      },
+      {
+        "name": "main_hal_transmit_count_8",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:4:168231937",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:4:370348045",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": "0104070a0d101316"
+            }
+          ]
+        },
+        "steps": 258
+      },
+      {
+        "name": "main_hal_transmit_unaligned",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:1:4",
+            "w:256:1:7",
+            "w:256:1:10",
+            "w:256:1:13",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:1:16",
+            "w:256:1:19",
+            "w:256:1:22",
+            "w:256:1:25",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:1:28",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": "04070a0d101316191c"
+            }
+          ]
+        },
+        "steps": 389
+      },
+      {
+        "name": "main_hal_transmit_data_timeout",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:0",
+            "tick:1001",
+            "r:24:4:0"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 3,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 78
+      },
+      {
+        "name": "main_hal_transmit_completion_timeout",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:257",
+            "r:32:4:13056",
+            "w:256:1:1",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:0",
+            "tick:1001",
+            "r:36:4:0"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000000000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 3,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": "01"
+            }
+          ]
+        },
+        "steps": 158
+      },
+      {
+        "name": "main_hal_transmit_zero_fifo_prefix",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "stop_no_progress:4"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 0
+              },
+              "returned": null,
+              "rx_bytes": 0,
+              "stopped": {
+                "chunks": 4,
+                "kind": "bounded_prefix"
+              },
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 374
+      },
+      {
+        "name": "main_hal_receive_dma_wait_error",
+        "observed": {
+          "actions": [
+            "dma_setup:receive:9:13057:0:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "r:32:4:13057",
+            "w:32:4:13057",
+            "dma_wait:1000:13057:-9",
+            "r:32:4:13057",
+            "w:32:4:13056"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "a73e259a56af28cd55d03ddb2b2a5ef9de987f1ed4f5a51c50719dff90a862b0",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 4294967287,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 34
+      },
+      {
+        "name": "main_hal_receive_dma_setup_error_ignored",
+        "observed": {
+          "actions": [
+            "dma_setup:receive:9:13056:-9:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "r:32:4:13056",
+            "w:32:4:13057",
+            "dma_wait:1000:13057:0",
+            "r:32:4:13057",
+            "w:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 73
+      },
+      {
+        "name": "main_hal_receive_dma_completion_timeout",
+        "observed": {
+          "actions": [
+            "dma_setup:receive:9:13056:0:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "r:32:4:13056",
+            "w:32:4:13057",
+            "dma_wait:1000:13057:0",
+            "r:32:4:13057",
+            "w:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:0",
+            "tick:1001",
+            "r:36:4:0"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "a73e259a56af28cd55d03ddb2b2a5ef9de987f1ed4f5a51c50719dff90a862b0",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 3,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 84
+      },
+      {
+        "name": "main_hal_transmit_dma_wait_error",
+        "observed": {
+          "actions": [
+            "r:32:4:13057",
+            "w:32:4:13057",
+            "dma_setup:transmit:9:13057:0:055a1e923f66c1c1069d2d7a706adb1f0f115eca19d2050d23f52a00406ec2ac",
+            "dma_wait:1000:13057:-9",
+            "r:32:4:13057",
+            "w:32:4:13056"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 4294967287,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 32
+      },
+      {
+        "name": "main_hal_transmit_dma_setup_error_ignored",
+        "observed": {
+          "actions": [
+            "r:32:4:13056",
+            "w:32:4:13057",
+            "dma_setup:transmit:9:13057:-9:055a1e923f66c1c1069d2d7a706adb1f0f115eca19d2050d23f52a00406ec2ac",
+            "dma_wait:1000:13057:0",
+            "r:32:4:13057",
+            "w:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 71
+      },
+      {
+        "name": "main_hal_transmit_dma_completion_timeout",
+        "observed": {
+          "actions": [
+            "r:32:4:13056",
+            "w:32:4:13057",
+            "dma_setup:transmit:9:13057:0:055a1e923f66c1c1069d2d7a706adb1f0f115eca19d2050d23f52a00406ec2ac",
+            "dma_wait:1000:13057:0",
+            "r:32:4:13057",
+            "w:32:4:13056",
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:0",
+            "tick:1001",
+            "r:36:4:0"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 3,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 82
+      },
+      {
+        "name": "main_hal_complete_ready",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 37
+      },
+      {
+        "name": "main_hal_complete_timeout",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:0",
+            "tick:1001",
+            "r:36:4:0"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 3,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 48
+      },
+      {
+        "name": "main_hal_complete_ready_on_recheck",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:0",
+            "tick:1001",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 51
+      },
+      {
+        "name": "main_hal_complete_exact_deadline",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:0",
+            "tick:1000",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 50
+      },
+      {
+        "name": "main_hal_complete_low_word_wrap",
+        "observed": {
+          "actions": [
+            "tick:4294967294",
+            "frequency:1000",
+            "r:36:4:0",
+            "tick:4294967297",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 50
+      },
+      {
+        "name": "main_hal_complete_full_counter_wrap",
+        "observed": {
+          "actions": [
+            "tick:18446744073709551614",
+            "frequency:1000",
+            "r:36:4:0",
+            "tick:1",
+            "r:36:4:1",
+            "w:36:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 50
+      },
+      {
+        "name": "main_hal_complete_high_word_elapsed",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:36:4:0",
+            "tick:4294967296",
+            "r:36:4:0"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 3,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 47
+      },
+      {
+        "name": "main_hal_complete_sub_khz_frequency",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:999",
+            "r:36:4:0",
+            "tick:1",
+            "r:36:4:0"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 3,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 48
+      },
+      {
+        "name": "main_hal_complete_limit_multiply_wrap",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:4000000000",
+            "r:36:4:0",
+            "tick:3705032705",
+            "r:36:4:0"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 3,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 48
+      },
+      {
+        "name": "main_hal_wait_receive_ready_recheck",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:0",
+            "tick:1001",
+            "r:24:4:2"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 2,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 46
+      },
+      {
+        "name": "main_hal_wait_transmit_ready_recheck",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:0",
+            "tick:1001",
+            "r:24:4:1"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 1,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 46
+      },
+      {
+        "name": "main_hal_receive_zero_fifo_advancing_prefix",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "tick:1001",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "tick:2002",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "tick:3003",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "stop_no_progress:4"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 0
+              },
+              "returned": null,
+              "rx_bytes": 0,
+              "stopped": {
+                "chunks": 4,
+                "kind": "bounded_prefix"
+              },
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 365
+      },
+      {
+        "name": "main_hal_transmit_zero_fifo_advancing_prefix",
+        "observed": {
+          "actions": [
+            "tick:0",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "tick:1001",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "tick:2002",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "tick:3003",
+            "frequency:1000",
+            "r:24:4:3",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "r:84:4:0",
+            "r:32:4:13056",
+            "stop_no_progress:4"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 3,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 0
+              },
+              "returned": null,
+              "rx_bytes": 0,
+              "stopped": {
+                "chunks": 4,
+                "kind": "bounded_prefix"
+              },
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 374
+      },
+      {
+        "name": "main_hal_version_old",
+        "observed": {
+          "actions": [
+            "compare:v1.1.03:v1.1.03"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 1,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 21
+      },
+      {
+        "name": "main_hal_version_new",
+        "observed": {
+          "actions": [
+            "compare:v1.1.03:v1.1.16",
+            "compare:v1.1.16:v1.1.16"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 2,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 29
+      },
+      {
+        "name": "main_hal_version_other",
+        "observed": {
+          "actions": [
+            "compare:v1.1.03:v9.9.99",
+            "compare:v1.1.16:v9.9.99"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 29
+      },
+      {
+        "name": "main_hal_version_no_prefix",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 5
+      },
+      {
+        "name": "main_hal_version_empty",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 5
+      },
+      {
+        "name": "main_hal_version_suffix",
+        "observed": {
+          "actions": [
+            "compare:v1.1.03:v1.1.16-extra",
+            "compare:v1.1.16:v1.1.16-extra"
+          ],
+          "rows": [
+            {
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "clock_shadow": 2779096485,
+              "clock_word": 2779100581,
+              "context_hex": "00002493a5a5a5a500000000000000000000000009000000a5a5a5a5a5a5a5a50040308100503081a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "mmio": {
+                "0": 286331153,
+                "12": 1145324612,
+                "16": 1431655765,
+                "24": 0,
+                "32": 13056,
+                "36": 0,
+                "4": 572662306,
+                "52": 257,
+                "8": 858993459,
+                "84": 257
+              },
+              "returned": 0,
+              "rx_bytes": 0,
+              "stopped": null,
+              "tx_hex": ""
+            }
+          ]
+        },
+        "steps": 29
+      }
+    ],
+    "hardware_execution": false
+  },
+  "validation_sha256": "d82510110f46e13f77e931d641321d4dba62991f77298e5fb2c75f8c6208d665",
+  "vectors_sha256": "93c952339d6f51901f969fdc865349a8a94390c8d391306a6f4b5bc6f52b5fcf"
+}

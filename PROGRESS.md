@@ -2488,6 +2488,50 @@ limits; the initial observations point to the current status and work log.
    checks join the passing 1,694-test suite. Main HAL/FIFO/DMA and revision bodies,
    actual UID/workaround/BBT, wider storage and physical restoration/boot remain open.
 
+## 2026-11-18 — actual main QSPI HAL, FIFO, clock and revision policy
+
+1. Executed original main controller init, command packing/submission, count/
+   readiness/completion helpers, aligned/unaligned FIFO receive/transmit, DMA
+   wrappers, clock selection and revision policy. MMIO reset/status/FIFO/W1C,
+   64-bit ticks/frequency, ROM string and DMA setup/wait/copy remain authored.
+   Corrected Ghidra function metadata that attached the independent completion
+   entry to command; imported bytes and instruction semantics remain unchanged.
+2. Covered command null inputs, empty command completion, FIFO tails/counts,
+   direct/data/completion timeouts, deadline rechecks, exact deadline, counter
+   wrap, sub-kHz and multiplication-wrap cases. Four zero-FIFO cases stop at a
+   non-progress prefix. DMA setup status is ignored while wait propagates;
+   request bit is cleared and successful DMA retains count. Actual revision
+   recognizes exact v1.1.03/v1.1.16 over the authored string.
+3. All 89 native cases pass in 8,704 steps (maximum 410), with 14 code/export
+   and two original data hashes. See [analysis/MAIN_QSPI_HAL.md](analysis/MAIN_QSPI_HAL.md)
+   and [analysis/main-qspi-hal.json](analysis/main-qspi-hal.json). Actual DMA
+   backend/cache, full main probe/root linkage through this HAL and physical
+   operation remain open.
+
+## 2026-11-18 — main bus and feature packets through actual HAL/FIFO
+
+1. Joined original main bus transfer, feature builders and revision to actual
+   command/FIFO/DMA-wrapper code over an authored initialized controller. This
+   scope does not execute platform/probe/root. Original binding/selected source
+   descriptor and revision literals remain immutable. Direct, bounce, threshold,
+   old/unknown revision, unaligned, feature-byte and timeout cases execute.
+2. Actual HAL timeout 3 reaches original bus assertions. Supplied DMA setup -9
+   followed by successful wait can still lead to success and copyback of unchanged
+   authored bounce bytes. Wait failure instead skips copyback and retains caller
+   bytes, even if supplied setup already filled bounce memory. These state/status
+   dependencies do not establish real DMA/media behavior.
+3. All 24 native cases pass in 14,877 steps (maximum 1,846), with 18 code/export
+   and four original data hashes. See [analysis/MAIN_QSPI_BUS.md](analysis/MAIN_QSPI_BUS.md)
+   and [analysis/main-qspi-bus.json](analysis/main-qspi-bus.json). Both new evidence
+   files and vectors reproduce; all 160 earlier main native cases reproduce byte
+   for byte. Twenty-eight new host checks join the passing 1,722-test suite.
+   Older shared runners are unchanged. Next: actual main DMA backend/cache,
+   then full platform/probe/root through HAL and main UID/workaround/BBT/media.
+4. At the user's request, recorded a rough qualitative project RE estimate of
+   50–60% in [analysis/RE_STATUS.md](analysis/RE_STATUS.md). This subjective scope
+   assessment has substantial uncertainty and does not measure coverage or time
+   remaining. Hardware, complete pairing and safe restoration/boot are major gates.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -2574,9 +2618,11 @@ limits; the initial observations point to the current status and work log.
   main probe/matcher/ID/reset builders now also join it over all eleven original
   candidates. Actual main bus/platform/feature packet conversion now also joins
   this path over all eleven descriptors, with HAL/revision/regulator/DMA services
-  and auxiliary bodies supplied. Follow main command HAL 0x80d34b30, direct
-  receive/transmit 0x80d34c68/0x80d34dc0, DMA initializer 0x702a0038 and
-  revision 0x80d4556c; their bytes are readable in startup-aware main memory.
+  and auxiliary bodies supplied. Actual main command/FIFO/count/timer/clock/
+  revision and DMA wrappers now also execute separately, and original main bus/
+  feature packets join them over an authored initialized controller. Follow
+  actual main DMA initializer 0x702a0038, setup 0x702a02a0, wait 0x702a0358 and
+  cache services, then connect full main platform/probe/root through this HAL.
   Then follow actual main UID/workaround/BBT,
   wider storage and PM callers,
   broader close callers, removal/reclamation/concurrency and real property/heap/
