@@ -1,0 +1,377 @@
+{
+  "chips": [
+    {
+      "address": 1889738828,
+      "blocks": 1024,
+      "feature_pointer": 1889739016,
+      "features": [
+        [
+          160,
+          0
+        ],
+        [
+          176,
+          24
+        ]
+      ],
+      "id": [
+        239,
+        186,
+        33,
+        0,
+        0
+      ],
+      "name": "Winbond W25N01GWZEIB",
+      "name_pointer": 1889736856,
+      "page_size": 2048,
+      "pages": 65536,
+      "pages_per_block": 64,
+      "reset_delay_us": 10000,
+      "reset_opcode": 255,
+      "sha256": "2e1217166b3942f8e42486bd55379b45b87f2f51085d04688b626452159c89dd",
+      "uid": true
+    },
+    {
+      "address": 1889737076,
+      "blocks": 1024,
+      "feature_pointer": 1889737264,
+      "features": [
+        [
+          160,
+          0
+        ],
+        [
+          176,
+          25
+        ]
+      ],
+      "id": [
+        239,
+        190,
+        33,
+        0,
+        0
+      ],
+      "name": "Winbond W25N01KWZEIG",
+      "name_pointer": 1889736668,
+      "page_size": 2048,
+      "pages": 65536,
+      "pages_per_block": 64,
+      "reset_delay_us": 10000,
+      "reset_opcode": 255,
+      "sha256": "ad5b0720a397568611347857cc0bd94d0f89945751928dd9b87078b999295d45",
+      "uid": true
+    },
+    {
+      "address": 1889738636,
+      "blocks": 4096,
+      "feature_pointer": 1889738824,
+      "features": [
+        [
+          160,
+          0
+        ],
+        [
+          176,
+          25
+        ]
+      ],
+      "id": [
+        239,
+        186,
+        35,
+        0,
+        0
+      ],
+      "name": "Winbond W25N04KW",
+      "name_pointer": 1889736836,
+      "page_size": 2048,
+      "pages": 262144,
+      "pages_per_block": 64,
+      "reset_delay_us": 10000,
+      "reset_opcode": 255,
+      "sha256": "ee52c9f7d6c5fc2a1c880728a84142baf2220b6fc0127c5b6bf3761302f795a5",
+      "uid": true
+    },
+    {
+      "address": 1889736880,
+      "blocks": 2048,
+      "feature_pointer": 1889737068,
+      "features": [
+        [
+          160,
+          0
+        ],
+        [
+          176,
+          25
+        ],
+        [
+          208,
+          0
+        ]
+      ],
+      "id": [
+        239,
+        178,
+        35,
+        0,
+        0
+      ],
+      "name": "Winbond W25N04LWZEIG",
+      "name_pointer": 1889736644,
+      "page_size": 4096,
+      "pages": 131072,
+      "pages_per_block": 64,
+      "reset_delay_us": 10000,
+      "reset_opcode": 255,
+      "sha256": "c95aa687688fca3281b71e6f8d5ed63c311b079a9811c1f6bead209ed023736f",
+      "uid": true
+    },
+    {
+      "address": 1889738440,
+      "blocks": 1024,
+      "feature_pointer": 1889738628,
+      "features": [
+        [
+          160,
+          0
+        ],
+        [
+          176,
+          17
+        ],
+        [
+          208,
+          96
+        ]
+      ],
+      "id": [
+        229,
+        33,
+        0,
+        0,
+        0
+      ],
+      "name": "DOSILICON DS35M1GA",
+      "name_pointer": 1889736816,
+      "page_size": 2048,
+      "pages": 65536,
+      "pages_per_block": 64,
+      "reset_delay_us": 10000,
+      "reset_opcode": 255,
+      "sha256": "5b23d8342f1eeeddcc5a450c441c102f67ae32e84dab83213d4ddb10701b18d4",
+      "uid": false
+    },
+    {
+      "address": 1889738244,
+      "blocks": 1024,
+      "feature_pointer": 1889738432,
+      "features": [
+        [
+          160,
+          0
+        ],
+        [
+          176,
+          17
+        ],
+        [
+          208,
+          96
+        ]
+      ],
+      "id": [
+        229,
+        161,
+        0,
+        0,
+        0
+      ],
+      "name": "DOSILICON DS35M1GB",
+      "name_pointer": 1889736796,
+      "page_size": 2048,
+      "pages": 65536,
+      "pages_per_block": 64,
+      "reset_delay_us": 10000,
+      "reset_opcode": 255,
+      "sha256": "0cc301629b21963d763416af8a1616a1ca221f659ab4fcd3409ccfaf94ae9534",
+      "uid": true
+    },
+    {
+      "address": 1889738048,
+      "blocks": 2048,
+      "feature_pointer": 1889738236,
+      "features": [
+        [
+          160,
+          0
+        ],
+        [
+          176,
+          17
+        ],
+        [
+          208,
+          96
+        ]
+      ],
+      "id": [
+        229,
+        34,
+        0,
+        0,
+        0
+      ],
+      "name": "DOSILICON DS35M2GA",
+      "name_pointer": 1889736776,
+      "page_size": 2048,
+      "pages": 131072,
+      "pages_per_block": 64,
+      "reset_delay_us": 10000,
+      "reset_opcode": 255,
+      "sha256": "d59b784c9af74ec455c398525323401d322e38db034fe26de0b036a5d861790e",
+      "uid": false
+    },
+    {
+      "address": 1889737852,
+      "blocks": 2048,
+      "feature_pointer": 1889738040,
+      "features": [
+        [
+          160,
+          0
+        ],
+        [
+          176,
+          17
+        ],
+        [
+          208,
+          96
+        ]
+      ],
+      "id": [
+        229,
+        162,
+        0,
+        0,
+        0
+      ],
+      "name": "DOSILICON DS35M2GB",
+      "name_pointer": 1889736756,
+      "page_size": 2048,
+      "pages": 131072,
+      "pages_per_block": 64,
+      "reset_delay_us": 10000,
+      "reset_opcode": 255,
+      "sha256": "8d528e9adad2cb7c06fed0ad092ceac3cff71193c4794c01ead70f9416cbcfa8",
+      "uid": false
+    },
+    {
+      "address": 1889737464,
+      "blocks": 4096,
+      "feature_pointer": 1889737652,
+      "features": [
+        [
+          160,
+          0
+        ],
+        [
+          176,
+          17
+        ],
+        [
+          208,
+          96
+        ]
+      ],
+      "id": [
+        229,
+        100,
+        0,
+        0,
+        0
+      ],
+      "name": "DOSILICON DS35M4GB-IB",
+      "name_pointer": 1889736716,
+      "page_size": 2048,
+      "pages": 262144,
+      "pages_per_block": 64,
+      "reset_delay_us": 10000,
+      "reset_opcode": 255,
+      "sha256": "b8ddab5ccb881fab6f039e4fca1da79267462b9d44f18c4335eece9845e2607b",
+      "uid": true
+    },
+    {
+      "address": 1889737268,
+      "blocks": 4096,
+      "feature_pointer": 1889737456,
+      "features": [
+        [
+          160,
+          0
+        ],
+        [
+          176,
+          17
+        ],
+        [
+          208,
+          96
+        ]
+      ],
+      "id": [
+        229,
+        164,
+        0,
+        0,
+        0
+      ],
+      "name": "DOSILICON DS35M4GM-IB",
+      "name_pointer": 1889736692,
+      "page_size": 2048,
+      "pages": 262144,
+      "pages_per_block": 64,
+      "reset_delay_us": 10000,
+      "reset_opcode": 255,
+      "sha256": "a880bcb45793eb2ac3c706ea3b0f25e7bcbf6c1c7a4ae6b04129ed58518b870d",
+      "uid": true
+    },
+    {
+      "address": 1889737660,
+      "blocks": 2048,
+      "feature_pointer": 1889737848,
+      "features": [
+        [
+          160,
+          2
+        ],
+        [
+          176,
+          16
+        ]
+      ],
+      "id": [
+        44,
+        53,
+        0,
+        0,
+        0
+      ],
+      "name": "ESMT F50D4G41XB",
+      "name_pointer": 1889736740,
+      "page_size": 4096,
+      "pages": 131072,
+      "pages_per_block": 64,
+      "reset_delay_us": 10000,
+      "reset_opcode": 255,
+      "sha256": "4a0a013cb51511dca82957425f2ceca30df4ce5a65f44156f90cb90dedaa7a0d",
+      "uid": true
+    }
+  ],
+  "hardware_execution": false,
+  "main_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "table_address": 1889736600,
+  "table_sha256": "03734c8127ab2f049fb762dded51cbcecb3b180421f49862761c5375b6e7a525"
+}

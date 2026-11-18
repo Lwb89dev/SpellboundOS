@@ -2407,6 +2407,46 @@ limits; the initial observations point to the current status and work log.
    BBT/platform/media, wider storage/startup, PM internals, reclamation/concurrency
    and safe physical backup/restoration/boot remain open.
 
+## 2026-11-18 — actual main candidate probe, ID/reset builders and feature policy
+
+1. Extracted the original main-image eleven-chip table independently of the boot
+   table, including descriptor/feature/geometry/UID/reset fields and hashes.
+   Actual main probe, matcher and ID/reset builders execute over the unchanged
+   descriptors and bus binding. Bus callbacks, regulator/feature services and
+   workaround/UID/BBT bodies remain supplied; delay arguments are observed,
+   without electrical/timing validation.
+2. Selected all eleven candidates, round-two and final-33rd-attempt matches;
+   observed real no-match -4, caller/builder assertions and feature write -5,
+   read -6 and mismatch -7. Missing regulator continues; selected negative
+   supplied power/auxiliary return-register values are ignored. Supplied BBT
+   result 1 with zero magic still permits success and actual guard publication.
+   UID's status convention and real BBT recovery are not established here.
+3. All 24 native cases pass in 13,623 steps (maximum 2,091). Eighteen code/export
+   and 35 data hashes accompany [analysis/MAIN_NAND_PROBE.md](analysis/MAIN_NAND_PROBE.md),
+   [analysis/main-nand-probe.json](analysis/main-nand-probe.json) and
+   [analysis/main-nand-chips.json](analysis/main-nand-chips.json).
+
+## 2026-11-18 — actual main probe joined to root publication and geometry
+
+1. Replaced the supplied probe in a new connected scope with actual candidate
+   detection/ID/reset/feature policy, followed by original root/wrapper/registry/
+   cache/PM publication and subsequent open/geometry/close callers. Geometry now
+   follows the descriptor selected by authored ID responses: first-chip 128 MiB
+   and candidate-3 512 MiB. Supplied no-BBT still registers with inactive geometry.
+2. Real no-match and feature-mismatch results become outer -6 before allocation;
+   only mismatch retains selection. Append/duplicate, existing mutex, allocation
+   failure and late PM assertion preserve their distinct original state. A
+   successful probe and guard counts do not imply successful object/cache/PM
+   publication or active BBT.
+3. All 10 native cases pass in 8,732 steps (maximum 2,003). Twenty-two code/export
+   and 38 data hashes accompany [analysis/MAIN_NAND_PROBE_ROOT.md](analysis/MAIN_NAND_PROBE_ROOT.md)
+   and [analysis/main-nand-probe-root.json](analysis/main-nand-probe-root.json).
+   Both evidence files and inventory reproduce; all 66 prior main native cases
+   reproduce byte for byte. Existing configuration/guard/log values are preserved.
+   The two scopes add 24 host checks; all 1,668 tests pass. Main bus/platform/
+   feature transport, actual main UID/workaround/BBT, broader storage/startup,
+   PM internals, reclamation/concurrency and physical restoration/boot remain open.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -2489,8 +2529,11 @@ limits; the initial observations point to the current status and work log.
   generic close/reference/write/ioctl and original NAND method consumers now
   execute too. Original main context/chip/BBT-active geometry now also executes,
   with authored selected-descriptor/magic and RTOS state. Main root/wrapper/registry/
-  cache/PM publication now joins it with a supplied probe and PM/BSP/heap services.
-  Follow actual main probe/UID/BBT/platform/transport, wider storage and PM callers,
+  cache/PM publication now joins it with PM/BSP/heap services supplied. Actual
+  main probe/matcher/ID/reset builders now also join it over all eleven original
+  candidates, with bus/regulator/feature and auxiliary bodies supplied.
+  Follow actual main bus/platform/feature transport and UID/workaround/BBT,
+  wider storage and PM callers,
   broader close callers, removal/reclamation/concurrency and real property/heap/
   mutex services. Actual retry/
   UID setup/acquisition and UID ioctl export now execute through actual command

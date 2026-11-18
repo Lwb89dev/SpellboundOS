@@ -92,9 +92,9 @@ class Model(base.Model):
     def initialize(self):
         c=self.c;present=c['main_property'];self.actions.append(f'main_property:{int(present)}');self.root=base.PROPERTY if present else 0
         if not present:self.stopped=dict(kind='assertion',owner=0x70a30c88,line=49);return None
-        status=c['main_probe_status'];self.actions.append(f'main_probe:{status}')
+        status=self.probe()
+        if self.stopped:return None
         if not status:
-            self.selected=self.chip['address'] if c['main_chip_present'] else 0
             if not self.driver_mutex:
                 self.driver_mutex=0 if c['main_mutex_fail'] else HANDLE;self.actions.append(f'main_driver_mutex_create:{self.driver_mutex}')
                 if not self.driver_mutex:self.stopped=dict(kind='assertion',owner=0x70a30ef0,line=30);return None
@@ -108,6 +108,10 @@ class Model(base.Model):
         if not c['main_pm_property']:
             self.actions.append('diagnostic:initialize');self.stopped=dict(kind='assertion',owner=0x70a30c60,line=31);return None
         self.pm_calls+=1;self.actions.append(f'main_pm_register:{c["main_pm_status"]}');return 0
+    def probe(self):
+        status=self.c['main_probe_status'];self.actions.append(f'main_probe:{status}')
+        if not status:self.selected=self.chip['address'] if self.c['main_chip_present'] else 0
+        return status
     def operation(self,op):
         if op['op']=='initialize':self.actions.append('native:initialize');return self.initialize()
         return super().operation(op)

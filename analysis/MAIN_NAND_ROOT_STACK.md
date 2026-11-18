@@ -1,5 +1,9 @@
 # Main NAND root, registry and PM publication with original geometry consumers
 
+The later [main probe/root scope](MAIN_NAND_PROBE_ROOT.md) replaces the supplied
+probe with actual candidate detection and ID/reset builders. The evidence below
+preserves this earlier scope and its regression vectors.
+
 All **12 native cases** pass in **4,763 instruction/service steps**
 (maximum **725**, `main_root_append`). Original main root `0x702d54c6`, operation
 initializer `0x702d5b56`, registry lookup/insertion and later object consumers now
