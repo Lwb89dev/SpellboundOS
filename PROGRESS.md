@@ -2532,6 +2532,47 @@ limits; the initial observations point to the current status and work log.
    assessment has substantial uncertainty and does not measure coverage or time
    remaining. Hardware, complete pairing and safe restoration/boot are major gates.
 
+## 2026-11-18 — actual main DMA initialization/setup/cancel/count/wait
+
+1. Executed six original main DMA bodies over authored descriptors/MMIO/status/
+   ticks and supplied cache services. Covered four recognized banks, invalid
+   channels, NAND TX/RX, masks/widths, setup variants, cancellation, count-query
+   null guards, primary/alternate/both status, timeout/recheck and counter wrap.
+   Native wait reads both status registers before branching, despite a possible
+   short-circuit impression from pseudocode. Primary clears tracking; alternate
+   success and timeout retain it.
+2. Main initializer differs from boot for an unrecognized base: actual code
+   writes slot 28+channel and returns zero instead of calling the boot fatal
+   boundary. Authored base 0x93100000/channel 5 publishes slot 33 in explicit
+   35-slot guarded backing. No valid fifth bank, production allocation boundary
+   or physical memory-corruption claim follows. Main IRQ remains outside scope.
+3. All 46 native cases pass in 3,021 steps (maximum 204), with six code/export
+   hashes. See [analysis/MAIN_DMA_BACKEND.md](analysis/MAIN_DMA_BACKEND.md) and
+   [analysis/main-dma-backend.json](analysis/main-dma-backend.json). Metadata seed
+   includes the reviewed complete wait-result tail; image bytes are unchanged.
+
+## 2026-11-18 — main DMA backend joined to QSPI and NAND bounce packets
+
+1. Connected actual main DMA init/setup/wait to original QSPI command/completion/
+   DMA wrappers and selected NAND bounce packets. Two authored descriptors are
+   initialized and registered at actual main table slots 26/27. Original main
+   platform descriptor addresses, full probe/root, IRQ/cache bodies and physical
+   DMA movement remain outside this scope.
+2. Primary/alternate status preserves distinct tracking while returning zero.
+   Backend and QSPI completion waits have separate budgets. Backend timeout or
+   later QSPI timeout reaches original NAND bounce assertions. With no physical
+   movement modeled, successful direct DMA leaves caller bytes unchanged and
+   successful bounce read copies authored sentinel bytes. Software success
+   does not establish delivered data or coherency.
+3. All 28 native cases pass in 11,758 steps (maximum 574), with 21 code/export
+   and four data hashes. See [analysis/MAIN_QSPI_DMA.md](analysis/MAIN_QSPI_DMA.md)
+   and [analysis/main-qspi-dma.json](analysis/main-qspi-dma.json). Both new evidence
+   files and vectors reproduce; all 273 prior main native cases reproduce byte
+   for byte. The shared main HAL adds only a default I/O-filter factory hook.
+   Twenty-eight new host checks join the passing 1,750-test suite. Next: actual
+   main platform/DMA linkage and reinitialization, full probe/root through this
+   backend, main IRQ/cache and UID/workaround/BBT/media, plus physical restoration/boot.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -2621,8 +2662,10 @@ limits; the initial observations point to the current status and work log.
   and auxiliary bodies supplied. Actual main command/FIFO/count/timer/clock/
   revision and DMA wrappers now also execute separately, and original main bus/
   feature packets join them over an authored initialized controller. Follow
-  actual main DMA initializer 0x702a0038, setup 0x702a02a0, wait 0x702a0358 and
-  cache services, then connect full main platform/probe/root through this HAL.
+  main platform/DMA descriptor linkage and reinitialization: actual main DMA
+  initializer/setup/wait now joins the QSPI wrappers and selected NAND bounce
+  packets over authored descriptor bindings. Main IRQ/cache bodies remain open.
+  Then connect full main platform/probe/root through this HAL/backend.
   Then follow actual main UID/workaround/BBT,
   wider storage and PM callers,
   broader close callers, removal/reclamation/concurrency and real property/heap/

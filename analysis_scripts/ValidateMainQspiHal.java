@@ -78,11 +78,12 @@ public class ValidateMainQspiHal extends GhidraScript {
   }abi(e);
  }
  protected void configure()throws Exception {}
+ protected Io createIo(){return new Io();}
  protected void setupExtra(Helper e)throws Exception {}
  protected boolean dispatchExtra(Helper e,String mode)throws Exception {return false;}
  protected void snapshotExtra(Helper e,JsonObject row)throws Exception {}
  protected JsonObject execute(JsonObject input)throws Exception {
-  c=input;steps=ticks=chunks=0;actions=new JsonArray();stopped=null;Helper e=new Helper(currentProgram);io=new Io();io.base=c.get("base").getAsLong();io.clock=c.get("clock_word").getAsLong();
+  c=input;steps=ticks=chunks=0;actions=new JsonArray();stopped=null;Helper e=new Helper(currentProgram);io=createIo();io.base=c.get("base").getAsLong();io.clock=c.get("clock_word").getAsLong();
   try{
    byte[] sentinel=new byte[4096];Arrays.fill(sentinel,(byte)0xa5);e.writeMemory(toAddr(0x81000000L),sentinel);e.writeRegister("sp",0x81001000L);for(int i=0;i<12;i++)e.writeRegister("s"+i,0x45670000L+i);
    e.writeMemory(toAddr(CTRL-32),Arrays.copyOf(sentinel,128));for(long[] f:new long[][]{{0,c.get("base_present").getAsBoolean()?io.base:0},{8,c.getAsJsonArray("flags").get(0).getAsLong()},{12,c.getAsJsonArray("flags").get(1).getAsLong()},{16,c.get("controller_mode").getAsLong()},{20,c.get("count").getAsLong()},{32,DMA0},{36,DMA1}})put(e,CTRL+f[0],4,f[1]);

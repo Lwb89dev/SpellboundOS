@@ -1,5 +1,8 @@
 # Main NAND bus and feature builders through actual QSPI HAL/FIFO
 
+The later [main QSPI/DMA scope](MAIN_QSPI_DMA.md) executes actual DMA backend
+init/setup/wait. This earlier evidence preserves its supplied DMA boundary.
+
 All **24 native cases** pass in **14,877 instruction/service steps** (maximum
 **1,846**, unaligned receive). Actual main bus transfer `0x70296c24`, original
 feature-read/write builders and revision policy now join original main QSPI
