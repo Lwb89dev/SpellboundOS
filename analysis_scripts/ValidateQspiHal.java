@@ -20,6 +20,9 @@ public class ValidateQspiHal extends GhidraScript {
     private boolean nativeInitialize(){return c.has("native_initialize")&&c.get("native_initialize").getAsBoolean();}
     private boolean nativeProbe(){return c.has("native_probe")&&c.get("native_probe").getAsBoolean();}
     private boolean nativeBbt(){return c.has("native_bbt_stack")&&c.get("native_bbt_stack").getAsBoolean();}
+    private boolean nativeAux(){return c.has("native_probe_aux")&&c.get("native_probe_aux").getAsBoolean();}
+    private long uidReturnAddress;
+    private Long auxExportReturn;
     private Long bbtResumeReturn,bbtFollowReturn;
     private long bbtReturnAddress;
     private boolean probeRunning;
@@ -55,7 +58,7 @@ public class ValidateQspiHal extends GhidraScript {
     private class Io extends MemoryAccessFilter {
         int readbackIndex=-1,readbackAt,probeIdReads,probeIdAt,bbtStatusReads;
         long bbtLoadedPage;
-        boolean active,reset;int rx,featureReads,payloadRx,statusReads,e0Reads,uidRx;long base,clock;
+        boolean active,reset,uidPhase;int rx,featureReads,payloadRx,statusReads,e0Reads,uidRx;long base,clock;
         TreeMap<Long,Long> regs=new TreeMap<>();Map<String,Integer> indices=new HashMap<>();
         TreeMap<Long,Long> dmaRegs=new TreeMap<>();Map<String,Integer> dmaIndices=new HashMap<>();long dmaBase;
         TreeMap<Long,Long> boardRegs=new TreeMap<>(),featureRegs=new TreeMap<>();
@@ -82,6 +85,12 @@ public class ValidateQspiHal extends GhidraScript {
                         else if(column==16){b=new byte[32];for(int i=0;i<32;i++)b[i]=(byte)i;}
                         else throw new IllegalStateException("BBT cache column");
                         if(readbackAt+size>b.length)throw new IllegalStateException("BBT cache FIFO bound");for(int i=0;i<size;i++)value|=(b[readbackAt+i]&255L)<<(8*i);readbackAt+=size;
+                    }else if(nativeAux()&&(regs.get(12L)>>>24)==15&&regs.get(0L)==192){
+                        if(size!=1)throw new IllegalStateException("Auxiliary status width");JsonArray values=c.getAsJsonArray("responses");value=values.get(Math.min(statusReads++,values.size()-1)).getAsLong();featureReads++;
+                    }else if(nativeAux()&&(regs.get(12L)>>>24)==15&&regs.get(0L)==224){
+                        if(size!=1)throw new IllegalStateException("Auxiliary E0 width");JsonArray values=c.getAsJsonArray("e0_reads");value=e0Reads<values.size()?values.get(e0Reads).getAsLong():featureRegs.get(224L);e0Reads++;featureReads++;
+                    }else if(nativeAux()&&uidPhase&&(regs.get(12L)>>>24)==15){
+                        if(size!=1)throw new IllegalStateException("Auxiliary UID feature width");featureReads++;value=featureRegs.getOrDefault(regs.get(0L),0L)^(c.get("uid_mismatch").getAsBoolean()?1:0);
                     }else if(nativeProbe()&&(regs.get(12L)>>>24)==0x9f){
                         if(probeIdAt+size>5)throw new IllegalStateException("Probe ID FIFO bound");boolean delayed=probeIdReads<=c.get("probe_delayed_rounds").getAsInt()*11;JsonArray id=c.getAsJsonArray("probe_id");for(int i=0;i<size;i++)value|=(delayed?255L:id.get(probeIdAt+i).getAsLong())<<(8*i);probeIdAt+=size;
                     }else if(nativeProbe()&&(regs.get(12L)>>>24)==0x0f){
@@ -116,7 +125,7 @@ public class ValidateQspiHal extends GhidraScript {
             if(offset==CLOCK){if(size!=4)throw new IllegalStateException("Clock write width");clock=value;actions.add("clock_write:"+value);return;}
             if(offset>=base&&offset<base+0x104){
                 long at=offset-base;
-                if(at==0x100){if(size!=1&&size!=4)throw new IllegalStateException("FIFO write width");tx.writeBytes(data);if(nativeProbe()&&(regs.get(12L)>>>24)==31){if(size!=1||regs.get(0L)>255)throw new IllegalStateException("Probe feature write");featureRegs.put(regs.get(0L),value);}if(nativeIdentity()&&(regs.get(12L)>>>24)==31){if(size!=1||regs.get(0L)>255)throw new IllegalStateException("Feature FIFO write");long reg=regs.get(0L);if(reg!=224||c.get("apply_writes").getAsBoolean())featureRegs.put(reg,value&255);}}
+                if(at==0x100){if(size!=1&&size!=4)throw new IllegalStateException("FIFO write width");tx.writeBytes(data);if(nativeProbe()&&(regs.get(12L)>>>24)==31){if(size!=1||regs.get(0L)>255)throw new IllegalStateException("Probe feature write");if(!nativeAux()||regs.get(0L)!=224||c.get("apply_writes").getAsBoolean())featureRegs.put(regs.get(0L),value);}if(nativeIdentity()&&(regs.get(12L)>>>24)==31){if(size!=1||regs.get(0L)>255)throw new IllegalStateException("Feature FIFO write");long reg=regs.get(0L);if(reg!=224||c.get("apply_writes").getAsBoolean())featureRegs.put(reg,value&255);}}
                 else{
                     if(size!=4||!regs.containsKey(at))throw new IllegalStateException("Unknown QSPI write "+Long.toHexString(offset));
                     if(nativeBbt()&&at==12&&(value>>>24)==0x13)bbtLoadedPage=regs.get(0L);if(nativeBbt()&&at==12&&(value>>>24)==0x6b)readbackAt=0;if(nativeProbe()&&at==12&&(value>>>24)==0x9f){probeIdReads++;probeIdAt=0;}if(nativeReadback()&&at==12&&(value>>>24)==0x6b){readbackIndex++;readbackAt=0;}if(nativeIdentity()&&at==12&&(value>>>24)==3)uidRx=0;regs.put(at,at==0x24&&value==1?0:value);if(at==0x10&&(value&0x100)!=0)reset=true;
@@ -137,21 +146,25 @@ public class ValidateQspiHal extends GhidraScript {
         stopped=null;e.writeRegister("ra",END);for(int i=0;i<args.length;i++)e.writeRegister("a"+i,args[i]);e.writeRegister(e.getPCRegister(),start);long pc;
         while((pc=e.getExecutionAddress().getOffset())!=END){
             if(++steps>executionBound)throw new IllegalStateException("Execution bound");
+            if(nativeAux()){
+                if(uidReturnAddress!=0&&pc==uidReturnAddress){io.uidPhase=false;uidReturnAddress=0;}
+                if(pc==a("probe_uid")){actions.add("probe_uid_native");io.uidPhase=true;uidReturnAddress=e.readRegister("ra").longValue()&0xffffffffL;}
+            }
             if(nativeBbt()){
                 if(bbtReturnAddress!=0&&pc==bbtReturnAddress){bbtResumeReturn=r(e,0);bbtReturnAddress=0;}
                 if(pc==a("bbt_stack_resume")){if(r(e,0)!=1024||r(e,1)!=2048||r(e,2)!=64)throw new IllegalStateException("BBT fixed geometry");actions.add("bbt_resume:1024:2048:64");bbtReturnAddress=e.readRegister("ra").longValue()&0xffffffffL;}
                 if(pc==0x80c29042L){if(r(e,1)!=1)throw new IllegalStateException("BBT direct marker query");actions.add("bbt_bad:"+r(e,0));}
                 if(pc==a("bbt_stack_crc")){long p=r(e,1),n=r(e,2);if(r(e,0)!=0||n>128||p<0x81000000L||p+n>0x81001000L)throw new IllegalStateException("BBT CRC arguments");actions.add("bbt_crc:"+n+":"+hash(mem(e,p,(int)n)));}
-                if(pc==0x80c2e014L){long p=r(e,0),n=r(e,2);if(r(e,1)!=0||!(p==0x80df42ccL&&n==164||p>=0x81000000L&&p+n<=0x81001000L&&n<=140))throw new IllegalStateException("BBT zero arguments");e.writeMemory(toAddr(p),new byte[(int)n]);ret(e,p);continue;}
+                if(pc==0x80c2e014L&&!(nativeAux()&&io.uidPhase)){long p=r(e,0),n=r(e,2);if(r(e,1)!=0||!(p==0x80df42ccL&&n==164||p>=0x81000000L&&p+n<=0x81001000L&&n<=140))throw new IllegalStateException("BBT zero arguments");e.writeMemory(toAddr(p),new byte[(int)n]);ret(e,p);continue;}
                 if(pc==a("copy")&&r(e,0)==0x80df42ccL){long p=r(e,1);if(r(e,2)!=140||p<0x81000000L||p+140>0x81001000L)throw new IllegalStateException("BBT publication arguments");e.writeMemory(toAddr(0x80df42ccL),mem(e,p,140));actions.add("bbt_publish:140");ret(e,0x80df42ccL);continue;}
-                if(pc==a("bbt_stack_format")){long p=r(e,0),v=r(e,3);byte[] b=(Long.toString(v)+" ").getBytes(java.nio.charset.StandardCharsets.US_ASCII);if(v>65535||r(e,1)!=128||r(e,2)!=0x80c3d324L||p<0x81000000L||p+b.length+1>0x81001000L)throw new IllegalStateException("BBT formatting arguments");e.writeMemory(toAddr(p),Arrays.copyOf(b,b.length+1));actions.add("bbt_format:"+v);ret(e,b.length);continue;}
+                if(pc==a("bbt_stack_format")&&!(nativeAux()&&r(e,2)==0x80c3da18L)){long p=r(e,0),v=r(e,3);byte[] b=(Long.toString(v)+" ").getBytes(java.nio.charset.StandardCharsets.US_ASCII);if(v>65535||r(e,1)!=128||r(e,2)!=0x80c3d324L||p<0x81000000L||p+b.length+1>0x81001000L)throw new IllegalStateException("BBT formatting arguments");e.writeMemory(toAddr(p),Arrays.copyOf(b,b.length+1));actions.add("bbt_format:"+v);ret(e,b.length);continue;}
             }
             if(nativeProbe()&&probeRunning){
                 if(pc==a("platform_init")){probeBusCalls++;actions.add("probe_bus:"+probeIndex(r(e,0)));}
                 if(pc==a("probe_regulator_lookup")){if(r(e,0)!=0x80c3d6f4L||r(e,1)!=0x80d81f18L)throw new IllegalStateException("Probe regulator lookup");boolean present=c.get("probe_regulator_present").getAsBoolean();put(e,r(e,1),4,present?0x81250000L:0);actions.add("probe_regulator:"+(present?1:0));ret(e,present?0:-1);continue;}
                 if(pc==a("probe_disable")||pc==a("probe_enable")){if(r(e,0)!=0x81250000L)throw new IllegalStateException("Probe power handle");long status=c.get("probe_power_status").getAsLong();actions.add((pc==a("probe_disable")?"probe_disable:":"probe_enable:")+status);ret(e,status);continue;}
                 if(pc==a("probe_delay")){long delay=r(e,0);if(delay!=20&&delay!=11)throw new IllegalStateException("Probe requested delay");actions.add("probe_delay:"+delay);ret(e,0);continue;}
-                if(pc==a("probe_workaround")||pc==a("probe_uid")){if(pc==a("probe_workaround")&&nativeBbt()&&c.get("bbt_native_workaround").getAsBoolean())actions.add("probe_workaround_native");else{String name=pc==a("probe_workaround")?"workaround":"uid";long status=c.get("probe_"+name+"_status").getAsLong();actions.add("probe_"+name+":"+status);ret(e,status);continue;}}
+                if(pc==a("probe_workaround")||pc==a("probe_uid")){if(pc==a("probe_workaround")&&(nativeAux()||nativeBbt()&&c.get("bbt_native_workaround").getAsBoolean()))actions.add("probe_workaround_native");else if(!(nativeAux()&&pc==a("probe_uid"))){String name=pc==a("probe_workaround")?"workaround":"uid";long status=c.get("probe_"+name+"_status").getAsLong();actions.add("probe_"+name+":"+status);ret(e,status);continue;}}
                 if(pc==a("probe_bbt")&&!nativeBbt()){probeIndex(word(e,0x80d81f28L));long status=c.get("probe_bbt_status").getAsLong();actions.add("probe_bbt:"+r(e,0)+":"+r(e,1)+":"+r(e,2)+":"+status);ret(e,status);continue;}
                 if(pc==a("probe_create_mutex")){if(r(e,0)!=0)throw new IllegalStateException("Probe mutex argument");boolean ok=!c.get("probe_mutex_fail").getAsBoolean();actions.add("probe_mutex_create:"+(ok?1:0));ret(e,ok?0x81240000L:0);continue;}
             }
@@ -302,7 +315,7 @@ public class ValidateQspiHal extends GhidraScript {
         }abi(e);
     }
     private JsonObject execute(JsonObject input)throws Exception {
-        c=input;steps=ticks=chunks=dmaTicks=driverCalls=storageCalls=repairAllocations=0;bbtResumeReturn=bbtFollowReturn=null;bbtReturnAddress=0;probeRunning=false;probeBusCalls=0;initAttempts=initFrees=initClocks=0;initHeap=new JsonArray();prefixHeap.clear();prefixFrees=0;dmaReceive=false;actions=new JsonArray();Helper e=new Helper(currentProgram);io=new Io();io.base=c.get("base").getAsLong();io.clock=c.get("clock_word").getAsLong();if(nativeIdentity())io.featureRegs.put(224L,c.get("e0").getAsLong());
+        c=input;steps=ticks=chunks=dmaTicks=driverCalls=storageCalls=repairAllocations=0;uidReturnAddress=0;auxExportReturn=null;bbtResumeReturn=bbtFollowReturn=null;bbtReturnAddress=0;probeRunning=false;probeBusCalls=0;initAttempts=initFrees=initClocks=0;initHeap=new JsonArray();prefixHeap.clear();prefixFrees=0;dmaReceive=false;actions=new JsonArray();Helper e=new Helper(currentProgram);io=new Io();io.base=c.get("base").getAsLong();io.clock=c.get("clock_word").getAsLong();if(nativeIdentity())io.featureRegs.put(224L,c.get("e0").getAsLong());
         try{
             byte[] sentinel=new byte[4096];Arrays.fill(sentinel,(byte)0xa5);e.writeMemory(toAddr(0x81000000L),sentinel);e.writeRegister("sp",0x81001000L);for(int i=0;i<12;i++)e.writeRegister("s"+i,0x45670000L+i);
             e.writeMemory(toAddr(CTRL-32),Arrays.copyOf(sentinel,128));
@@ -345,7 +358,9 @@ public class ValidateQspiHal extends GhidraScript {
                 if(nativeProgram()){put(e,0x80d81b2cL,1,c.get("guard").getAsBoolean()?1:0);put(e,0x80d81f20L,4,512);}
                 if(nativeProbe()){
                     for(long pointer:new long[]{0x80d81f28L,0x80d81f18L,0x80d81f20L,0x80d81f1cL})put(e,pointer,4,0);put(e,0x80d81f14L,4,c.get("probe_mutex_present").getAsBoolean()?0x81240000L:0);
+                    if(nativeAux()){e.writeMemory(toAddr(0x80df4370L),Arrays.copyOf(sentinel,160));put(e,0x80d81f24L,1,c.get("initial_uid_length").getAsLong());}
                     probeRunning=true;entry(e,a(c.get("probe_entry").getAsString().equals("wrapper")?"probe_wrapper":"probe_routine"));probeRunning=false;
+                    if(nativeAux()&&stopped==null&&c.get("aux_export_uid").getAsBoolean()){long returned=r(e,0);entry(e,a("identity_ioctl"),24,BUFFER,1);if(stopped==null){auxExportReturn=r(e,0);e.writeRegister("a0",returned);}}
                 }else if(nativeDispatch()){
                     byte[] part=Arrays.copyOf(sentinel,92);Arrays.fill(part,0,60,(byte)0);put(e,0x80d81f34L,4,2048);put(e,0x80d81f30L,4,65536);put(e,0x80d81f2cL,4,64);
                     e.writeMemory(toAddr(0x81308000L),part);put(e,0x81308030L,4,c.get("partition_base").getAsLong());put(e,0x81308034L,4,c.get("partition_span").getAsLong());
@@ -471,6 +486,7 @@ public class ValidateQspiHal extends GhidraScript {
             if(nativeMutation()){row.addProperty("write_flags_hex",HexFormat.of().formatHex(mem(e,0x8130c000L,8)));for(long at:new long[]{0x8130c000L-32,0x8130c008L})if(!Arrays.equals(guard,mem(e,at,32)))throw new IllegalStateException("Write flag guards");}
             if(nativeRepair())row.addProperty("repair_allocations",repairAllocations);
             if(nativeBbt()){row.addProperty("bbt_state_hex",HexFormat.of().formatHex(mem(e,0x80df42ccL,164)));row.addProperty("bbt_status_reads",io.bbtStatusReads);row.add("bbt_resume_result",bbtResumeReturn==null?JsonNull.INSTANCE:new JsonPrimitive(bbtResumeReturn));row.add("bbt_follow_return",bbtFollowReturn==null?JsonNull.INSTANCE:new JsonPrimitive(bbtFollowReturn));}
+            if(nativeAux())row.add("aux_export_return",auxExportReturn==null?JsonNull.INSTANCE:new JsonPrimitive(auxExportReturn));
             if(nativeProbe()){
                 row.addProperty("probe_selected",word(e,0x80d81f28L));row.addProperty("probe_mutex",word(e,0x80d81f14L));row.addProperty("probe_regulator",word(e,0x80d81f18L));row.addProperty("probe_guard_pages",word(e,0x80d81f20L));row.addProperty("probe_guard_blocks",word(e,0x80d81f1cL));row.addProperty("probe_bus_calls",probeBusCalls);row.addProperty("probe_id_reads",io.probeIdReads);
                 JsonObject features=new JsonObject();for(var item:io.featureRegs.entrySet())features.addProperty(Long.toString(item.getKey()),item.getValue());row.add("probe_features",features);

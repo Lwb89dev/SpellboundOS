@@ -65,6 +65,11 @@ cases. UID remains a supplied callback: its selected negative return is still
 ignored before real BBT recovery. The actual UID body and full object registry/
 startup remain open integration work.
 
+The subsequent [UID/probe/BBT pass](NAND_PROBE_UID_BBT.md) replaces that UID
+callback with original acquisition and adds post-probe ioctl export. The
+[supported-family pass](NAND_PROBE_AUX.md) separately joins reset/E0-level/UID
+inside candidate 3; its 4-KiB-page BBT service remains supplied.
+
 ## Reproduction and verification
 
 All original spans and relevant descriptor/table/CRC data are hash guarded.
@@ -96,7 +101,7 @@ python3 analysis_scripts/nand_probe_bbt_stack.py firmware/bip6-4.6.0.3.zip \
 Generate exports with `DecompileWithLogger.java`, logger `0x80c1cd7a` and
 `TARGETS` from `analysis_scripts.nand_probe_bbt_stack`. Firmware/exports stay local.
 
-Remaining gates include actual UID and supported-family workaround integration,
-initial BBT creation and physical provenance, broader registry/startup, complete
+Remaining gates include initial BBT creation and physical provenance,
+supported-family BBT geometry, broader registry/startup, complete
 persistent write/retire/reboot behavior, concurrency, backup/restoration and
 standalone boot through the signed chain.

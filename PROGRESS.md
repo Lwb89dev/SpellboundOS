@@ -2223,6 +2223,40 @@ limits; the initial observations point to the current status and work log.
    All 634 previous native reports reproduce byte for byte with the extended
    runner and refactored probe model; both new evidence files reproduce exactly.
 
+## 2026-11-18 — original UID joined to probe and BBT recovery
+
+1. Connected original UID acquisition/verification through platform/QSPI FIFO
+   inside the first-chip probe, before ordinary feature programming and actual
+   BBT recovery. First, second and sixteenth complement-valid copies publish
+   length 16. All-invalid copies clear length while probe/BBT can still succeed.
+2. Selected early feature/ECC errors preserve authored prior length 17 and UID
+   sentinel bytes. Original ioctl 24 after successful probe exports that retained
+   state; successful acquisition exports 16 verified bytes. This establishes
+   error-state behavior over authored inputs, not physical UID provenance.
+3. Eleven native cases pass in 245,971 steps (maximum 34,710), including backup
+   repair, actual erase failure, ignored no-table result and wrapper mutex order.
+   Ninety-eight code/export and 37 data hashes accompany
+   [analysis/NAND_PROBE_UID_BBT.md](analysis/NAND_PROBE_UID_BBT.md) and
+   [analysis/nand-probe-uid-bbt.json](analysis/nand-probe-uid-bbt.json).
+
+## 2026-11-18 — supported-family workaround and UID inside original probe
+
+1. Joined actual candidate-3 compatibility/reset/E0-level and UID bodies to
+   original probe/platform/FIFO. Original descriptor/sequence bytes remain
+   unchanged. Reset opcodes 66/99 and requested delays precede E0 handling and
+   UID; ordinary feature programming subsequently restores B0 to 0x19.
+2. E0=2, second-attempt confirmation and five ignored/unconfirmed writes now run
+   inside the probe. Five mismatches can leave E0=2 with successful probe and
+   valid UID. Early UID errors again permit subsequent export of authored prior
+   state. This scope keeps BBT supplied for candidate 3's 4-KiB-page geometry.
+3. Ten native cases pass in 131,238 steps (maximum 28,586). Forty-nine code/export
+   and 31 data hashes accompany [analysis/NAND_PROBE_AUX.md](analysis/NAND_PROBE_AUX.md)
+   and [analysis/nand-probe-aux.json](analysis/nand-probe-aux.json). The two scopes
+   share 20 host tests in the 1,545-test suite. All 667 preceding shared-runner
+   native cases reproduce byte for byte; both new evidence files reproduce.
+   No hardware access or persistent media change occurred. Initial BBT creation,
+   wider geometry/registry/startup and safe backup/restoration remain open.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -2295,8 +2329,10 @@ limits; the initial observations point to the current status and work log.
   also connect through actual QSPI/FIFO for all eleven original descriptors.
   The selected first-chip probe now also joins actual BBT recovery and the
   unsupported-family workaround branch, including real no-table/repair-error
-  results. Follow actual UID/supported-family workaround integration, initial
-  BBT creation and broader startup; object registry remains open. Actual retry/
+  results. Original UID acquisition and later ioctl export now also join this
+  path; actual supported-family reset/E0-level/UID joins candidate 3 with its
+  BBT still supplied. Follow wider BBT geometry, initial BBT creation and broader
+  startup; object registry remains open. Actual retry/
   UID setup/acquisition and UID ioctl export now execute through actual command
   builders and busy loops over a supplied bus. Setter retry exhaustion can return
   zero, and UID ioctl can export prior state after early acquisition errors.

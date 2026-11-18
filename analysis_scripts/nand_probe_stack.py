@@ -48,8 +48,8 @@ class Model(lower.Model):
             if self.feature_reads==self.c['probe_feature_mismatch_at']:value^=1
         else:raise ValueError('unexpected probe FIFO opcode')
         self.rx+=size;self.actions.append(f'r:{offset}:{size}:{value}');return value
-    def transfer(self,op,address=0,address_bytes=0,count=0,write=True,payload=None):
-        self.actions.append('version:2');self.c['frame']=[2 if write else 0,0,op,1,1,address,1,address_bytes,1,count,0]
+    def transfer(self,op,address=0,address_bytes=0,count=0,write=True,payload=None,*,dummy=0,lines=1):
+        self.actions.append('version:2');self.c['frame']=[2 if write else 0,0,op,1,1,address,1,address_bytes,lines,count,dummy]
         result=self.command();stage='command';saved=self.buffer;self.buffer=bytearray(512)
         if payload is not None:self.buffer[:len(payload)]=payload
         if not result and count:

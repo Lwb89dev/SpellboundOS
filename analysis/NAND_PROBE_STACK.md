@@ -126,4 +126,7 @@ backup/restoration/standalone boot. Passing ID fixtures cannot close those gates
 
 The subsequent [probe/BBT pass](NAND_PROBE_BBT_STACK.md) joins actual recovery
 and the selected first-chip unsupported-family workaround branch to this probe.
-Actual UID and supported-family workaround integration remain open.
+The subsequent [UID/probe/BBT pass](NAND_PROBE_UID_BBT.md) also joins original
+UID acquisition and post-probe ioctl export for the first descriptor. The
+[supported-family pass](NAND_PROBE_AUX.md) joins actual reset/E0-level/UID for
+candidate 3, with BBT still supplied for its different geometry.
