@@ -2046,6 +2046,23 @@ limits; the initial observations point to the current status and work log.
    Readback/relocation/bad marking, broader allocator/map reconstruction, complete
    concurrency/coherency/IRQ, physical corroboration/backup/restoration/boot remain open.
 
+## 2026-11-18 — enabled EFTL readback, checksum and mapping publication
+
+1. Connected enabled write readback through original NAND page/OOB extraction
+   and checksum, including selected bidirectional DMA control. Tag/checksum pass
+   does not compare logical block identity: a valid logical-7 record is accepted
+   while writing logical zero. Cache bytes remain authored, not physical data.
+2. Failed check after free-block program leaves its flag advanced without new
+   RAM mapping publication. Private RX models no movement and exposes stale TX
+   bytes in the selected fixture; this is a model boundary, not a device finding.
+3. All 16 cases pass in 799,362 steps (maximum 57,438); prior 485 native cases
+   reproduce byte for byte. Twelve host checks bring the suite to 1,393 passing
+   tests. Seventy-seven code/export and twelve data hashes are recorded in
+   [analysis/EFTL_READBACK_STACK.md](analysis/EFTL_READBACK_STACK.md) and
+   [analysis/eftl-readback-stack.json](analysis/eftl-readback-stack.json).
+   I/O-error relocation/bad marking, prefix copying, atomicity and physical
+   corroboration/restoration/standalone boot remain open.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
