@@ -60,6 +60,9 @@ class Model(lower.Model):
             self.actions.extend(('log:'+stage+'_error','diagnostic'))
             self.stopped=dict(kind='assertion',owner=0x80c37b7c,line={'command':0x11f,'receive_poll':0x12a,'transmit_poll':0x132}[stage]);return None
         return received
+    def run_workaround(self):self.actions.append('probe_workaround:'+str(self.c['probe_workaround_status']))
+    def run_uid(self):self.actions.append('probe_uid:'+str(self.c['probe_uid_status']))
+    def run_probe_bbt(self,chip):self.actions.append(f'probe_bbt:{chip["blocks"]}:{chip["page_size"]}:{chip["pages_per_block"]}:{self.c["probe_bbt_status"]}')
     def probe(self):
         c=self.c;self.actions.append('probe_regulator:'+str(int(bool(self.regulator))))
         if self.regulator:self.actions.extend((f'probe_disable:{c["probe_power_status"]}','probe_delay:20',f'probe_enable:{c["probe_power_status"]}','probe_delay:20'))
@@ -75,15 +78,19 @@ class Model(lower.Model):
         chip=next(c for c in CHIPS if c['address']==self.selected)
         self.transfer(0xff)
         if self.stopped:return None
-        self.actions.extend((f'probe_delay:{chip["reset_delay_us"]//1000+1}',f'probe_workaround:{c["probe_workaround_status"]}','log:chip_summary'))
-        if chip['uid']:self.actions.append('probe_uid:'+str(c['probe_uid_status']))
+        self.actions.append(f'probe_delay:{chip["reset_delay_us"]//1000+1}');self.run_workaround()
+        if self.stopped:return None
+        self.actions.append('log:chip_summary')
+        if chip['uid']:self.run_uid()
+        if self.stopped:return None
         for reg,value in chip['features']:
             self.transfer(0x1f,reg,1,1,True,bytes([value]))
             if self.stopped:return None
             got=self.transfer(0x0f,reg,1,1,False)
             if self.stopped:return None
             if got[0]!=value:self.actions.extend(('log:feature_mismatch','log:probe_error'));return -7
-        self.actions.append(f'probe_bbt:{chip["blocks"]}:{chip["page_size"]}:{chip["pages_per_block"]}:{c["probe_bbt_status"]}')
+        self.run_probe_bbt(chip)
+        if self.stopped:return None
         self.guard_pages=0x100000//chip['page_size'];self.guard_blocks=self.guard_pages//chip['pages_per_block']
         self.actions.append('log:boot_guard');return 0
     def run(self):

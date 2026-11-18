@@ -194,3 +194,9 @@ The subsequent [retry/UID pass](NAND_RETRY_AND_UID.md) executes actual level
 control, retry/reset policy and UID acquisition through actual command builders
 and the busy loop, and connects UID acquisition to ioctl export. Physical ECC
 correction, UID provenance and lower HAL behavior remain unvalidated.
+
+The later [NAND/QSPI BBT pass](NAND_BBT_STACK.md) connects actual verification,
+CRC, tail-marker scan, backup repair and subsequent mapped reads through the
+lower stack. [Probe/BBT integration](NAND_PROBE_BBT_STACK.md) then observes the
+real recovery return inside the original first-chip probe. Peripheral/record
+inputs remain authored and physical persistence is not established.

@@ -123,3 +123,7 @@ Next work includes joining actual BBT recovery and auxiliary UID/workaround
 paths to the probe, broader driver registry/startup, physical chip/timing/ECC
 corroboration, persistent write/retire/reboot reconstruction and safe
 backup/restoration/standalone boot. Passing ID fixtures cannot close those gates.
+
+The subsequent [probe/BBT pass](NAND_PROBE_BBT_STACK.md) joins actual recovery
+and the selected first-chip unsupported-family workaround branch to this probe.
+Actual UID and supported-family workaround integration remain open.

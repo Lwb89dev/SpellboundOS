@@ -2187,6 +2187,42 @@ limits; the initial observations point to the current status and work log.
    services remain authored. Actual auxiliary/BBT startup, driver registry,
    physical identification, persistence and backup/restoration/boot remain open.
 
+## 2026-11-18 — BBT recovery and mapped reads through original NAND/QSPI
+
+1. Connected actual BBT verification/CRC, reserved-tail marker scan, backup
+   reread/erase/program and following mapped reads through original NAND/bus/QSPI.
+   A recovered `[1, 3, 7]` table drives caller page 600 to actual load address 792;
+   inactive mapping loads 600. Record/FIFO/status inputs remain authored and
+   captured erase/program commands do not mutate persistent cells in this model.
+2. Verified zero return and restored active RAM mapping after actual reread ECC,
+   erase and program errors; no-good/one-good tail assertions; count limits,
+   accepted unsorted/duplicate records and reserved-page rejection. Direct verify
+   with an already active map can fail before a NAND read; resume clears it first.
+3. All 21 native cases pass in 342,220 steps (maximum 34,562). Sixteen targeted
+   host checks are included in the combined 1,525-test passing suite. Eighty-seven
+   code/export and fourteen data hashes are in
+   [analysis/NAND_BBT_STACK.md](analysis/NAND_BBT_STACK.md) and
+   [analysis/nand-bbt-stack.json](analysis/nand-bbt-stack.json).
+
+## 2026-11-18 — original first-chip probe joined to BBT recovery
+
+1. Replaced the selected probe's supplied BBT return with actual recovery through
+   NAND/QSPI. Real no-table return 1 is ignored: the probe can return zero, set
+   guard counts and let its wrapper create a mutex while BBT magic is inactive.
+   Real repair errors can likewise leave active RAM mapping and probe success.
+   A BBT assertion stops before guard/mutex publication, after descriptor selection.
+2. Executed the actual first-chip unsupported-family workaround branch and its
+   compatibility checks. UID/power/mutex and library/peripheral effects remain
+   supplied; supported-family workaround and actual UID integration stay open.
+3. All 12 native cases pass in 235,814 steps (maximum 37,339). Eleven targeted
+   host checks join the same 1,525-test suite. Ninety-three code/export and 36
+   data hashes are in [analysis/NAND_PROBE_BBT_STACK.md](analysis/NAND_PROBE_BBT_STACK.md)
+   and [analysis/nand-probe-bbt-stack.json](analysis/nand-probe-bbt-stack.json).
+   Both macroblocks retain authored read-only record inputs and establish no
+   physical table provenance, persistent repair or standalone boot/recovery.
+   All 634 previous native reports reproduce byte for byte with the extended
+   runner and refactored probe model; both new evidence files reproduce exactly.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -2257,8 +2293,10 @@ limits; the initial observations point to the current status and work log.
   corroboration. Original candidate matching/probe and driver-root setup now
   execute with supplied services; candidate platform/ID/reset/feature paths now
   also connect through actual QSPI/FIFO for all eleven original descriptors.
-  Join auxiliary UID/workaround/BBT bodies and broader startup; object registry
-  remains open. Actual retry/
+  The selected first-chip probe now also joins actual BBT recovery and the
+  unsupported-family workaround branch, including real no-table/repair-error
+  results. Follow actual UID/supported-family workaround integration, initial
+  BBT creation and broader startup; object registry remains open. Actual retry/
   UID setup/acquisition and UID ioctl export now execute through actual command
   builders and busy loops over a supplied bus. Setter retry exhaustion can return
   zero, and UID ioctl can export prior state after early acquisition errors.
