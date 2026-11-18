@@ -86,3 +86,7 @@ exports stay local. The separate [main NAND method pass](MAIN_NAND_OBJECT.md)
 executes original open/close/ioctl methods behind this generic API. The two
 scopes share 24 host tests in the **1,620-test suite**. Removal, deallocation,
 callback lifetime/concurrency and physical shutdown remain open.
+
+The subsequent [main root/registry pass](MAIN_NAND_ROOT_STACK.md) constructs the
+object through original initialization and insertion before these consumers,
+with probe/BSP/heap/RTOS/PM services still supplied.

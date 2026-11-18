@@ -2372,6 +2372,41 @@ limits; the initial observations point to the current status and work log.
    Main lower-driver/probe/registry integration, removal/reclamation/concurrency,
    persistence, initial BBT provenance and safe backup/restoration remain open.
 
+## 2026-11-18 — main geometry through actual context/chip/BBT-active bodies
+
+1. Replaced supplied main lower geometry results with original lower/context/
+   lock/chip switch and BBT-active code. Two unchanged original descriptors
+   yield 2-KiB/128-MiB and 4-KiB/512-MiB software geometry. Selected pointer,
+   mutex/RTOS effects and BBT magic remain authored; no probe/media/CRC runs.
+2. Checked exact/wrong/inactive magic, no selected chip, normal/IRQ/scheduler/
+   absent-mutex paths and acquire/release assertions. Failure leaves geometry
+   output unpublished; a real no-chip result still traverses normal release.
+3. All 13 native cases pass in 4,213 steps (maximum 499). Fourteen code/export
+   and 13 data hashes accompany
+   [analysis/MAIN_NAND_QUERY_STACK.md](analysis/MAIN_NAND_QUERY_STACK.md) and
+   [analysis/main-nand-query-stack.json](analysis/main-nand-query-stack.json).
+
+## 2026-11-18 — main root/registry/PM publication joined to geometry consumers
+
+1. Executed original main root and operation initializer, actual main registry
+   lookup/duplicate/insertion and subsequent object consumers. Probe, BSP
+   property/heap/RTOS/library/PM-binding services remain supplied. A supplied
+   successful probe publishes an original descriptor; actual candidate search,
+   UID, BBT recovery and bus initialization remain outside this scope.
+2. Real registration precedes cached-object publication, then a dev_nand_pm
+   property lookup and binding call. A supplied -9 return from that call is
+   ignored. Missing PM property asserts after registry/cache publication.
+   Duplicate registration retains an unlinked allocation but skips cache/PM;
+   probe, allocation, driver-mutex and property failures expose earlier stages.
+3. All 12 native cases pass in 4,763 steps (maximum 725). Eighteen code/export
+   and 16 data hashes accompany [analysis/MAIN_NAND_ROOT_STACK.md](analysis/MAIN_NAND_ROOT_STACK.md)
+   and [analysis/main-nand-root-stack.json](analysis/main-nand-root-stack.json).
+   The two scopes add 24 host tests to the 1,644-test suite. All 41 prior main-
+   object native reports reproduce byte for byte; both new evidence files
+   reproduce. Existing guard/log values are preserved. Actual main probe/UID/
+   BBT/platform/media, wider storage/startup, PM internals, reclamation/concurrency
+   and safe physical backup/restoration/boot remain open.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -2452,9 +2487,12 @@ limits; the initial observations point to the current status and work log.
   after duplicate rejection. Original object open/reference/ioctl policy and
   post-root NAND geometry/context/BBT consumers now also execute. Main-image
   generic close/reference/write/ioctl and original NAND method consumers now
-  execute too, with main lower geometry queries supplied. Follow main lower-driver/
-  probe/registry integration, broader close callers, removal/reclamation/concurrency
-  and real property/heap/mutex services. Actual retry/
+  execute too. Original main context/chip/BBT-active geometry now also executes,
+  with authored selected-descriptor/magic and RTOS state. Main root/wrapper/registry/
+  cache/PM publication now joins it with a supplied probe and PM/BSP/heap services.
+  Follow actual main probe/UID/BBT/platform/transport, wider storage and PM callers,
+  broader close callers, removal/reclamation/concurrency and real property/heap/
+  mutex services. Actual retry/
   UID setup/acquisition and UID ioctl export now execute through actual command
   builders and busy loops over a supplied bus. Setter retry exhaustion can return
   zero, and UID ioctl can export prior state after early acquisition errors.

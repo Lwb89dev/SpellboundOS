@@ -80,12 +80,17 @@ class Model:
         if query==0x1003:return 0
         if query not in (0x1001,0x1002):return -10
         if not op['output']:self.actions.append('log:geometry_null');return -10
+        values=[]
         for i,q in enumerate((13,2,1,14),1):
-            self.lower_calls+=1;status=self.c['lower_status'] if i==self.c['lower_fail_at'] else 0;value=self.c['geometry'][i-1]
-            self.actions.append(f'lower:{q}:{status}:{value}')
+            status,value=self.query(q,i)
+            if self.stopped:return None
             if status:return status
-        values=self.c['geometry'];struct.pack_into('<I',self.output,0,values[0]);struct.pack_into('<I',self.output,8,(values[1]*values[2])&0xffffffff);self.output[12]=values[3]&255
+            values.append(value)
+        struct.pack_into('<I',self.output,0,values[0]);struct.pack_into('<I',self.output,8,(values[1]*values[2])&0xffffffff);self.output[12]=values[3]&255
         return 0
+    def query(self,q,index):
+        self.lower_calls+=1;status=self.c['lower_status'] if index==self.c['lower_fail_at'] else 0;value=self.c['geometry'][index-1]
+        self.actions.append(f'lower:{q}:{status}:{value}');return status,value
     def operation(self,op):
         kind=op['op'];self.actions.append('native:'+kind)
         if kind=='active':return int(op['object'] and signed(self.refs())>0)

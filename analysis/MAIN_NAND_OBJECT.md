@@ -85,3 +85,8 @@ evidence files reproduce. The two scopes share 24 host checks in the
 **1,620-test suite**. Actual main lower NAND/probe/registration, wider callers,
 removal/reclamation/concurrency, persistence and physical backup/restoration/
 standalone boot remain open.
+
+The subsequent [main query-stack pass](MAIN_NAND_QUERY_STACK.md) replaces the
+supplied geometry results with actual context/chip/BBT-active code over authored
+state. The [root pass](MAIN_NAND_ROOT_STACK.md) joins original initialization,
+registry and cache/PM publication with an explicitly supplied probe.
