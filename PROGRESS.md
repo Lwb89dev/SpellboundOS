@@ -2447,6 +2447,47 @@ limits; the initial observations point to the current status and work log.
    feature transport, actual main UID/workaround/BBT, broader storage/startup,
    PM internals, reclamation/concurrency and physical restoration/boot remain open.
 
+## 2026-11-18 — original main bus/platform and feature packets
+
+1. Executed actual main bus init/transfer and feature read/write builders over
+   supplied HAL/revision/DMA/pin/copy services and authored MMIO. Clock-word
+   boundaries, original controller/DMA-link publication, ignored initialization
+   statuses, normalized direction/dummy fields, direct/bounce thresholds,
+   copying and partial receive effects now have main-image native evidence.
+2. Disabled flag 0x80c10e39 returns -1 before pending reinitialization is cleared
+   or any revision/command call. Otherwise reinitialization flag 0x80c10e38 is
+   cleared before actual init. Init itself preserves both flags. HAL failures
+   stop at distinct original transport assertions; disabled feature calls reach
+   actual builder assertions. No assertion body or physical peripheral runs.
+3. All 35 native cases pass in 3,168 steps (maximum 200), with four code/export
+   and two original data hashes. The direct fixture clones the first descriptor
+   to vary its bus word; original source/binding bytes remain guarded. See
+   [analysis/MAIN_NAND_BUS.md](analysis/MAIN_NAND_BUS.md) and
+   [analysis/main-nand-bus.json](analysis/main-nand-bus.json).
+
+## 2026-11-18 — main probe/platform/bus/feature path through root consumers
+
+1. Connected actual main bus initialization/packet conversion and feature
+   builders to original probe/matcher/ID/reset, root/wrapper/registry/cache/PM
+   publication and subsequent open/geometry/close. All eleven unchanged original
+   descriptors now drive their own bus clock policy, feature packets and actual
+   geometry queries. HAL/FIFO/DMA, revision, power, UID/workaround/BBT and
+   BSP/RTOS/heap/library/PM services remain supplied.
+2. Real HAL command/data faults stop inside transport. Authored disabled-flag
+   transitions after selected commands expose actual feature-builder assertions;
+   these cases do not establish an actual asynchronous setter or race. Readback
+   mismatch instead returns probe -7 and outer -6 before allocation. Supplied
+   no-BBT, duplicate registration and late PM assertion retain their distinct
+   successful-probe state; registry publication does not imply active BBT.
+3. All 25 native cases pass in 44,902 steps (maximum 4,202), with 26 code/export
+   and 38 data hashes. See [analysis/MAIN_NAND_BUS_PROBE.md](analysis/MAIN_NAND_BUS_PROBE.md)
+   and [analysis/main-nand-bus-probe.json](analysis/main-nand-bus-probe.json).
+   Both new evidence files reproduce; all 100 earlier main native cases
+   reproduce byte for byte. Parent configuration/guards/log tags are unchanged;
+   narrow inherited harness hooks support the new scope. Twenty-six new host
+   checks join the passing 1,694-test suite. Main HAL/FIFO/DMA and revision bodies,
+   actual UID/workaround/BBT, wider storage and physical restoration/boot remain open.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -2531,8 +2572,12 @@ limits; the initial observations point to the current status and work log.
   with authored selected-descriptor/magic and RTOS state. Main root/wrapper/registry/
   cache/PM publication now joins it with PM/BSP/heap services supplied. Actual
   main probe/matcher/ID/reset builders now also join it over all eleven original
-  candidates, with bus/regulator/feature and auxiliary bodies supplied.
-  Follow actual main bus/platform/feature transport and UID/workaround/BBT,
+  candidates. Actual main bus/platform/feature packet conversion now also joins
+  this path over all eleven descriptors, with HAL/revision/regulator/DMA services
+  and auxiliary bodies supplied. Follow main command HAL 0x80d34b30, direct
+  receive/transmit 0x80d34c68/0x80d34dc0, DMA initializer 0x702a0038 and
+  revision 0x80d4556c; their bytes are readable in startup-aware main memory.
+  Then follow actual main UID/workaround/BBT,
   wider storage and PM callers,
   broader close callers, removal/reclamation/concurrency and real property/heap/
   mutex services. Actual retry/

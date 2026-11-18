@@ -1,0 +1,1169 @@
+{
+  "byte_range_sha256": {
+    "70296ab0_172": "cd883f10874ffa0d0a0c0a61a9bcc5b9f5e97da4bc15704a9b767fd0076abbc7",
+    "70296c24_3aa": "1e8f2570ed783b41497de82112e94798920bb9ffbd745d81e85c304737d237ce",
+    "702d5daa_64": "eeb3306b86c99b76c1881aed97dcebaf93411af971d08ed975dd8e58874ef177",
+    "702d5e0e_6c": "490dbfa98ddfa99a2ff0375a38a4dbf0b778eb00527b6e587dedb39f59a9d3d9"
+  },
+  "data_range_sha256": {
+    "70a3204c_b8": "2e1217166b3942f8e42486bd55379b45b87f2f51085d04688b626452159c89dd",
+    "80c007c4_14": "0052a47961a0f941dd3d97beca4b258b8be0cbd7553cf4e8ee92e8f735f65074"
+  },
+  "export_sha256": {
+    "70296ab0.c": "e3d520bf92d3db54fdf9a80659c3d2fe08816298eb656e06abc3bd0d92c94b91",
+    "70296c24.c": "76a466804ab8dafb0e86f6257d4a38bf791f8ad4c306bbee9c78e9e7d04c6f78",
+    "702d5daa.c": "2bd0ed1e29fb170eec78d07e8bc4e4f47b739f102f21d2846681e827718c4398",
+    "702d5e0e.c": "8448fbbdaa0fe2db007d73373746046e8bbd0d1087e59cf215c87805461ee33a"
+  },
+  "inventory_sha256": "9898d73eaa70af97c3e82a0fbb371071bf7385cfb3aa2cafec617c3a3c929a08",
+  "limitations": [
+    "Original main bus init/transfer and feature packet builders execute over authored MMIO, revision return, HAL/DMA/pin/copy services and response/status inputs.",
+    "The direct fixture clones the first original descriptor only to vary its bus word; original bus binding and source descriptor are hash guarded. This does not identify physical geometry.",
+    "Fences are recorded as single-thread ordering markers. Actual HAL/FIFO/DMA, electrical timing, physical power/UID/BBT, concurrency, persistence and standalone boot remain unverified."
+  ],
+  "main_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "native_steps": 3168,
+  "native_validation": {
+    "bound_per_case": 10000,
+    "case_count": 35,
+    "cases": [
+      {
+        "name": "main_bus_init_high",
+        "observed": {
+          "actions": [
+            "clock_select:1",
+            "pinmux:0:127:63",
+            "gpio:0:127:1",
+            "fence",
+            "controller_init:0",
+            "fence",
+            "dma_init:0:0e61738b67065cf7ae0fdc3678930e98dcb22558840a53dc95e772f0a6871ae4:0",
+            "dma_init:1:8f61e525d85cc673cf35588a840830807d65bb2e08a769acfe2ff6e830ac13ea:0"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "controller_hex": "00002493a5a5a5a50000000000000000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5f40dc180b00dc180a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "56c24c85e8f6283fa2c0ad3c3ad550254e65d4ea403a774b04a407ea8d592efa",
+                "be5ba725284bb803200506d34a8e8606804d40c4fb43dd46db095c8149755315"
+              ],
+              "mmio": [
+                16777737,
+                536871425
+              ],
+              "reinit": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 113
+      },
+      {
+        "name": "main_bus_init_low",
+        "observed": {
+          "actions": [
+            "clock_select:2",
+            "pinmux:0:127:63",
+            "gpio:0:127:1",
+            "fence",
+            "controller_init:0",
+            "fence",
+            "dma_init:0:0e61738b67065cf7ae0fdc3678930e98dcb22558840a53dc95e772f0a6871ae4:0",
+            "dma_init:1:8f61e525d85cc673cf35588a840830807d65bb2e08a769acfe2ff6e830ac13ea:0"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "controller_hex": "00002493a5a5a5a50000000000000000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5f40dc180b00dc180a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "56c24c85e8f6283fa2c0ad3c3ad550254e65d4ea403a774b04a407ea8d592efa",
+                "be5ba725284bb803200506d34a8e8606804d40c4fb43dd46db095c8149755315"
+              ],
+              "mmio": [
+                16777737,
+                536871425
+              ],
+              "reinit": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 114
+      },
+      {
+        "name": "main_bus_init_99",
+        "observed": {
+          "actions": [
+            "clock_select:2",
+            "pinmux:0:127:63",
+            "gpio:0:127:1",
+            "fence",
+            "controller_init:0",
+            "fence",
+            "dma_init:0:0e61738b67065cf7ae0fdc3678930e98dcb22558840a53dc95e772f0a6871ae4:0",
+            "dma_init:1:8f61e525d85cc673cf35588a840830807d65bb2e08a769acfe2ff6e830ac13ea:0"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "controller_hex": "00002493a5a5a5a50000000000000000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5f40dc180b00dc180a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "56c24c85e8f6283fa2c0ad3c3ad550254e65d4ea403a774b04a407ea8d592efa",
+                "be5ba725284bb803200506d34a8e8606804d40c4fb43dd46db095c8149755315"
+              ],
+              "mmio": [
+                16777737,
+                536871425
+              ],
+              "reinit": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 114
+      },
+      {
+        "name": "main_bus_init_100",
+        "observed": {
+          "actions": [
+            "clock_select:1",
+            "pinmux:0:127:63",
+            "gpio:0:127:1",
+            "fence",
+            "controller_init:0",
+            "fence",
+            "dma_init:0:0e61738b67065cf7ae0fdc3678930e98dcb22558840a53dc95e772f0a6871ae4:0",
+            "dma_init:1:8f61e525d85cc673cf35588a840830807d65bb2e08a769acfe2ff6e830ac13ea:0"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "controller_hex": "00002493a5a5a5a50000000000000000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5f40dc180b00dc180a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "56c24c85e8f6283fa2c0ad3c3ad550254e65d4ea403a774b04a407ea8d592efa",
+                "be5ba725284bb803200506d34a8e8606804d40c4fb43dd46db095c8149755315"
+              ],
+              "mmio": [
+                16777737,
+                536871425
+              ],
+              "reinit": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 113
+      },
+      {
+        "name": "main_bus_init_status_ignored",
+        "observed": {
+          "actions": [
+            "clock_select:1",
+            "pinmux:0:127:63",
+            "gpio:0:127:1",
+            "fence",
+            "controller_init:-9",
+            "fence",
+            "dma_init:0:0e61738b67065cf7ae0fdc3678930e98dcb22558840a53dc95e772f0a6871ae4:-9",
+            "dma_init:1:8f61e525d85cc673cf35588a840830807d65bb2e08a769acfe2ff6e830ac13ea:-9"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "controller_hex": "00002493a5a5a5a50000000000000000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5f40dc180b00dc180a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "56c24c85e8f6283fa2c0ad3c3ad550254e65d4ea403a774b04a407ea8d592efa",
+                "be5ba725284bb803200506d34a8e8606804d40c4fb43dd46db095c8149755315"
+              ],
+              "mmio": [
+                16777737,
+                536871425
+              ],
+              "reinit": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 113
+      },
+      {
+        "name": "main_bus_init_keeps_flags",
+        "observed": {
+          "actions": [
+            "clock_select:1",
+            "pinmux:0:127:63",
+            "gpio:0:127:1",
+            "fence",
+            "controller_init:0",
+            "fence",
+            "dma_init:0:0e61738b67065cf7ae0fdc3678930e98dcb22558840a53dc95e772f0a6871ae4:0",
+            "dma_init:1:8f61e525d85cc673cf35588a840830807d65bb2e08a769acfe2ff6e830ac13ea:0"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "controller_hex": "00002493a5a5a5a50000000000000000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5f40dc180b00dc180a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 1,
+              "dma_sha256": [
+                "56c24c85e8f6283fa2c0ad3c3ad550254e65d4ea403a774b04a407ea8d592efa",
+                "be5ba725284bb803200506d34a8e8606804d40c4fb43dd46db095c8149755315"
+              ],
+              "mmio": [
+                16777737,
+                536871425
+              ],
+              "reinit": 1,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 113
+      },
+      {
+        "name": "main_bus_poll_read",
+        "observed": {
+          "actions": [
+            "version_query",
+            "command:0:0:3:1:1:4660:1:2:1:64:8:0",
+            "receive_poll:64:0"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "47a98b68bbac135516df96159de19a5862f7d1d6578263f310f368c2ea770e7f",
+              "controller_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021",
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021"
+              ],
+              "mmio": [
+                16777217,
+                536870913
+              ],
+              "reinit": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 83
+      },
+      {
+        "name": "main_bus_poll_write",
+        "observed": {
+          "actions": [
+            "version_query",
+            "command:2:0:3:1:1:4660:1:2:1:64:8:0",
+            "transmit_poll:64:ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657:0"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "controller_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021",
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021"
+              ],
+              "mmio": [
+                16777217,
+                536870913
+              ],
+              "reinit": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 82
+      },
+      {
+        "name": "main_bus_bounce_read",
+        "observed": {
+          "actions": [
+            "version_query",
+            "command:0:0:3:1:1:4660:1:2:1:64:8:0",
+            "receive_bounce:64:0",
+            "copy_from_bounce:64"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "49a0f14977eade2ae5c628df7b54b4aec6542c9df2a022e381c40a92a32d57f5",
+              "buffer_sha256": "47a98b68bbac135516df96159de19a5862f7d1d6578263f310f368c2ea770e7f",
+              "controller_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021",
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021"
+              ],
+              "mmio": [
+                16777217,
+                536870913
+              ],
+              "reinit": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 96
+      },
+      {
+        "name": "main_bus_bounce_write",
+        "observed": {
+          "actions": [
+            "version_query",
+            "copy_to_bounce:64",
+            "command:2:0:3:1:1:4660:1:2:1:64:8:0",
+            "transmit_bounce:64:ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657:0"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "92d22a4a311887752e64ffb51a0dee807d43170728745e2656af734335a543c6",
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "controller_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021",
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021"
+              ],
+              "mmio": [
+                16777217,
+                536870913
+              ],
+              "reinit": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 97
+      },
+      {
+        "name": "main_bus_threshold_31",
+        "observed": {
+          "actions": [
+            "version_query",
+            "command:0:0:3:1:1:4660:1:2:1:31:8:0",
+            "receive_poll:31:0"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "9075dd585e447f0189145f10f09f6f4ee7e013c83ed0cc456b6a07b1194eda6c",
+              "controller_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021",
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021"
+              ],
+              "mmio": [
+                16777217,
+                536870913
+              ],
+              "reinit": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 86
+      },
+      {
+        "name": "main_bus_threshold_32",
+        "observed": {
+          "actions": [
+            "version_query",
+            "command:0:0:3:1:1:4660:1:2:1:32:8:0",
+            "receive_bounce:32:0",
+            "copy_from_bounce:32"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "8cae3d914f762040c418458b90c134ed33a28bc01d2954a53d9d6413f5ae88c9",
+              "buffer_sha256": "1fade732ed7eff82c53cd1e53b5f0c10cb8cbee9b8e8e6589984631b98b5e42d",
+              "controller_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021",
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021"
+              ],
+              "mmio": [
+                16777217,
+                536870913
+              ],
+              "reinit": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 96
+      },
+      {
+        "name": "main_bus_revision_1_poll",
+        "observed": {
+          "actions": [
+            "version_query",
+            "command:0:0:3:1:1:4660:1:2:1:64:8:0",
+            "receive_poll:64:0"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "47a98b68bbac135516df96159de19a5862f7d1d6578263f310f368c2ea770e7f",
+              "controller_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021",
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021"
+              ],
+              "mmio": [
+                16777217,
+                536870913
+              ],
+              "reinit": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 88
+      },
+      {
+        "name": "main_bus_revision_0_poll",
+        "observed": {
+          "actions": [
+            "version_query",
+            "command:0:0:3:1:1:4660:1:2:1:64:8:0",
+            "receive_poll:64:0"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "47a98b68bbac135516df96159de19a5862f7d1d6578263f310f368c2ea770e7f",
+              "controller_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021",
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021"
+              ],
+              "mmio": [
+                16777217,
+                536870913
+              ],
+              "reinit": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 88
+      },
+      {
+        "name": "main_bus_revision_unsigned_bounce",
+        "observed": {
+          "actions": [
+            "version_query",
+            "command:0:0:3:1:1:4660:1:2:1:64:8:0",
+            "receive_bounce:64:0",
+            "copy_from_bounce:64"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "49a0f14977eade2ae5c628df7b54b4aec6542c9df2a022e381c40a92a32d57f5",
+              "buffer_sha256": "47a98b68bbac135516df96159de19a5862f7d1d6578263f310f368c2ea770e7f",
+              "controller_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021",
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021"
+              ],
+              "mmio": [
+                16777217,
+                536870913
+              ],
+              "reinit": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 96
+      },
+      {
+        "name": "main_bus_boolean_bytes",
+        "observed": {
+          "actions": [
+            "version_query",
+            "command:2:0:3:1:1:4660:1:2:1:64:8:0",
+            "transmit_poll:64:ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657:0"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "controller_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021",
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021"
+              ],
+              "mmio": [
+                16777217,
+                536870913
+              ],
+              "reinit": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 82
+      },
+      {
+        "name": "main_bus_reinitialize",
+        "observed": {
+          "actions": [
+            "clock_select:1",
+            "pinmux:0:127:63",
+            "gpio:0:127:1",
+            "fence",
+            "controller_init:0",
+            "fence",
+            "dma_init:0:0e61738b67065cf7ae0fdc3678930e98dcb22558840a53dc95e772f0a6871ae4:0",
+            "dma_init:1:8f61e525d85cc673cf35588a840830807d65bb2e08a769acfe2ff6e830ac13ea:0",
+            "version_query",
+            "command:0:0:3:1:1:4660:1:2:1:64:8:0",
+            "receive_poll:64:0"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "47a98b68bbac135516df96159de19a5862f7d1d6578263f310f368c2ea770e7f",
+              "controller_hex": "00002493a5a5a5a50000000000000000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5f40dc180b00dc180a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "56c24c85e8f6283fa2c0ad3c3ad550254e65d4ea403a774b04a407ea8d592efa",
+                "be5ba725284bb803200506d34a8e8606804d40c4fb43dd46db095c8149755315"
+              ],
+              "mmio": [
+                16777737,
+                536871425
+              ],
+              "reinit": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 200
+      },
+      {
+        "name": "main_bus_disabled",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "controller_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 1,
+              "dma_sha256": [
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021",
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021"
+              ],
+              "mmio": [
+                16777217,
+                536870913
+              ],
+              "reinit": 0,
+              "returned": 4294967295,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 5
+      },
+      {
+        "name": "main_bus_disabled_keeps_reinit",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "controller_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 1,
+              "dma_sha256": [
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021",
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021"
+              ],
+              "mmio": [
+                16777217,
+                536870913
+              ],
+              "reinit": 1,
+              "returned": 4294967295,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 5
+      },
+      {
+        "name": "main_bus_zero_length",
+        "observed": {
+          "actions": [
+            "version_query",
+            "command:0:0:3:1:1:4660:1:2:1:0:8:0"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "controller_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021",
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021"
+              ],
+              "mmio": [
+                16777217,
+                536870913
+              ],
+              "reinit": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 71
+      },
+      {
+        "name": "main_bus_command_error",
+        "observed": {
+          "actions": [
+            "version_query",
+            "command:0:0:3:1:1:4660:1:2:1:64:8:-9",
+            "log:command_error",
+            "diagnostic"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "controller_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021",
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021"
+              ],
+              "mmio": [
+                16777217,
+                536870913
+              ],
+              "reinit": 0,
+              "returned": null,
+              "stopped": {
+                "kind": "assertion",
+                "line": 294,
+                "owner": 1889647756
+              }
+            }
+          ]
+        },
+        "steps": 76
+      },
+      {
+        "name": "main_bus_read_error",
+        "observed": {
+          "actions": [
+            "version_query",
+            "command:0:0:3:1:1:4660:1:2:1:64:8:0",
+            "receive_poll:64:-9",
+            "log:receive_poll_error",
+            "diagnostic"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "controller_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021",
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021"
+              ],
+              "mmio": [
+                16777217,
+                536870913
+              ],
+              "reinit": 0,
+              "returned": null,
+              "stopped": {
+                "kind": "assertion",
+                "line": 305,
+                "owner": 1889647756
+              }
+            }
+          ]
+        },
+        "steps": 90
+      },
+      {
+        "name": "main_bus_write_error",
+        "observed": {
+          "actions": [
+            "version_query",
+            "command:2:0:3:1:1:4660:1:2:1:64:8:0",
+            "transmit_poll:64:ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657:-9",
+            "log:transmit_poll_error",
+            "diagnostic"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "controller_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021",
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021"
+              ],
+              "mmio": [
+                16777217,
+                536870913
+              ],
+              "reinit": 0,
+              "returned": null,
+              "stopped": {
+                "kind": "assertion",
+                "line": 313,
+                "owner": 1889647756
+              }
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "main_bus_bounce_command_error",
+        "observed": {
+          "actions": [
+            "version_query",
+            "command:0:0:3:1:1:4660:1:2:1:64:8:-9",
+            "log:command_error",
+            "diagnostic"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "controller_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021",
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021"
+              ],
+              "mmio": [
+                16777217,
+                536870913
+              ],
+              "reinit": 0,
+              "returned": null,
+              "stopped": {
+                "kind": "assertion",
+                "line": 361,
+                "owner": 1889647784
+              }
+            }
+          ]
+        },
+        "steps": 82
+      },
+      {
+        "name": "main_bus_bounce_read_error",
+        "observed": {
+          "actions": [
+            "version_query",
+            "command:0:0:3:1:1:4660:1:2:1:64:8:0",
+            "receive_bounce:64:-9",
+            "log:receive_bounce_error",
+            "diagnostic"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "controller_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021",
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021"
+              ],
+              "mmio": [
+                16777217,
+                536870913
+              ],
+              "reinit": 0,
+              "returned": null,
+              "stopped": {
+                "kind": "assertion",
+                "line": 374,
+                "owner": 1889647784
+              }
+            }
+          ]
+        },
+        "steps": 99
+      },
+      {
+        "name": "main_bus_bounce_write_error",
+        "observed": {
+          "actions": [
+            "version_query",
+            "copy_to_bounce:64",
+            "command:2:0:3:1:1:4660:1:2:1:64:8:0",
+            "transmit_bounce:64:ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657:-9",
+            "log:transmit_bounce_error",
+            "diagnostic"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "92d22a4a311887752e64ffb51a0dee807d43170728745e2656af734335a543c6",
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "controller_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021",
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021"
+              ],
+              "mmio": [
+                16777217,
+                536870913
+              ],
+              "reinit": 0,
+              "returned": null,
+              "stopped": {
+                "kind": "assertion",
+                "line": 386,
+                "owner": 1889647784
+              }
+            }
+          ]
+        },
+        "steps": 108
+      },
+      {
+        "name": "main_bus_positive_command_error",
+        "observed": {
+          "actions": [
+            "version_query",
+            "command:0:0:3:1:1:4660:1:2:1:64:8:1",
+            "log:command_error",
+            "diagnostic"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "controller_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021",
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021"
+              ],
+              "mmio": [
+                16777217,
+                536870913
+              ],
+              "reinit": 0,
+              "returned": null,
+              "stopped": {
+                "kind": "assertion",
+                "line": 294,
+                "owner": 1889647756
+              }
+            }
+          ]
+        },
+        "steps": 76
+      },
+      {
+        "name": "main_bus_partial_read",
+        "observed": {
+          "actions": [
+            "version_query",
+            "command:0:0:3:1:1:4660:1:2:1:64:8:0",
+            "receive_poll:64:0"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "856851532ac30ab9d16ad72d976d32d7582f2ce405eaa76fc611111198924805",
+              "controller_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021",
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021"
+              ],
+              "mmio": [
+                16777217,
+                536870913
+              ],
+              "reinit": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 83
+      },
+      {
+        "name": "main_bus_feature_read",
+        "observed": {
+          "actions": [
+            "version_query",
+            "command:0:0:15:1:1:176:1:1:1:1:0:0",
+            "receive_poll:1:0"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "4d736b9113e472ada03ee2475ab1a9f51b2457b47fd4f01b23e3362f39eb7933",
+              "controller_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021",
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021"
+              ],
+              "mmio": [
+                16777217,
+                536870913
+              ],
+              "reinit": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 109
+      },
+      {
+        "name": "main_bus_feature_write",
+        "observed": {
+          "actions": [
+            "version_query",
+            "command:2:0:31:1:1:176:1:1:1:1:0:0",
+            "transmit_poll:1:6922e93e3827642ce4b883c756b31abf80036649d3614bf5fcb3adda43b8ea32:0"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "controller_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021",
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021"
+              ],
+              "mmio": [
+                16777217,
+                536870913
+              ],
+              "reinit": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 110
+      },
+      {
+        "name": "main_bus_feature_truncates",
+        "observed": {
+          "actions": [
+            "version_query",
+            "command:2:0:31:1:1:176:1:1:1:1:0:0",
+            "transmit_poll:1:6922e93e3827642ce4b883c756b31abf80036649d3614bf5fcb3adda43b8ea32:0"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "controller_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021",
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021"
+              ],
+              "mmio": [
+                16777217,
+                536870913
+              ],
+              "reinit": 0,
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 110
+      },
+      {
+        "name": "main_bus_feature_read_bus_error",
+        "observed": {
+          "actions": [
+            "version_query",
+            "command:0:0:15:1:1:176:1:1:1:1:0:-9",
+            "log:command_error",
+            "diagnostic"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "controller_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021",
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021"
+              ],
+              "mmio": [
+                16777217,
+                536870913
+              ],
+              "reinit": 0,
+              "returned": null,
+              "stopped": {
+                "kind": "assertion",
+                "line": 294,
+                "owner": 1889647756
+              }
+            }
+          ]
+        },
+        "steps": 97
+      },
+      {
+        "name": "main_bus_feature_write_bus_error",
+        "observed": {
+          "actions": [
+            "version_query",
+            "command:2:0:31:1:1:176:1:1:1:1:0:0",
+            "transmit_poll:1:6922e93e3827642ce4b883c756b31abf80036649d3614bf5fcb3adda43b8ea32:-9",
+            "log:transmit_poll_error",
+            "diagnostic"
+          ],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "controller_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 0,
+              "dma_sha256": [
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021",
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021"
+              ],
+              "mmio": [
+                16777217,
+                536870913
+              ],
+              "reinit": 0,
+              "returned": null,
+              "stopped": {
+                "kind": "assertion",
+                "line": 313,
+                "owner": 1889647756
+              }
+            }
+          ]
+        },
+        "steps": 112
+      },
+      {
+        "name": "main_bus_feature_read_disabled",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "controller_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 1,
+              "dma_sha256": [
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021",
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021"
+              ],
+              "mmio": [
+                16777217,
+                536870913
+              ],
+              "reinit": 0,
+              "returned": null,
+              "stopped": {
+                "kind": "assertion",
+                "line": 55,
+                "owner": 1889734956
+              }
+            }
+          ]
+        },
+        "steps": 35
+      },
+      {
+        "name": "main_bus_feature_write_disabled",
+        "observed": {
+          "actions": [],
+          "rows": [
+            {
+              "bounce_sha256": "2ea16988ca9a3b973ff11693e6de4bd078775655cd6715c5a06a120f71b3e827",
+              "buffer_sha256": "681d484db62f22f5b3c65f06a296d60baa15364ae7404d919804e5ba1b08c01e",
+              "controller_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "disabled": 1,
+              "dma_sha256": [
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021",
+                "2ad646e61069eb06e735d18b0369e6d4f6a2c19219e184fc7487d59b83ebe021"
+              ],
+              "mmio": [
+                16777217,
+                536870913
+              ],
+              "reinit": 0,
+              "returned": null,
+              "stopped": {
+                "kind": "assertion",
+                "line": 74,
+                "owner": 1889734932
+              }
+            }
+          ]
+        },
+        "steps": 37
+      }
+    ],
+    "hardware_execution": false
+  },
+  "validation_sha256": "4b845fafe33b854f19ec0706ae9b6c028a36295f0a8d8151c6c3295eb8fce586",
+  "vectors_sha256": "c6406137e378aa3ddbb7d4c5d2bb60af89930b252759321871b462db3ec4afc4"
+}

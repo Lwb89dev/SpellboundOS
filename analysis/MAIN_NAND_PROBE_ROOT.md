@@ -1,5 +1,9 @@
 # Original main probe joined to root publication and NAND consumers
 
+The later [main bus/probe scope](MAIN_NAND_BUS_PROBE.md) adds actual platform,
+bus conversion and feature builders. The earlier evidence below preserves its
+supplied bus/feature boundary and regression vectors.
+
 All **10 native cases** pass in **8,732 instruction/service steps** (maximum
 **2,003**, three-round no-match initialization). The [original main candidate
 probe, matcher and ID/reset builders](MAIN_NAND_PROBE.md) now join actual main
