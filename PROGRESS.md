@@ -2611,6 +2611,46 @@ limits; the initial observations point to the current status and work log.
    Twenty-four new host checks join the passing 1,774-test suite. Next: full main
    probe/root through this platform/HAL/backend and actual UID/workaround/BBT/media.
 
+## 2026-11-18 — main probe/root through original platform and QSPI FIFO
+
+1. Joined original main root/wrapper, all eleven candidate descriptors, matcher,
+   ID/reset/feature builders, actual platform/clock/QSPI FIFO/revision and DMA
+   initialization to actual registry/cache/PM publication and later object
+   open/geometry/close. Descriptors/bindings are unchanged; original adjacent
+   DMA records and registry links now participate in the same caller chain.
+2. All eleven selections drive actual FIFO counts/bytes and software geometry.
+   Append, duplicate, late PM assertion and supplied no-BBT/inactive geometry
+   retain their distinct publication states. Power/pin/GPIO/workaround/UID/BBT,
+   BSP/RTOS/heap/library/PM bodies remain supplied. These short forced packets
+   do not execute DMA setup/wait or establish physical chip/media behavior.
+3. All 15 native cases pass in 98,379 steps (maximum 11,401), with 43 code/export
+   and 40 data hashes. See [analysis/MAIN_NAND_FULL_PROBE.md](analysis/MAIN_NAND_FULL_PROBE.md)
+   and [analysis/main-nand-full-probe.json](analysis/main-nand-full-probe.json).
+
+## 2026-11-18 — full main FIFO probe retries and real timeout assertions
+
+1. Executed second-round, final-33rd and complete no-match paths with real
+   platform reinitialization and ID FIFO on each attempt. All-ff responses
+   leave selection/guards zero and produce outer -6 before allocation, while
+   actual controller/DMA links remain. A dedicated 30,000-step bound admits
+   this joined workload; previous scopes retain their default 10,000 limit.
+2. Actual HAL readiness/completion loops produce transport timeout assertions.
+   A feature-write completion timeout retains the modeled FIFO byte/feature
+   state while guards/publication remain absent. Feature mismatch instead
+   returns actual probe -7 then wrapper -6. Disabled ID, absent regulator,
+   negative pin service and allocation failure expose earlier/later stages.
+   Ticks, status and FIFO responses are authored; no assertion body or physical
+   acceptance/recovery is established.
+3. All 12 native cases pass in 85,212 steps (maximum 29,185), with the same
+   guarded corpus. See [analysis/MAIN_NAND_FULL_PROBE_FAULTS.md](analysis/MAIN_NAND_FULL_PROBE_FAULTS.md)
+   and [analysis/main-nand-full-probe-faults.json](analysis/main-nand-full-probe-faults.json).
+   Both evidence files/vectors reproduce; all 369 earlier main native cases
+   reproduce byte for byte. Parent configuration/guards/log tags are unchanged;
+   narrow emulator/bound and model-initialization hooks support this scope.
+   Twenty-eight new host checks join the passing 1,802-test suite. Next: actual
+   main workaround/UID/BBT and page/media callers, IRQ/cache/pin bodies and physical
+   backup/restoration/boot.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -2700,10 +2740,12 @@ limits; the initial observations point to the current status and work log.
   and auxiliary bodies supplied. Actual main command/FIFO/count/timer/clock/
   revision and DMA wrappers now also execute separately, and original main bus/
   feature packets join them over an authored initialized controller. Follow
-  full main candidate probe/root through this HAL/backend. Actual main platform/
-  clock/QSPI/DMA initialization now publishes the original adjacent descriptors
-  and joins selected bounce transfers, including repeated initialization and
-  disabled-before-reinit ordering. Main pin/GPIO/cache bodies and IRQ remain open.
+  actual main workaround/UID/BBT and page/media callers through this chain.
+  Original main candidate probe/root now joins actual platform/clock/QSPI FIFO/
+  revision/DMA initialization and object consumers over all eleven unchanged
+  descriptors, including all 33 attempts and actual timeout assertions. DMA
+  setup/wait remains separately covered for bounce transfers. Main pin/GPIO/
+  cache bodies and IRQ remain open.
   Then follow actual main UID/workaround/BBT,
   wider storage and PM callers,
   broader close callers, removal/reclamation/concurrency and real property/heap/

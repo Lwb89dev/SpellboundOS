@@ -26,6 +26,8 @@ class Model(probe.Model):
         config=bus.DEFAULT|dict(rom_revision=c['bus_revision'],disabled=c['bus_disabled'],reinit=False,
             init_status=c['bus_init_status'],command_status=0,read_status=0,write_status=0,mmio=[0x1000001,0x20000001])
         self.bus=bus.Model(config);self.bus.actions=self.actions;self.commands=0;self.reads=0;self.writes=0
+    def initialize_bus(self,index):
+        self.bus_calls+=1;self.actions.append(f'probe_bus_native:{index}');self.bus.c['bus_word']=BUS_WORDS[index];self.bus.init()
     def packet(self,opcode,address,size,write,local):
         self.actions.append(f'probe_packet:{opcode}:{address}:{size}:{int(write)}')
         if self.bus.c['disabled']:
@@ -54,7 +56,7 @@ class Model(probe.Model):
         try:
             for _ in range(3):
                 for i,chip in enumerate(self.table):
-                    self.bus_calls+=1;self.actions.append(f'probe_bus_native:{i}');self.bus.c['bus_word']=BUS_WORDS[i];self.bus.init()
+                    self.initialize_bus(i)
                     self.id_reads+=1;data=[255]*5 if self.id_reads<=11*c['probe_delayed_rounds'] else c['probe_id']
                     self.packet(0x9f,0,5,False,bytearray(data))
                     if probe.match(chip['id'],data)==0:self.selected=chip['address'];break

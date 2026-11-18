@@ -79,7 +79,7 @@ public class ValidateMainObjects extends GhidraScript {
  private void entry(EmulatorHelper e,long start,long... args)throws Exception {
   e.writeRegister("ra",END);for(int i=0;i<args.length;i++)e.writeRegister("a"+i,args[i]);e.writeRegister(e.getPCRegister(),start);long pc;
   while((pc=e.getExecutionAddress().getOffset())!=END){
-   if(++steps>10000)throw new IllegalStateException("Execution bound");
+   if(++steps>executionBound())throw new IllegalStateException("Execution bound");
    if(mainProbe()&&probeService(e,pc))continue;
    if(mainStack()&&mainService(e,pc))continue;
    for(String k:new String[]{"open","close","write","ioctl","active"})if(pc==a(k))actions.add("native:"+k);
@@ -107,7 +107,7 @@ public class ValidateMainObjects extends GhidraScript {
   }abi(e);
  }
  private JsonObject execute(JsonObject input)throws Exception {
-  c=input;steps=lowerCalls=0;actions=new JsonArray();stopped=null;EmulatorHelper e=new EmulatorHelper(currentProgram);
+  c=input;steps=lowerCalls=0;actions=new JsonArray();stopped=null;EmulatorHelper e=createEmulator();
   try{
    byte[] sentinel=new byte[4096];Arrays.fill(sentinel,(byte)0xa5);e.writeMemory(toAddr(0x81000000L),sentinel);e.writeRegister("sp",0x81001000L);for(int i=0;i<12;i++)e.writeRegister("s"+i,0x45670000L+i);
    for(long[] span:new long[][]{{OBJECT,60},{TABLE,28},{DATA,64},{OUTPUT,32}})e.writeMemory(toAddr(span[0]-32),Arrays.copyOf(sentinel,(int)span[1]+64));
@@ -133,11 +133,13 @@ public class ValidateMainObjects extends GhidraScript {
    JsonObject result=new JsonObject();result.addProperty("name",c.get("name").getAsString());result.addProperty("steps",steps);result.add("observed",observed);return result;
   }finally{e.dispose();}
  }
+ protected int executionBound(){return 10000;}
+ protected EmulatorHelper createEmulator(){return new EmulatorHelper(currentProgram);}
  protected void configure()throws Exception {}
  protected void validateExtra(EmulatorHelper e)throws Exception {}
  public void run()throws Exception {
   if(getScriptArgs().length!=2)throw new IllegalArgumentException("vectors report");cfg=JsonParser.parseString(CONFIG).getAsJsonObject();configure();for(String key:new String[]{"guards","nand_data_guards","main_stack_guards","main_stack_data_guards","main_probe_guards","main_probe_data_guards"})for(JsonElement item:cfg.getAsJsonArray(key)){JsonObject g=item.getAsJsonObject();byte[] b=new byte[g.get("size").getAsInt()];currentProgram.getMemory().getBytes(toAddr(g.get("address").getAsLong()),b);if(!hash(b).equals(g.get("sha256").getAsString()))throw new IllegalStateException("Unrecognized main object code/data");}
-  JsonObject input=JsonParser.parseString(Files.readString(Path.of(getScriptArgs()[0]))).getAsJsonObject();scope=input.get("scope").getAsString();if(input.get("schema").getAsInt()!=1||input.get("bound_per_case").getAsInt()!=10000||!Set.of("callbacks","nand").contains(scope)||input.getAsJsonArray("cases").size()>64)throw new IllegalStateException("Vector scope/bound");JsonArray cases=new JsonArray();for(JsonElement item:input.getAsJsonArray("cases"))cases.add(execute(item.getAsJsonObject()));
-  JsonObject report=new JsonObject();report.addProperty("hardware_execution",false);report.addProperty("case_count",cases.size());report.addProperty("bound_per_case",10000);report.add("cases",cases);Files.writeString(Path.of(getScriptArgs()[1]),new GsonBuilder().setPrettyPrinting().serializeNulls().create().toJson(report)+"\n");println("MAIN_OBJECT_VALIDATION scope="+scope+" cases="+cases.size());
+  JsonObject input=JsonParser.parseString(Files.readString(Path.of(getScriptArgs()[0]))).getAsJsonObject();scope=input.get("scope").getAsString();if(input.get("schema").getAsInt()!=1||input.get("bound_per_case").getAsInt()!=executionBound()||!Set.of("callbacks","nand").contains(scope)||input.getAsJsonArray("cases").size()>64)throw new IllegalStateException("Vector scope/bound");JsonArray cases=new JsonArray();for(JsonElement item:input.getAsJsonArray("cases"))cases.add(execute(item.getAsJsonObject()));
+  JsonObject report=new JsonObject();report.addProperty("hardware_execution",false);report.addProperty("case_count",cases.size());report.addProperty("bound_per_case",executionBound());report.add("cases",cases);Files.writeString(Path.of(getScriptArgs()[1]),new GsonBuilder().setPrettyPrinting().serializeNulls().create().toJson(report)+"\n");println("MAIN_OBJECT_VALIDATION scope="+scope+" cases="+cases.size());
  }
 }

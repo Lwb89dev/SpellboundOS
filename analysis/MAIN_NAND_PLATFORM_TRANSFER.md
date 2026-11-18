@@ -1,5 +1,8 @@
 # Main NAND platform, original DMA links and reinitialized bounce transfers
 
+The later [main probe/root FIFO scope](MAIN_NAND_FULL_PROBE.md) connects actual
+candidate detection and object consumers to this platform initialization.
+
 All **14 native transfer cases** pass in **9,235 instruction/service steps**
 (maximum **1,057**, reinitialization after prior successful initialization).
 Original main platform initialization and its actual adjacent DMA bindings now

@@ -1,5 +1,9 @@
 # Actual main probe, bus/platform and feature packets through root consumers
 
+The later [main probe/root FIFO scope](MAIN_NAND_FULL_PROBE.md) executes actual
+HAL/FIFO and original DMA initialization in this caller chain. The evidence
+below retains its supplied HAL boundary.
+
 The later [main HAL/FIFO scope](MAIN_QSPI_HAL.md) and
 [connected bus/feature scope](MAIN_QSPI_BUS.md) execute those lower bodies
 separately. This earlier full probe/root scope keeps its supplied HAL boundary.
