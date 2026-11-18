@@ -85,3 +85,7 @@ Use the preceding startup-aware NAND/QSPI project. Generate exports with
 stay local. The [consumer pass](NAND_OBJECT_CONSUMER.md) connects original NAND
 methods after actual root/probe/UID/BBT/registration. Both scopes share 26 host
 tests; all **721 preceding shared-runner native cases reproduce byte for byte**.
+
+The subsequent [main-image lifecycle pass](MAIN_OBJECT_LIFECYCLE.md) executes
+the main image's close, active-count and write/ioctl bodies as well. Its closing
+results do not establish boot-image API identity or complete reclamation.

@@ -1,0 +1,670 @@
+{
+  "byte_range_sha256": {
+    "702d52c6_f0": "d75b7f8b96d0a12d3c9c5c987d42b53384c612be524ff395cdd8a8770c03c5bc",
+    "702d5442_42": "14cd540d3a7936848270819479cc5e2bf849b7142b47233bcf1b459a486e19c6",
+    "702d5484_42": "425b4ea3dc6c32cd4ec564182b0f1f733db2b8a9519c7f58bcd514ce52b8f150",
+    "70319470_70": "8778ed8e76af1ae25da412c835754677d176adde30ca65b9349e40a40d917ef5",
+    "703194e0_82": "c33c78f7632341dc68d803b7d4f721e390803057a67c573dfed1ca6b6e85fe13",
+    "70319562_7e": "b37b3ad667f08d03047c8d56bae6d8175cb1daeafc485c7afcccbae094c8f05b",
+    "703195e0_84": "3a477c21c637acb2647e097f3e325ef1f78797b55d51511b5446c4fd22208473",
+    "70319664_e": "26f3a0a33bc2d94c89cde600dcf729200ec8ed69363f294f40e088c61e25bd25"
+  },
+  "data_range_sha256": {
+    "70a30b8c_e": "8779b049270a988f250e27305953d18974ff6ef0913eb3b07b33adbfdebd7d66",
+    "70a30bac_f": "4e9854870516a747999fd9279163568bf647705b678597876920dccf5101f6ed",
+    "70a30c14_10": "d9d5d18c3f258009a1af0e018bd94f036e78a26bdf56a8a550c8c16ebcc236c1",
+    "70a4417c_f": "f5c56972b854dbab45964fff39dc9286a0cd0ef234a7f7eca8f283c3bd2e0d14",
+    "70a4419c_e": "fcc6f7eb0be17bd5832b01da79078fad8b90a9679ccade6fe96a7ca00ec870d8",
+    "70a441bc_e": "a819f8d8e82dfce47e02ee79cd1b67c8f4c073d6df33057be580ecc9446c8cd4",
+    "70a441dc_d": "0e5355f57e562d5433d6b8c4c219b43ce31443f8fa5452bc70be5d05a3da6100",
+    "70f624c0_1c": "69b3a7308f0cfa50ba6f6ea643b5b36048e236b7fdf10aa759f5fa3ad86294ab",
+    "70f624dc_1c": "5442836baf05dbf17dff02ffe9a110ae91833113409aabea51d5bb61092a93ed",
+    "70f87acc_4": "b81ee1d564e1873d93ba60a05f575cf4dfc1f717df15c8593acfbc37f84a7327"
+  },
+  "export_sha256": {
+    "702d52c6.c": "32dfa8b86295c34ef8ca355ea17dfe0ad5b4ac69602a253d513de25b801c4303",
+    "702d5442.c": "b950d98b435a25e1da58c51d11271b83a641ffd0dca99462f579d744f9a838b2",
+    "702d5484.c": "9de46f8bb998f6c110fde75cdf157ee6f47a95b7f946f83af5026c42cb22f954",
+    "70319470.c": "d83e138c87ce5a3ee247f78715c8ae4c8cc495997b75f6b74c938125a481d218",
+    "703194e0.c": "0c7df24021cc6fe33fc89a1c6db7e076604866133f0000507a7edc7e520bda02",
+    "70319562.c": "715af20b7bd3bf989caa6c4f6dde8453256706a7e76db76341b4021ce740078c",
+    "703195e0.c": "9f5757b3c0614f82c5958f633082aa82373f581fb04985d24a47aba04161ace3",
+    "70319664.c": "f2cdc2cb15e4b613679cb1a16d0042a0c232b07ea5553a2078059fa145ea1c51"
+  },
+  "function_names": {
+    "70a30b8c": "dev_nand_open",
+    "70a30bac": "dev_nand_close",
+    "70a30c14": "dev_nand_ioctrl",
+    "70a4417c": "dev_obj_ioctrl",
+    "70a4419c": "dev_obj_write",
+    "70a441bc": "dev_obj_close",
+    "70a441dc": "dev_obj_open"
+  },
+  "limitations": [
+    "Main-image generic open/close/write/ioctl/active bodies execute on an authored object, counters and buffers; callbacks scope supplies method results/effects.",
+    "NAND scope uses original method/property/operation tables and actual main NAND open/close/ioctl methods, with lower driver geometry queries supplied; main probe/registration/media and RTOS are not executed.",
+    "Close/reference state does not establish removal, deallocation, physical hardware shutdown or concurrent ownership; initial negative/wrapping values are authored counterexamples."
+  ],
+  "main_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "native_steps": 1430,
+  "native_validation": {
+    "bound_per_case": 10000,
+    "case_count": 15,
+    "cases": [
+      {
+        "name": "nand_main_cycle",
+        "observed": {
+          "actions": [
+            "native:open",
+            "nand:open",
+            "native:ioctl",
+            "nand:ioctl:4097",
+            "lower:13:0:47855",
+            "lower:2:0:2048",
+            "lower:1:0:65536",
+            "lower:14:0:1",
+            "native:close",
+            "nand:close",
+            "native:active",
+            "native:ioctl",
+            "log:unopened_ioctl"
+          ],
+          "rows": [
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 0,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            },
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 4,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "efba0000a5a5a5a50000000801a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            },
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 4,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5000000000000000000003381",
+              "output_hex": "efba0000a5a5a5a50000000801a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            },
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 4,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5000000000000000000003381",
+              "output_hex": "efba0000a5a5a5a50000000801a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            },
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 4,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5000000000000000000003381",
+              "output_hex": "efba0000a5a5a5a50000000801a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 4294967282,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 146
+      },
+      {
+        "name": "nand_main_two_refs",
+        "observed": {
+          "actions": [
+            "native:open",
+            "nand:open",
+            "native:open",
+            "native:close",
+            "native:ioctl",
+            "nand:ioctl:4097",
+            "lower:13:0:47855",
+            "lower:2:0:2048",
+            "lower:1:0:65536",
+            "lower:14:0:1",
+            "native:close",
+            "nand:close",
+            "native:active"
+          ],
+          "rows": [
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 0,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            },
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 0,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5020000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            },
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 0,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            },
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 4,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "efba0000a5a5a5a50000000801a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            },
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 4,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5000000000000000000003381",
+              "output_hex": "efba0000a5a5a5a50000000801a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            },
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 4,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5000000000000000000003381",
+              "output_hex": "efba0000a5a5a5a50000000801a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 157
+      },
+      {
+        "name": "nand_main_reopen",
+        "observed": {
+          "actions": [
+            "native:open",
+            "nand:open",
+            "native:close",
+            "nand:close",
+            "native:open",
+            "nand:open",
+            "native:ioctl",
+            "nand:ioctl:4097",
+            "lower:13:0:47855",
+            "lower:2:0:2048",
+            "lower:1:0:65536",
+            "lower:14:0:1"
+          ],
+          "rows": [
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 0,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            },
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 0,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5000000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            },
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 0,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            },
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 4,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "efba0000a5a5a5a50000000801a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 146
+      },
+      {
+        "name": "nand_main_closed",
+        "observed": {
+          "actions": [
+            "native:ioctl",
+            "log:unopened_ioctl"
+          ],
+          "rows": [
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 0,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5000000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 4294967282,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 23
+      },
+      {
+        "name": "nand_main_write_slot",
+        "observed": {
+          "actions": [
+            "native:open",
+            "nand:open",
+            "native:write",
+            "native:close",
+            "nand:close"
+          ],
+          "rows": [
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 0,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            },
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 0,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            },
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 0,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5000000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 62
+      },
+      {
+        "name": "nand_main_no_bbt",
+        "observed": {
+          "actions": [
+            "native:open",
+            "nand:open",
+            "native:ioctl",
+            "nand:ioctl:4097",
+            "lower:13:0:47855",
+            "lower:2:0:2048",
+            "lower:1:0:65536",
+            "lower:14:0:0"
+          ],
+          "rows": [
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 0,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            },
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 4,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "efba0000a5a5a5a50000000800a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 100
+      },
+      {
+        "name": "nand_main_alias",
+        "observed": {
+          "actions": [
+            "native:open",
+            "nand:open",
+            "native:ioctl",
+            "nand:ioctl:4098",
+            "lower:13:0:47855",
+            "lower:2:0:2048",
+            "lower:1:0:65536",
+            "lower:14:0:1"
+          ],
+          "rows": [
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 0,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            },
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 4,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "efba0000a5a5a5a50000000801a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 100
+      },
+      {
+        "name": "nand_main_noop",
+        "observed": {
+          "actions": [
+            "native:open",
+            "nand:open",
+            "native:ioctl",
+            "nand:ioctl:4099"
+          ],
+          "rows": [
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 0,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            },
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 0,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 63
+      },
+      {
+        "name": "nand_main_invalid",
+        "observed": {
+          "actions": [
+            "native:open",
+            "nand:open",
+            "native:ioctl",
+            "nand:ioctl:4096"
+          ],
+          "rows": [
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 0,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            },
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 0,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 4294967286,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 59
+      },
+      {
+        "name": "nand_main_null_output",
+        "observed": {
+          "actions": [
+            "native:open",
+            "nand:open",
+            "native:ioctl",
+            "nand:ioctl:4097",
+            "log:geometry_null"
+          ],
+          "rows": [
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 0,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            },
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 0,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 4294967286,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 76
+      },
+      {
+        "name": "nand_main_query_error_1",
+        "observed": {
+          "actions": [
+            "native:open",
+            "nand:open",
+            "native:ioctl",
+            "nand:ioctl:4097",
+            "lower:13:-9:47855",
+            "native:close",
+            "nand:close"
+          ],
+          "rows": [
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 0,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            },
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 1,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 4294967287,
+              "stopped": null
+            },
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 1,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5000000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "nand_main_query_error_2",
+        "observed": {
+          "actions": [
+            "native:open",
+            "nand:open",
+            "native:ioctl",
+            "nand:ioctl:4097",
+            "lower:13:0:47855",
+            "lower:2:-9:2048",
+            "native:close",
+            "nand:close"
+          ],
+          "rows": [
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 0,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            },
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 2,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 4294967287,
+              "stopped": null
+            },
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 2,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5000000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 96
+      },
+      {
+        "name": "nand_main_query_error_3",
+        "observed": {
+          "actions": [
+            "native:open",
+            "nand:open",
+            "native:ioctl",
+            "nand:ioctl:4097",
+            "lower:13:0:47855",
+            "lower:2:0:2048",
+            "lower:1:-9:65536",
+            "native:close",
+            "nand:close"
+          ],
+          "rows": [
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 0,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            },
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 3,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 4294967287,
+              "stopped": null
+            },
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 3,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5000000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 103
+      },
+      {
+        "name": "nand_main_query_error_4",
+        "observed": {
+          "actions": [
+            "native:open",
+            "nand:open",
+            "native:ioctl",
+            "nand:ioctl:4097",
+            "lower:13:0:47855",
+            "lower:2:0:2048",
+            "lower:1:0:65536",
+            "lower:14:-9:1",
+            "native:close",
+            "nand:close"
+          ],
+          "rows": [
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 0,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            },
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 4,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 4294967287,
+              "stopped": null
+            },
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 4,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5000000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 110
+      },
+      {
+        "name": "nand_main_wrapping_capacity",
+        "observed": {
+          "actions": [
+            "native:open",
+            "nand:open",
+            "native:ioctl",
+            "nand:ioctl:4097",
+            "lower:13:0:47855",
+            "lower:2:0:65536",
+            "lower:1:0:65536",
+            "lower:14:0:1"
+          ],
+          "rows": [
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 0,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            },
+            {
+              "data_sha256": "ce7ccfd59b8c3d5ca8bb16d35920e9373a5742e0017ca2e2eceafc44324cc657",
+              "lower_calls": 4,
+              "object_hex": "6465765f6e616e64000000000000000000000000000000000000000000000000a5a5a5a517a5a5a5c024f670a5a5a5a5010000000000000000003381",
+              "output_hex": "efba0000a5a5a5a50000000001a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5",
+              "returned": 0,
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 100
+      }
+    ],
+    "hardware_execution": false
+  },
+  "scope": "nand",
+  "validation_sha256": "df4de9dfaec1846d7153d392a78cdaf35fc0738161f0f2c22c6f46fc188e32ef",
+  "vectors_sha256": "6549990153b69b8b4b1588d5469fe4cebff24278f20dd6edfb7547c174d1d10e"
+}

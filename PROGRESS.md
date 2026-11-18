@@ -2337,6 +2337,41 @@ limits; the initial observations point to the current status and work log.
    Close/removal/reclamation/concurrency, wider startup/storage integration,
    initial BBT provenance, persistence and safe device restoration remain open.
 
+## 2026-11-18 — main-image object close, reference and dispatch policy
+
+1. Followed original owner-name references into the main image and executed its
+   generic open/close/write/ioctl/active bodies with authored objects/callbacks.
+   Only the last close calls the backend. That close decrements first, so a
+   backend error leaves count zero; a missing close callback instead leaves a
+   positive count unchanged despite zero return. Active and later operations
+   distinguish those states. Negative/overflow counts are explicit fixtures.
+2. Verified write/ioctl tail forwarding, supplied status/effect propagation,
+   missing methods, null assertions and ABI/buffer guards. Original main owner
+   strings identify the APIs; removal, deallocation and RTOS/concurrent ownership
+   remain outside this pass. The existing boot runner/vectors are unchanged.
+3. All 26 native cases pass in 691 steps (maximum 84). Five code/export and four
+   data hashes accompany [analysis/MAIN_OBJECT_LIFECYCLE.md](analysis/MAIN_OBJECT_LIFECYCLE.md)
+   and [analysis/main-object-lifecycle.json](analysis/main-object-lifecycle.json).
+
+## 2026-11-18 — original main NAND methods behind object consumers
+
+1. Bound an authored object to the original main NAND method table and executed
+   actual main generic consumers plus original NAND open/close/ioctl. Repeated
+   references defer close; final close/reopen executes the original methods.
+   The original +8 write slot is null and real generic write returns zero without
+   a backend transfer. Main probe/registration and physical teardown are unproven.
+2. Original geometry ioctl propagates supplied lower-query responses/errors at
+   each of four positions, writing output only after all succeed. Covered alias,
+   no-op, invalid/null output, zero BBT flag and explicit multiplication wrap.
+   Original property/method/operation tables stay unchanged; lower driver query
+   behavior remains supplied, unlike the earlier fully joined boot NAND scope.
+3. All 15 native cases pass in 1,430 steps (maximum 157). Eight code/export and ten
+   data hashes accompany [analysis/MAIN_NAND_OBJECT.md](analysis/MAIN_NAND_OBJECT.md)
+   and [analysis/main-nand-object.json](analysis/main-nand-object.json). The two
+   scopes add 24 host tests to the 1,620-test suite; both evidence files reproduce.
+   Main lower-driver/probe/registry integration, removal/reclamation/concurrency,
+   persistence, initial BBT provenance and safe backup/restoration remain open.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -2415,8 +2450,11 @@ limits; the initial observations point to the current status and work log.
   startup. Selected root/property/callback/probe/UID/BBT/object registration now
   also connects, including actual lookup/list insertion and retained allocation
   after duplicate rejection. Original object open/reference/ioctl policy and
-  post-root NAND geometry/context/BBT consumers now also execute. Follow close/
-  decrement/removal/reclamation/concurrency and real property/heap/mutex services. Actual retry/
+  post-root NAND geometry/context/BBT consumers now also execute. Main-image
+  generic close/reference/write/ioctl and original NAND method consumers now
+  execute too, with main lower geometry queries supplied. Follow main lower-driver/
+  probe/registry integration, broader close callers, removal/reclamation/concurrency
+  and real property/heap/mutex services. Actual retry/
   UID setup/acquisition and UID ioctl export now execute through actual command
   builders and busy loops over a supplied bus. Setter retry exhaustion can return
   zero, and UID ioctl can export prior state after early acquisition errors.

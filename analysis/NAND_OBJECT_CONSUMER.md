@@ -100,3 +100,7 @@ added. Both evidence files reproduce. The two scopes add 26 host checks to the
 for byte**. Close/removal/reclamation/concurrency, wider startup/storage callers,
 initial BBT provenance, physical I/O and safe backup/restoration/standalone boot
 remain open.
+
+The subsequent [main-image NAND method pass](MAIN_NAND_OBJECT.md) verifies
+opening/closing and geometry consumers in the main firmware, with its own
+original tables and supplied lower-query boundary.
