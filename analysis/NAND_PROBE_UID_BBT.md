@@ -81,6 +81,10 @@ Firmware and exports remain local. Original code/data guards and normal-return
 ABI, caller/private-buffer, controller, DMA, BBT and UID guards remain active.
 The original UID body has supplied bounded zero/format/logging leaves.
 
+The subsequent [driver-root pass](NAND_DRIVER_ROOT_STACK.md) now connects the
+outer original operation-table callback, allocation and actual object registry
+around this probe/UID/BBT path.
+
 The two auxiliary scopes share 20 targeted host tests. All **667 preceding
 shared-runner native cases reproduce byte for byte**. Initial BBT creation,
 supported-family BBT geometry, broader registry/startup, electrical timing,

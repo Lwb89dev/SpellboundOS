@@ -2257,6 +2257,46 @@ limits; the initial observations point to the current status and work log.
    No hardware access or persistent media change occurred. Initial BBT creation,
    wider geometry/registry/startup and safe backup/restoration remain open.
 
+## 2026-11-18 — original object registry lookup and insertion
+
+1. Executed original name/type lookup and registration list bodies over authored
+   60-byte objects, including first/seeded/three-node append, duplicate name/type
+   and pointer rejection, and actual next/preceding-link-cell publication.
+2. Verified the 32-byte comparison/31-byte copy boundary: a 32-byte name can
+   register yet miss full-name lookup, and repeated full-name registration can
+   publish duplicate stored prefixes. Type 279 is stored as byte 23 but misses
+   lookup 279; empty names work while null inputs reach the actual assertion.
+3. Existing, retried and failed mutex creation plus returned lock/unlock errors
+   exercise original unchecked caller policy. Null-handle lock behavior is
+   supplied, without a real RTOS/concurrency claim. All 19 native cases pass in
+   16,274 steps (maximum 1,103). Forty-four code/export and 33 data hashes are in
+   [analysis/NAND_OBJECT_REGISTRY.md](analysis/NAND_OBJECT_REGISTRY.md) and
+   [analysis/nand-object-stack.json](analysis/nand-object-stack.json).
+
+## 2026-11-18 — outer NAND driver root through probe/UID/BBT/registry
+
+1. Joined original root initializer and operation-table callback to actual
+   probe/wrapper/platform/QSPI/UID/BBT and object registration. Original tables
+   remain unchanged. Real lookup after return retrieves the allocated object
+   with its original method table bound; seeded append and other-type coexistence
+   also execute. Property/heap/mutex/library/peripheral effects remain supplied.
+2. Followed actual inner feature failure to outer -6; property/driver-mutex/BBT
+   assertions stop before allocation. Object allocation failure retains completed
+   inner state. Duplicate registration returns -11 and leaves the newly allocated
+   object live but unlinked, while existing lookup still returns the prior object.
+3. Actual no-BBT and backup-repair-error results still allow successful root
+   registration. Early UID errors can preserve and later export authored old UID
+   bytes even after registration. These are controlled RAM/caller contracts,
+   without physical UID, persistent media or standalone boot evidence.
+4. All 14 native cases pass in 245,078 steps (maximum 40,092). The two scopes add
+   25 host tests to the 1,570-test suite. All 688 preceding shared-runner native
+   reports reproduce byte for byte, as do both new evidence files. One hundred
+   one code/export and 38 data hashes accompany
+   [analysis/NAND_DRIVER_ROOT_STACK.md](analysis/NAND_DRIVER_ROOT_STACK.md) and
+   [analysis/nand-root-stack.json](analysis/nand-root-stack.json). Initial BBT
+   creation, wider geometry, registry removal/lifetimes/concurrency, broader
+   storage/startup, real persistence and safe backup/restoration remain open.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -2332,7 +2372,10 @@ limits; the initial observations point to the current status and work log.
   results. Original UID acquisition and later ioctl export now also join this
   path; actual supported-family reset/E0-level/UID joins candidate 3 with its
   BBT still supplied. Follow wider BBT geometry, initial BBT creation and broader
-  startup; object registry remains open. Actual retry/
+  startup. Selected root/property/callback/probe/UID/BBT/object registration now
+  also connects, including actual lookup/list insertion and retained allocation
+  after duplicate rejection. Follow registry removal/lifetimes/concurrency and
+  real property/heap/mutex services. Actual retry/
   UID setup/acquisition and UID ioctl export now execute through actual command
   builders and busy loops over a supplied bus. Setter retry exhaustion can return
   zero, and UID ioctl can export prior state after early acquisition errors.

@@ -104,6 +104,12 @@ completed probe/mutex state. A supplied registration error propagates and leaves
 the object allocation live. The object registry's linked-list/ownership behavior
 is not executed in this pass.
 
+The subsequent [object-registry pass](NAND_OBJECT_REGISTRY.md) executes the
+original lookup/list/duplicate/insertion bodies. The [connected driver-root
+pass](NAND_DRIVER_ROOT_STACK.md) joins this initializer to actual probe, UID,
+BBT and object registration, including a retained unlinked allocation after
+duplicate-name rejection.
+
 ## Original descriptors and OOB layout round trips
 
 All 11 original ECC unit fields select the contiguous branch of the previously

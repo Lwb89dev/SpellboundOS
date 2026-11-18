@@ -93,12 +93,15 @@ class Model(lower.Model):
         if self.stopped:return None
         self.guard_pages=0x100000//chip['page_size'];self.guard_blocks=self.guard_pages//chip['pages_per_block']
         self.actions.append('log:boot_guard');return 0
-    def run(self):
-        self.initialize();self.initialized=True;value=self.probe()
+    def run_probe_entry(self):
+        value=self.probe()
         if not self.stopped and value==0 and self.c['probe_entry']=='wrapper' and not self.mutex:
             ok=not self.c['probe_mutex_fail'];self.actions.append('probe_mutex_create:'+str(int(ok)))
             if ok:self.mutex=inventory.MUTEX
             else:self.stopped=dict(kind='assertion',owner=0x80c3d434,line=0x1e)
+        return value
+    def run(self):
+        self.initialize();self.initialized=True;value=self.run_probe_entry()
         result=self.snapshot(None if self.stopped else value&0xffffffff);row=result['rows'][0]
         row.update(rx_bytes=self.rx,tx_hex=self.tx.hex(),board_mmio={str(k):v for k,v in sorted(self.pins.regs.items())},
             reinit_flag=0,feature_reads=self.feature_reads,probe_selected=self.selected,probe_mutex=self.mutex,
