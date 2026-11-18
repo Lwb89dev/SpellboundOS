@@ -2082,6 +2082,27 @@ limits; the initial observations point to the current status and work log.
    Successful prefix migration, recursive repair, complete atomicity/concurrency,
    physical marking/persistence/backup/restoration/standalone boot remain open.
 
+## 2026-11-18 — prefix migration, heap lifetime and recursive EFTL repair
+
+1. Executed original one/two-page prefix copying through NAND/QSPI, including
+   saving/restoring the pending 2,112-byte page at supplied allocator/copy/free
+   boundaries. Prefix mapping publication precedes the caller's pending-page
+   retry. Direct FIFO observations preserve distinct copied page bytes/order.
+2. Verified prefix logical-ID rejection and selected bad-tag/checksum acceptance;
+   this path checks different metadata from ordinary write readback. Read errors
+   and second-page mismatches restore/free pending data without new publication.
+   Prefix-program failure restores/frees before recursive relocation; selected
+   success, no-free and recursive allocation failure preserve precise lifetimes.
+3. All 20 native cases pass in 3,211,729 steps (maximum 323,829); prior 523 native
+   cases reproduce byte for byte. Eighteen host checks bring the suite to 1,427
+   passing tests. Eighty code/export and twelve data hashes are in
+   [analysis/EFTL_PREFIX_STACK.md](analysis/EFTL_PREFIX_STACK.md) and
+   [analysis/eftl-prefix-stack.json](analysis/eftl-prefix-stack.json).
+   Generic RX still models no DMA movement and can copy stale TX bytes. Source
+   cache pages, maps/statuses/peripherals and leaf services remain authored.
+   Larger/combined readback-repair paths, persistent atomicity/concurrency and
+   physical corroboration/backup/restoration/standalone boot remain open.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -2133,8 +2154,10 @@ limits; the initial observations point to the current status and work log.
   full-page/OOB staging, original free-block selection and NAND/QSPI/TX DMA too;
   rewrite aliases program and flag updates precede lower assertions. Enabled
   readback, actual bad marking and zero-prefix relocation now connect too; prefix
-  allocation failure executes to its original assert. Follow successful prefix
-  copying, recursive relocation and complete repair atomicity, BBT provenance,
+  allocation failure executes to its original assert. Selected one/two-page
+  prefix copying, temporary-buffer lifetime and recursive relocation now execute
+  too. Follow larger migrations, combined readback/repair and complete repair
+  atomicity, BBT provenance,
   concurrency and remaining ECC/board integration, physical pin
   mapping, real DMA/IRQ/cache coherency and remaining board services,
   physical retry/UID, BBT provenance/creation and physical ID/geometry

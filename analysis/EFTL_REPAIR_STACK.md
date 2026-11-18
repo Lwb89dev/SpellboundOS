@@ -86,6 +86,10 @@ broader readback/repair/metadata atomicity remain deferred and are excluded by
 the fixture contract. The selected successful relocation has **zero preceding
 pages**, so it does not stand in for those larger paths.
 
+The subsequent [prefix migration pass](EFTL_PREFIX_STACK.md) covers selected
+one/two-page copies, supplied heap lifetime and one recursive relocation. The
+limitations above describe this earlier pass; complete atomicity remains open.
+
 ## Evidence boundary
 
 Normal-return ABI and caller, scratch/private-buffer, registry/owner/backend,
