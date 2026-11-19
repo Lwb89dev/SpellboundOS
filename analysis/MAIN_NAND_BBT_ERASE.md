@@ -79,7 +79,8 @@ policy-factory/FIFO-write hooks. Previous bounds and fixed configurations are
 unchanged. The two scopes add **30 host checks** to the **1,966-test passing
 suite**.
 
-Actual program/TX FIFO follows in the next scope. Asynchronous/private DMA,
-complete busy exhaustion, wider geometries/media consumers, physical effects/
+Actual program/TX FIFO follows in the next scope. The later
+[repair-busy scope](MAIN_NAND_BUSY_REPAIR.md) executes the full selected erase/
+program poll limits. Asynchronous/private DMA, wider geometries/media consumers, physical effects/
 timing/IRQ/cache/coherency, persistent repair/atomicity, safe restoration and
 standalone boot remain open.

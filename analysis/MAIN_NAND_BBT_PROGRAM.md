@@ -85,7 +85,9 @@ policy-factory/FIFO-write hooks; previous fixed configurations and bounds stay
 unchanged. Both new scopes use the existing 200,000-step bound and 1024-byte
 aggregate RX guard. Their **30 host checks** join the passing **1,966-test suite**.
 
-Complete 2000/4000-poll busy exhaustion, asynchronous/private DMA paths, wider
+The subsequent [read-busy scope](MAIN_NAND_BUSY_READ.md) and
+[repair-busy scope](MAIN_NAND_BUSY_REPAIR.md) execute complete 2000/4000-poll
+boundaries, including discarded last-poll ready/ECC bytes. Asynchronous/private DMA paths, wider
 geometries and further media/PM consumers remain open. Physical contents,
 electrical/timing/IRQ/cache/coherency, durable repair/atomicity, safe backup/
 restoration and standalone boot remain separate open requirements.

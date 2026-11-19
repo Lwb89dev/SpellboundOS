@@ -2845,6 +2845,46 @@ limits; the initial observations point to the current status and work log.
    Thirty new host checks join the passing 1,966-test suite. Next: complete busy
    exhaustion, asynchronous/private DMA, wider consumers and physical restoration/boot.
 
+## 2026-11-19 — full original main read busy boundaries inside BBT recovery
+
+1. Executed all 2000 original busy polls through actual feature/bus/QSPI FIFO
+   inside selected primary-record recovery. Limit checking precedes readiness
+   and output publication: persistent busy, last-poll ready and last-poll ECC
+   all leave output ff and helper return zero. The reader can still receive and
+   accept the authored valid BBT record. Penultimate ready/ECC instead publishes
+   its real byte; penultimate ECC causes actual retry and record rejection.
+2. Native and host traces stream exact UTF-8 events plus LF into counted SHA-256
+   windows, retaining original selected loop execution and supplied leaf services.
+   Full read windows have 36,001 events including timeout log; no raw inside-window
+   strings are retained in JSON. Surrounding actions and state remain explicit.
+   The new scope uses 4,000,000-step and 8192-byte aggregate RX guards; previous
+   scope limits/configurations are unchanged. No elapsed-time or physical-ready
+   claim is made over authored statuses/peripherals.
+3. All five native cases pass in 3,759,349 steps (maximum 754,985), with the same
+   69 code/export and 67 data hashes as the prior repair corpus. See
+   [analysis/MAIN_NAND_BUSY_READ.md](analysis/MAIN_NAND_BUSY_READ.md) and
+   [analysis/main-nand-busy-read.json](analysis/main-nand-busy-read.json).
+
+## 2026-11-19 — complete main erase/program busy limits through repair
+
+1. Executed all 4000 erase and 2000 program polls inside actual marker/read/CRC/
+   erase/program/root recovery. Last-poll ready is discarded just like persistent
+   busy. Erase caller returns -104 and skips program; program caller returns -102
+   after full TX. Both handled errors still restore active RAM magic and return
+   zero from recovery. Penultimate ready permits normal successful completion.
+2. Full erase windows have 72,001 counted events; ordinary UID/marker/record and
+   non-target repair windows keep one-poll behavior. Exact hashes distinguish
+   different final FIFO bytes despite identical published output. All firmware
+   bytes, exports and constant data are unchanged. RX totals exceed the preceding
+   scope's trace guard without changing individual one-byte status packets or
+   establishing physical FIFO size, timing or persistence.
+3. All six native cases pass in 6,783,698 steps (maximum 1,498,880). See
+   [analysis/MAIN_NAND_BUSY_REPAIR.md](analysis/MAIN_NAND_BUSY_REPAIR.md) and
+   [analysis/main-nand-busy-repair.json](analysis/main-nand-busy-repair.json).
+   All 546 preceding main native cases reproduce byte for byte. Twenty-four new
+   host checks join the passing 1,990-test suite. Next: asynchronous/private DMA,
+   nonblocking scheduling, wider media/PM consumers and physical restoration/boot.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -2934,8 +2974,10 @@ limits; the initial observations point to the current status and work log.
   and auxiliary bodies supplied. Actual main command/FIFO/count/timer/clock/
   revision and DMA wrappers now also execute separately, and original main bus/
   feature packets join them over an authored initialized controller. Follow
-  actual main asynchronous/private DMA and complete busy exhaustion, further
-  UID/media consumers and alternate chip geometries. Main BBT recovery record/
+  actual main asynchronous/private DMA and nonblocking scheduling, further
+  UID/media consumers and alternate chip geometries. Selected full 2000/4000-
+  poll read/repair busy limits now execute through actual status FIFO, including
+  last-poll ready/ECC discard and ordinary outer recovery after handled errors. Main BBT recovery record/
   reread calls, original three-page marker checks and actual repair erase/program
   now execute through original builders/status and direct QSPI RX/TX FIFO. The
   exact 140-byte backup payload is transmitted without a primary readback; real
