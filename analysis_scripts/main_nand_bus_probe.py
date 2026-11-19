@@ -28,6 +28,8 @@ class Model(probe.Model):
         self.bus=bus.Model(config);self.bus.actions=self.actions;self.commands=0;self.reads=0;self.writes=0
     def initialize_bus(self,index):
         self.bus_calls+=1;self.actions.append(f'probe_bus_native:{index}');self.bus.c['bus_word']=BUS_WORDS[index];self.bus.init()
+    def run_workaround(self):self.actions.append(f'probe_workaround:{self.c["probe_workaround_return"]}')
+    def run_uid(self):self.actions.append(f'probe_uid:{self.c["probe_uid_return"]}')
     def packet(self,opcode,address,size,write,local):
         self.actions.append(f'probe_packet:{opcode}:{address}:{size}:{int(write)}')
         if self.bus.c['disabled']:
@@ -65,8 +67,8 @@ class Model(probe.Model):
             chip=next(p for p in self.table if p['address']==self.selected)
             self.chip=dict(address=chip['address'],id=chip['id'][0]|chip['id'][1]<<8,pages=chip['pages'],page_size=chip['page_size'])
             self.packet(chip['reset_opcode'],0,0,True,bytearray())
-            self.actions.extend((f'probe_delay:{chip["reset_delay_us"]//1000+1}',f'probe_workaround:{c["probe_workaround_return"]}','log:probe_chip_summary'))
-            if chip['uid']:self.actions.append(f'probe_uid:{c["probe_uid_return"]}')
+            self.actions.append(f'probe_delay:{chip["reset_delay_us"]//1000+1}');self.run_workaround();self.actions.append('log:probe_chip_summary')
+            if chip['uid']:self.run_uid()
             for reg,value in chip['features']:
                 self.packet(0x1f,reg,1,True,bytearray((value,)));self.features[reg]=value;self.feature_reads+=1
                 got=value^int(self.feature_reads==c['probe_feature_mismatch_at'])

@@ -1,5 +1,9 @@
 # Main probe and root through original platform and QSPI FIFO
 
+The later [main workaround](MAIN_NAND_WORKAROUND.md) and [UID scope](MAIN_NAND_UID.md)
+execute those auxiliary bodies. This earlier evidence preserves its supplied
+workaround/UID/BBT boundary.
+
 All **15 native root/consumer cases** pass in **98,379 instruction/service
 steps** (maximum **11,401**, original candidate 10). Original main root/wrapper,
 candidate probe/matcher, ID/reset/feature builders, platform/clock/QSPI FIFO,

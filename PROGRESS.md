@@ -2651,6 +2651,46 @@ limits; the initial observations point to the current status and work log.
    main workaround/UID/BBT and page/media callers, IRQ/cache/pin bodies and physical
    backup/restoration/boot.
 
+## 2026-11-19 — original main workaround/reset/level logic inside probe
+
+1. Executed actual main family comparison, reset-enable/power-reset commands,
+   requested delays and E0 level checking/setting inside the original platform/
+   FIFO/root chain. Unsupported-family return -1 is ignored by probe. Supported
+   first/second confirmation and five unconfirmed writes execute; the real setter
+   still returns zero after five mismatches. UID/BBT remain supplied in this scope.
+2. Actual HAL reset/completion/E0-read faults stop at original transport assertions
+   before workaround return. Family names, descriptor bytes and feature sequences
+   are immutable. Main identity inventory independently records all eleven UID
+   flag/mode/copy/page/size/config/ECC records. FIFO/register/timing inputs and
+   bounded library/power/platform services remain authored or supplied.
+3. All eight native cases pass in 51,955 steps (maximum 11,317), with 54 code/export
+   and 65 data hashes. See [analysis/MAIN_NAND_WORKAROUND.md](analysis/MAIN_NAND_WORKAROUND.md),
+   [analysis/main-nand-aux-workaround.json](analysis/main-nand-aux-workaround.json)
+   and [analysis/main-nand-identity.json](analysis/main-nand-identity.json).
+
+## 2026-11-19 — actual main UID setup/load/busy/cache/complement checks
+
+1. Joined original main void UID routine, feature setup/readback, page load, busy
+   status and direct 32-byte cache FIFO to actual workaround/probe/root/geometry.
+   First/second/sixteenth copy, no complementary copy, feature mismatch, ECC reject,
+   two status reads, no-UID flag and selected Winbond/DOSILICON/ESMT descriptors
+   execute. UID bytes/status/E0 are authored; BBT and library/platform services
+   remain supplied, with no physical identity or media claim.
+2. Handled UID errors may return normally while leaving prior UID state or length
+   zero; outer probe and registration still succeed. Readiness timeout leaves
+   cleared cache backing, while completion timeout retains FIFO bytes with length
+   still zero. Actual transport assertions stop before normal UID completion.
+   Sixteenth-copy case reads 521 total FIFO bytes; the new scope uses a 1024-byte
+   aggregate trace guard, preserving the prior scope's 512-byte default.
+3. All 14 native cases pass in 130,133 steps (maximum 24,357). See
+   [analysis/MAIN_NAND_UID.md](analysis/MAIN_NAND_UID.md) and
+   [analysis/main-nand-aux-uid.json](analysis/main-nand-aux-uid.json). Inventory,
+   vectors and both evidence files reproduce; all 396 previous main native cases
+   reproduce byte for byte. Narrow auxiliary/model/FIFO hooks preserve prior
+   configurations and bounds. Twenty-eight new host checks join the passing
+   1,830-test suite. Next: actual main BBT recovery/repair, UID export/consumers,
+   page/media paths, IRQ/cache/pin bodies and physical backup/restoration/boot.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -2740,7 +2780,10 @@ limits; the initial observations point to the current status and work log.
   and auxiliary bodies supplied. Actual main command/FIFO/count/timer/clock/
   revision and DMA wrappers now also execute separately, and original main bus/
   feature packets join them over an authored initialized controller. Follow
-  actual main workaround/UID/BBT and page/media callers through this chain.
+  actual main BBT recovery/repair, UID export/consumers and page/media callers
+  through this chain. Actual main workaround/reset/level and UID feature/load/
+  busy/cache/complement checks now join it, including retained state after UID
+  failures and outer probe success without valid acquisition.
   Original main candidate probe/root now joins actual platform/clock/QSPI FIFO/
   revision/DMA initialization and object consumers over all eleven unchanged
   descriptors, including all 33 attempts and actual timeout assertions. DMA

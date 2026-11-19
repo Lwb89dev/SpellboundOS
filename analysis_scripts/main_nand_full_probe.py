@@ -43,17 +43,20 @@ class Engine(platform.Model):
 
 
 class Model(prior.Model):
+    engine_type=Engine
     def __init__(self,c):
-        super().__init__(c);self.engine=Engine(c,self.features);self.engine.actions=self.actions
+        super().__init__(c);self.engine=self.engine_type(c,self.features);self.engine.actions=self.actions
     def initialize_bus(self,index):
         self.bus_calls+=1;self.actions.append(f'probe_bus_native:{index}');self.engine.c['bus_word']=prior.BUS_WORDS[index];self.engine.initialize()
     def packet(self,opcode,address,size,write,local):
+        return self.transfer_packet(opcode,address,size,write,local,int(bool(size)),0)
+    def transfer_packet(self,opcode,address,size,write,local,address_bytes,dummy):
         self.actions.append(f'probe_packet:{opcode}:{address}:{size}:{int(write)}')
         if self.c['bus_disabled']:
             owner,line={0x9f:(0x70a30fa4,383),0xff:(0x70a30f94,402),0x1f:(0x70a31114,74),0x0f:(0x70a3112c,55)}[opcode]
             raise prior.bus.boot.Stop(owner,line)
         self.commands+=1;e=self.engine;e.command_index=self.commands;e.opcode=opcode;e.reg=address;e.payload=bytes(local);e.payload_at=0
-        e.version();e.c['frame']=[2 if write else 0,0,opcode,1,1,address,1,int(bool(size)),1,size,0]
+        e.version();e.c['frame']=[2 if write else 0,0,opcode,1,1,address,1,address_bytes,1,size,8 if dummy else 0]
         status=e.command();stage='command'
         if not status and size:
             if write:self.writes+=1

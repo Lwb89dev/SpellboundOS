@@ -24,9 +24,8 @@ public class ValidateMainNandFullProbe extends ValidateMainObjects {
    else if(board.containsKey(p)){if(n!=4)throw new IllegalStateException("Probe board read width");value=board.get(p);actions.add("board_r:"+p+":"+value);}
    else if(p>=0x93080000L&&p<0x93080200L){long at=p-0x93080000L;if(n!=4||!dmaRegs.containsKey(at))throw new IllegalStateException("Probe DMA read");value=dmaRegs.get(at);actions.add("dma_r:"+at+":"+value);}
    else if(p>=0x93240000L&&p<0x93240104L){long at=p-0x93240000L;
-    if(at==0x100){if((n!=1&&n!=4)||rxBytes+n>512)throw new IllegalStateException("Probe FIFO read bound");value=0;
-     if(opcode==0x9f){if(payloadAt+n>5)throw new IllegalStateException("Probe ID FIFO bound");for(int i=0;i<n;i++)value|=(probeIdReads<=11*c.get("probe_delayed_rounds").getAsInt()?255L:c.getAsJsonArray("probe_id").get(payloadAt+i).getAsLong())<<(8*i);}
-     else{if(opcode!=0x0f||n!=1||!probeFeatures.containsKey((long)reg))throw new IllegalStateException("Probe feature FIFO backing");value=probeFeatures.get((long)reg)^(probeFeatureReads==c.get("probe_feature_mismatch_at").getAsInt()?1:0);}
+    if(at==0x100){if((n!=1&&n!=4)||rxBytes+n>fifoReadBound())throw new IllegalStateException("Probe FIFO read bound");value=0;
+     value=fifoResponse(opcode,reg,n,payloadAt);
      payloadAt+=n;rxBytes+=n;
     }else{if(n!=4||!regs.containsKey(at))throw new IllegalStateException("Probe QSPI read");
      if(at==16&&reset){value=resetReads++==0?0x100:0;regs.put(at,value);if((value&0x100)==0)reset=false;}
@@ -41,12 +40,18 @@ public class ValidateMainNandFullProbe extends ValidateMainObjects {
    if(board.containsKey(p)){if(n!=4)throw new IllegalStateException("Probe board write width");board.put(p,value);actions.add("board_w:"+p+":"+value);return;}
    if(p>=0x93080000L&&p<0x93080200L){long at=p-0x93080000L;if(n!=4||!dmaRegs.containsKey(at))throw new IllegalStateException("Probe DMA write");dmaRegs.put(at,value);actions.add("dma_w:"+at+":"+value);return;}
    if(p>=0x93240000L&&p<0x93240104L){long at=p-0x93240000L;
-    if(at==0x100){if(opcode!=0x1f||n!=1||tx.size()+n>64)throw new IllegalStateException("Probe feature FIFO write");tx.writeBytes(data);probeFeatures.put((long)reg,value&255);}
+    if(at==0x100){if(opcode!=0x1f||n!=1||tx.size()+n>64)throw new IllegalStateException("Probe feature FIFO write");tx.writeBytes(data);featureWritten(reg,value&255);}
     else{if(n!=4||!regs.containsKey(at))throw new IllegalStateException("Probe QSPI write");regs.put(at,at==36&&value==1?0:value);if(at==16&&(value&0x100)!=0)reset=true;if(at==12){commands++;opcode=(int)(value>>>24);reg=regs.get(0L).intValue();payloadAt=0;}}
     actions.add("w:"+at+":"+n+":"+value);
    }
   }
  }
+ protected int fifoReadBound(){return 512;}
+ protected long fifoResponse(int opcode,int reg,int n,int payloadAt){
+  if(opcode==0x9f){if(payloadAt+n>5)throw new IllegalStateException("Probe ID FIFO bound");long value=0;for(int i=0;i<n;i++)value|=(probeIdReads<=11*c.get("probe_delayed_rounds").getAsInt()?255L:c.getAsJsonArray("probe_id").get(payloadAt+i).getAsLong())<<(8*i);return value;}
+  if(opcode!=0x0f||n!=1||!probeFeatures.containsKey((long)reg))throw new IllegalStateException("Probe feature FIFO backing");return probeFeatures.get((long)reg)^(probeFeatureReads==c.get("probe_feature_mismatch_at").getAsInt()?1:0);
+ }
+ protected void featureWritten(int reg,long value){probeFeatures.put((long)reg,value);}
  @Override protected int executionBound(){return 30000;}
  @Override protected EmulatorHelper createEmulator(){Helper e=new Helper(currentProgram);io=new Io();e.filter(io);return e;}
  @Override protected void configure()throws Exception {
