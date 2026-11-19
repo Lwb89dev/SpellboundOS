@@ -32,7 +32,7 @@ requires evidence beyond OTA analysis and emulator case counts.
 | Area | Current evidence | Still needed to close the area |
 | --- | --- | --- |
 | Package integrity / signatures | Hashes/signatures plus variable-length metadata and raw-recovery validator path; manifest fully verified and the `res_info` mismatch explained (it embeds the manifest's own digest); `fw_info` sizes/CRC-32 match | Observe device enforcement, update-script interpreter and rollback policy |
-| Main/sensor startup | Copy/zero tables reconstructed; startup-aware analysis ELFs; main kernel identified as FreeRTOS; 57 native trap-entry/frame/C-handler/core-and-PLIC-dispatch/PLIC-API/timer/exception/syscall/first-task cases with 23 recovered interrupt registrations (18 far calls, 5 direct RAM calls), including four DMA controllers on one handler; 61 native FreeRTOS tick/switch/timer-setup/run-time/stack-init/static-creation/critical-section cases, also joined to the original trap entry and scheduler start | Validate full boot context, aliases, memory protection, retained/device data |
+| Main/sensor startup | Copy/zero tables reconstructed; startup-aware analysis ELFs; main kernel identified as FreeRTOS; 57 native trap-entry/frame/C-handler/core-and-PLIC-dispatch/PLIC-API/timer/exception/syscall/first-task cases with 23 recovered interrupt registrations (18 far calls, 5 direct RAM calls), including four DMA controllers on one handler; 61 native FreeRTOS tick/switch/timer-setup/run-time/stack-init/static-creation/critical-section cases, also joined to the original trap entry and scheduler start; 13 native power-management wake-gate/re-registration/handler/clock-poke cases, with the deep-sleep save/restore twins recorded statically | Validate full boot context, aliases, memory protection, retained/device data |
 | Native corpus | Guarded BBS and two Andes DSP semantics, ABI/logger fixes, targeted main/sensor exports; volatile MMIO/CSR metadata; wide division helper checked in 52,294 host executions | Audit remaining affected exports and unsupported DSP forms; runtime/type validation |
 | App bytecode | 44 members structurally parsed; QuickJS engine fingerprinted; official C reader agrees on nine header fields for all 1,072 functions | Runtime semantics, operand-level validation and independently implemented host |
 | JS/native boundary | Modules, export tables, classes and initializer ownership mapped | Argument/error contracts, object lifetimes and behavior behind each implementation |
@@ -164,6 +164,7 @@ Latest detailed findings:
 - [Actual main critical-section depth/MIE, context wrappers and diagnostic state](MAIN_RTOS_CRITICAL_SECTIONS.md)
 - [Main trap entry, interrupt dispatch, PLIC API and FreeRTOS port](MAIN_TRAP_IRQ_DISPATCH.md)
 - [FreeRTOS tick, context selection, port timer and task creation](MAIN_FREERTOS_KERNEL.md)
+- [Power-management wake gate, dynamic IRQ re-registration and wake body](MAIN_PM_WAKE.md)
 - [Recovery selection/counter writes, preparation/completion and stopped handoff](RECOVERY_SELECTION_AND_HANDOFF.md)
 - [Boot environment wrappers, reason cache, key policy and stopped upgrade-record caller](BOOT_ENVIRONMENT_AND_KEY_POLICY.md)
 - [Native KV40 records, staged writes, cached lookup/deletion and storage adapters](ENV_RECORDS_AND_STORAGE.md)

@@ -265,7 +265,8 @@ Remaining work:
   zero-argument sources and the RAM handlers for `0xb`/`0xc`/`0xe`), the
   re-registration order and the dynamically registered sources.
 - Cover the deep-sleep save/`wfi`/resume routine at `0x80d34470`–`0x80d34554`
-  and its peripheral polling.
+  and its peripheral polling. The wake gate, dynamic re-registration and wake
+  body now execute; see [MAIN_PM_WAKE.md](MAIN_PM_WAKE.md).
 - Establish the live PLIC priority/threshold semantics, the timer frequency,
   Andes CSR `0x7c6`/`0x7c7` meanings and any actual interrupt nesting on the
   device.

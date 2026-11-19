@@ -3129,16 +3129,40 @@ limits; the initial observations point to the current status and work log.
    new host checks join the suite. Dynamic creation, blocking APIs, deletion,
    timer frequency and live multi-task scheduling remain open.
 
+## 2026-11-19 — power-management wake gate, dynamic IRQ re-registration and wake body
+
+1. Executed the main-image power-management wake path that is ordinary code:
+   the configuration gate `0x80d341d8` (custom CSR `0xfc1`, enabled when the
+   three-bit field at bits 6-8 is zero), the conditional re-registration
+   routine `0x80d4217c` that re-points PLIC sources `0xe`/`0xc`/`0xb` at RAM
+   handlers through the original register/enable bodies, the three identical
+   RAM handlers, and the wake body `0x80d41fb8` that pokes the `0x90008000`
+   clock/PM block and `0x91000004` with a bounded 10-iteration delay and then
+   restores them. All **13 cases pass in 457 steps**.
+2. Recorded the deep-sleep save/`wfi`/resume twins `0x80d34470`/`0x80d343a0`
+   statically: a full integer/FP/CSR save to a dedicated stack, `fence`+`wfi`,
+   then a symmetric restore that writes Andes `0x7c6` = `0x21`, matching the
+   hardware stack-protection interpretation. `fence`/`wfi` and the sleep stack
+   are not executed. See
+   [analysis/MAIN_PM_WAKE.md](analysis/MAIN_PM_WAKE.md) and
+   [analysis/main-pm-wake.json](analysis/main-pm-wake.json); the vectors, native
+   report and evidence regenerate byte for byte. Ten new host checks join the
+   suite. The sleep states, CSR `0xfc1` field meaning, the `0x90008000`/
+   `0x91000004` registers and the runtime device sources behind `0xe`/`0xc`/
+   `0xb` remain open.
+
 ## Next work
 
 - Main kernel: execute `vTaskStartScheduler` idle/timer-task creation, dynamic
   `xTaskCreate`, blocking/queue/event-list APIs, deletion and suspend/resume
   catch-up. See
   [analysis/MAIN_FREERTOS_KERNEL.md](analysis/MAIN_FREERTOS_KERNEL.md).
-- Main interrupts: recover the remaining device interrupt handlers and
-  the deep-sleep save/`wfi`/resume routine, then validate preemption/nesting and
-  timer frequency on hardware. See
-  [analysis/MAIN_TRAP_IRQ_DISPATCH.md](analysis/MAIN_TRAP_IRQ_DISPATCH.md).
+- Main interrupts: recover the remaining device interrupt handlers (the
+  zero-argument sources and the shared `0x70293d50`), execute the deep-sleep
+  save/`wfi`/resume twins on hardware, and validate preemption/nesting and
+  timer frequency. The power-management wake gate, dynamic re-registration and
+  wake body now execute; see [analysis/MAIN_PM_WAKE.md](analysis/MAIN_PM_WAKE.md)
+  and [analysis/MAIN_TRAP_IRQ_DISPATCH.md](analysis/MAIN_TRAP_IRQ_DISPATCH.md).
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
   native subsystem work: the signed boot chain and device-specific restoration
   remain unresolved and cannot be closed by additional HR test counts alone.
