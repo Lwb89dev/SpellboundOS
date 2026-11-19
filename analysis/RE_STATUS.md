@@ -87,6 +87,7 @@ Latest detailed findings:
 - [HR outer workspace allocation/free/restart and borrowed extension views](HR_WORKSPACE_AND_EXTENSION.md)
 - [Actual HR setup, component allocation/reset and nested cleanup](HR_SETUP_AND_NESTED_CLEANUP.md)
 - [Boot/recovery control flow and signed metadata](BOOT_RECOVERY_AND_METADATA.md)
+- [Bootloader main-firmware load, signature gate and handoff](MAIN_BOOT_GATE.md)
 - [Native recovery CRC, metadata policy, signed coverage and partition validation](RECOVERY_VALIDATOR_NATIVE.md)
 - [Storage registry, environment handle setup, NVMS mirrors and stopped bootstrap](ENV_STORAGE_SETUP_AND_NVMS.md)
 - [Original boot partition tables, backend geometry words and actual driver bindings](STORAGE_MAP_AND_DRIVER_BINDINGS.md)

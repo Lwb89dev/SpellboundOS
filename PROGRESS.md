@@ -3299,6 +3299,31 @@ deletion remain open.
    join the suite. vTaskSuspend/Resume, mutex inheritance and the queue/
    semaphore/event-group/notification APIs remain open.
 
+## 2026-11-19 — bootloader main-firmware signature gate and handoff
+
+1. Executed the original bootloader boot decision `0x80c00918` and firmware
+   loader `0x80c00876` end to end in the `boot-runtime` project, supplying the
+   file-system leaves, the signature verifier `0x80c0e2b6` and the image handoff
+   `0x80c0084a` as stubs. All **10 cases pass in 460 steps**. This upgrades the
+   boot-chain control flow from static reading to bounded execution.
+2. Established by execution that the main firmware at `0x70160000` is entered
+   **only** when the loader returns success, which happens **only** when the
+   signature verifier returns nonzero. A failed verification logs
+   `firmware secure verify failed!!!` and `load firmware failed!!!`; an oversize
+   image (> `0xe00000`) is rejected before open/verify; a failed open or short
+   read skips verification. None of these jump into the loaded bytes.
+3. Supplying a passing verifier result is not a bypass: a nonzero result on the
+   device still requires a signature valid under the embedded key. The verifier
+   internals are already executed for the recovery image in
+   [analysis/RECOVERY_VALIDATOR_NATIVE.md](analysis/RECOVERY_VALIDATOR_NATIVE.md).
+
+   See [analysis/MAIN_BOOT_GATE.md](analysis/MAIN_BOOT_GATE.md) and
+   [analysis/main-boot-gate.json](analysis/main-boot-gate.json); the vectors,
+   native report and evidence regenerate byte for byte. Ten new host checks join
+   the suite. A safe boot attempt still requires a verified physical flash
+   backup, a tested recovery-entry/restore guarantee and confirmation of
+   device-side enforcement — none obtainable offline.
+
 ## Next work
 
 - Main kernel: execute `vTaskSuspend`/`vTaskResume`, the idle-task termination
@@ -3317,6 +3342,11 @@ deletion remain open.
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
   native subsystem work: the signed boot chain and device-specific restoration
   remain unresolved and cannot be closed by additional HR test counts alone.
+  The main-firmware boot gate now executes: the loader enters `0x70160000`
+  only on a positive signature verification, and failures/oversize never jump
+  into the image; see [analysis/MAIN_BOOT_GATE.md](analysis/MAIN_BOOT_GATE.md).
+  Next on this path: execute the caller above `0x80c00918` to prove whether a
+  failed main boot deterministically falls through to recovery or halts.
   Selected boot validation, selection, header/counter preparation/completion and
   stopped handoff now execute with supplied board/storage/crypto/BSP services.
   Environment wrappers, cached reason/key policy and the stopped upgrade-record

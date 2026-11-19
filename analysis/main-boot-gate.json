@@ -1,0 +1,411 @@
+{
+  "boot_decision": "0x80c00918",
+  "boot_sha256": "44cd83c0d09864c6101e9825bd3c77d7fac314584d0408b378dd56c2aac5736a",
+  "byte_range_sha256": {
+    "80c00876_a2": "9e42541accca923bec1a07064b5e466e419534663cb8f48072652aa647a22984",
+    "80c00918_74": "50fd5502f0f7a498fa46ff2b352e796a92b4a9b74edb1bda1feb622ca8ddd5c8"
+  },
+  "call_sites": [
+    {
+      "site": "0x80c0091c",
+      "target": "0x80c0b190"
+    },
+    {
+      "site": "0x80c0092a",
+      "target": "0x80c26efc"
+    },
+    {
+      "site": "0x80c00962",
+      "target": "0x80c00876"
+    },
+    {
+      "site": "0x80c0097a",
+      "target": "0x80c0084a"
+    },
+    {
+      "site": "0x80c00886",
+      "target": "0x80c26efc"
+    },
+    {
+      "site": "0x80c0088e",
+      "target": "0x80c26b14"
+    },
+    {
+      "site": "0x80c008f2",
+      "target": "0x80c26bec"
+    },
+    {
+      "site": "0x80c00902",
+      "target": "0x80c0e2b6"
+    }
+  ],
+  "firmware_entry": "0x70160000",
+  "firmware_loader": "0x80c00876",
+  "firmware_path": "/mnt/system/firmware_sign.bin",
+  "image_handoff": "0x80c0084a",
+  "limitations": [
+    "The bootloader boot decision and firmware loader execute in an emulator over authored state with the file-system leaves, the signature verifier 0x80c0e2b6 and the image handoff 0x80c0084a supplied; the indirect jump into the loaded image is a harness stop and is not taken.",
+    "The verifier result is supplied both ways to exercise the branch; its ECDSA/SHA-256 internals are executed for the recovery image elsewhere and are not re-executed here. No signature bypass is implied by supplying a passing result: a valid signature still requires the private key.",
+    "This proves the control-flow gate (the main firmware is entered only on loader success, which needs a nonzero verifier result), not device enforcement, the recovery fall-back policy, a physical flash backup or any viable standalone-boot route."
+  ],
+  "main_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "native_case_count": 10,
+  "native_steps": 460,
+  "native_validation": {
+    "bound_per_case": 5000,
+    "case_count": 10,
+    "cases": [
+      {
+        "name": "main_boot_gate_verified_firmware_hands_off",
+        "observed": {
+          "actions": [
+            "op:boot",
+            "call:2160112016",
+            "call:2160226044",
+            "call:2160226044",
+            "call:2160225044",
+            "call:2160225442",
+            "call:2160225260",
+            "call:2160124598",
+            "call:2160183158",
+            "call:2160068682:1880489984"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": "handoff"
+            }
+          ]
+        },
+        "steps": 57
+      },
+      {
+        "name": "main_boot_gate_verify_failure_no_handoff",
+        "observed": {
+          "actions": [
+            "op:boot",
+            "call:2160112016",
+            "call:2160226044",
+            "call:2160226044",
+            "call:2160225044",
+            "call:2160225442",
+            "call:2160225260",
+            "call:2160124598",
+            "call:2160183158",
+            "call:2160183158"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 63
+      },
+      {
+        "name": "main_boot_gate_oversize_firmware_rejected",
+        "observed": {
+          "actions": [
+            "op:boot",
+            "call:2160112016",
+            "call:2160226044",
+            "call:2160184698"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 20
+      },
+      {
+        "name": "main_boot_gate_maximum_size_still_loads",
+        "observed": {
+          "actions": [
+            "op:boot",
+            "call:2160112016",
+            "call:2160226044",
+            "call:2160226044",
+            "call:2160225044",
+            "call:2160225442",
+            "call:2160225260",
+            "call:2160124598",
+            "call:2160183158",
+            "call:2160068682:1880489984"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": "handoff"
+            }
+          ]
+        },
+        "steps": 57
+      },
+      {
+        "name": "main_boot_gate_open_failure_no_handoff",
+        "observed": {
+          "actions": [
+            "op:boot",
+            "call:2160112016",
+            "call:2160226044",
+            "call:2160226044",
+            "call:2160225044",
+            "call:2160184698",
+            "call:2160183158"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 53
+      },
+      {
+        "name": "main_boot_gate_short_read_no_handoff",
+        "observed": {
+          "actions": [
+            "op:boot",
+            "call:2160112016",
+            "call:2160226044",
+            "call:2160226044",
+            "call:2160225044",
+            "call:2160225442",
+            "call:2160184698",
+            "call:2160225260",
+            "call:2160183158"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 62
+      },
+      {
+        "name": "main_boot_gate_loader_verified_returns_success",
+        "observed": {
+          "actions": [
+            "op:loader",
+            "call:2160226044",
+            "call:2160225044",
+            "call:2160225442",
+            "call:2160225260",
+            "call:2160124598"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 36
+      },
+      {
+        "name": "main_boot_gate_loader_verify_failure_returns_error",
+        "observed": {
+          "actions": [
+            "op:loader",
+            "call:2160226044",
+            "call:2160225044",
+            "call:2160225442",
+            "call:2160225260",
+            "call:2160124598",
+            "call:2160183158"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 41
+      },
+      {
+        "name": "main_boot_gate_loader_open_failure_returns_error",
+        "observed": {
+          "actions": [
+            "op:loader",
+            "call:2160226044",
+            "call:2160225044",
+            "call:2160184698"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 31
+      },
+      {
+        "name": "main_boot_gate_loader_short_read_returns_error",
+        "observed": {
+          "actions": [
+            "op:loader",
+            "call:2160226044",
+            "call:2160225044",
+            "call:2160225442",
+            "call:2160184698",
+            "call:2160225260"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 40
+      }
+    ],
+    "hardware_execution": false,
+    "schema": 1
+  },
+  "signature_verifier": "0x80c0e2b6",
+  "size_limit": "0xe00000",
+  "strings": {
+    "jump": {
+      "address": "0x80c32d50",
+      "text": "jump to address 0x%08X\r\n"
+    },
+    "load_failed": {
+      "address": "0x80c32d6c",
+      "text": "load firmware failed!!!\r\n"
+    },
+    "path": {
+      "address": "0x80c32d30",
+      "text": "/mnt/system/firmware_sign.bin"
+    },
+    "too_large": {
+      "address": "0x80c32e44",
+      "text": "firmware is too large , size 0x%08X, limit 0x%08X"
+    },
+    "verify_failed": {
+      "address": "0x80c32d0c",
+      "text": "firmware secure verify failed!!!\r\n"
+    }
+  },
+  "validation_sha256": "22ccf0b331ee171f763d78560aef60979288e45b0e135ee2c54be080efccbc73",
+  "vectors_sha256": "4f6c4bad54105c1139a30ec8c78a0a6605c0055e63c38f59d10262823c4a7038"
+}
