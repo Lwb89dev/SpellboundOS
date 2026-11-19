@@ -1,0 +1,608 @@
+{
+  "byte_range_sha256": {
+    "70293d50_70": "8381861a1ec2afaa6dabf829aa0b78dee4939e93221e9d27cfdea44a7cc9fef4",
+    "80d42c84_74": "06254faee62840d39299908ffd1ccba8d066058337928eefd5aba4a0217943ac",
+    "80d436b4_be": "a47a49e594fd994938a9f7c786277174a7d23dd008e45fef4bc937388b8dca08",
+    "80d4744c_c": "09fcec046d275d87d023153bc8f30d224c1f79215f8b22a9c47a02af41c96771"
+  },
+  "callback_row_bytes": "0x18",
+  "callback_rows": 16,
+  "callback_table": "0x80c118c8",
+  "dispatcher": "0x80d436b4",
+  "limitations": [
+    "The pad multiplexer, GPIO interrupt dispatcher and shared interrupt handler execute in an emulator over authored controller structs, authored MMIO pad/clock banks and an authored 16-row callback table. No hardware GPIO edge, pin level or interrupt is delivered.",
+    "The registered per-pin handlers are supplied return stubs. The controller struct layout (pending at +0x28, acknowledge at +0x30), the pad banks and the clock/PM registers are interpreted from their access pattern, not from a datasheet.",
+    "Which handlers populate the callback table, the physical pin assignments and the real edge/level behavior are runtime/hardware properties and remain unproved."
+  ],
+  "main_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "native_case_count": 18,
+  "native_steps": 2405,
+  "native_validation": {
+    "bound_per_case": 5000,
+    "case_count": 18,
+    "cases": [
+      {
+        "name": "main_gpio_padmux_bank0_pin0",
+        "observed": {
+          "actions": [
+            "op:padmux#padmux_bank0_pin0",
+            "w:2432696448:4:2309737962"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2432696448": "eacdab89"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 19
+      },
+      {
+        "name": "main_gpio_padmux_bank1_pin5",
+        "observed": {
+          "actions": [
+            "op:padmux#padmux_bank1_pin5",
+            "w:2432696464:4:2309737967"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2432696464": "efcdab89"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 22
+      },
+      {
+        "name": "main_gpio_padmux_bank2_pin8",
+        "observed": {
+          "actions": [
+            "op:padmux#padmux_bank2_pin8",
+            "w:2432696484:4:2309737962"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2432696484": "eacdab89"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 24
+      },
+      {
+        "name": "main_gpio_padmux_direct_pin3",
+        "observed": {
+          "actions": [
+            "op:padmux#padmux_direct_pin3",
+            "w:2432696496:4:2309729775"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2432696496": "efadab89"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 25
+      },
+      {
+        "name": "main_gpio_padmux_direct_pin_out_of_range",
+        "observed": {
+          "actions": [
+            "op:padmux#oob"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2432696496": "11111111"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 13
+      },
+      {
+        "name": "main_gpio_padmux_unknown_base_ignored",
+        "observed": {
+          "actions": [
+            "op:padmux#unk"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2432696496": "22222222"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 11
+      },
+      {
+        "name": "main_gpio_padmux_high_pin_selects_word",
+        "observed": {
+          "actions": [
+            "op:padmux#word",
+            "w:2432696452:4:80"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2432696448": "0000000050000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 19
+      },
+      {
+        "name": "main_gpio_padmux_overwrites_only_nibble",
+        "observed": {
+          "actions": [
+            "op:padmux#nib",
+            "w:2432696448:4:4294967103"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2432696448": "3fffffff"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 19
+      },
+      {
+        "name": "main_gpio_dispatch_no_pending",
+        "observed": {
+          "actions": [
+            "op:dispatch"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2162161596": "00000000",
+                "2162161600": "00000000",
+                "2162161604": "00000000",
+                "2168455216": "00000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 23
+      },
+      {
+        "name": "main_gpio_dispatch_one_pending_registered",
+        "observed": {
+          "actions": [
+            "op:dispatch",
+            "w:2168455216:4:32",
+            "call:1879052288:41120:45232"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2162161596": "00000000",
+                "2162161600": "00000000",
+                "2162161604": "00000000",
+                "2168455216": "20000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 228
+      },
+      {
+        "name": "main_gpio_dispatch_one_pending_traced",
+        "observed": {
+          "actions": [
+            "op:dispatch",
+            "w:2162161604:4:2168455168",
+            "w:2162161600:4:32",
+            "w:2168455216:4:32",
+            "w:2162161596:4:5",
+            "call:1879052288:41120:45232"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2162161596": "05000000",
+                "2162161600": "20000000",
+                "2162161604": "00004081",
+                "2168455216": "20000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 234
+      },
+      {
+        "name": "main_gpio_dispatch_pending_unregistered_bit",
+        "observed": {
+          "actions": [
+            "op:dispatch"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2162161596": "00000000",
+                "2162161600": "00000000",
+                "2162161604": "00000000",
+                "2168455216": "00000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 281
+      },
+      {
+        "name": "main_gpio_dispatch_registered_handler_null",
+        "observed": {
+          "actions": [
+            "op:dispatch",
+            "w:2168455216:4:32"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2162161596": "00000000",
+                "2162161600": "00000000",
+                "2162161604": "00000000",
+                "2168455216": "20000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 225
+      },
+      {
+        "name": "main_gpio_dispatch_two_pending_in_bit_order",
+        "observed": {
+          "actions": [
+            "op:dispatch",
+            "w:2168455216:4:1",
+            "call:1879052288:17:18",
+            "w:2168455216:4:2147483648",
+            "call:1879052288:113:114"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2162161596": "00000000",
+                "2162161600": "00000000",
+                "2162161604": "00000000",
+                "2168455216": "00000080"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 268
+      },
+      {
+        "name": "main_gpio_dispatch_wrong_base_row_skipped",
+        "observed": {
+          "actions": [
+            "op:dispatch"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2162161596": "00000000",
+                "2162161600": "00000000",
+                "2162161604": "00000000",
+                "2168455216": "00000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 279
+      },
+      {
+        "name": "main_gpio_shared_wake_then_dispatch",
+        "observed": {
+          "actions": [
+            "op:shared",
+            "w:2415951872:4:3735928432",
+            "w:2415951892:4:17",
+            "w:2432696324:4:65538",
+            "w:2415951892:4:1",
+            "w:2432696324:4:2",
+            "w:2415951872:4:3735928320",
+            "w:2432708656:4:32",
+            "call:1879052288:1:2"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2415951872": "00beadde",
+                "2415951892": "01000000",
+                "2432696324": "02000000",
+                "2432708656": "20000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 274
+      },
+      {
+        "name": "main_gpio_shared_bit12_clear_dispatch_only",
+        "observed": {
+          "actions": [
+            "op:shared",
+            "w:2432712752:4:32",
+            "call:1879052288:1:2"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2415951872": "00beadde",
+                "2415951892": "01000000",
+                "2432696324": "02000000",
+                "2432712752": "20000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 222
+      },
+      {
+        "name": "main_gpio_shared_other_base_dispatch_only",
+        "observed": {
+          "actions": [
+            "op:shared",
+            "w:2550157360:4:32",
+            "call:1879052288:1:2"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2415951872": "00beadde",
+                "2415951892": "01000000",
+                "2432696324": "02000000",
+                "2550157360": "20000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 219
+      }
+    ],
+    "hardware_execution": false,
+    "schema": 1
+  },
+  "pad_banks": {
+    "0x91003000": "0x91000080",
+    "0x91004000": "0x91000090",
+    "0x98005000": "0x910000a0",
+    "0x9a00a000": "0x910000b0"
+  },
+  "pad_multiplexer": "0x80d42c84",
+  "shared_handler": "0x70293d50",
+  "trace": {
+    "base": "0x80dff7c4",
+    "bit": "0x80dff7bc",
+    "flag": "0x80c07fac",
+    "pending": "0x80dff7c0"
+  },
+  "validation_sha256": "39cb36b79d1c2bf3260a7da041c060a5d18569ae833343bfacd02ee31fd4a2f9",
+  "vectors_sha256": "7c778394884dff7905b5725ee0a1e1a89716c5ccd1f3e5beb6d2b0dc05dcce6b"
+}

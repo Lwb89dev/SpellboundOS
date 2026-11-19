@@ -3151,6 +3151,29 @@ limits; the initial observations point to the current status and work log.
    `0x91000004` registers and the runtime device sources behind `0xe`/`0xc`/
    `0xb` remain open.
 
+## 2026-11-19 — GPIO pad multiplexer, shared IRQ handler and per-pin dispatch
+
+1. Executed three original main-image bodies that form a GPIO/pad controller:
+   the pad multiplexer `0x80d42c84` (a 4-bit field per pin into a bank selected
+   by the controller base, eight pins per 32-bit register), the GPIO interrupt
+   dispatcher `0x80d436b4` (walks the 16-row callback table at `0x80c118c8`,
+   acknowledges `controller + 0x30` per pin and calls the registered handler),
+   and the shared interrupt handler `0x70293d50` (registered for PLIC sources
+   9/10/`0x2a`-`0x2d`), which performs the clock/PM wake poke for two bases and
+   then tail-calls the dispatcher. All **18 cases pass in 2,405 steps** over
+   authored controller structs, MMIO banks and callback table; registered
+   handlers are supplied stubs.
+2. Recovered the bank table (`0x91003000`/`0x91004000`/`0x98005000` →
+   `0x91000080`/`0x90`/`0xa0`; `0x9a00a000` → `0x910000b0` with the pin bounded
+   to <= 4), the row layout {base, bit, arg0, _, handler, arg1}, the
+   ascending-bit service order and the trace record order (base then pending).
+   See [analysis/MAIN_GPIO_DISPATCH.md](analysis/MAIN_GPIO_DISPATCH.md) and
+   [analysis/main-gpio-dispatch.json](analysis/main-gpio-dispatch.json); the
+   vectors, native report and evidence regenerate byte for byte. Ten new host
+   checks join the suite. The registration that populates the callback table,
+   the bulk pad applier at `0x80d42cfc` and the physical pin assignments remain
+   open.
+
 ## Next work
 
 - Main kernel: execute `vTaskStartScheduler` idle/timer-task creation, dynamic
