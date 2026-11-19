@@ -1,0 +1,350 @@
+{
+  "byte_range_sha256": {
+    "702c8238_a0": "1b19bc439141d393a2d7d465cdadf1cbdaef51367d3dfdf58bfee43e5e461bbd",
+    "702c82d8_3c": "3c26c8f6928ea2147ea8ce81b8e38aca75a9ab681aeef9b30e44586b25635d7e",
+    "702c8314_62": "f51e288589c5b2518570056258f10f297065668eff292566806407df07050db4"
+  },
+  "call_sites": [
+    {
+      "site": "0x702c825e",
+      "target": "0x702c81d8"
+    },
+    {
+      "site": "0x702c828c",
+      "target": "0x702b38a2"
+    },
+    {
+      "site": "0x702c82e4",
+      "target": "0x702c8238"
+    },
+    {
+      "site": "0x702c833c",
+      "target": "0x702c81f4"
+    }
+  ],
+  "command_player": "0x702c8314",
+  "command_table_format": "{type, nargs, payload...}; type 0 = DCS write, type 1 = delay(ms); advance nargs+2",
+  "dcs_read_op": "device op + 0x10",
+  "dcs_write_op": "device op + 0xc",
+  "display_init": "0x702c8c70",
+  "limitations": [
+    "display_panel_read_id, the panel probe and the DCS command-table player execute in an emulator over authored state; the DCS read/write transfers, the delay and the logger are supplied. The transfer stub captures the command bytes the code emits and injects scripted response bytes, so the DCS framing and the 24-bit id accumulation are verified, but no panel or bus is driven.",
+    "The panel table is authored with the nine real ICNA3311 variant ids read from the firmware; the probe selects by a full 24-bit id match. The actual device id, the full power/reset/ESD bring-up in 0x702c8c70, the real init command tables and the physical bus (device op behind +0xc/+0x10) are not executed here.",
+    "Panel timing, electrical bring-up, the framebuffer/refresh path and backlight hardware remain unproved and need the device. This is a driver contract, not a working display driver."
+  ],
+  "main_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "native_case_count": 9,
+  "native_steps": 565,
+  "native_validation": {
+    "bound_per_case": 5000,
+    "case_count": 9,
+    "cases": [
+      {
+        "name": "main_display_panel_read_id_accumulates_rdid",
+        "observed": {
+          "actions": [
+            "op:read_id",
+            "call:1881965016",
+            "cap:da",
+            "call:1881965016",
+            "cap:db",
+            "call:1881965016",
+            "cap:dc",
+            "call:1881880738"
+          ],
+          "rows": [
+            {
+              "a0": 1771785,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 62
+      },
+      {
+        "name": "main_display_panel_read_id_transfer_error_returns_zero",
+        "observed": {
+          "actions": [
+            "op:read_id",
+            "call:1881965016",
+            "cap:da",
+            "call:1881880738"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 33
+      },
+      {
+        "name": "main_display_panel_probe_matches_icna3311_variant",
+        "observed": {
+          "actions": [
+            "op:probe",
+            "call:1881965016",
+            "cap:da",
+            "call:1881965016",
+            "cap:db",
+            "call:1881965016",
+            "cap:dc",
+            "call:1881880738"
+          ],
+          "rows": [
+            {
+              "a0": 2168455472,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 143
+      },
+      {
+        "name": "main_display_panel_probe_unknown_id_returns_null",
+        "observed": {
+          "actions": [
+            "op:probe",
+            "call:1881965016",
+            "cap:da",
+            "call:1881965016",
+            "cap:db",
+            "call:1881965016",
+            "cap:dc",
+            "call:1881880738"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 142
+      },
+      {
+        "name": "main_display_panel_probe_read_id_failure_returns_null",
+        "observed": {
+          "actions": [
+            "op:probe",
+            "call:1881965016",
+            "cap:da",
+            "call:1881880738"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 48
+      },
+      {
+        "name": "main_display_panel_interp_writes_and_delays",
+        "observed": {
+          "actions": [
+            "op:interp",
+            "call:1881965044",
+            "cap:1100",
+            "call:2161338862:120",
+            "call:1881965044",
+            "cap:29"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 53
+      },
+      {
+        "name": "main_display_panel_interp_brightness_then_on",
+        "observed": {
+          "actions": [
+            "op:interp",
+            "call:1881965044",
+            "cap:51ff",
+            "call:1881965044",
+            "cap:5320",
+            "call:2161338862:10",
+            "call:1881965044",
+            "cap:29"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 63
+      },
+      {
+        "name": "main_display_panel_interp_null_table_errors",
+        "observed": {
+          "actions": [
+            "op:interp"
+          ],
+          "rows": [
+            {
+              "a0": 4294967286,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 3
+      },
+      {
+        "name": "main_display_panel_interp_zero_length_errors",
+        "observed": {
+          "actions": [
+            "op:interp"
+          ],
+          "rows": [
+            {
+              "a0": 4294967286,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 18
+      }
+    ],
+    "hardware_execution": false,
+    "schema": 1
+  },
+  "panel": "ICNA3311",
+  "panel_ids": [
+    "0x250905",
+    "0x5a0905",
+    "0x250906",
+    "0x1b0909",
+    "0x4b090d",
+    "0x5c0913",
+    "0x5b0913",
+    "0x250914",
+    "0x2c0914"
+  ],
+  "panel_table": "0x70f62398",
+  "probe": "0x702c82d8",
+  "rdid_commands": [
+    "0xda",
+    "0xdb",
+    "0xdc"
+  ],
+  "read_id": "0x702c8238",
+  "validation_sha256": "351bdc6707caf61261d313edef31773abfe7ec90df35b0045972d7bd0fc61938",
+  "vectors_sha256": "4a505b41da029d3a166b08b63a236fc4062bc2fc80a1b2be7e6b69e4fdba8328"
+}

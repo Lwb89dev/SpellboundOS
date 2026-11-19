@@ -3350,6 +3350,32 @@ deletion remain open.
    checks join the suite. The physical key mapping, the power threshold and a
    demonstrably recoverable over-the-air restore remain open and need the device.
 
+## 2026-11-19 — ICNA3311 display panel DCS read-id, probe and command player
+
+1. Identified the display as a Chipone **ICNA3311 AMOLED** over MIPI DCS
+   (strings `drv_display_init`, `icna3311_probe_success`, `icna3311_read_38_gamma`).
+   Executed three original main-image bodies in `main-runtime`: the DCS read-id
+   `0x702c8238`, the panel probe `0x702c82d8` and the command-table player
+   `0x702c8314`. All **9 cases pass in 565 steps**; a `transfer` stub captures
+   the command bytes the code emits and injects scripted responses, so the DCS
+   framing is verified.
+2. Recovered contracts:
+   - read-id issues DCS `0xDA/0xDB/0xDC` (RDID1/2/3) and accumulates a 24-bit id;
+   - the probe matches that id against nine embedded ICNA3311 variant ids
+     (`0x250905`,`0x5a0905`,`0x250906`,`0x1b0909`,`0x4b090d`,`0x5c0913`,
+     `0x5b0913`,`0x250914`,`0x2c0914`);
+   - the command-table player walks `{type, nargs, payload}` entries, issuing a
+     DCS write (type 0, device op `+0xc`) or a `delay(ms)` (type 1), advancing
+     `nargs + 2`; a null table or zero length returns `0xfffffff6`.
+
+   The DCS read op is at device `+0x10`, write at `+0xc`, behind handle
+   `0x70f8e694`. See [analysis/MAIN_DISPLAY_PANEL.md](analysis/MAIN_DISPLAY_PANEL.md)
+   and [analysis/main-display-panel.json](analysis/main-display-panel.json); the
+   vectors, native report and evidence regenerate byte for byte. Ten new host
+   checks join the suite. This is a driver contract; the rail/reset bring-up
+   (`0x702c8c70`), the real init tables, the framebuffer/refresh path, backlight
+   and panel timing remain open and need the device.
+
 ## Next work
 
 - Main kernel: execute `vTaskSuspend`/`vTaskResume`, the idle-task termination
