@@ -3174,6 +3174,28 @@ limits; the initial observations point to the current status and work log.
    the bulk pad applier at `0x80d42cfc` and the physical pin assignments remain
    open.
 
+## 2026-11-19 — GPIO pull/drive pad writer and interrupt enable/commit
+
+1. Extended the GPIO/pad controller with two more original bodies: the
+   pull/drive pad writer `0x80d42fcc` (a 2-bit field per pin, four pins per
+   32-bit register, bank table `0x80d4745c` → `0x91000100`/`0x120`/`0x140`,
+   direct `0x91000160`) and the interrupt enable/commit routine `0x80d43774`,
+   which walks the 16-row callback table at `0x80c118c8`, acknowledges each
+   registered pin (`controller + 0x30`), reads gate/scheduler state and commits
+   the enable on `controller + 0x20`/`0x2c` through a handshake on `0x900080b0`,
+   wrapping the commit in a critical section only when the scheduler state is
+   non-zero. All **13 cases pass in 895 steps**.
+2. The gate `0x80d341d8`, the scheduler-state reader `0x80d362b0` and the
+   critical save/restore wrappers `0x80d379ee`/`0x80d37a1a` are supplied
+   sequential-return stubs (their own behavior is covered by MAIN_PM_WAKE and
+   MAIN_RTOS_CRITICAL_SECTIONS); the handshake value is 2 when the gate returns
+   non-zero, else 1. See
+   [analysis/MAIN_GPIO_CONFIG.md](analysis/MAIN_GPIO_CONFIG.md) and
+   [analysis/main-gpio-config.json](analysis/main-gpio-config.json); the
+   vectors, native report and evidence regenerate byte for byte. Eleven new host
+   checks join the suite. The routine that populates the callback table, the
+   handshake responder on `0x900080b0` and the physical pin roles remain open.
+
 ## Next work
 
 - Main kernel: execute `vTaskStartScheduler` idle/timer-task creation, dynamic

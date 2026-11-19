@@ -1,0 +1,482 @@
+{
+  "byte_range_sha256": {
+    "80d42fcc_78": "c3e166e5cdedd3b072c9e82a3669516ad9fd8019d26904d104ebe08c4d34dcd3",
+    "80d43774_ec": "651822fc11b7f09312ac7cfdef97288e829098873fb9a47645ef904c6f701977",
+    "80d4745c_c": "4ef9163470f03240b436ee3e6680b4334c19e843858265309b917188830d5663"
+  },
+  "callback_table": "0x80c118c8",
+  "controller_fields": {
+    "acknowledge": "0x30",
+    "disable_mask": "0x20",
+    "enable": "0x2c"
+  },
+  "enable_routine": "0x80d43774",
+  "handshake_register": "0x900080b0",
+  "limitations": [
+    "The pull/drive pad writer and the interrupt enable/commit routine execute in an emulator over authored controller structs, authored MMIO pad/handshake banks and an authored 16-row callback table. No hardware GPIO pin, interrupt or commit acknowledgement is delivered.",
+    "The configuration gate 0x80d341d8, the scheduler-state reader 0x80d362b0 and the critical save/restore wrappers 0x80d379ee/0x80d37a1a are supplied return stubs; their own behavior is covered by MAIN_PM_WAKE and MAIN_RTOS_CRITICAL_SECTIONS. The commit handshake on 0x900080b0 reads authored memory, so no real hardware acknowledgement latency is modeled.",
+    "The controller struct layout (acknowledge +0x30, disable mask +0x20, enable +0x2c), the pull banks and the handshake register are interpreted from the access pattern, not a datasheet."
+  ],
+  "main_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "native_case_count": 13,
+  "native_steps": 895,
+  "native_validation": {
+    "bound_per_case": 5000,
+    "case_count": 13,
+    "cases": [
+      {
+        "name": "main_gpio_cfg_padcfg_bank0_pin0",
+        "observed": {
+          "actions": [
+            "op:padcfg#bank0_pin0",
+            "w:2432696576:4:2004318071"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2432696576": "77777777"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 19
+      },
+      {
+        "name": "main_gpio_cfg_padcfg_bank1_pin2",
+        "observed": {
+          "actions": [
+            "op:padcfg#bank1_pin2",
+            "w:2432696608:4:2004318071"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2432696608": "77777777"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 22
+      },
+      {
+        "name": "main_gpio_cfg_padcfg_bank2_pin4",
+        "observed": {
+          "actions": [
+            "op:padcfg#bank2_pin4",
+            "w:2432696644:4:2004318071"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2432696644": "77777777"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 24
+      },
+      {
+        "name": "main_gpio_cfg_padcfg_direct_pin1",
+        "observed": {
+          "actions": [
+            "op:padcfg#direct_pin1",
+            "w:2432696672:4:2004318071"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2432696672": "77777777"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 25
+      },
+      {
+        "name": "main_gpio_cfg_padcfg_direct_out_of_range",
+        "observed": {
+          "actions": [
+            "op:padcfg#oob"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2432696672": "11111111"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 12
+      },
+      {
+        "name": "main_gpio_cfg_padcfg_unknown_base",
+        "observed": {
+          "actions": [
+            "op:padcfg#unk"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2432696672": "22222222"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 10
+      },
+      {
+        "name": "main_gpio_cfg_padcfg_value_masked_to_bits_4_5",
+        "observed": {
+          "actions": [
+            "op:padcfg#mask",
+            "w:2432696576:4:805306368"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2432696576": "0000003000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 19
+      },
+      {
+        "name": "main_gpio_cfg_enable_no_registered_rows",
+        "observed": {
+          "actions": [
+            "op:enable"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2415952048": "00000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 97
+      },
+      {
+        "name": "main_gpio_cfg_enable_one_row_state_zero",
+        "observed": {
+          "actions": [
+            "op:enable",
+            "w:2168455216:4:32",
+            "call:2161328600",
+            "call:2161337008",
+            "w:2160138032:4:0",
+            "w:2415952048:4:1",
+            "w:2168455200:4:4294967263",
+            "w:2168455212:4:32",
+            "w:2415952048:4:0"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2160138032": "00000000",
+                "2168455200": "dfffffff",
+                "2168455212": "20000000",
+                "2168455216": "20000000",
+                "2415952048": "00000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 125
+      },
+      {
+        "name": "main_gpio_cfg_enable_one_row_gate_set_handshake_two",
+        "observed": {
+          "actions": [
+            "op:enable",
+            "w:2168455216:4:32",
+            "call:2161328600",
+            "call:2161337008",
+            "w:2160138032:4:0",
+            "w:2415952048:4:2",
+            "w:2168455200:4:4294967263",
+            "w:2168455212:4:32",
+            "w:2415952048:4:0"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2168455200": "dfffffff",
+                "2168455212": "20000000",
+                "2415952048": "00000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 125
+      },
+      {
+        "name": "main_gpio_cfg_enable_one_row_state_nonzero_wraps_critical",
+        "observed": {
+          "actions": [
+            "op:enable",
+            "w:2168455216:4:128",
+            "call:2161328600",
+            "call:2161337008",
+            "w:2160138032:4:2",
+            "call:2161342958:2160138036",
+            "w:2415952048:4:1",
+            "w:2168455200:4:4294967167",
+            "w:2168455212:4:128",
+            "w:2415952048:4:0",
+            "call:2161343002:0"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2168455200": "7fffffff",
+                "2168455212": "80000000",
+                "2168455216": "80000000",
+                "2415952048": "00000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 132
+      },
+      {
+        "name": "main_gpio_cfg_enable_skips_unregistered_rows",
+        "observed": {
+          "actions": [
+            "op:enable",
+            "w:2168455216:4:8",
+            "call:2161328600",
+            "call:2161337008",
+            "w:2160138032:4:0",
+            "w:2415952048:4:2",
+            "w:2168455200:4:4294967287",
+            "w:2168455212:4:8",
+            "w:2415952048:4:0"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2168455200": "f7ffffff",
+                "2168455212": "08000000",
+                "2168455216": "08000000",
+                "2415952048": "00000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 125
+      },
+      {
+        "name": "main_gpio_cfg_enable_two_rows_distinct_controllers",
+        "observed": {
+          "actions": [
+            "op:enable",
+            "w:2168455216:4:2",
+            "call:2161328600",
+            "call:2161337008",
+            "w:2160138032:4:0",
+            "w:2415952048:4:1",
+            "w:2168455200:4:4294967293",
+            "w:2168455212:4:2",
+            "w:2415952048:4:0",
+            "w:2168455472:4:1073741824",
+            "call:2161328600",
+            "call:2161337008",
+            "w:2160138032:4:2",
+            "call:2161342958:2160138036",
+            "w:2415952048:4:2",
+            "w:2168455456:4:3221225471",
+            "w:2168455468:4:1073741824",
+            "w:2415952048:4:0",
+            "call:2161343002:0"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 32,
+                "768": 6152,
+                "772": 2184,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2168455212": "02000000",
+                "2168455456": "ffffffbf",
+                "2168455468": "00000040",
+                "2415952048": "00000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 160
+      }
+    ],
+    "hardware_execution": false,
+    "schema": 1
+  },
+  "pad_writer": "0x80d42fcc",
+  "pull_banks": {
+    "0x91003000": "0x91000100",
+    "0x91004000": "0x91000120",
+    "0x98005000": "0x91000140",
+    "0x9a00a000": "0x91000160"
+  },
+  "supplied_callees": {
+    "critical_restore": "0x80d37a1a",
+    "critical_save": "0x80d379ee",
+    "gate": "0x80d341d8",
+    "state_reader": "0x80d362b0"
+  },
+  "validation_sha256": "4510740efc3f1ff9be1a6f7f7387f0cfccf914230802145af39ee784a6a62d5c",
+  "vectors_sha256": "97ef2bdee882eb05beba8f5cdcb20ca7fc462dcfbdbaffc2f5d4a772fb23b3b9"
+}
