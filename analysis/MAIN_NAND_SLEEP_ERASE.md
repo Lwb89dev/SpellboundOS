@@ -84,7 +84,9 @@ python3 analysis_scripts/main_nand_async.py firmware/bip6-4.6.0.3.zip \
 
 All **557 preceding main native cases reproduce byte for byte**; previous fixed
 configurations and bounds remain unchanged. The two scopes add **34 host
-checks** to the passing **2,024-test suite**. Next work includes mode-zero program,
+checks** to the passing **2,024-test suite**. Subsequent
+[mode-zero program cases](MAIN_NAND_MODE_ZERO_PROGRAM.md) connect original TX
+DMA staging and execute/status. Next work includes
 actual IRQ/event scheduling, wider media/PM consumers and physical validation.
 DMA movement/coherency, electrical/timing/IRQ behavior, persistent repair and
 atomicity, safe backup/restoration and standalone boot remain open.

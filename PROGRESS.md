@@ -2921,6 +2921,33 @@ limits; the initial observations point to the current status and work log.
    Next: mode-zero program, IRQ/event scheduling, wider media/PM consumers and
    physical data/coherency/persistence/restoration/boot validation.
 
+## 2026-11-19 — main mode-zero program through original initialized TX DMA
+
+1. Connected original mode-zero page program/cache builder to actual bus/QSPI/
+   DMA setup/wait over the TX record initialized by the complete probe, after
+   full BBT marker/read/CRC/repair/root publication. Recovered mapping and the
+   original enabled 512-page guard run before enable/staging. Selected 31-byte
+   requests use direct FIFO, while 32/64 use private-buffer DMA on newer ROM.
+2. Original bus stages source bytes before DMA. DMA/QSPI faults retain staging
+   and stop before program execute. Primary TX completion calls cache finish
+   with zero tracking; alternate completion skips it and still permits execute.
+   Direct FIFO emits exact source bytes; no DMA FIFO writes, physical program
+   or persistence are fabricated. The stored original callback is not invoked.
+3. Actual column checks accept the exact end and unsigned wrapping addition;
+   mapping/guard/null/zero-size failures precede IO. Program failure status
+   returns -102 after execute, and transport assertions retain published state.
+   Repeated programs preserve intermediate staging hashes and mapped pages.
+   Program mode zero still uses blocking status polling after cache transfer.
+4. All 26 native cases pass in 851,318 steps (maximum 34,390), with 71 code/export
+   and 68 data hashes and the unchanged 200,000-step bound. See
+   [analysis/MAIN_NAND_MODE_ZERO_PROGRAM.md](analysis/MAIN_NAND_MODE_ZERO_PROGRAM.md)
+   and [analysis/main-nand-program.json](analysis/main-nand-program.json).
+   All 587 preceding main native cases reproduce byte for byte after the
+   metadata seed; all 71 exports reproduce byte for byte after the final seed.
+   Twenty-six new host checks join the passing 2,050-test suite.
+   Actual IRQ/event scheduling, physical DMA/cache/coherency/persistence, wider
+   media/PM consumers and safe restoration/standalone boot remain open.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -3033,7 +3060,9 @@ limits; the initial observations point to the current status and work log.
   Main mode-zero reads now connect original private-buffer DMA setup/wait after
   BBT recovery, and mode-zero erase connects original sleep-based polling and
   published guards. DMA data movement and actual scheduling remain unmodeled.
-  Then follow mode-zero program, further main UID/BBT consumers and IRQ/events,
+  Main mode-zero program now connects original initialized TX DMA, source staging
+  and execute/status with recovered mapping/guards too. Then follow further main
+  UID/BBT consumers and IRQ/events,
   wider storage and PM callers,
   broader close callers, removal/reclamation/concurrency and real property/heap/
   mutex services. Actual retry/

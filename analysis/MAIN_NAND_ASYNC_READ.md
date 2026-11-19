@@ -100,5 +100,7 @@ bounds remain unchanged. These scopes add **34 host checks** to the passing
 
 The [sleep-based erase scope](MAIN_NAND_SLEEP_ERASE.md) follows the other selected
 mode-zero wait strategy. IRQ-driven scheduling, physical DMA/cache/coherency,
-mode-zero program and further media/PM consumers, persistence/atomicity, safe
+further media/PM consumers, persistence/atomicity, safe
 restoration and standalone boot remain open.
+The subsequent [mode-zero program scope](MAIN_NAND_MODE_ZERO_PROGRAM.md) connects
+original TX DMA staging, recovered guards and execute/status.
