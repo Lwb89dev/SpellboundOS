@@ -3094,10 +3094,48 @@ limits; the initial observations point to the current status and work log.
    handlers, the deep-sleep routine, live preemption/nesting and timer frequency
    remain open.
 
+## 2026-11-19 — FreeRTOS tick, context selection, port timer and task creation
+
+1. Executed natively the original kernel bodies the trap scope still supplied:
+   `xTaskIncrementTick`, `vTaskSwitchContext`, the list primitives,
+   `prvResetNextTaskUnblockTime`, `vPortSetupTimerInterrupt`, the source-14
+   acknowledgement, the run-time counter, `pxPortInitialiseStack`,
+   `prvInitialiseNewTask`, `prvAddNewTaskToReadyList` with the task critical
+   section, `xTaskCreateStatic` and libgcc `__clzsi2`. All **61 cases pass in
+   10,317 steps** over authored kernel state, TCBs, stacks and supplied
+   `mtime`/claim reads. Eight connected cases run the original trap entry,
+   timer handler, first-task start and scheduler start with the actual tick/
+   switch/timer setup instead of stubs.
+2. Results include:
+   - a tick of 1000 `mtime` counts, with the initial compare written
+     low-then-high;
+   - PLIC source 14 registered by the port, with a handler that writes 2 or 4
+     to `0x91005000`;
+   - 10 priorities, 20-byte names, a `0x4c0`-byte TCB, the method-2 stack
+     check, 64-bit run-time statistics, newlib reentrancy and per-task
+     `errno`;
+   - a silent priority clamp to 9;
+   - ties before scheduler start won by the newest task;
+   - `MIE` kept clear by task creation until the first task starts;
+   - a zero priority bitmap that indexes the delayed-list header;
+   - new tasks that start with `gp` = `tp` = 0.
+
+   The initial frame writes Andes CSR `0x7c6` = `0x21` and `0x7c7` = stack base
+   + `0x198`. These are interpreted as hardware stack-protection control and
+   bound under the AndeStar V5 CSR numbering. See
+   [analysis/MAIN_FREERTOS_KERNEL.md](analysis/MAIN_FREERTOS_KERNEL.md) and
+   [analysis/main-freertos-kernel.json](analysis/main-freertos-kernel.json); the
+   vectors, native report and evidence regenerate byte for byte. Seventeen
+   new host checks join the suite. Dynamic creation, blocking APIs, deletion,
+   timer frequency and live multi-task scheduling remain open.
+
 ## Next work
 
-- Main interrupts: execute original FreeRTOS tick/switch/timer setup and task
-  stack initialization, recover the remaining device interrupt handlers and
+- Main kernel: execute `vTaskStartScheduler` idle/timer-task creation, dynamic
+  `xTaskCreate`, blocking/queue/event-list APIs, deletion and suspend/resume
+  catch-up. See
+  [analysis/MAIN_FREERTOS_KERNEL.md](analysis/MAIN_FREERTOS_KERNEL.md).
+- Main interrupts: recover the remaining device interrupt handlers and
   the deep-sleep save/`wfi`/resume routine, then validate preemption/nesting and
   timer frequency on hardware. See
   [analysis/MAIN_TRAP_IRQ_DISPATCH.md](analysis/MAIN_TRAP_IRQ_DISPATCH.md).

@@ -259,7 +259,8 @@ Remaining work:
 
 - Execute the original `xTaskIncrementTick`, `vTaskSwitchContext` and
   `vPortSetupTimerInterrupt` and the task-creation/stack-initialization path
-  around `0x80d37e90`.
+  around `0x80d37e90`. Now executed: see
+  [MAIN_FREERTOS_KERNEL.md](MAIN_FREERTOS_KERNEL.md).
 - Recover the remaining device interrupt handlers (`0x70293d50`, the
   zero-argument sources and the RAM handlers for `0xb`/`0xc`/`0xe`), the
   re-registration order and the dynamically registered sources.
