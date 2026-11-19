@@ -91,8 +91,10 @@ and fixed configurations remain unchanged. All **495 preceding main native
 cases reproduce byte for byte**. The two scopes' **28 host checks** join the
 passing **1,936-test suite**.
 
-Next work is actual main repair erase/program through the lower transport,
-asynchronous/private DMA reads, full busy exhaustion, wider geometries and
+The subsequent [erase scope](MAIN_NAND_BBT_ERASE.md) and
+[program scope](MAIN_NAND_BBT_PROGRAM.md) connect the actual repair callbacks
+through the lower transport, including the exact 140-byte TX payload. Next work
+includes asynchronous/private DMA reads, full busy exhaustion, wider geometries and
 further media/PM consumers. Physical marker/record provenance, persistence,
 electrical/timing/IRQ/cache/coherency validation, safe backup/restoration and
 standalone boot remain separate open requirements.

@@ -62,6 +62,7 @@ class Engine(aux.Engine):
 
 class Model(mapping.Model):
     engine_type=Engine
+    policy_type=Policy
     def __init__(self,c):
         super().__init__(c);self.in_read=False;self.io_page_calls=0;self.io_marker_calls=0;self.io_status_reads=0;self.io_cache_packets=0;self.io_cache_bytes=0
         self.io_received=bytearray();self.io_loaded=0;self.io_base=0
@@ -90,7 +91,7 @@ class Model(mapping.Model):
         finally:self.in_read=False
     def run_bbt(self,chip):
         c=self.c;self.actions.append(f'main_bbt_native:{chip["blocks"]}:{chip["page_size"]}:{chip["pages_per_block"]}')
-        helper=Policy(dict(active=False,bad=[],blocks=1024,page_size=2048,ppb=64,reserve=16,primary=0,backup=0,
+        helper=self.policy_type(dict(active=False,bad=[],blocks=1024,page_size=2048,ppb=64,reserve=16,primary=0,backup=0,
             good_blocks=c['bbt_good_blocks'],records=c['bbt_records'],reread_status=0,erase_status=c['bbt_erase_status'],write_status=c['bbt_write_status']),self)
         try:
             status,stop=helper.resume()

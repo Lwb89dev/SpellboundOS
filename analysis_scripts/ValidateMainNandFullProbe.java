@@ -40,7 +40,7 @@ public class ValidateMainNandFullProbe extends ValidateMainObjects {
    if(board.containsKey(p)){if(n!=4)throw new IllegalStateException("Probe board write width");board.put(p,value);actions.add("board_w:"+p+":"+value);return;}
    if(p>=0x93080000L&&p<0x93080200L){long at=p-0x93080000L;if(n!=4||!dmaRegs.containsKey(at))throw new IllegalStateException("Probe DMA write");dmaRegs.put(at,value);actions.add("dma_w:"+at+":"+value);return;}
    if(p>=0x93240000L&&p<0x93240104L){long at=p-0x93240000L;
-    if(at==0x100){if(opcode!=0x1f||n!=1||tx.size()+n>64)throw new IllegalStateException("Probe feature FIFO write");tx.writeBytes(data);featureWritten(reg,value&255);}
+    if(at==0x100){fifoWrite(opcode,reg,data,tx.size());tx.writeBytes(data);}
     else{if(n!=4||!regs.containsKey(at))throw new IllegalStateException("Probe QSPI write");regs.put(at,at==36&&value==1?0:value);if(at==16&&(value&0x100)!=0)reset=true;if(at==12){commands++;opcode=(int)(value>>>24);reg=regs.get(0L).intValue();payloadAt=0;}}
     actions.add("w:"+at+":"+n+":"+value);
    }
@@ -53,6 +53,7 @@ public class ValidateMainNandFullProbe extends ValidateMainObjects {
   if(opcode!=0x0f||n!=1||!probeFeatures.containsKey((long)reg))throw new IllegalStateException("Probe feature FIFO backing");return probeFeatures.get((long)reg)^(probeFeatureReads==c.get("probe_feature_mismatch_at").getAsInt()?1:0);
  }
  protected void featureWritten(int reg,long value){probeFeatures.put((long)reg,value);}
+ protected void fifoWrite(int opcode,int reg,byte[] data,int total){if(opcode!=0x1f||data.length!=1||total+data.length>64)throw new IllegalStateException("Probe feature FIFO write");featureWritten(reg,data[0]&255L);}
  @Override protected int executionBound(){return 30000;}
  @Override protected EmulatorHelper createEmulator(){Helper e=new Helper(currentProgram);io=new Io();e.filter(io);return e;}
  @Override protected void configure()throws Exception {

@@ -92,6 +92,8 @@ All **495 preceding main native cases reproduce byte for byte** after the new
 metadata seed. Both scopes add **28 host checks** to the **1,936-test passing
 suite**.
 
-Actual marker IO is covered next. Repair erase/program, asynchronous/private DMA
-reads, full busy exhaustion, wider geometries/media consumers and physical
+Actual marker IO is covered next. The later [erase](MAIN_NAND_BBT_ERASE.md) and
+[program](MAIN_NAND_BBT_PROGRAM.md) scopes execute repair callbacks through the
+original lower transport. Asynchronous/private DMA reads, full busy exhaustion,
+wider geometries/media consumers and physical
 IRQ/cache/coherency/contents/persistence/restoration/boot remain open.

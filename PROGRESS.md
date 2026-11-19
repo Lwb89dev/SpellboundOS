@@ -2806,6 +2806,45 @@ limits; the initial observations point to the current status and work log.
    new host checks join the passing 1,936-test suite. Next: actual repair erase/
    program, asynchronous/private DMA, wider consumers and physical restoration/boot.
 
+## 2026-11-19 — actual main BBT repair erase through NAND/QSPI
+
+1. Joined original main erase, block remapping, enable/erase command builders,
+   busy status and QSPI to actual BBT marker/record/CRC recovery and later root/
+   geometry/UID/mapping consumers. RAM magic is zero during repair, so primary
+   block 1023 maps directly to erase page 65472. Program remains supplied in this
+   scope; peripheral/status inputs remain authored, without physical erasure or
+   persistent repair claims.
+2. Actual status 4 returns -104 and skips program, but resume restores active RAM
+   magic and returns zero. Ready/busy/status-mask and no-repair cases execute.
+   Command/status timeouts stop at original transport assertions, retaining
+   inactive magic and preventing publication. Erase-status completion timeout
+   counts the delivered status byte without a normal erase return.
+3. All 11 native cases pass in 278,269 steps (maximum 27,397), with 69 code/export
+   and 67 data hashes. See [analysis/MAIN_NAND_BBT_ERASE.md](analysis/MAIN_NAND_BBT_ERASE.md)
+   and [analysis/main-nand-bbt-erase.json](analysis/main-nand-bbt-erase.json).
+
+## 2026-11-19 — original main BBT repair program and exact TX FIFO payload
+
+1. Connected original main program, direct cache-load/program builders, enable,
+   page remapping and busy loops through actual TX FIFO inside recovery. The
+   complete 140-byte backup reread payload is transmitted at column zero before
+   programming primary page 65472. Actual marker/read/CRC/erase/program now joins
+   first-descriptor probe/UID/root and consumers, over authored peripheral inputs
+   and supplied library/platform services. Physical persistence remains unproved.
+2. Actual program status 8 returns -102 after full TX; recovery still restores
+   active RAM magic and returns zero. Erase failure skips program. Command/TX/
+   status timeouts preserve distinct sent-byte/status counts and leave RAM magic
+   zero before publication. The selected original recovery does not reread the
+   repaired primary. No backend record update or readback is fabricated.
+3. All 13 native cases pass in 378,902 steps (maximum 32,348). See
+   [analysis/MAIN_NAND_BBT_PROGRAM.md](analysis/MAIN_NAND_BBT_PROGRAM.md) and
+   [analysis/main-nand-bbt-program.json](analysis/main-nand-bbt-program.json).
+   Both scopes share 69 code/export and 67 data hashes and the 200,000-step bound.
+   All 522 preceding main native cases reproduce byte for byte after narrow
+   policy-factory/FIFO-write hooks. Prior configurations/bounds remain unchanged.
+   Thirty new host checks join the passing 1,966-test suite. Next: complete busy
+   exhaustion, asynchronous/private DMA, wider consumers and physical restoration/boot.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -2895,13 +2934,15 @@ limits; the initial observations point to the current status and work log.
   and auxiliary bodies supplied. Actual main command/FIFO/count/timer/clock/
   revision and DMA wrappers now also execute separately, and original main bus/
   feature packets join them over an authored initialized controller. Follow
-  actual main repair erase/program and asynchronous/private DMA integration,
-  further UID/media consumers and alternate chip geometries. Main BBT recovery
-  record/reread calls and original three-page marker checks now execute through
-  the reader and direct QSPI FIFO, with erase/write callbacks still supplied.
+  actual main asynchronous/private DMA and complete busy exhaustion, further
+  UID/media consumers and alternate chip geometries. Main BBT recovery record/
+  reread calls, original three-page marker checks and actual repair erase/program
+  now execute through original builders/status and direct QSPI RX/TX FIFO. The
+  exact 140-byte backup payload is transmitted without a primary readback; real
+  persistence and repair atomicity remain open.
   Actual main block/page remapping now consumes recovered BBT state, and later
-  direct page reads execute load/status/x4-cache/FIFO with per-operation state. Main BBT verifier/
-  resume/CRC now joins it with supplied page/marker services; actual context UID
+  direct page reads execute load/status/x4-cache/FIFO with per-operation state.
+  Main BBT verifier/resume/CRC joins the connected repair path; actual context UID
   export also executes, including copied output before mutex release assertion.
   Actual main workaround/reset/level and UID feature/load/
   busy/cache/complement checks now join it, including retained state after UID
@@ -2911,7 +2952,7 @@ limits; the initial observations point to the current status and work log.
   descriptors, including all 33 attempts and actual timeout assertions. DMA
   setup/wait remains separately covered for bounce transfers. Main pin/GPIO/
   cache bodies and IRQ remain open.
-  Then follow further main UID/BBT consumers and actual repair erase/program,
+  Then follow further main UID/BBT consumers and asynchronous/private DMA,
   wider storage and PM callers,
   broader close callers, removal/reclamation/concurrency and real property/heap/
   mutex services. Actual retry/
