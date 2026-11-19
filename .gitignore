@@ -1,3 +1,4 @@
 firmware/
 __pycache__/
 build/
+HANDOFF_CLAUDE.md
