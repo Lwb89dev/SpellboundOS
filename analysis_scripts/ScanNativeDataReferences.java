@@ -134,6 +134,26 @@ public class ScanNativeDataReferences extends GhidraScript {
                     }
                     break;
                 }
+                case "jalr":
+                case "c.jalr":
+                case "c.jr": {
+                    Register b = null;
+                    long off = 0;
+                    for (int op = 0; op < in.getNumOperands(); ++op) {
+                        for (Object o : in.getOpObjects(op)) {
+                            if (o instanceof Register) {
+                                b = (Register) o;
+                            } else if (o instanceof Scalar) {
+                                off = ((Scalar) o).getSignedValue();
+                            }
+                        }
+                    }
+                    if (b != null && known.containsKey(b)) {
+                        effective = (known.get(b) + off) & 0xfffffffeL;
+                        kind = "call";
+                    }
+                    break;
+                }
                 default:
                     if (dst != null && in.getFlowType().isFallthrough() && !m.startsWith("s")
                         && !m.startsWith("c.s") && !m.startsWith("b") && !m.startsWith("c.b")) {

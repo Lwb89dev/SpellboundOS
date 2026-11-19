@@ -10,9 +10,9 @@ and substantial uncertainty. It is a subjective assessment of scope,
 not a coverage metric or a basis for estimating remaining time. Hardware
 validation, complete pairing and restoration/standalone boot remain major gates.
 
-The current continuation checkpoint is [HANDOFF_CLAUDE.md](../HANDOFF_CLAUDE.md):
-analysis baseline `3685f79`, 2,112 passing host tests, local tooling and a concrete
-resume plan. This percentage describes RE scope, not OS implementation progress.
+The 2026-11-19 checkpoint recorded analysis baseline `3685f79` with 2,112 passing
+host tests; later entries in [PROGRESS.md](../PROGRESS.md) extend it. This
+percentage describes RE scope, not OS implementation progress.
 
 Completion still depends on four broad work areas:
 
@@ -32,7 +32,7 @@ requires evidence beyond OTA analysis and emulator case counts.
 | Area | Current evidence | Still needed to close the area |
 | --- | --- | --- |
 | Package integrity / signatures | Hashes/signatures plus variable-length metadata and raw-recovery validator path; manifest fully verified and the `res_info` mismatch explained (it embeds the manifest's own digest); `fw_info` sizes/CRC-32 match | Observe device enforcement, update-script interpreter and rollback policy |
-| Main/sensor startup | Copy/zero tables reconstructed; startup-aware analysis ELFs | Validate full boot context, aliases, memory protection, retained/device data |
+| Main/sensor startup | Copy/zero tables reconstructed; startup-aware analysis ELFs; main kernel identified as FreeRTOS; 57 native trap-entry/frame/C-handler/core-and-PLIC-dispatch/PLIC-API/timer/exception/syscall/first-task cases with 23 recovered interrupt registrations (18 far calls, 5 direct RAM calls), including four DMA controllers on one handler | Validate full boot context, aliases, memory protection, retained/device data |
 | Native corpus | Guarded BBS and two Andes DSP semantics, ABI/logger fixes, targeted main/sensor exports; volatile MMIO/CSR metadata; wide division helper checked in 52,294 host executions | Audit remaining affected exports and unsupported DSP forms; runtime/type validation |
 | App bytecode | 44 members structurally parsed; QuickJS engine fingerprinted; official C reader agrees on nine header fields for all 1,072 functions | Runtime semantics, operand-level validation and independently implemented host |
 | JS/native boundary | Modules, export tables, classes and initializer ownership mapped | Argument/error contracts, object lifetimes and behavior behind each implementation |
@@ -162,6 +162,7 @@ Latest detailed findings:
 - [Actual original cache guards through main DMA/IRQ and recovered NAND RX/TX](MAIN_DMA_CACHE_GUARDS.md)
 - [Original positive-address cache CSR loops, wrapped ends and marked bounded stalls](MAIN_CACHE_CSR_RANGES.md)
 - [Actual main critical-section depth/MIE, context wrappers and diagnostic state](MAIN_RTOS_CRITICAL_SECTIONS.md)
+- [Main trap entry, interrupt dispatch, PLIC API and FreeRTOS port](MAIN_TRAP_IRQ_DISPATCH.md)
 - [Recovery selection/counter writes, preparation/completion and stopped handoff](RECOVERY_SELECTION_AND_HANDOFF.md)
 - [Boot environment wrappers, reason cache, key policy and stopped upgrade-record caller](BOOT_ENVIRONMENT_AND_KEY_POLICY.md)
 - [Native KV40 records, staged writes, cached lookup/deletion and storage adapters](ENV_RECORDS_AND_STORAGE.md)

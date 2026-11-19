@@ -4,7 +4,7 @@ This log records completed work, evidence, and limitations. Dates refer to the
 local work session. See [GOAL.md](GOAL.md) for the intended outcome and
 [analysis/ANALYSIS.md](analysis/ANALYSIS.md) for detailed earlier findings.
 
-(2026-11-19; analysis baseline `3685f79`, 2,112 passing host tests).
+Latest recorded state: see the most recent dated entry below and its `Next work` section.
 
 ## 2026-11-14 — acquisition and initial investigation
 
@@ -3059,8 +3059,48 @@ limits; the initial observations point to the current status and work log.
    gate prominent. The handoff identifies exact addresses and existing tools;
    older completed matrices need not be rediscovered.
 
+## 2026-11-19 — main trap entry, interrupt dispatch, PLIC API and FreeRTOS port
+
+1. Found the real main trap path, which no analysis project had disassembled: it
+   runs from the RAM copy (`.copy2`, image `0x70dce45c` → `0x80d32e00`). Added
+   read-only scanners for constant-built references, control flow/CSR sites and
+   in-memory disassembly/decompilation. The previous "context" word `0x80c121a4`
+   is written only by the C trap handler (1 on entry, 0 on exit), so it is an
+   in-trap flag. The scheduler gate and current-thread fields are FreeRTOS
+   `xSchedulerRunning`/`pxCurrentTCB`, identified from `core/freertos/tasks.c`
+   assertions and the structure of `xTaskIncrementTick`/`vTaskSwitchContext`.
+2. Executed natively the original trap entry/frame (`0x198` bytes, integer/FP
+   registers, `mstatus`/`mepc`, Andes `0x7c6`/`0x7c7`, `fcsr`), C handler, core
+   and PLIC dispatch, PLIC register/enable/disable/mask/restore/init/deinit,
+   timer, exception/syscall/yield and first-task/scheduler-start bodies. All
+   **57 cases pass in 7,326 steps** over authored memory/CSRs/registers/claims.
+   Results include:
+   - ID mask `0xefffffff`;
+   - local enable wrap at source 16 (`mie` bit 0);
+   - default infinite-loop handlers for unregistered or zero claims;
+   - an unbounded claim index;
+   - an unconditional `mepc` skip after every exception;
+   - first-task start without `fcsr`;
+   - loss of the in-trap flag after a nested trap.
+3. An independent raw decoder recovers **23 interrupt registrations**: 18 far
+   calls matching the decompiler, and 5 direct RAM calls that re-register
+   sources `0xb`/`0xc`/`0xe`, including one from `vPortSetupTimerInterrupt`.
+   The DMA handler `0x702a041c` serves four controllers
+   (`0x12`/`0x16`/`0x19`/`0x1c` at `0x92000000`/`0x93000000`/`0x93040000`/
+   `0x93080000`). See [analysis/MAIN_TRAP_IRQ_DISPATCH.md](analysis/MAIN_TRAP_IRQ_DISPATCH.md)
+   and [analysis/main-trap-irq.json](analysis/main-trap-irq.json); both the
+   native report and the evidence regenerate byte for byte. No project metadata
+   changed. Twenty new host checks join the passing **2,132-test** suite. Original tick/switch/timer setup, task creation, the remaining device
+   handlers, the deep-sleep routine, live preemption/nesting and timer frequency
+   remain open.
+
 ## Next work
 
+- Main interrupts: execute original FreeRTOS tick/switch/timer setup and task
+  stack initialization, recover the remaining device interrupt handlers and
+  the deep-sleep save/`wfi`/resume routine, then validate preemption/nesting and
+  timer frequency on hardware. See
+  [analysis/MAIN_TRAP_IRQ_DISPATCH.md](analysis/MAIN_TRAP_IRQ_DISPATCH.md).
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
   native subsystem work: the signed boot chain and device-specific restoration
   remain unresolved and cannot be closed by additional HR test counts alone.
