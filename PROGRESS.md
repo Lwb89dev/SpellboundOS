@@ -3196,6 +3196,26 @@ limits; the initial observations point to the current status and work log.
    checks join the suite. The routine that populates the callback table, the
    handshake responder on `0x900080b0` and the physical pin roles remain open.
 
+## 2026-11-19 — GPIO interrupt registration and trigger mode
+
+1. Executed the GPIO interrupt registration routine `0x80d43068`, completing the
+   register/enable/dispatch chain. It converts the pin mask to a bit index with
+   libgcc `__ctzsi2` (`0x7094514c`), inserts or updates the pin's row in the
+   16-row callback table at `0x80c118c8` (layout {base +0, bit +4, arg0 +8,
+   mode byte +0xc, handler +0x10, arg1 +0x14}), and programs the controller's
+   trigger registers `+0x38`/`+0x34`/`+0x3c` for one of five modes before
+   enabling the pin through the `0x900080b0` handshake. All **12 cases pass in
+   2,475 steps**.
+2. Recovered the five trigger-mode encodings, the in-place row update (no
+   duplication), first-free-row placement, the full-table and invalid-mode error
+   returns, and the conditional critical wrapping. The gate, scheduler-state
+   reader and critical save/restore wrappers are supplied stubs. See
+   [analysis/MAIN_GPIO_REGISTER.md](analysis/MAIN_GPIO_REGISTER.md) and
+   [analysis/main-gpio-register.json](analysis/main-gpio-register.json); the
+   vectors, native report and evidence regenerate byte for byte. Eleven new host
+   checks join the suite. The edge/level meaning of the trigger bits, the pin
+   registrants and the de-registration path remain open.
+
 ## Next work
 
 - Main kernel: execute `vTaskStartScheduler` idle/timer-task creation, dynamic
