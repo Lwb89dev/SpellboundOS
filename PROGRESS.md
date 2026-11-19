@@ -3216,6 +3216,20 @@ limits; the initial observations point to the current status and work log.
    checks join the suite. The edge/level meaning of the trigger bits, the pin
    registrants and the de-registration path remain open.
 
+## 2026-11-19 — xTaskResumeAll scheduler unlock
+
+Executed the original `xTaskResumeAll` (`0x80d3a720`) over authored kernel
+state, reusing the task critical section, list primitives,
+`xTaskIncrementTick` and `prvResetNextTaskUnblockTime` as guarded original code
+(only `configASSERT`, the diagnostic body and `vPortYield` are stubs). **9 cases
+pass in 1,593 steps**: decrement-only, unlock with no work/no tasks, pending-ready
+drain at lower/higher/two priorities, pended-tick catch-up and deadline wake,
+and the not-suspended assertion. See
+[analysis/MAIN_SCHED_RESUME.md](analysis/MAIN_SCHED_RESUME.md) and
+[analysis/main-sched-resume.json](analysis/main-sched-resume.json); vectors,
+native report and evidence regenerate byte for byte. Eleven new host checks.
+`vTaskSuspendAll` and the blocking APIs remain open.
+
 ## Next work
 
 - Main kernel: execute `vTaskStartScheduler` idle/timer-task creation, dynamic
