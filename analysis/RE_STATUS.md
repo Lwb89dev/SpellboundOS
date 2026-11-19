@@ -171,6 +171,7 @@ Latest detailed findings:
 - [xTaskResumeAll: scheduler unlock, pending-ready and tick catch-up](MAIN_SCHED_RESUME.md)
 - [vTaskDelay: suspend, delayed-list insertion, resume and yield](MAIN_TASK_DELAY.md)
 - [vTaskDelete and prvDeleteTCB task deletion](MAIN_TASK_DELETION.md)
+- [eTaskGetState, uxTaskPriorityGet and vTaskPrioritySet](MAIN_TASK_QUERY.md)
 - [Recovery selection/counter writes, preparation/completion and stopped handoff](RECOVERY_SELECTION_AND_HANDOFF.md)
 - [Boot environment wrappers, reason cache, key policy and stopped upgrade-record caller](BOOT_ENVIRONMENT_AND_KEY_POLICY.md)
 - [Native KV40 records, staged writes, cached lookup/deletion and storage adapters](ENV_RECORDS_AND_STORAGE.md)

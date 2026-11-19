@@ -3274,13 +3274,40 @@ deletion remain open.
    checks join the suite. The idle-task termination sweep, the actual heap free
    and live rescheduling after a yield remain open.
 
+## 2026-11-19 — eTaskGetState, uxTaskPriorityGet and vTaskPrioritySet
+
+1. Executed natively the original `eTaskGetState` (`0x80d3a55e`),
+   `uxTaskPriorityGet` (`0x80d3a5f4`) and `vTaskPrioritySet` (`0x80d3a61c`),
+   reusing `vTaskEnterCritical`, `vTaskExitCritical`, `uxListRemove` and
+   `vListInsertEnd` as guarded original code; `vTaskPrioritySet` tail calls the
+   original `vTaskExitCritical`. All **19 cases pass in 1,692 steps** over
+   authored kernel state, TCBs and lists. `configASSERT`, the critical
+   diagnostic body and `vPortYield` are supplied; here the yield returns so the
+   priority change completes.
+2. Results include:
+   - `eTaskGetState` mapping each state list to its code (running 0, ready 1,
+     blocked 2, suspended 3, deleted 4), and reporting a suspended task that is
+     still waiting on an event or a notification as blocked;
+   - `vTaskPrioritySet` clamping above 9 with an assert, reordering the ready
+     list, preserving a mutex-inherited active priority, rewriting the unmarked
+     event-list value to `10 - newPriority`, and yielding only when a lower
+     self-priority or a raised peer reaches the current priority.
+
+   See [analysis/MAIN_TASK_QUERY.md](analysis/MAIN_TASK_QUERY.md) and
+   [analysis/main-task-query.json](analysis/main-task-query.json); the vectors,
+   native report and evidence regenerate byte for byte. Fourteen new host checks
+   join the suite. vTaskSuspend/Resume, mutex inheritance and the queue/
+   semaphore/event-group/notification APIs remain open.
+
 ## Next work
 
-- Main kernel: execute `vTaskStartScheduler` idle/timer-task creation, dynamic
-  `xTaskCreate`, the idle-task termination sweep and the queue/semaphore/event-
-  group/notification APIs. `vTaskDelete`/`prvDeleteTCB` and `vTaskDelay` now
-  execute; see [analysis/MAIN_TASK_DELETION.md](analysis/MAIN_TASK_DELETION.md)
-  and [analysis/MAIN_TASK_DELAY.md](analysis/MAIN_TASK_DELAY.md).
+- Main kernel: execute `vTaskSuspend`/`vTaskResume`, the idle-task termination
+  sweep, dynamic `xTaskCreate`, mutex priority inheritance and the queue/
+  semaphore/event-group/notification APIs. `vTaskDelete`/`prvDeleteTCB`,
+  `vTaskDelay` and task state/priority query now execute; see
+  [analysis/MAIN_TASK_QUERY.md](analysis/MAIN_TASK_QUERY.md),
+  [analysis/MAIN_TASK_DELETION.md](analysis/MAIN_TASK_DELETION.md) and
+  [analysis/MAIN_TASK_DELAY.md](analysis/MAIN_TASK_DELAY.md).
 - Main interrupts: recover the remaining device interrupt handlers (the
   zero-argument sources and the shared `0x70293d50`), execute the deep-sleep
   save/`wfi`/resume twins on hardware, and validate preemption/nesting and
