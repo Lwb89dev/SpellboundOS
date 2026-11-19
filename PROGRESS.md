@@ -2767,6 +2767,45 @@ limits; the initial observations point to the current status and work log.
    passing 1,908-test suite. Next: actual main BBT page callbacks and DMA/program/
    erase integration, further consumers and physical backup/restoration/boot.
 
+## 2026-11-19 — actual main BBT record reads through original NAND/QSPI
+
+1. Connected original BBT verifier and resume's 140-byte record/reread calls to
+   actual main remapping/load/busy/direct-x4-cache/QSPI FIFO inside probe/UID/root
+   and later geometry/export/mapping consumers. Recovery clears RAM magic before
+   these reads, so original remapping passes through the tail pages. Marker and
+   repair erase/write services remain supplied in this scope; FIFO bytes are
+   authored, with no physical table or persistent repair claim.
+2. Actual primary ECC can deliver bytes and then return -101 before verification;
+   actual backup reread ECC skips repair and still restores active RAM magic
+   with zero recovery return. Original transport timeouts distinguish no delivery
+   from all 140 bytes retained before assertion. Fake page/reread return injection
+   is excluded. Harness logger routing preserves original transport assertions.
+3. All 14 native cases pass in 189,370 steps (maximum 19,562), with 63 code/export
+   and 67 data hashes. See [analysis/MAIN_NAND_BBT_RECORD_READ.md](analysis/MAIN_NAND_BBT_RECORD_READ.md)
+   and [analysis/main-nand-bbt-record-read.json](analysis/main-nand-bbt-record-read.json).
+
+## 2026-11-19 — original main three-page marker scan through NAND/QSPI
+
+1. Joined actual main bad-marker checker and original reserved-tail selection to
+   recovery record reads through actual page/load/status/direct-cache/FIFO. Two
+   good candidate blocks require six marker reads before the record. Late bad
+   markers repeat partial scans while no primary exists. Final reserved pair
+   requires 30 checker calls and 35 page reads; no-good/one-good scans reach the
+   original assertion before record/publication. Erase/write remain supplied.
+2. A transient first marker ECC failure followed by a successful second check
+   can select backup 1023 while primary remains zero, causing original assertion
+   despite authored later usable blocks. Two consecutive ECC failures instead
+   advance selection to 1022/1021. Native cases and host policy agree. Transport
+   failures retain completed marker work or delivered bytes before acceptance.
+3. All 13 native cases pass in 285,080 steps (maximum 49,444). Both scopes use a
+   200,000-step bound for complete selected scans; prior bounds/configurations
+   remain unchanged, as does the 1024-byte aggregate FIFO trace guard. See
+   [analysis/MAIN_NAND_BBT_MARKER_READ.md](analysis/MAIN_NAND_BBT_MARKER_READ.md) and
+   [analysis/main-nand-bbt-marker-read.json](analysis/main-nand-bbt-marker-read.json).
+   All 495 preceding main native cases reproduce byte for byte. Twenty-eight
+   new host checks join the passing 1,936-test suite. Next: actual repair erase/
+   program, asynchronous/private DMA, wider consumers and physical restoration/boot.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -2856,8 +2895,10 @@ limits; the initial observations point to the current status and work log.
   and auxiliary bodies supplied. Actual main command/FIFO/count/timer/clock/
   revision and DMA wrappers now also execute separately, and original main bus/
   feature packets join them over an authored initialized controller. Follow
-  actual main BBT recovery page callbacks and asynchronous/private DMA/program/
-  erase integration, further UID/media consumers and alternate chip geometries.
+  actual main repair erase/program and asynchronous/private DMA integration,
+  further UID/media consumers and alternate chip geometries. Main BBT recovery
+  record/reread calls and original three-page marker checks now execute through
+  the reader and direct QSPI FIFO, with erase/write callbacks still supplied.
   Actual main block/page remapping now consumes recovered BBT state, and later
   direct page reads execute load/status/x4-cache/FIFO with per-operation state. Main BBT verifier/
   resume/CRC now joins it with supplied page/marker services; actual context UID
@@ -2870,7 +2911,7 @@ limits; the initial observations point to the current status and work log.
   descriptors, including all 33 attempts and actual timeout assertions. DMA
   setup/wait remains separately covered for bounce transfers. Main pin/GPIO/
   cache bodies and IRQ remain open.
-  Then follow further main UID/BBT consumers, actual BBT page transport,
+  Then follow further main UID/BBT consumers and actual repair erase/program,
   wider storage and PM callers,
   broader close callers, removal/reclamation/concurrency and real property/heap/
   mutex services. Actual retry/

@@ -94,8 +94,12 @@ All **472 preceding main native cases reproduce byte for byte**, including the
 fixed configurations and bounds remain unchanged. The two scopes add **40 host
 checks** to the complete **1,908-test passing suite**.
 
-Next work is connecting actual main BBT recovery page IO to the lower transport,
-asynchronous/private DMA reads, program/erase, full busy exhaustion, alternate
+The subsequent [recovery record-read scope](MAIN_NAND_BBT_RECORD_READ.md) connects
+the actual 140-byte reader calls inside BBT recovery. The subsequent
+[marker-read scope](MAIN_NAND_BBT_MARKER_READ.md) joins the original three-page
+checker and documents a transient-error selection counterexample. Repair
+erase/write remain supplied in those scopes. Next work includes actual repair
+erase/program, asynchronous/private DMA reads, full busy exhaustion, alternate
 geometries and further media consumers. IRQ/cache/coherency, physical contents/
 identity/timing, persistence, safe backup/restoration and standalone boot remain
 separate open requirements.

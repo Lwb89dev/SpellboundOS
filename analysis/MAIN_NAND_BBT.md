@@ -102,8 +102,11 @@ The subsequent [main remapping scope](MAIN_NAND_BBT_MAPPING.md) executes origina
 block/page remappers over the recovered RAM table. The subsequent
 [main page-read scope](MAIN_NAND_PAGE_READ.md) connects actual direct reads to
 mapping/load/busy/cache/FIFO after recovery; recovery's own page callbacks remain
-supplied. Next work includes those callbacks, asynchronous/DMA/program/erase
-integration, further identity/media/PM consumers and alternate chip geometries.
+supplied in that earlier scope. The later [record-read](MAIN_NAND_BBT_RECORD_READ.md)
+and [marker-read](MAIN_NAND_BBT_MARKER_READ.md) scopes connect recovery's own read
+callbacks and original tail checker to QSPI. Next work includes actual repair
+erase/program, asynchronous/DMA integration, further identity/media/PM consumers
+and alternate chip geometries.
 Supplied library/power/pin/RTOS/BSP/heap/PM behavior, IRQ/cache/coherency, physical
 provenance and persistence, safe backup/restoration and standalone boot remain
 separate open requirements.
