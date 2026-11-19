@@ -59,6 +59,7 @@ public class ValidateMainNandAux extends ValidateMainNandFullProbe {
   row.add("aux_workaround_return",workaroundResult==null?JsonNull.INSTANCE:new JsonPrimitive(workaroundResult));row.addProperty("aux_uid_entered",uidEntered);row.addProperty("aux_uid_completed",uidCompleted);row.addProperty("aux_uid_caches",caches);row.addProperty("aux_status_reads",statusReads);row.addProperty("aux_e0_reads",e0Reads);
  }
  @Override protected void validateExtra(EmulatorHelper e)throws Exception {
-  super.validateExtra(e);byte[] guard=new byte[32];Arrays.fill(guard,(byte)0xa5);for(long p:new long[]{UID-32,UID+128})if(!Arrays.equals(guard,mem(e,p,32)))throw new IllegalStateException("UID buffer guard");
+  super.validateExtra(e);validateUidGuards(e);
  }
+ protected void validateUidGuards(EmulatorHelper e)throws Exception {byte[] guard=new byte[32];Arrays.fill(guard,(byte)0xa5);for(long p:new long[]{UID-32,UID+128})if(!Arrays.equals(guard,mem(e,p,32)))throw new IllegalStateException("UID buffer guard");}
 }

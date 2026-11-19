@@ -65,6 +65,8 @@ object registration/geometry. Ordinary feature setup restores its descriptor's
 B0 value after UID configuration or a handled UID mismatch. Registration and
 active geometry therefore do not establish valid UID acquisition. Direct main
 UID ioctl export and downstream identity consumers are not executed here.
+The subsequent [main UID export scope](MAIN_NAND_UID_EXPORT.md) executes the
+context/chip request and its locking, including retained-state export.
 
 ## Reproduction, regression and continuation
 
@@ -90,7 +92,8 @@ main native cases reproduce byte for byte** after narrow auxiliary/model/FIFO
 extension hooks; previous fixed configurations and scope bounds remain unchanged.
 The two scopes add **28 host checks** to the passing **1,830-test suite**.
 
-Next work is actual main BBT recovery/repair, UID export/consumers and page/media
-callers through this chain. IRQ/cache/pin bodies, physical identity, electrical/
+The subsequent [main BBT scope](MAIN_NAND_BBT.md) executes verifier/resume/CRC
+with supplied page/marker services. Next work includes BBT lower page integration,
+remapping, further UID consumers and page/media callers. IRQ/cache/pin bodies, physical identity, electrical/
 timing/coherency, persistence, safe backup/restoration and standalone boot remain
 separate open requirements.

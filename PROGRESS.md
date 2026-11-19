@@ -2691,6 +2691,44 @@ limits; the initial observations point to the current status and work log.
    1,830-test suite. Next: actual main BBT recovery/repair, UID export/consumers,
    page/media paths, IRQ/cache/pin bodies and physical backup/restoration/boot.
 
+## 2026-11-19 — actual main UID export through context/chip locking
+
+1. Joined original context query 24 and chip ioctl to the actual main UID/probe/
+   platform/FIFO/root chain. Export writes the current length byte and UID bytes
+   without revalidating acquisition freshness. Handled setup/ECC errors expose
+   authored prior state; no valid copy exports length zero. The original no-UID
+   descriptor returns -201 without writing. Generic object geometry ioctl does
+   not forward this direct UID query. Copy and RTOS services remain supplied.
+2. Actual context IRQ/scheduler bypass and mutex helper branches execute. Acquire
+   failure stops before chip dispatch; release failure stops after bytes have
+   already been copied. A geometry/open/close sequence can export repeatedly
+   after generic close. Source/output guards and per-operation snapshots hold.
+3. All 16 native cases pass in 141,306 steps (maximum 23,961), with 54 code/export
+   and 65 data hashes. See [analysis/MAIN_NAND_UID_EXPORT.md](analysis/MAIN_NAND_UID_EXPORT.md)
+   and [analysis/main-nand-uid-export.json](analysis/main-nand-uid-export.json).
+
+## 2026-11-19 — actual main BBT verifier/resume/CRC joined to probe and consumers
+
+1. Executed original main BBT verifier, reserved-tail selection, backup recovery
+   and CRC against the original main lookup table inside first-chip probe/UID/
+   platform/FIFO/root, then actual geometry and UID export. Marker and BBT page
+   read/write/erase services are supplied over authored records; no physical
+   media or persistent repair is claimed. Empty/count-limit/CRC/read errors,
+   malformed ordering/duplicates, alternate tail pairs and assertions execute.
+2. Actual recovery restores active RAM magic and returns zero after supplied
+   reread/erase/write failures. Neither-record return one is ignored by outer
+   probe, which registers the device while geometry reports inactive BBT. Valid
+   BBT does not refresh retained UID state. The original 164-byte BBT ends at the
+   128-byte UID buffer; combined span guards preserve the adjacent source.
+3. All 18 native cases pass in 117,251 steps (maximum 7,082), with 57 code/export
+   and 67 data hashes. See [analysis/MAIN_NAND_BBT.md](analysis/MAIN_NAND_BBT.md)
+   and [analysis/main-nand-bbt.json](analysis/main-nand-bbt.json). All 434 preceding
+   main native cases reproduce byte for byte after narrow operation/BBT/guard
+   hooks, preserving original configurations and bounds. The two scopes add
+   38 host checks to the passing 1,868-test suite. Next: actual main BBT remapping
+   and lower page/DMA integration, further identity/media consumers and physical
+   backup/restoration/boot.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -2780,8 +2818,10 @@ limits; the initial observations point to the current status and work log.
   and auxiliary bodies supplied. Actual main command/FIFO/count/timer/clock/
   revision and DMA wrappers now also execute separately, and original main bus/
   feature packets join them over an authored initialized controller. Follow
-  actual main BBT recovery/repair, UID export/consumers and page/media callers
-  through this chain. Actual main workaround/reset/level and UID feature/load/
+  actual main BBT remapping and lower page/DMA integration, further UID/media
+  consumers and alternate chip geometries through this chain. Main BBT verifier/
+  resume/CRC now joins it with supplied page/marker services; actual context UID
+  export also executes, including copied output before mutex release assertion. Actual main workaround/reset/level and UID feature/load/
   busy/cache/complement checks now join it, including retained state after UID
   failures and outer probe success without valid acquisition.
   Original main candidate probe/root now joins actual platform/clock/QSPI FIFO/
@@ -2789,7 +2829,7 @@ limits; the initial observations point to the current status and work log.
   descriptors, including all 33 attempts and actual timeout assertions. DMA
   setup/wait remains separately covered for bounce transfers. Main pin/GPIO/
   cache bodies and IRQ remain open.
-  Then follow actual main UID/workaround/BBT,
+  Then follow further main UID/BBT consumers, actual BBT page transport,
   wider storage and PM callers,
   broader close callers, removal/reclamation/concurrency and real property/heap/
   mutex services. Actual retry/

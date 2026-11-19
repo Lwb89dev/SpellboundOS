@@ -30,6 +30,7 @@ class Model(probe.Model):
         self.bus_calls+=1;self.actions.append(f'probe_bus_native:{index}');self.bus.c['bus_word']=BUS_WORDS[index];self.bus.init()
     def run_workaround(self):self.actions.append(f'probe_workaround:{self.c["probe_workaround_return"]}')
     def run_uid(self):self.actions.append(f'probe_uid:{self.c["probe_uid_return"]}')
+    def run_bbt(self,chip):self.actions.append(f'probe_bbt:{chip["blocks"]}:{chip["page_size"]}:{chip["pages_per_block"]}:{self.c["probe_bbt_return"]}')
     def packet(self,opcode,address,size,write,local):
         self.actions.append(f'probe_packet:{opcode}:{address}:{size}:{int(write)}')
         if self.bus.c['disabled']:
@@ -74,7 +75,7 @@ class Model(probe.Model):
                 got=value^int(self.feature_reads==c['probe_feature_mismatch_at'])
                 self.packet(0x0f,reg,1,False,bytearray((got,)))
                 if got!=value:self.actions.extend(('log:probe_feature_mismatch','log:probe_error'));return -7
-            self.actions.append(f'probe_bbt:{chip["blocks"]}:{chip["page_size"]}:{chip["pages_per_block"]}:{c["probe_bbt_return"]}')
+            self.run_bbt(chip)
             self.guard_pages=0x100000//chip['page_size'];self.guard_blocks=self.guard_pages//chip['pages_per_block'];self.actions.append('log:probe_guard');return 0
         except bus.boot.Stop as stop:self.stopped=stop.info;return None
     def run(self):

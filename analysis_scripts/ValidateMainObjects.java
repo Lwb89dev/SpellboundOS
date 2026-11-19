@@ -76,7 +76,7 @@ public class ValidateMainObjects extends GhidraScript {
  private void mainSnapshot(EmulatorHelper e,JsonObject row){
   row.addProperty("main_selected",word(e,MAIN_SELECTED));row.addProperty("main_mutex",word(e,MAIN_MUTEX));row.addProperty("main_bbt_magic",word(e,MAIN_BBT));row.addProperty("main_root",word(e,MAIN_ROOT));row.addProperty("main_cache",word(e,MAIN_CACHE));row.addProperty("main_heap_live",mainHeap);row.addProperty("main_head",word(e,MAIN_HEAD));row.addProperty("main_registry_mutex",word(e,MAIN_REG_MUTEX));row.addProperty("main_seed_hex",HexFormat.of().formatHex(mem(e,MAIN_SEED,60)));row.addProperty("main_pm_calls",mainPm);
  }
- private void entry(EmulatorHelper e,long start,long... args)throws Exception {
+ protected void entry(EmulatorHelper e,long start,long... args)throws Exception {
   e.writeRegister("ra",END);for(int i=0;i<args.length;i++)e.writeRegister("a"+i,args[i]);e.writeRegister(e.getPCRegister(),start);long pc;
   while((pc=e.getExecutionAddress().getOffset())!=END){
    if(++steps>executionBound())throw new IllegalStateException("Execution bound");
@@ -116,7 +116,7 @@ public class ValidateMainObjects extends GhidraScript {
    if(mainStack())setupMain(e,sentinel);
    if(mainProbe())setupProbe(e);
    JsonArray rows=new JsonArray();for(JsonElement item:c.getAsJsonArray("operations")){op=item.getAsJsonObject();lowerPhase=0;String kind=op.get("op").getAsString();long pointer=op.get("object").getAsBoolean()?OBJECT:0;
-    if(mainProbe()&&kind.equals("probe"))entry(e,0x702d685cL);else if(mainRoot()&&kind.equals("initialize"))entry(e,0x702d54c6L,MAIN_NAME);else if(kind.equals("open"))entry(e,a(kind),pointer,op.get("flags").getAsLong());else if(kind.equals("write"))entry(e,a(kind),pointer,op.get("offset").getAsLong(),op.get("data").getAsBoolean()?DATA:0,op.get("size").getAsLong());else if(kind.equals("ioctl"))entry(e,a(kind),pointer,op.get("command").getAsLong(),0x11223344L,0x55667788L,op.get("output").getAsBoolean()?OUTPUT:0);else entry(e,a(kind),pointer);
+    if(additionalOperation(e,kind)){}else if(mainProbe()&&kind.equals("probe"))entry(e,0x702d685cL);else if(mainRoot()&&kind.equals("initialize"))entry(e,0x702d54c6L,MAIN_NAME);else if(kind.equals("open"))entry(e,a(kind),pointer,op.get("flags").getAsLong());else if(kind.equals("write"))entry(e,a(kind),pointer,op.get("offset").getAsLong(),op.get("data").getAsBoolean()?DATA:0,op.get("size").getAsLong());else if(kind.equals("ioctl"))entry(e,a(kind),pointer,op.get("command").getAsLong(),0x11223344L,0x55667788L,op.get("output").getAsBoolean()?OUTPUT:0);else entry(e,a(kind),pointer);
     JsonObject row=new JsonObject();row.add("returned",stopped==null?new JsonPrimitive(r(e,0)):JsonNull.INSTANCE);row.add("stopped",stopped==null?JsonNull.INSTANCE:stopped);row.addProperty("object_hex",HexFormat.of().formatHex(mem(e,OBJECT,60)));row.addProperty("output_hex",HexFormat.of().formatHex(mem(e,OUTPUT,32)));row.addProperty("data_sha256",hash(mem(e,DATA,64)));row.addProperty("lower_calls",lowerCalls);if(mainStack())mainSnapshot(e,row);if(mainProbe())probeSnapshot(e,row);rows.add(row);if(stopped!=null||mainRoot()&&kind.equals("initialize")&&r(e,0)!=0)break;
    }
    byte[] guard=Arrays.copyOf(sentinel,32);for(long[] span:new long[][]{{OBJECT,60},{TABLE,28},{DATA,64},{OUTPUT,32}})for(long p:new long[]{span[0]-32,span[0]+span[1]})if(!Arrays.equals(guard,mem(e,p,32)))throw new IllegalStateException("Object lifecycle guard");
@@ -134,6 +134,7 @@ public class ValidateMainObjects extends GhidraScript {
   }finally{e.dispose();}
  }
  protected int executionBound(){return 10000;}
+ protected boolean additionalOperation(EmulatorHelper e,String kind)throws Exception {return false;}
  protected EmulatorHelper createEmulator(){return new EmulatorHelper(currentProgram);}
  protected void configure()throws Exception {}
  protected void validateExtra(EmulatorHelper e)throws Exception {}
