@@ -1,0 +1,535 @@
+{
+  "boot_firmware": "0x80c00918",
+  "boot_manager": "0x80c00454",
+  "boot_sha256": "44cd83c0d09864c6101e9825bd3c77d7fac314584d0408b378dd56c2aac5736a",
+  "byte_range_sha256": {
+    "80c00312_142": "8d6ee40e377b740e84ec51853a7945a5565c4ae1168634301eef6a48ebb6bb6f"
+  },
+  "call_sites": [
+    {
+      "site": "0x80c0031c",
+      "target": "0x80c0ec70"
+    },
+    {
+      "site": "0x80c0034a",
+      "target": "0x80c216ac"
+    },
+    {
+      "site": "0x80c00384",
+      "target": "0x80c2d0ba"
+    },
+    {
+      "site": "0x80c00394",
+      "target": "0x80c16884"
+    },
+    {
+      "site": "0x80c005e4",
+      "target": "0x80c00918"
+    },
+    {
+      "site": "0x80c0068e",
+      "target": "0x80c0098c"
+    },
+    {
+      "site": "0x80c006ac",
+      "target": "0x80c0098c"
+    }
+  ],
+  "confirm_window": 20,
+  "detector": "0x80c00312",
+  "limitations": [
+    "The recovery-entry detector executes in an emulator over authored state with the boot-reason reader, power check, key poll and delay supplied; the key poll writes a scripted per-index button sequence and the power check writes its flag into the quiet stack window. No real key matrix, power rail or timer is read.",
+    "The boot manager 0x80c00454 and the final main boot 0x80c00918 are not re-executed here; their control flow is read statically. The upgrade-record software recovery request and the recovery image validation are covered elsewhere.",
+    "This establishes the recovery-entry conditions, not the physical key mapping, the real debounce timing, the power threshold or that recovery can always restore a good image after a bad write. With no USB/wired port (BLE bridge only), these two-key-plus-power and upgrade-record paths are the only recovery entries, and both still need on-device confirmation."
+  ],
+  "native_case_count": 8,
+  "native_steps": 1758,
+  "native_validation": {
+    "bound_per_case": 5000,
+    "case_count": 8,
+    "cases": [
+      {
+        "name": "main_recovery_gate_reason_ota_skips",
+        "observed": {
+          "actions": [
+            "op:detect",
+            "call:2160127088",
+            "call:2160184698"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 22
+      },
+      {
+        "name": "main_recovery_gate_reason_reset_skips",
+        "observed": {
+          "actions": [
+            "op:detect",
+            "call:2160127088",
+            "call:2160184698"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 23
+      },
+      {
+        "name": "main_recovery_gate_no_external_power",
+        "observed": {
+          "actions": [
+            "op:detect",
+            "call:2160127088",
+            "call:2160184698",
+            "call:2160203436",
+            "call:2160184698"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 37
+      },
+      {
+        "name": "main_recovery_gate_power_check_error",
+        "observed": {
+          "actions": [
+            "op:detect",
+            "call:2160127088",
+            "call:2160184698",
+            "call:2160203436",
+            "call:2160184698"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 35
+      },
+      {
+        "name": "main_recovery_gate_keys_never_pressed_times_out",
+        "observed": {
+          "actions": [
+            "op:detect",
+            "call:2160127088",
+            "call:2160184698",
+            "call:2160203436",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 441
+      },
+      {
+        "name": "main_recovery_gate_recovery_gesture_succeeds",
+        "observed": {
+          "actions": [
+            "op:detect",
+            "call:2160127088",
+            "call:2160184698",
+            "call:2160203436",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160184698",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160184698"
+          ],
+          "rows": [
+            {
+              "a0": 1,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 514
+      },
+      {
+        "name": "main_recovery_gate_key_released_during_confirm_aborts",
+        "observed": {
+          "actions": [
+            "op:detect",
+            "call:2160127088",
+            "call:2160184698",
+            "call:2160203436",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160184698",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 128
+      },
+      {
+        "name": "main_recovery_gate_second_key_late_then_held",
+        "observed": {
+          "actions": [
+            "op:detect",
+            "call:2160127088",
+            "call:2160184698",
+            "call:2160203436",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160184698",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160251066",
+            "call:2160251066",
+            "call:2160158852",
+            "call:2160184698"
+          ],
+          "rows": [
+            {
+              "a0": 1,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 558
+      }
+    ],
+    "hardware_execution": false,
+    "schema": 1
+  },
+  "poll_delay_ms": 50,
+  "recovery_launch": "0x80c0098c",
+  "requires": "boot reason not in {3,6}, external power present, two keys held through both windows",
+  "skip_reasons": [
+    3,
+    6
+  ],
+  "strings": {
+    "enter": {
+      "address": "0x80c32ad8",
+      "text": "backup check key pass !"
+    },
+    "no_power": {
+      "address": "0x80c32ac0",
+      "text": "boot no power supply !"
+    },
+    "press": {
+      "address": "0x80c32af0",
+      "text": "boot press detected !"
+    },
+    "reason": {
+      "address": "0x80c32aa8",
+      "text": "boot check reason %d"
+    },
+    "tag": {
+      "address": "0x80c32a78",
+      "text": "BOOT_MAIN"
+    }
+  },
+  "validation_sha256": "e3e72c1511ddd685f438bda68a629fce326477d7de45f56a9e1c3f67fc935d90",
+  "vectors_sha256": "25476226de72f846bcf9c08fdc7381122c4f5b71822c19b4353d01e4f06de9e6"
+}

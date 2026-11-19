@@ -3324,6 +3324,32 @@ deletion remain open.
    backup, a tested recovery-entry/restore guarantee and confirmation of
    device-side enforcement — none obtainable offline.
 
+## 2026-11-19 — bootloader recovery-entry gate and boot manager decision
+
+1. Executed the original recovery-entry detector `0x80c00312` end to end in the
+   `boot-runtime` project, supplying the boot-reason reader, power check, key
+   poll and delay as stubs (a new `store` stub kind writes the scripted button
+   states and the power flag into the quiet stack). All **8 cases pass in 1,758
+   steps**; the independent model reproduces every call and the return value.
+2. Established the recovery-entry conditions: boot reason not 3 or 6, external
+   power present, and two keys (poll indices 0 and 1) held together through a
+   release wait, a 20-poll both-pressed window and a 20-poll confirmation
+   window. Reasons 3/6 skip power and keys; no power skips the keys.
+3. Read the boot manager `0x80c00454` statically: it enters recovery only via
+   the detector or a pre-written `upgrade` record (state 2), and then
+   **unconditionally calls the main-firmware boot `0x80c00918` as its last
+   step**. Because the main boot returns on a signature failure (it never jumps
+   into unverified bytes), a failed main verification does not fall through to
+   recovery — recovery must be requested earlier.
+
+   With no USB/wired port (BLE bridge only), the two-key-plus-power gesture and
+   the `upgrade`-record path are therefore the only recovery entries. See
+   [analysis/MAIN_RECOVERY_GATE.md](analysis/MAIN_RECOVERY_GATE.md) and
+   [analysis/main-recovery-gate.json](analysis/main-recovery-gate.json); the
+   vectors, native report and evidence regenerate byte for byte. Eight new host
+   checks join the suite. The physical key mapping, the power threshold and a
+   demonstrably recoverable over-the-air restore remain open and need the device.
+
 ## Next work
 
 - Main kernel: execute `vTaskSuspend`/`vTaskResume`, the idle-task termination
@@ -3345,8 +3371,13 @@ deletion remain open.
   The main-firmware boot gate now executes: the loader enters `0x70160000`
   only on a positive signature verification, and failures/oversize never jump
   into the image; see [analysis/MAIN_BOOT_GATE.md](analysis/MAIN_BOOT_GATE.md).
-  Next on this path: execute the caller above `0x80c00918` to prove whether a
-  failed main boot deterministically falls through to recovery or halts.
+  The caller `0x80c00454` now shows the main boot is the unconditional final
+  step and a failed verification does not auto-enter recovery; recovery is
+  gated by the executed two-key-plus-power detector `0x80c00312` or a
+  pre-written `upgrade` record. With no USB (BLE-only bridge), those are the
+  only recovery entries; see
+  [analysis/MAIN_RECOVERY_GATE.md](analysis/MAIN_RECOVERY_GATE.md). Next:
+  execute the full boot manager and establish a recoverable OTA restore.
   Selected boot validation, selection, header/counter preparation/completion and
   stopped handoff now execute with supplied board/storage/crypto/BSP services.
   Environment wrappers, cached reason/key policy and the stopped upgrade-record
