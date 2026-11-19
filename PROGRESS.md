@@ -2993,6 +2993,48 @@ limits; the initial observations point to the current status and work log.
    Positive-address CSR progress, live IRQ/scheduling, physical DMA/coherency,
    persistence, wider media/PM consumers and restoration/standalone boot remain open.
 
+## 2026-11-19 — original positive-address cache CSR loops and bounded stalls
+
+1. Executed original prepare/finish/invalidate range loops and whole-cache
+   command through actual context/save/restore/critical/diagnostic bodies.
+   Range commands use control bit 1, aligned start and unsigned wrapped end;
+   whole-cache command 6 is unconditional and does not poll address feedback.
+2. Explicit CSR readbacks verify multiple commands, backward progress, aligned/
+   unaligned zero lengths, wrapped end and last-positive-address comparison.
+   No software line stride is invented. Stalled cases stop before another
+   command at a marked harness bound, retaining entered state and claiming no
+   firmware timeout or normal return. The three hash-guarded fences remain
+   recorded no-ops because the emulator lacks that userop; ordering is unproved.
+3. All 43 native cases pass in 6,039 steps (maximum 330). See
+   [analysis/MAIN_CACHE_CSR_RANGES.md](analysis/MAIN_CACHE_CSR_RANGES.md) and
+   [analysis/main-cache-range.json](analysis/main-cache-range.json). Hardware
+   cache progression/completion/coherency and production positive-address
+   consumers remain open.
+
+## 2026-11-19 — actual main RTOS critical depth, context and diagnostic state
+
+1. Executed original critical entry/exit and wrapper/context/diagnostic code
+   over authored RTOS/thread/CSR backing. Entry clears MIE, then increments depth
+   when the scheduler gate is nonzero. Exit reenables MIE only on a nonzero-to-
+   zero depth transition. A completed pair can enable initially clear MIE; a
+   scheduler-off pair leaves MIE clear. Existing depth and unsigned wrap differ.
+2. Nonzero context bypasses critical entry/exit and writes zero to the save
+   output. Normal-context save leaves the output sentinel unchanged, and selected
+   restore ignores its argument; the pair is not a saved-MIE restoration model.
+   Actual optional diagnostics record caller/stage/depth values. These supplied
+   state combinations do not establish production validity or a live RTOS bug.
+3. All 22 native cases pass in 1,922 steps (maximum 165). See
+   [analysis/MAIN_RTOS_CRITICAL_SECTIONS.md](analysis/MAIN_RTOS_CRITICAL_SECTIONS.md)
+   and [analysis/main-cache-critical.json](analysis/main-cache-critical.json).
+   Both scopes pin ten original code/export hashes and a 5,000-step bound.
+   All 186 preceding backend/IRQ/cache/NAND native cases reproduce byte for byte
+   after the metadata seed. Thirty-two new host checks join the passing
+   2,112-test suite, covering complete native observations, CSR/depth/diagnostic
+   boundaries and marked nonreturning stops. Both JSON reports reproduce byte
+   for byte from the original archive, pinned exports and native observations.
+   Live IRQ/scheduler/current-thread concurrency, physical cache/DMA coherence,
+   persistence, wider consumers and restoration/standalone boot remain open.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -3101,7 +3143,7 @@ limits; the initial observations point to the current status and work log.
   revision/DMA initialization and object consumers over all eleven unchanged
   descriptors, including all 33 attempts and actual timeout assertions. DMA
   setup/wait remains separately covered for bounce transfers. Main pin/GPIO
-  services, positive-address cache CSR paths and live IRQ delivery remain open.
+  services, production cache/DMA consumers and live IRQ delivery remain open.
   Main mode-zero reads now connect original private-buffer DMA setup/wait after
   BBT recovery, and mode-zero erase connects original sleep-based polling and
   published guards. DMA data movement and actual scheduling remain unmodeled.
@@ -3109,6 +3151,8 @@ limits; the initial observations point to the current status and work log.
   and execute/status with recovered mapping/guards too. Original main IRQ dispatch
   now executes with supplied callbacks and authored pending/registry state;
   original signed cache guards execute inside backend/IRQ and full NAND DMA.
+  Original positive-address CSR loops and critical/context/diagnostic bodies now
+  execute over explicit register feedback and authored RTOS/thread state too.
   Actual interrupt delivery and physical coherency remain unproved. Follow further main
   UID/BBT consumers and IRQ/events,
   wider storage and PM callers,

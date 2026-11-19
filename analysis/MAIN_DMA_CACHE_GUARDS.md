@@ -120,8 +120,11 @@ All four JSON reports reproduce byte for byte. Thirty new host checks join the
 passing **2,080-test suite**, covering native/model equality, original hashes,
 callback/registry ordering, fault state and exact per-call instruction differences.
 
-Next work includes positive-address cache CSR progress and interrupt-state
-services, actual IRQ/vector/controller/scheduling and callback consumers,
+Subsequent [positive-address cache cases](MAIN_CACHE_CSR_RANGES.md) execute CSR
+loops over explicit feedback, along with the original
+[critical/context/diagnostic bodies](MAIN_RTOS_CRITICAL_SECTIONS.md).
+Further work includes device CSR progression/completion, actual
+IRQ/vector/controller/scheduling and callback consumers,
 broader media/PM/partition integration and concurrency. Physical DMA/cache/
 coherency/timing, persistent repair/atomicity, device backup/restoration and
 standalone signed-chain boot remain unresolved.

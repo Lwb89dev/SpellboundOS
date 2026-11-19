@@ -109,7 +109,9 @@ not invent a software increment or simulate hardware command progress.
 
 The later [main DMA/IRQ and connected NAND cache-guard scopes](MAIN_DMA_CACHE_GUARDS.md)
 execute the original signed entry guards for high-half/zero addresses, matching
-this contract. Positive-address CSR progress and physical coherency remain open.
+this contract. Subsequent [positive-address cache cases](MAIN_CACHE_CSR_RANGES.md)
+execute the CSR loops over supplied readbacks and original RTOS critical bodies.
+Physical CSR progress and coherency remain open.
 
 ## Transfer callers and scope
 
