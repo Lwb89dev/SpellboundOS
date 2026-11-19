@@ -3230,6 +3230,22 @@ and the not-suspended assertion. See
 native report and evidence regenerate byte for byte. Eleven new host checks.
 `vTaskSuspendAll` and the blocking APIs remain open.
 
+## 2026-11-19 — vTaskDelay, suspend-all and delayed-list insertion
+
+Executed the original `vTaskDelay` (`0x80d3a84c`) end to end, reusing
+`vTaskSuspendAll` (`0x80d3969a`), `prvAddCurrentTaskToDelayedList` (`0x80d3927a`),
+`vListInsert` (`0x80d37db4`), the list primitives and the whole of
+`xTaskResumeAll` as guarded original code (only `configASSERT`, the diagnostic
+body and `vPortYield` are stubs). **8 cases pass in 1,337 steps**: zero-tick
+yield, move to the delayed list with `xNextTaskUnblockTime` update, ready-bit
+clear/keep, ordered insertion before/after an existing sleeper, overflow-list
+wrap without an unblock update, and the suspended-at-entry assertion. See
+[analysis/MAIN_TASK_DELAY.md](analysis/MAIN_TASK_DELAY.md) and
+[analysis/main-task-delay.json](analysis/main-task-delay.json); vectors, native
+report and evidence regenerate byte for byte. Nine new host checks.
+`xTaskDelayUntil`, event-list block/unblock (queues/semaphores) and task
+deletion remain open.
+
 ## Next work
 
 - Main kernel: execute `vTaskStartScheduler` idle/timer-task creation, dynamic
