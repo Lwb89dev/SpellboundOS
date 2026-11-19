@@ -22,7 +22,7 @@ public class ValidateMainNandFullProbe extends ValidateMainObjects {
    if(!active||!space.getName().equals("ram"))return;long value;
    if(p==CLOCK){if(n!=4)throw new IllegalStateException("Probe clock width");value=clock;actions.add("clock_read:"+value);}
    else if(board.containsKey(p)){if(n!=4)throw new IllegalStateException("Probe board read width");value=board.get(p);actions.add("board_r:"+p+":"+value);}
-   else if(p>=0x93080000L&&p<0x93080200L){long at=p-0x93080000L;if(n!=4||!dmaRegs.containsKey(at))throw new IllegalStateException("Probe DMA read");value=dmaRegs.get(at);actions.add("dma_r:"+at+":"+value);}
+   else if(p>=0x93080000L&&p<0x93080200L){long at=p-0x93080000L;if(n!=4||!dmaRegs.containsKey(at))throw new IllegalStateException("Probe DMA read");value=dmaRead(at,dmaRegs.get(at));dmaRegs.put(at,value);actions.add("dma_r:"+at+":"+value);}
    else if(p>=0x93240000L&&p<0x93240104L){long at=p-0x93240000L;
     if(at==0x100){if((n!=1&&n!=4)||rxBytes+n>fifoReadBound())throw new IllegalStateException("Probe FIFO read bound");value=0;
      value=fifoResponse(opcode,reg,n,payloadAt);
@@ -47,6 +47,7 @@ public class ValidateMainNandFullProbe extends ValidateMainObjects {
   }
  }
  protected int fifoReadBound(){return 512;}
+ protected long dmaRead(long offset,long value){return value;}
  protected boolean packetFails(boolean ready,int commandIndex){return commandIndex==c.get(ready?"full_ready_fail_at":"full_done_fail_at").getAsInt();}
  protected long fifoResponse(int opcode,int reg,int n,int payloadAt){
   if(opcode==0x9f){if(payloadAt+n>5)throw new IllegalStateException("Probe ID FIFO bound");long value=0;for(int i=0;i<n;i++)value|=(probeIdReads<=11*c.get("probe_delayed_rounds").getAsInt()?255L:c.getAsJsonArray("probe_id").get(payloadAt+i).getAsLong())<<(8*i);return value;}

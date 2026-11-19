@@ -2885,6 +2885,42 @@ limits; the initial observations point to the current status and work log.
    host checks join the passing 1,990-test suite. Next: asynchronous/private DMA,
    nonblocking scheduling, wider media/PM consumers and physical restoration/boot.
 
+## 2026-11-19 — main mode-zero reads through original private-buffer DMA
+
+1. Connected original mode-zero page/cache builders to actual QSPI DMA setup/
+   wait using the RX record initialized by the full probe, after actual BBT
+   recovery/repair/root publication. Lengths up to 31 use direct FIFO; 32/64
+   bytes use DMA on the selected revision, while older ROM falls back to FIFO.
+   The packet stores the original no-op callback, but this bus path never calls it.
+2. Primary completion clears tracking and calls the cache-finish service;
+   alternate completion returns zero with tracking retained. Both copy retained
+   authored private-buffer bytes: physical DMA movement is not modeled. DMA
+   timeout and later QSPI timeout stop before copy with different tracking state.
+   ECC rejection can follow delivered data; assertions retain published root/BBT.
+3. All 16 native cases pass in 524,188 steps (maximum 33,924). See
+   [analysis/MAIN_NAND_ASYNC_READ.md](analysis/MAIN_NAND_ASYNC_READ.md) and
+   [analysis/main-nand-async-read.json](analysis/main-nand-async-read.json).
+
+## 2026-11-19 — main mode-zero erase guards and complete sleep-poll limit
+
+1. Connected original mode-zero erase to recovered block mapping and the
+   original enabled guard byte. Logical block 4 maps below the published guard
+   boundary and returns -250; logical block 5 maps exactly to it and proceeds.
+   Original write-enable/erase/status packets execute through actual QSPI FIFO.
+2. Original helper requests one-tick sleeps and allows 20 status reads. Ready
+   on read 20 is discarded and erase returns -104, like persistent busy; ready
+   on read 19 succeeds. Supplied sleeps establish call arguments, not elapsed
+   time, scheduling or IRQ-driven completion. Transport assertions occur after
+   publication; no physical erase or persistent state change is simulated.
+3. All 14 native cases pass in 473,271 steps (maximum 39,369). See
+   [analysis/MAIN_NAND_SLEEP_ERASE.md](analysis/MAIN_NAND_SLEEP_ERASE.md) and
+   [analysis/main-nand-async-erase.json](analysis/main-nand-async-erase.json).
+   Both scopes share 72 code/export and 68 data hashes. All 557 preceding main
+   native cases reproduce byte for byte after the narrow DMA-read hook and
+   metadata seed. Thirty-four host checks join the passing 2,024-test suite.
+   Next: mode-zero program, IRQ/event scheduling, wider media/PM consumers and
+   physical data/coherency/persistence/restoration/boot validation.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -2994,7 +3030,10 @@ limits; the initial observations point to the current status and work log.
   descriptors, including all 33 attempts and actual timeout assertions. DMA
   setup/wait remains separately covered for bounce transfers. Main pin/GPIO/
   cache bodies and IRQ remain open.
-  Then follow further main UID/BBT consumers and asynchronous/private DMA,
+  Main mode-zero reads now connect original private-buffer DMA setup/wait after
+  BBT recovery, and mode-zero erase connects original sleep-based polling and
+  published guards. DMA data movement and actual scheduling remain unmodeled.
+  Then follow mode-zero program, further main UID/BBT consumers and IRQ/events,
   wider storage and PM callers,
   broader close callers, removal/reclamation/concurrency and real property/heap/
   mutex services. Actual retry/

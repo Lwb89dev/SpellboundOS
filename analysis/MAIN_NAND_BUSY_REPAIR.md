@@ -82,7 +82,10 @@ python3 analysis_scripts/main_nand_busy.py firmware/bip6-4.6.0.3.zip \
 
 All **546 preceding main native cases reproduce byte for byte**, preserving
 previous fixed configurations and bounds. The two busy scopes add **24 host
-checks** to the passing **1,990-test suite**. Next work is asynchronous/private
+checks** to the passing **1,990-test suite**. Subsequent
+[mode-zero reads](MAIN_NAND_ASYNC_READ.md) connect original private-buffer DMA,
+and [mode-zero erase](MAIN_NAND_SLEEP_ERASE.md) connects sleep-based polling.
+Next work includes further asynchronous/private
 DMA paths, nonblocking erase scheduling, wider descriptors/media/PM consumers
 and physical validation. Electrical/timing/IRQ/cache/coherency, durable repair
 and atomicity, safe backup/restoration and standalone boot remain open.
