@@ -4,6 +4,9 @@ This log records completed work, evidence, and limitations. Dates refer to the
 local work session. See [GOAL.md](GOAL.md) for the intended outcome and
 [analysis/ANALYSIS.md](analysis/ANALYSIS.md) for detailed earlier findings.
 
+Current continuation checkpoint: [HANDOFF_CLAUDE.md](HANDOFF_CLAUDE.md)
+(2026-11-19; analysis baseline `3685f79`, 2,112 passing host tests).
+
 ## 2026-11-14 — acquisition and initial investigation
 
 1. Identified the connected watch through Gadgetbridge as an Amazfit Bip 6,
@@ -3034,6 +3037,28 @@ limits; the initial observations point to the current status and work log.
    for byte from the original archive, pinned exports and native observations.
    Live IRQ/scheduler/current-thread concurrency, physical cache/DMA coherence,
    persistence, wider consumers and restoration/standalone boot remain open.
+
+## 2026-11-19 — weekly-credit checkpoint and Claude handoff
+
+1. Prepared [HANDOFF_CLAUDE.md](HANDOFF_CLAUDE.md) at the user's request as weekly
+   Codex credits run low. It records the verified analysis baseline `3685f79`,
+   recent commits, local ignored inputs/tooling, test/native reproduction,
+   selected regression set, evidence limitations and a ready-to-use resume prompt.
+   No native analysis or validation job remains unfinished at this checkpoint.
+2. Latest verified state remains 2,112 passing host tests; the latest cache/RTOS
+   scopes contain 43 + 22 passing native cases, and 186 preceding selected
+   backend/IRQ/cache/NAND cases reproduce byte for byte. This handoff changes
+   documentation only; those test results belong to the verified analysis commit.
+3. Reviewed the subjective whole-project RE planning estimate: retain roughly
+   50–60% complete, with 40–50% remaining and substantial uncertainty. This is
+   neither measured coverage nor OS implementation progress. Signed-chain boot,
+   device backup/restoration, hardware validation, complete pairing and broader
+   required application/algorithm behavior remain major work and feasibility gates.
+4. The concrete native continuation is to trace context/scheduler/current-thread
+   producers and actual interrupt entry/registration before extending callback
+   and production DMA/cache/PM consumers. Keep the standalone boot/restoration
+   gate prominent. The handoff identifies exact addresses and existing tools;
+   older completed matrices need not be rediscovered.
 
 ## Next work
 

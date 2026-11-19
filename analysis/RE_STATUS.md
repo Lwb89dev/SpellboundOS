@@ -4,10 +4,15 @@ The investigation covers OTA 4.6.0.3 and one live Gadgetbridge/Bip 6 protocol
 session. It is not a complete physical flash/ROM dump or native execution trace.
 Completion has no measured percentage: disassembly/export and test counts do not
 measure behavioral coverage. At the user's request, the rough qualitative planning
-estimate on 2026-11-18 is **50–60% of the reverse engineering needed for the
-project**, with substantial uncertainty. It is a subjective assessment of scope,
+estimate, reviewed for the Claude handoff on 2026-11-19, remains **50–60% of the
+reverse engineering needed for the project**, with roughly **40–50% remaining**
+and substantial uncertainty. It is a subjective assessment of scope,
 not a coverage metric or a basis for estimating remaining time. Hardware
 validation, complete pairing and restoration/standalone boot remain major gates.
+
+The current continuation checkpoint is [HANDOFF_CLAUDE.md](../HANDOFF_CLAUDE.md):
+analysis baseline `3685f79`, 2,112 passing host tests, local tooling and a concrete
+resume plan. This percentage describes RE scope, not OS implementation progress.
 
 Completion still depends on four broad work areas:
 
