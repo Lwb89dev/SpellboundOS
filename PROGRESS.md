@@ -3246,12 +3246,41 @@ report and evidence regenerate byte for byte. Nine new host checks.
 `xTaskDelayUntil`, event-list block/unblock (queues/semaphores) and task
 deletion remain open.
 
+## 2026-11-19 — vTaskDelete and prvDeleteTCB task deletion
+
+1. Executed natively the original `vTaskDelete` (`0x80d3a45c`) and
+   `prvDeleteTCB` (`0x80d3939c`) end to end, reusing `vTaskEnterCritical`,
+   `vTaskExitCritical`, `uxListRemove`, `vListInsertEnd` and
+   `prvResetNextTaskUnblockTime` as guarded original code. All **12 cases pass
+   in 1,191 steps** over authored kernel state, TCBs and lists. `configASSERT`,
+   the critical diagnostic body, `vPortYield`, newlib `_reclaim_reent` and
+   `vPortFree` are supplied.
+2. Results include:
+   - `prvDeleteTCB` freeing by `ucStaticallyAllocated` (mode 0 frees stack then
+     TCB, 1 frees the TCB, 2 frees nothing, else asserts at line `0x10b9`);
+   - deleting another task removing it from its state and event lists, clearing
+     the priority bit only when that ready list empties, decrementing
+     `uxCurrentNumberOfTasks`, recomputing the next unblock time and freeing the
+     TCB immediately;
+   - deleting the running task appending it to the termination list and
+     incrementing `uxDeletedTasksWaitingCleanUp`, deferring the free to the idle
+     task, then yielding;
+   - a self-delete asserting `uxSchedulerSuspended == 0` (line `0x516`);
+   - no yield before the scheduler starts.
+
+   See [analysis/MAIN_TASK_DELETION.md](analysis/MAIN_TASK_DELETION.md) and
+   [analysis/main-task-deletion.json](analysis/main-task-deletion.json); the
+   vectors, native report and evidence regenerate byte for byte. Ten new host
+   checks join the suite. The idle-task termination sweep, the actual heap free
+   and live rescheduling after a yield remain open.
+
 ## Next work
 
 - Main kernel: execute `vTaskStartScheduler` idle/timer-task creation, dynamic
-  `xTaskCreate`, blocking/queue/event-list APIs, deletion and suspend/resume
-  catch-up. See
-  [analysis/MAIN_FREERTOS_KERNEL.md](analysis/MAIN_FREERTOS_KERNEL.md).
+  `xTaskCreate`, the idle-task termination sweep and the queue/semaphore/event-
+  group/notification APIs. `vTaskDelete`/`prvDeleteTCB` and `vTaskDelay` now
+  execute; see [analysis/MAIN_TASK_DELETION.md](analysis/MAIN_TASK_DELETION.md)
+  and [analysis/MAIN_TASK_DELAY.md](analysis/MAIN_TASK_DELAY.md).
 - Main interrupts: recover the remaining device interrupt handlers (the
   zero-argument sources and the shared `0x70293d50`), execute the deep-sleep
   save/`wfi`/resume twins on hardware, and validate preemption/nesting and
