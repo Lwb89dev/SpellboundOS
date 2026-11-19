@@ -3376,6 +3376,26 @@ deletion remain open.
    (`0x702c8c70`), the real init tables, the framebuffer/refresh path, backlight
    and panel timing remain open and need the device.
 
+## 2026-11-19 — ICNA3311 display bring-up and real panel init tables
+
+1. Executed the display power/reset bring-up `0x702c8ae2` and the DCS
+   command-table player `0x702c8314` over the **real** ICNA3311 init table from
+   a firmware panel descriptor. Both **2 cases pass**; the write stub captures
+   the real init bytes, so the init DCS stream is verified.
+2. Bring-up sequence: enable 1.8 V rail, 5 ms, enable 3.3 V rail, configure bus,
+   reset low, 12 ms, reset high, 12 ms. The real 416×416 init (variant
+   `0x1b0909`) issues 25 DCS writes including `35 00` tear-on, `51 ff` max
+   brightness, `3a 55` RGB565, `2a 00 12 01 b1` / `2b 00 00 01 9f` (416×416
+   window) and the ICNA3311 page-select writes.
+3. Decoded all nine embedded variant init tables and their geometry (192×490,
+   416×416, 390×450); the device runs one, read at runtime by the panel probe.
+
+   See [analysis/MAIN_DISPLAY_INIT.md](analysis/MAIN_DISPLAY_INIT.md) and
+   [analysis/main-display-init.json](analysis/main-display-init.json); vectors,
+   native report and evidence regenerate byte for byte. Seven new host checks
+   join the suite. Sleep-out/display-on sequencing, the framebuffer/refresh path
+   and backlight runtime control remain open and need the device.
+
 ## Next work
 
 - Main kernel: execute `vTaskSuspend`/`vTaskResume`, the idle-task termination

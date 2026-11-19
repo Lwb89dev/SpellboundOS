@@ -1,0 +1,230 @@
+{
+  "bringup": "0x702c8ae2",
+  "bringup_sequence": "rail 1.8V on, 5 ms, rail 3.3V on, bus config, reset low, 12 ms, reset high, 12 ms",
+  "byte_range_sha256": {
+    "702c8314_62": "f51e288589c5b2518570056258f10f297065668eff292566806407df07050db4",
+    "702c8ae2_66": "fe0d62ca7d81b0ce25e912e1a1575e03318a55ecf05b963dbcd876462d37f158"
+  },
+  "call_sites": [
+    {
+      "site": "0x702c8af4",
+      "target": "0x702b66c8"
+    },
+    {
+      "site": "0x702c8b04",
+      "target": "0x702b66c8"
+    },
+    {
+      "site": "0x702c8b10",
+      "target": "0x702c8208"
+    },
+    {
+      "site": "0x702c8b1c",
+      "target": "0x702bd77e"
+    },
+    {
+      "site": "0x702c8b32",
+      "target": "0x702bd77e"
+    },
+    {
+      "site": "0x702c833c",
+      "target": "0x702c81f4"
+    }
+  ],
+  "command_player": "0x702c8314",
+  "limitations": [
+    "The power/reset bring-up and the DCS command-table player execute in an emulator over authored state; the regulator enable, bus config, reset-line set, delay, DCS write and logger are supplied. The write stub captures the real init bytes from the firmware descriptor, so the init DCS stream is verified, but no rail, reset line, bus or panel is driven.",
+    "The nine variant geometries are decoded from the firmware descriptors; the device runs exactly one of them and the real variant is unknown offline. Sleep-out/display-on, the framebuffer and refresh path, tear-effect/vsync and backlight hardware are not executed here.",
+    "Rail voltages, reset timing and panel bring-up remain unproved and need the device. This is a driver contract, not a working display driver."
+  ],
+  "main_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
+  "native_case_count": 2,
+  "native_steps": 307,
+  "native_validation": {
+    "bound_per_case": 5000,
+    "case_count": 2,
+    "cases": [
+      {
+        "name": "main_display_init_power_reset_bringup",
+        "observed": {
+          "actions": [
+            "op:bringup",
+            "call:1881892552:1879052561",
+            "call:2161338862:5",
+            "call:1881892552:1879056930",
+            "call:1881965064",
+            "call:1881921406:42:0",
+            "call:2161338862:12",
+            "call:1881921406:42:1",
+            "call:2161338862:12"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 36
+      },
+      {
+        "name": "main_display_init_real_icna3311_416_init",
+        "observed": {
+          "actions": [
+            "op:init_table",
+            "call:1881965044",
+            "cap:fe20",
+            "call:1881965044",
+            "cap:f45a",
+            "call:1881965044",
+            "cap:f559",
+            "call:1881965044",
+            "cap:c600",
+            "call:1881965044",
+            "cap:fe80",
+            "call:1881965044",
+            "cap:00f8",
+            "call:1881965044",
+            "cap:f4a5",
+            "call:1881965044",
+            "cap:f5a5",
+            "call:1881965044",
+            "cap:fe80",
+            "call:1881965044",
+            "cap:f400",
+            "call:1881965044",
+            "cap:f500",
+            "call:1881965044",
+            "cap:fe00",
+            "call:1881965044",
+            "cap:fe00",
+            "call:1881965044",
+            "cap:3500",
+            "call:1881965044",
+            "cap:5320",
+            "call:1881965044",
+            "cap:51ff",
+            "call:1881965044",
+            "cap:63ff",
+            "call:1881965044",
+            "cap:3a55",
+            "call:1881965044",
+            "cap:2a001201b1",
+            "call:1881965044",
+            "cap:2b0000019f",
+            "call:1881965044",
+            "cap:fe00",
+            "call:1881965044",
+            "cap:fe80",
+            "call:1881965044",
+            "cap:f4ac",
+            "call:1881965044",
+            "cap:f5e1",
+            "call:1881965044",
+            "cap:fe00"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 271
+      }
+    ],
+    "hardware_execution": false,
+    "schema": 1
+  },
+  "panel": "ICNA3311",
+  "validation_sha256": "201eb2f99760753976f4984bcaa4eeb9b9bb5850368648a740277a17029bfc99",
+  "variants": [
+    {
+      "entries": 16,
+      "geometry": "192x490",
+      "id": "0x250905",
+      "length": "0x46",
+      "table": "0x70a2e698"
+    },
+    {
+      "entries": 16,
+      "geometry": "192x490",
+      "id": "0x5a0905",
+      "length": "0x46",
+      "table": "0x70a2e698"
+    },
+    {
+      "entries": 14,
+      "geometry": null,
+      "id": "0x250906",
+      "length": "0x3c",
+      "table": "0x70a2e65c"
+    },
+    {
+      "entries": 25,
+      "geometry": "416x416",
+      "id": "0x1b0909",
+      "length": "0x6a",
+      "table": "0x70a2e5f0"
+    },
+    {
+      "entries": 17,
+      "geometry": "390x450",
+      "id": "0x4b090d",
+      "length": "0x4a",
+      "table": "0x70a2e5a4"
+    },
+    {
+      "entries": 40,
+      "geometry": "390x450",
+      "id": "0x5c0913",
+      "length": "0xa7",
+      "table": "0x70a2e4fc"
+    },
+    {
+      "entries": 40,
+      "geometry": "390x450",
+      "id": "0x5b0913",
+      "length": "0xa7",
+      "table": "0x70a2e4fc"
+    },
+    {
+      "entries": 44,
+      "geometry": "390x450",
+      "id": "0x250914",
+      "length": "0xb7",
+      "table": "0x70a2e254"
+    },
+    {
+      "entries": 44,
+      "geometry": "390x450",
+      "id": "0x2c0914",
+      "length": "0xb7",
+      "table": "0x70a2e254"
+    }
+  ],
+  "vectors_sha256": "7b597e25dcfcfc92476c6160eaf8535897465ccda714a04e4824b0f44c509f47"
+}
