@@ -29,7 +29,7 @@ public class ValidateMainNandFullProbe extends ValidateMainObjects {
      payloadAt+=n;rxBytes+=n;
     }else{if(n!=4||!regs.containsKey(at))throw new IllegalStateException("Probe QSPI read");
      if(at==16&&reset){value=resetReads++==0?0x100:0;regs.put(at,value);if((value&0x100)==0)reset=false;}
-     else if(at==24||at==36){int fail=c.get(at==24?"full_ready_fail_at":"full_done_fail_at").getAsInt();value=commands==fail?0:(at==24?3:1);regs.put(at,value);}else value=regs.get(at);
+     else if(at==24||at==36){value=packetFails(at==24,commands)?0:(at==24?3:1);regs.put(at,value);}else value=regs.get(at);
     }actions.add("r:"+at+":"+n+":"+value);
    }else return;
    for(int i=0;i<n;i++)data[i]=(byte)(value>>>(i*8));
@@ -47,6 +47,7 @@ public class ValidateMainNandFullProbe extends ValidateMainObjects {
   }
  }
  protected int fifoReadBound(){return 512;}
+ protected boolean packetFails(boolean ready,int commandIndex){return commandIndex==c.get(ready?"full_ready_fail_at":"full_done_fail_at").getAsInt();}
  protected long fifoResponse(int opcode,int reg,int n,int payloadAt){
   if(opcode==0x9f){if(payloadAt+n>5)throw new IllegalStateException("Probe ID FIFO bound");long value=0;for(int i=0;i<n;i++)value|=(probeIdReads<=11*c.get("probe_delayed_rounds").getAsInt()?255L:c.getAsJsonArray("probe_id").get(payloadAt+i).getAsLong())<<(8*i);return value;}
   if(opcode!=0x0f||n!=1||!probeFeatures.containsKey((long)reg))throw new IllegalStateException("Probe feature FIFO backing");return probeFeatures.get((long)reg)^(probeFeatureReads==c.get("probe_feature_mismatch_at").getAsInt()?1:0);

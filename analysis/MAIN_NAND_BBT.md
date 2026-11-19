@@ -98,7 +98,11 @@ UID/export cases, after narrow operation/BBT/combined-buffer hooks. Their fixed
 configurations and bounds remain unchanged. These two scopes add **38 host
 checks**; the complete suite has **1,868 passing tests**.
 
-Next work is actual main BBT remapping and lower page/read/program/erase/DMA
+The subsequent [main remapping scope](MAIN_NAND_BBT_MAPPING.md) executes original
+block/page remappers over the recovered RAM table. The subsequent
+[main page-read scope](MAIN_NAND_PAGE_READ.md) connects actual direct reads to
+mapping/load/busy/cache/FIFO after recovery; recovery's own page callbacks remain
+supplied. Next work includes those callbacks, asynchronous/DMA/program/erase
 integration, further identity/media/PM consumers and alternate chip geometries.
 Supplied library/power/pin/RTOS/BSP/heap/PM behavior, IRQ/cache/coherency, physical
 provenance and persistence, safe backup/restoration and standalone boot remain

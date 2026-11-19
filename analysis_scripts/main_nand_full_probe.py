@@ -28,13 +28,13 @@ class Engine(platform.Model):
         super().__init__(config);self.full=c;self.features=features;self.command_index=0;self.opcode=0;self.reg=0;self.payload=b'';self.payload_at=0
     def tick(self):
         value=self.ticks*1001;self.ticks+=1;self.actions.append('tick:'+str(value));return value
+    def packet_fails(self,ready):return self.command_index==self.full['full_ready_fail_at' if ready else 'full_done_fail_at']
     def read(self,at,size=4):
         if at==0x100:
             if self.payload_at+size>len(self.payload):raise ValueError('probe FIFO response bound')
             value=int.from_bytes(self.payload[self.payload_at:self.payload_at+size],'little');self.payload_at+=size;self.rx+=size
         elif at in (24,36):
-            fail=self.full['full_ready_fail_at' if at==24 else 'full_done_fail_at']
-            value=0 if self.command_index==fail else (3 if at==24 else 1);self.regs[at]=value
+            value=0 if self.packet_fails(at==24) else (3 if at==24 else 1);self.regs[at]=value
         else:return super().read(at,size)
         self.actions.append(f'r:{at}:{size}:{value}');return value
     def write(self,at,value,size=4):
@@ -50,13 +50,13 @@ class Model(prior.Model):
         self.bus_calls+=1;self.actions.append(f'probe_bus_native:{index}');self.engine.c['bus_word']=prior.BUS_WORDS[index];self.engine.initialize()
     def packet(self,opcode,address,size,write,local):
         return self.transfer_packet(opcode,address,size,write,local,int(bool(size)),0)
-    def transfer_packet(self,opcode,address,size,write,local,address_bytes,dummy):
+    def transfer_packet(self,opcode,address,size,write,local,address_bytes,dummy,lines=1):
         self.actions.append(f'probe_packet:{opcode}:{address}:{size}:{int(write)}')
         if self.c['bus_disabled']:
             owner,line={0x9f:(0x70a30fa4,383),0xff:(0x70a30f94,402),0x1f:(0x70a31114,74),0x0f:(0x70a3112c,55)}[opcode]
             raise prior.bus.boot.Stop(owner,line)
         self.commands+=1;e=self.engine;e.command_index=self.commands;e.opcode=opcode;e.reg=address;e.payload=bytes(local);e.payload_at=0
-        e.version();e.c['frame']=[2 if write else 0,0,opcode,1,1,address,1,address_bytes,1,size,8 if dummy else 0]
+        e.version();e.c['frame']=[2 if write else 0,0,opcode,1,1,address,1,address_bytes,lines,size,8 if dummy else 0]
         status=e.command();stage='command'
         if not status and size:
             if write:self.writes+=1
@@ -66,13 +66,16 @@ class Model(prior.Model):
         if status:
             self.actions.extend(('log:'+stage+'_error','diagnostic'))
             raise prior.bus.boot.Stop(0x70a1bc8c,{'command':294,'receive_poll':305,'transmit_poll':313}[stage])
-    def run(self):
-        result=probe.Model.run(self);e=self.engine
-        for row in result['rows']:row.update(full_controller_hex=e.context.hex(),full_dma_contexts_hex=[b.contexts[0].hex() for b in e.backends],
+    def full_snapshot(self):
+        e=self.engine
+        return dict(full_controller_hex=e.context.hex(),full_dma_contexts_hex=[b.contexts[0].hex() for b in e.backends],
             full_dma_registry=e.backends[0].registry,full_dma_mmio={str(k):v for k,v in sorted(e.backends[0].regs.items())},
             full_mmio={str(k):v for k,v in sorted(e.regs.items())},full_board_mmio={str(k):v for k,v in sorted(e.board.items())},
             full_clock_word=e.clock,full_clock_shadow=e.shadow,full_commands=self.commands,full_reads=self.reads,full_writes=self.writes,
             full_rx_bytes=e.rx,full_tx_hex=e.tx.hex())
+    def run(self):
+        result=probe.Model.run(self)
+        for row in result['rows']:row.update(self.full_snapshot())
         return result
 
 

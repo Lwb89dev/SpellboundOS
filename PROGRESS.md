@@ -2729,6 +2729,44 @@ limits; the initial observations point to the current status and work log.
    and lower page/DMA integration, further identity/media consumers and physical
    backup/restoration/boot.
 
+## 2026-11-19 — actual main block/page remapping after recovered BBT
+
+1. Joined original main block and page remappers to actual BBT recovery, first-
+   chip probe/UID/platform/root and later geometry/UID export. Recovered table
+   entries and backup boundary drive translation; page remainder is preserved.
+   Reserved-limit errors retain prior output. Inactive tables bypass mapping;
+   active maximum-word block input can wrap to zero. Inputs are authored.
+2. Accepted duplicate entries advance twice, while an accepted unsorted list
+   can stop before a later bad entry. Repair failure can leave active mapping;
+   selected final reserved pair changes the exclusive boundary. Recovered BBT,
+   UID and object state remain unchanged by remapping. Lower BBT page/marker
+   services remain supplied, without physical table or persistent repair claims.
+3. All 20 native cases pass in 134,246 steps (maximum 6,858), with 59 code/export
+   and 67 data hashes. See [analysis/MAIN_NAND_BBT_MAPPING.md](analysis/MAIN_NAND_BBT_MAPPING.md)
+   and [analysis/main-nand-bbt-mapping.json](analysis/main-nand-bbt-mapping.json).
+
+## 2026-11-19 — original main mapped page read through direct QSPI FIFO
+
+1. Executed actual main page read, recovered-BBT remapping, load builder, busy
+   status, direct x4 cache builder and QSPI FIFO after original probe/UID/root.
+   One-byte/word-tail/128-byte reads, last usable/reserved bounds, exact OOB end,
+   wrapping column arithmetic, inactive/duplicate/unsorted tables and repeated
+   reads execute. FIFO bytes/peripheral/status/timer inputs remain authored.
+2. ECC rejection follows actual unsupported-family retry, still receives cache
+   data and then returns -101. Actual transport timeouts distinguish no FIFO
+   delivery from retained payload after completion failure. Per-operation runtime
+   snapshots preserve pre-read counters and intermediate buffers. BBT recovery's
+   own page callbacks remain supplied; this scope does not yet connect those
+   callbacks or asynchronous/private DMA/program/erase to the reader.
+3. All 23 native cases pass in 186,325 steps (maximum 10,686), with 62 code/export
+   and 67 data hashes. See [analysis/MAIN_NAND_PAGE_READ.md](analysis/MAIN_NAND_PAGE_READ.md)
+   and [analysis/main-nand-page-read.json](analysis/main-nand-page-read.json).
+   All 472 preceding main native cases, including the 20 mapping cases, reproduce
+   byte for byte after narrow snapshot/packet-failure/data-line hooks. Fixed
+   configurations and bounds remain unchanged. Forty new host checks join the
+   passing 1,908-test suite. Next: actual main BBT page callbacks and DMA/program/
+   erase integration, further consumers and physical backup/restoration/boot.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -2818,10 +2856,13 @@ limits; the initial observations point to the current status and work log.
   and auxiliary bodies supplied. Actual main command/FIFO/count/timer/clock/
   revision and DMA wrappers now also execute separately, and original main bus/
   feature packets join them over an authored initialized controller. Follow
-  actual main BBT remapping and lower page/DMA integration, further UID/media
-  consumers and alternate chip geometries through this chain. Main BBT verifier/
+  actual main BBT recovery page callbacks and asynchronous/private DMA/program/
+  erase integration, further UID/media consumers and alternate chip geometries.
+  Actual main block/page remapping now consumes recovered BBT state, and later
+  direct page reads execute load/status/x4-cache/FIFO with per-operation state. Main BBT verifier/
   resume/CRC now joins it with supplied page/marker services; actual context UID
-  export also executes, including copied output before mutex release assertion. Actual main workaround/reset/level and UID feature/load/
+  export also executes, including copied output before mutex release assertion.
+  Actual main workaround/reset/level and UID feature/load/
   busy/cache/complement checks now join it, including retained state after UID
   failures and outer probe success without valid acquisition.
   Original main candidate probe/root now joins actual platform/clock/QSPI FIFO/

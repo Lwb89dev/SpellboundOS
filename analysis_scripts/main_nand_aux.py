@@ -93,10 +93,12 @@ class Model(joined.Model):
         self.actions.append('probe_uid_native');self.uid_entered=True;self.in_uid=True;self.p=self.descriptor()
         try:policy.Model.unique(self);self.uid_completed=True
         finally:self.in_uid=False
+    def aux_snapshot(self):
+        return dict(aux_uid_length=self.uid_length,aux_uid_sha256=base.digest(self.uid),aux_workaround_return=self.workaround_result,
+            aux_uid_entered=self.uid_entered,aux_uid_completed=self.uid_completed,aux_uid_caches=self.caches,aux_status_reads=self.c0_reads,aux_e0_reads=self.e0_reads)
     def run(self):
         result=super().run()
-        for row in result['rows']:row.update(aux_uid_length=self.uid_length,aux_uid_sha256=base.digest(self.uid),aux_workaround_return=self.workaround_result,
-            aux_uid_entered=self.uid_entered,aux_uid_completed=self.uid_completed,aux_uid_caches=self.caches,aux_status_reads=self.c0_reads,aux_e0_reads=self.e0_reads)
+        for row in result['rows']:row.update(self.aux_snapshot())
         return result
 
 
