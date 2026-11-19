@@ -4,7 +4,6 @@ This log records completed work, evidence, and limitations. Dates refer to the
 local work session. See [GOAL.md](GOAL.md) for the intended outcome and
 [analysis/ANALYSIS.md](analysis/ANALYSIS.md) for detailed earlier findings.
 
-Current continuation checkpoint: [HANDOFF_CLAUDE.md](HANDOFF_CLAUDE.md)
 (2026-11-19; analysis baseline `3685f79`, 2,112 passing host tests).
 
 ## 2026-11-14 — acquisition and initial investigation
@@ -3040,7 +3039,7 @@ limits; the initial observations point to the current status and work log.
 
 ## 2026-11-19 — weekly-credit checkpoint and Claude handoff
 
-1. Prepared [HANDOFF_CLAUDE.md](HANDOFF_CLAUDE.md) at the user's request as weekly
+1. Prepared `HANDOFF_CLAUDE.md` (local, untracked) at the user's request as weekly
    Codex credits run low. It records the verified analysis baseline `3685f79`,
    recent commits, local ignored inputs/tooling, test/native reproduction,
    selected regression set, evidence limitations and a ready-to-use resume prompt.
