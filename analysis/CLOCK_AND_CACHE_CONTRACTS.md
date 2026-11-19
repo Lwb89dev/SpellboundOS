@@ -107,6 +107,10 @@ interrupt state afterward. Even size zero enters that command loop. The host
 models alignment, signed guard, end wrap and minimum command count; it does
 not invent a software increment or simulate hardware command progress.
 
+The later [main DMA/IRQ and connected NAND cache-guard scopes](MAIN_DMA_CACHE_GUARDS.md)
+execute the original signed entry guards for high-half/zero addresses, matching
+this contract. Positive-address CSR progress and physical coherency remain open.
+
 ## Transfer callers and scope
 
 Call sites were located as candidate RISC-V calls, then selected wrappers

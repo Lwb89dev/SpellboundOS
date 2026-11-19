@@ -19,6 +19,9 @@ The policy model shares the previously checked boot DMA implementation where
 native observations agree. Main instructions and ABI are checked independently.
 Main IRQ dispatch and cache-maintenance bodies remain outside this scope;
 callback pointer fields are preserved fixture data, not exercised callbacks.
+The subsequent [main IRQ scope](MAIN_DMA_IRQ.md) executes original dispatch and
+callback boundaries; [cache-guard scopes](MAIN_DMA_CACHE_GUARDS.md) execute the
+selected original signed entry guards too.
 
 ## Initialization and registry fallback
 

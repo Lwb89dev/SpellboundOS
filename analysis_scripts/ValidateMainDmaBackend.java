@@ -41,7 +41,9 @@ public class ValidateMainDmaBackend extends GhidraScript {
     private long word(Helper e,long at){byte[] b=mem(e,at,4);long v=0;for(int i=0;i<4;i++)v|=(b[i]&255L)<<(8*i);return v;}
     private String hash(byte[] b)throws Exception{return HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256").digest(b));}
     private void ret(Helper e,long v){e.writeRegister("a0",v&0xffffffffL);e.writeRegister(e.getPCRegister(),e.readRegister("ra"));}
-    private int bank(long base){if(base==0x92000000L)return 0;if(base==0x93000000L)return 7;if(base==0x93040000L)return 14;if(base==0x93080000L)return 21;return -1;}
+    protected int bank(long base){if(base==0x92000000L)return 0;if(base==0x93000000L)return 7;if(base==0x93040000L)return 14;if(base==0x93080000L)return 21;return -1;}
+    protected String configuration(){return CONFIG;}
+    protected boolean supplyCacheServices(JsonObject input){return true;}
     private void abi(Helper e){if(e.readRegister("sp").longValue()!=0x81001000L)throw new IllegalStateException("Stack mismatch");for(int i=0;i<12;i++)if(e.readRegister("s"+i).longValue()!=0x45670000L+i)throw new IllegalStateException("Saved register mismatch");}
     private void entry(Helper e,long start,long... args)throws Exception {
         stopped=null;e.writeRegister("ra",END);for(int i=0;i<args.length;i++)e.writeRegister("a"+i,args[i]);e.writeRegister(e.getPCRegister(),start);long pc;
@@ -53,7 +55,7 @@ public class ValidateMainDmaBackend extends GhidraScript {
             }
             if(pc==a("prepare")||pc==a("finish")){
                 long address=r(e,0),n=r(e,1);if(!(address==SOURCE||address==DEST||address==0)||n>64)throw new IllegalStateException("DMA cache boundary arguments");
-                actions.add((pc==a("prepare")?"cache_prepare:":"cache_finish:")+address+":"+n);ret(e,0);continue;
+                actions.add((pc==a("prepare")?"cache_prepare:":"cache_finish:")+address+":"+n);if(supplyCacheServices(c)){ret(e,0);continue;}
             }
             if(pc==a("callback_a")||pc==a("callback_b")){
                 long p=r(e,0);int n=c.getAsJsonArray("slots").size();if(p<D||p>=D+n*256||((p-D)&255)!=0)throw new IllegalStateException("DMA callback descriptor");
@@ -105,7 +107,7 @@ public class ValidateMainDmaBackend extends GhidraScript {
         }finally{e.dispose();}
     }
     public void run()throws Exception {
-        if(getScriptArgs().length!=2)throw new IllegalArgumentException("vectors report");cfg=JsonParser.parseString(CONFIG).getAsJsonObject();for(JsonElement item:cfg.getAsJsonArray("guards")){JsonObject g=item.getAsJsonObject();byte[] b=new byte[g.get("size").getAsInt()];currentProgram.getMemory().getBytes(toAddr(g.get("address").getAsLong()),b);if(!hash(b).equals(g.get("sha256").getAsString()))throw new IllegalStateException("Unrecognized DMA backend code");}
+        if(getScriptArgs().length!=2)throw new IllegalArgumentException("vectors report");cfg=JsonParser.parseString(configuration()).getAsJsonObject();for(JsonElement item:cfg.getAsJsonArray("guards")){JsonObject g=item.getAsJsonObject();byte[] b=new byte[g.get("size").getAsInt()];currentProgram.getMemory().getBytes(toAddr(g.get("address").getAsLong()),b);if(!hash(b).equals(g.get("sha256").getAsString()))throw new IllegalStateException("Unrecognized DMA backend code");}
         JsonObject input=JsonParser.parseString(Files.readString(Path.of(getScriptArgs()[0]))).getAsJsonObject();if(input.get("schema").getAsInt()!=1||input.get("bound_per_case").getAsInt()!=10000||input.getAsJsonArray("cases").size()>128)throw new IllegalArgumentException("Vector bound");JsonArray rows=new JsonArray();for(JsonElement item:input.getAsJsonArray("cases"))rows.add(execute(item.getAsJsonObject()));
         JsonObject report=new JsonObject();report.addProperty("hardware_execution",false);report.addProperty("case_count",rows.size());report.addProperty("bound_per_case",10000);report.add("cases",rows);Files.writeString(Path.of(getScriptArgs()[1]),new GsonBuilder().setPrettyPrinting().serializeNulls().create().toJson(report)+"\n");println("MAIN_DMA_BACKEND_VALIDATION cases="+rows.size());
     }

@@ -115,3 +115,7 @@ media/partition/PM consumers and geometry, physical DMA movement/coherency and
 peripheral timing, persistent repair/atomicity, safe backup/restoration and
 standalone boot. The selected read/program/erase mode-zero software paths do
 not establish those broader hardware or operating-system contracts.
+
+Subsequent [connected cache-guard cases](MAIN_DMA_CACHE_GUARDS.md) execute the
+original prepare/finish guards at the selected high-half/zero arguments with
+identical observations. Positive-address CSR paths and physical coherency remain open.

@@ -2948,6 +2948,51 @@ limits; the initial observations point to the current status and work log.
    Actual IRQ/event scheduling, physical DMA/cache/coherency/persistence, wider
    media/PM consumers and safe restoration/standalone boot remain open.
 
+## 2026-11-19 — original main DMA IRQ dispatch and fallback bank
+
+1. Executed original main IRQ handler 0x702a041c by ordinary harness call.
+   Complete pending words are acknowledged before channel work. Primary handling
+   finalizes/clears tracking before its callback, preserving channel enable for
+   any nonzero linked word; alternate handling always stops and retains tracking
+   when it runs alone. Both pending groups invoke both callbacks in that order.
+2. Four recognized banks walk seven registry slots each. Unknown bases walk
+   fallback slots 28–34, matching main initializer publication without the boot
+   fatal path. Explicit guarded 35-slot backing establishes computed accesses,
+   not a fifth physical bank or production allocation extent. Channel-6 dispatch
+   in the initializer-restricted bank and reverse descriptor order also execute.
+3. All 26 native cases pass in 3,809 steps (maximum 279), including connected
+   init/setup/dispatch and supplied callbacks. All 46 preceding main backend
+   cases reproduce byte for byte after narrow configuration/cache/bank hooks.
+   See [analysis/MAIN_DMA_IRQ.md](analysis/MAIN_DMA_IRQ.md) and
+   [analysis/main-dma-irq.json](analysis/main-dma-irq.json). IRQ vector/trap entry,
+   delivery/nesting/scheduling and actual callback consumers remain open.
+
+## 2026-11-19 — actual cache guards through main DMA/IRQ and recovered NAND
+
+1. Executed original cache prepare/finish bodies for selected high-half/zero
+   addresses. Their signed nonpositive guard returns zero before interrupt-state
+   services, CSR access or fences. This verifies the earlier static/host guard
+   contract without proving physical cacheability, maintenance or coherency.
+2. All 72 backend/IRQ guard cases pass in 6,936 steps (maximum 283), sharing nine
+   code/export hashes with the IRQ scope. This includes all 26 IRQ cases and all
+   46 earlier backend cases under the new actual-cache service boundary.
+3. Connected the same actual guards to full original recovered BBT/root NAND
+   mode-zero reads and programs over original initialized RX/TX records. All 16
+   reads pass in 524,220 steps (maximum 33,932); all 26 programs pass in 851,374
+   steps (maximum 34,398). All 42 preceding observations/traces remain identical;
+   each cache call adds exactly two executed instructions. Code/export hashes
+   number 74/73 respectively, with all 68 prior data hashes retained.
+4. All four scopes total 140 native cases under distinct service boundaries;
+   these are not distinct hardware scenarios or a coverage metric. Thirty new
+   host checks join the passing 2,080-test suite and cover native equality,
+   guards, callback ordering, fallback slots and cache-call step differences. See
+   [analysis/MAIN_DMA_CACHE_GUARDS.md](analysis/MAIN_DMA_CACHE_GUARDS.md),
+   [analysis/main-dma-cache-guards.json](analysis/main-dma-cache-guards.json),
+   [analysis/main-nand-cache-read.json](analysis/main-nand-cache-read.json) and
+   [analysis/main-nand-cache-program.json](analysis/main-nand-cache-program.json).
+   Positive-address CSR progress, live IRQ/scheduling, physical DMA/coherency,
+   persistence, wider media/PM consumers and restoration/standalone boot remain open.
+
 ## Next work
 
 - Keep the standalone boot/backup/recovery feasibility gate a priority alongside
@@ -3055,13 +3100,16 @@ limits; the initial observations point to the current status and work log.
   Original main candidate probe/root now joins actual platform/clock/QSPI FIFO/
   revision/DMA initialization and object consumers over all eleven unchanged
   descriptors, including all 33 attempts and actual timeout assertions. DMA
-  setup/wait remains separately covered for bounce transfers. Main pin/GPIO/
-  cache bodies and IRQ remain open.
+  setup/wait remains separately covered for bounce transfers. Main pin/GPIO
+  services, positive-address cache CSR paths and live IRQ delivery remain open.
   Main mode-zero reads now connect original private-buffer DMA setup/wait after
   BBT recovery, and mode-zero erase connects original sleep-based polling and
   published guards. DMA data movement and actual scheduling remain unmodeled.
   Main mode-zero program now connects original initialized TX DMA, source staging
-  and execute/status with recovered mapping/guards too. Then follow further main
+  and execute/status with recovered mapping/guards too. Original main IRQ dispatch
+  now executes with supplied callbacks and authored pending/registry state;
+  original signed cache guards execute inside backend/IRQ and full NAND DMA.
+  Actual interrupt delivery and physical coherency remain unproved. Follow further main
   UID/BBT consumers and IRQ/events,
   wider storage and PM callers,
   broader close callers, removal/reclamation/concurrency and real property/heap/

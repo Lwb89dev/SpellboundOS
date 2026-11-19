@@ -104,3 +104,5 @@ further media/PM consumers, persistence/atomicity, safe
 restoration and standalone boot remain open.
 The subsequent [mode-zero program scope](MAIN_NAND_MODE_ZERO_PROGRAM.md) connects
 original TX DMA staging, recovered guards and execute/status.
+Subsequent [connected cache-guard cases](MAIN_DMA_CACHE_GUARDS.md) execute the
+original prepare/finish entry guards with identical read observations.
