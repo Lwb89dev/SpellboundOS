@@ -1,0 +1,393 @@
+{
+  "delegate_callbacks": [
+    "ota_state_for_downloader",
+    "downloader_request_start",
+    "downloader_write_chunk_data",
+    "downloader_request_validate",
+    "downloader_request_upgrade",
+    "downloader_request_complete"
+  ],
+  "download_record": {
+    "encoding": "base64 via 0x7030c06c, stored with set-system-property 0x7030c300",
+    "keys": [
+      {
+        "file_type": 0,
+        "property_key": "ota.record.v1.firmware"
+      },
+      {
+        "file_type": 254,
+        "property_key": "ota.record.v1.firmware"
+      },
+      {
+        "file_type": 48,
+        "property_key": "ota.record.v1.firmware"
+      },
+      {
+        "file_type": 49,
+        "property_key": "ota.record.v1.firmware"
+      },
+      {
+        "file_type": 50,
+        "property_key": "ota.record.v1.firmware"
+      },
+      {
+        "file_type": 51,
+        "property_key": "ota.record.v1.firmware"
+      },
+      {
+        "file_type": 8,
+        "property_key": "ota.record.v1.data"
+      },
+      {
+        "file_type": 252,
+        "property_key": "ota.record.v1.data"
+      },
+      {
+        "file_type": 160,
+        "property_key": "ota.record.v1.data"
+      }
+    ],
+    "layout": "file_type(1), file_size(4), CRC32(4), received_size(4), received_CRC32(4)",
+    "restore": "get-system-property 0x7030bf98 then base64-decode"
+  },
+  "file_paths": [
+    "/mnt/data/ota/firmware.bin",
+    "/mnt/data/ota/data.bin",
+    "/mnt/cache/ota/firmware.zip",
+    "/mnt/cache/ota/bootloader.zip",
+    "/mnt/system/extfw/backup_fw_sign.zip",
+    "/mnt/system/extfw/boot_res_sign.bin",
+    "/mnt/data/resources/offlineasr_data.zip"
+  ],
+  "image": "main firmware (OTA 4.6.0.3)",
+  "integrity": {
+    "algorithm": "standard reflected CRC32 (poly 0xedb88320), seed 0xffffffff, final inversion by the caller",
+    "check_vector": {
+      "crc32": "0xcbf43926",
+      "input": "123456789"
+    },
+    "chunked_file_crc32": "0x7021e3ba reads the file in 0x4000-byte chunks and chains the CRC",
+    "function": "0x70161360(crc, buffer, length)",
+    "table": "0x709bc4fc (256 entries, verified)"
+  },
+  "limitations": [
+    "Only the CRC32 update executes natively; the validation flow, record encoding, property keys, module catalog, paths and size ceilings are decoded statically and checked against the image bytes.",
+    "The signature/authenticity check applied by the bootloader when the staged image is actually installed (Upgrade bootloader/firmware/boot-resource) is out of scope here; this block covers the transfer-integrity (CRC32) and the persisted records, not the cryptographic image signature.",
+    "The downloader callbacks themselves (the BLE/BT transport that calls write_chunk_data) and the bootloader apply step after reboot are not executed."
+  ],
+  "module_catalog": [
+    {
+      "descriptor": "0x709eb9ac",
+      "file_type": 0,
+      "install_path": "/mnt/data/ota/firmware.bin"
+    },
+    {
+      "descriptor": "0x709eb8f8",
+      "file_type": 224,
+      "install_path": null
+    },
+    {
+      "descriptor": "0x709eba70",
+      "file_type": 3,
+      "install_path": null
+    },
+    {
+      "descriptor": "0x709eb294",
+      "file_type": 252,
+      "install_path": "/mnt/data/ota/data.bin"
+    },
+    {
+      "descriptor": "0x709ebbf8",
+      "file_type": 144,
+      "install_path": null
+    },
+    {
+      "descriptor": "0x709eb920",
+      "file_type": 8,
+      "install_path": "/mnt/data/ota/data.bin"
+    },
+    {
+      "descriptor": "0x709eba98",
+      "file_type": 160,
+      "install_path": "/mnt/data/ota/data.bin"
+    },
+    {
+      "descriptor": "0x709ebb08",
+      "file_type": 19,
+      "install_path": "/mnt/data/resources/offlineasr_data.zip"
+    },
+    {
+      "descriptor": "0x709eb514",
+      "file_type": 254,
+      "install_path": "/mnt/data/ota/firmware.bin"
+    },
+    {
+      "descriptor": "0x709eb670",
+      "file_type": 48,
+      "install_path": "/mnt/data/ota/firmware.bin"
+    },
+    {
+      "descriptor": "0x709ebb30",
+      "file_type": 49,
+      "install_path": "/mnt/data/ota/firmware.bin"
+    },
+    {
+      "descriptor": "0x709eb474",
+      "file_type": 50,
+      "install_path": "/mnt/data/ota/firmware.bin"
+    },
+    {
+      "descriptor": "0x709eb810",
+      "file_type": 51,
+      "install_path": "/mnt/data/ota/firmware.bin"
+    }
+  ],
+  "native_case_count": 8,
+  "native_steps": 23670,
+  "native_validation": {
+    "bound_per_case": 30000,
+    "case_count": 8,
+    "cases": [
+      {
+        "name": "main_ota_install_empty",
+        "observed": {
+          "actions": [
+            "op:crc32"
+          ],
+          "rows": [
+            {
+              "a0": 4294967295,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 5
+      },
+      {
+        "name": "main_ota_install_single_zero",
+        "observed": {
+          "actions": [
+            "op:crc32"
+          ],
+          "rows": [
+            {
+              "a0": 771559538,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 15
+      },
+      {
+        "name": "main_ota_install_single_ff",
+        "observed": {
+          "actions": [
+            "op:crc32"
+          ],
+          "rows": [
+            {
+              "a0": 16777215,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 15
+      },
+      {
+        "name": "main_ota_install_ascii",
+        "observed": {
+          "actions": [
+            "op:crc32"
+          ],
+          "rows": [
+            {
+              "a0": 873187033,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 95
+      },
+      {
+        "name": "main_ota_install_firmware_header",
+        "observed": {
+          "actions": [
+            "op:crc32"
+          ],
+          "rows": [
+            {
+              "a0": 1859748213,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 325
+      },
+      {
+        "name": "main_ota_install_block_256",
+        "observed": {
+          "actions": [
+            "op:crc32"
+          ],
+          "rows": [
+            {
+              "a0": 1898470575,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 2565
+      },
+      {
+        "name": "main_ota_install_block_2048",
+        "observed": {
+          "actions": [
+            "op:crc32"
+          ],
+          "rows": [
+            {
+              "a0": 4243350753,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 20485
+      },
+      {
+        "name": "main_ota_install_chunk_chain",
+        "observed": {
+          "actions": [
+            "op:crc32"
+          ],
+          "rows": [
+            {
+              "a0": 1859748213,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 165
+      }
+    ],
+    "hardware_execution": false,
+    "schema": 1
+  },
+  "size_limits": {
+    "data": 2097152,
+    "firmware": 536870912
+  },
+  "transport": "BLE only (no USB/wired port); OTA manager with a single global state byte at 0x70f95948, transitions logged \"OTA state %d -> %d\" by 0x7021b364",
+  "upgrade_package_record": {
+    "property_key": "ota.record.v1.upgrade.package",
+    "requires": "a matching download record whose file size and CRC32 agree before it is saved",
+    "size_bytes": 40
+  },
+  "validation_flow": {
+    "function": "0x7021b990 (downloader_request_validate)",
+    "readback": "the written file is re-read and re-hashed, not trusted from the transfer",
+    "steps": [
+      "if the start size is zero, skip the CRC32 check",
+      "received CRC32 (BLE start header) must equal the declared file CRC32",
+      "read the file back from flash, recompute its CRC32, require it to equal the declared CRC32",
+      "on match log \"readback CRC32 matched!\" and advance the OTA state"
+    ]
+  },
+  "validation_sha256": "3d5f81f45113540982df33a0243222c8dfce4897c5a5abeff191a6a1432cdf5e",
+  "vectors_sha256": "3bacdf705bec94456e6414a3b6ceac4e749712c36cdc1bea0029396af68246ef"
+}

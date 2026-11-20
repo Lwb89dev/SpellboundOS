@@ -3659,13 +3659,39 @@ deletion remain open.
 
    See [analysis/MAIN_DISPLAY_PANEL_OPS.md](analysis/MAIN_DISPLAY_PANEL_OPS.md).
 
+## 2026-11-20 — watch-side OTA install path
+
+1. Reverse-engineered the OTA pipeline that receives a package over BLE (the
+   only bridge on this device) and decides whether it is safe to stage:
+   - **Integrity** `0x70161360(crc, buffer, length)` is the standard reflected
+     CRC32 (table at `0x709bc4fc` verified as the `0xedb88320` polynomial),
+     seeded `0xffffffff`, chained in `0x4000`-byte chunks
+     (`ota_calculate_file_crc32` `0x7021e3ba`) and finally inverted — i.e. zlib
+     CRC32. Executed natively: **8 cases pass**; `"123456789"` → `0xCBF43926`,
+     and a two-chunk run reproduces the one-pass CRC of the 32 bytes.
+   - **Validation** (`downloader_request_validate` `0x7021b990`): the received
+     CRC32 must equal the declared file CRC32, then the file is **read back from
+     flash and re-hashed** to the same CRC32 (`readback CRC32 matched!`) before
+     the state advances — a corrupt write is caught before staging.
+   - **Persisted records** survive reboot: a download record
+     `file_type, file_size, CRC32, received_size, received_CRC32` keyed per type
+     (`ota.record.v1.firmware`/`.data`, table `0x709ed450`) and a 40-byte
+     `ota.record.v1.upgrade.package`, base64 via `0x7030c06c` into system
+     properties (`0x7030c300`).
+   - **Catalog**: the 13 upgrade modules at `0x70f60fa8` map file type → install
+     path (`firmware.bin`/`data.bin`/`offlineasr_data.zip`); ceilings firmware
+     `0x20000000`, data `0x200000`; six downloader delegate callbacks; single
+     global state byte at `0x70f95948`.
+
+   See [analysis/MAIN_OTA_INSTALL.md](analysis/MAIN_OTA_INSTALL.md). Vectors,
+   native report and evidence regenerate byte for byte; full suite 2,368 OK.
+
 ## Next work
 
-- Watch-side OTA install path: the downloader state machine
-  (`downloader_request_start/write_chunk_data/validate/upgrade/complete`,
-  strings at `0x709eca64`–`0x709ecb94`) and the upgrade-package record. These
-  decide how a package received over BLE is validated and staged for the
-  bootloader, which is central to the BLE-only recovery constraint.
+- OTA bootloader apply: the post-reboot `Upgrade bootloader/firmware/boot
+  resource` staging, the cryptographic image signature it checks (beyond the
+  CRC32 transfer integrity now covered), and the backup-firmware recovery path
+  (`.backup_start`, `backup_fw_sign.zip`).
 - Bluetooth controller: RTL8763 transport below `bx_hal_trans_*`
   (`0x702be72a`/`0x702be7b8`), the `serial_dev_*` UART layer on `uart2`,
   `hci_send_any`, and the patch-RAM loader (`load patch ram from %s`).

@@ -105,6 +105,7 @@ Latest detailed findings:
 - [Vibration motor (dev_NL_motor)](MAIN_MOTOR.md)
 - [AG3335 GNSS: PAIR framing, acknowledgement table and command catalog](MAIN_GNSS_PAIR.md)
 - [ICNA3311 panel operations: dimming, brightness, sawtooth, gamma, HBM and register access](MAIN_DISPLAY_PANEL_OPS.md)
+- [Watch-side OTA install: CRC32 integrity, readback validation and persisted records](MAIN_OTA_INSTALL.md)
 - [Native recovery CRC, metadata policy, signed coverage and partition validation](RECOVERY_VALIDATOR_NATIVE.md)
 - [Storage registry, environment handle setup, NVMS mirrors and stopped bootstrap](ENV_STORAGE_SETUP_AND_NVMS.md)
 - [Original boot partition tables, backend geometry words and actual driver bindings](STORAGE_MAP_AND_DRIVER_BINDINGS.md)
