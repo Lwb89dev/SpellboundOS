@@ -3423,6 +3423,33 @@ deletion remain open.
    post-identity configuration and the data path. These need further work or the
    device.
 
+## 2026-11-20 — sensor-hub LSM6DSO attach and hub board records
+
+1. Executed the LSM6DSO attach routine `0x80f726ee` end to end, including the
+   original probe chain and the `INTERNAL_FREQ_FINE` accessor, over the real
+   `dev_lsm6dso` board record. All **11 native cases pass** (4,308 steps).
+   Results: 0 attached, 1 probe failure, 4 missing board record or SPI handle,
+   10 cache allocation failure. GPIO failures are only logged.
+2. Decoded the hub board-record table registered at `0x80f6257c` from its
+   `auipc`/`addi` pairs:
+   - board `Pamir` 1.0.0;
+   - LSM6DSO and an alternative BMI2xx on `sens_spi1_dev0`, IRQ pin 43, mode 4;
+   - AK09918/MMC5603 magnetometers on `sens_i2c2`;
+   - MAX8617x on `sens_spi0_dev0` with rails `PPG_1V8`/`PPG_VLED`, pin 39.
+3. The SPI device is configured at 8 MHz (`{8000000, 0x807, 0, 0, 0}`
+   captured). A 0x605-byte `drivers_sensor` cache is published. The trimmed
+   26 Hz ODR `6667 × (1 + 0.0015 × fine) / 256` is stored as binary32. The
+   interrupt is installed on pin 43 with handler `0x80f701ba` and left disabled.
+   Accelerometer and gyroscope descriptors are then registered.
+4. Found and documented a Ghidra RV32 SLEIGH artifact: `c.fsw` stores 8 bytes
+   (the full FLEN=64 register) instead of 4. The computed value was checked to
+   be the correct IEEE binary32.
+
+   See [analysis/SENSORHUB_IMU_INIT.md](analysis/SENSORHUB_IMU_INIT.md) and
+   [analysis/sensorhub-imu-init.json](analysis/sensorhub-imu-init.json). The
+   vectors, native report and evidence regenerate byte for byte, and the probe
+   report is unchanged under the extended runner.
+
 ## Next work
 
 - Main kernel: execute `vTaskSuspend`/`vTaskResume`, the idle-task termination

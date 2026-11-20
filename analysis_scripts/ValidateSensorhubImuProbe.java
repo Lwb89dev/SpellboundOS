@@ -209,6 +209,15 @@ public class ValidateSensorhubImuProbe extends GhidraScript {
                 e.writeRegister("a0", s.has("value_ret") ? s.get("value_ret").getAsLong() : 0);
                 break;
             }
+            case "capture": {
+                // Records size bytes at a pointer argument, then returns value.
+                long ptr = reg("a" + s.get("ptr_arg").getAsInt());
+                int size = s.get("size").getAsInt();
+                if (size < 1 || size > 64) throw new IllegalStateException("capture bound");
+                actions.add("cap:" + HexFormat.of().formatHex(e.readMemory(toAddr(ptr), size)));
+                if (s.has("value")) e.writeRegister("a0", s.get("value").getAsLong());
+                break;
+            }
             case "stop":
                 return s.get("label").getAsString();
             default:
