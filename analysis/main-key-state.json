@@ -1,0 +1,194 @@
+{
+  "dispatch": {
+    "config": "driver object 0x70f92bf4 + key*0x30 (press threshold +0x58, flags +0x50)",
+    "decode": "0x702bd6c8 writes a press/release flag; must return 0",
+    "state_byte": "runtime context 0x70f92b74 + key*0x18, +0 (7-entry jump table)"
+  },
+  "function": "0x701e923e (gpio_key_state_machine)",
+  "image": "main firmware (OTA 4.6.0.3)",
+  "limitations": [
+    "The GPIO decode, state store, timer check, idle handler and event upload are stubbed; the state machine runs as real code and the runtime counter writes are recorded.",
+    "Only the dispatch and state 0 (idle) are covered. States 1..6 (combo, long press, double click, repeat) read both keys' contexts and the combo globals and are mapped but not yet executed."
+  ],
+  "native_case_count": 5,
+  "native_steps": 321,
+  "native_validation": {
+    "bound_per_case": 20000,
+    "case_count": 5,
+    "cases": [
+      {
+        "name": "main_key_state_press_below_threshold",
+        "observed": {
+          "actions": [
+            "op:event",
+            "call:1881921224:66:2164264911",
+            "w:1895377784:4:1",
+            "call:1881049852:2164273152"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 63
+      },
+      {
+        "name": "main_key_state_press_reaches_threshold_state2",
+        "observed": {
+          "actions": [
+            "op:event",
+            "call:1881921224:66:2164264911",
+            "w:1895377784:4:4",
+            "call:1881051326:2164273408:2",
+            "call:1881049852:2164273152"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 70
+      },
+      {
+        "name": "main_key_state_press_reaches_threshold_state1",
+        "observed": {
+          "actions": [
+            "op:event",
+            "call:1881921224:66:2164264911",
+            "w:1895377784:4:4",
+            "call:1881051326:2164273408:1",
+            "call:1881049852:2164273152"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 69
+      },
+      {
+        "name": "main_key_state_release_clears_counter",
+        "observed": {
+          "actions": [
+            "op:event",
+            "call:1881921224:66:2164264911",
+            "w:1895377784:4:0",
+            "call:1881050554:2164273152"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "main_key_state_press_key1",
+        "observed": {
+          "actions": [
+            "op:event",
+            "call:1881921224:66:2164264911",
+            "w:1895377808:4:1",
+            "call:1881049852:2164273152"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 63
+      }
+    ],
+    "hardware_execution": false,
+    "schema": 1
+  },
+  "return_codes": {
+    "press_below_threshold": 0,
+    "press_key1": 0,
+    "press_reaches_threshold_state1": 0,
+    "press_reaches_threshold_state2": 0,
+    "release_clears_counter": 0
+  },
+  "state0": {
+    "helpers": {
+      "event_upload": "0x701e8b40",
+      "idle_handler": "0x701e8dba",
+      "store_state": "0x701e90be",
+      "timer_check": "0x701e8afc"
+    },
+    "press": "increment press counter (+4); below threshold -> timer check; above threshold -> store next state (0x701e90be, state 2 if flags bit 4 else state 1) then timer check",
+    "release": "clear the press counter and run the idle handler (0x701e8dba)"
+  },
+  "validation_sha256": "c7b09242614c8359b56983724f33a2964e647883afc141b28d1d9d2cf3f9b310",
+  "vectors_sha256": "48c2cb49f31adb87d4dd41c02eca7cc4388790d9ff42dd494594401598f6ba40"
+}

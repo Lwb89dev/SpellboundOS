@@ -3755,13 +3755,27 @@ deletion remain open.
    See [analysis/MAIN_KEY_INIT.md](analysis/MAIN_KEY_INIT.md). Vectors, native
    report and evidence regenerate byte for byte.
 
+## 2026-11-20 — gpio_key state machine (dispatch + state 0)
+
+1. Executed `gpio_key_state_machine` `0x701e923e` dispatch and state 0. All
+   **5 native cases pass**:
+   - decode `0x702bd6c8` writes a press/release flag; dispatch on the per-key
+     state byte (runtime `0x70f92b74 + key*0x18`) through a 7-entry jump table;
+   - state 0 press (flag 0): increment the counter (`+4`); below the threshold
+     (config `+0x58`) run the timer check `0x701e8afc`; above it, store the next
+     state `0x701e90be` (state 1 if config `+0x50` bit 4 else state 2) then the
+     timer check;
+   - state 0 release (flag != 0): clear the counter and run the idle handler
+     `0x701e8dba`.
+
+   See [analysis/MAIN_KEY_STATE.md](analysis/MAIN_KEY_STATE.md). Vectors, native
+   report and evidence regenerate byte for byte.
+
 ## Next work
 
-- gpio_key **state machine** `0x701e923e` (7 states: debounce, combo, long
-  press, double click, repeat), state by state from state 0; consumes the
-  config written by `drv_key_init`. Helpers to stub: event-decode `0x702bd6c8`,
-  state store `0x701e90be`, timer check `0x701e8afc`, event upload `0x701e8b40`
-  (event bits 0x1..0x400), default finalize `0x701e8dba`.
+- gpio_key state machine **states 1..6** (combo, long press, double click,
+  repeat): read both keys' runtime contexts and the combo globals
+  `0x70f8e0da`/`0db`/`0dc`, raise event uploads `0x701e8b40` (bits 0x1..0x400).
 - OTA bootloader apply: the post-reboot `Upgrade bootloader/firmware/boot
   resource` staging, the cryptographic image signature it checks (beyond the
   CRC32 transfer integrity now covered), and the backup-firmware recovery path
