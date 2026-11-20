@@ -3450,6 +3450,26 @@ deletion remain open.
    vectors, native report and evidence regenerate byte for byte, and the probe
    report is unchanged under the extended runner.
 
+## 2026-11-20 — sensor-hub LSM6DSO register accessor sweep
+
+1. Executed every accessor in the hub LSM6DSO register block
+   `0x80f7291a`–`0x80f72e86` in isolation, through the original context
+   dispatch and SPI callbacks. All **95 native cases pass** (7,561 steps). The
+   26 accessors match ST `lsm6dso_reg.c` by register and bit field: full scale,
+   ODR fields, BDU, power modes, reset/boot, gyro LPF1, I3C disable, FIFO batch
+   and mode, FIFO level and overrun, data-ready flags, raw 6-byte output reads
+   and the ODR trim.
+2. Observed behaviour:
+   - masked read-modify-write; a failed read skips the write;
+   - unmasked `val << n` in the ODR, boot and gyro power-mode writers;
+   - getters store stale stack bytes after a failed read (not exercised);
+   - raw reads use the full 7-byte callback buffer.
+
+   The sweep also confirms the AndeStar `bfoz` insert/extract semantics. See
+   [analysis/SENSORHUB_IMU_REGS.md](analysis/SENSORHUB_IMU_REGS.md) and
+   [analysis/sensorhub-imu-regs.json](analysis/sensorhub-imu-regs.json). The
+   vectors, native report and evidence regenerate byte for byte.
+
 ## Next work
 
 - Main kernel: execute `vTaskSuspend`/`vTaskResume`, the idle-task termination

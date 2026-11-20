@@ -1,0 +1,3377 @@
+{
+  "accessors": [
+    {
+      "address": "0x80f7291a",
+      "fields": [
+        {
+          "field_mask": "0x0c",
+          "register": "0x10"
+        }
+      ],
+      "kind": "set",
+      "name": "xl_full_scale_set"
+    },
+    {
+      "address": "0x80f72958",
+      "fields": [
+        {
+          "field_mask": "0xf0",
+          "register": "0x10"
+        }
+      ],
+      "kind": "set",
+      "name": "xl_data_rate_set (ODR_XL field)"
+    },
+    {
+      "address": "0x80f72994",
+      "fields": [
+        {
+          "field_mask": "0x0e",
+          "register": "0x11"
+        }
+      ],
+      "kind": "set",
+      "name": "gy_full_scale_set"
+    },
+    {
+      "address": "0x80f729d2",
+      "fields": [
+        {
+          "field_mask": "0xf0",
+          "register": "0x11"
+        }
+      ],
+      "kind": "set",
+      "name": "gy_data_rate_set (ODR_G field)"
+    },
+    {
+      "address": "0x80f72a0e",
+      "fields": [
+        {
+          "field_mask": "0x40",
+          "register": "0x12"
+        }
+      ],
+      "kind": "set",
+      "name": "block_data_update_set"
+    },
+    {
+      "address": "0x80f72a4e",
+      "fields": [
+        {
+          "field_mask": "0x80",
+          "register": "0x14"
+        },
+        {
+          "field_mask": "0x10",
+          "register": "0x15"
+        }
+      ],
+      "kind": "set",
+      "name": "xl_power_mode_set"
+    },
+    {
+      "address": "0x80f72abe",
+      "fields": [
+        {
+          "field_mask": "0x80",
+          "register": "0x16"
+        }
+      ],
+      "kind": "set",
+      "name": "gy_power_mode_set"
+    },
+    {
+      "address": "0x80f72afc",
+      "fields": [
+        {
+          "register": "0x1e"
+        }
+      ],
+      "kind": "get",
+      "name": "xl_flag_data_ready_get"
+    },
+    {
+      "address": "0x80f72b1e",
+      "fields": [
+        {
+          "register": "0x1e"
+        }
+      ],
+      "kind": "get",
+      "name": "gy_flag_data_ready_get"
+    },
+    {
+      "address": "0x80f72b42",
+      "fields": [
+        {
+          "length": 6,
+          "register": "0x22"
+        }
+      ],
+      "kind": "raw",
+      "name": "angular_rate_raw_get"
+    },
+    {
+      "address": "0x80f72b4e",
+      "fields": [
+        {
+          "length": 6,
+          "register": "0x28"
+        }
+      ],
+      "kind": "raw",
+      "name": "acceleration_raw_get"
+    },
+    {
+      "address": "0x80f72b5a",
+      "fields": [
+        {
+          "note": "zero on a failed read",
+          "register": "0x63"
+        }
+      ],
+      "kind": "get",
+      "name": "odr_cal_reg_get"
+    },
+    {
+      "address": "0x80f72b82",
+      "fields": [
+        {
+          "register": "0x01"
+        }
+      ],
+      "kind": "get",
+      "name": "mem_bank_get"
+    },
+    {
+      "address": "0x80f72bb4",
+      "fields": [
+        {
+          "length": 1,
+          "register": "0x0f"
+        }
+      ],
+      "kind": "raw",
+      "name": "device_id_get"
+    },
+    {
+      "address": "0x80f72bbe",
+      "fields": [
+        {
+          "field_mask": "0x01",
+          "register": "0x12"
+        }
+      ],
+      "kind": "set",
+      "name": "reset_set"
+    },
+    {
+      "address": "0x80f72bfa",
+      "fields": [
+        {
+          "register": "0x12"
+        }
+      ],
+      "kind": "get",
+      "name": "reset_get"
+    },
+    {
+      "address": "0x80f72c1c",
+      "fields": [
+        {
+          "field_mask": "0x80",
+          "register": "0x12"
+        }
+      ],
+      "kind": "set",
+      "name": "boot_set"
+    },
+    {
+      "address": "0x80f72c5a",
+      "fields": [
+        {
+          "register": "0x12"
+        }
+      ],
+      "kind": "get",
+      "name": "boot_get"
+    },
+    {
+      "address": "0x80f72c7e",
+      "fields": [
+        {
+          "field_mask": "0x02",
+          "register": "0x13"
+        }
+      ],
+      "kind": "set",
+      "name": "gy_filter_lp1_set"
+    },
+    {
+      "address": "0x80f72cbc",
+      "fields": [
+        {
+          "field_mask": "0x07",
+          "register": "0x15"
+        }
+      ],
+      "kind": "set",
+      "name": "gy_lp1_bandwidth_set"
+    },
+    {
+      "address": "0x80f72cf8",
+      "fields": [
+        {
+          "field_mask": "0x02",
+          "register": "0x18"
+        },
+        {
+          "field_mask": "0x18",
+          "register": "0x62"
+        }
+      ],
+      "kind": "set",
+      "name": "i3c_disable_set"
+    },
+    {
+      "address": "0x80f72d6a",
+      "fields": [
+        {
+          "field_mask": "0x0f",
+          "register": "0x09"
+        }
+      ],
+      "kind": "set",
+      "name": "fifo_xl_batch_set"
+    },
+    {
+      "address": "0x80f72da6",
+      "fields": [
+        {
+          "field_mask": "0xf0",
+          "register": "0x09"
+        }
+      ],
+      "kind": "set",
+      "name": "fifo_gy_batch_set"
+    },
+    {
+      "address": "0x80f72de2",
+      "fields": [
+        {
+          "field_mask": "0x07",
+          "register": "0x0a"
+        }
+      ],
+      "kind": "set",
+      "name": "fifo_mode_set"
+    },
+    {
+      "address": "0x80f72e1e",
+      "fields": [
+        {
+          "register": "0x3a"
+        },
+        {
+          "bits": "[1:0] -> level[9:8]",
+          "register": "0x3b"
+        }
+      ],
+      "kind": "get",
+      "name": "fifo_data_level_get"
+    },
+    {
+      "address": "0x80f72e60",
+      "fields": [
+        {
+          "register": "0x3b"
+        }
+      ],
+      "kind": "get",
+      "name": "fifo_ovr_flag_get"
+    }
+  ],
+  "byte_range_sha256": {
+    "80f6fafa_a0": "cab8ea5d792ce63d6ec1daf02505b57f02de00c141216b43313c6716d22c7454",
+    "80f7021c_62": "8e1e15ab4d8c5beda59876f2411cc55f4a0ebe49605898a07a3925907d3e08bc",
+    "80f71c88_2a": "4342faa71a79ed4c10ec82cb94b9ce486e1bfccb46f93d59c0e8b384e83af20d",
+    "80f71cb2_a6": "1a9a807bf460a8896a15cf25d48cc6721c72fb9a752842d0adf04300e3de2e8b",
+    "80f7290e_c": "c2f4dced948b7ebbb847d6c9fd08096090d9a52cd37e82d076f46ee4a8c5ce0b",
+    "80f7291a_29a": "59991e94d801493be5e6839aee56da9686803dde5a653156476e7b827a4f8294",
+    "80f72bb4_68": "2c97608f9526a7d6dcb5bae45284a02b7a74692d1ed6e2609dac8e0e26092f65",
+    "80f72c1c_26a": "b8172c7d0b9783ab59d702e08e47b4cd808dec6147521e02bbb4aaeb0b9de6fa",
+    "80fd876c_c": "301bdbbde148ef12e7ebcb4144765c7f814aded95907606ed2993b288f624492"
+  },
+  "hub_sha256": "06f07541e8bb22b6118f081e791c3a4e40cbff2decd8ee478a7e82df826e9d0f",
+  "limitations": [
+    "Each accessor executes in isolation through the original context dispatch and SPI callbacks; only the SPI transfer helper and memcpy are supplied, with authored receive bytes and statuses.",
+    "Names follow the ST lsm6dso_reg.c accessor each body matches by register and bit field; the ODR setters here write only the raw ODR field (no ST-style power-mode bookkeeping).",
+    "Getters with a failed read store a stale stack byte; those paths are not exercised. Which accessors the hub calls, in which order and with which values is a separate question (the activate/configure callbacks); nothing here drives a real LSM6DSO."
+  ],
+  "native_case_count": 95,
+  "native_steps": 7561,
+  "native_validation": {
+    "bound_per_case": 5000,
+    "case_count": 95,
+    "cases": [
+      {
+        "name": "sensorhub_imu_regs_xl_full_scale_set_set_from_zero",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9000",
+            "call:2164055536",
+            "spi:1515847681:2:5000:100c"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_xl_full_scale_set_clear_from_ones",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9000",
+            "call:2164055536",
+            "spi:1515847681:2:5000:10f3"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_xl_full_scale_set_value_one",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9000",
+            "call:2164055536",
+            "spi:1515847681:2:5000:10a5"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_xl_data_rate_set_set_from_zero",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9000",
+            "call:2164055536",
+            "spi:1515847681:2:5000:10f0"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_xl_data_rate_set_clear_from_ones",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9000",
+            "call:2164055536",
+            "spi:1515847681:2:5000:100f"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_xl_data_rate_set_value_one",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9000",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1015"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_gy_full_scale_set_set_from_zero",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9100",
+            "call:2164055536",
+            "spi:1515847681:2:5000:110e"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_gy_full_scale_set_clear_from_ones",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9100",
+            "call:2164055536",
+            "spi:1515847681:2:5000:11f1"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_gy_full_scale_set_value_one",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9100",
+            "call:2164055536",
+            "spi:1515847681:2:5000:11a3"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_gy_data_rate_set_set_from_zero",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9100",
+            "call:2164055536",
+            "spi:1515847681:2:5000:11f0"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_gy_data_rate_set_clear_from_ones",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9100",
+            "call:2164055536",
+            "spi:1515847681:2:5000:110f"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_gy_data_rate_set_value_one",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9100",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1115"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_block_data_update_set_set_from_zero",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1240"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_block_data_update_set_clear_from_ones",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:12bf"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_block_data_update_set_value_one",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:12e5"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_xl_power_mode_set_set_from_zero",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9400",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1480",
+            "spi:1515847681:2:5000:9500",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1510"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 170
+      },
+      {
+        "name": "sensorhub_imu_regs_xl_power_mode_set_clear_from_ones",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9400",
+            "call:2164055536",
+            "spi:1515847681:2:5000:147f",
+            "spi:1515847681:2:5000:9500",
+            "call:2164055536",
+            "spi:1515847681:2:5000:15ef"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 170
+      },
+      {
+        "name": "sensorhub_imu_regs_xl_power_mode_set_value_one",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9400",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1425",
+            "spi:1515847681:2:5000:9500",
+            "call:2164055536",
+            "spi:1515847681:2:5000:15b5"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 170
+      },
+      {
+        "name": "sensorhub_imu_regs_gy_power_mode_set_set_from_zero",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9600",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1680"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_gy_power_mode_set_clear_from_ones",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9600",
+            "call:2164055536",
+            "spi:1515847681:2:5000:167f"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_gy_power_mode_set_value_one",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9600",
+            "call:2164055536",
+            "spi:1515847681:2:5000:16a5"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_reset_set_set_from_zero",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1201"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_reset_set_clear_from_ones",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:12fe"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_reset_set_value_one",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:12a5"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_boot_set_set_from_zero",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1280"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_boot_set_clear_from_ones",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:127f"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_boot_set_value_one",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:12a5"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_gy_filter_lp1_set_set_from_zero",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9300",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1302"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_gy_filter_lp1_set_clear_from_ones",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9300",
+            "call:2164055536",
+            "spi:1515847681:2:5000:13fd"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_gy_filter_lp1_set_value_one",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9300",
+            "call:2164055536",
+            "spi:1515847681:2:5000:13a7"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_gy_lp1_bandwidth_set_set_from_zero",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9500",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1507"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_gy_lp1_bandwidth_set_clear_from_ones",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9500",
+            "call:2164055536",
+            "spi:1515847681:2:5000:15f8"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_gy_lp1_bandwidth_set_value_one",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9500",
+            "call:2164055536",
+            "spi:1515847681:2:5000:15a1"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_i3c_disable_set_set_from_zero",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9800",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1802",
+            "spi:1515847681:2:5000:e200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:6218"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 170
+      },
+      {
+        "name": "sensorhub_imu_regs_i3c_disable_set_clear_from_ones",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9800",
+            "call:2164055536",
+            "spi:1515847681:2:5000:18fd",
+            "spi:1515847681:2:5000:e200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:62e7"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 170
+      },
+      {
+        "name": "sensorhub_imu_regs_i3c_disable_set_value_one",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9800",
+            "call:2164055536",
+            "spi:1515847681:2:5000:18a5",
+            "spi:1515847681:2:5000:e200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:62ad"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 170
+      },
+      {
+        "name": "sensorhub_imu_regs_fifo_xl_batch_set_set_from_zero",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:8900",
+            "call:2164055536",
+            "spi:1515847681:2:5000:090f"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_fifo_xl_batch_set_clear_from_ones",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:8900",
+            "call:2164055536",
+            "spi:1515847681:2:5000:09f0"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_fifo_xl_batch_set_value_one",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:8900",
+            "call:2164055536",
+            "spi:1515847681:2:5000:09a1"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_fifo_gy_batch_set_set_from_zero",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:8900",
+            "call:2164055536",
+            "spi:1515847681:2:5000:09f0"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_fifo_gy_batch_set_clear_from_ones",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:8900",
+            "call:2164055536",
+            "spi:1515847681:2:5000:090f"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_fifo_gy_batch_set_value_one",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:8900",
+            "call:2164055536",
+            "spi:1515847681:2:5000:0915"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_fifo_mode_set_set_from_zero",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:8a00",
+            "call:2164055536",
+            "spi:1515847681:2:5000:0a07"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_fifo_mode_set_clear_from_ones",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:8a00",
+            "call:2164055536",
+            "spi:1515847681:2:5000:0af8"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_fifo_mode_set_value_one",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:8a00",
+            "call:2164055536",
+            "spi:1515847681:2:5000:0aa1"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_xl_full_scale_set_read_error",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9000"
+          ],
+          "rows": [
+            {
+              "a0": 1,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 52
+      },
+      {
+        "name": "sensorhub_imu_regs_xl_full_scale_set_write_error",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9000",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1008"
+          ],
+          "rows": [
+            {
+              "a0": 1,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 89
+      },
+      {
+        "name": "sensorhub_imu_regs_xl_power_mode_set_second_read_error",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9400",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1480",
+            "spi:1515847681:2:5000:9500"
+          ],
+          "rows": [
+            {
+              "a0": 1,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 133
+      },
+      {
+        "name": "sensorhub_imu_regs_i3c_disable_set_first_write_error",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9800",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1802"
+          ],
+          "rows": [
+            {
+              "a0": 1,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 91
+      },
+      {
+        "name": "sensorhub_imu_regs_xl_flag_data_ready_get_00",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9e00",
+            "call:2164055536",
+            "w:2164277248:1:0"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "sensorhub_imu_regs_xl_flag_data_ready_get_ff",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9e00",
+            "call:2164055536",
+            "w:2164277248:1:1"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0100000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "sensorhub_imu_regs_xl_flag_data_ready_get_5a",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9e00",
+            "call:2164055536",
+            "w:2164277248:1:0"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "sensorhub_imu_regs_xl_flag_data_ready_get_80",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9e00",
+            "call:2164055536",
+            "w:2164277248:1:0"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "sensorhub_imu_regs_xl_flag_data_ready_get_42",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9e00",
+            "call:2164055536",
+            "w:2164277248:1:0"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "sensorhub_imu_regs_gy_flag_data_ready_get_00",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9e00",
+            "call:2164055536",
+            "w:2164277248:1:0"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "sensorhub_imu_regs_gy_flag_data_ready_get_ff",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9e00",
+            "call:2164055536",
+            "w:2164277248:1:1"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0100000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "sensorhub_imu_regs_gy_flag_data_ready_get_5a",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9e00",
+            "call:2164055536",
+            "w:2164277248:1:1"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0100000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "sensorhub_imu_regs_gy_flag_data_ready_get_80",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9e00",
+            "call:2164055536",
+            "w:2164277248:1:0"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "sensorhub_imu_regs_gy_flag_data_ready_get_42",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9e00",
+            "call:2164055536",
+            "w:2164277248:1:1"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0100000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "sensorhub_imu_regs_mem_bank_get_00",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:8100",
+            "call:2164055536",
+            "w:2164277248:1:0"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 58
+      },
+      {
+        "name": "sensorhub_imu_regs_mem_bank_get_ff",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:8100",
+            "call:2164055536",
+            "w:2164277248:1:0"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 58
+      },
+      {
+        "name": "sensorhub_imu_regs_mem_bank_get_5a",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:8100",
+            "call:2164055536",
+            "w:2164277248:1:1"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0100000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 58
+      },
+      {
+        "name": "sensorhub_imu_regs_mem_bank_get_80",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:8100",
+            "call:2164055536",
+            "w:2164277248:1:2"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0200000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 59
+      },
+      {
+        "name": "sensorhub_imu_regs_mem_bank_get_42",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:8100",
+            "call:2164055536",
+            "w:2164277248:1:1"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0100000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 58
+      },
+      {
+        "name": "sensorhub_imu_regs_reset_get_00",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "w:2164277248:1:0"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "sensorhub_imu_regs_reset_get_ff",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "w:2164277248:1:1"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0100000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "sensorhub_imu_regs_reset_get_5a",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "w:2164277248:1:0"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "sensorhub_imu_regs_reset_get_80",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "w:2164277248:1:0"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "sensorhub_imu_regs_reset_get_42",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "w:2164277248:1:0"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "sensorhub_imu_regs_boot_get_00",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "w:2164277248:1:0"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "sensorhub_imu_regs_boot_get_ff",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "w:2164277248:1:1"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0100000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "sensorhub_imu_regs_boot_get_5a",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "w:2164277248:1:0"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "sensorhub_imu_regs_boot_get_80",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "w:2164277248:1:1"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0100000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "sensorhub_imu_regs_boot_get_42",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "w:2164277248:1:0"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "sensorhub_imu_regs_fifo_ovr_flag_get_00",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:bb00",
+            "call:2164055536",
+            "w:2164277248:1:0"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "sensorhub_imu_regs_fifo_ovr_flag_get_ff",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:bb00",
+            "call:2164055536",
+            "w:2164277248:1:1"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0100000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "sensorhub_imu_regs_fifo_ovr_flag_get_5a",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:bb00",
+            "call:2164055536",
+            "w:2164277248:1:1"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0100000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "sensorhub_imu_regs_fifo_ovr_flag_get_80",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:bb00",
+            "call:2164055536",
+            "w:2164277248:1:0"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "sensorhub_imu_regs_fifo_ovr_flag_get_42",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:bb00",
+            "call:2164055536",
+            "w:2164277248:1:1"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0100000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "sensorhub_imu_regs_angular_rate_raw_get_data",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:7:5000:a2000000000000",
+            "call:2164055536"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "1112131415160000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 45
+      },
+      {
+        "name": "sensorhub_imu_regs_angular_rate_raw_get_error",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:7:5000:a2000000000000"
+          ],
+          "rows": [
+            {
+              "a0": 1,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 40
+      },
+      {
+        "name": "sensorhub_imu_regs_acceleration_raw_get_data",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:7:5000:a8000000000000",
+            "call:2164055536"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "1112131415160000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 45
+      },
+      {
+        "name": "sensorhub_imu_regs_acceleration_raw_get_error",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:7:5000:a8000000000000"
+          ],
+          "rows": [
+            {
+              "a0": 1,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 40
+      },
+      {
+        "name": "sensorhub_imu_regs_device_id_get_data",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:8f00",
+            "call:2164055536"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "1100000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 45
+      },
+      {
+        "name": "sensorhub_imu_regs_device_id_get_error",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:8f00"
+          ],
+          "rows": [
+            {
+              "a0": 1,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 40
+      },
+      {
+        "name": "sensorhub_imu_regs_odr_cal_reg_get_00",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:e300",
+            "call:2164055536",
+            "w:2164277248:1:0"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "sensorhub_imu_regs_odr_cal_reg_get_7f",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:e300",
+            "call:2164055536",
+            "w:2164277248:1:127"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "7f00000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "sensorhub_imu_regs_odr_cal_reg_get_80",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:e300",
+            "call:2164055536",
+            "w:2164277248:1:128"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "8000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "sensorhub_imu_regs_odr_cal_reg_get_ec",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:e300",
+            "call:2164055536",
+            "w:2164277248:1:236"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "ec00000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 56
+      },
+      {
+        "name": "sensorhub_imu_regs_odr_cal_reg_get_error_stores_zero",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:e300",
+            "w:2164277248:1:0"
+          ],
+          "rows": [
+            {
+              "a0": 1,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 51
+      },
+      {
+        "name": "sensorhub_imu_regs_fifo_data_level_get_34_00",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:ba00",
+            "call:2164055536",
+            "spi:1515847681:2:5000:bb00",
+            "call:2164055536",
+            "w:2164277248:2:52"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "3400000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 108
+      },
+      {
+        "name": "sensorhub_imu_regs_fifo_data_level_get_ff_ff",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:ba00",
+            "call:2164055536",
+            "spi:1515847681:2:5000:bb00",
+            "call:2164055536",
+            "w:2164277248:2:1023"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "ff03000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 108
+      },
+      {
+        "name": "sensorhub_imu_regs_fifo_data_level_get_00_02",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:ba00",
+            "call:2164055536",
+            "spi:1515847681:2:5000:bb00",
+            "call:2164055536",
+            "w:2164277248:2:512"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0002000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 108
+      },
+      {
+        "name": "sensorhub_imu_regs_fifo_data_level_get_10_c1",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:ba00",
+            "call:2164055536",
+            "spi:1515847681:2:5000:bb00",
+            "call:2164055536",
+            "w:2164277248:2:272"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "1001000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 108
+      },
+      {
+        "name": "sensorhub_imu_regs_fifo_data_level_get_first_read_error",
+        "observed": {
+          "actions": [
+            "op:regs",
+            "spi:1515847681:2:5000:ba00"
+          ],
+          "rows": [
+            {
+              "a0": 1,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2164277248": "0000000000000000"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 52
+      }
+    ],
+    "hardware_execution": false,
+    "schema": 1
+  },
+  "validation_sha256": "c3333b408512ee1b4707bfcc7b8f5b272d0ca9a73a232b25943321cf33c5d372",
+  "vectors_sha256": "1954f57bac7d5747aa129a669d0c7bb92177ff06bbab7c9ec3865228a9c7ec5e"
+}
