@@ -3707,10 +3707,30 @@ deletion remain open.
    See [analysis/MAIN_TOUCH_OPEN.md](analysis/MAIN_TOUCH_OPEN.md). Vectors,
    native report and evidence regenerate byte for byte.
 
+## 2026-11-20 — ZTW622 touch delivery (dispatcher + poll timer)
+
+1. Executed the two small delivery helpers above the report handler. All
+   **7 native cases pass**:
+   - event dispatcher `0x701eac38(dev, mode, value_ptr)` builds a 0x38-byte
+     event (`+0=1`, `+8=1`, `+0xc=mode`, `+0xe=*value_ptr`) and calls
+     `dev->callback(dev, &event, 0)`; returns `-4` for a NULL device/callback,
+     else the callback's result;
+   - poll-timer callback `0x701eb154` sets the state byte `0x70f8e100 = 2`,
+     notifies the input task (`0x80d3dedc`), and on a non-zero notify restarts
+     the 5000 ms timer via `0x701eb102` -> `0x80d36ba0(timer, 0x1388)` (`-4`/`-14`
+     on a missing/failing timer).
+
+   See [analysis/MAIN_TOUCH_DISPATCH.md](analysis/MAIN_TOUCH_DISPATCH.md).
+   Vectors, native report and evidence regenerate byte for byte.
+
 ## Next work
 
-- Touch input task body (entry `0x701eca9c`) and the poll-timer callback
-  (`0x701eb154`), which drive the already-executed report handler `0x701eb18a`.
+- Touch input-task body (entry `0x701eca9c`): the TP firmware-upgrade / ODR
+  worker (strings `ztw622_uprgade_process`/`upgrade_odr_process`), dispatched by
+  the state byte at `0x70f8e100`; a large routine with chunked flash programming
+  (per-chunk malloc, DMA `0x80d3dedc`), a verify loop (`0x701eaf30` read-back and
+  `memcmp` `0x70947ab0`) and the TP command primitive `0x701eac38`. Consumer of
+  the OTA "TP firmware" module (file types 49/51).
 - OTA bootloader apply: the post-reboot `Upgrade bootloader/firmware/boot
   resource` staging, the cryptographic image signature it checks (beyond the
   CRC32 transfer integrity now covered), and the backup-firmware recovery path
