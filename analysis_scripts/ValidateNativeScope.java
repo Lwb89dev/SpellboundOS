@@ -147,6 +147,12 @@ public class ValidateNativeScope extends GhidraScript {
             if (len < 0 || len > 0x1000) throw new IllegalStateException("bus length");
             boolean write = s.get("write").getAsBoolean();
             String tx = write ? HexFormat.of().formatHex(e.readMemory(toAddr(buf), (int) Math.min(len, 16))) : "";
+            if (s.has("cmd_arg")) {
+                // A read can also carry a command buffer: record it in place of the (empty) write bytes.
+                long cmd = reg("a" + s.get("cmd_arg").getAsInt()), clen = reg("a" + s.get("cmd_len_arg").getAsInt());
+                if (clen < 0 || clen > 16) throw new IllegalStateException("bus command length");
+                tx = HexFormat.of().formatHex(e.readMemory(toAddr(cmd), (int) clen));
+            }
             if (s.has("rec")) {
                 StringBuilder r = new StringBuilder("bus:" + pc);
                 for (JsonElement i : s.getAsJsonArray("rec")) r.append(":").append(reg("a" + i.getAsInt()));

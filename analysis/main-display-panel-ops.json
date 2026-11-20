@@ -1,0 +1,681 @@
+{
+  "byte_range_sha256": {
+    "702c8238_a0": "1b19bc439141d393a2d7d465cdadf1cbdaef51367d3dfdf58bfee43e5e461bbd",
+    "702c82d8_3c": "3c26c8f6928ea2147ea8ce81b8e38aca75a9ab681aeef9b30e44586b25635d7e",
+    "702c8314_62": "f51e288589c5b2518570056258f10f297065668eff292566806407df07050db4",
+    "702c850c_22a": "667260773b7153df85d80979fe66c1ddfe1f9ed1b03065b4f2d6c0987f83232e",
+    "702c8e7a_1fe": "17720c63b0853b6384e03eda2e73e4862dab7679f8b62874e22826120a8cda27"
+  },
+  "commands": {
+    "38/39 (page 0x50)": "gamma high/low byte",
+    "4e (page 0x90)": "sawtooth (0x1f on, 0x00 off)",
+    "51": "write_display_brightness",
+    "53": "write_control_display (0x20 dimming off, 0x28 dimming on)",
+    "66": "high-brightness mode (0x02 on, 0x00 off)",
+    "f4/f5": "vendor unlock/lock keys",
+    "fe": "page select"
+  },
+  "image": "main firmware (OTA 4.6.0.3)",
+  "limitations": [
+    "The panel operations and the original DCS table player execute in the main-image emulator; the DCS write/read transfers and the logger are supplied, so no byte reaches the DSI link.",
+    "Command meanings follow MIPI DCS (51/53) and the driver function names (HBM, sawtooth, gamma); the vendor page semantics are not otherwise interpreted.",
+    "The framebuffer/DSI refresh path, TE handling and the variant tables of the fitted panel are not executed."
+  ],
+  "native_case_count": 15,
+  "native_steps": 2113,
+  "native_validation": {
+    "bound_per_case": 20000,
+    "case_count": 15,
+    "cases": [
+      {
+        "name": "main_display_panel_ops_dimming_off",
+        "observed": {
+          "actions": [
+            "op:panel",
+            "bus:1881965044:fe80",
+            "bus:1881965044:f400",
+            "bus:1881965044:f500",
+            "bus:1881965044:fe00",
+            "bus:1881965044:fe00",
+            "bus:1881965044:5320",
+            "bus:1881965044:fe80",
+            "bus:1881965044:f4ac",
+            "bus:1881965044:f5e1",
+            "bus:1881965044:fe00"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 125
+      },
+      {
+        "name": "main_display_panel_ops_dimming_on",
+        "observed": {
+          "actions": [
+            "op:panel",
+            "bus:1881965044:fe80",
+            "bus:1881965044:f400",
+            "bus:1881965044:f500",
+            "bus:1881965044:fe00",
+            "bus:1881965044:fe00",
+            "bus:1881965044:5328",
+            "bus:1881965044:fe80",
+            "bus:1881965044:f4ac",
+            "bus:1881965044:f5e1",
+            "bus:1881965044:fe00"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 125
+      },
+      {
+        "name": "main_display_panel_ops_brightness_00",
+        "observed": {
+          "actions": [
+            "op:panel",
+            "bus:1881965044:fe80",
+            "bus:1881965044:f400",
+            "bus:1881965044:f500",
+            "bus:1881965044:fe00",
+            "bus:1881965044:5100",
+            "bus:1881965044:fe80",
+            "bus:1881965044:f4ac",
+            "bus:1881965044:f5e1",
+            "bus:1881965044:fe00"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 144
+      },
+      {
+        "name": "main_display_panel_ops_brightness_80",
+        "observed": {
+          "actions": [
+            "op:panel",
+            "bus:1881965044:fe80",
+            "bus:1881965044:f400",
+            "bus:1881965044:f500",
+            "bus:1881965044:fe00",
+            "bus:1881965044:5180",
+            "bus:1881965044:fe80",
+            "bus:1881965044:f4ac",
+            "bus:1881965044:f5e1",
+            "bus:1881965044:fe00"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 144
+      },
+      {
+        "name": "main_display_panel_ops_brightness_ff",
+        "observed": {
+          "actions": [
+            "op:panel",
+            "bus:1881965044:fe80",
+            "bus:1881965044:f400",
+            "bus:1881965044:f500",
+            "bus:1881965044:fe00",
+            "bus:1881965044:51ff",
+            "bus:1881965044:fe80",
+            "bus:1881965044:f4ac",
+            "bus:1881965044:f5e1",
+            "bus:1881965044:fe00"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 144
+      },
+      {
+        "name": "main_display_panel_ops_sawtooth_on",
+        "observed": {
+          "actions": [
+            "op:panel",
+            "call:1881880738:6",
+            "bus:1881965044:fe20",
+            "bus:1881965044:f45a",
+            "bus:1881965044:f559",
+            "bus:1881965044:fe50",
+            "bus:1881965044:fe90",
+            "bus:1881965044:4e1f",
+            "bus:1881965044:fe20",
+            "bus:1881965044:f4a5",
+            "bus:1881965044:f5a5",
+            "bus:1881965044:fe00"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 138
+      },
+      {
+        "name": "main_display_panel_ops_sawtooth_off",
+        "observed": {
+          "actions": [
+            "op:panel",
+            "call:1881880738:6",
+            "bus:1881965044:fe20",
+            "bus:1881965044:f45a",
+            "bus:1881965044:f559",
+            "bus:1881965044:fe50",
+            "bus:1881965044:fe90",
+            "bus:1881965044:4e00",
+            "bus:1881965044:fe20",
+            "bus:1881965044:f4a5",
+            "bus:1881965044:f5a5",
+            "bus:1881965044:fe00"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 138
+      },
+      {
+        "name": "main_display_panel_ops_gamma_0x1234",
+        "observed": {
+          "actions": [
+            "op:panel",
+            "call:1881880738:6",
+            "bus:1881965044:fe20",
+            "bus:1881965044:f45a",
+            "bus:1881965044:f559",
+            "bus:1881965044:fe50",
+            "bus:1881965044:3812",
+            "bus:1881965044:3934",
+            "bus:1881965044:fe20",
+            "bus:1881965044:f4a5",
+            "bus:1881965044:f5a5",
+            "bus:1881965044:fe00"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 172
+      },
+      {
+        "name": "main_display_panel_ops_hbm_on_default",
+        "observed": {
+          "actions": [
+            "op:panel",
+            "call:1881880738:6",
+            "bus:1881965044:fe80",
+            "bus:1881965044:f400",
+            "bus:1881965044:f500",
+            "bus:1881965044:fe00",
+            "bus:1881965044:fe00",
+            "bus:1881965044:6602",
+            "bus:1881965044:fe80",
+            "bus:1881965044:f4ac",
+            "bus:1881965044:f5e1",
+            "bus:1881965044:fe00"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 149
+      },
+      {
+        "name": "main_display_panel_ops_hbm_off_default",
+        "observed": {
+          "actions": [
+            "op:panel",
+            "call:1881880738:6",
+            "bus:1881965044:fe80",
+            "bus:1881965044:f400",
+            "bus:1881965044:f500",
+            "bus:1881965044:fe00",
+            "bus:1881965044:fe00",
+            "bus:1881965044:6600",
+            "bus:1881965044:fe80",
+            "bus:1881965044:f4ac",
+            "bus:1881965044:f5e1",
+            "bus:1881965044:fe00"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 147
+      },
+      {
+        "name": "main_display_panel_ops_hbm_on_variant_table",
+        "observed": {
+          "actions": [
+            "op:panel",
+            "call:1881880738:6",
+            "bus:1881965044:6603",
+            "bus:1881965044:29"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 68
+      },
+      {
+        "name": "main_display_panel_ops_reg_read",
+        "observed": {
+          "actions": [
+            "op:panel",
+            "call:1881880738:6",
+            "bus:1881965044:fe80",
+            "bus:1881965044:f400",
+            "bus:1881965044:f500",
+            "bus:1881965044:fe00",
+            "bus:1881965044:fe20",
+            "bus:1881965044:f45a",
+            "bus:1881965044:f559",
+            "bus:1881965044:fe50",
+            "bus:1881965044:fe40",
+            "bus:1881965016:12",
+            "w:2164281860:2:90",
+            "bus:1881965044:fe20",
+            "bus:1881965044:f4a5",
+            "bus:1881965044:f5a5",
+            "bus:1881965044:fe00",
+            "bus:1881965044:fe80",
+            "bus:1881965044:f4ac",
+            "bus:1881965044:f5e1",
+            "bus:1881965044:fe00"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 288
+      },
+      {
+        "name": "main_display_panel_ops_reg_write",
+        "observed": {
+          "actions": [
+            "op:panel",
+            "call:1881880738:6",
+            "bus:1881965044:fe80",
+            "bus:1881965044:f400",
+            "bus:1881965044:f500",
+            "bus:1881965044:fe00",
+            "bus:1881965044:fe20",
+            "bus:1881965044:f45a",
+            "bus:1881965044:f559",
+            "bus:1881965044:fe50",
+            "bus:1881965044:fe40",
+            "bus:1881965044:1277",
+            "bus:1881965044:fe20",
+            "bus:1881965044:f4a5",
+            "bus:1881965044:f5a5",
+            "bus:1881965044:fe00",
+            "bus:1881965044:fe80",
+            "bus:1881965044:f4ac",
+            "bus:1881965044:f5e1",
+            "bus:1881965044:fe00"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 294
+      },
+      {
+        "name": "main_display_panel_ops_reg_unknown_op",
+        "observed": {
+          "actions": [
+            "op:panel"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 16
+      },
+      {
+        "name": "main_display_panel_ops_reg_null",
+        "observed": {
+          "actions": [
+            "op:panel",
+            "call:1881880738:6"
+          ],
+          "rows": [
+            {
+              "a0": 1,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 21
+      }
+    ],
+    "hardware_execution": false,
+    "schema": 1
+  },
+  "panel": "ICNA3311",
+  "tables": {
+    "dimming_off": [
+      "fe80",
+      "f400",
+      "f500",
+      "fe00",
+      "fe00",
+      "5320",
+      "fe80",
+      "f4ac",
+      "f5e1",
+      "fe00"
+    ],
+    "dimming_on": [
+      "fe80",
+      "f400",
+      "f500",
+      "fe00",
+      "fe00",
+      "5328",
+      "fe80",
+      "f4ac",
+      "f5e1",
+      "fe00"
+    ],
+    "hbm_off": [
+      "fe80",
+      "f400",
+      "f500",
+      "fe00",
+      "fe00",
+      "6600",
+      "fe80",
+      "f4ac",
+      "f5e1",
+      "fe00"
+    ],
+    "hbm_on": [
+      "fe80",
+      "f400",
+      "f500",
+      "fe00",
+      "fe00",
+      "6602",
+      "fe80",
+      "f4ac",
+      "f5e1",
+      "fe00"
+    ],
+    "relock_vendor_page": [
+      "fe20",
+      "f4a5",
+      "f5a5",
+      "fe00",
+      "fe80",
+      "f4ac",
+      "f5e1",
+      "fe00"
+    ],
+    "sawtooth_off": [
+      "fe20",
+      "f45a",
+      "f559",
+      "fe50",
+      "fe90",
+      "4e00",
+      "fe20",
+      "f4a5",
+      "f5a5",
+      "fe00"
+    ],
+    "sawtooth_on": [
+      "fe20",
+      "f45a",
+      "f559",
+      "fe50",
+      "fe90",
+      "4e1f",
+      "fe20",
+      "f4a5",
+      "f5a5",
+      "fe00"
+    ],
+    "unlock_vendor_page": [
+      "fe80",
+      "f400",
+      "f500",
+      "fe00",
+      "fe20",
+      "f45a",
+      "f559",
+      "fe50"
+    ]
+  },
+  "validation_sha256": "c94b81c71e6660ef0aa826fe82ff40b4df0c3f60adb4f6e8cbb742bbb798ffa9",
+  "vectors_sha256": "5f8da23d11da70525419198757deed908bdda8ca288d624f0f0595575cf08dc8"
+}

@@ -3648,6 +3648,17 @@ deletion remain open.
 
    See [analysis/MAIN_GNSS_PAIR.md](analysis/MAIN_GNSS_PAIR.md).
 
+## 2026-11-20 — ICNA3311 panel operations
+
+1. Executed the ICNA3311 operations through the original DCS player. All
+   **15 native cases pass**. Recovered:
+   - dimming `53 20/28` and brightness `51 <level>`;
+   - sawtooth (page 0x90 `4E`), gamma (page 0x50 `38/39`) and HBM `66 02/00`;
+   - paged register read/write;
+   - the vendor unlock/lock key sequences around each command.
+
+   See [analysis/MAIN_DISPLAY_PANEL_OPS.md](analysis/MAIN_DISPLAY_PANEL_OPS.md).
+
 ## Next work
 
 - Sensor-hub IMU: the descriptor callbacks (open/close/rate/flush) that call
