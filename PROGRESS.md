@@ -3500,6 +3500,15 @@ deletion remain open.
 
 ## Next work
 
+- Sensor-hub IMU: execute the FIFO read/decode path `0x80f710ac`. It checks
+  overrun and level, makes one bulk SPI read of `7 × n + 1` bytes through the
+  transfer helper (tagged 7-byte FIFO words, at most 160 per pass) and then
+  runs the decoder, timestamp and packet path (`0x80f6fc42`, `0x80f6453e`,
+  `0x80f63092`, `0x80f64660`). Then do the descriptor callbacks
+  (open/close/rate/flush) that call the now-executed mode setter, and the
+  handling of IRQ event `0x101`. See
+  [analysis/SENSORHUB_IMU_MODE.md](analysis/SENSORHUB_IMU_MODE.md).
+
 - Main kernel: execute `vTaskSuspend`/`vTaskResume`, the idle-task termination
   sweep, dynamic `xTaskCreate`, mutex priority inheritance and the queue/
   semaphore/event-group/notification APIs. `vTaskDelete`/`prvDeleteTCB`,
