@@ -5,9 +5,10 @@
 #include "../kernel/arch/riscv/riscv.h"
 #include "../kernel/arch/riscv/timer.h"
 #include "../kernel/arch/riscv/trap.h"
+#include "../kernel/arch/riscv/trap_frame.h"
 
 static uint32_t stacks[8][256];
-static _Alignas(16) unsigned char misaligned_stack[96];
+static _Alignas(16) unsigned char misaligned_stack[TRAP_FRAME_SIZE + 144];
 static unsigned calls;
 static unsigned failures;
 static unsigned sleep_stage;
@@ -56,7 +57,7 @@ void kernel_main(void) {
         task_create(worker, 0, 1024) != -1 ||
         task_create(worker, (void *)0xfffffff0u, 128) != -1 ||
         task_create(worker, stacks[0], 16) != -1 ||
-        task_create(worker, misaligned_stack + 1, 80) != -1) failures++;
+        task_create(worker, misaligned_stack + 1, TRAP_FRAME_SIZE + 128) != -1) failures++;
 
     uint64_t started = timer_ticks();
     for (unsigned round = 0; round < 3; round++) {

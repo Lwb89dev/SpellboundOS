@@ -1,10 +1,14 @@
-/* Cooperative round-robin scheduler. */
+/* Round-robin scheduling on hart 0 in machine mode. */
 #ifndef SPELLBOUND_SCHED_H
 #define SPELLBOUND_SCHED_H
 
+#include <stdbool.h>
 #include <stdint.h>
 
 typedef void (*task_fn)(void);
+
+/* Switch tasks on timer interrupts while enabled. Defaults to cooperative. */
+void sched_set_preemption(bool enabled);
 
 /* Register a task with its own stack. Returns the task id, or -1 if invalid or
  * full. Finished task slots can be reused. The stack must remain valid until
@@ -20,10 +24,10 @@ void task_yield(void);
 void task_sleep(uint32_t ticks);
 
 /* End the current task (marks it finished and yields; never returns). */
-void task_exit(void);
+_Noreturn void task_exit(void);
 
-/* Run from the boot context until every task has exited. A nested call is a no-op.
- * The scheduler is cooperative, single-hart and not interrupt-safe. */
+/* Run from boot after trap_init until every task exits. A nested call is a no-op.
+ * Scheduler APIs are for boot and task contexts on hart 0. */
 void sched_run(void);
 
 /* Number of ready or running tasks, excluding tasks still asleep. */

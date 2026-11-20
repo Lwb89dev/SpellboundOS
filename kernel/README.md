@@ -8,17 +8,16 @@ This is bring-up scaffolding, not a Bip 6 image.
 | File | Role |
 | --- | --- |
 | `arch/riscv/start.S` | reset entry: park secondary harts, set `gp`/`sp`, zero `.bss`, initialize the board, call `kernel_main` |
-| `arch/riscv/trap.S` | machine-mode trap vector: save caller-saved registers, call `trap_handler`, restore, `mret` |
-| `arch/riscv/trap.c` | `trap_init` (install `mtvec`, direct mode) and `trap_handler` (timer IRQ → tick; exceptions reported and parked) |
+| `arch/riscv/trap.S` / `trap_frame.h` | save integer registers, PC and status, then restore the selected frame with `mret` |
+| `arch/riscv/trap.c` | direct machine trap vector setup, timer dispatch and scheduler requests |
 | `arch/riscv/timer.c` | CLINT machine timer (`mtime`/`mtimecmp`), periodic tick at a chosen Hz |
 | `arch/riscv/riscv.h` | CSR access helpers and bit definitions |
 | `console.c` / `console.h` | console formatting and byte I/O |
 | `drivers/uart16550.c` | polled access to the QEMU virt UART |
 | `boards/qemu-virt/board.c` | UART registration, timer addresses and input clock |
-| `sched.c` / `sched.h` | cooperative round-robin scheduler |
+| `sched.c` / `sched.h` | round-robin scheduler with cooperative and timer-driven switching |
 | `kmem.c` / `kmem.h` | first-fit kernel heap (split + coalesce), host-testable |
 | `driver.c` / `driver.h` | fixed-size device/driver registration and probe, host-testable |
-| `arch/riscv/switch.S` | `context_switch` (callee-saved + ra) and the task trampoline |
 | `main.c` | bring-up: console → traps → polled echo → 100 Hz timer → two round-robin tasks → tick loop |
 | `boards/qemu-virt/linker.ld` | load at `0x80000000`, `.text/.rodata/.data/.bss`, 16 KiB stack |
 
@@ -30,7 +29,8 @@ This is bring-up scaffolding, not a Bip 6 image.
 - CLINT machine timer: a periodic tick (100 Hz) via `MTIE` + global `MIE`, with a
   64-bit tick counter read protected from interrupts and safe RV32 `mtime`/`mtimecmp` access.
 - UART console (`puts`/`puthex`/`putdec`/`getc`), polled echo.
-- The cooperative round-robin scheduler can yield, exit or sleep for a number of timer ticks. It waits for interrupts when all tasks sleep and reuses slots after tasks exit. Scheduler calls belong in the boot or task context on hart 0.
+- Round-robin tasks can yield, exit or sleep for a number of timer ticks. The scheduler waits on the boot stack when all tasks sleep and reuses slots when tasks exit. Call `trap_init` before running tasks.
+- `sched_set_preemption(true)` enables one tick per time slice. The default is cooperative. Both modes save integer registers and the interrupt state in the task's trap frame. A stack must have at least 272 bytes after alignment and enough space for the task's calls and trap handling. Tasks share machine-mode memory on hart 0. Serialize shared heap, registry and console access if using preemption.
 - Kernel heap `kmalloc`/`kfree` (first-fit, block split, forward coalescing); the allocator logic is portable and unit-tested on the host (`make test-host`). Access must be serialized, including against interrupts.
 - Device/driver registry: explicit name-based binding and retryable probe passes. QEMU virt registers and probes its console UART before `kernel_main`. Registration is single-threaded and reset only clears registry bindings.
 
@@ -40,7 +40,7 @@ This is bring-up scaffolding, not a Bip 6 image.
 make                 # needs clang, ld.lld, llvm-objcopy
 make LLD=/path/to/ld.lld   # if ld.lld is not on PATH (e.g. an LLVM/NDK toolchain)
 make test            # needs qemu-system-riscv32; checks boot, echo, timer,
-                     # scheduler lifecycle, heap and trap diagnostics on RV32 QEMU virt
+                     # scheduling, preemption, heap and trap diagnostics on RV32 QEMU virt
 make test-host       # host tests for heap and driver registry (clang + ASan/UBSan)
 ```
 
@@ -50,5 +50,4 @@ targets needs a *system* QEMU (`qemu-system-riscv32`), not the user-mode
 
 ## Next foundations
 
-- Preemptive scheduling (reschedule from the timer trap) on top of the current cooperative scheduler.
 - Add board support for further devices.

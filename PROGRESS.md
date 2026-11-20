@@ -4257,3 +4257,15 @@ Python suite — this is the first piece of OS code verified at **runtime** here
 - Connected the original LSM6DSO FIFO drain to sample delivery in three cases
   with supplied SPI responses. All 16 cases pass. The boot and IMU prior
   observations reproduce unchanged, and 152 focused host tests pass.
+
+## SpellboundOS — Timer-driven preemption
+
+- Replaced the separate cooperative switch with a full RV32 integer trap frame.
+  Task requests enter through a private ECALL, and the timer can select the next
+  runnable task before MRET. New tasks inherit the boot context's interrupt
+  enable state, and resumed tasks recover their own saved state.
+- Preemption is opt-in. The QEMU test starts workers that spin on each other,
+  checks register and interrupt state across switches, and wakes a sleeper
+  while a peer stays CPU-bound. The cooperative and boot tests still pass.
+- Tasks share memory on hart 0. Stacks must cover trap handling, and callers
+  serialize shared kernel resources when preemption is enabled.

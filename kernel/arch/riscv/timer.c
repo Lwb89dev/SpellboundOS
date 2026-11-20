@@ -41,12 +41,8 @@ void timer_on_tick(void) {
 uint64_t timer_ticks(void) {
     /* RV32 cannot load the counter atomically. Preserve the caller's MIE
      * state while preventing a tick between the two 32-bit loads. */
-    uint32_t previous;
-    __asm__ volatile("csrrc %0, mstatus, %1"
-                     : "=r"(previous) : "r"(MSTATUS_MIE) : "memory");
+    uint32_t previous = irq_save();
     uint64_t value = ticks;
-    if (previous & MSTATUS_MIE) {
-        __asm__ volatile("csrs mstatus, %0" :: "r"(MSTATUS_MIE) : "memory");
-    }
+    irq_restore(previous);
     return value;
 }

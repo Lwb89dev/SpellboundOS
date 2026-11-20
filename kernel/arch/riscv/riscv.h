@@ -6,6 +6,8 @@
 
 /* mstatus */
 #define MSTATUS_MIE (1u << 3) /* machine interrupt enable */
+#define MSTATUS_MPIE (1u << 7)
+#define MSTATUS_MPP_MACHINE (3u << 11)
 
 /* mie / mip */
 #define MIE_MTIE (1u << 7) /* machine timer interrupt enable */
@@ -15,6 +17,7 @@
 /* mcause: top bit set marks an interrupt; low bits are the code. */
 #define MCAUSE_INTERRUPT (1u << 31)
 #define IRQ_MACHINE_TIMER 7u
+#define EXCEPTION_MACHINE_ECALL 11u
 
 #define read_csr(reg)                                                          \
     ({                                                                         \
@@ -26,11 +29,17 @@
 #define set_csr(reg, bits) __asm__ volatile("csrs " #reg ", %0" ::"r"(bits))
 #define clear_csr(reg, bits) __asm__ volatile("csrc " #reg ", %0" ::"r"(bits))
 
-/* Caller-saved register frame pushed by trap_vector (see trap.S). */
-struct trap_frame {
-    uint32_t ra;
-    uint32_t t[7]; /* t0..t6 */
-    uint32_t a[8]; /* a0..a7 */
-};
+static inline uint32_t irq_save(void) {
+    uint32_t previous;
+    __asm__ volatile("csrrc %0, mstatus, %1"
+                     : "=r"(previous) : "r"(MSTATUS_MIE) : "memory");
+    return previous;
+}
+
+static inline void irq_restore(uint32_t previous) {
+    if (previous & MSTATUS_MIE) {
+        __asm__ volatile("csrs mstatus, %0" :: "r"(MSTATUS_MIE) : "memory");
+    }
+}
 
 #endif /* SPELLBOUND_RISCV_H */

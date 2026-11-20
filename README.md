@@ -15,7 +15,7 @@ For REA/Ghidra analysis, the boot chain and the hardware inventory, see
 
 The RV32 prototype under `kernel/` targets **QEMU virt** and communicates through
 its emulated UART. With Clang, LLD, llvm-objcopy and system QEMU available,
-`make test` checks boot, serial I/O, scheduling, the timer, heap boundaries and
+`make test` checks boot, serial I/O, scheduling and preemption, the timer, heap boundaries and
 trap diagnostics. See [the kernel guide](kernel/README.md) for build options.
 
 The Python analysis suite needs `cryptography` for channel, notification and
