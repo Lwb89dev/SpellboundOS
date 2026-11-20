@@ -3686,8 +3686,31 @@ deletion remain open.
    See [analysis/MAIN_OTA_INSTALL.md](analysis/MAIN_OTA_INSTALL.md). Vectors,
    native report and evidence regenerate byte for byte; full suite 2,368 OK.
 
+## 2026-11-20 — ZTW622 touch open
+
+1. Executed `ztw622_open` `0x701ebed8` on top of the verified touch register/
+   reset/version layer. All **10 native cases pass**. Recovered:
+   - bring-up: find `dev_ztw622`, open/configure the I2C bus, configure the
+     interrupt pin, attach the handler `0x701eacae`, set the rotation flag;
+   - **check-mode probe**: up to three reads of registers `0x13`/`0x121`
+     (`0x701eaf56`), soft-reset `0x701eb702(1)` and retry on failure; both
+     matching -> normal mode (`+0x1c = 1`), otherwise the version block
+     `0x701ebc50` and bootloader mode (`+0x1c = 2`);
+   - enable: write `0xd4 = 0x3c`, soft reset, clear interrupt, enable the GPIO
+     IRQ (`0x702bda0c`), start the input task (`0x80d3ddd8`, entry `0x701eca9c`),
+     program the charge active-nap register `0xe3` (`0x701ebe74`), create the
+     poll timer (`0x80d36b96`, callback `0x701eb154`), mark opened
+     (`+0x2b = +0x28 = 1`);
+   - return codes: `0` normal/bootloader, service error on I2C/attach failure,
+     `-5` task-alloc fail, `-6` timer-create fail.
+
+   See [analysis/MAIN_TOUCH_OPEN.md](analysis/MAIN_TOUCH_OPEN.md). Vectors,
+   native report and evidence regenerate byte for byte.
+
 ## Next work
 
+- Touch input task body (entry `0x701eca9c`) and the poll-timer callback
+  (`0x701eb154`), which drive the already-executed report handler `0x701eb18a`.
 - OTA bootloader apply: the post-reboot `Upgrade bootloader/firmware/boot
   resource` staging, the cryptographic image signature it checks (beyond the
   CRC32 transfer integrity now covered), and the backup-firmware recovery path
