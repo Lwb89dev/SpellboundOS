@@ -3608,6 +3608,24 @@ deletion remain open.
 
    See [analysis/MAIN_CHARGER_AW32012.md](analysis/MAIN_CHARGER_AW32012.md).
 
+## 2026-11-20 — STK31E60 ambient-light sensor
+
+1. Executed the STK31E60 ALS driver in `main-runtime`: register layer, init,
+   integration, gain, data-ready wait and read. All **31 native cases pass**
+   (4,519 steps).
+2. Findings:
+   - I2C `0x48`, three attempts 2 ms apart;
+   - init: vendor registers forced to `0x80`, then `0x07/0x08/0x3d/0x6a/0x6b`
+     and gain `0x17 = 0xb0`;
+   - integration code `trunc(ms × 1000 / 99 − 1)` in `0x6e/0x6f` (16.6 ms at
+     init);
+   - 16-entry gain table;
+   - ALS read waits out the mode period, polls `0x10` bit 7, reads
+     `0x13 << 8 | 0x14` and falls back to the cached value.
+3. Repaired two more `fcvt.wu.s` sites.
+
+   See [analysis/MAIN_ALS_STK31E60.md](analysis/MAIN_ALS_STK31E60.md).
+
 ## Next work
 
 - Sensor-hub IMU: the descriptor callbacks (open/close/rate/flush) that call

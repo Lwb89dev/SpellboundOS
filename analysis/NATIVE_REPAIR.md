@@ -95,10 +95,13 @@ floating-point semantics. Both were confirmed with single-step traces:
   emulator write explicitly
   ([SENSORHUB_IMU_INIT.md](SENSORHUB_IMU_INIT.md)).
 - `fcvt.wu.s rd, fs, rtz` computes `TRUNC` into a p-code temporary and never
-  writes `rd`, so `rd` keeps its old value. The IMU runner repairs only the
-  reviewed site `0x80f701a8` with the RISC-V semantics (round toward zero,
-  saturating). It records the repair as a `fix:<pc>:<value>` action
-  ([SENSORHUB_IMU_MODE.md](SENSORHUB_IMU_MODE.md)).
+  writes `rd`, so `rd` keeps its old value. The runners repair only reviewed
+  sites, using the RISC-V semantics (round toward zero, saturating), and record
+  each repair as a `fix:<pc>:<value>` action. The repaired sites are:
+  - `0x80f701a8`, sensor hub
+    ([SENSORHUB_IMU_MODE.md](SENSORHUB_IMU_MODE.md));
+  - `0x701ea072` and `0x701ea716`, main ALS
+    ([MAIN_ALS_STK31E60.md](MAIN_ALS_STK31E60.md)).
 
 Other native scopes that execute FP stores or FP-to-integer conversions should
 check for the same defects before trusting the emulator's results.
