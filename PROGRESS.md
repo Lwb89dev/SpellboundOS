@@ -3542,6 +3542,22 @@ deletion remain open.
    See [analysis/MAIN_TOUCH_REPORT.md](analysis/MAIN_TOUCH_REPORT.md) and
    [analysis/main-touch-report.json](analysis/main-touch-report.json).
 
+## 2026-11-20 — main-image board records (hardware map)
+
+1. Decoded all 22 main-side board records registered by `0x701632c4`. An RV32C
+   scanner resolves each registration call's name, data and size from the
+   original code. Results:
+   - touch ZTW622 and STK31E60 on `i2c3` (rails `LDO2_TP`/`TP_1V8`, pins 15/21);
+   - AW32012 and CW6305 on `sens_i2c1`;
+   - GNSS AG3335 on `uart1` (rails `GPS_1V8`/`GPS_0V8`);
+   - Bluetooth "bluebox" on `uart2`;
+   - PSRAM `HSPI0`/`HSPI1` at 198 MHz, plus `OSPI`;
+   - LCD rails `LCD_1V8`/`LCD_3V3`;
+   - motor on pin 95.
+
+   See [analysis/MAIN_BOARD_RECORDS.md](analysis/MAIN_BOARD_RECORDS.md) and
+   [analysis/main-board-records.json](analysis/main-board-records.json).
+
 ## Next work
 
 - Sensor-hub IMU: the descriptor callbacks (open/close/rate/flush) that call

@@ -1,0 +1,545 @@
+{
+  "code_sha256": "900f839d7ea06dcb671691dadbaa91166ef8ad19a87ac8b59b305b4efd1135d2",
+  "image": "main firmware (OTA 4.6.0.3)",
+  "limitations": [
+    "Records are decoded statically from the original registration function and startup-aware image memory; runtime code may change them before use.",
+    "Pin numbers are the main GPIO driver numbering; physical pads, bus speeds and regulator voltages are not decoded here. Field meanings are given only where a consumer was examined."
+  ],
+  "record_count": 22,
+  "records": [
+    {
+      "call_site": "0x701632e6",
+      "data": "0x80c01664",
+      "decoded": {
+        "firmware": "4.6.0.3",
+        "product": "Amazfit Bip 6"
+      },
+      "name": "system_info",
+      "sha256": "352fdb4cea9a08de50dfd9cf824d2594ac8c3e67d32394c33a23dd34bac97f72",
+      "size": 32,
+      "strings": {
+        "+0x0": "4.6.0.3",
+        "+0x4": "Amazfit Bip 6"
+      },
+      "words": [
+        "0x709bcc9c",
+        "0x709bd140",
+        "0x0000009b",
+        "0x00000100",
+        "0x01570001",
+        "0x00000000",
+        "0x0000011b",
+        "0x00000000"
+      ]
+    },
+    {
+      "call_site": "0x70163300",
+      "data": "0x80c015a0",
+      "decoded": {},
+      "name": "gpio_key",
+      "sha256": "d0e217c74f4e779f9a2843cd0d284a80af678f989e3995fc67a07b0a0c24fc10",
+      "size": 12,
+      "strings": {},
+      "words": [
+        "0x00130000",
+        "0x00010003",
+        "0x00030036"
+      ]
+    },
+    {
+      "call_site": "0x7016331a",
+      "data": "0x80c01658",
+      "decoded": {
+        "bus": "sens_i2c1",
+        "word1": "0x00140001",
+        "word2": 3
+      },
+      "name": "dev_aw32012",
+      "sha256": "ff0c42ce63c6a01d160fabc283f3aed1e6d9e8ff95251abcd1146efd08cfa68f",
+      "size": 12,
+      "strings": {
+        "+0x0": "sens_i2c1"
+      },
+      "words": [
+        "0x709bcf80",
+        "0x00140001",
+        "0x00000003"
+      ]
+    },
+    {
+      "call_site": "0x70163334",
+      "data": "0x80c0164c",
+      "decoded": {
+        "bus": "sens_i2c1",
+        "word1": "0x00140001",
+        "word2": 3
+      },
+      "name": "dev_cw6305",
+      "sha256": "ff0c42ce63c6a01d160fabc283f3aed1e6d9e8ff95251abcd1146efd08cfa68f",
+      "size": 12,
+      "strings": {
+        "+0x0": "sens_i2c1"
+      },
+      "words": [
+        "0x709bcf80",
+        "0x00140001",
+        "0x00000003"
+      ]
+    },
+    {
+      "call_site": "0x7016334e",
+      "data": "0x80c01644",
+      "decoded": {},
+      "name": "dev_virtual_pm",
+      "sha256": "46c5aaf32cc369e88c826f9ac3f9aeaae90bb123d10c4df2c4ef9918deb359f4",
+      "size": 8,
+      "strings": {},
+      "words": [
+        "0x00000009",
+        "0x80c01888"
+      ]
+    },
+    {
+      "call_site": "0x7016336a",
+      "data": "0x80c015b4",
+      "decoded": {},
+      "name": "dev_adc_volt",
+      "sha256": "416a974df42468306a1a8578bd298fde66eb2c9ff689d4efa730ea2fbbd942e2",
+      "size": 128,
+      "strings": {
+        "+0x20": "NTC_POWER"
+      },
+      "words": [
+        "0xffffffff",
+        "0x00000000",
+        "0x00000001",
+        "0x00000002",
+        "0x80c01634",
+        "0x80c0163c",
+        "0x00000000",
+        "0x00000000",
+        "0x709bd134",
+        "0x70162b7c",
+        "0x70162c18",
+        "0x00000000",
+        "0x1e215a00",
+        "0x0000001e",
+        "0x80c01798",
+        "0x80c016a8",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x1e215a00",
+        "0x0000001e",
+        "0x80c01798",
+        "0x80c016a8"
+      ]
+    },
+    {
+      "call_site": "0x70163384",
+      "data": "0x80c015ac",
+      "decoded": {
+        "word0": 0,
+        "word1": 95
+      },
+      "name": "dev_NL_motor",
+      "sha256": "353ff1bd4c25f4a85dd84cedc0a056918b76ca850389ef8356968bd07571d1bf",
+      "size": 8,
+      "strings": {},
+      "words": [
+        "0x00000000",
+        "0x0000005f"
+      ]
+    },
+    {
+      "call_site": "0x7016339e",
+      "data": "0x80c0158c",
+      "decoded": {
+        "bus": "i2c3",
+        "bytes_4_7": "00000300",
+        "evidence": "pins and rails used by the attach/power code 0x701eb88a/0x701eb4dc",
+        "interrupt_pin": 21,
+        "reset_pin": 15,
+        "vdda_rail": "LDO2_TP",
+        "vddd_rail": "TP_1V8"
+      },
+      "name": "dev_ztw622",
+      "sha256": "3e2e2e5af5c57c9c421f0bffff5c434cffa9079002ab2134b0a2a01a6eaff3f7",
+      "size": 20,
+      "strings": {
+        "+0x10": "TP_1V8",
+        "+0x8": "i2c3",
+        "+0xc": "LDO2_TP"
+      },
+      "words": [
+        "0x0015000f",
+        "0x00030000",
+        "0x709bcf98",
+        "0x709bd12c",
+        "0x709bd124"
+      ]
+    },
+    {
+      "call_site": "0x701633b8",
+      "data": "0x80c01584",
+      "decoded": {
+        "bus": "i2c3",
+        "rail": "TP_1V8"
+      },
+      "name": "dev_stk31e60",
+      "sha256": "c63ac5f44f23f5b517575f6ae146459d2aa16ba6ffffbaf4d49cb67fc1b43453",
+      "size": 8,
+      "strings": {
+        "+0x0": "i2c3",
+        "+0x4": "TP_1V8"
+      },
+      "words": [
+        "0x709bcf98",
+        "0x709bd124"
+      ]
+    },
+    {
+      "call_site": "0x701633d2",
+      "data": "0x80c00e1c",
+      "decoded": {},
+      "name": "dev_gpu",
+      "sha256": "cdcad119ba6a897163bd925b4cac70cb013c6a978598f1501849796a36390333",
+      "size": 12,
+      "strings": {},
+      "words": [
+        "0x70162944",
+        "0x7016290e",
+        "0x7016294c"
+      ]
+    },
+    {
+      "call_site": "0x701633ee",
+      "data": "0x80c01554",
+      "decoded": {
+        "bus": "uart1",
+        "rails": [
+          "GPS_1V8",
+          "GPS_0V8"
+        ],
+        "u16_fields": [
+          0,
+          0,
+          46,
+          48,
+          56,
+          45,
+          1028,
+          0
+        ]
+      },
+      "name": "dev_ag3335",
+      "sha256": "627d038a14875414b9c94c7ae1b553bcf031d0806cd511bcf199bfe92c4e6ab5",
+      "size": 48,
+      "strings": {
+        "+0x0": "uart1",
+        "+0x4": "GPS_1V8",
+        "+0x8": "GPS_0V8"
+      },
+      "words": [
+        "0x709bcfcc",
+        "0x709bd114",
+        "0x709bd11c",
+        "0x00000000",
+        "0x0030002e",
+        "0x002d0038",
+        "0x00000404",
+        "0x70163260",
+        "0x701631b4",
+        "0x00000000",
+        "0x70163668",
+        "0x70163692"
+      ]
+    },
+    {
+      "call_site": "0x70163408",
+      "data": "0x80c01684",
+      "decoded": {
+        "strings": [
+          "raw"
+        ]
+      },
+      "name": "dev_flash",
+      "sha256": "6836a95c96d0b48295466414deba6de180fa66760418a15590a56e6a51275891",
+      "size": 16,
+      "strings": {
+        "+0x8": "raw"
+      },
+      "words": [
+        "0x80c01694",
+        "0x00000005",
+        "0x709bd5cc",
+        "0x00000010"
+      ]
+    },
+    {
+      "call_site": "0x70163424",
+      "data": "0x80c01500",
+      "decoded": {
+        "base": "0x70000000",
+        "interface": "HSPI0",
+        "word2_hz": 198000000
+      },
+      "name": "dev_psram0",
+      "sha256": "38cea626c83f200300aba29ba98708e9d27f4dd70c81a8583b87f52854d5aac2",
+      "size": 84,
+      "strings": {
+        "+0x0": "HSPI0"
+      },
+      "words": [
+        "0x709bd10c",
+        "0x00000000",
+        "0x0bcd3d80",
+        "0x70000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000008",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000"
+      ]
+    },
+    {
+      "call_site": "0x70163440",
+      "data": "0x80c014ac",
+      "decoded": {
+        "base": "0x50000000",
+        "interface": "HSPI1",
+        "word2_hz": 198000000
+      },
+      "name": "dev_psram1",
+      "sha256": "f857dae00547442832e8311b7735c489155965c8c13b109e5dd49a902c9d0aec",
+      "size": 84,
+      "strings": {
+        "+0x0": "HSPI1"
+      },
+      "words": [
+        "0x709bd104",
+        "0x00000000",
+        "0x0bcd3d80",
+        "0x50000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000008",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000"
+      ]
+    },
+    {
+      "call_site": "0x7016345c",
+      "data": "0x80c01458",
+      "decoded": {
+        "base": "0x00000000",
+        "interface": "OSPI",
+        "word2_hz": 0
+      },
+      "name": "dev_psram",
+      "sha256": "f472f2dae5f28dfa5a6ea666104577c4e8eb2b78eff07bfa5aba383d7394ba0b",
+      "size": 84,
+      "strings": {
+        "+0x0": "OSPI"
+      },
+      "words": [
+        "0x709bd0fc",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x00000000",
+        "0x80c007dc"
+      ]
+    },
+    {
+      "call_site": "0x70163476",
+      "data": "0x80c01450",
+      "decoded": {},
+      "name": "dev_bt_log",
+      "sha256": "15a04c79b027e1e0fe423e4b29445023a581abf5f3edb64a4032efd4c059e85c",
+      "size": 8,
+      "strings": {},
+      "words": [
+        "0x701632c2",
+        "0x701632c0"
+      ]
+    },
+    {
+      "call_site": "0x70163490",
+      "data": "0x80c01434",
+      "decoded": {
+        "bus": "uart2",
+        "callbacks": [
+          "0x70163220",
+          "0x701631e0"
+        ],
+        "fields": [
+          13,
+          78,
+          40,
+          71
+        ]
+      },
+      "name": "dev_bluebox",
+      "sha256": "cc4ed083442014e4eb4ec3cd1957238a413c677c93256dc3a67c4953614ff4fd",
+      "size": 28,
+      "strings": {
+        "+0x0": "uart2"
+      },
+      "words": [
+        "0x709bcfb4",
+        "0x0000000d",
+        "0x0000004e",
+        "0x00000028",
+        "0x00000047",
+        "0x70163220",
+        "0x701631e0"
+      ]
+    },
+    {
+      "call_site": "0x701634aa",
+      "data": "0x70f87acc",
+      "decoded": {},
+      "name": "dev_nand",
+      "sha256": "b81ee1d564e1873d93ba60a05f575cf4dfc1f717df15c8593acfbc37f84a7327",
+      "size": 4,
+      "strings": {},
+      "words": [
+        "0x70f624dc"
+      ]
+    },
+    {
+      "call_site": "0x701634c4",
+      "data": "0x709bd204",
+      "decoded": {
+        "strings": [
+          "raw"
+        ]
+      },
+      "name": "nand_partition",
+      "sha256": "f3556c820b3caf9c8539eefa0b48e924a1d24df1a4840a253b762c477a554b9b",
+      "size": 8,
+      "strings": {
+        "+0x0": "raw"
+      },
+      "words": [
+        "0x709bd20c",
+        "0x00000010"
+      ]
+    },
+    {
+      "call_site": "0x701634de",
+      "data": "0x80c007b0",
+      "decoded": {},
+      "name": "dev_nand_pm",
+      "sha256": "6ff306ed4fe96e22931e3a60e73875bbc6420474c24b09d7900790ef3380b498",
+      "size": 4,
+      "strings": {},
+      "words": [
+        "0x80c007b4"
+      ]
+    },
+    {
+      "call_site": "0x701634f8",
+      "data": "0x80c01420",
+      "decoded": {
+        "rails": [
+          "LCD_1V8",
+          "LCD_3V3"
+        ],
+        "word2": 90,
+        "word3": "0x00000000"
+      },
+      "name": "dev_lcd",
+      "sha256": "205e98f44893e88349890c7e94ccf413ffaf1222f76091e0046bf7faa52b3068",
+      "size": 20,
+      "strings": {
+        "+0x0": "LCD_1V8",
+        "+0x4": "LCD_3V3"
+      },
+      "words": [
+        "0x709bd0ec",
+        "0x709bd0f4",
+        "0x0000005a",
+        "0x00000000",
+        "0x00000000"
+      ]
+    },
+    {
+      "call_site": "0x70163516",
+      "data": "0x80c0140c",
+      "decoded": {
+        "rails": [
+          "LCD_1V8",
+          "LCD_3V3"
+        ],
+        "word2": 90,
+        "word3": "0x00030039"
+      },
+      "name": "dev_icna3311",
+      "sha256": "fa7d026609b19bab2ae8b798f3d7f515ef56239ceb934eb5ff96ae52d58ae4a3",
+      "size": 20,
+      "strings": {
+        "+0x0": "LCD_1V8",
+        "+0x4": "LCD_3V3"
+      },
+      "words": [
+        "0x709bd0ec",
+        "0x709bd0f4",
+        "0x0000005a",
+        "0x00030039",
+        "0x00000000"
+      ]
+    }
+  ],
+  "register": "0x702b4dba",
+  "register_all": "0x701632c4"
+}

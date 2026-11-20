@@ -97,6 +97,7 @@ Latest detailed findings:
 - [Sensor-hub LSM6DSO enable/disable: the applied configuration](SENSORHUB_IMU_MODE.md)
 - [Sensor-hub LSM6DSO FIFO read, packet and orientation remap](SENSORHUB_IMU_FIFO.md)
 - [ZTW622 touch: I2C register layer and touch report handler](MAIN_TOUCH_REPORT.md)
+- [Main-image board records: the hardware map](MAIN_BOARD_RECORDS.md)
 - [Native recovery CRC, metadata policy, signed coverage and partition validation](RECOVERY_VALIDATOR_NATIVE.md)
 - [Storage registry, environment handle setup, NVMS mirrors and stopped bootstrap](ENV_STORAGE_SETUP_AND_NVMS.md)
 - [Original boot partition tables, backend geometry words and actual driver bindings](STORAGE_MAP_AND_DRIVER_BINDINGS.md)
