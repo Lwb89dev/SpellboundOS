@@ -108,6 +108,7 @@ Latest detailed findings:
 - [ICNA3311 panel operations: dimming, brightness, sawtooth, gamma, HBM and register access](MAIN_DISPLAY_PANEL_OPS.md)
 - [Watch-side OTA install: CRC32 integrity, readback validation and persisted records](MAIN_OTA_INSTALL.md)
 - [ICNA3311 display: DSI command-write packet dispatch](MAIN_DISPLAY_DSI.md)
+- [RTL8763 Bluetooth: vendor HCI command CRC16](MAIN_BT_HCI_CRC.md)
 - [ZTW622 touch open: bus/GPIO bring-up, check-mode probe and task/timer start](MAIN_TOUCH_OPEN.md)
 - [ZTW622 touch delivery: event dispatcher and poll-timer callback](MAIN_TOUCH_DISPATCH.md)
 - [ZTW622 TP firmware-upgrade worker (input-task body)](MAIN_TOUCH_UPGRADE.md)

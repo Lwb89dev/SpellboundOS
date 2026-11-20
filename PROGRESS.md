@@ -3831,13 +3831,23 @@ deletion remain open.
    semaphore path and the frame DMA path remain (hardware orchestration).
    Vectors, native report and evidence regenerate byte for byte.
 
-## Next work
+## 2026-11-20 — RTL8763 Bluetooth vendor HCI CRC16
+
+1. Executed `0x703ceb56(crc, buffer, length)`, the vendor HCI command CRC16.
+   All **7 native cases pass**: reflected CRC16/MODBUS (poly 0xA001, table
+   `0x70a806a8` verified), seed 0xFFFF, `"123456789"` -> `0x4B37`; a two-chunk
+   run reproduces the one-pass CRC.
+
+   See [analysis/MAIN_BT_HCI_CRC.md](analysis/MAIN_BT_HCI_CRC.md). Vectors,
+   native report and evidence regenerate byte for byte.
+
+## Next work (hardware transport/DMA — poor fit for native execution)
 
 - Display: the semaphore-serialized active path, the `0x9a000000` controller
   programming `0x70161e66` and the frame path (`write_frame_work_out`, framebuffer
-  DMA, TE interrupt) — hardware MMIO/DMA. `mhs_dc_read_cmd` `0x70161f2a`.
-- BT RTL8763 transport (below `bx_hal_trans`, `serial_dev_*` uart2,
-  `hci_send_any`, patch-RAM loader).
+  DMA, TE interrupt). `mhs_dc_read_cmd` `0x70161f2a`.
+- BT: the HCI command builder, `hci_send_any`, the H5/three-wire UART transport
+  on `uart2` and the `rtl8763_pack.bin` patch-RAM loader.
 - IMU read callback `0x80f714a0` and ioctl dispatchers `0x80f716ec`/`0x80f71d58`.
 - OTA bootloader apply: the post-reboot `Upgrade bootloader/firmware/boot
   resource` staging, the cryptographic image signature it checks (beyond the

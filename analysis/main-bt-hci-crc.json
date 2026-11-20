@@ -1,0 +1,218 @@
+{
+  "controller": "Realtek RTL8763 (vendor HCI firmware download, @RTL)",
+  "crc16": {
+    "algorithm": "reflected CRC16/MODBUS (polynomial 0xA001), seed 0xFFFF",
+    "check_vector": {
+      "crc16": "0x4b37",
+      "input": "123456789"
+    },
+    "function": "0x703ceb56(crc, buffer, length)",
+    "table": "0x70a806a8 (256 entries, verified)",
+    "usage": "vendor HCI command, cmd low/high + crc low/high"
+  },
+  "image": "main firmware (OTA 4.6.0.3)",
+  "limitations": [
+    "Only the CRC16 update executes natively. The HCI command builder, the H5/three-wire UART transport on uart2, hci_send_any and the rtl8763_pack.bin patch-RAM loader are not executed here."
+  ],
+  "native_case_count": 7,
+  "native_steps": 13065,
+  "native_validation": {
+    "bound_per_case": 20000,
+    "case_count": 7,
+    "cases": [
+      {
+        "name": "main_bt_hci_crc_empty",
+        "observed": {
+          "actions": [
+            "op:crc16"
+          ],
+          "rows": [
+            {
+              "a0": 65535,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 5
+      },
+      {
+        "name": "main_bt_hci_crc_single",
+        "observed": {
+          "actions": [
+            "op:crc16"
+          ],
+          "rows": [
+            {
+              "a0": 15231,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 15
+      },
+      {
+        "name": "main_bt_hci_crc_ascii",
+        "observed": {
+          "actions": [
+            "op:crc16"
+          ],
+          "rows": [
+            {
+              "a0": 19255,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 95
+      },
+      {
+        "name": "main_bt_hci_crc_hci_reset",
+        "observed": {
+          "actions": [
+            "op:crc16"
+          ],
+          "rows": [
+            {
+              "a0": 16664,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 55
+      },
+      {
+        "name": "main_bt_hci_crc_block_256",
+        "observed": {
+          "actions": [
+            "op:crc16"
+          ],
+          "rows": [
+            {
+              "a0": 19428,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 2565
+      },
+      {
+        "name": "main_bt_hci_crc_block_1024",
+        "observed": {
+          "actions": [
+            "op:crc16"
+          ],
+          "rows": [
+            {
+              "a0": 50866,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 10245
+      },
+      {
+        "name": "main_bt_hci_crc_chunk_chain",
+        "observed": {
+          "actions": [
+            "op:crc16"
+          ],
+          "rows": [
+            {
+              "a0": 59316,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 85
+      }
+    ],
+    "hardware_execution": false,
+    "schema": 1
+  },
+  "validation_sha256": "b9726d7c261b6dd4eef47820099e33cc4007f3df7aa5aa90824513eb57de8f13",
+  "vectors_sha256": "8659f5d3e5983c54507a2e18cebe1af53f33325b886db4bf383e1b3d8df0d8a5"
+}
