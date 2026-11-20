@@ -1,10 +1,10 @@
 # Bootloader main-firmware load, signature gate and image handoff
 
-All **10 native cases** pass in **460 instruction steps**. This scope executes
+All **16 native cases** pass in **1,533 instruction steps**. This scope executes
 the original bootloader boot decision at `0x80c00918` and the firmware loader at
 `0x80c00876` end to end in the `boot-runtime` project, supplying the file-system
-leaves (stat/open/read/close), the signature verifier `0x80c0e2b6` and the image
-handoff `0x80c0084a` as stubs. The evidence is in
+leaves (stat/open/read/close) and the image handoff `0x80c0084a`. Six cases also
+execute the original signature verifier `0x80c0e2b6`. The evidence is in
 [main-boot-gate.json](main-boot-gate.json).
 
 This upgrades the boot-chain control flow in
@@ -62,15 +62,19 @@ and then two loggers (the loader's "secure verify failed" and the decision's
 
 ## Relationship to the signature verifier
 
-`0x80c0e2b6` is supplied here with a pass/fail result to exercise both branches
-of the boot decision. Its internals are the ECDSA secp256k1 over SHA-256 check
-against the embedded public key; the equivalent orchestration is executed for
-the recovery image in [RECOVERY_VALIDATOR_NATIVE.md](RECOVERY_VALIDATOR_NATIVE.md),
-and the archive/image signatures are checked independently in
-[OTA_ARCHIVE_SIGNATURE.md](OTA_ARCHIVE_SIGNATURE.md). Supplying a passing result
-here does not imply a bypass: producing a nonzero verifier result on the device
-still requires a signature that validates against the embedded key, i.e. the
-corresponding private key.
+The original verifier rejects images of 64 bytes or fewer before invoking
+crypto. It passes the final 64 bytes to a copy helper and hashes the preceding
+bytes in chunks of at most `0x80000` bytes. The new vectors cover one payload
+byte, exactly one chunk, a chunk plus one byte and the actual 13,120,020-byte
+stock main-image length. The copy, SHA and ECDSA leaves are supplied and record
+their arguments. At the stock length, a positive ECDSA result reaches the
+handoff stop and a rejection returns without reaching it. The ten prior
+vectors still supply the whole verifier and reproduce unchanged.
+
+The [OTA signature checker](OTA_ARCHIVE_SIGNATURE.md) separately uses actual
+archive bytes and the archived key. The emulator establishes the original
+argument ranges and control flow. Device enforcement and a supported
+standalone boot route remain open.
 
 ## Safe-boot feasibility, honestly
 
@@ -123,6 +127,7 @@ Remaining work:
 
 - Execute the caller above `0x80c00918` to establish whether a failed main boot
   deterministically falls through to recovery (the safety guarantee) or halts.
-- Execute `0x80c0e2b6` itself for the main image, as the recovery validator does
-  for the recovery image, to confirm the hashed region and key for main firmware.
+- Connect the verified hash ranges to real SHA and ECDSA inputs if the
+  cryptographic implementation itself becomes relevant. The mathematical
+  signature check already runs separately over archive bytes.
 - Everything in the feasibility list above needs on-device observation.

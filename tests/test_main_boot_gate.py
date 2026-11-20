@@ -27,7 +27,7 @@ class MainBootGateTest(unittest.TestCase):
         report = self.evidence['native_validation']
         self.assertIs(report['hardware_execution'], False)
         self.assertEqual((report['case_count'], len(report['cases']), report['bound_per_case']),
-                         (10, 10, gate.BOUND))
+                         (16, 16, gate.BOUND))
         for row in report['cases']:
             name = row['name'].removeprefix('main_boot_gate_')
             self.assertEqual(row['observed'], self.cases[name]['expected'])
@@ -105,6 +105,21 @@ class MainBootGateTest(unittest.TestCase):
             gate.contract(dict(case, scope='other'))
         with self.assertRaises(ValueError):
             gate.contract(dict(case, operations=case['operations'] * 2))
+
+    def test_original_main_verifier_chunks_only_payload_bytes(self):
+        def chunk_sizes(name):
+            actions = self.cases['original_verifier_' + name]['expected']['actions']
+            return [int(a.rsplit(':', 1)[1]) for a in actions if a.startswith(f'call:{gate.SHA_UPDATE}:')]
+
+        self.assertEqual(chunk_sizes('signature_only_rejected'), [])
+        self.assertEqual(chunk_sizes('one_payload_byte'), [1])
+        self.assertEqual(chunk_sizes('exact_chunk'), [gate.SHA_CHUNK])
+        self.assertEqual(chunk_sizes('chunk_plus_one'), [gate.SHA_CHUNK, 1])
+        chunks = chunk_sizes('ota_size_accepted')
+        self.assertEqual(chunks, chunk_sizes('ota_size_rejected'))
+        self.assertEqual(sum(chunks), gate.OTA_MAIN_SIZE - 64)
+        self.assertTrue(self.hands_off('original_verifier_ota_size_accepted'))
+        self.assertFalse(self.hands_off('original_verifier_ota_size_rejected'))
 
 
 if __name__ == '__main__':

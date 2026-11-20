@@ -1,7 +1,7 @@
 // Executes the original bootloader main-firmware boot decision and firmware
-// loader, supplying the file-system leaves, the signature verifier 0x80c0e2b6
-// and the image handoff as stubs, over authored state in the boot-runtime
-// project. Opened read-only; nothing saved.
+// loader over authored state in the boot-runtime project. The vectors supply
+// file-system leaves and handoff. Selected cases execute the verifier with
+// copy and cryptographic leaves supplied. Opened read-only.
 //@category SpellboundOS
 import com.google.gson.*;
 import ghidra.app.emulator.EmulatorHelper;

@@ -3,7 +3,8 @@
   "boot_sha256": "44cd83c0d09864c6101e9825bd3c77d7fac314584d0408b378dd56c2aac5736a",
   "byte_range_sha256": {
     "80c00876_a2": "9e42541accca923bec1a07064b5e466e419534663cb8f48072652aa647a22984",
-    "80c00918_74": "50fd5502f0f7a498fa46ff2b352e796a92b4a9b74edb1bda1feb622ca8ddd5c8"
+    "80c00918_74": "50fd5502f0f7a498fa46ff2b352e796a92b4a9b74edb1bda1feb622ca8ddd5c8",
+    "80c0e2b6_d6": "7f0470b4d3140f47aef37b29c90248f2f57f162d62ce18cb4fc1ff63a0657dc6"
   },
   "call_sites": [
     {
@@ -37,6 +38,26 @@
     {
       "site": "0x80c00902",
       "target": "0x80c0e2b6"
+    },
+    {
+      "site": "0x80c0e32a",
+      "target": "0x80c2de38"
+    },
+    {
+      "site": "0x80c0e336",
+      "target": "0x80c2b932"
+    },
+    {
+      "site": "0x80c0e350",
+      "target": "0x80c2b998"
+    },
+    {
+      "site": "0x80c0e35c",
+      "target": "0x80c2ba1c"
+    },
+    {
+      "site": "0x80c0e364",
+      "target": "0x80c0e144"
     }
   ],
   "firmware_entry": "0x70160000",
@@ -44,16 +65,16 @@
   "firmware_path": "/mnt/system/firmware_sign.bin",
   "image_handoff": "0x80c0084a",
   "limitations": [
-    "The bootloader boot decision and firmware loader execute in an emulator over authored state with the file-system leaves, the signature verifier 0x80c0e2b6 and the image handoff 0x80c0084a supplied; the indirect jump into the loaded image is a harness stop and is not taken.",
-    "The verifier result is supplied both ways to exercise the branch; its ECDSA/SHA-256 internals are executed for the recovery image elsewhere and are not re-executed here. No signature bypass is implied by supplying a passing result: a valid signature still requires the private key.",
-    "This proves the control-flow gate (the main firmware is entered only on loader success, which needs a nonzero verifier result), not device enforcement, the recovery fall-back policy, a physical flash backup or any viable standalone-boot route."
+    "The file-system leaves and image handoff are supplied. The handoff is a harness stop.",
+    "Six cases execute the original verifier with the copy, SHA and ECDSA leaves supplied. The stock-image vectors use the OTA member length. Image bytes and cryptographic arithmetic are outside the emulator scope and the pass/fail result is supplied.",
+    "Device enforcement, physical backup and standalone boot still require device evidence."
   ],
   "main_sha256": "a751910b1a4fdbe75f7e4a5cf38c8992f99e2de02c74283125a62f72ed8abafa",
-  "native_case_count": 10,
-  "native_steps": 460,
+  "native_case_count": 16,
+  "native_steps": 1533,
   "native_validation": {
     "bound_per_case": 5000,
-    "case_count": 10,
+    "case_count": 16,
     "cases": [
       {
         "name": "main_boot_gate_verified_firmware_hands_off",
@@ -377,11 +398,295 @@
           ]
         },
         "steps": 40
+      },
+      {
+        "name": "main_boot_gate_original_verifier_signature_only_rejected",
+        "observed": {
+          "actions": [
+            "op:boot",
+            "call:2160112016",
+            "call:2160226044",
+            "call:2160226044",
+            "call:2160225044",
+            "call:2160225442",
+            "call:2160225260",
+            "call:2160184698",
+            "call:2160183158",
+            "call:2160183158"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 92
+      },
+      {
+        "name": "main_boot_gate_original_verifier_one_payload_byte",
+        "observed": {
+          "actions": [
+            "op:boot",
+            "call:2160112016",
+            "call:2160226044",
+            "call:2160226044",
+            "call:2160225044",
+            "call:2160225442",
+            "call:2160225260",
+            "call:2160254520:2164264136:1880489985:64",
+            "call:2160245042:2164264200",
+            "call:2160245144:2164264200:1880489984:1",
+            "call:2160245276:2164264200:2164264104",
+            "call:2160124228:2164264104:2164264136",
+            "call:2160183158",
+            "call:2160068682:1880489984"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": "handoff"
+            }
+          ]
+        },
+        "steps": 101
+      },
+      {
+        "name": "main_boot_gate_original_verifier_exact_chunk",
+        "observed": {
+          "actions": [
+            "op:boot",
+            "call:2160112016",
+            "call:2160226044",
+            "call:2160226044",
+            "call:2160225044",
+            "call:2160225442",
+            "call:2160225260",
+            "call:2160254520:2164264136:1881014272:64",
+            "call:2160245042:2164264200",
+            "call:2160245144:2164264200:1880489984:524288",
+            "call:2160245276:2164264200:2164264104",
+            "call:2160124228:2164264104:2164264136",
+            "call:2160183158",
+            "call:2160068682:1880489984"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": "handoff"
+            }
+          ]
+        },
+        "steps": 101
+      },
+      {
+        "name": "main_boot_gate_original_verifier_chunk_plus_one",
+        "observed": {
+          "actions": [
+            "op:boot",
+            "call:2160112016",
+            "call:2160226044",
+            "call:2160226044",
+            "call:2160225044",
+            "call:2160225442",
+            "call:2160225260",
+            "call:2160254520:2164264136:1881014273:64",
+            "call:2160245042:2164264200",
+            "call:2160245144:2164264200:1880489984:524288",
+            "call:2160245144:2164264200:1881014272:1",
+            "call:2160245276:2164264200:2164264104",
+            "call:2160124228:2164264104:2164264136",
+            "call:2160183158",
+            "call:2160068682:1880489984"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": "handoff"
+            }
+          ]
+        },
+        "steps": 110
+      },
+      {
+        "name": "main_boot_gate_original_verifier_ota_size_accepted",
+        "observed": {
+          "actions": [
+            "op:boot",
+            "call:2160112016",
+            "call:2160226044",
+            "call:2160226044",
+            "call:2160225044",
+            "call:2160225442",
+            "call:2160225260",
+            "call:2160254520:2164264136:1893609940:64",
+            "call:2160245042:2164264200",
+            "call:2160245144:2164264200:1880489984:524288",
+            "call:2160245144:2164264200:1881014272:524288",
+            "call:2160245144:2164264200:1881538560:524288",
+            "call:2160245144:2164264200:1882062848:524288",
+            "call:2160245144:2164264200:1882587136:524288",
+            "call:2160245144:2164264200:1883111424:524288",
+            "call:2160245144:2164264200:1883635712:524288",
+            "call:2160245144:2164264200:1884160000:524288",
+            "call:2160245144:2164264200:1884684288:524288",
+            "call:2160245144:2164264200:1885208576:524288",
+            "call:2160245144:2164264200:1885732864:524288",
+            "call:2160245144:2164264200:1886257152:524288",
+            "call:2160245144:2164264200:1886781440:524288",
+            "call:2160245144:2164264200:1887305728:524288",
+            "call:2160245144:2164264200:1887830016:524288",
+            "call:2160245144:2164264200:1888354304:524288",
+            "call:2160245144:2164264200:1888878592:524288",
+            "call:2160245144:2164264200:1889402880:524288",
+            "call:2160245144:2164264200:1889927168:524288",
+            "call:2160245144:2164264200:1890451456:524288",
+            "call:2160245144:2164264200:1890975744:524288",
+            "call:2160245144:2164264200:1891500032:524288",
+            "call:2160245144:2164264200:1892024320:524288",
+            "call:2160245144:2164264200:1892548608:524288",
+            "call:2160245144:2164264200:1893072896:524288",
+            "call:2160245144:2164264200:1893597184:12756",
+            "call:2160245276:2164264200:2164264104",
+            "call:2160124228:2164264104:2164264136",
+            "call:2160183158",
+            "call:2160068682:1880489984"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": "handoff"
+            }
+          ]
+        },
+        "steps": 326
+      },
+      {
+        "name": "main_boot_gate_original_verifier_ota_size_rejected",
+        "observed": {
+          "actions": [
+            "op:boot",
+            "call:2160112016",
+            "call:2160226044",
+            "call:2160226044",
+            "call:2160225044",
+            "call:2160225442",
+            "call:2160225260",
+            "call:2160254520:2164264136:1893609940:64",
+            "call:2160245042:2164264200",
+            "call:2160245144:2164264200:1880489984:524288",
+            "call:2160245144:2164264200:1881014272:524288",
+            "call:2160245144:2164264200:1881538560:524288",
+            "call:2160245144:2164264200:1882062848:524288",
+            "call:2160245144:2164264200:1882587136:524288",
+            "call:2160245144:2164264200:1883111424:524288",
+            "call:2160245144:2164264200:1883635712:524288",
+            "call:2160245144:2164264200:1884160000:524288",
+            "call:2160245144:2164264200:1884684288:524288",
+            "call:2160245144:2164264200:1885208576:524288",
+            "call:2160245144:2164264200:1885732864:524288",
+            "call:2160245144:2164264200:1886257152:524288",
+            "call:2160245144:2164264200:1886781440:524288",
+            "call:2160245144:2164264200:1887305728:524288",
+            "call:2160245144:2164264200:1887830016:524288",
+            "call:2160245144:2164264200:1888354304:524288",
+            "call:2160245144:2164264200:1888878592:524288",
+            "call:2160245144:2164264200:1889402880:524288",
+            "call:2160245144:2164264200:1889927168:524288",
+            "call:2160245144:2164264200:1890451456:524288",
+            "call:2160245144:2164264200:1890975744:524288",
+            "call:2160245144:2164264200:1891500032:524288",
+            "call:2160245144:2164264200:1892024320:524288",
+            "call:2160245144:2164264200:1892548608:524288",
+            "call:2160245144:2164264200:1893072896:524288",
+            "call:2160245144:2164264200:1893597184:12756",
+            "call:2160245276:2164264200:2164264104",
+            "call:2160124228:2164264104:2164264136",
+            "call:2160184698",
+            "call:2160183158",
+            "call:2160183158"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 343
       }
     ],
     "hardware_execution": false,
     "schema": 1
   },
+  "ota_main_size": 13120020,
+  "sha_chunk_size": 524288,
   "signature_verifier": "0x80c0e2b6",
   "size_limit": "0xe00000",
   "strings": {
@@ -406,6 +711,6 @@
       "text": "firmware secure verify failed!!!\r\n"
     }
   },
-  "validation_sha256": "22ccf0b331ee171f763d78560aef60979288e45b0e135ee2c54be080efccbc73",
-  "vectors_sha256": "4f6c4bad54105c1139a30ec8c78a0a6605c0055e63c38f59d10262823c4a7038"
+  "validation_sha256": "48bf92a004ff0583378b06d03abbfe35763e1559941985b16f2ff1b6b1047c4e",
+  "vectors_sha256": "64db2010a01228f0f58d3d435d691d4592e47360085810e0b4eb7e657ad5d46c"
 }
