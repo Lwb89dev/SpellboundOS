@@ -13,11 +13,14 @@ reports document subsequent verification and corrections.
 For REA/Ghidra analysis, the boot chain and the hardware inventory, see
 [analysis/ANALYSIS.md](analysis/ANALYSIS.md).
 
-The RV32 prototype under `kernel/` runs on **QEMU virt** and communicates through
-its emulated UART. It is not yet Bip 6 firmware and must not be installed on the
-watch. With Clang, LLD, llvm-objcopy and QEMU installed, `make test` builds, boots
-and checks the banner and serial echo. Bluetooth and cryptography are not yet
-included.
+The RV32 prototype under `kernel/` targets **QEMU virt** and communicates through
+its emulated UART. With Clang, LLD, llvm-objcopy and system QEMU available,
+`make test` checks boot, serial I/O, scheduling, the timer, heap boundaries and
+trap diagnostics. See [the kernel guide](kernel/README.md) for build options.
+
+The Python analysis suite needs `cryptography` for channel, notification and
+signature tests. Run it with `python3 -m unittest discover -s tests` from the
+repository root.
 
 Device identified through Gadgetbridge on November 14, 2026: Amazfit Bip 6,
 firmware 4.6.0.3, hardware 0.135.23.0, deviceSource 10158337, product ID 155 and

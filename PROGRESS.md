@@ -4217,3 +4217,15 @@ Python suite — this is the first piece of OS code verified at **runtime** here
   counter. The scheduler checks wake times before dispatch.
 - QEMU tests cover zero-delay yields, two sleeping tasks, minimum elapsed ticks,
   and a sleeping task waking across the full 64-bit timer counter wrap.
+
+# 2026-11-20 — Machine trap diagnostics
+
+- Unhandled machine traps report the cause, instruction address and trap value,
+  mask interrupt sources and park the hart. The timer trap still returns normally.
+  A QEMU guest executes an illegal instruction to check the diagnostic through
+  the hardware trap vector.
+- All QEMU and sanitized host kernel checks pass. The Python suite passed 2,409
+  cases on its first run. Its eight errors came from a missing cryptography
+  package, including one test module that could not be imported. The three
+  affected modules passed all 15 tests with the dependency available, covering
+  all 2,418 distinct cases across the two runs.

@@ -25,8 +25,8 @@ This is bring-up scaffolding, not a Bip 6 image.
 ## Current capabilities
 
 - Boots on QEMU `virt`, single hart.
-- Machine-mode trap handling (direct `mtvec`); synchronous exceptions print
-  `mcause`/`mepc` and park.
+- Machine-mode traps use direct `mtvec`. An unhandled trap prints `mcause`,
+  `mepc` and `mtval`, masks interrupt sources and parks the hart.
 - CLINT machine timer: a periodic tick (100 Hz) via `MTIE` + global `MIE`, with a
   64-bit tick counter read protected from interrupts and safe RV32 `mtime`/`mtimecmp` access.
 - UART console (`puts`/`puthex`/`putdec`/`getc`), polled echo.
@@ -40,7 +40,7 @@ This is bring-up scaffolding, not a Bip 6 image.
 make                 # needs clang, ld.lld, llvm-objcopy
 make LLD=/path/to/ld.lld   # if ld.lld is not on PATH (e.g. an LLVM/NDK toolchain)
 make test            # needs qemu-system-riscv32; checks boot, echo, timer,
-                     # scheduler lifecycle and heap on RV32 QEMU virt
+                     # scheduler lifecycle, heap and trap diagnostics on RV32 QEMU virt
 make test-host       # host tests for heap and driver registry (clang + ASan/UBSan)
 ```
 

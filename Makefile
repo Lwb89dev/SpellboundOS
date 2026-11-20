@@ -62,6 +62,12 @@ $(BUILD)/heap_test.o: tests/qemu_heap.c | $(BUILD)
 $(BUILD)/heap_test.elf: $(BOOT_OBJS) $(BUILD)/kmem.o $(BUILD)/heap_test.o kernel/boards/qemu-virt/linker.ld
 	$(LLD) -m elf32lriscv -T kernel/boards/qemu-virt/linker.ld -o $@ $(filter %.o,$^)
 
+$(BUILD)/trap_test.o: tests/qemu_trap.c | $(BUILD)
+	$(CLANG) $(CFLAGS) -c $< -o $@
+
+$(BUILD)/trap_test.elf: $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o trap.o timer.o trap_test.o) kernel/boards/qemu-virt/linker.ld
+	$(LLD) -m elf32lriscv -T kernel/boards/qemu-virt/linker.ld -o $@ $(filter %.o,$^)
+
 $(BUILD)/console.o: kernel/console.c | $(BUILD)
 	$(CLANG) $(CFLAGS) -c $< -o $@
 
@@ -80,11 +86,12 @@ $(BUILD)/spellbound.bin: $(BUILD)/spellbound.elf
 qemu: $(BUILD)/spellbound.elf
 	$(QEMU) -machine virt -bios none -nographic -monitor none -kernel $<
 
-test: all $(BUILD)/scheduler_test.elf $(BUILD)/timer_test.elf $(BUILD)/heap_test.elf
+test: all $(addprefix $(BUILD)/,scheduler_test.elf timer_test.elf heap_test.elf trap_test.elf)
 	python3 tests/qemu_boot.py $(QEMU) $(BUILD)/spellbound.elf
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/scheduler_test.elf 'scheduler lifecycle'
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/timer_test.elf 'timer rollover'
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/heap_test.elf 'heap boundaries'
+	python3 tests/qemu_case.py $(QEMU) $(BUILD)/trap_test.elf 'illegal instruction' 'trap: mcause=0x00000002 mepc=0x8[0-9a-f]{7} mtval=0x00000000'
 
 test-host: | $(BUILD)
 	clang -std=c11 -Wall -Wextra -O2 -fsanitize=address,undefined -I kernel tests/test_kmem.c -o $(BUILD)/test_kmem

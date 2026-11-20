@@ -1,12 +1,14 @@
 #!/usr/bin/env python3
-"""Run a QEMU guest until it reports its named PASS or FAIL marker."""
+"""Check a QEMU guest report, with an optional pattern for fatal traps."""
+import re
 import select
 import subprocess
 import sys
 import time
 
-qemu, elf, name = sys.argv[1:]
-success = ('PASS: ' + name + '\r\n').encode()
+qemu, elf, name, *expected = sys.argv[1:]
+success = re.compile(expected[0].encode() if expected else
+                     re.escape(('PASS: ' + name + '\r\n').encode()))
 failure = ('FAIL: ' + name + '\r\n').encode()
 process = subprocess.Popen(
     [qemu, '-machine', 'virt', '-bios', 'none', '-nographic',
@@ -22,14 +24,14 @@ try:
             if not chunk:
                 break
             output.extend(chunk)
-            if success in output:
+            if success.search(output):
                 print('PASS: RV32 ' + name)
                 break
             if failure in output:
                 break
     else:
         raise RuntimeError(name + ' test timed out: ' + repr(output))
-    if success not in output:
+    if not success.search(output):
         raise RuntimeError(name + ' test failed: ' + repr(output))
 finally:
     process.terminate()

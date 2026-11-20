@@ -14,7 +14,6 @@
 
 /* mcause: top bit set marks an interrupt; low bits are the code. */
 #define MCAUSE_INTERRUPT (1u << 31)
-#define MCAUSE_CODE(x) ((x) & 0x7fffffffu)
 #define IRQ_MACHINE_TIMER 7u
 
 #define read_csr(reg)                                                          \

@@ -1,5 +1,4 @@
-/* Trap dispatch: machine timer interrupts drive the tick; any exception is
- * reported and the hart is parked (no recovery yet). */
+/* Machine timer interrupts advance the clock. Unhandled traps stop the hart. */
 #include "riscv.h"
 #include "timer.h"
 #include "../../console.h"
@@ -12,20 +11,20 @@ void trap_init(void) {
 
 void trap_handler(uint32_t mcause, uint32_t mepc, struct trap_frame *frame) {
     (void)frame;
-    if (mcause & MCAUSE_INTERRUPT) {
-        switch (MCAUSE_CODE(mcause)) {
-        case IRQ_MACHINE_TIMER:
-            timer_on_tick();
-            return;
-        default:
-            return; /* ignore other interrupt sources for now */
-        }
+    if (mcause == (MCAUSE_INTERRUPT | IRQ_MACHINE_TIMER)) {
+        timer_on_tick();
+        return;
     }
-    /* Synchronous exception: report and park. */
+
+    uint32_t mtval = read_csr(mtval);
+    /* Leave pending sources masked so a parked hart stays idle. */
+    write_csr(mie, 0u);
     console_puts("\n*** trap: mcause=");
     console_puthex(mcause);
     console_puts(" mepc=");
     console_puthex(mepc);
+    console_puts(" mtval=");
+    console_puthex(mtval);
     console_puts(" ***\n");
     for (;;) {
         __asm__ volatile("wfi");
