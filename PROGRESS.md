@@ -3661,6 +3661,19 @@ deletion remain open.
 
 ## Next work
 
+- Watch-side OTA install path: the downloader state machine
+  (`downloader_request_start/write_chunk_data/validate/upgrade/complete`,
+  strings at `0x709eca64`–`0x709ecb94`) and the upgrade-package record. These
+  decide how a package received over BLE is validated and staged for the
+  bootloader, which is central to the BLE-only recovery constraint.
+- Bluetooth controller: RTL8763 transport below `bx_hal_trans_*`
+  (`0x702be72a`/`0x702be7b8`), the `serial_dev_*` UART layer on `uart2`,
+  `hci_send_any`, and the patch-RAM loader (`load patch ram from %s`).
+- Buttons: `gpio_key_state_machine` `0x701e923e`. There are two keys,
+  `(0, pin 19)` and `(1, pin 54)`, with per-key timing words and event bits
+  `0x1`–`0x800`.
+- Display: the framebuffer→DSI refresh path, TE IRQ and the interface
+  enable/disable bodies `0x702c8208`/`0x702c8218`; `ztw622_open` `0x701ebed8`.
 - Sensor-hub IMU: the descriptor callbacks (open/close/rate/flush) that call
   the now-executed mode setter and FIFO drain, IRQ event `0x101` scheduling,
   the gyroscope delivery caller and the algorithm hook `0x80f63092`. See
