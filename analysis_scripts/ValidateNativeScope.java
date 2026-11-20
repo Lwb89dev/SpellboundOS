@@ -147,7 +147,13 @@ public class ValidateNativeScope extends GhidraScript {
             if (len < 0 || len > 0x1000) throw new IllegalStateException("bus length");
             boolean write = s.get("write").getAsBoolean();
             String tx = write ? HexFormat.of().formatHex(e.readMemory(toAddr(buf), (int) Math.min(len, 16))) : "";
-            actions.add("bus:" + pc + ":" + reg("a0") + ":" + reg("a1") + ":" + len + ":" + reg("a4") + ":" + tx);
+            if (s.has("rec")) {
+                StringBuilder r = new StringBuilder("bus:" + pc);
+                for (JsonElement i : s.getAsJsonArray("rec")) r.append(":").append(reg("a" + i.getAsInt()));
+                actions.add(r.append(":").append(tx).toString());
+            } else {
+                actions.add("bus:" + pc + ":" + reg("a0") + ":" + reg("a1") + ":" + len + ":" + reg("a4") + ":" + tx);
+            }
             JsonArray seq = s.getAsJsonArray("seq");
             int n = storeCount.getOrDefault(pc, 0);
             if (n >= seq.size()) throw new IllegalStateException("bus sequence bound");

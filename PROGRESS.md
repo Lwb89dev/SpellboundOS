@@ -3575,6 +3575,23 @@ deletion remain open.
 
    See [analysis/MAIN_TOUCH_CONTROL.md](analysis/MAIN_TOUCH_CONTROL.md).
 
+## 2026-11-20 — CW6305 charger register layer and controls
+
+1. Executed the CW6305 charger driver's register layer and every
+   register-level control in `main-runtime`. All **38 native cases pass**
+   (2,873 steps). The driver talks I2C `0x0b` with 8-bit registers.
+2. Controls recovered:
+   - charge enable: `0x01` bit 6;
+   - fast-charge current: `0x04`, 10–470 mA in four segments;
+   - safety timer: `0x06` bits 6:5;
+   - power off: clear both watchdogs at `0x08`, then set `0x07` bit 7;
+   - interrupt source `0x0b`, status `0x0d`/`0x0e` and id `0x00`;
+   - the 11-register initial table with three attempts.
+3. The board also carries an alternative AW32012 driver, and the fitted
+   charger is chosen at runtime by an id test.
+
+   See [analysis/MAIN_CHARGER_CW6305.md](analysis/MAIN_CHARGER_CW6305.md).
+
 ## Next work
 
 - Sensor-hub IMU: the descriptor callbacks (open/close/rate/flush) that call
