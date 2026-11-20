@@ -13,7 +13,9 @@ This is bring-up scaffolding, not a Bip 6 image.
 | `arch/riscv/timer.c` | CLINT machine timer (`mtime`/`mtimecmp`), periodic tick at a chosen Hz |
 | `arch/riscv/riscv.h` | CSR access helpers and bit definitions |
 | `console.c` / `console.h` | 16550 UART console (QEMU virt; the Bip 6 UART is separate) |
-| `main.c` | bring-up: console → traps → polled echo → 100 Hz timer → tick loop |
+| `sched.c` / `sched.h` | cooperative round-robin scheduler |
+| `arch/riscv/switch.S` | `context_switch` (callee-saved + ra) and the task trampoline |
+| `main.c` | bring-up: console → traps → polled echo → 100 Hz timer → two round-robin tasks → tick loop |
 | `boards/qemu-virt/linker.ld` | load at `0x80000000`, `.text/.rodata/.data/.bss`, 16 KiB stack |
 
 ## Current capabilities
@@ -24,6 +26,7 @@ This is bring-up scaffolding, not a Bip 6 image.
 - CLINT machine timer: a periodic tick (100 Hz) via `MTIE` + global `MIE`, with a
   64-bit tick counter and safe RV32 `mtime`/`mtimecmp` access.
 - UART console (`puts`/`puthex`/`putdec`/`getc`), polled echo.
+- Cooperative round-robin scheduler: `task_create`, `task_yield`, `task_exit`, `sched_run` over a `context_switch` primitive (saves callee-saved registers + `ra`).
 
 ## Build and test
 
@@ -40,6 +43,6 @@ targets needs a *system* QEMU (`qemu-system-riscv32`), not the user-mode
 
 ## Next foundations
 
-- A cooperative/preemptive task abstraction driven by the timer tick.
+- Preemptive scheduling (reschedule from the timer trap) on top of the current cooperative scheduler.
 - A small heap/allocator and a device/driver registration model.
 - Board abstraction so the same core runs on QEMU and (later) the Bip 6.

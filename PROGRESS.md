@@ -3876,11 +3876,28 @@ first tick) needs a system `qemu-system-riscv32`, which is not installed here
 (only user-mode `qemu-riscv32`, which cannot run a bare-metal kernel). Build with
 `make LLD=<path to ld.lld>` where `ld.lld` is not on PATH.
 
+## 2026-11-20 — SpellboundOS cooperative scheduler
+
+Added a round-robin task scheduler on top of the tick:
+
+- `context_switch` (`kernel/arch/riscv/switch.S`) saves the callee-saved
+  registers and `ra` of the current task, swaps stack pointers, and restores the
+  next task; a `task_trampoline` runs the task function and then `task_exit`.
+- `kernel/sched.c`: `task_create` (sets up an initial context frame on the
+  task's own stack), `task_yield`, `task_exit`, `sched_run` (drives tasks from
+  the boot context and returns when all exit), up to 8 tasks.
+- `main.c` creates two tasks that print `A1 B1 A2 B2 A3 B3` by yielding in
+  round-robin, runs them to completion, then enters the idle/tick loop.
+
+Clean `-Werror` build (10 KiB ELF). `tests/qemu_boot.py` now also checks the
+round-robin interleaving and the `all tasks done` line. Still verified by build
++ disassembly only (no `qemu-system-riscv32` in this environment to run it).
+
 ## Next work — OS build
 
-- A cooperative/preemptive task abstraction driven by the timer tick; a small
-  allocator; a device/driver registration model; board abstraction (QEMU vs Bip 6).
-- Run `make test` on a host with `qemu-system-riscv32` to confirm the tick at runtime.
+- Preemptive scheduling (reschedule from the timer trap); a small allocator; a
+  device/driver registration model; board abstraction (QEMU vs Bip 6).
+- Run `make test` on a host with `qemu-system-riscv32` to confirm at runtime.
 
 ## Reverse-engineering remainder (hardware transport/DMA — poor fit for native execution)
 

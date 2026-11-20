@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Check guest startup, UART echo and the periodic timer tick without relying on
-host timeouts. Requires a system QEMU (qemu-system-riscv32)."""
+"""Check guest startup, UART echo, the cooperative scheduler and the periodic
+timer tick without relying on host timeouts. Requires a system QEMU
+(qemu-system-riscv32)."""
 import select
 import subprocess
 import sys
@@ -28,13 +29,16 @@ try:
             sent = True
         if sent and not echoed and b'echo: Z' in output:
             echoed = True
-        if echoed and b'tick 1\n' in output:
-            print('PASS: RV32 boot, UART echo and 100 Hz timer tick')
+        scheduled = b'A1\nB1\nA2\nB2\nA3\nB3\n' in output and b'all tasks done' in output
+        if echoed and scheduled and b'tick 1\n' in output:
+            print('PASS: RV32 boot, UART echo, round-robin scheduler and 100 Hz tick')
             break
     else:
-        raise RuntimeError('QEMU boot, echo or timer tick timed out')
-    if not (echoed and b'tick 1\n' in output):
-        raise RuntimeError('QEMU exited before the echo and first tick')
+        raise RuntimeError('QEMU boot, echo, scheduler or timer tick timed out')
+    done = (echoed and b'A1\nB1\nA2\nB2\nA3\nB3\n' in output
+            and b'all tasks done' in output and b'tick 1\n' in output)
+    if not done:
+        raise RuntimeError('QEMU exited before the echo, scheduler run and first tick')
 finally:
     p.terminate()
     try:
