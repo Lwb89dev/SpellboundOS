@@ -42,6 +42,9 @@ This is bring-up scaffolding, not a Bip 6 image.
   preserves order and drops new bytes when full. TX uses polling.
   See the [emulated 16550](https://github.com/qemu/qemu/blob/master/hw/char/serial.c).
 - Round-robin tasks can yield, exit or sleep for a number of timer ticks. The scheduler waits on the boot stack when all tasks sleep and reuses slots when tasks exit. Call `trap_init` before running tasks.
+- A task can wait on a zero-initialized `task_event`. A signal wakes one waiter,
+  or latches one pending signal if there are no waiters. Interrupt handlers can
+  signal events. When all tasks block, the scheduler idles on the boot stack.
 - `sched_set_preemption(true)` enables one tick per time slice. The default is cooperative. Both modes save integer registers and the interrupt state in the task's trap frame and clear the hart's LR/SC reservation on a stack switch. A stack must have at least 272 bytes after alignment and enough space for the task's calls and trap handling. Tasks share machine-mode memory on hart 0. Serialize shared heap, registry and console access if using preemption.
 - Kernel heap `kmalloc`/`kfree` (first-fit, block split, forward coalescing); the allocator logic is portable and unit-tested on the host (`make test-host`). Access must be serialized, including against interrupts.
 - Device/driver registry: explicit name-based binding and retryable probe passes. QEMU virt registers and probes its console UART before `kernel_main`. Registration is single-threaded and reset only clears registry bindings.

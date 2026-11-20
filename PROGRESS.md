@@ -4303,3 +4303,11 @@ Python suite — this is the first piece of OS code verified at **runtime** here
 - Clear the hart's LR/SC reservation whenever the trap return changes stacks.
   The dummy SC targets the unused x0 frame slot. QEMU checks that a task cannot
   complete a conditional store using a later reservation made by its peer.
+
+## SpellboundOS — Scheduler events
+
+- Tasks can wait on a binary event. A signal wakes one waiter or latches until
+  a task takes it. The scheduler masks global interrupts between checking for
+  runnable tasks and entering WFI to avoid losing an interrupt wakeup.
+- QEMU covers coalesced signals, signaling before a wait, two tasks waiting on
+  one event, and a signal on an unrelated event leaving both tasks blocked.

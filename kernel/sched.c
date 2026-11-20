@@ -7,8 +7,8 @@
 #define MAX_TASKS 8
 #define MIN_STACK (TRAP_FRAME_SIZE + 128u)
 
-enum task_state { TASK_UNUSED, TASK_READY, TASK_RUNNING, TASK_SLEEPING, TASK_DONE };
-enum sched_request { SCHED_RUN, SCHED_YIELD, SCHED_SLEEP, SCHED_EXIT };
+enum task_state { TASK_UNUSED, TASK_READY, TASK_RUNNING, TASK_SLEEPING, TASK_WAITING, TASK_DONE };
+enum sched_request { SCHED_RUN, SCHED_YIELD, SCHED_SLEEP, SCHED_EXIT, SCHED_WAIT };
 
 struct task {
     struct trap_frame *frame;
@@ -16,6 +16,7 @@ struct task {
     bool started;
     uint64_t sleep_start;
     uint32_t sleep_ticks;
+    struct task_event *event;
 };
 
 extern void sched_trap_call(unsigned request, uint32_t argument);
@@ -75,17 +76,19 @@ static int next_ready(int from) {
     return -1;
 }
 
-static int wake_sleepers(void) {
+/* Wake elapsed sleepers and count tasks that still need a tick or signal. */
+static int refresh_blocked(void) {
     int waiting = 0;
     for (int i = 0; i < MAX_TASKS; i++) {
         struct task *task = &tasks[i];
-        if (task->state != TASK_SLEEPING) {
-            continue;
-        }
-        if (timer_ticks() - task->sleep_start >= task->sleep_ticks) {
-            task->state = TASK_READY;
-        } else {
+        if (task->state == TASK_WAITING) {
             waiting++;
+        } else if (task->state == TASK_SLEEPING) {
+            if (timer_ticks() - task->sleep_start >= task->sleep_ticks) {
+                task->state = TASK_READY;
+            } else {
+                waiting++;
+            }
         }
     }
     return waiting;
@@ -93,7 +96,7 @@ static int wake_sleepers(void) {
 
 static struct trap_frame *dispatch(struct trap_frame *frame) {
     int from = current;
-    wake_sleepers();
+    refresh_blocked();
     int next = next_ready(from >= 0 ? from : MAX_TASKS - 1);
     if (next < 0 && from < 0) {
         return frame;
@@ -119,7 +122,7 @@ static struct trap_frame *dispatch(struct trap_frame *frame) {
 
 struct trap_frame *sched_on_request(struct trap_frame *frame) {
     unsigned request = frame->x[10]; /* a0 */
-    if (request > SCHED_EXIT) {
+    if (request > SCHED_WAIT) {
         return NULL;
     }
     if (current < 0) {
@@ -137,6 +140,17 @@ struct trap_frame *sched_on_request(struct trap_frame *frame) {
         task->sleep_start = timer_ticks();
         task->sleep_ticks = delay;
         task->state = TASK_SLEEPING;
+    } else if (request == SCHED_WAIT) {
+        struct task_event *event = (struct task_event *)(uintptr_t)frame->x[11];
+        if (!event) {
+            return NULL;
+        }
+        if (event->pending) {
+            event->pending = false;
+            return frame;
+        }
+        task->event = event;
+        task->state = TASK_WAITING;
     } else {
         task->state = TASK_READY;
     }
@@ -169,6 +183,30 @@ void task_sleep(uint32_t ticks) {
     }
 }
 
+void task_event_signal(struct task_event *event) {
+    if (!event) {
+        return;
+    }
+    uint32_t previous = irq_save();
+    for (int i = 0; i < MAX_TASKS; i++) {
+        struct task *task = &tasks[i];
+        if (task->state == TASK_WAITING && task->event == event) {
+            task->event = NULL;
+            task->state = TASK_READY;
+            irq_restore(previous);
+            return;
+        }
+    }
+    event->pending = true;
+    irq_restore(previous);
+}
+
+void task_event_wait(struct task_event *event) {
+    if (current >= 0 && event) {
+        sched_trap_call(SCHED_WAIT, (uintptr_t)event);
+    }
+}
+
 _Noreturn void task_exit(void) {
     sched_trap_call(SCHED_EXIT, 0);
     for (;;) {
@@ -182,20 +220,23 @@ void sched_run(void) {
     }
     for (;;) {
         sched_trap_call(SCHED_RUN, 0);
-        int waiting = wake_sleepers();
-        if (next_ready(MAX_TASKS - 1) >= 0) {
-            continue;
+        uint32_t previous = irq_save();
+        int waiting = refresh_blocked();
+        bool ready = next_ready(MAX_TASKS - 1) >= 0;
+        if (!ready && waiting) {
+            /* An enabled pending source wakes WFI even with MIE masked. */
+            __asm__ volatile("wfi" ::: "memory");
         }
-        if (!waiting) {
+        irq_restore(previous);
+        if (!ready && !waiting) {
             return;
         }
-        __asm__ volatile("wfi" ::: "memory");
     }
 }
 
 int sched_runnable(void) {
     uint32_t previous = irq_save();
-    wake_sleepers();
+    refresh_blocked();
     int count = 0;
     for (int i = 0; i < MAX_TASKS; i++) {
         if (tasks[i].state == TASK_READY || tasks[i].state == TASK_RUNNING) {

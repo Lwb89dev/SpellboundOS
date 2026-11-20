@@ -7,6 +7,11 @@
 
 typedef void (*task_fn)(void);
 
+/* Zero-initialize before use and keep it alive while tasks wait on it. */
+struct task_event {
+    bool pending;
+};
+
 /* Switch tasks on timer interrupts while enabled. Defaults to cooperative. */
 void sched_set_preemption(bool enabled);
 
@@ -23,6 +28,14 @@ void task_yield(void);
  * A positive delay requires the periodic timer and interrupts to stay enabled. */
 void task_sleep(uint32_t ticks);
 
+/* Wake one waiter or latch one signal. Safe in an interrupt handler on hart 0.
+ * A running task continues until the next scheduling point. */
+void task_event_signal(struct task_event *event);
+
+/* Consume a latched signal or suspend the current task. Outside a task this
+ * is a no-op. If every task waits, an enabled interrupt must deliver a signal. */
+void task_event_wait(struct task_event *event);
+
 /* End the current task (marks it finished and yields; never returns). */
 _Noreturn void task_exit(void);
 
@@ -30,7 +43,7 @@ _Noreturn void task_exit(void);
  * Scheduler APIs are for boot and task contexts on hart 0. */
 void sched_run(void);
 
-/* Number of ready or running tasks, excluding tasks still asleep. */
+/* Number of ready or running tasks, excluding blocked tasks. */
 int sched_runnable(void);
 
 #endif /* SPELLBOUND_SCHED_H */

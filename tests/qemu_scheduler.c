@@ -13,6 +13,8 @@ static unsigned calls;
 static unsigned failures;
 static unsigned sleep_stage;
 static unsigned yield_stage;
+static struct task_event input_event, other_event;
+static unsigned event_stage;
 
 static void worker(void) {
     calls++;
@@ -44,6 +46,30 @@ static void second_sleeper(void) {
     task_sleep(3);
     if (timer_ticks() - start < 3) failures++;
     sleep_stage |= 8;
+}
+
+static void first_waiter(void) {
+    task_event_wait(&input_event);
+    event_stage |= 1;
+    task_event_wait(&input_event);
+    event_stage |= 2;
+}
+
+static void second_waiter(void) {
+    task_event_wait(&input_event);
+    event_stage |= 4;
+}
+
+static void signal_waiters(void) {
+    if (event_stage != 1 || sched_runnable() != 1) failures++;
+    task_event_signal(&other_event);
+    if (sched_runnable() != 1) failures++;
+    task_event_signal(&input_event);
+    if (sched_runnable() != 2) failures++;
+    task_yield();
+    if (event_stage != 3 || sched_runnable() != 1) failures++;
+    task_event_signal(&input_event);
+    task_event_wait(&other_event);
 }
 
 void kernel_main(void) {
@@ -81,6 +107,15 @@ void kernel_main(void) {
         task_create(second_sleeper, stacks[1], sizeof stacks[1]) < 0) failures++;
     sched_run();
     if (sleep_stage != (2 | 4 | 8) || sched_runnable() != 0) failures++;
+
+    task_event_signal(&input_event);
+    task_event_signal(&input_event);
+    task_event_wait(&input_event); /* boot does not consume the signal */
+    if (task_create(first_waiter, stacks[0], sizeof stacks[0]) < 0 ||
+        task_create(second_waiter, stacks[1], sizeof stacks[1]) < 0 ||
+        task_create(signal_waiters, stacks[2], sizeof stacks[2]) < 0) failures++;
+    sched_run();
+    if (event_stage != 7 || sched_runnable() != 0) failures++;
 
     console_puts(failures ? "FAIL: scheduler lifecycle\n" :
                             "PASS: scheduler lifecycle\n");
