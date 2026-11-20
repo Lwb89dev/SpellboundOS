@@ -3558,6 +3558,23 @@ deletion remain open.
    See [analysis/MAIN_BOARD_RECORDS.md](analysis/MAIN_BOARD_RECORDS.md) and
    [analysis/main-board-records.json](analysis/main-board-records.json).
 
+## 2026-11-20 — ZTW622 touch attach/probe, rails, reset, modes and version
+
+1. Executed the original ZTW622 attach/probe, rail switch, reset, mode setter
+   and version read over the real `dev_ztw622` record. All **23 native cases
+   pass** (6,990 steps).
+2. Power-up order: vdda off and discharged, 100 ms, then `TP_1V8` on, then
+   `LDO2_TP` on, 1 ms. The hardware reset waits 1 ms, drives the pin high,
+   then low for 100 ms around an I2C suspend, then high, and waits 200 ms.
+3. Probe: command `0x01f8`, `0xc000 = 1`, 22-byte information block at
+   `0x09d2`, then soft reset `0x0ff8`. The chip id `0xe622` comes from the
+   information block or register `0x0120`. Failures release everything stage
+   by stage and return 0.
+4. Recorded the mode-set register sequences and the version, resolution,
+   channel and glove registers.
+
+   See [analysis/MAIN_TOUCH_CONTROL.md](analysis/MAIN_TOUCH_CONTROL.md).
+
 ## Next work
 
 - Sensor-hub IMU: the descriptor callbacks (open/close/rate/flush) that call

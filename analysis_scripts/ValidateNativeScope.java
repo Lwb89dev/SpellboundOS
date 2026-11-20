@@ -397,7 +397,15 @@ public class ValidateNativeScope extends GhidraScript {
                 throw new IllegalStateException("Unrecognized body " + g.get("address").getAsLong());
         }
         JsonArray cases = new JsonArray();
-        for (JsonElement item : vectors.getAsJsonArray("cases")) cases.add(execute(item.getAsJsonObject()));
+        for (JsonElement item : vectors.getAsJsonArray("cases")) {
+            try {
+                cases.add(execute(item.getAsJsonObject()));
+            } catch (IllegalStateException ex) {
+                Files.writeString(Path.of("firmware/native-scope-mismatch.json"), actions == null ? "{}"
+                    : "{\"case\":\"" + item.getAsJsonObject().get("name").getAsString() + "\",\"actions\":" + actions + "}");
+                throw new IllegalStateException(ex.getMessage() + " in " + item.getAsJsonObject().get("name").getAsString(), ex);
+            }
+        }
         JsonObject report = new JsonObject();
         report.addProperty("schema", 1);
         report.addProperty("hardware_execution", false);
