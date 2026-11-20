@@ -3723,14 +3723,28 @@ deletion remain open.
    See [analysis/MAIN_TOUCH_DISPATCH.md](analysis/MAIN_TOUCH_DISPATCH.md).
    Vectors, native report and evidence regenerate byte for byte.
 
+## 2026-11-20 — ZTW622 TP firmware-upgrade worker
+
+1. Executed the input-task body `0x701eca9c` (dispatched by the state byte at
+   `0x70f8e100`). All **4 native cases pass**:
+   - **state 1** (upgrade): progress events (`0x701eac38` modes 0..5), stop timer
+     / disable IRQ / mark upgrading (`+0x2c=5`); enter bootloader (soft reset,
+     registers `0x1d5`, `0xc000=1`, `0xc004`, `0xc002=1`, `0xc003=1`, `0x104=1`,
+     `0x1d0`); stream the image in 0x40-byte chunks as 10-byte I2C packets
+     `[0x01d1, data[k:k+8]]` (malloc/write `0x701ead14`/free); leave the
+     bootloader (`0xc003=0`, `0x104=0`, `0x1d0`); verify each block (read `0x1d2`
+     back + `memcmp`); finalize (version, re-enable IRQ `+0x2c=1`, restart timer);
+   - **state 2** (work/config-reset `0x701ec2a4`): returns 0, or the log level 3
+     on failure.
+   - The captured packets are exactly the source image bytes in order. This
+     completes the ZTW622 touch driver and the OTA "TP firmware" (types 49/51)
+     consumer chain.
+
+   See [analysis/MAIN_TOUCH_UPGRADE.md](analysis/MAIN_TOUCH_UPGRADE.md). Vectors,
+   native report and evidence regenerate byte for byte.
+
 ## Next work
 
-- Touch input-task body (entry `0x701eca9c`): the TP firmware-upgrade / ODR
-  worker (strings `ztw622_uprgade_process`/`upgrade_odr_process`), dispatched by
-  the state byte at `0x70f8e100`; a large routine with chunked flash programming
-  (per-chunk malloc, DMA `0x80d3dedc`), a verify loop (`0x701eaf30` read-back and
-  `memcmp` `0x70947ab0`) and the TP command primitive `0x701eac38`. Consumer of
-  the OTA "TP firmware" module (file types 49/51).
 - OTA bootloader apply: the post-reboot `Upgrade bootloader/firmware/boot
   resource` staging, the cryptographic image signature it checks (beyond the
   CRC32 transfer integrity now covered), and the backup-firmware recovery path
