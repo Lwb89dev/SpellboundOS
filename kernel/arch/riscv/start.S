@@ -16,6 +16,8 @@ _start:
     addi t0, t0, 1
     j .Lzero
 .Lstart:
+    call board_init
+    bnez a0, .Lpark
     call kernel_main
 .Lpark:
     wfi

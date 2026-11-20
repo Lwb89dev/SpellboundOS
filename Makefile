@@ -6,7 +6,8 @@ BUILD := build/qemu-virt
 .DEFAULT_GOAL := all
 CFLAGS := --target=riscv32-unknown-elf -march=rv32imac_zicsr -mabi=ilp32 -ffreestanding -fno-stack-protector -fno-pic -fno-builtin -Wall -Wextra -Werror -O2 -MMD -MP
 
-OBJS := $(BUILD)/start.o $(BUILD)/trap_vector.o $(BUILD)/switch.o $(BUILD)/main.o $(BUILD)/console.o $(BUILD)/trap.o $(BUILD)/timer.o $(BUILD)/sched.o $(BUILD)/kmem.o $(BUILD)/driver.o
+BOOT_OBJS := $(addprefix $(BUILD)/,start.o board.o uart16550.o console.o driver.o)
+OBJS := $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o switch.o main.o trap.o timer.o sched.o kmem.o)
 
 -include $(wildcard $(BUILD)/*.d)
 
@@ -17,6 +18,12 @@ $(BUILD):
 	mkdir -p $@
 
 $(BUILD)/start.o: kernel/arch/riscv/start.S | $(BUILD)
+	$(CLANG) $(CFLAGS) -c $< -o $@
+
+$(BUILD)/board.o: kernel/boards/qemu-virt/board.c | $(BUILD)
+	$(CLANG) $(CFLAGS) -c $< -o $@
+
+$(BUILD)/uart16550.o: kernel/drivers/uart16550.c | $(BUILD)
 	$(CLANG) $(CFLAGS) -c $< -o $@
 
 $(BUILD)/trap_vector.o: kernel/arch/riscv/trap.S | $(BUILD)
@@ -40,19 +47,19 @@ $(BUILD)/main.o: kernel/main.c | $(BUILD)
 $(BUILD)/scheduler_test.o: tests/qemu_scheduler.c kernel/sched.h | $(BUILD)
 	$(CLANG) $(CFLAGS) -c $< -o $@
 
-$(BUILD)/scheduler_test.elf: $(BUILD)/start.o $(BUILD)/trap_vector.o $(BUILD)/trap.o $(BUILD)/timer.o $(BUILD)/switch.o $(BUILD)/sched.o $(BUILD)/console.o $(BUILD)/scheduler_test.o kernel/boards/qemu-virt/linker.ld
+$(BUILD)/scheduler_test.elf: $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o trap.o timer.o switch.o sched.o scheduler_test.o) kernel/boards/qemu-virt/linker.ld
 	$(LLD) -m elf32lriscv -T kernel/boards/qemu-virt/linker.ld -o $@ $(filter %.o,$^)
 
 $(BUILD)/timer_test.o: tests/qemu_timer.c kernel/arch/riscv/timer.c | $(BUILD)
 	$(CLANG) $(CFLAGS) -c $< -o $@
 
-$(BUILD)/timer_test.elf: $(BUILD)/start.o $(BUILD)/trap_vector.o $(BUILD)/trap.o $(BUILD)/console.o $(BUILD)/timer_test.o kernel/boards/qemu-virt/linker.ld
+$(BUILD)/timer_test.elf: $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o trap.o timer_test.o) kernel/boards/qemu-virt/linker.ld
 	$(LLD) -m elf32lriscv -T kernel/boards/qemu-virt/linker.ld -o $@ $(filter %.o,$^)
 
 $(BUILD)/heap_test.o: tests/qemu_heap.c | $(BUILD)
 	$(CLANG) $(CFLAGS) -c $< -o $@
 
-$(BUILD)/heap_test.elf: $(BUILD)/start.o $(BUILD)/console.o $(BUILD)/kmem.o $(BUILD)/heap_test.o kernel/boards/qemu-virt/linker.ld
+$(BUILD)/heap_test.elf: $(BOOT_OBJS) $(BUILD)/kmem.o $(BUILD)/heap_test.o kernel/boards/qemu-virt/linker.ld
 	$(LLD) -m elf32lriscv -T kernel/boards/qemu-virt/linker.ld -o $@ $(filter %.o,$^)
 
 $(BUILD)/console.o: kernel/console.c | $(BUILD)

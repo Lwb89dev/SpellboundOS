@@ -1,19 +1,22 @@
-/* Console over the QEMU virt 16550 UART at 0x10000000. Board-specific; the
- * Bip 6 UART differs and will have its own driver. */
+/* Formatting and byte I/O over the primary console. */
 #include "console.h"
 
-static volatile uint8_t *const uart = (volatile uint8_t *)0x10000000u;
+static const struct console_io *console;
+static uintptr_t context;
 
-#define UART_THR 0u /* transmit holding */
-#define UART_RBR 0u /* receive buffer */
-#define UART_LSR 5u /* line status */
-#define LSR_DR 0x01u /* data ready */
-#define LSR_THRE 0x20u /* transmit holding empty */
+int console_bind(const struct console_io *io, uintptr_t cookie) {
+    if (!io || !io->putc || !io->getc || console) {
+        return -1;
+    }
+    context = cookie;
+    console = io;
+    return 0;
+}
 
 void console_putc(char c) {
-    while ((uart[UART_LSR] & LSR_THRE) == 0) {
+    if (console) {
+        console->putc(context, c);
     }
-    uart[UART_THR] = (uint8_t)c;
 }
 
 void console_puts(const char *s) {
@@ -51,8 +54,5 @@ void console_putdec(uint32_t value) {
 }
 
 int console_getc(void) {
-    if (uart[UART_LSR] & LSR_DR) {
-        return (int)(uint8_t)uart[UART_RBR];
-    }
-    return -1;
+    return console ? console->getc(context) : -1;
 }

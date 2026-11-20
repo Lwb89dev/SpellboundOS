@@ -4200,3 +4200,11 @@ Python suite — this is the first piece of OS code verified at **runtime** here
 - Build rules now track header dependencies. System QEMU was unpacked locally for
   this run, not installed; future runs require a system QEMU executable or an
   equivalent local setup via the QEMU make variable.
+
+# 2026-11-20 — Board initialization and UART binding
+
+- Startup initializes the QEMU virt board after clearing BSS. The board
+  registers and probes its 16550 UART, which supplies the console's byte I/O.
+  The board also supplies the addresses and input clock for the machine timer.
+- Boot, serial echo, scheduler lifecycle, timer rollover and heap tests pass
+  through the same initialization path on RV32 QEMU virt.

@@ -7,12 +7,14 @@ This is bring-up scaffolding, not a Bip 6 image.
 
 | File | Role |
 | --- | --- |
-| `arch/riscv/start.S` | reset entry: park secondary harts, set `gp`/`sp`, zero `.bss`, call `kernel_main` |
+| `arch/riscv/start.S` | reset entry: park secondary harts, set `gp`/`sp`, zero `.bss`, initialize the board, call `kernel_main` |
 | `arch/riscv/trap.S` | machine-mode trap vector: save caller-saved registers, call `trap_handler`, restore, `mret` |
 | `arch/riscv/trap.c` | `trap_init` (install `mtvec`, direct mode) and `trap_handler` (timer IRQ → tick; exceptions reported and parked) |
 | `arch/riscv/timer.c` | CLINT machine timer (`mtime`/`mtimecmp`), periodic tick at a chosen Hz |
 | `arch/riscv/riscv.h` | CSR access helpers and bit definitions |
-| `console.c` / `console.h` | 16550 UART console (QEMU virt; the Bip 6 UART is separate) |
+| `console.c` / `console.h` | console formatting and byte I/O |
+| `drivers/uart16550.c` | polled access to the QEMU virt UART |
+| `boards/qemu-virt/board.c` | UART registration, timer addresses and input clock |
 | `sched.c` / `sched.h` | cooperative round-robin scheduler |
 | `kmem.c` / `kmem.h` | first-fit kernel heap (split + coalesce), host-testable |
 | `driver.c` / `driver.h` | fixed-size device/driver registration and probe, host-testable |
@@ -30,7 +32,7 @@ This is bring-up scaffolding, not a Bip 6 image.
 - UART console (`puts`/`puthex`/`putdec`/`getc`), polled echo.
 - Cooperative round-robin scheduler: `task_create`, `task_yield`, `task_exit`, `sched_run` over a `context_switch` primitive (saves callee-saved registers + `ra`). Finished slots can be reused. It is single-hart and not interrupt-safe.
 - Kernel heap `kmalloc`/`kfree` (first-fit, block split, forward coalescing); the allocator logic is portable and unit-tested on the host (`make test-host`). Access must be serialized, including against interrupts.
-- Device/driver registry: explicit name-based binding and retryable probe passes. Objects and names must outlive registration; registration is single-threaded, reset does not release driver resources, and hardware drivers are not yet connected.
+- Device/driver registry: explicit name-based binding and retryable probe passes. QEMU virt registers and probes its console UART before `kernel_main`. Registration is single-threaded and reset only clears registry bindings.
 
 ## Build and test
 
@@ -49,5 +51,4 @@ targets needs a *system* QEMU (`qemu-system-riscv32`), not the user-mode
 ## Next foundations
 
 - Preemptive scheduling (reschedule from the timer trap) on top of the current cooperative scheduler.
-- Connect board devices and real drivers to the registration model.
-- Board abstraction so the same core runs on QEMU and (later) the Bip 6.
+- Add board support for further devices.
