@@ -1,0 +1,693 @@
+{
+  "byte_range_sha256": {
+    "80f6fafa_a0": "cab8ea5d792ce63d6ec1daf02505b57f02de00c141216b43313c6716d22c7454",
+    "80f7021c_62": "8e1e15ab4d8c5beda59876f2411cc55f4a0ebe49605898a07a3925907d3e08bc",
+    "80f71c88_2a": "4342faa71a79ed4c10ec82cb94b9ce486e1bfccb46f93d59c0e8b384e83af20d",
+    "80f71cb2_a6": "1a9a807bf460a8896a15cf25d48cc6721c72fb9a752842d0adf04300e3de2e8b",
+    "80f7290e_c": "c2f4dced948b7ebbb847d6c9fd08096090d9a52cd37e82d076f46ee4a8c5ce0b",
+    "80f72bb4_68": "2c97608f9526a7d6dcb5bae45284a02b7a74692d1ed6e2609dac8e0e26092f65",
+    "80fd876c_c": "301bdbbde148ef12e7ebcb4144765c7f814aded95907606ed2993b288f624492"
+  },
+  "call_sites": [
+    {
+      "site": "0x80f71cde",
+      "target": "0x80f7021c"
+    },
+    {
+      "site": "0x80f71ce6",
+      "target": "0x80f71c88"
+    },
+    {
+      "site": "0x80f71d14",
+      "target": "0x80f86d34"
+    },
+    {
+      "site": "0x80f71d34",
+      "target": "0x80f86d34"
+    },
+    {
+      "site": "0x80f71d40",
+      "target": "0x80f7ff0e"
+    },
+    {
+      "site": "0x80f71d52",
+      "target": "0x80f86d34"
+    },
+    {
+      "site": "0x80f70238",
+      "target": "0x80f72bbe"
+    },
+    {
+      "site": "0x80f70242",
+      "target": "0x80f72bfa"
+    },
+    {
+      "site": "0x80f70248",
+      "target": "0x80f7ff0e"
+    },
+    {
+      "site": "0x80f70270",
+      "target": "0x80f86d34"
+    },
+    {
+      "site": "0x80f71c9a",
+      "target": "0x80f72bb4"
+    },
+    {
+      "site": "0x80f72bba",
+      "target": "0x80f7290e"
+    },
+    {
+      "site": "0x80f72bd0",
+      "target": "0x80f7290e"
+    },
+    {
+      "site": "0x80f72bec",
+      "target": "0x80f72914"
+    },
+    {
+      "site": "0x80f72c08",
+      "target": "0x80f7290e"
+    },
+    {
+      "site": "0x80f6fb3e",
+      "target": "0x80f898ae"
+    },
+    {
+      "site": "0x80f6fb4e",
+      "target": "0x80fcddf0"
+    },
+    {
+      "site": "0x80f6fb8c",
+      "target": "0x80f898ae"
+    }
+  ],
+  "context": {
+    "address": "0x80fd876c",
+    "handle": 0,
+    "names": [
+      "lsm6dso G",
+      "lsm6dso A"
+    ],
+    "read_reg": "0x80f6fafa",
+    "spi_handle_word": "0x80f17018",
+    "write_reg": "0x80f6fb60"
+  },
+  "entries": {
+    "ctx_read": "0x80f7290e",
+    "ctx_write": "0x80f72914",
+    "device_id_get": "0x80f72bb4",
+    "init": "0x80f71cb2",
+    "reset": "0x80f7021c",
+    "reset_get": "0x80f72bfa",
+    "reset_set": "0x80f72bbe",
+    "spi_read": "0x80f6fafa",
+    "spi_write": "0x80f6fb60",
+    "whoami": "0x80f71c88"
+  },
+  "hub_sha256": "06f07541e8bb22b6118f081e791c3a4e40cbff2decd8ee478a7e82df826e9d0f",
+  "init_attempts": 3,
+  "limitations": [
+    "Every body from the init/probe down to the SPI read/write callbacks executes in the sensor-hub emulator; only the SPI transfer helper 0x80f898ae, memcpy, the delay and the logger are supplied. The spi stub captures the transmitted bytes and injects authored receive bytes and statuses; no transfer reaches a real bus or LSM6DSO.",
+    "The SPI handle word 0x80f17018 is .bss set at runtime by the caller 0x80f726ee; its value here is authored. The bus instance, chip select, SPI mode, clock and the helper internals are not executed.",
+    "A failed CTRL3_C read during the reset poll makes the original accessor read an uninitialized stack byte; vectors do not exercise that path. A failed WHO_AM_I read leaves the caller buffer unchanged, so the cached id is the previous attempt value (zero before the first good read).",
+    "Configuration beyond reset/identity (ODR, full scale, FIFO, interrupt routing, embedded functions), reset timing and the fitted part remain unproved and need the device. This is a probe and bus-framing contract, not a working IMU driver."
+  ],
+  "native_case_count": 12,
+  "native_steps": 5689,
+  "native_validation": {
+    "bound_per_case": 5000,
+    "case_count": 12,
+    "cases": [
+      {
+        "name": "sensorhub_imu_probe_reset_clears_immediately",
+        "observed": {
+          "actions": [
+            "op:reset",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1205",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 168
+      },
+      {
+        "name": "sensorhub_imu_probe_reset_clears_on_third_poll",
+        "observed": {
+          "actions": [
+            "op:reset",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1205",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 300
+      },
+      {
+        "name": "sensorhub_imu_probe_reset_preserves_other_ctrl3_bits",
+        "observed": {
+          "actions": [
+            "op:reset",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1245",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 168
+      },
+      {
+        "name": "sensorhub_imu_probe_reset_times_out",
+        "observed": {
+          "actions": [
+            "op:reset",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1205",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "call:2163764532:3"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 773
+      },
+      {
+        "name": "sensorhub_imu_probe_reset_rmw_read_error_skips_write",
+        "observed": {
+          "actions": [
+            "op:reset",
+            "spi:1515847681:2:5000:9200",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 131
+      },
+      {
+        "name": "sensorhub_imu_probe_reset_write_error_still_polls",
+        "observed": {
+          "actions": [
+            "op:reset",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1205",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1"
+          ],
+          "rows": [
+            {
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 168
+      },
+      {
+        "name": "sensorhub_imu_probe_probe_identifies_lsm6dso",
+        "observed": {
+          "actions": [
+            "op:init",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1205",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:8f00",
+            "call:2164055536",
+            "w:2163306535:1:108",
+            "call:2163764532:6"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 269
+      },
+      {
+        "name": "sensorhub_imu_probe_probe_reset_timeout_then_id_ok",
+        "observed": {
+          "actions": [
+            "op:init",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1205",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "call:2163764532:3",
+            "spi:1515847681:2:5000:8f00",
+            "call:2164055536",
+            "w:2163306535:1:108",
+            "call:2163764532:6"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 874
+      },
+      {
+        "name": "sensorhub_imu_probe_probe_wrong_id_retries_three_times",
+        "observed": {
+          "actions": [
+            "op:init",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1205",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:8f00",
+            "call:2164055536",
+            "w:2163306535:1:106",
+            "call:2163764532:6",
+            "call:2163736334:10",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1205",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:8f00",
+            "call:2164055536",
+            "w:2163306535:1:106",
+            "call:2163764532:6",
+            "call:2163736334:10",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1205",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:8f00",
+            "call:2164055536",
+            "w:2163306535:1:106",
+            "call:2163764532:6",
+            "call:2163736334:10"
+          ],
+          "rows": [
+            {
+              "a0": 1,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 763
+      },
+      {
+        "name": "sensorhub_imu_probe_probe_read_error_retries_three_times",
+        "observed": {
+          "actions": [
+            "op:init",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1205",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:8f00",
+            "w:2163306535:1:0",
+            "call:2163764532:6",
+            "call:2163736334:10",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1205",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:8f00",
+            "w:2163306535:1:0",
+            "call:2163764532:6",
+            "call:2163736334:10",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1205",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:8f00",
+            "w:2163306535:1:0",
+            "call:2163764532:6",
+            "call:2163736334:10"
+          ],
+          "rows": [
+            {
+              "a0": 4,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 745
+      },
+      {
+        "name": "sensorhub_imu_probe_probe_read_error_keeps_stale_id",
+        "observed": {
+          "actions": [
+            "op:init",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1205",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:8f00",
+            "call:2164055536",
+            "w:2163306535:1:106",
+            "call:2163764532:6",
+            "call:2163736334:10",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1205",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:8f00",
+            "w:2163306535:1:106",
+            "call:2163764532:6",
+            "call:2163736334:10",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1205",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:8f00",
+            "call:2164055536",
+            "w:2163306535:1:108",
+            "call:2163764532:6"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 755
+      },
+      {
+        "name": "sensorhub_imu_probe_probe_recovers_on_second_attempt",
+        "observed": {
+          "actions": [
+            "op:init",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1205",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:8f00",
+            "w:2163306535:1:0",
+            "call:2163764532:6",
+            "call:2163736334:10",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "spi:1515847681:2:5000:1205",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:9200",
+            "call:2164055536",
+            "call:2163736334:1",
+            "spi:1515847681:2:5000:8f00",
+            "call:2164055536",
+            "w:2163306535:1:108",
+            "call:2163764532:6"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 575
+      }
+    ],
+    "hardware_execution": false,
+    "schema": 1
+  },
+  "registers": {
+    "CTRL3_C": "0x12",
+    "WHO_AM_I": "0x0f",
+    "sw_reset_bit": 0
+  },
+  "reset_polls": 10,
+  "sensor": "LSM6DSO",
+  "spi_framing": {
+    "read": "tx = [reg | 0x80] + n dummy bytes, length n + 1; data = rx[1 : n + 1]",
+    "read_flag": "0x80",
+    "timeout": 5000,
+    "write": "tx = [reg, data[0]], length 2 (only the first data byte is placed)"
+  },
+  "validation_sha256": "282633f0ca4f4dc6ec5fd8a175789a78dd5fa68222eb54a60983849f64ee56b5",
+  "vectors_sha256": "bd012f719bf563d0205e72880e4cf2af7f31d54a7b6882ac0c7a4f0becec79d3",
+  "who_am_i": "0x6c"
+}

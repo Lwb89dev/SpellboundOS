@@ -3396,6 +3396,33 @@ deletion remain open.
    join the suite. Sleep-out/display-on sequencing, the framebuffer/refresh path
    and backlight runtime control remain open and need the device.
 
+## 2026-11-20 — sensor-hub LSM6DSO probe, reset and SPI register framing
+
+1. Executed every original sensor-hub body from the LSM6DSO init/probe
+   `0x80f71cb2` down to the SPI read/write callbacks `0x80f6fafa`/`0x80f6fb60`
+   in the `sensor-runtime` project. All **12 native cases pass** (5,689 steps).
+   Only the SPI transfer helper `0x80f898ae`, memcpy, the delay and the logger
+   are supplied. A new `spi` stub captures the transmitted bytes and injects
+   scripted receive bytes and statuses.
+2. The layer matches ST's public `lsm6dso_reg.c`: the register context
+   `0x80fd876c` is `{write_reg, read_reg, handle}`. Reset is a read-modify-write
+   of `CTRL3_C` (`0x12`) bit 0, polled up to ten times 1 ms apart. The identity
+   read is register `0x0F`, accepted only as `0x6C`, with three attempts 10 ms
+   apart (result 0/1/4).
+3. Captured SPI framing: a read sends `reg | 0x80` plus dummy bytes (`n + 1`
+   bytes, data from `rx[1..]`). A write sends `reg, data[0]`. Both use timeout
+   5000. A failed WHO_AM_I read leaves the probe buffer unchanged, so the cached
+   id is stale. A failed reset-poll read uses an uninitialized stack byte, and
+   the vectors do not exercise it.
+
+   See [analysis/SENSORHUB_IMU_PROBE.md](analysis/SENSORHUB_IMU_PROBE.md) and
+   [analysis/sensorhub-imu-probe.json](analysis/sensorhub-imu-probe.json). The
+   vectors, native report and evidence regenerate byte for byte, and nine new
+   host checks join the suite. Still open: the caller `0x80f726ee` (bus handle,
+   chip select, SPI mode/clock, interrupt setup), the transfer helper/controller,
+   post-identity configuration and the data path. These need further work or the
+   device.
+
 ## Next work
 
 - Main kernel: execute `vTaskSuspend`/`vTaskResume`, the idle-task termination
