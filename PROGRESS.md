@@ -3841,6 +3841,16 @@ deletion remain open.
    See [analysis/MAIN_BT_HCI_CRC.md](analysis/MAIN_BT_HCI_CRC.md). Vectors,
    native report and evidence regenerate byte for byte.
 
+## 2026-11-20 — sensor-hub LSM6DSO accelerometer ioctl dispatch
+
+1. Executed the accelerometer ioctl `0x80f71d58` command routing. All **4
+   native cases pass**: command `0x01` -> `0x80f62f90`, `0xb2` -> `0x80f6300e`,
+   unrouted -> `CMD%d unsupport` logger. Decoded the full ~17-command map from
+   the jump tables `0x80fd8658` (`0x9d..0xab`) and `0x80fd8694` (`0x81..0x86`).
+
+   See [analysis/SENSORHUB_IMU_IOCTL.md](analysis/SENSORHUB_IMU_IOCTL.md).
+   Vectors, native report and evidence regenerate byte for byte.
+
 ## Next work (hardware transport/DMA — poor fit for native execution)
 
 - Display: the semaphore-serialized active path, the `0x9a000000` controller

@@ -1,0 +1,170 @@
+{
+  "command_map": {
+    "0x01": "0x80f62f90",
+    "0x02": "0x80f7217e",
+    "0x101": "0x80f722c2",
+    "0x102": "0x80f723ac",
+    "0x81": "0x80f722a4",
+    "0x82": "unsupported",
+    "0x83": "0x80f721d2",
+    "0x84": "0x80f7233c",
+    "0x85": "0x80f72260",
+    "0x86": "0x80f72282",
+    "0x9d": "0x80f7209e",
+    "0x9e": "0x80f7211c",
+    "0x9f": "unsupported",
+    "0xa0": "0x80f71e2a",
+    "0xa1": "0x80f71eea",
+    "0xa2": "unsupported",
+    "0xa3": "unsupported",
+    "0xa4": "unsupported",
+    "0xa5": "unsupported",
+    "0xa6": "0x80f7214c",
+    "0xa7": "unsupported",
+    "0xa8": "unsupported",
+    "0xa9": "unsupported",
+    "0xaa": "unsupported",
+    "0xab": "0x80f72426",
+    "0xb2": "0x80f6300e"
+  },
+  "dispatcher": "0x80f71d58 (accelerometer ioctl)",
+  "executed_routing": {
+    "cmd_b2": "0x80f6300e",
+    "cmd_read": "0x80f62f90",
+    "cmd_unsupported": "0x80f86d34",
+    "cmd_unsupported_high": "0x80f86d34"
+  },
+  "image": "sensor-hub (OTA 4.6.0.3)",
+  "jump_tables": {
+    "table1": "0x80fd8658 (0x9d..0xab)",
+    "table2": "0x80fd8694 (0x81..0x86)"
+  },
+  "limitations": [
+    "Only the routing of the direct tail-call commands (0x01 read, 0xb2) and the unsupported default is executed; the remaining command handlers (rate/range/mode/self-test and the jump-table commands) are decoded into the command map but not individually executed.",
+    "The gyroscope ioctl dispatcher 0x80f716ec has the same shape and is not covered here."
+  ],
+  "native_case_count": 4,
+  "native_steps": 168,
+  "native_validation": {
+    "bound_per_case": 20000,
+    "case_count": 4,
+    "cases": [
+      {
+        "name": "sensorhub_imu_ioctl_cmd_read",
+        "observed": {
+          "actions": [
+            "op:ioctl",
+            "call:2163617680:305419896"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 40
+      },
+      {
+        "name": "sensorhub_imu_ioctl_cmd_b2",
+        "observed": {
+          "actions": [
+            "op:ioctl",
+            "call:2163617806:305419896"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 38
+      },
+      {
+        "name": "sensorhub_imu_ioctl_cmd_unsupported",
+        "observed": {
+          "actions": [
+            "op:ioctl",
+            "call:2163764532:6"
+          ],
+          "rows": [
+            {
+              "a0": 6,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 46
+      },
+      {
+        "name": "sensorhub_imu_ioctl_cmd_unsupported_high",
+        "observed": {
+          "actions": [
+            "op:ioctl",
+            "call:2163764532:6"
+          ],
+          "rows": [
+            {
+              "a0": 6,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 44
+      }
+    ],
+    "hardware_execution": false,
+    "schema": 1
+  },
+  "validation_sha256": "1b8575921497b77162e29ecdbd0b2d68ca0920ea73205a3ca0c12c92a051e16f",
+  "vectors_sha256": "b4b6c5c29b6ffdbee6fdb246b58319447f644d08e3ce48cf4898bf96bf99fa86"
+}
