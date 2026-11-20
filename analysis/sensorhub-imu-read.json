@@ -1,0 +1,159 @@
+{
+  "callback": "0x80f714a0 (shared accelerometer/gyroscope FIFO read)",
+  "flow": {
+    "count": "the drained sample count 0x80f17024; zero returns NULL",
+    "delivery": "when samples are present, allocate a sensor event (0x80f6453e) and fill it with timestamped samples using the ODR code at 0x80f16b2e (not executed here)",
+    "drain": "0x80f710ac; a non-zero result returns NULL",
+    "rearm": "if the dirty flag 0x80f17026 is set, call 0x80f700b4 and clear it"
+  },
+  "image": "sensor-hub (OTA 4.6.0.3)",
+  "limitations": [
+    "Only the entry, re-arm, drain and empty/error return paths are executed (the callback returns NULL); the FIFO drain and the re-arm are stubbed. The sample-delivery data path (event allocation 0x80f6453e and the per-sample timestamp loop) is not executed."
+  ],
+  "native_case_count": 4,
+  "native_steps": 166,
+  "native_validation": {
+    "bound_per_case": 20000,
+    "case_count": 4,
+    "cases": [
+      {
+        "name": "sensorhub_imu_read_empty_flag_clear",
+        "observed": {
+          "actions": [
+            "op:read",
+            "call:2163675308:2164264902"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 41
+      },
+      {
+        "name": "sensorhub_imu_read_empty_flag_set_rearms",
+        "observed": {
+          "actions": [
+            "op:read",
+            "call:2163671220:0",
+            "w:2163306534:1:0",
+            "call:2163675308:2164264902"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 46
+      },
+      {
+        "name": "sensorhub_imu_read_drain_error",
+        "observed": {
+          "actions": [
+            "op:read",
+            "call:2163675308:2164264902"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 37
+      },
+      {
+        "name": "sensorhub_imu_read_drain_error_flag_set",
+        "observed": {
+          "actions": [
+            "op:read",
+            "call:2163671220:0",
+            "w:2163306534:1:0",
+            "call:2163675308:2164264902"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 42
+      }
+    ],
+    "hardware_execution": false,
+    "schema": 1
+  },
+  "per_case": {
+    "drain_error": {
+      "rearmed": false,
+      "ret": 0
+    },
+    "drain_error_flag_set": {
+      "rearmed": true,
+      "ret": 0
+    },
+    "empty_flag_clear": {
+      "rearmed": false,
+      "ret": 0
+    },
+    "empty_flag_set_rearms": {
+      "rearmed": true,
+      "ret": 0
+    }
+  },
+  "validation_sha256": "c9e4afb7dcdc0ecf8466b99a746867d3dbe03e1e550c3440be81630f1ecafc56",
+  "vectors_sha256": "9e567cede8559f5769c183e871f56d66a758e1f7fc81ce965b6d062e8271e41c"
+}
