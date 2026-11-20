@@ -109,6 +109,7 @@ Latest detailed findings:
 - [ZTW622 touch open: bus/GPIO bring-up, check-mode probe and task/timer start](MAIN_TOUCH_OPEN.md)
 - [ZTW622 touch delivery: event dispatcher and poll-timer callback](MAIN_TOUCH_DISPATCH.md)
 - [ZTW622 TP firmware-upgrade worker (input-task body)](MAIN_TOUCH_UPGRADE.md)
+- [gpio_key driver initialisation (drv_key_init)](MAIN_KEY_INIT.md)
 - [Native recovery CRC, metadata policy, signed coverage and partition validation](RECOVERY_VALIDATOR_NATIVE.md)
 - [Storage registry, environment handle setup, NVMS mirrors and stopped bootstrap](ENV_STORAGE_SETUP_AND_NVMS.md)
 - [Original boot partition tables, backend geometry words and actual driver bindings](STORAGE_MAP_AND_DRIVER_BINDINGS.md)

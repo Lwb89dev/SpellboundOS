@@ -1,0 +1,184 @@
+{
+  "board_record": "gpio_key (0x702b4f3e)",
+  "config": {
+    "layout": "two per-key blocks of stride 0x30 (second at object +0x80)",
+    "note": "0x1f4 = 500 ms long press; 0x320 = 800 ms double/combo window",
+    "thresholds": {
+      "debounce": 127,
+      "double_count": 15,
+      "double_window": 800,
+      "hold": 3,
+      "long_press_ms": 500,
+      "press": 10,
+      "release": 80,
+      "repeat_30": 30
+    }
+  },
+  "driver": {
+    "name": "keyboard",
+    "object": "0x70f92bf4",
+    "ops_table": "0x70f60e2c",
+    "register": "0x703192ca"
+  },
+  "function": "0x701e9cbe (drv_key_init)",
+  "image": "main firmware (OTA 4.6.0.3)",
+  "limitations": [
+    "The board lookup, the driver-register service and the assert logger/abort are stubbed; drv_key_init runs as real code and every configuration write is recorded.",
+    "The board record holds the key GPIO pins (two keys, pins 19 and 54 per the board scan); drv_key_init only wires the timing thresholds. The key state machine 0x701e923e that consumes this configuration is not executed here."
+  ],
+  "native_case_count": 3,
+  "native_steps": 149,
+  "native_validation": {
+    "bound_per_case": 20000,
+    "case_count": 3,
+    "cases": [
+      {
+        "name": "main_key_init_register_ok",
+        "observed": {
+          "actions": [
+            "op:init",
+            "call:1881886526:1889344496",
+            "w:1895377980:4:2160073216",
+            "w:1895378028:4:2160073222",
+            "w:1895378056:4:800",
+            "w:1895378064:4:15",
+            "w:1895378008:4:800",
+            "w:1895378016:4:15",
+            "w:1895378036:4:127",
+            "w:1895378040:4:10",
+            "w:1895378044:4:3",
+            "w:1895378048:4:80",
+            "w:1895378052:4:500",
+            "w:1895378060:4:30",
+            "w:1895378068:4:30",
+            "w:1895378072:4:10",
+            "w:1895377984:4:1895377908",
+            "w:1895377988:4:127",
+            "w:1895377992:4:10",
+            "w:1895377996:4:3",
+            "w:1895378000:4:80",
+            "w:1895378004:4:500",
+            "w:1895378012:4:30",
+            "w:1895378020:4:30",
+            "w:1895378024:4:10",
+            "w:1895378032:4:1895377908",
+            "w:1895377948:4:1895173676",
+            "call:1882297034:1895377908:1889345308:7"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 61
+      },
+      {
+        "name": "main_key_init_board_record_missing",
+        "observed": {
+          "actions": [
+            "op:init",
+            "call:1881886526:1889344496"
+          ],
+          "rows": [
+            {
+              "a0": 1,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 13
+      },
+      {
+        "name": "main_key_init_register_fails",
+        "observed": {
+          "actions": [
+            "op:init",
+            "call:1881886526:1889344496",
+            "w:1895377980:4:2160073216",
+            "w:1895378028:4:2160073222",
+            "w:1895378056:4:800",
+            "w:1895378064:4:15",
+            "w:1895378008:4:800",
+            "w:1895378016:4:15",
+            "w:1895378036:4:127",
+            "w:1895378040:4:10",
+            "w:1895378044:4:3",
+            "w:1895378048:4:80",
+            "w:1895378052:4:500",
+            "w:1895378060:4:30",
+            "w:1895378068:4:30",
+            "w:1895378072:4:10",
+            "w:1895377984:4:1895377908",
+            "w:1895377988:4:127",
+            "w:1895377992:4:10",
+            "w:1895377996:4:3",
+            "w:1895378000:4:80",
+            "w:1895378004:4:500",
+            "w:1895378012:4:30",
+            "w:1895378020:4:30",
+            "w:1895378024:4:10",
+            "w:1895378032:4:1895377908",
+            "w:1895377948:4:1895173676",
+            "call:1882297034:1895377908:1889345308:7",
+            "call:1882296748:1889344160:1889345336:57",
+            "call:2161337594:1889655148:1889345320:57"
+          ],
+          "rows": [
+            {
+              "a0": 4294967285,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 75
+      }
+    ],
+    "hardware_execution": false,
+    "schema": 1
+  },
+  "return_codes": {
+    "board_record_missing": 1,
+    "register_fails": 4294967285,
+    "register_ok": 0
+  },
+  "validation_sha256": "e64c4ca81bdeaa6c3ee3067d8c6440249baa30f1c8a6333312bacb38a630d354",
+  "vectors_sha256": "c7b5bf0ef9305337f901155d966e8a27af28b633b4c42a5ef53d860e57e032b9"
+}

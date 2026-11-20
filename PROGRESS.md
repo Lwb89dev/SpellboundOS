@@ -3743,8 +3743,25 @@ deletion remain open.
    See [analysis/MAIN_TOUCH_UPGRADE.md](analysis/MAIN_TOUCH_UPGRADE.md). Vectors,
    native report and evidence regenerate byte for byte.
 
+## 2026-11-20 — gpio_key driver initialisation
+
+1. Executed `drv_key_init` `0x701e9cbe`. All **3 native cases pass**: it finds
+   the board record `gpio_key`, fills the driver object `0x70f92bf4` with the
+   per-key timing thresholds (debounce `0x7f`, long press `0x1f4`=500 ms, repeat
+   `0x1e`, double/combo window `0x320`=800 ms) and the ops table `0x70f60e2c`,
+   then registers the driver as `keyboard` (`0x703192ca`). Returns 0 on success,
+   1 when the board record is missing. Two per-key config blocks (stride 0x30).
+
+   See [analysis/MAIN_KEY_INIT.md](analysis/MAIN_KEY_INIT.md). Vectors, native
+   report and evidence regenerate byte for byte.
+
 ## Next work
 
+- gpio_key **state machine** `0x701e923e` (7 states: debounce, combo, long
+  press, double click, repeat), state by state from state 0; consumes the
+  config written by `drv_key_init`. Helpers to stub: event-decode `0x702bd6c8`,
+  state store `0x701e90be`, timer check `0x701e8afc`, event upload `0x701e8b40`
+  (event bits 0x1..0x400), default finalize `0x701e8dba`.
 - OTA bootloader apply: the post-reboot `Upgrade bootloader/firmware/boot
   resource` staging, the cryptographic image signature it checks (beyond the
   CRC32 transfer integrity now covered), and the backup-firmware recovery path
