@@ -3522,6 +3522,26 @@ deletion remain open.
    [analysis/sensorhub-imu-fifo.json](analysis/sensorhub-imu-fifo.json). All
    earlier IMU scopes regenerate byte for byte under the extended runner.
 
+## 2026-11-20 — ZTW622 touch register layer and report handler
+
+1. Executed the ZTW622 I2C register layer, report timer wrapper, dispatcher and
+   event handler `0x701eb18a` in `main-runtime`. All **29 native cases pass**
+   (6,358 steps).
+2. The layer uses I2C address `0x20` and 16-bit LE registers. A failed bus
+   transfer resets the bus and retries once. Clear interrupt is command
+   `0x0003`, with up to three attempts.
+3. The handler is a state machine: 1 report, 3 wake gesture, 6 busy, the rest
+   clear only. A report reads 16 bytes from `0x0080` (header plus two 6-byte
+   points) and applies 0/90/180/270 rotation and the 180° flip. It also
+   handles large-object and no-change statuses, and the wake gesture `0x0126`
+   against its mask. The 0x38-byte event goes to the callback, and the
+   interrupt is cleared only when the callback succeeds.
+4. Added the generic runner `ValidateNativeScope.java` with a `bus` stub. The
+   IMU runner is unchanged.
+
+   See [analysis/MAIN_TOUCH_REPORT.md](analysis/MAIN_TOUCH_REPORT.md) and
+   [analysis/main-touch-report.json](analysis/main-touch-report.json).
+
 ## Next work
 
 - Sensor-hub IMU: the descriptor callbacks (open/close/rate/flush) that call
