@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "artifacts": [
+    {
+      "file": "bip6-4.6.0.3.zip",
+      "kind": "stock_ota",
+      "size": 118618487,
+      "sha256": "ee06079610eaf9b4ffbe35c7a6ddc604ee2aba00c3a66d85101ed2a6556d6df4"
+    }
+  ]
+}
