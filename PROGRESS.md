@@ -3626,6 +3626,13 @@ deletion remain open.
 
    See [analysis/MAIN_ALS_STK31E60.md](analysis/MAIN_ALS_STK31E60.md).
 
+## 2026-11-20 — vibration motor
+
+1. Executed the `dev_NL_motor` on/off, pulse and duration query. All **21
+   native cases pass**. The motor is GPIO pin 95. A pulse is switch-on plus a
+   one-shot timer of 25/25/50/50/80/130/25/25 ms for levels 1–8 (1000 ms
+   otherwise). See [analysis/MAIN_MOTOR.md](analysis/MAIN_MOTOR.md).
+
 ## Next work
 
 - Sensor-hub IMU: the descriptor callbacks (open/close/rate/flush) that call
