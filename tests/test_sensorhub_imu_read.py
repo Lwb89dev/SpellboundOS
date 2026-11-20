@@ -13,7 +13,7 @@ class SensorhubImuReadTest(unittest.TestCase):
 
     def test_native_matches_model(self):
         report = self.evidence['native_validation']
-        self.assertEqual((report['case_count'], len(report['cases'])), (4, 4))
+        self.assertEqual((report['case_count'], len(report['cases'])), (13, 13))
         self.assertFalse(report['hardware_execution'])
         for row in report['cases']:
             name = row['name'].removeprefix('sensorhub_imu_read_')
@@ -32,6 +32,43 @@ class SensorhubImuReadTest(unittest.TestCase):
 
     def test_contract(self):
         self.assertEqual(self.evidence['callback'], '0x80f714a0 (shared accelerometer/gyroscope FIFO read)')
+
+    def test_accel_rate_cap_and_overlapping_compaction(self):
+        name = 'accel_capped_and_compacted'
+        row = self.evidence['per_case'][name]
+        self.assertEqual((row['ret'], row['buffered_after']), (rd.PACKET, 34))
+        self.assertEqual(row['streams'][0], dict(
+            kind=2, sensitivity=4096, count=31, stride=186, hz=25,
+            timestamp=rd.TS - 37 * 38, first_xyz=[110, -220, 4126]))
+        native = next(c for c in self.evidence['native_validation']['cases']
+                      if c['name'] == 'sensorhub_imu_read_' + name)
+        actual = bytes.fromhex(native['observed']['rows'][0]['snapshot'][str(rd.CACHE)])
+        before = dict(self.cases[name]['memory'])[rd.CACHE]
+        self.assertEqual(actual[:34 * 7], bytes.fromhex(before)[31 * 7:])
+
+    def test_gyro_packet_and_odd_word_handling(self):
+        cases = self.evidence['per_case']
+        streams = cases['gyro_delivery']['streams']
+        self.assertEqual([s['kind'] for s in streams], [2, 4])
+        self.assertEqual([s['count'] for s in streams], [2, 2])
+        self.assertEqual([s['timestamp'] for s in streams], [rd.TS - 38] * 2)
+        self.assertEqual(streams[1]['first_xyz'], [-340, 450, -560])
+        self.assertEqual(cases['gyro_odd_unknown_tag_ignored']['buffered_after'], 0)
+        self.assertEqual(cases['gyro_odd_extra_sample_rejected']['buffered_after'], 5)
+        self.assertTrue(cases['gyro_odd_extra_sample_rejected']['error_event'])
+
+    def test_failure_keeps_buffered_words(self):
+        cases = self.evidence['per_case']
+        for name, count in [('allocation_failed', 2), ('gyro_single_word_zero_stride', 1)]:
+            with self.subTest(name=name):
+                self.assertEqual((cases[name]['ret'], cases[name]['buffered_after']), (0, count))
+                self.assertFalse(cases[name]['error_event'])
+        for name, freed in [('missing_accel_releases_packet', True),
+                            ('missing_gyro_retains_packet', False)]:
+            with self.subTest(name=name):
+                self.assertEqual((cases[name]['ret'], cases[name]['buffered_after']), (0, 2))
+                self.assertTrue(cases[name]['error_event'])
+                self.assertEqual(cases[name]['packet_freed'], freed)
 
 
 if __name__ == '__main__':

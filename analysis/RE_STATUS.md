@@ -4,7 +4,7 @@ The investigation covers OTA 4.6.0.3 and one live Gadgetbridge/Bip 6 protocol
 session. It is not a complete physical flash/ROM dump or native execution trace.
 Completion has no measured percentage: disassembly/export and test counts do not
 measure behavioral coverage. At the user's request, the rough qualitative planning
-estimate, reviewed for the Claude handoff on 2026-11-19, remains **50–60% of the
+estimate, reviewed after the 2026-11-20 IMU sample-delivery work, remains **50–60% of the
 reverse engineering needed for the project**, with roughly **40–50% remaining**
 and substantial uncertainty. It is a subjective assessment of scope,
 not a coverage metric or a basis for estimating remaining time. Hardware
@@ -98,7 +98,7 @@ Latest detailed findings:
 - [Sensor-hub LSM6DSO FIFO read, packet and orientation remap](SENSORHUB_IMU_FIFO.md)
 - [Sensor-hub LSM6DSO descriptor operations: enable/disable/control](SENSORHUB_IMU_OPS.md)
 - [Sensor-hub LSM6DSO ioctl dispatch (accelerometer + gyroscope)](SENSORHUB_IMU_IOCTL.md)
-- [Sensor-hub LSM6DSO FIFO read callback (entry/empty handling)](SENSORHUB_IMU_READ.md)
+- [Sensor-hub LSM6DSO sample delivery, packet layout and cache compaction](SENSORHUB_IMU_READ.md)
 - [ZTW622 touch: I2C register layer and touch report handler](MAIN_TOUCH_REPORT.md)
 - [Main-image board records: the hardware map](MAIN_BOARD_RECORDS.md)
 - [ZTW622 touch control: attach/probe, rails, reset, modes and version](MAIN_TOUCH_CONTROL.md)

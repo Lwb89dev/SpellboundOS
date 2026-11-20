@@ -2,19 +2,20 @@
   "callback": "0x80f714a0 (shared accelerometer/gyroscope FIFO read)",
   "flow": {
     "count": "the drained sample count 0x80f17024; zero returns NULL",
-    "delivery": "when samples are present, allocate a sensor event (0x80f6453e) and fill it with timestamped samples using the ODR code at 0x80f16b2e (not executed here)",
+    "delivery": "cap words using the configured rate, allocate one or two streams, backdate packet headers, decode tagged XYZ with offsets and compact the cache after successful decoding",
     "drain": "0x80f710ac; a non-zero result returns NULL",
     "rearm": "if the dirty flag 0x80f17026 is set, call 0x80f700b4 and clear it"
   },
   "image": "sensor-hub (OTA 4.6.0.3)",
   "limitations": [
-    "Only the entry, re-arm, drain and empty/error return paths are executed (the callback returns NULL); the FIFO drain and the re-arm are stubbed. The sample-delivery data path (event allocation 0x80f6453e and the per-sample timestamp loop) is not executed."
+    "The callback, packet allocator, tagged-word decoder and release wrapper execute original code. Re-arm, FIFO drain, heap, timestamp, queue, logger, event and memory helper effects are supplied.",
+    "Cases use authored FIFO contents and service results. They do not establish live sensor timing, cache concurrency or downstream packet consumption."
   ],
-  "native_case_count": 4,
-  "native_steps": 166,
+  "native_case_count": 13,
+  "native_steps": 3504,
   "native_validation": {
     "bound_per_case": 20000,
-    "case_count": 4,
+    "case_count": 13,
     "cases": [
       {
         "name": "sensorhub_imu_read_empty_flag_clear",
@@ -131,12 +132,395 @@
           ]
         },
         "steps": 42
+      },
+      {
+        "name": "sensorhub_imu_read_accel_delivery",
+        "observed": {
+          "actions": [
+            "op:read",
+            "call:2163675308:2164264902",
+            "call:2163756270:4:2164082792:76:4",
+            "call:2164056012:2164457472:0:76",
+            "call:2163618562",
+            "w:2163306532:2:0"
+          ],
+          "rows": [
+            {
+              "a0": 2164457472,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2163306532": "000000",
+                "2164326400": "10640038ff001010650036ffff0f",
+                "2164457472": "01000c000000000000000000000000000100000018000381020000000000000005000000120000000010000002001900000000000000000040000381000000006e0024ff1e106f0022ff1d10a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 244
+      },
+      {
+        "name": "sensorhub_imu_read_accel_capped_and_compacted",
+        "observed": {
+          "actions": [
+            "op:read",
+            "call:2163671220:0",
+            "w:2163306534:1:0",
+            "call:2163675308:2164264902",
+            "call:2163756270:4:2164082792:250:4",
+            "call:2164056012:2164457472:0:250",
+            "call:2163618562",
+            "w:2163306532:2:34",
+            "call:2164055788:2164326400:2164326617:238"
+          ],
+          "rows": [
+            {
+              "a0": 2164457472,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2163306532": "220000",
+                "2164326400": "108300fafee10f108400f8fee00f108500f6fedf0f108600f4fede0f108700f2fedd0f108800f0fedc0f108900eefedb0f108a00ecfeda0f108b00eafed90f108c00e8fed80f108d00e6fed70f108e00e4fed60f108f00e2fed50f109000e0fed40f109100defed30f109200dcfed20f109300dafed10f109400d8fed00f109500d6fecf0f109600d4fece0f109700d2fecd0f109800d0fecc0f109900cefecb0f109a00ccfeca0f109b00cafec90f109c00c8fec80f109d00c6fec70f109e00c4fec60f109f00c2fec50f10a000c0fec40f10a100befec30f10a200bcfec20f10a300bafec10f10a400b8fec00f108600f4fede0f108700f2fedd0f108800f0fedc0f108900eefedb0f108a00ecfeda0f108b00eafed90f108c00e8fed80f108d00e6fed70f108e00e4fed60f108f00e2fed50f109000e0fed40f109100defed30f109200dcfed20f109300dafed10f109400d8fed00f109500d6fecf0f109600d4fece0f109700d2fecd0f109800d0fecc0f109900cefecb0f109a00ccfeca0f109b00cafec90f109c00c8fec80f109d00c6fec70f109e00c4fec60f109f00c2fec50f10a000c0fec40f10a100befec30f10a200bcfec20f10a300bafec10f10a400b8fec00f",
+                "2164457472": "0100ba000000000000000000000000000100000018000381020000000000000087faffff11000000001000001f001900000000000000000040000381000000006e0024ff1e106f0022ff1d10700020ff1c1071001eff1b1072001cff1a1073001aff1910740018ff1810750016ff1710760014ff1610770012ff1510780010ff141079000eff13107a000cff12107b000aff11107c0008ff10107d0006ff0f107e0004ff0e107f0002ff0d10800000ff0c108100fefe0b108200fcfe0a108300fafe09108400f8fe08108500f6fe07108600f4fe06108700f2fe05108800f0fe04108900eefe03108a00ecfe02108b00eafe01108c00e8fe0010a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 1300
+      },
+      {
+        "name": "sensorhub_imu_read_gyro_delivery",
+        "observed": {
+          "actions": [
+            "op:read",
+            "call:2163675308:2164264902",
+            "call:2163756270:4:2164082792:128:4",
+            "call:2164056012:2164457472:0:128",
+            "call:2163618562",
+            "w:2163306532:2:0"
+          ],
+          "rows": [
+            {
+              "a0": 2164457472,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2163306532": "000000",
+                "2164326400": "10640038ff001008d4fe90010cfe08d3fe91010dfe10650036ffff0f",
+                "2164457472": "02000c0000000000000000000000000001000000180003810200000000000000dfffffff110000000010000002001900000000000000000068000381000000000400000000000000dfffffff110000001000000002001900000000000000000074000381000000006e0024ff1e106f0022ff1d10acfec201d0fdabfec301d1fda5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 346
+      },
+      {
+        "name": "sensorhub_imu_read_gyro_odd_unknown_tag_ignored",
+        "observed": {
+          "actions": [
+            "op:read",
+            "call:2163675308:2164264902",
+            "call:2163756270:4:2164082792:128:4",
+            "call:2164056012:2164457472:0:128",
+            "call:2163618562",
+            "w:2163306532:2:0"
+          ],
+          "rows": [
+            {
+              "a0": 2164457472,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2163306532": "000000",
+                "2164326400": "10640038ff001008d4fe90010cfe10650036ffff0f08d3fe91010dfe38000000000000",
+                "2164457472": "02000c00000000000000000000000000010000001800038102000000000000000500000012000000001000000200190000000000000000006800038100000000040000000000000005000000120000001000000002001900000000000000000074000381000000006e0024ff1e106f0022ff1d10acfec201d0fdabfec301d1fda5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 355
+      },
+      {
+        "name": "sensorhub_imu_read_gyro_odd_extra_sample_rejected",
+        "observed": {
+          "actions": [
+            "op:read",
+            "call:2163675308:2164264902",
+            "call:2163756270:4:2164082792:128:4",
+            "call:2164056012:2164457472:0:128",
+            "call:2163618562",
+            "call:2163764532:4",
+            "call:2163760404",
+            "call:2163756324:4:2164082792:2164457472",
+            "call:2163621740",
+            "cap:0201000000000000"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2163306532": "050000",
+                "2164326400": "10640038ff001008d4fe90010cfe10650036ffff0f08d3fe91010dfe08d2fe92010efe",
+                "2164457472": "02000c00000000000000000000000000010000000000000002000000000000000500000012000000001000000200190000000000000000006800038100000000040000000000000005000000120000001000000002001900000000000000000074000381000000006e0024ff1e106f0022ff1d10acfec201d0fdabfec301d1fda5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 391
+      },
+      {
+        "name": "sensorhub_imu_read_allocation_failed",
+        "observed": {
+          "actions": [
+            "op:read",
+            "call:2163675308:2164264902",
+            "call:2163756270:4:2164082792:76:4",
+            "call:2163764532:3"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2163306532": "020000",
+                "2164326400": "10640038ff001010650036ffff0f",
+                "2164457472": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 101
+      },
+      {
+        "name": "sensorhub_imu_read_gyro_single_word_zero_stride",
+        "observed": {
+          "actions": [
+            "op:read",
+            "call:2163675308:2164264902"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2163306532": "010000",
+                "2164326400": "10640038ff0010",
+                "2164457472": "a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 82
+      },
+      {
+        "name": "sensorhub_imu_read_missing_accel_releases_packet",
+        "observed": {
+          "actions": [
+            "op:read",
+            "call:2163675308:2164264902",
+            "call:2163756270:4:2164082792:76:4",
+            "call:2164056012:2164457472:0:76",
+            "call:2163618562",
+            "call:2163764532:4",
+            "call:2163760404",
+            "call:2163756324:4:2164082792:2164457472",
+            "call:2163621740",
+            "cap:0201000000000000"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2163306532": "020000",
+                "2164326400": "10640038ff001008d4fe90010cfe",
+                "2164457472": "01000c000000000000000000000000000100000000000000020000000000000005000000120000000010000002001900000000000000000040000381000000006e0024ff1e10000000000000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 245
+      },
+      {
+        "name": "sensorhub_imu_read_missing_gyro_retains_packet",
+        "observed": {
+          "actions": [
+            "op:read",
+            "call:2163675308:2164264902",
+            "call:2163756270:4:2164082792:116:4",
+            "call:2164056012:2164457472:0:116",
+            "call:2163618562",
+            "call:2163764532:4",
+            "call:2163760404",
+            "call:2163621740",
+            "cap:0201000000000000"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2163306532": "020000",
+                "2164326400": "10640038ff001010650036ffff0f",
+                "2164457472": "0200060000000000000000000000000001000000180003810200000000000000050000001200000000100000010019000000000000000000680003810000000004000000000000000500000012000000100000000100190000000000000000006e000381000000006e0024ff1e10000000000000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 274
       }
     ],
     "hardware_execution": false,
     "schema": 1
   },
   "per_case": {
+    "accel_capped_and_compacted": {
+      "buffered_after": 34,
+      "error_event": false,
+      "packet_freed": false,
+      "rearmed": true,
+      "ret": 2164457472,
+      "streams": [
+        {
+          "count": 31,
+          "first_xyz": [
+            110,
+            -220,
+            4126
+          ],
+          "hz": 25,
+          "kind": 2,
+          "sensitivity": 4096,
+          "stride": 186,
+          "timestamp": 77309409927
+        }
+      ]
+    },
+    "accel_delivery": {
+      "buffered_after": 0,
+      "error_event": false,
+      "packet_freed": false,
+      "rearmed": false,
+      "ret": 2164457472,
+      "streams": [
+        {
+          "count": 2,
+          "first_xyz": [
+            110,
+            -220,
+            4126
+          ],
+          "hz": 25,
+          "kind": 2,
+          "sensitivity": 4096,
+          "stride": 12,
+          "timestamp": 77309411333
+        }
+      ]
+    },
+    "allocation_failed": {
+      "buffered_after": 2,
+      "error_event": false,
+      "packet_freed": false,
+      "rearmed": false,
+      "ret": 0
+    },
     "drain_error": {
       "rearmed": false,
       "ret": 0
@@ -152,8 +536,106 @@
     "empty_flag_set_rearms": {
       "rearmed": true,
       "ret": 0
+    },
+    "gyro_delivery": {
+      "buffered_after": 0,
+      "error_event": false,
+      "packet_freed": false,
+      "rearmed": false,
+      "ret": 2164457472,
+      "streams": [
+        {
+          "count": 2,
+          "first_xyz": [
+            110,
+            -220,
+            4126
+          ],
+          "hz": 25,
+          "kind": 2,
+          "sensitivity": 4096,
+          "stride": 12,
+          "timestamp": 77309411295
+        },
+        {
+          "count": 2,
+          "first_xyz": [
+            -340,
+            450,
+            -560
+          ],
+          "hz": 25,
+          "kind": 4,
+          "sensitivity": 16,
+          "stride": 12,
+          "timestamp": 77309411295
+        }
+      ]
+    },
+    "gyro_odd_extra_sample_rejected": {
+      "buffered_after": 5,
+      "error_event": true,
+      "packet_freed": true,
+      "rearmed": false,
+      "ret": 0
+    },
+    "gyro_odd_unknown_tag_ignored": {
+      "buffered_after": 0,
+      "error_event": false,
+      "packet_freed": false,
+      "rearmed": false,
+      "ret": 2164457472,
+      "streams": [
+        {
+          "count": 2,
+          "first_xyz": [
+            110,
+            -220,
+            4126
+          ],
+          "hz": 25,
+          "kind": 2,
+          "sensitivity": 4096,
+          "stride": 12,
+          "timestamp": 77309411333
+        },
+        {
+          "count": 2,
+          "first_xyz": [
+            -340,
+            450,
+            -560
+          ],
+          "hz": 25,
+          "kind": 4,
+          "sensitivity": 16,
+          "stride": 12,
+          "timestamp": 77309411333
+        }
+      ]
+    },
+    "gyro_single_word_zero_stride": {
+      "buffered_after": 1,
+      "error_event": false,
+      "packet_freed": false,
+      "rearmed": false,
+      "ret": 0
+    },
+    "missing_accel_releases_packet": {
+      "buffered_after": 2,
+      "error_event": true,
+      "packet_freed": true,
+      "rearmed": false,
+      "ret": 0
+    },
+    "missing_gyro_retains_packet": {
+      "buffered_after": 2,
+      "error_event": true,
+      "packet_freed": false,
+      "rearmed": false,
+      "ret": 0
     }
   },
-  "validation_sha256": "c9e4afb7dcdc0ecf8466b99a746867d3dbe03e1e550c3440be81630f1ecafc56",
-  "vectors_sha256": "9e567cede8559f5769c183e871f56d66a758e1f7fc81ce965b6d062e8271e41c"
+  "validation_sha256": "78d6bff00d5f8de18302a98a5a9a115e41becf987c8a90befe50c82be551dff9",
+  "vectors_sha256": "63954f45e46940bc34207877b26d3cc5f2eed0fa9f980c84e8520422554e48d8"
 }

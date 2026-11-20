@@ -4229,3 +4229,16 @@ Python suite — this is the first piece of OS code verified at **runtime** here
   package, including one test module that could not be imported. The three
   affected modules passed all 15 tests with the dependency available, covering
   all 2,418 distinct cases across the two runs.
+
+# 2026-11-20 — Sensor-hub LSM6DSO sample delivery
+
+- The shared FIFO read callback now executes the packet allocator, tagged XYZ
+  decoder and release wrapper with authored FIFO inputs. All 13 native cases
+  pass, including nine new cases for delivery and failure. The four prior
+  empty/error observations reproduce unchanged.
+- Verified the accelerometer and dual-stream headers, timestamp backdating,
+  calibration offsets, rate cap and overlapping cache compaction. Allocation
+  failures preserve pending words. Decoder failures preserve the buffer and
+  post event `0x102`; the supplied queue result controls packet freeing.
+- All 60 IMU host tests pass. The drain and lower services remain supplied in
+  this scope. See [the callback report](analysis/SENSORHUB_IMU_READ.md).

@@ -1,22 +1,43 @@
-# Sensor-hub LSM6DSO FIFO read callback (entry / empty handling)
+# Sensor-hub LSM6DSO sample delivery
 
-`0x80f714a0` is the shared accelerometer/gyroscope descriptor read callback. It
-optionally re-arms the sensor (dirty flag `0x80f17026` → `0x80f700b4`), drains
-the FIFO (`0x80f710ac`, verified in [SENSORHUB_IMU_FIFO.md](SENSORHUB_IMU_FIFO.md)),
-and when samples are present allocates a sensor event (`0x80f6453e`) and fills it
-with timestamped samples using the ODR code at `0x80f16b2e`. It returns the event
-pointer, or NULL when the drain fails or no samples are available.
+All **13 cases** pass (3,504 instructions) in the startup-aware `sensor-runtime`
+project. They execute the original shared read callback `0x80f714a0`, packet
+allocator `0x80f6453e`, tagged-word decoder `0x80f6fc42` and release wrapper
+`0x80f6462c`. The four earlier empty/error cases reproduce unchanged. See
+[the machine-readable evidence](sensorhub-imu-read.json).
 
-This scope executes the **entry, re-arm, drain and empty/error return paths**
-with the FIFO drain and the re-arm supplied; the evidence is in
-[sensorhub-imu-read.json](sensorhub-imu-read.json). All **4 native cases pass**.
+The caller optionally re-arms the device and clears the dirty flag. It passes a
+stack output for the words still in the physical FIFO to the drain at
+`0x80f710ac`. A drain error or zero buffered words returns NULL. The separate
+[FIFO drain investigation](SENSORHUB_IMU_FIFO.md) executes that routine.
 
-| Case | Re-armed | Return |
-| --- | --- | --- |
-| empty, flag clear | no | NULL |
-| empty, dirty flag set | yes (`0x80f700b4`) | NULL |
-| drain error | no | NULL |
-| drain error, dirty flag set | yes | NULL |
+For a populated buffer, let `rate` be the configured u16 value at `0x80f16b2e`
+and `streams` be one for accelerometer only or two when gyroscope is enabled.
+The callback chooses `words = min(buffered, floor(1200 × rate / 1000) × streams)`
+and `samples = floor(words / streams)` per stream. The allocator receives a
+stride of `samples × 6` bytes and returns NULL for a zero stride. Each stream
+header holds the sensor type (2 for accelerometer, 4 for gyroscope), configured
+sensitivity, sample count and rate rounded down to a multiple of 25. The
+callback backdates both headers by
+`floor((buffered − words + fifo_remaining) / streams) × floor(1000 / rate)`
+timestamp units. The captured vectors include a borrow from the low 32 bits.
+The timestamp is stored in the stream header. The decoder copies XYZ triples
+and applies the per-axis offsets in 16-bit arithmetic.
+
+| Exercised case | Outcome |
+| --- | --- |
+| Accelerometer only, 65 buffered words at rate 26, three still in FIFO | Delivers 31 samples, backdates by `37 × 38`, and compacts the 34 remaining words with overlapping source and destination ranges |
+| Accelerometer plus gyroscope, two of each tag, three still in FIFO | Delivers two samples per stream, backdates both by `1 × 38` |
+| Dual mode, two of each tag plus one unknown tag | Delivers both streams and consumes all five words |
+| Dual mode, two accelerometer tags and three gyroscope tags | Decoder rejects the excess gyroscope tag and preserves all five buffered words |
+| Allocation failure or zero stride | Returns NULL and preserves the buffer |
+| Missing accelerometer or gyroscope tag | Calls the packet release wrapper, posts event `0x102`, returns NULL and preserves the buffer. The supplied queue result selects whether the wrapper frees the packet |
+
+Re-arm, the FIFO drain, heap, timestamp, queue, logger, event delivery, zeroing
+and overlap-safe memory movement are supplied to the emulation. The memory
+snapshots check the compacted bytes, packet headers and decoded samples. Live
+SPI timing, interrupt scheduling, cache concurrency and downstream packet
+consumption still require separate evidence.
 
 ## Reproduction
 
@@ -28,12 +49,5 @@ firmware/tools/ghidra_12.1.2_PUBLIC/support/analyzeHeadless firmware/ghidra-runt
 python3 -m analysis_scripts.sensorhub_imu_read firmware/bip6-4.6.0.3.zip \
   --vectors firmware/sensorhub-imu-read-vectors.json \
   --validation firmware/sensorhub-imu-read-validation.json > analysis/sensorhub-imu-read.json
-python3 -m unittest tests.test_sensorhub_imu_read -q
+python3 -m unittest discover -s tests -p 'test_sensorhub_imu_*.py' -q
 ```
-
-## Remaining
-
-- The **sample-delivery data path** (event allocation `0x80f6453e` and the
-  per-sample timestamp loop using the ODR timing) is not executed here. With it,
-  the LSM6DSO driver — probe, attach, registers, mode, FIFO drain, ops, ioctl and
-  the read callback's control flow — is otherwise fully executed.
