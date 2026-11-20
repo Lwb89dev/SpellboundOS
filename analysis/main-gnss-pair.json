@@ -1,0 +1,793 @@
+{
+  "acknowledgement_table": [
+    {
+      "code": "062",
+      "event_bits": "0x1",
+      "result_chars": "01"
+    },
+    {
+      "code": "590",
+      "event_bits": "0x2",
+      "result_chars": "01"
+    },
+    {
+      "code": "600",
+      "event_bits": "0x4",
+      "result_chars": "01"
+    },
+    {
+      "code": "080",
+      "event_bits": "0x8",
+      "result_chars": "01"
+    },
+    {
+      "code": "510",
+      "event_bits": "0x40",
+      "result_chars": "01"
+    },
+    {
+      "code": "490",
+      "event_bits": "0x20",
+      "result_chars": "01"
+    },
+    {
+      "code": "470",
+      "event_bits": "0x2000",
+      "result_chars": "01"
+    },
+    {
+      "code": "100",
+      "event_bits": "0x80",
+      "result_chars": "01"
+    },
+    {
+      "code": "553",
+      "event_bits": "0x200",
+      "result_chars": "01"
+    },
+    {
+      "code": "472",
+      "event_bits": "0x400",
+      "result_chars": "01"
+    },
+    {
+      "code": "533",
+      "event_bits": "0x8000",
+      "result_chars": "01"
+    },
+    {
+      "code": "086",
+      "event_bits": "0x800",
+      "result_chars": "01"
+    },
+    {
+      "code": "087",
+      "event_bits": "0x1000",
+      "result_chars": "01"
+    },
+    {
+      "code": "730",
+      "event_bits": "0x300000000",
+      "result_chars": "01"
+    },
+    {
+      "code": "731",
+      "event_bits": "0x400000000",
+      "result_chars": "01"
+    },
+    {
+      "code": "020",
+      "event_bits": "0x4000",
+      "result_chars": "01"
+    },
+    {
+      "code": "021",
+      "event_bits": "0x4000",
+      "result_chars": "01"
+    },
+    {
+      "code": "067",
+      "event_bits": "0x10000",
+      "result_chars": "01"
+    },
+    {
+      "code": "066",
+      "event_bits": "0x20000",
+      "result_chars": "01"
+    },
+    {
+      "code": "530",
+      "event_bits": "0x40000",
+      "result_chars": "01"
+    },
+    {
+      "code": "550",
+      "event_bits": "0x80000",
+      "result_chars": "01"
+    },
+    {
+      "code": "511",
+      "event_bits": "0x40",
+      "result_chars": "01"
+    },
+    {
+      "code": "084",
+      "event_bits": "0x100",
+      "result_chars": "01"
+    },
+    {
+      "code": "003",
+      "event_bits": "0x100000",
+      "result_chars": "01"
+    },
+    {
+      "code": "002",
+      "event_bits": "0x200000",
+      "result_chars": "01"
+    },
+    {
+      "code": "104",
+      "event_bits": "0x400000",
+      "result_chars": "01"
+    },
+    {
+      "code": "105",
+      "event_bits": "0x800000",
+      "result_chars": "01"
+    },
+    {
+      "code": "112",
+      "event_bits": "0x1000000",
+      "result_chars": "01"
+    },
+    {
+      "code": "380",
+      "event_bits": "0x8000000",
+      "result_chars": "01"
+    },
+    {
+      "code": "513",
+      "event_bits": "0x4000000",
+      "result_chars": "01"
+    },
+    {
+      "code": "680",
+      "event_bits": "0x10000000",
+      "result_chars": "01"
+    },
+    {
+      "code": "064",
+      "event_bits": "0x20000000",
+      "result_chars": "01"
+    },
+    {
+      "code": "058",
+      "event_bits": "0x800000000",
+      "result_chars": "01"
+    },
+    {
+      "code": "720",
+      "event_bits": "0x40000000",
+      "result_chars": "01"
+    },
+    {
+      "code": "140",
+      "event_bits": "0x500000000",
+      "result_chars": "01"
+    },
+    {
+      "code": "004",
+      "event_bits": "0x10",
+      "result_chars": "01"
+    },
+    {
+      "code": "005",
+      "event_bits": "0x10",
+      "result_chars": "01"
+    },
+    {
+      "code": "006",
+      "event_bits": "0x10",
+      "result_chars": "01"
+    },
+    {
+      "code": "007",
+      "event_bits": "0x10",
+      "result_chars": "01"
+    },
+    {
+      "code": "690",
+      "event_bits": "0x700000000",
+      "result_chars": "01"
+    },
+    {
+      "code": "178",
+      "event_bits": "0x900000000",
+      "result_chars": "01"
+    },
+    {
+      "code": "778",
+      "event_bits": "0xa00000000",
+      "result_chars": "01"
+    },
+    {
+      "code": "786",
+      "event_bits": "0xb00000000",
+      "result_chars": "01"
+    }
+  ],
+  "call_catalog": [
+    {
+      "code": "470",
+      "function": "epo",
+      "parameter": "0",
+      "site": "0x704b4e32"
+    },
+    {
+      "code": "470",
+      "function": "epo",
+      "parameter": "1",
+      "site": "0x704b4fd8"
+    },
+    {
+      "code": "470",
+      "function": "gnss_epo_flash_aiding_for_other",
+      "parameter": "3",
+      "site": "0x704b5474"
+    },
+    {
+      "code": "470",
+      "function": "gnss_epo_flash_aiding_for_other",
+      "parameter": null,
+      "site": "0x704b5574"
+    },
+    {
+      "code": "066",
+      "function": "gnss_pair_set_gnss_search_mode",
+      "parameter": null,
+      "site": "0x704b6084"
+    },
+    {
+      "code": "533",
+      "function": "epo query",
+      "parameter": null,
+      "site": "0x704b6136"
+    },
+    {
+      "code": "472",
+      "function": "epo query",
+      "parameter": null,
+      "site": "0x704b614a"
+    },
+    {
+      "code": "553",
+      "function": "epo query",
+      "parameter": null,
+      "site": "0x704b615e"
+    },
+    {
+      "code": "513",
+      "function": "epo query",
+      "parameter": null,
+      "site": "0x704b6172"
+    },
+    {
+      "code": "470",
+      "function": "epo config",
+      "parameter": "0",
+      "site": "0x704b6196"
+    },
+    {
+      "code": "470",
+      "function": "epo config",
+      "parameter": "1",
+      "site": "0x704b61ae"
+    },
+    {
+      "code": "530",
+      "function": "epo config",
+      "parameter": "0,7200",
+      "site": "0x704b61c8"
+    },
+    {
+      "code": "530",
+      "function": "epo config",
+      "parameter": "1,7200",
+      "site": "0x704b61e2"
+    },
+    {
+      "code": "530",
+      "function": "epo config",
+      "parameter": "2,7200",
+      "site": "0x704b61fc"
+    },
+    {
+      "code": "530",
+      "function": "epo config",
+      "parameter": "3,7200",
+      "site": "0x704b6216"
+    },
+    {
+      "code": "530",
+      "function": "epo config",
+      "parameter": "4,7200",
+      "site": "0x704b6230"
+    },
+    {
+      "code": "550",
+      "function": "epo config",
+      "parameter": "0,30",
+      "site": "0x704b624a"
+    },
+    {
+      "code": "550",
+      "function": "epo config",
+      "parameter": "1,30",
+      "site": "0x704b6264"
+    },
+    {
+      "code": "550",
+      "function": "epo config",
+      "parameter": "2,30",
+      "site": "0x704b627e"
+    },
+    {
+      "code": "550",
+      "function": "epo config",
+      "parameter": "3,30",
+      "site": "0x704b6298"
+    },
+    {
+      "code": "105",
+      "function": "set_gnss_band_mode",
+      "parameter": null,
+      "site": "0x704b6330"
+    },
+    {
+      "code": "003",
+      "function": "set_gnss_band_mode",
+      "parameter": null,
+      "site": "0x704b637e"
+    },
+    {
+      "code": "104",
+      "function": "set_gnss_band_mode",
+      "parameter": "1",
+      "site": "0x704b63a6"
+    },
+    {
+      "code": "002",
+      "function": "set_gnss_band_mode",
+      "parameter": null,
+      "site": "0x704b63ba"
+    },
+    {
+      "code": "003",
+      "function": "set_gnss_band_mode",
+      "parameter": null,
+      "site": "0x704b63f6"
+    },
+    {
+      "code": "104",
+      "function": "set_gnss_band_mode",
+      "parameter": "0",
+      "site": "0x704b6410"
+    },
+    {
+      "code": "002",
+      "function": "set_gnss_band_mode",
+      "parameter": null,
+      "site": "0x704b6424"
+    },
+    {
+      "code": "064",
+      "function": "set rate",
+      "parameter": null,
+      "site": "0x704b6542"
+    },
+    {
+      "code": "680",
+      "function": "gnss_set_glp_mode",
+      "parameter": "0",
+      "site": "0x704b69ea"
+    },
+    {
+      "code": "680",
+      "function": "gnss_set_glp_mode",
+      "parameter": "1",
+      "site": "0x704b6a3e"
+    },
+    {
+      "code": "680",
+      "function": "gnss_set_glp_mode",
+      "parameter": "0",
+      "site": "0x704b6a6a"
+    },
+    {
+      "code": "730",
+      "function": "gnss_set_glp_mode",
+      "parameter": "0",
+      "site": "0x704b6a92"
+    },
+    {
+      "code": "113",
+      "function": "query",
+      "parameter": null,
+      "site": "0x704b6aec"
+    },
+    {
+      "code": "112",
+      "function": "init",
+      "parameter": null,
+      "site": "0x704b6dd8"
+    },
+    {
+      "code": "513",
+      "function": "init",
+      "parameter": null,
+      "site": "0x704b6dec"
+    },
+    {
+      "code": "086",
+      "function": "init",
+      "parameter": "0",
+      "site": "0x704b6e1c"
+    },
+    {
+      "code": "778",
+      "function": "init",
+      "parameter": "0",
+      "site": "0x704b6e3a"
+    },
+    {
+      "code": "112",
+      "function": "init",
+      "parameter": null,
+      "site": "0x704b6e4e"
+    },
+    {
+      "code": "513",
+      "function": "init",
+      "parameter": null,
+      "site": "0x704b6e62"
+    },
+    {
+      "code": "058",
+      "function": "config",
+      "parameter": null,
+      "site": "0x704b71b6"
+    },
+    {
+      "code": "006",
+      "function": "gnss_defconfig_cmd",
+      "parameter": null,
+      "site": "0x704b721a"
+    },
+    {
+      "code": "007",
+      "function": "gnss_defconfig_cmd",
+      "parameter": null,
+      "site": "0x704b722e"
+    },
+    {
+      "code": "084",
+      "function": "gnss_defconfig_cmd",
+      "parameter": "1",
+      "site": "0x704b725c"
+    },
+    {
+      "code": "178",
+      "function": "gnss_defconfig_cmd",
+      "parameter": "0",
+      "site": "0x704b7288"
+    },
+    {
+      "code": "007",
+      "function": "gnss_defconfig_cmd",
+      "parameter": null,
+      "site": "0x704b72b0"
+    },
+    {
+      "code": "006",
+      "function": "gnss_defconfig_cmd",
+      "parameter": null,
+      "site": "0x704b72ea"
+    },
+    {
+      "code": "007",
+      "function": "gnss_defconfig_cmd",
+      "parameter": null,
+      "site": "0x704b730e"
+    },
+    {
+      "code": "005",
+      "function": "gnss_defconfig_cmd",
+      "parameter": null,
+      "site": "0x704b733e"
+    },
+    {
+      "code": "778",
+      "function": "gnss_defconfig_cmd",
+      "parameter": "1",
+      "site": "0x704b73a4"
+    }
+  ],
+  "codes_used": [
+    "002",
+    "003",
+    "005",
+    "006",
+    "007",
+    "058",
+    "064",
+    "066",
+    "084",
+    "086",
+    "104",
+    "105",
+    "112",
+    "113",
+    "178",
+    "470",
+    "472",
+    "513",
+    "530",
+    "533",
+    "550",
+    "553",
+    "680",
+    "730",
+    "778"
+  ],
+  "codes_without_acknowledgement_entry": [
+    "113"
+  ],
+  "framing": {
+    "acknowledgement": "PAIR001,<code>,<result> parsed by 0x704b5c3c against the table",
+    "builder": "0x704b5d8e",
+    "checksum": "XOR of every byte between $ and *",
+    "format": "$PAIR<code>[,<parameters>]*<XOR hex>\\r\\n",
+    "send_with_retry": "0x704b5e60: \"%s,%s\" or \"%s\", 3 attempts, 2000 ms acknowledgement wait",
+    "uart_writer": "0x704bd530(frame, length, 1)"
+  },
+  "image": "main firmware (OTA 4.6.0.3)",
+  "limitations": [
+    "Only the XOR checksum executes natively; the frame builder is decoded statically (its libc vfprintf holds a word at 0x7094d4c2 that Ghidra and LLVM cannot decode). The catalog and acknowledgement table are decoded statically and every call operand is checked against the original auipc/addi pair.",
+    "Command meanings are given only by the calling function names in the firmware; parameter semantics of computed parameters, responses beyond PAIR001 and the NMEA position path are not executed.",
+    "EPO/ELPO aiding data formats, UART baud/flow settings and receiver behaviour are unverified."
+  ],
+  "native_case_count": 8,
+  "native_steps": 444,
+  "native_validation": {
+    "bound_per_case": 5000,
+    "case_count": 8,
+    "cases": [
+      {
+        "name": "main_gnss_pair_power_on",
+        "observed": {
+          "actions": [
+            "op:checksum"
+          ],
+          "rows": [
+            {
+              "a0": 56,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 48
+      },
+      {
+        "name": "main_gnss_pair_dual_band_on",
+        "observed": {
+          "actions": [
+            "op:checksum"
+          ],
+          "rows": [
+            {
+              "a0": 34,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 60
+      },
+      {
+        "name": "main_gnss_pair_epo_validity",
+        "observed": {
+          "actions": [
+            "op:checksum"
+          ],
+          "rows": [
+            {
+              "a0": 9,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 90
+      },
+      {
+        "name": "main_gnss_pair_search_mode",
+        "observed": {
+          "actions": [
+            "op:checksum"
+          ],
+          "rows": [
+            {
+              "a0": 58,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 120
+      },
+      {
+        "name": "main_gnss_pair_glp_mode",
+        "observed": {
+          "actions": [
+            "op:checksum"
+          ],
+          "rows": [
+            {
+              "a0": 41,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 60
+      },
+      {
+        "name": "main_gnss_pair_cold_start",
+        "observed": {
+          "actions": [
+            "op:checksum"
+          ],
+          "rows": [
+            {
+              "a0": 60,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 48
+      },
+      {
+        "name": "main_gnss_pair_empty",
+        "observed": {
+          "actions": [
+            "op:checksum"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 6
+      },
+      {
+        "name": "main_gnss_pair_single_byte",
+        "observed": {
+          "actions": [
+            "op:checksum"
+          ],
+          "rows": [
+            {
+              "a0": 65,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 12
+      }
+    ],
+    "hardware_execution": false,
+    "schema": 1
+  },
+  "receiver": "Airoha AG3335M (dev_ag3335, uart1, rails GPS_1V8/GPS_0V8)",
+  "sample_frames": {
+    "002": "$PAIR002*38",
+    "066,1,1,1,1,0,0": "$PAIR066,1,1,1,1,0,0*3A",
+    "104,1": "$PAIR104,1*22"
+  },
+  "validation_sha256": "57fc0b92dcdbec5bf7a024545084c9b668d04f51eebbe30cacc94fcb9739374d",
+  "vectors_sha256": "7c9c119f4e419c5457e7350282fd3dbfdaf7778fcf90cecac5303cc771fbfc3d"
+}

@@ -3633,6 +3633,21 @@ deletion remain open.
    one-shot timer of 25/25/50/50/80/130/25/25 ms for levels 1–8 (1000 ms
    otherwise). See [analysis/MAIN_MOTOR.md](analysis/MAIN_MOTOR.md).
 
+## 2026-11-20 — AG3335 GNSS PAIR protocol
+
+1. Identified the GNSS as an Airoha AG3335M driven by `$PAIR` sentences.
+   - The framing `$PAIR<code>[,<params>]*XOR\r\n` and the original checksum
+     are verified: 8 native cases, e.g. `$PAIR002*38`.
+   - Decoded the 43-entry `PAIR001` acknowledgement table.
+   - Cataloged all 49 send-with-retry call sites, each code and parameter
+     operand verified. Examples: band mode `105/003/104/002`, EPO
+     `470/530/550`, search mode `066`, low-power `680/730`, defconfig
+     `005/006/007/084/178/778`.
+2. Found a libc `vfprintf` word (`0xf33b89ff`, opcode `0x7f`) that Ghidra and
+   LLVM cannot decode; noted in NATIVE_REPAIR.
+
+   See [analysis/MAIN_GNSS_PAIR.md](analysis/MAIN_GNSS_PAIR.md).
+
 ## Next work
 
 - Sensor-hub IMU: the descriptor callbacks (open/close/rate/flush) that call

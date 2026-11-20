@@ -105,3 +105,10 @@ floating-point semantics. Both were confirmed with single-step traces:
 
 Other native scopes that execute FP stores or FP-to-integer conversions should
 check for the same defects before trusting the emulator's results.
+
+## Undecodable word in libc `vfprintf` (2026-11-20)
+
+The main-image libc formatter contains the 32-bit word `0xf33b89ff` at
+`0x7094d4c2` (opcode `0x7f`). Neither the Ghidra language nor LLVM 23
+(`+xandesperf`) decodes it. Native scopes therefore avoid executing `vfprintf`
+paths that reach it; see [MAIN_GNSS_PAIR.md](MAIN_GNSS_PAIR.md).
