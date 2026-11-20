@@ -13,34 +13,37 @@ class MainKeyStateTest(unittest.TestCase):
 
     def test_native_matches_model(self):
         report = self.evidence['native_validation']
-        self.assertEqual((report['case_count'], len(report['cases'])), (5, 5))
+        self.assertEqual((report['case_count'], len(report['cases'])), (19, 19))
         self.assertFalse(report['hardware_execution'])
         for row in report['cases']:
             name = row['name'].removeprefix('main_key_state_')
             self.assertEqual(row['observed'], self.cases[name]['expected'])
 
-    def _store_state(self, name):
-        for a in self.cases[name]['expected']['actions']:
-            if a.startswith('call:' + str(ks.STORE_STATE)):
-                return int(a.split(':')[-1])
-        return None
+    def _pc(self, name):
+        return self.evidence['per_case'][name]
 
-    def test_press_below_threshold_no_store(self):
-        # Below threshold: counter increments, timer check runs, no state store.
-        self.assertIsNone(self._store_state('press_below_threshold'))
-        actions = self.cases['press_below_threshold']['expected']['actions']
-        self.assertTrue(any(a.startswith('call:' + str(ks.TIMER_CHECK)) for a in actions))
+    def test_state0(self):
+        self.assertEqual(self._pc('s0_press_below'), dict(upload_bits=[], store_states=[]))
+        self.assertEqual(self._pc('s0_press_store2')['store_states'], [2])
+        self.assertEqual(self._pc('s0_press_store1')['store_states'], [1])
 
-    def test_threshold_stores_state_by_flag(self):
-        # Config flag bit 4 selects state 1, else state 2.
-        self.assertEqual(self._store_state('press_reaches_threshold_state2'), 2)
-        self.assertEqual(self._store_state('press_reaches_threshold_state1'), 1)
+    def test_state2(self):
+        self.assertEqual(self._pc('s2_press_store5'), dict(upload_bits=[2], store_states=[5]))
+        self.assertEqual(self._pc('s2_press_store4'), dict(upload_bits=[2], store_states=[4]))
+        self.assertEqual(self._pc('s2_release_hold'), dict(upload_bits=[8], store_states=[3]))
+        self.assertEqual(self._pc('s2_release_end'), dict(upload_bits=[8, 1], store_states=[0]))
 
-    def test_release_runs_idle(self):
-        actions = self.cases['release_clears_counter']['expected']['actions']
-        self.assertTrue(any(a.startswith('call:' + str(ks.IDLE_HANDLER)) for a in actions))
-        # The counter is cleared to 0.
-        self.assertTrue(any(a.endswith(':4:0') for a in actions if a.startswith('w:')))
+    def test_state3(self):
+        self.assertEqual(self._pc('s3_press_store5'), dict(upload_bits=[0x10, 4], store_states=[5]))
+        self.assertEqual(self._pc('s3_repeat_fires'), dict(upload_bits=[1], store_states=[0]))
+        self.assertEqual(self._pc('s3_repeat_building'), dict(upload_bits=[], store_states=[]))
+
+    def test_states_4_5_6(self):
+        self.assertEqual(self._pc('s4_press_store6'), dict(upload_bits=[0x20], store_states=[6]))
+        self.assertEqual(self._pc('s6_press_store5'), dict(upload_bits=[0x40], store_states=[5]))
+        for name in ('s4_release', 's5_release_ends', 's6_release'):
+            self.assertEqual(self._pc(name), dict(upload_bits=[8], store_states=[0]))
+        self.assertEqual(self._pc('s5_press_counts'), dict(upload_bits=[], store_states=[]))
 
     def test_dispatch_contract(self):
         self.assertEqual(self.evidence['function'], '0x701e923e (gpio_key_state_machine)')

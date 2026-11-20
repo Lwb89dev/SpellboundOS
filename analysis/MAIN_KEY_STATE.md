@@ -1,32 +1,42 @@
-# gpio_key state machine (dispatch + state 0)
+# gpio_key state machine (dispatch + states 0, 2..6)
 
 `gpio_key_state_machine` (`0x701e923e`) is the key event handler. On each event
 it decodes the GPIO level (`0x702bd6c8` writes a press/release flag onto the
 stack) and dispatches on the per-key state byte through a 7-entry jump table.
-This scope executes the dispatch and **state 0 (idle)**; the configuration it
-reads is the one written by [drv_key_init](MAIN_KEY_INIT.md). Executed in
-`main-runtime`; the evidence is in [main-key-state.json](main-key-state.json).
-All **5 native cases pass** and the runtime counter writes are recorded.
+This scope executes the dispatch and the **single-key paths of states 0 and
+2..6** (taken while the combo-pending global `0x70f8e0dc` is clear); the
+configuration it reads is the one written by [drv_key_init](MAIN_KEY_INIT.md).
+Executed in `main-runtime`; the evidence is in
+[main-key-state.json](main-key-state.json). All **19 native cases pass** and the
+runtime context writes are recorded.
 
-## Dispatch
+## Dispatch and context
 
 - The message has `[0]` = event struct (`[0]` key index, `[2]` event code) and
   `[4]` = config base (`0x70f92bf4`).
 - `0x702bd6c8(event_code, &flag)` decodes the level and must return 0.
-- The runtime context at `0x70f92b74 + key*0x18` holds the state byte (`+0`) and
-  the press counter (`+4`); the state byte indexes the jump table (states 0..6).
-- Config is read at `0x70f92bf4 + key*0x30`: press threshold `+0x58`, flags
-  `+0x50`.
+- Runtime context at `0x70f92b74 + key*0x18`: `+0` state byte, `+4` press
+  counter, `+8` repeat counter, `+0xc` flag byte.
+- Config at `0x70f92bf4 + key*0x30`: flags `+0x50`; thresholds `+0x58`/`+0x5c`/
+  `+0x60`/`+0x64` (press), `+0x68` (hold window), `+0x6c` (repeat max), `+0x70`
+  (release).
+- A **zero decode flag** is the press/hold edge; a **non-zero flag** is release.
 
-## State 0 (idle)
+## States (single-key paths)
 
-- A **zero decode flag** is the press/hold edge: increment the press counter
-  (`+4`). While it stays at or below the threshold (`+0x58`), just run the timer
-  check (`0x701e8afc`). Once it exceeds the threshold, store the next state
-  (`0x701e90be`) — **state 1 if config `+0x50` bit 4 is set, else state 2** —
-  then run the timer check.
-- A **non-zero decode flag** is the release edge: clear the press counter and
-  run the idle handler (`0x701e8dba`).
+| State | Press | Release |
+| --- | --- | --- |
+| 0 (idle) | build counter; store state 1/2 at the threshold (flag `+0x50` bit 4) | clear counter |
+| 2 | store state 4/5 (bit 5), upload bit 2 | upload bit 8, then hold (store 3) or end (upload bit 1, store 0) |
+| 3 | upload bits 0x10 / 0x4, store state 5 | repeat → upload bit 1, store 0 |
+| 4 | store state 6, upload bit 0x20 | upload bit 8, store 0 |
+| 5 | count only | upload bit 8, store 0 |
+| 6 | upload bit 0x40, store state 5 | upload bit 8, store 0 |
+
+The event bits (`0x1`..`0x400`) are the key gestures posted to the input queue
+by the upload helper `0x701e8b40`; the next state is written by the store helper
+`0x701e90be`; the idle/finalize handler is `0x701e8dba` and the debounce timer
+is `0x701e8afc`.
 
 ## Reproduction
 
@@ -43,7 +53,9 @@ python3 -m unittest tests.test_main_key_state -q
 
 ## Remaining
 
-- States **1..6** (combo, long press, double click, repeat): they read both
-  keys' runtime contexts and the combo globals at `0x70f8e0da`/`0db`/`0dc` and
-  raise event uploads (`0x701e8b40`) with event bits `0x1`..`0x400`. Mapped (see
-  the handoff) but not yet executed — the next gpio_key blocks.
+- **State 1 (combo)** and the **two-key combo sub-paths of states 2..6**: these
+  engage when the combo-pending global `0x70f8e0dc` is set (or, in state 1, once
+  a key's counter is non-zero); they read both keys' runtime contexts and the
+  combo indices at `0x70f8e0da`/`0db`, compute the inter-press time against the
+  combo window (config `+0x74`) and post combo events (bits `0x80`/`0x100`/
+  `0x200`/`0x400`). Mapped but not yet executed.

@@ -3771,11 +3771,28 @@ deletion remain open.
    See [analysis/MAIN_KEY_STATE.md](analysis/MAIN_KEY_STATE.md). Vectors, native
    report and evidence regenerate byte for byte.
 
+## 2026-11-20 — gpio_key state machine states 2..6
+
+1. Extended the state machine scope to the single-key paths of states 2..6
+   (combo-pending global kept clear). All **19 native cases pass** (states 0
+   and 2..6):
+   - state 2: press stores state 4/5 (flags bit 5) + upload bit 2; release
+     uploads bit 8 then holds (store 3) or ends (upload bit 1, store 0);
+   - state 3: press uploads bits 0x10/0x4 + store 5; repeat uploads bit 1, store 0;
+   - state 4: press store 6 + upload 0x20; release upload 8, store 0;
+   - state 5: press counts; release upload 8, store 0;
+   - state 6: press upload 0x40 + store 5; release upload 8, store 0.
+
+   See [analysis/MAIN_KEY_STATE.md](analysis/MAIN_KEY_STATE.md). Vectors, native
+   report and evidence regenerate byte for byte.
+
 ## Next work
 
-- gpio_key state machine **states 1..6** (combo, long press, double click,
-  repeat): read both keys' runtime contexts and the combo globals
-  `0x70f8e0da`/`0db`/`0dc`, raise event uploads `0x701e8b40` (bits 0x1..0x400).
+- gpio_key **state 1 (combo)** and the **two-key combo sub-paths** of states
+  2..6: engage when the combo-pending global `0x70f8e0dc` is set; read both keys'
+  runtime contexts and the combo indices `0x70f8e0da`/`0db`, compute the inter-
+  press time vs the combo window (config `+0x74`), post combo events (bits
+  0x80/0x100/0x200/0x400).
 - OTA bootloader apply: the post-reboot `Upgrade bootloader/firmware/boot
   resource` staging, the cryptographic image signature it checks (beyond the
   CRC32 transfer integrity now covered), and the backup-firmware recovery path

@@ -1,23 +1,24 @@
 {
   "dispatch": {
-    "config": "driver object 0x70f92bf4 + key*0x30 (press threshold +0x58, flags +0x50)",
+    "combo_gated": "the two-key combo paths are gated on the global 0x70f8e0dc",
+    "config": "driver object 0x70f92bf4 + key*0x30 (flags +0x50)",
     "decode": "0x702bd6c8 writes a press/release flag; must return 0",
     "state_byte": "runtime context 0x70f92b74 + key*0x18, +0 (7-entry jump table)"
   },
   "function": "0x701e923e (gpio_key_state_machine)",
   "image": "main firmware (OTA 4.6.0.3)",
   "limitations": [
-    "The GPIO decode, state store, timer check, idle handler and event upload are stubbed; the state machine runs as real code and the runtime counter writes are recorded.",
-    "Only the dispatch and state 0 (idle) are covered. States 1..6 (combo, long press, double click, repeat) read both keys' contexts and the combo globals and are mapped but not yet executed."
+    "The GPIO decode, state store, timer check, idle handler and event upload are stubbed; the state machine runs as real code and the runtime context writes are recorded.",
+    "Only the single-key paths are covered (combo-pending global kept clear). State 1 (combo) and the two-key combo sub-paths of states 2..6 read both keys' contexts and are not executed here."
   ],
-  "native_case_count": 5,
-  "native_steps": 321,
+  "native_case_count": 19,
+  "native_steps": 1350,
   "native_validation": {
     "bound_per_case": 20000,
-    "case_count": 5,
+    "case_count": 19,
     "cases": [
       {
-        "name": "main_key_state_press_below_threshold",
+        "name": "main_key_state_s0_press_below",
         "observed": {
           "actions": [
             "op:event",
@@ -47,7 +48,7 @@
         "steps": 63
       },
       {
-        "name": "main_key_state_press_reaches_threshold_state2",
+        "name": "main_key_state_s0_press_store2",
         "observed": {
           "actions": [
             "op:event",
@@ -78,7 +79,7 @@
         "steps": 70
       },
       {
-        "name": "main_key_state_press_reaches_threshold_state1",
+        "name": "main_key_state_s0_press_store1",
         "observed": {
           "actions": [
             "op:event",
@@ -109,7 +110,7 @@
         "steps": 69
       },
       {
-        "name": "main_key_state_release_clears_counter",
+        "name": "main_key_state_s0_release",
         "observed": {
           "actions": [
             "op:event",
@@ -139,7 +140,7 @@
         "steps": 56
       },
       {
-        "name": "main_key_state_press_key1",
+        "name": "main_key_state_s0_press_key1",
         "observed": {
           "actions": [
             "op:event",
@@ -167,28 +168,594 @@
           ]
         },
         "steps": 63
+      },
+      {
+        "name": "main_key_state_s2_press_store5",
+        "observed": {
+          "actions": [
+            "op:event",
+            "call:1881921224:66:2164264911",
+            "w:1895377784:4:6",
+            "call:1881051326:2164273408:5",
+            "call:1881049920:2164273152:2",
+            "call:1881049852:2164273152"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 78
+      },
+      {
+        "name": "main_key_state_s2_press_store4",
+        "observed": {
+          "actions": [
+            "op:event",
+            "call:1881921224:66:2164264911",
+            "w:1895377784:4:6",
+            "call:1881051326:2164273408:4",
+            "call:1881049920:2164273152:2",
+            "call:1881049852:2164273152"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 77
+      },
+      {
+        "name": "main_key_state_s2_release_hold",
+        "observed": {
+          "actions": [
+            "op:event",
+            "call:1881921224:66:2164264911",
+            "call:1881049920:2164273152:8",
+            "w:1895377788:4:0",
+            "call:1881051326:2164273408:3",
+            "w:1895377784:4:0",
+            "call:1881049852:2164273152"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 79
+      },
+      {
+        "name": "main_key_state_s2_release_end",
+        "observed": {
+          "actions": [
+            "op:event",
+            "call:1881921224:66:2164264911",
+            "call:1881049920:2164273152:8",
+            "call:1881049920:2164273152:1",
+            "call:1881051326:2164273408:0",
+            "w:1895377784:4:0",
+            "call:1881050554:2164273152"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 76
+      },
+      {
+        "name": "main_key_state_s2_release_idle",
+        "observed": {
+          "actions": [
+            "op:event",
+            "call:1881921224:66:2164264911",
+            "call:1881050554:2164273152"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 57
+      },
+      {
+        "name": "main_key_state_s3_press_store5",
+        "observed": {
+          "actions": [
+            "op:event",
+            "call:1881921224:66:2164264911",
+            "w:1895377784:4:6",
+            "call:1881049920:2164273152:16",
+            "call:1881049920:2164273152:4",
+            "call:1881051326:2164273408:5",
+            "call:1881049852:2164273152"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 87
+      },
+      {
+        "name": "main_key_state_s3_repeat_fires",
+        "observed": {
+          "actions": [
+            "op:event",
+            "call:1881921224:66:2164264911",
+            "w:1895377788:4:6",
+            "w:1895377788:4:0",
+            "w:1895377784:4:0",
+            "call:1881049920:2164273152:1",
+            "call:1881051326:2164273408:0",
+            "call:1881050554:2164273152"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 75
+      },
+      {
+        "name": "main_key_state_s3_repeat_building",
+        "observed": {
+          "actions": [
+            "op:event",
+            "call:1881921224:66:2164264911",
+            "w:1895377788:4:1",
+            "call:1881049852:2164273152"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 63
+      },
+      {
+        "name": "main_key_state_s4_press_store6",
+        "observed": {
+          "actions": [
+            "op:event",
+            "call:1881921224:66:2164264911",
+            "w:1895377784:4:6",
+            "call:1881051326:2164273408:6",
+            "call:1881049920:2164273152:32",
+            "call:1881049852:2164273152"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 76
+      },
+      {
+        "name": "main_key_state_s4_release",
+        "observed": {
+          "actions": [
+            "op:event",
+            "call:1881921224:66:2164264911",
+            "w:1895377784:4:0",
+            "call:1881049920:2164273152:8",
+            "call:1881051326:2164273408:0",
+            "call:1881050554:2164273152"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 73
+      },
+      {
+        "name": "main_key_state_s5_press_counts",
+        "observed": {
+          "actions": [
+            "op:event",
+            "call:1881921224:66:2164264911",
+            "w:1895377784:4:1",
+            "call:1881049852:2164273152"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 58
+      },
+      {
+        "name": "main_key_state_s5_release_ends",
+        "observed": {
+          "actions": [
+            "op:event",
+            "call:1881921224:66:2164264911",
+            "w:1895377784:4:6",
+            "w:1895377784:4:0",
+            "call:1881049920:2164273152:8",
+            "call:1881051326:2164273408:0",
+            "call:1881050554:2164273152"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 78
+      },
+      {
+        "name": "main_key_state_s6_press_store5",
+        "observed": {
+          "actions": [
+            "op:event",
+            "call:1881921224:66:2164264911",
+            "w:1895377784:4:6",
+            "call:1881049920:2164273152:64",
+            "call:1881051326:2164273408:5",
+            "call:1881049852:2164273152"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 78
+      },
+      {
+        "name": "main_key_state_s6_release",
+        "observed": {
+          "actions": [
+            "op:event",
+            "call:1881921224:66:2164264911",
+            "w:1895377784:4:0",
+            "call:1881049920:2164273152:8",
+            "call:1881051326:2164273408:0",
+            "call:1881050554:2164273152"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 74
       }
     ],
     "hardware_execution": false,
     "schema": 1
   },
-  "return_codes": {
-    "press_below_threshold": 0,
-    "press_key1": 0,
-    "press_reaches_threshold_state1": 0,
-    "press_reaches_threshold_state2": 0,
-    "release_clears_counter": 0
-  },
-  "state0": {
-    "helpers": {
-      "event_upload": "0x701e8b40",
-      "idle_handler": "0x701e8dba",
-      "store_state": "0x701e90be",
-      "timer_check": "0x701e8afc"
+  "per_case": {
+    "s0_press_below": {
+      "store_states": [],
+      "upload_bits": []
     },
-    "press": "increment press counter (+4); below threshold -> timer check; above threshold -> store next state (0x701e90be, state 2 if flags bit 4 else state 1) then timer check",
-    "release": "clear the press counter and run the idle handler (0x701e8dba)"
+    "s0_press_key1": {
+      "store_states": [],
+      "upload_bits": []
+    },
+    "s0_press_store1": {
+      "store_states": [
+        1
+      ],
+      "upload_bits": []
+    },
+    "s0_press_store2": {
+      "store_states": [
+        2
+      ],
+      "upload_bits": []
+    },
+    "s0_release": {
+      "store_states": [],
+      "upload_bits": []
+    },
+    "s2_press_store4": {
+      "store_states": [
+        4
+      ],
+      "upload_bits": [
+        2
+      ]
+    },
+    "s2_press_store5": {
+      "store_states": [
+        5
+      ],
+      "upload_bits": [
+        2
+      ]
+    },
+    "s2_release_end": {
+      "store_states": [
+        0
+      ],
+      "upload_bits": [
+        8,
+        1
+      ]
+    },
+    "s2_release_hold": {
+      "store_states": [
+        3
+      ],
+      "upload_bits": [
+        8
+      ]
+    },
+    "s2_release_idle": {
+      "store_states": [],
+      "upload_bits": []
+    },
+    "s3_press_store5": {
+      "store_states": [
+        5
+      ],
+      "upload_bits": [
+        16,
+        4
+      ]
+    },
+    "s3_repeat_building": {
+      "store_states": [],
+      "upload_bits": []
+    },
+    "s3_repeat_fires": {
+      "store_states": [
+        0
+      ],
+      "upload_bits": [
+        1
+      ]
+    },
+    "s4_press_store6": {
+      "store_states": [
+        6
+      ],
+      "upload_bits": [
+        32
+      ]
+    },
+    "s4_release": {
+      "store_states": [
+        0
+      ],
+      "upload_bits": [
+        8
+      ]
+    },
+    "s5_press_counts": {
+      "store_states": [],
+      "upload_bits": []
+    },
+    "s5_release_ends": {
+      "store_states": [
+        0
+      ],
+      "upload_bits": [
+        8
+      ]
+    },
+    "s6_press_store5": {
+      "store_states": [
+        5
+      ],
+      "upload_bits": [
+        64
+      ]
+    },
+    "s6_release": {
+      "store_states": [
+        0
+      ],
+      "upload_bits": [
+        8
+      ]
+    }
   },
-  "validation_sha256": "c7b09242614c8359b56983724f33a2964e647883afc141b28d1d9d2cf3f9b310",
-  "vectors_sha256": "48c2cb49f31adb87d4dd41c02eca7cc4388790d9ff42dd494594401598f6ba40"
+  "states": {
+    "s0": "press builds the counter, stores state 1/2 at the threshold; release clears it",
+    "s2": "press stores state 4/5 and uploads bit 2; release uploads bit 8 then holds (state 3) or ends",
+    "s3": "press uploads bits 0x10/0x4 and stores state 5; repeat uploads bit 1 and ends",
+    "s4": "press stores state 6 and uploads bit 0x20; release uploads bit 8 and ends",
+    "s5": "press only counts; release ends (upload bit 8)",
+    "s6": "press uploads bit 0x40 and stores state 5; release ends"
+  },
+  "validation_sha256": "4c29af322dbe8e246c8e91cdb0c98ce24eec84c0a79252bccc65a48919d1c3da",
+  "vectors_sha256": "fe17f8131ff01bde56eb7d89625602a8c15f52c857de9066d49d13fd081bc1de"
 }

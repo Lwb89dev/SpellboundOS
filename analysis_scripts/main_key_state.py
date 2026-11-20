@@ -1,26 +1,33 @@
 #!/usr/bin/env python3
-"""Main-image gpio_key state machine (``gpio_key_state_machine`` ``0x701e923e``), state 0.
+"""Main-image gpio_key state machine (``gpio_key_state_machine`` ``0x701e923e``).
 
 Executes in ``main-runtime`` the key event handler.  On each event it decodes the
 GPIO level (``0x702bd6c8`` writes a press/release flag), then dispatches on the
 per-key state byte (runtime context at ``0x70f92b74 + key*0x18``) through a
-7-entry jump table.  This scope covers the dispatch and **state 0 (idle)**; the
-configuration it reads is the one written by
+7-entry jump table.  This scope covers the dispatch and **states 0 and 2..6**
+(the single-key paths taken while the combo-pending global ``0x70f8e0dc`` is
+clear); the configuration it reads is the one written by
 [drv_key_init](MAIN_KEY_INIT.md) at object ``0x70f92bf4`` (per-key stride 0x30).
 
-State 0:
+Per-key runtime context (``0x70f92b74 + key*0x18``): ``+0`` state byte, ``+4``
+press counter, ``+8`` repeat counter, ``+0xc`` flag byte.  Config flags live at
+``+0x50``; the states read thresholds at ``+0x58``/``+0x5c``/``+0x60``/``+0x64``
+(press), ``+0x68`` (hold window), ``+0x6c`` (repeat max) and ``+0x70`` (release).
 
-- **press** (flag != 0): increment the press counter (runtime ``+4``); while it
-  stays at or below the press threshold (config ``+0x58``) just run the timer
-  check (``0x701e8afc``); once it exceeds the threshold, store the next state
-  (``0x701e90be``; state 2 if config ``+0x50`` bit 4 is set, else state 1) and
-  run the timer check;
-- **release** (flag == 0): clear the press counter and run the idle handler
-  (``0x701e8dba``).
+- **state 0** (idle): press builds the counter, storing state 1/2 at the
+  threshold; release clears it.
+- **state 2**: press stores state 4/5 and uploads bit 2; release uploads bit 8
+  then, by the flags, either confirms a hold (store state 3) or ends (store 0).
+- **state 3**: press uploads bits 0x10/0x4 and stores state 5; the repeat path
+  uploads bit 1 and ends (store 0).
+- **state 4**: press stores state 6 and uploads bit 0x20; release uploads bit 8
+  and ends.
+- **state 5**: press only counts; release ends (upload bit 8 by the flags).
+- **state 6**: press uploads bit 0x40 and stores state 5; release ends.
 
-Supplied (stubbed): the GPIO decode (writes the press/release flag), the
-state store, the timer check, the idle handler and the event upload.  Later
-blocks will cover states 1..6 (combo, long press, double click, repeat).
+Supplied (stubbed): the GPIO decode (writes the press/release flag), the state
+store, the timer check, the idle handler and the event upload.  State 1 (combo,
+two-key) and the combo sub-paths of states 2..6 are not covered here.
 """
 import argparse
 import hashlib
@@ -44,17 +51,17 @@ TIMER_CHECK = 0x701e8afc
 IDLE_HANDLER = 0x701e8dba
 EVENT_UPLOAD = 0x701e8b40
 
-RT_BASE = 0x70f92b74                 # runtime per-key context (stride 0x18)
-OBJ = 0x70f92bf4                     # driver object / config base (per-key stride 0x30)
-PRESS_THRESHOLD_OFF = 0x58           # config +0x58
-FLAGS_OFF = 0x50                     # config +0x50 (bit 4 selects state 2 over state 1)
+RT_BASE = 0x70f92b74
+OBJ = 0x70f92bf4
+COMBO_GLOBALS = 0x70f8e0d8           # combo-pending block (kept clear here)
+FLAGS = 0x50
 
-MSG = 0x81003000                     # message: [0]=event struct, [4]=config base
-EVENT = 0x81003100                   # event struct: [0]=key index, [2]=event code
-STACK = kernel.HARNESS_STACK         # 0x81001000
-LOCAL_FLAG = STACK - 0x40 + 0xf      # the decode output on the handler's stack frame
+MSG = 0x81003000
+EVENT = 0x81003100
+STACK = kernel.HARNESS_STACK
+LOCAL_FLAG = STACK - 0x40 + 0xf
 EVENT_CODE = 0x0042
-OBJ_SIZE = 0xb0                       # covers both per-key config blocks (stride 0x30)
+OBJ_SIZE = 0xb0
 CSRS = kernel.CSRS
 
 CODE = ((STATE_MACHINE, 0x5b8, 'ddbbe73f3fcd87698a8817ec8c175569bc50aa5a8262b380663c2b2b94e4e338'),)
@@ -71,58 +78,155 @@ class Model(kernel.Model):
     def u8(self, a):
         return self.read(a, 1)
 
-    def u16(self, a):
-        return self.read(a, 2)
-
     def u32(self, a):
         return self.read(a, 4)
 
-    def put(self, a, size, v):
-        self.write(a, size, v & ((1 << (8 * size)) - 1))
+    def u16(self, a):
+        return self.read(a, 2)
+
+    def put(self, a, v):
+        self.write(a, 4, v & M32)
+
+    def done(self):
+        self.leaf(TIMER_CHECK, MSG)
+        return self.svc['timer'] & M32
+
+    def idle(self):
+        self.leaf(IDLE_HANDLER, MSG)
+        return self.svc['idle'] & M32
+
+    def upload(self, bit):
+        self.leaf(EVENT_UPLOAD, MSG, bit)
+
+    def store(self, state):
+        self.leaf(STORE_STATE, self.u32(MSG), state)
 
     def run_machine(self):
         event = self.u32(MSG)
         config = self.u32(MSG + 4)
         key = self.u8(event)
         self.leaf(DECODE, self.u16(event + 2), LOCAL_FLAG)
-        flag = self.svc['decode']                    # written to the stack frame by the stub
+        flag = self.svc['decode']
         state = self.u8(RT_BASE + key * 0x18)
         if state > 6:
             return self.idle()
-        if state == 0:
-            return self.state0(event, config, key, flag)
-        raise ValueError('only state 0 is modelled')
-
-    def state0(self, event, config, key, flag):
         rt = RT_BASE + key * 0x18
-        if flag != 0:
-            # A non-zero decode flag is the release/idle edge: clear the counter and go idle.
-            self.put(rt + 4, 4, 0)
+
+        def cfg(off):
+            return self.u32(config + key * 0x30 + off)
+
+        flags = cfg(FLAGS)
+
+        def bit(n):
+            return (flags >> n) & 1
+
+        if state == 0:
+            if flag != 0:
+                self.put(rt + 4, 0)
+                return self.idle()
+            counter = self.u32(rt + 4) + 1
+            self.put(rt + 4, counter)
+            if cfg(0x58) < counter:
+                self.store(1 if bit(4) else 2)
+            return self.done()
+
+        if state == 1:
+            raise ValueError('state 1 (combo) is not modelled')
+
+        if state == 2:
+            if flag == 0:
+                counter = self.u32(rt + 4) + 1
+                self.put(rt + 4, counter)
+                if not bit(1) or cfg(0x5c) >= counter:
+                    return self.done()
+                self.store(4 if bit(5) else 5)
+                self.upload(2)
+                return self.done()
+            if not bit(3):
+                return self.idle()
+            self.upload(8)
+            if bit(2) and cfg(0x68) >= self.u32(rt + 4) and self.u8(rt + 0xc) != 0:
+                self.put(rt + 8, 0)
+                self.store(3)
+                self.put(rt + 4, 0)
+                return self.done()
+            if bit(0):
+                self.upload(1)
+            self.store(0)
+            self.put(rt + 4, 0)
             return self.idle()
-        counter = self.u32(rt + 4) + 1
-        self.put(rt + 4, 4, counter)
-        cfg = config + key * 0x30
-        if self.u32(cfg + PRESS_THRESHOLD_OFF) < counter:
-            flags = self.u32(cfg + FLAGS_OFF)
-            self.leaf(STORE_STATE, event, 1 if (flags >> 4) & 1 else 2)
-        return self.done()
 
-    def done(self):
-        self.leaf(TIMER_CHECK, MSG)
-        return word(self.svc['timer'])
+        if state == 3:
+            if flag == 0:
+                counter = self.u32(rt + 4) + 1
+                self.put(rt + 4, counter)
+                if cfg(0x58) >= counter:
+                    return self.done()
+                if bit(4):
+                    self.upload(0x10)
+                if bit(2) and self.u8(rt + 0xc) != 0:
+                    self.upload(4)
+                self.store(5)
+                return self.done()
+            repeat = self.u32(rt + 8) + 1
+            self.put(rt + 8, repeat)
+            if cfg(0x6c) >= repeat:
+                return self.done()
+            self.put(rt + 8, 0)
+            self.put(rt + 4, 0)
+            if bit(0):
+                self.upload(1)
+            self.store(0)
+            return self.idle()
 
-    def idle(self):
-        self.leaf(IDLE_HANDLER, MSG)
-        return word(self.svc['idle'])
+        if state == 4:
+            if flag == 0:
+                counter = self.u32(rt + 4) + 1
+                self.put(rt + 4, counter)
+                if not bit(5) or cfg(0x60) >= counter:
+                    return self.done()
+                self.store(6)
+                self.upload(0x20)
+                return self.done()
+            self.put(rt + 4, 0)
+            if bit(3):
+                self.upload(8)
+            self.store(0)
+            return self.idle()
+
+        if state == 5:
+            counter = self.u32(rt + 4) + 1
+            self.put(rt + 4, counter)
+            if flag == 0:
+                return self.done()
+            if cfg(0x70) >= counter:
+                return self.done()
+            self.put(rt + 4, 0)
+            if bit(3):
+                self.upload(8)
+            self.store(0)
+            return self.idle()
+
+        if state == 6:
+            if flag == 0:
+                counter = self.u32(rt + 4) + 1
+                self.put(rt + 4, counter)
+                if not bit(6) or cfg(0x64) >= counter:
+                    return self.done()
+                self.upload(0x40)
+                self.store(5)
+                return self.done()
+            self.put(rt + 4, 0)
+            if bit(3):
+                self.upload(8)
+            self.store(0)
+            return self.idle()
+        raise ValueError('state')
 
     def operation(self, op):
         if op['name'] != 'event':
             raise ValueError('operation')
         return self.run_machine()
-
-
-def word(v):
-    return v & M32
 
 
 def contract(case):
@@ -131,19 +235,27 @@ def contract(case):
     return Model(case).run()
 
 
-def case(name, key=0, state=0, press=1, counter=0, threshold=3, flags=0, **svc_over):
+# Config threshold fields (offset within the per-key 0x30 block -> value).
+THRESHOLDS = {0x58: 3, 0x5c: 3, 0x60: 3, 0x64: 3, 0x68: 10, 0x6c: 3, 0x70: 3, 0x74: 0xa}
+
+
+def case(name, key=0, state=0, press=0, counter=0, repeat=0, flagbyte=0, flags=0):
     g = dict(decode=press, timer=0, idle=0)
-    g.update(svc_over)
     msg = struct.pack('<II', EVENT, OBJ)
     event = bytearray(0x10)
     event[0] = key
     struct.pack_into('<H', event, 2, EVENT_CODE)
     rt = bytearray((key + 1) * 0x18)
-    rt[key * 0x18] = state
-    struct.pack_into('<I', rt, key * 0x18 + 4, counter)
+    base = key * 0x18
+    rt[base] = state
+    struct.pack_into('<I', rt, base + 4, counter)
+    struct.pack_into('<I', rt, base + 8, repeat)
+    rt[base + 0xc] = flagbyte
     obj = bytearray(OBJ_SIZE)
-    struct.pack_into('<I', obj, key * 0x30 + PRESS_THRESHOLD_OFF, threshold)
-    struct.pack_into('<I', obj, key * 0x30 + FLAGS_OFF, flags)
+    struct.pack_into('<I', obj, key * 0x30 + FLAGS, flags)
+    for off, value in THRESHOLDS.items():
+        struct.pack_into('<I', obj, key * 0x30 + off, value)
+    combo = bytearray(0x10)             # 0x70f8e0d8.. kept clear so the combo paths are not taken
     stubs = {
         str(DECODE): dict(kind='store', out_arg=1, size=1, value=g['decode'], value_ret=0, args=2),
         str(STORE_STATE): dict(kind='return', args=2),
@@ -158,9 +270,7 @@ def case(name, key=0, state=0, press=1, counter=0, threshold=3, flags=0, **svc_o
         snapshot=[], operations=[dict(name='event', entry=STATE_MACHINE, call=True, args=[MSG],
                                       registers=False, result=True, result_high=False)],
         memory=[[MSG, msg.hex()], [EVENT, bytes(event).hex()], [RT_BASE, bytes(rt).hex()],
-                [OBJ, bytes(obj).hex()]], services=g)
-
-
+                [OBJ, bytes(obj).hex()], [COMBO_GLOBALS, bytes(combo).hex()]], services=g)
 
 
 def native_vectors():
@@ -170,12 +280,31 @@ def native_vectors():
         c_['expected'] = contract(c_)
         cases.append(c_)
 
-    # A zero decode flag is the press/hold edge (counter builds); a non-zero flag is release.
-    add(case('press_below_threshold', key=0, press=0, counter=0, threshold=3))
-    add(case('press_reaches_threshold_state2', key=0, press=0, counter=3, threshold=3, flags=0))
-    add(case('press_reaches_threshold_state1', key=0, press=0, counter=3, threshold=3, flags=0x10))
-    add(case('release_clears_counter', key=0, press=1, counter=5))
-    add(case('press_key1', key=1, press=0, counter=0, threshold=3))
+    # state 0
+    add(case('s0_press_below', state=0, press=0, counter=0))
+    add(case('s0_press_store2', state=0, press=0, counter=3, flags=0))
+    add(case('s0_press_store1', state=0, press=0, counter=3, flags=0x10))
+    add(case('s0_release', state=0, press=1, counter=5))
+    add(case('s0_press_key1', key=1, state=0, press=0, counter=0))
+    # state 2
+    add(case('s2_press_store5', state=2, press=0, counter=5, flags=0x02))
+    add(case('s2_press_store4', state=2, press=0, counter=5, flags=0x22))
+    add(case('s2_release_hold', state=2, press=1, counter=5, flagbyte=1, flags=0x0c))
+    add(case('s2_release_end', state=2, press=1, counter=5, flags=0x09))
+    add(case('s2_release_idle', state=2, press=1, counter=5, flags=0))
+    # state 3
+    add(case('s3_press_store5', state=3, press=0, counter=5, flagbyte=1, flags=0x14))
+    add(case('s3_repeat_fires', state=3, press=1, repeat=5, flags=0x01))
+    add(case('s3_repeat_building', state=3, press=1, repeat=0))
+    # state 4
+    add(case('s4_press_store6', state=4, press=0, counter=5, flags=0x20))
+    add(case('s4_release', state=4, press=1, counter=5, flags=0x08))
+    # state 5
+    add(case('s5_press_counts', state=5, press=0, counter=0))
+    add(case('s5_release_ends', state=5, press=1, counter=5, flags=0x08))
+    # state 6
+    add(case('s6_press_store5', state=6, press=0, counter=5, flags=0x40))
+    add(case('s6_release', state=6, press=1, counter=5, flags=0x08))
     return dict(schema=1, bound_per_case=BOUND,
                 guards=[dict(address=a, size=n, sha256=h) for a, n, h in CODE], cases=cases)
 
@@ -192,11 +321,13 @@ def evidence(archive, vectors, validation):
     if report['hardware_execution'] is not False or report['bound_per_case'] != BOUND or \
             report['case_count'] != len(vector_doc['cases']) or len(report['cases']) != len(vector_doc['cases']):
         raise ValueError('report bound/count')
-    results = {}
+    uploads = {}
     for row, c in zip(report['cases'], vector_doc['cases']):
         if row['name'] != c['name'] or row['observed'] != c['expected'] or not 0 < row['steps'] <= BOUND:
             raise ValueError('native mismatch ' + c['name'])
-        results[c['name'].removeprefix('main_key_state_')] = row['observed']['rows'][0]['a0']
+        bits = [int(a.split(':')[-1]) for a in c['expected']['actions'] if a.startswith('call:' + str(EVENT_UPLOAD))]
+        stores = [int(a.split(':')[-1]) for a in c['expected']['actions'] if a.startswith('call:' + str(STORE_STATE))]
+        uploads[c['name'].removeprefix('main_key_state_')] = dict(upload_bits=bits, store_states=stores)
     return dict(
         image='main firmware (OTA 4.6.0.3)',
         vectors_sha256=hashlib.sha256(vectors.read_bytes()).hexdigest(),
@@ -205,21 +336,23 @@ def evidence(archive, vectors, validation):
         dispatch=dict(
             decode=f'{DECODE:#010x} writes a press/release flag; must return 0',
             state_byte=f'runtime context {RT_BASE:#010x} + key*0x18, +0 (7-entry jump table)',
-            config=f'driver object {OBJ:#010x} + key*0x30 (press threshold +0x58, flags +0x50)'),
-        state0=dict(
-            press='increment press counter (+4); below threshold -> timer check; above threshold -> '
-                  'store next state (0x701e90be, state 2 if flags bit 4 else state 1) then timer check',
-            release='clear the press counter and run the idle handler (0x701e8dba)',
-            helpers=dict(timer_check=f'{TIMER_CHECK:#010x}', idle_handler=f'{IDLE_HANDLER:#010x}',
-                         store_state=f'{STORE_STATE:#010x}', event_upload=f'{EVENT_UPLOAD:#010x}')),
-        return_codes=results,
+            config=f'driver object {OBJ:#010x} + key*0x30 (flags +0x50)',
+            combo_gated=f'the two-key combo paths are gated on the global {COMBO_GLOBALS + 4:#010x}'),
+        states=dict(
+            s0='press builds the counter, stores state 1/2 at the threshold; release clears it',
+            s2='press stores state 4/5 and uploads bit 2; release uploads bit 8 then holds (state 3) or ends',
+            s3='press uploads bits 0x10/0x4 and stores state 5; repeat uploads bit 1 and ends',
+            s4='press stores state 6 and uploads bit 0x20; release uploads bit 8 and ends',
+            s5='press only counts; release ends (upload bit 8)',
+            s6='press uploads bit 0x40 and stores state 5; release ends'),
+        per_case=uploads,
         native_case_count=len(report['cases']), native_steps=sum(r['steps'] for r in report['cases']),
         native_validation=report,
         limitations=[
             'The GPIO decode, state store, timer check, idle handler and event upload are stubbed; the state '
-            'machine runs as real code and the runtime counter writes are recorded.',
-            'Only the dispatch and state 0 (idle) are covered. States 1..6 (combo, long press, double click, '
-            'repeat) read both keys\' contexts and the combo globals and are mapped but not yet executed.'])
+            'machine runs as real code and the runtime context writes are recorded.',
+            'Only the single-key paths are covered (combo-pending global kept clear). State 1 (combo) and the '
+            'two-key combo sub-paths of states 2..6 read both keys\' contexts and are not executed here.'])
 
 
 def main():
