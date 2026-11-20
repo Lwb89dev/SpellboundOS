@@ -29,6 +29,10 @@ This is bring-up scaffolding, not a Bip 6 image.
   `mepc` and `mtval`, masks interrupt sources and parks the hart.
 - CLINT machine timer: a periodic tick (100 Hz) via `MTIE` + global `MIE`, with a
   64-bit tick counter read protected from interrupts and safe RV32 `mtime`/`mtimecmp` access.
+  Interrupts before the programmed deadline leave the counter and scheduler
+  unchanged. A short handling delay preserves the periodic phase. If another
+  period has already elapsed, the timer counts one tick and schedules from the
+  current time. See the [RISC-V machine timer specification](https://docs.riscv.org/reference/isa/v20240411/priv/machine.html#machine-timer-registers-mtime-and-mtimecmp).
 - External interrupts use the PLIC machine context for hart 0. A registered
   handler acknowledges its device before the controller completes the claim.
   The test triggers two UART transmit-ready interrupts through this path.

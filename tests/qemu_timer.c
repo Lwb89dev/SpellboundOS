@@ -18,9 +18,23 @@ static void sleep_across_wrap(void) {
     slept_across_wrap = now < start && now - start >= 4;
 }
 
+static bool deadline_policy_ok(void) {
+    interval = 100;
+    deadline = 1000;
+    ticks = 0;
+    if (service_deadline(999) || ticks != 0 || deadline != 1000) {
+        return false;
+    }
+    if (!service_deadline(1040) || ticks != 1 || deadline != 1100) {
+        return false;
+    }
+    return service_deadline(1305) && ticks == 2 && deadline == 1405;
+}
+
 void kernel_main(void) {
     int failed = 0;
     trap_init();
+    if (!deadline_policy_ok()) failed = 1;
     timer_init(UINT32_MAX);
     if (interval != 1 || timer_ticks() != 0 ||
         (read_csr(mstatus) & MSTATUS_MIE)) failed = 1;

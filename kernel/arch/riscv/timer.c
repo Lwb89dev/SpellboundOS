@@ -4,7 +4,8 @@
 #include "../../board.h"
 
 static uint32_t interval;        /* mtime ticks between interrupts */
-static volatile uint64_t ticks;  /* elapsed timer interrupts */
+static uint64_t deadline;
+static volatile uint64_t ticks;  /* accepted timer interrupts */
 
 static uint64_t mtime_read(void) {
     volatile uint32_t *mtime = (volatile uint32_t *)board_timer.time;
@@ -26,16 +27,34 @@ static void mtimecmp_write(uint64_t value) {
 }
 
 void timer_init(uint32_t hz) {
+    uint32_t previous = irq_save();
     interval = hz ? (board_timer.frequency / hz) : board_timer.frequency;
     if (interval == 0) interval = 1;
     ticks = 0;
-    mtimecmp_write(mtime_read() + interval);
+    deadline = mtime_read() + interval;
+    mtimecmp_write(deadline);
     set_csr(mie, MIE_MTIE);
+    irq_restore(previous);
 }
 
-void timer_on_tick(void) {
+static bool service_deadline(uint64_t now) {
+    /* MTIP can still be asserted after a compare write. An early trap should
+     * neither count as a tick nor shorten the current time slice. */
+    if (!interval || now < deadline) {
+        return false;
+    }
     ticks++;
-    mtimecmp_write(mtime_read() + interval);
+    deadline += interval;
+    if (deadline <= now) {
+        /* Coalesce missed periods instead of producing a burst of switches. */
+        deadline = now + interval;
+    }
+    mtimecmp_write(deadline);
+    return true;
+}
+
+bool timer_handle_irq(void) {
+    return service_deadline(mtime_read());
 }
 
 uint64_t timer_ticks(void) {

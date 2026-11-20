@@ -14,8 +14,7 @@ void trap_init(void) {
 
 struct trap_frame *trap_handler(uint32_t mcause, struct trap_frame *frame) {
     if (mcause == (MCAUSE_INTERRUPT | IRQ_MACHINE_TIMER)) {
-        timer_on_tick();
-        return sched_on_tick(frame);
+        return timer_handle_irq() ? sched_on_tick(frame) : frame;
     }
     if (mcause == (MCAUSE_INTERRUPT | IRQ_MACHINE_EXTERNAL)) {
         plic_dispatch();

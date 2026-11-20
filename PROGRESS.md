@@ -4288,3 +4288,12 @@ Python suite — this is the first piece of OS code verified at **runtime** here
 - QEMU boot checks the first interrupt-driven byte and two ordered bursts that
   cross the ring index boundary. The separate PLIC test still verifies two
   successive claims and completions through the UART interrupt source.
+
+## SpellboundOS — Timer deadline accounting
+
+- Ignore interrupt delivery before the programmed deadline. Only an accepted
+  tick can preempt a task. Advance from the preceding deadline when possible
+  and coalesce missed periods rather than replaying a burst of time slices.
+- Tests cover early delivery, short handler latency, delayed service, and the
+  earlier logical counter rollover and sleep behavior. All seven QEMU checks
+  and the two sanitized host checks pass.
