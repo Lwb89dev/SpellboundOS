@@ -62,7 +62,29 @@ class CapturedChannelTest(unittest.TestCase):
         report = verify(log)
         self.assertTrue(report['auth_session_key_proof_matches'])
         self.assertTrue(report['auth_success_response_observed'])
+        self.assertTrue(report['ordered_auth_exchange_verified'])
         self.assertEqual((report['auth_api_level_wire'], report['auth_mode']), (2, 2))
+
+    def test_ordered_auth_rejects_unrelated_and_out_of_order_observations(self):
+        challenge = bytes(range(16, 32))
+        payloads = [b'\x04\x02\x00\x02' + bytes(48),
+                    b'\x10\x04\x01' + challenge + bytes(48),
+                    b'\x05' + bytes(16) + aes_ecb(KEY, challenge, encrypt=True),
+                    b'\x10\x05\x01']
+
+        def line(stage, app=1):
+            payload = payloads[stage]
+            return wire_line(encode_data(3, app, stage + 1, 0, payload,
+                                         total_size=len(payload), module_id=0x82), stage % 2 == 1)
+
+        captures = [line(0) + line(1) + line(3) + line(2),
+                    line(0) + line(1) + line(2, app=2) + line(3),
+                    line(0) + line(1) + line(2) + line(2) + line(3)]
+        for capture in captures:
+            report = verify(PREFIX + capture)
+            self.assertTrue(report['auth_session_key_proof_matches'])
+            self.assertTrue(report['auth_success_response_observed'])
+            self.assertFalse(report['ordered_auth_exchange_verified'])
 
     def test_incomplete_and_ambiguous_sessions_fail(self):
         with self.assertRaises(ValueError):

@@ -8,6 +8,7 @@ plaintext, padding nor raw packet bytes enter the report. No device is accessed.
 import argparse
 from collections import Counter
 import hashlib
+import hmac
 import json
 from pathlib import Path
 import re
@@ -30,6 +31,27 @@ def aes_ecb(key, data, *, encrypt=False):
     cipher = Cipher(algorithms.AES(key), modes.ECB())
     context = cipher.encryptor() if encrypt else cipher.decryptor()
     return context.update(data) + context.finalize()
+
+
+def ordered_auth_exchange(auth, key):
+    """Check one observed authorization exchange on the same app channel."""
+    exchanges = []
+    for app_id, direction, data in auth:
+        if direction == '>@' and len(data) == 52 and data[0] == 4:
+            exchanges.append((app_id, 'request', data))
+        elif direction == '<@' and len(data) == 67 and data[:3] == b'\x10\x04\x01':
+            exchanges.append((app_id, 'challenge', data[3:19]))
+        elif direction == '>@' and len(data) == 33 and data[0] == 5:
+            exchanges.append((app_id, 'proof', data[17:33]))
+        elif direction == '<@' and data == b'\x10\x05\x01':
+            exchanges.append((app_id, 'success', data))
+
+    if [stage for _, stage, _ in exchanges] != ['request', 'challenge', 'proof', 'success']:
+        return False
+    if len({app_id for app_id, _, _ in exchanges}) != 1:
+        return False
+    request, challenge, proof, _ = (data for _, _, data in exchanges)
+    return request[3] in (1, 2) and hmac.compare_digest(aes_ecb(key, challenge, encrypt=True), proof)
 
 
 def verify(text, *, on_transfer=None):
@@ -106,20 +128,21 @@ def verify(text, *, on_transfer=None):
             on_transfer(module_id=first.module_id_wire, direction=direction,
                         encrypted=encrypted, payload=payload)
         if first.module_id_wire == 0x82:
-            auth.append((direction, payload))
+            auth.append((first.app_id, direction, payload))
         directions[direction] += 1
         finished.append({'direction': 'phone_to_watch' if direction == '>@' else 'watch_to_phone',
                          'module_id': first.module_id_wire, 'encrypted': encrypted})
     if tasks or not finished:
         raise ValueError('empty or incomplete capture')
-    challenge = next((data[3:19] for direction, data in auth
+    challenge = next((data[3:19] for _, direction, data in auth
                       if direction == '<@' and len(data) == 67 and data[:3] == b'\x10\x04\x01'), None)
-    proof = next((data[17:33] for direction, data in auth
+    proof = next((data[17:33] for _, direction, data in auth
                  if direction == '>@' and len(data) == 33 and data[0] == 5), None)
-    request = next((data for direction, data in auth
+    request = next((data for _, direction, data in auth
                     if direction == '>@' and len(data) == 52 and data[0] == 4), None)
-    proof_matches = challenge is not None and proof is not None and aes_ecb(key, challenge, encrypt=True) == proof
-    success = any(direction == '<@' and data == b'\x10\x05\x01' for direction, data in auth)
+    proof_matches = challenge is not None and proof is not None and hmac.compare_digest(
+        aes_ecb(key, challenge, encrypt=True), proof)
+    success = any(direction == '<@' and data == b'\x10\x05\x01' for _, direction, data in auth)
     return {'native_packet_count': sum(packet_types.values()), 'packet_types': dict(packet_types),
             'flags_histogram': dict(flags), 'route_checks_passed': route_checks,
             'completed_transfers': len(finished), 'pending_transfers': len(tasks),
@@ -131,6 +154,7 @@ def verify(text, *, on_transfer=None):
             'independent_initial_counter_check': False,
             'auth_success_response_observed': success,
             'auth_session_key_proof_matches': proof_matches,
+            'ordered_auth_exchange_verified': ordered_auth_exchange(auth, key),
             'auth_api_level_wire': struct.unpack_from('<H', request, 1)[0] if request else None,
             'auth_mode': request[3] if request else None,
             'modules_seen': sorted({entry['module_id'] for entry in finished}),

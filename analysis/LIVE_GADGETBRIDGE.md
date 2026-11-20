@@ -106,6 +106,13 @@ bidirectional envelopes, counter wrap/regression, CRC corruption, routing,
 incomplete sessions and the session-key challenge proof. All 173 Python tests
 pass with the existing signature/cipher dependencies.
 
+The channel report also verifies that the authorization request, challenge,
+proof and success response occur exactly once in order on the same app channel.
+The recorded reconnect satisfies this check. Synthetic tests reject reordered,
+duplicated and cross-channel observations that still contain a matching proof
+and a success response. The capture starts with an existing pairing, so first
+pairing, key provisioning and counter initialization still need fresh evidence.
+
 This first runtime session closes a specific transport-validation gap. It does
 not establish a safe standalone boot path, physical flash/ROM backup, pinout,
 sensor accuracy, fresh pairing or all notification/call behavior.
