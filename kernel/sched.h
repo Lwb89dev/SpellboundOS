@@ -36,6 +36,12 @@ void task_event_signal(struct task_event *event);
  * is a no-op. If every task waits, an enabled interrupt must deliver a signal. */
 void task_event_wait(struct task_event *event);
 
+/* Wait up to ticks. Returns true for a signal and false on expiry. Zero
+ * checks for a latched signal immediately. A positive timeout uses the
+ * periodic timer. Signals after expiry remain available to other waits.
+ * Outside a task this returns false. */
+bool task_event_wait_for(struct task_event *event, uint32_t ticks);
+
 /* End the current task (marks it finished and yields; never returns). */
 _Noreturn void task_exit(void);
 

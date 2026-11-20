@@ -4320,3 +4320,12 @@ Python suite — this is the first piece of OS code verified at **runtime** here
   interrupts retains polling for input.
 - QEMU verifies the first echo with the timer off, both bursts across the queue
   boundary and clock reports before and after the bursts.
+
+## SpellboundOS — Event wait timeouts
+
+- A timed wait returns whether it received a signal. Zero ticks polls and
+  consumes the latch. Positive waits expire on the timer without consuming a
+  signal that arrives at or after expiry.
+- QEMU covers success, timeout while idle, a late signal while the expired task
+  still has not run, and a timeout across the 64-bit tick counter wrap. All
+  seven QEMU checks and both sanitized host checks pass.

@@ -90,7 +90,7 @@ trap_vector:
     lw sp, 8(sp)
     mret
 
-/* Private scheduler request entry. a0 is the request, a1 is its argument. */
+/* Private scheduler request: a0 is the request, a1/a2 are arguments. */
 .globl sched_trap_call
 .globl sched_trap_ecall
 sched_trap_call:

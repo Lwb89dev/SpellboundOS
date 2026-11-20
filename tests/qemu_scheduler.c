@@ -15,6 +15,7 @@ static unsigned sleep_stage;
 static unsigned yield_stage;
 static struct task_event input_event, other_event;
 static unsigned event_stage;
+static struct task_event timed_event;
 
 static void worker(void) {
     calls++;
@@ -72,6 +73,31 @@ static void signal_waiters(void) {
     task_event_wait(&other_event);
 }
 
+static void timed_waiter(void) {
+    if (task_event_wait_for(&timed_event, 0)) failures++;
+    if (!task_event_wait_for(&timed_event, 100)) failures++;
+    uint64_t start = timer_ticks();
+    if (task_event_wait_for(&timed_event, 3) || timer_ticks() - start < 3) failures++;
+}
+
+static void signal_timed_waiter(void) {
+    task_event_signal(&timed_event);
+}
+
+static void late_waiter(void) {
+    if (task_event_wait_for(&timed_event, 4)) failures++;
+    if (!task_event_wait_for(&timed_event, 0)) failures++;
+}
+
+static void signal_after_expiry(void) {
+    /* Keep running cooperatively past the deadline before signaling. This
+     * reaches signal() while the expired task is still marked waiting. */
+    uint64_t start = timer_ticks();
+    while (timer_ticks() - start < 6) {
+    }
+    task_event_signal(&timed_event);
+}
+
 void kernel_main(void) {
     trap_init();
     timer_init(10000);
@@ -116,6 +142,14 @@ void kernel_main(void) {
         task_create(signal_waiters, stacks[2], sizeof stacks[2]) < 0) failures++;
     sched_run();
     if (event_stage != 7 || sched_runnable() != 0) failures++;
+
+    if (task_create(timed_waiter, stacks[0], sizeof stacks[0]) < 0 ||
+        task_create(signal_timed_waiter, stacks[1], sizeof stacks[1]) < 0) failures++;
+    sched_run();
+    if (task_create(late_waiter, stacks[0], sizeof stacks[0]) < 0 ||
+        task_create(signal_after_expiry, stacks[1], sizeof stacks[1]) < 0) failures++;
+    sched_run();
+    if (sched_runnable() != 0) failures++;
 
     console_puts(failures ? "FAIL: scheduler lifecycle\n" :
                             "PASS: scheduler lifecycle\n");

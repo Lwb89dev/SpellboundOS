@@ -8,7 +8,7 @@
 #define MIN_STACK (TRAP_FRAME_SIZE + 128u)
 
 enum task_state { TASK_UNUSED, TASK_READY, TASK_RUNNING, TASK_SLEEPING, TASK_WAITING, TASK_DONE };
-enum sched_request { SCHED_RUN, SCHED_YIELD, SCHED_SLEEP, SCHED_EXIT, SCHED_WAIT };
+enum sched_request { SCHED_RUN, SCHED_YIELD, SCHED_SLEEP, SCHED_EXIT, SCHED_WAIT, SCHED_WAIT_TIMED };
 
 struct task {
     struct trap_frame *frame;
@@ -19,7 +19,7 @@ struct task {
     struct task_event *event;
 };
 
-extern void sched_trap_call(unsigned request, uint32_t argument);
+extern uint32_t sched_trap_call(unsigned request, uintptr_t argument, uint32_t timeout);
 
 static struct task tasks[MAX_TASKS];
 static struct trap_frame *boot_frame;
@@ -77,15 +77,22 @@ static int next_ready(int from) {
 }
 
 /* Wake elapsed sleepers and count tasks that still need a tick or signal. */
+static bool delay_elapsed(const struct task *task) {
+    return task->sleep_ticks && timer_ticks() - task->sleep_start >= task->sleep_ticks;
+}
+
+static void make_ready(struct task *task) {
+    task->event = NULL;
+    task->state = TASK_READY;
+}
+
 static int refresh_blocked(void) {
     int waiting = 0;
     for (int i = 0; i < MAX_TASKS; i++) {
         struct task *task = &tasks[i];
-        if (task->state == TASK_WAITING) {
-            waiting++;
-        } else if (task->state == TASK_SLEEPING) {
-            if (timer_ticks() - task->sleep_start >= task->sleep_ticks) {
-                task->state = TASK_READY;
+        if (task->state == TASK_WAITING || task->state == TASK_SLEEPING) {
+            if (delay_elapsed(task)) {
+                make_ready(task);
             } else {
                 waiting++;
             }
@@ -122,7 +129,7 @@ static struct trap_frame *dispatch(struct trap_frame *frame) {
 
 struct trap_frame *sched_on_request(struct trap_frame *frame) {
     unsigned request = frame->x[10]; /* a0 */
-    if (request > SCHED_WAIT) {
+    if (request > SCHED_WAIT_TIMED) {
         return NULL;
     }
     if (current < 0) {
@@ -140,14 +147,23 @@ struct trap_frame *sched_on_request(struct trap_frame *frame) {
         task->sleep_start = timer_ticks();
         task->sleep_ticks = delay;
         task->state = TASK_SLEEPING;
-    } else if (request == SCHED_WAIT) {
+    } else if (request == SCHED_WAIT || request == SCHED_WAIT_TIMED) {
         struct task_event *event = (struct task_event *)(uintptr_t)frame->x[11];
+        uint32_t timeout = request == SCHED_WAIT_TIMED ? frame->x[12] : 0;
         if (!event) {
             return NULL;
         }
+        frame->x[10] = event->pending;
         if (event->pending) {
             event->pending = false;
             return frame;
+        }
+        if (request == SCHED_WAIT_TIMED && timeout == 0) {
+            return frame;
+        }
+        task->sleep_ticks = timeout;
+        if (timeout) {
+            task->sleep_start = timer_ticks();
         }
         task->event = event;
         task->state = TASK_WAITING;
@@ -173,13 +189,13 @@ void sched_set_preemption(bool enabled) {
 
 void task_yield(void) {
     if (current >= 0) {
-        sched_trap_call(SCHED_YIELD, 0);
+        sched_trap_call(SCHED_YIELD, 0, 0);
     }
 }
 
 void task_sleep(uint32_t ticks) {
     if (current >= 0) {
-        sched_trap_call(SCHED_SLEEP, ticks);
+        sched_trap_call(SCHED_SLEEP, ticks, 0);
     }
 }
 
@@ -190,9 +206,13 @@ void task_event_signal(struct task_event *event) {
     uint32_t previous = irq_save();
     for (int i = 0; i < MAX_TASKS; i++) {
         struct task *task = &tasks[i];
-        if (task->state == TASK_WAITING && task->event == event) {
-            task->event = NULL;
-            task->state = TASK_READY;
+        if (task->state != TASK_WAITING || task->event != event) {
+            continue;
+        }
+        bool expired = delay_elapsed(task);
+        make_ready(task);
+        if (!expired) {
+            task->frame->x[10] = 1;
             irq_restore(previous);
             return;
         }
@@ -203,12 +223,17 @@ void task_event_signal(struct task_event *event) {
 
 void task_event_wait(struct task_event *event) {
     if (current >= 0 && event) {
-        sched_trap_call(SCHED_WAIT, (uintptr_t)event);
+        sched_trap_call(SCHED_WAIT, (uintptr_t)event, 0);
     }
 }
 
+bool task_event_wait_for(struct task_event *event, uint32_t ticks) {
+    return current >= 0 && event &&
+           sched_trap_call(SCHED_WAIT_TIMED, (uintptr_t)event, ticks) != 0;
+}
+
 _Noreturn void task_exit(void) {
-    sched_trap_call(SCHED_EXIT, 0);
+    sched_trap_call(SCHED_EXIT, 0, 0);
     for (;;) {
         __asm__ volatile("wfi");
     }
@@ -219,7 +244,7 @@ void sched_run(void) {
         return;
     }
     for (;;) {
-        sched_trap_call(SCHED_RUN, 0);
+        sched_trap_call(SCHED_RUN, 0, 0);
         uint32_t previous = irq_save();
         int waiting = refresh_blocked();
         bool ready = next_ready(MAX_TASKS - 1) >= 0;

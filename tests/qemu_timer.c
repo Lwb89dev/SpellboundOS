@@ -7,6 +7,7 @@
 
 static _Alignas(16) uint32_t stack[256];
 static int slept_across_wrap;
+static struct task_event unused_event;
 
 static void sleep_across_wrap(void) {
     clear_csr(mstatus, MSTATUS_MIE);
@@ -16,6 +17,13 @@ static void sleep_across_wrap(void) {
     task_sleep(4);
     uint64_t now = timer_ticks();
     slept_across_wrap = now < start && now - start >= 4;
+
+    clear_csr(mstatus, MSTATUS_MIE);
+    ticks = start;
+    set_csr(mstatus, MSTATUS_MIE);
+    bool signaled = task_event_wait_for(&unused_event, 4);
+    now = timer_ticks();
+    slept_across_wrap &= !signaled && now < start && now - start >= 4;
 }
 
 static bool deadline_policy_ok(void) {
