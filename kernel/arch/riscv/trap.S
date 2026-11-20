@@ -47,6 +47,11 @@ trap_vector:
     mv a1, sp
     call trap_handler
 
+    beq a0, sp, .Lrestore
+    /* A hart's LR reservation belongs to the outgoing task. SC always clears
+     * it, and a successful store only touches the unused x0 frame slot. */
+    sc.w zero, zero, (sp)
+.Lrestore:
     mv sp, a0
     lw t0, TRAP_PC_OFFSET(sp)
     csrw mepc, t0

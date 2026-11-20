@@ -4297,3 +4297,9 @@ Python suite — this is the first piece of OS code verified at **runtime** here
 - Tests cover early delivery, short handler latency, delayed service, and the
   earlier logical counter rollover and sleep behavior. All seven QEMU checks
   and the two sanitized host checks pass.
+
+## SpellboundOS — Atomic reservations across task switches
+
+- Clear the hart's LR/SC reservation whenever the trap return changes stacks.
+  The dummy SC targets the unused x0 frame slot. QEMU checks that a task cannot
+  complete a conditional store using a later reservation made by its peer.
