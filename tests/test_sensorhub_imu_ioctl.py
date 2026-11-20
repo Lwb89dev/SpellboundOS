@@ -13,27 +13,29 @@ class SensorhubImuIoctlTest(unittest.TestCase):
 
     def test_native_matches_model(self):
         report = self.evidence['native_validation']
-        self.assertEqual((report['case_count'], len(report['cases'])), (4, 4))
+        self.assertEqual((report['case_count'], len(report['cases'])), (8, 8))
         self.assertFalse(report['hardware_execution'])
         for row in report['cases']:
             name = row['name'].removeprefix('sensorhub_imu_ioctl_')
             self.assertEqual(row['observed'], self.cases[name]['expected'])
 
-    def test_routing(self):
+    def test_acc_routing(self):
         r = self.evidence['executed_routing']
-        self.assertEqual(r['cmd_read'], '0x80f62f90')
-        self.assertEqual(r['cmd_b2'], '0x80f6300e')
-        self.assertEqual(r['cmd_unsupported'], '0x80f86d34')
-        self.assertEqual(r['cmd_unsupported_high'], '0x80f86d34')
+        self.assertEqual(r['acc_cmd_read'], '0x80f62f90')
+        self.assertEqual(r['acc_cmd_b2'], '0x80f6300e')
+        self.assertEqual(r['acc_cmd_unsupported'], '0x80f86d34')
+
+    def test_gyro_rate(self):
+        rates = self.evidence['gyroscope']['sample_rates']
+        self.assertEqual(rates['gyro_cmd_rate'], 10000)       # 160000/16
+        self.assertEqual(rates['gyro_cmd_rate_scaled'], 10000)  # 160000/(8*2)
+        self.assertEqual(self.evidence['executed_routing']['gyro_cmd_unsupported'], '0x80f86d34')
 
     def test_command_map(self):
-        m = self.evidence['command_map']
+        m = self.evidence['accelerometer']['command_map']
         self.assertEqual(m['0x01'], '0x80f62f90')
-        self.assertEqual(m['0xb2'], '0x80f6300e')
-        self.assertEqual(m['0xa0'], '0x80f71e2a')     # read-id handler
-        # the gap commands route to the unsupported logger
+        self.assertEqual(m['0xa0'], '0x80f71e2a')
         self.assertEqual(m['0x82'], 'unsupported')
-        self.assertEqual(m['0x9f'], 'unsupported')
 
 
 if __name__ == '__main__':

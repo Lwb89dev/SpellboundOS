@@ -42,5 +42,20 @@ python3 -m unittest tests.test_sensorhub_imu_ioctl -q
 
 - The individual command handlers (rate/range/mode/self-test and the jump-table
   commands) are decoded into the map but not individually executed; the shared
-  FIFO read callback `0x80f714a0` and the gyroscope ioctl `0x80f716ec` (same
-  shape) remain.
+  FIFO read callback `0x80f714a0` remains (see the IMU FIFO work).
+
+## Gyroscope ioctl (`0x80f716ec`)
+
+The gyroscope control callback is a parallel dispatcher. Verified commands:
+
+- `0x01`: no-op (returns the command);
+- `0xab`: **get sample rate** — reads the ODR code (`0x80f16b2e`) and multiplier
+  (`0x80f16b21`) and writes `160000 / (ODR_code * multiplier)` to the output
+  argument (a2). Executed cases give `160000/16 = 10000` for both `ODR=16,mult=1`
+  and `ODR=8,mult=2`;
+- any other command logs `CMD%d unsupport` (`0x80f86d34`).
+
+Commands `0x02`, `0x81`, `0xa0`, `0x201`, `0x202` route to their own handlers
+(sensor read / config), decoded but not individually executed. Both ioctls take
+`(command, a1, a2)`; the accelerometer handlers use `a1`, the gyroscope rate
+command writes `a2`.
