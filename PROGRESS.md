@@ -4278,3 +4278,13 @@ Python suite — this is the first piece of OS code verified at **runtime** here
 - The QEMU test delivers two successive UART transmit-ready interrupts through
   the PLIC, with a device acknowledgement before each completion. The full
   QEMU kernel suite passes with the external interrupt path present.
+
+## SpellboundOS — Interrupt-driven serial input
+
+- The QEMU virt console receives bytes through its registered UART interrupt.
+  The handler drains into a bounded ring and drops new bytes when the ring is
+  full. The initial echo waits in WFI before the periodic timer starts. The
+  receive check and WFI run with global interrupts masked to avoid a lost wake.
+- QEMU boot checks the first interrupt-driven byte and two ordered bursts that
+  cross the ring index boundary. The separate PLIC test still verifies two
+  successive claims and completions through the UART interrupt source.

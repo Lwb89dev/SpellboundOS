@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-"""Check guest startup, UART echo, the cooperative scheduler and the periodic
-timer tick without relying on host timeouts. Requires a system QEMU
-(qemu-system-riscv32)."""
+"""Check guest startup, interrupt-driven UART echo, scheduling and timer ticks."""
 import select
 import subprocess
 import sys
@@ -12,10 +10,13 @@ p = subprocess.Popen([qemu, '-machine', 'virt', '-bios', 'none', '-nographic',
                       '-monitor', 'none', '-kernel', elf], stdin=subprocess.PIPE,
                      stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 output = bytearray()
+bursts = (b'burst-0123456789-ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+          b'wrap-9876543210-abcdefghijklmnopqrstuvwxyz')
 try:
     deadline = time.monotonic() + 15
     sent = False
     echoed = False
+    sent_bursts = received_bursts = 0
     while time.monotonic() < deadline:
         readable, _, _ = select.select([p.stdout], [], [], 0.2)
         if readable:
@@ -31,14 +32,20 @@ try:
             echoed = True
         scheduled = b'A1\nB1\nA2\nB2\nA3\nB3\n' in output and b'all tasks done' in output
         if echoed and scheduled and b'tick 1\n' in output:
-            print('PASS: RV32 boot, UART echo, round-robin scheduler and 100 Hz tick')
-            break
+            if received_bursts < sent_bursts and bursts[received_bursts] in output:
+                received_bursts += 1
+            if received_bursts == len(bursts) and b'console: RX interrupts enabled' in output:
+                print('PASS: RV32 boot, UART RX interrupts and burst echo, scheduler and timer')
+                break
+            if sent_bursts == received_bursts and sent_bursts < len(bursts):
+                p.stdin.write(bursts[sent_bursts])
+                p.stdin.flush()
+                sent_bursts += 1
     else:
-        raise RuntimeError('QEMU boot, echo, scheduler or timer tick timed out')
-    done = (echoed and b'A1\nB1\nA2\nB2\nA3\nB3\n' in output
-            and b'all tasks done' in output and b'tick 1\n' in output)
+        raise RuntimeError('QEMU boot test timed out: ' + repr(output))
+    done = received_bursts == len(bursts) and b'console: RX interrupts enabled' in output
     if not done:
-        raise RuntimeError('QEMU exited before the echo, scheduler run and first tick')
+        raise RuntimeError('QEMU exited before completing the boot test: ' + repr(output))
 finally:
     p.terminate()
     try:

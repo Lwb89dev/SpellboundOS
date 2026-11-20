@@ -13,13 +13,13 @@ This is bring-up scaffolding, not a Bip 6 image.
 | `arch/riscv/timer.c` | CLINT machine timer (`mtime`/`mtimecmp`), periodic tick at a chosen Hz |
 | `arch/riscv/riscv.h` | CSR access helpers and bit definitions |
 | `console.c` / `console.h` | console formatting and byte I/O |
-| `drivers/uart16550.c` | polled access to the QEMU virt UART |
+| `drivers/uart16550.c` | interrupt-driven RX and polled TX for the QEMU virt UART |
 | `drivers/plic.c` | external interrupt registration, claim and completion |
 | `boards/qemu-virt/board.c` | UART registration, PLIC context and timer configuration |
 | `sched.c` / `sched.h` | round-robin scheduler with cooperative and timer-driven switching |
 | `kmem.c` / `kmem.h` | first-fit kernel heap (split + coalesce), host-testable |
 | `driver.c` / `driver.h` | fixed-size device/driver registration and probe, host-testable |
-| `main.c` | bring-up: console → traps → polled echo → 100 Hz timer → two round-robin tasks → tick loop |
+| `main.c` | bring-up: console → traps → interrupt-driven echo → 100 Hz timer → two round-robin tasks → tick loop |
 | `boards/qemu-virt/linker.ld` | load at `0x80000000`, `.text/.rodata/.data/.bss`, 16 KiB stack |
 
 ## Current capabilities
@@ -33,7 +33,10 @@ This is bring-up scaffolding, not a Bip 6 image.
   handler acknowledges its device before the controller completes the claim.
   The test triggers two UART transmit-ready interrupts through this path.
   See the [QEMU virt board description](https://www.qemu.org/docs/master/system/riscv/virt.html).
-- UART console (`puts`/`puthex`/`putdec`/`getc`), polled echo.
+- UART console (`puts`/`puthex`/`putdec`/`getc`). The demo enables RX interrupts
+  after trap setup and idles until the first byte. A 63-byte receive queue
+  preserves order and drops new bytes when full. TX uses polling.
+  See the [emulated 16550](https://github.com/qemu/qemu/blob/master/hw/char/serial.c).
 - Round-robin tasks can yield, exit or sleep for a number of timer ticks. The scheduler waits on the boot stack when all tasks sleep and reuses slots when tasks exit. Call `trap_init` before running tasks.
 - `sched_set_preemption(true)` enables one tick per time slice. The default is cooperative. Both modes save integer registers and the interrupt state in the task's trap frame. A stack must have at least 272 bytes after alignment and enough space for the task's calls and trap handling. Tasks share machine-mode memory on hart 0. Serialize shared heap, registry and console access if using preemption.
 - Kernel heap `kmalloc`/`kfree` (first-fit, block split, forward coalescing); the allocator logic is portable and unit-tested on the host (`make test-host`). Access must be serialized, including against interrupts.

@@ -3,6 +3,7 @@
  * separate. */
 #include <stdint.h>
 
+#include "board.h"
 #include "console.h"
 #include "kmem.h"
 #include "sched.h"
@@ -28,19 +29,39 @@ static void worker(char tag) {
 static void task_a(void) { worker('A'); }
 static void task_b(void) { worker('B'); }
 
+static int wait_input(bool interrupt_driven) {
+    for (;;) {
+        if (!interrupt_driven) {
+            int byte = console_getc();
+            if (byte >= 0) return byte;
+            continue;
+        }
+
+        uint32_t previous = irq_save();
+        int byte = console_getc();
+        if (byte < 0) {
+            /* A locally enabled pending interrupt wakes WFI even with MIE
+             * masked. Keeping MIE masked closes the check-to-sleep race. */
+            __asm__ volatile("wfi" ::: "memory");
+        }
+        irq_restore(previous);
+        if (byte >= 0) return byte;
+    }
+}
+
 void kernel_main(void) {
     console_puts("SpellboundOS RV32 foundation\n");
     console_puts("QEMU virt only; Bluetooth unavailable\n");
 
     trap_init();
 
-    /* Deterministic echo first (polled, interrupts still off). */
+    bool serial_irq = board_console_rx_irq() == 0;
+    if (serial_irq) {
+        set_csr(mstatus, MSTATUS_MIE);
+        console_puts("console: RX interrupts enabled\n");
+    }
     console_puts("Type a character to echo: ");
-    int c;
-    do {
-        c = console_getc();
-    } while (c < 0);
-    console_putc((char)c);
+    console_putc((char)wait_input(serial_irq));
 
     /* Periodic tick online. */
     console_puts("\ntimer: 100 Hz tick online\n");
@@ -78,8 +99,9 @@ void kernel_main(void) {
             console_putdec((uint32_t)second);
             console_putc('\n');
         }
-        int k = console_getc();
-        if (k >= 0) {
+        for (unsigned n = 0; n < 64; n++) {
+            int k = console_getc();
+            if (k < 0) break;
             console_putc((char)k);
         }
         __asm__ volatile("wfi");
