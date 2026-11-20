@@ -25,6 +25,6 @@ int board_init(void) {
     return uart.bound == &uart16550_driver ? 0 : -1;
 }
 
-int board_console_rx_irq(void) {
-    return uart16550_enable_rx_irq(&uart);
+int board_console_rx_irq(void (*notify)(void *), void *context) {
+    return uart16550_enable_rx_irq(&uart, notify, context);
 }

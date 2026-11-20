@@ -19,6 +19,8 @@ struct uart_port {
     bool rx_irq;
     unsigned head, tail;
     uint8_t rx[RX_CAPACITY];
+    void (*notify)(void *);
+    void *notify_context;
 };
 
 static struct uart_port console_port;
@@ -53,6 +55,7 @@ static int uart_getc(uintptr_t context) {
 static void uart_receive(void *context) {
     struct uart_port *port = context;
     volatile uint8_t *registers = port->registers;
+    bool was_empty = port->head == port->tail;
     for (unsigned i = 0; i < RX_CAPACITY && (registers[UART_LSR] & LSR_DR); i++) {
         uint8_t byte = registers[UART_RBR];
         unsigned next = (port->head + 1u) % RX_CAPACITY;
@@ -60,6 +63,9 @@ static void uart_receive(void *context) {
             port->rx[port->head] = byte;
             port->head = next;
         }
+    }
+    if (was_empty && port->head != port->tail && port->notify) {
+        port->notify(port->notify_context);
     }
 }
 
@@ -80,20 +86,25 @@ static int uart_probe(struct device *dev) {
     return 0;
 }
 
-int uart16550_enable_rx_irq(struct device *dev) {
+int uart16550_enable_rx_irq(struct device *dev, void (*notify)(void *), void *context) {
     if (!dev || dev->bound != &uart16550_driver || dev->irq <= 0) {
         return -1;
     }
     struct uart_port *port = dev->drvdata;
     uint32_t previous = irq_save();
-    if (!port->rx_irq) {
-        if (plic_register((unsigned)dev->irq, uart_receive, port) != 0) {
-            irq_restore(previous);
-            return -1;
-        }
-        port->rx_irq = true;
-        port->registers[UART_IER] = IER_RX;
+    if (port->rx_irq) {
+        int result = port->notify == notify && port->notify_context == context ? 0 : -1;
+        irq_restore(previous);
+        return result;
     }
+    if (plic_register((unsigned)dev->irq, uart_receive, port) != 0) {
+        irq_restore(previous);
+        return -1;
+    }
+    port->notify = notify;
+    port->notify_context = context;
+    port->rx_irq = true;
+    port->registers[UART_IER] = IER_RX;
     irq_restore(previous);
     return 0;
 }

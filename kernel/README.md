@@ -19,7 +19,7 @@ This is bring-up scaffolding, not a Bip 6 image.
 | `sched.c` / `sched.h` | round-robin scheduler with cooperative and timer-driven switching |
 | `kmem.c` / `kmem.h` | first-fit kernel heap (split + coalesce), host-testable |
 | `driver.c` / `driver.h` | fixed-size device/driver registration and probe, host-testable |
-| `main.c` | bring-up: console → traps → interrupt-driven echo → 100 Hz timer → two round-robin tasks → tick loop |
+| `main.c` | bring-up and demo tasks for serial input and the clock |
 | `boards/qemu-virt/linker.ld` | load at `0x80000000`, `.text/.rodata/.data/.bss`, 16 KiB stack |
 
 ## Current capabilities
@@ -38,8 +38,10 @@ This is bring-up scaffolding, not a Bip 6 image.
   The test triggers two UART transmit-ready interrupts through this path.
   See the [QEMU virt board description](https://www.qemu.org/docs/master/system/riscv/virt.html).
 - UART console (`puts`/`puthex`/`putdec`/`getc`). The demo enables RX interrupts
-  after trap setup and idles until the first byte. A 63-byte receive queue
-  preserves order and drops new bytes when full. TX uses polling.
+  after trap setup. A waiting console task wakes when the receive queue becomes
+  readable, including before the timer starts. A separate clock task sleeps
+  between reports. The 63-byte receive queue preserves order and drops new
+  bytes when full. TX uses polling.
   See the [emulated 16550](https://github.com/qemu/qemu/blob/master/hw/char/serial.c).
 - Round-robin tasks can yield, exit or sleep for a number of timer ticks. The scheduler waits on the boot stack when all tasks sleep and reuses slots when tasks exit. Call `trap_init` before running tasks.
 - A task can wait on a zero-initialized `task_event`. A signal wakes one waiter,

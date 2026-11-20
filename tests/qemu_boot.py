@@ -34,7 +34,8 @@ try:
         if echoed and scheduled and b'tick 1\n' in output:
             if received_bursts < sent_bursts and bursts[received_bursts] in output:
                 received_bursts += 1
-            if received_bursts == len(bursts) and b'console: RX interrupts enabled' in output:
+            if (received_bursts == len(bursts) and b'tick 2\n' in output
+                    and b'console: RX interrupts enabled' in output):
                 print('PASS: RV32 boot, UART RX interrupts and burst echo, scheduler and timer')
                 break
             if sent_bursts == received_bursts and sent_bursts < len(bursts):
@@ -43,7 +44,8 @@ try:
                 sent_bursts += 1
     else:
         raise RuntimeError('QEMU boot test timed out: ' + repr(output))
-    done = received_bursts == len(bursts) and b'console: RX interrupts enabled' in output
+    done = (received_bursts == len(bursts) and b'tick 2\n' in output
+            and b'console: RX interrupts enabled' in output)
     if not done:
         raise RuntimeError('QEMU exited before completing the boot test: ' + repr(output))
 finally:

@@ -4311,3 +4311,12 @@ Python suite — this is the first piece of OS code verified at **runtime** here
   runnable tasks and entering WFI to avoid losing an interrupt wakeup.
 - QEMU covers coalesced signals, signaling before a wait, two tasks waiting on
   one event, and a signal on an unrelated event leaving both tasks blocked.
+
+## SpellboundOS — Console tasks driven by UART readiness
+
+- The UART driver notifies on an empty-to-readable receive queue transition.
+  The first echo and ongoing console service wait on a scheduler event. The
+  clock report runs in its own sleeping task. A board without usable UART
+  interrupts retains polling for input.
+- QEMU verifies the first echo with the timer off, both bursts across the queue
+  boundary and clock reports before and after the bursts.

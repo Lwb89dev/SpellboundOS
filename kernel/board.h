@@ -15,7 +15,8 @@ extern const struct board_timer_config board_timer;
 /* Called once after memory and the boot stack are available. */
 int board_init(void);
 
-/* Enable console input interrupts after installing the trap vector. */
-int board_console_rx_irq(void);
+/* Enable console input interrupts after installing the trap vector.
+ * Notify on a transition from empty to readable, in interrupt context. */
+int board_console_rx_irq(void (*notify)(void *), void *context);
 
 #endif
