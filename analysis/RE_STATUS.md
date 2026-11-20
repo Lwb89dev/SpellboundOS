@@ -96,6 +96,7 @@ Latest detailed findings:
 - [Sensor-hub LSM6DSO register accessors: native sweep](SENSORHUB_IMU_REGS.md)
 - [Sensor-hub LSM6DSO enable/disable: the applied configuration](SENSORHUB_IMU_MODE.md)
 - [Sensor-hub LSM6DSO FIFO read, packet and orientation remap](SENSORHUB_IMU_FIFO.md)
+- [Sensor-hub LSM6DSO descriptor operations: enable/disable/control](SENSORHUB_IMU_OPS.md)
 - [ZTW622 touch: I2C register layer and touch report handler](MAIN_TOUCH_REPORT.md)
 - [Main-image board records: the hardware map](MAIN_BOARD_RECORDS.md)
 - [ZTW622 touch control: attach/probe, rails, reset, modes and version](MAIN_TOUCH_CONTROL.md)

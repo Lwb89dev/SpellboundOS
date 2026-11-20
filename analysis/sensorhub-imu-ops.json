@@ -1,0 +1,355 @@
+{
+  "callbacks": {
+    "accelerometer": {
+      "control": "0x80f716b2",
+      "disable": "0x80f71046",
+      "enable": "0x80f70f28"
+    },
+    "fifo_drain": "0x80f710ac (executed in sensorhub_imu_fifo)",
+    "gyroscope": {
+      "disable": "0x80f71c24",
+      "enable": "0x80f70f62"
+    },
+    "mode_setter": "0x80f70da2 (executed in sensorhub_imu_mode)"
+  },
+  "control_commands": {
+    "fifo_flush": 2,
+    "self_test": 0
+  },
+  "image": "sensor-hub (OTA 4.6.0.3)",
+  "limitations": [
+    "The mode setter, FIFO drain, self-test, event post, enable/disable completion helpers and the logger are stubbed; the callbacks run as real code and their state-word writes are recorded.",
+    "The shared FIFO read callback 0x80f714a0 and the full ioctl dispatchers 0x80f716ec / 0x80f71d58 (rate/range/mode commands) are not executed here."
+  ],
+  "native_case_count": 10,
+  "native_steps": 185,
+  "native_validation": {
+    "bound_per_case": 20000,
+    "case_count": 10,
+    "cases": [
+      {
+        "name": "sensorhub_imu_ops_acc_enable_ok",
+        "observed": {
+          "actions": [
+            "op:acc_enable",
+            "call:2163674530:1:16",
+            "call:2163617230",
+            "w:2163306544:4:1",
+            "w:2163306532:2:0"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 21
+      },
+      {
+        "name": "sensorhub_imu_ops_acc_enable_mode_fails",
+        "observed": {
+          "actions": [
+            "op:acc_enable",
+            "call:2163674530:1:16"
+          ],
+          "rows": [
+            {
+              "a0": 2,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 14
+      },
+      {
+        "name": "sensorhub_imu_ops_gyro_enable_ok",
+        "observed": {
+          "actions": [
+            "op:gyro_enable",
+            "call:2163674530:16:1",
+            "w:2163306540:4:1",
+            "w:2163306532:2:0"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 15
+      },
+      {
+        "name": "sensorhub_imu_ops_gyro_enable_mode_fails",
+        "observed": {
+          "actions": [
+            "op:gyro_enable",
+            "call:2163674530:16:1"
+          ],
+          "rows": [
+            {
+              "a0": 2,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 12
+      },
+      {
+        "name": "sensorhub_imu_ops_acc_disable",
+        "observed": {
+          "actions": [
+            "op:acc_disable",
+            "call:2163674530:0:16",
+            "call:2163617410",
+            "w:2163305244:1:1",
+            "w:2163306544:4:0",
+            "w:2163306532:2:0",
+            "call:2163764532:6",
+            "w:2163305256:4:4096",
+            "w:2163305261:1:3",
+            "call:2163669914"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 31
+      },
+      {
+        "name": "sensorhub_imu_ops_gyro_disable",
+        "observed": {
+          "actions": [
+            "op:gyro_disable",
+            "call:2163674530:16:0",
+            "w:2163305245:1:1",
+            "w:2163306540:4:0",
+            "w:2163306532:2:0",
+            "call:2163764532:6",
+            "w:2163305252:4:1430",
+            "w:2163305260:1:6",
+            "call:2163669914"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 30
+      },
+      {
+        "name": "sensorhub_imu_ops_control_self_test_pass",
+        "observed": {
+          "actions": [
+            "op:acc_control",
+            "call:2163671506",
+            "call:2163621740:2164264936"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 19
+      },
+      {
+        "name": "sensorhub_imu_ops_control_self_test_fail",
+        "observed": {
+          "actions": [
+            "op:acc_control",
+            "call:2163671506",
+            "call:2163621740:2164264936"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 18
+      },
+      {
+        "name": "sensorhub_imu_ops_control_fifo_flush",
+        "observed": {
+          "actions": [
+            "op:acc_control",
+            "call:2163675308:0"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 14
+      },
+      {
+        "name": "sensorhub_imu_ops_control_passthrough",
+        "observed": {
+          "actions": [
+            "op:acc_control"
+          ],
+          "rows": [
+            {
+              "a0": 7,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 11
+      }
+    ],
+    "hardware_execution": false,
+    "schema": 1
+  },
+  "return_codes": {
+    "acc_disable": 0,
+    "acc_enable_mode_fails": 2,
+    "acc_enable_ok": 0,
+    "control_fifo_flush": 0,
+    "control_passthrough": 7,
+    "control_self_test_fail": 0,
+    "control_self_test_pass": 0,
+    "gyro_disable": 0,
+    "gyro_enable_mode_fails": 2,
+    "gyro_enable_ok": 0
+  },
+  "state_words": {
+    "acc_running": "0x80f17030",
+    "gyro_running": "0x80f1702c",
+    "power_selector": "0x80f16b1c",
+    "sample_count": "0x80f17024"
+  },
+  "validation_sha256": "ce93b88263c9c0e5049534ff4e80ce16b7d595b0281fcfc056696d7870784feb",
+  "vectors_sha256": "939686878b34429290634eed3a353c19f5b73e880625b1ad8c513a3223b3fc59"
+}

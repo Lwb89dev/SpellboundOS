@@ -3800,10 +3800,27 @@ deletion remain open.
    now executed. See [analysis/MAIN_KEY_STATE.md](analysis/MAIN_KEY_STATE.md).
    Vectors, native report and evidence regenerate byte for byte.
 
+## 2026-11-20 — sensor-hub LSM6DSO descriptor operations
+
+1. Executed the IMU sensor descriptor callbacks. All **10 native cases pass**;
+   the verified mode setter (`0x80f70da2`) and FIFO drain (`0x80f710ac`) are
+   stubbed:
+   - accel/gyro **enable** (`0x80f70f28`/`0x80f70f62`): mode set then mark the
+     sensor running (`0x80f17030`/`0x80f1702c`); mode-set failure returns 2;
+   - accel/gyro **disable** (`0x80f71046`/`0x80f71c24`): mode off, latch the
+     power selector, store the full-scale defaults, log;
+   - accel **control** (`0x80f716b2`): command 0 self-test query + event,
+     command 2 FIFO flush, else no-op.
+
+   See [analysis/SENSORHUB_IMU_OPS.md](analysis/SENSORHUB_IMU_OPS.md). The
+   LSM6DSO driver is now executed end to end except the FIFO read callback
+   `0x80f714a0` and the ioctl dispatchers `0x80f716ec`/`0x80f71d58`. Vectors,
+   native report and evidence regenerate byte for byte.
+
 ## Next work
 
-- Next module to close: one of BT RTL8763 transport, display DSI refresh,
-  sensor-hub IMU descriptor callbacks, or OTA bootloader apply.
+- Remaining whole modules: BT RTL8763 transport, display DSI refresh. The IMU
+  read callback `0x80f714a0` and ioctl dispatchers `0x80f716ec`/`0x80f71d58`.
 - OTA bootloader apply: the post-reboot `Upgrade bootloader/firmware/boot
   resource` staging, the cryptographic image signature it checks (beyond the
   CRC32 transfer integrity now covered), and the backup-firmware recovery path
