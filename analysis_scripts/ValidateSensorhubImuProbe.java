@@ -24,7 +24,8 @@ import java.util.*;
 
 public class ValidateSensorhubImuProbe extends GhidraScript {
     static final long END = 0x70000000L;
-    static final int BOUND = 5000;
+    static final int MAX_BOUND = 50000;
+    private int bound;
     static final String[] X = {"zero", "ra", "sp", "gp", "tp", "t0", "t1", "t2", "s0", "s1", "a0", "a1",
         "a2", "a3", "a4", "a5", "a6", "a7", "s2", "s3", "s4", "s5", "s6", "s7", "s8", "s9", "s10", "s11",
         "t3", "t4", "t5", "t6"};
@@ -128,6 +129,19 @@ public class ValidateSensorhubImuProbe extends GhidraScript {
     // Applies a supplied callee; returns a stop label or null to continue at ra.
     private String applyStub(long pc, JsonObject s) throws Exception {
         String kind = s.get("kind").getAsString();
+        if (kind.equals("fcvt_wu_s")) {
+            // Repair: Ghidra 12.1.2 RV32 SLEIGH computes fcvt.wu.s into a temporary and never writes rd.
+            // Apply the RISC-V semantics (round toward zero, saturating) and step over the 4-byte instruction.
+            float f = Float.intBitsToFloat((int) (e.readRegister(s.get("fs").getAsString()).longValue() & 0xffffffffL));
+            long v;
+            if (Float.isNaN(f) || f >= 4294967296.0f) v = 0xffffffffL;
+            else if (f <= -1.0f) v = 0;
+            else v = (long) f & 0xffffffffL;
+            e.writeRegister(s.get("rd").getAsString(), v);
+            actions.add("fix:" + pc + ":" + v);
+            e.writeRegister(e.getPCRegister(), pc + 4);
+            return null;
+        }
         if (kind.equals("spi")) {
             // helper(handle, tx, rx, len, timeout): capture tx[0..len), fill rx, return status.
             long tx = reg("a1"), rx = reg("a2"), len = reg("a3");
@@ -243,7 +257,7 @@ public class ValidateSensorhubImuProbe extends GhidraScript {
                 continue;
             }
             if (!inRanges(allowed, pc)) throw new IllegalStateException("Unreviewed pc " + Long.toHexString(pc));
-            if (++steps > BOUND) throw new IllegalStateException("Instruction bound");
+            if (++steps > bound) throw new IllegalStateException("Instruction bound");
             Instruction in = instruction(pc);
             TreeSet<Long> touched = csrsOf(in);
             TreeMap<Long, Long> before = new TreeMap<>();
@@ -343,7 +357,8 @@ public class ValidateSensorhubImuProbe extends GhidraScript {
         String[] args = getScriptArgs();
         if (args.length != 2) throw new IllegalArgumentException("vectors report");
         JsonObject vectors = JsonParser.parseString(Files.readString(Path.of(args[0]))).getAsJsonObject();
-        if (vectors.get("schema").getAsInt() != 1 || vectors.get("bound_per_case").getAsInt() != BOUND
+        bound = vectors.get("bound_per_case").getAsInt();
+        if (vectors.get("schema").getAsInt() != 1 || bound < 1 || bound > MAX_BOUND
             || vectors.getAsJsonArray("cases").size() > 128) throw new IllegalArgumentException("Vector bound");
         for (JsonElement item : vectors.getAsJsonArray("guards")) {
             JsonObject g = item.getAsJsonObject();
@@ -358,7 +373,7 @@ public class ValidateSensorhubImuProbe extends GhidraScript {
         JsonObject report = new JsonObject();
         report.addProperty("schema", 1);
         report.addProperty("hardware_execution", false);
-        report.addProperty("bound_per_case", BOUND);
+        report.addProperty("bound_per_case", bound);
         report.addProperty("case_count", cases.size());
         report.add("cases", cases);
         Files.writeString(Path.of(args[1]), new GsonBuilder().serializeNulls().setPrettyPrinting().create().toJson(report) + "\n");

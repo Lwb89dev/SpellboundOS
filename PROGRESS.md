@@ -3470,6 +3470,34 @@ deletion remain open.
    [analysis/sensorhub-imu-regs.json](analysis/sensorhub-imu-regs.json). The
    vectors, native report and evidence regenerate byte for byte.
 
+## 2026-11-20 — sensor-hub LSM6DSO enable/disable configuration
+
+1. Executed the mode setter `0x80f70da2` with all its callees real:
+   configuration, rate, ODR event, register dump, every register accessor and
+   the SPI callbacks. All **26 native cases pass** (51,920 steps). Each case
+   starts from the original image values of the globals.
+2. Gyroscope enable:
+   - reset, I3C, high performance, BDU;
+   - ±8 g and 2000 dps;
+   - gyroscope LPF1 bandwidth 7 with high performance;
+   - FIFO batch and ODR code 2–7 for 26–833 Hz (other rates → 2);
+   - continuous FIFO;
+   - event `{0x103, ODR × 100}` (2604 for 26.04 Hz).
+3. Accelerometer-only power follows the selector `0x80f16b1c`: ultra-low power
+   for 0, high performance for 2, low/normal otherwise. Disable sets both ODR
+   fields to 0.
+4. The embedded-function programs (two 380-pair ST UCF FSM programs, selector
+   5 or 6) are identified and hashed but not executed or redistributed. The
+   image default selector 8 is invalid and is cleared.
+5. Found a second Ghidra SLEIGH defect: `fcvt.wu.s` drops its `rd` write. The
+   runner repairs only the reviewed site and records each repair. Both FP
+   defects are noted in [analysis/NATIVE_REPAIR.md](analysis/NATIVE_REPAIR.md).
+   The runner now takes its step bound from the vectors, and earlier scopes
+   regenerate byte for byte.
+
+   See [analysis/SENSORHUB_IMU_MODE.md](analysis/SENSORHUB_IMU_MODE.md) and
+   [analysis/sensorhub-imu-mode.json](analysis/sensorhub-imu-mode.json).
+
 ## Next work
 
 - Main kernel: execute `vTaskSuspend`/`vTaskResume`, the idle-task termination

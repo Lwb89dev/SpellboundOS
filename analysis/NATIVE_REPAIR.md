@@ -83,3 +83,22 @@ identical C output from a different history is not promised.
 The Python instruction checks, ELF checks, LLVM inspection and successful
 Ghidra execution validate separate layers. None is a full firmware or hardware
 behavioral test.
+
+## Floating-point emulation defects (2026-11-20)
+
+The sensor-hub IMU scopes found two defects in Ghidra 12.1.2's RV32 SLEIGH
+floating-point semantics. Both were confirmed with single-step traces:
+
+- `c.fsw` stores the whole 64-bit FP register (8 bytes) instead of 4. The
+  emulator does not NaN-box, so the upper half is zero. The stored low 4 bytes
+  are the correct IEEE binary32. The IMU attach model records the 8-byte
+  emulator write explicitly
+  ([SENSORHUB_IMU_INIT.md](SENSORHUB_IMU_INIT.md)).
+- `fcvt.wu.s rd, fs, rtz` computes `TRUNC` into a p-code temporary and never
+  writes `rd`, so `rd` keeps its old value. The IMU runner repairs only the
+  reviewed site `0x80f701a8` with the RISC-V semantics (round toward zero,
+  saturating). It records the repair as a `fix:<pc>:<value>` action
+  ([SENSORHUB_IMU_MODE.md](SENSORHUB_IMU_MODE.md)).
+
+Other native scopes that execute FP stores or FP-to-integer conversions should
+check for the same defects before trusting the emulator's results.
