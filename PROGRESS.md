@@ -3498,16 +3498,36 @@ deletion remain open.
    See [analysis/SENSORHUB_IMU_MODE.md](analysis/SENSORHUB_IMU_MODE.md) and
    [analysis/sensorhub-imu-mode.json](analysis/sensorhub-imu-mode.json).
 
+## 2026-11-20 — sensor-hub LSM6DSO FIFO drain, packet and orientation remap
+
+1. Executed the FIFO drain `0x80f710ac` with its original getters, register
+   dump, packet allocation/release, tagged-word decoder and orientation remap.
+   All **28 native cases pass** (24,301 steps).
+2. One pass:
+   - takes `min(level, 160 − buffered)` words, an even number with the
+     gyroscope flag set;
+   - reads `7n + 1` bytes in one transfer starting with `0xf8`, using a heap
+     buffer above 60 words;
+   - appends the words to the cache;
+   - builds an accelerometer packet (4096 LSB/g, rate rounded down to a
+     multiple of 25, timestamp moved back by `1000/rate` ms per word left);
+   - decodes tag-2 words with per-axis offsets and skips gyroscope words;
+   - remaps through the 8-entry orientation table, with an optional wrist
+     flip of x/y.
+3. Error results: 3 inactive, 4 SPI failure, 10 no buffer. Overflow or overrun
+   returns 6 with event `0x102`, and the third consecutive overflow restores
+   the sensor.
+
+   See [analysis/SENSORHUB_IMU_FIFO.md](analysis/SENSORHUB_IMU_FIFO.md) and
+   [analysis/sensorhub-imu-fifo.json](analysis/sensorhub-imu-fifo.json). All
+   earlier IMU scopes regenerate byte for byte under the extended runner.
+
 ## Next work
 
-- Sensor-hub IMU: execute the FIFO read/decode path `0x80f710ac`. It checks
-  overrun and level, makes one bulk SPI read of `7 × n + 1` bytes through the
-  transfer helper (tagged 7-byte FIFO words, at most 160 per pass) and then
-  runs the decoder, timestamp and packet path (`0x80f6fc42`, `0x80f6453e`,
-  `0x80f63092`, `0x80f64660`). Then do the descriptor callbacks
-  (open/close/rate/flush) that call the now-executed mode setter, and the
-  handling of IRQ event `0x101`. See
-  [analysis/SENSORHUB_IMU_MODE.md](analysis/SENSORHUB_IMU_MODE.md).
+- Sensor-hub IMU: the descriptor callbacks (open/close/rate/flush) that call
+  the now-executed mode setter and FIFO drain, IRQ event `0x101` scheduling,
+  the gyroscope delivery caller and the algorithm hook `0x80f63092`. See
+  [analysis/SENSORHUB_IMU_FIFO.md](analysis/SENSORHUB_IMU_FIFO.md).
 
 - Main kernel: execute `vTaskSuspend`/`vTaskResume`, the idle-task termination
   sweep, dynamic `xTaskCreate`, mutex priority inheritance and the queue/

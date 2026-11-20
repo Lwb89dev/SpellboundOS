@@ -145,9 +145,10 @@ public class ValidateSensorhubImuProbe extends GhidraScript {
         if (kind.equals("spi")) {
             // helper(handle, tx, rx, len, timeout): capture tx[0..len), fill rx, return status.
             long tx = reg("a1"), rx = reg("a2"), len = reg("a3");
-            if (len < 1 || len > 7) throw new IllegalStateException("spi length");
+            if (len < 1 || len > 0x1000) throw new IllegalStateException("spi length");
+            // Records at most the first 16 transmitted bytes (all of them for register transfers).
             actions.add("spi:" + reg("a0") + ":" + len + ":" + reg("a4") + ":"
-                + HexFormat.of().formatHex(e.readMemory(toAddr(tx), (int) len)));
+                + HexFormat.of().formatHex(e.readMemory(toAddr(tx), (int) Math.min(len, 16))));
             JsonArray seq = s.getAsJsonArray("seq");
             int n = storeCount.getOrDefault(pc, 0);
             if (n >= seq.size()) throw new IllegalStateException("spi sequence bound");
@@ -166,7 +167,14 @@ public class ValidateSensorhubImuProbe extends GhidraScript {
         actions.add(call.toString());
         switch (kind) {
             case "return":
-                if (s.has("value")) e.writeRegister("a0", s.get("value").getAsLong());
+                if (s.has("seq")) {
+                    JsonArray seq = s.getAsJsonArray("seq");
+                    int n = storeCount.getOrDefault(pc, 0);
+                    if (n >= seq.size()) throw new IllegalStateException("return sequence bound");
+                    storeCount.put(pc, n + 1);
+                    e.writeRegister("a0", seq.get(n).getAsLong());
+                } else if (s.has("value")) e.writeRegister("a0", s.get("value").getAsLong());
+                if (s.has("value_a1")) e.writeRegister("a1", s.get("value_a1").getAsLong());
                 break;
             case "switch":
                 if (s.has("current")) e.writeMemoryValue(toAddr(s.get("current_address").getAsLong()), 4,
@@ -174,7 +182,7 @@ public class ValidateSensorhubImuProbe extends GhidraScript {
                 break;
             case "memcpy": {
                 long dst = reg("a0"), src = reg("a1"), n = reg("a2");
-                if (n > 64) throw new IllegalStateException("memcpy bound");
+                if (n > 0x1000) throw new IllegalStateException("memcpy bound");
                 e.writeMemory(toAddr(dst), e.readMemory(toAddr(src), (int) n));
                 break;
             }
