@@ -3851,7 +3851,38 @@ deletion remain open.
    See [analysis/SENSORHUB_IMU_IOCTL.md](analysis/SENSORHUB_IMU_IOCTL.md).
    Vectors, native report and evidence regenerate byte for byte.
 
-## Next work (hardware transport/DMA — poor fit for native execution)
+## 2026-11-20 — SpellboundOS kernel foundation (traps + timer)
+
+Shifted from reverse engineering to building the new OS (see [GOAL.md](GOAL.md),
+[kernel/README.md](kernel/README.md)). Extended the bare RV32 QEMU-virt prototype
+(boot + UART echo) with the first real kernel foundations:
+
+- **Machine-mode trap handling**: a trap vector (`kernel/arch/riscv/trap.S`) that
+  saves the caller-saved registers, calls `trap_handler`, restores and `mret`s;
+  `trap_init` installs `mtvec` in direct mode. Synchronous exceptions print
+  `mcause`/`mepc` and park.
+- **CLINT machine timer** (`kernel/arch/riscv/timer.c`): a periodic 100 Hz tick
+  via `MTIE` + global `MIE`, a 64-bit tick counter, and safe RV32
+  `mtime`/`mtimecmp` access.
+- **Console module** (`kernel/console.c`): UART `puts`/`puthex`/`putdec`/`getc`.
+- `main.c` now boots → installs traps → polled echo → starts the tick → prints
+  one `tick N` line per second.
+
+Verified by a clean `-Werror` build (clang + LLVM `ld.lld`) and disassembly
+inspection: `mtvec` → `trap_vector` (4-aligned, `mret` present), CLINT
+`mtimecmp`/`mtime` access and `csrs mie`. **Runtime test not run in this
+environment**: `make test` (`tests/qemu_boot.py`, updated to verify boot + echo +
+first tick) needs a system `qemu-system-riscv32`, which is not installed here
+(only user-mode `qemu-riscv32`, which cannot run a bare-metal kernel). Build with
+`make LLD=<path to ld.lld>` where `ld.lld` is not on PATH.
+
+## Next work — OS build
+
+- A cooperative/preemptive task abstraction driven by the timer tick; a small
+  allocator; a device/driver registration model; board abstraction (QEMU vs Bip 6).
+- Run `make test` on a host with `qemu-system-riscv32` to confirm the tick at runtime.
+
+## Reverse-engineering remainder (hardware transport/DMA — poor fit for native execution)
 
 - Display: the semaphore-serialized active path, the `0x9a000000` controller
   programming `0x70161e66` and the frame path (`write_frame_work_out`, framebuffer

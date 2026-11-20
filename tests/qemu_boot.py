@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Check guest startup and UART input/output without relying on host timeouts."""
+"""Check guest startup, UART echo and the periodic timer tick without relying on
+host timeouts. Requires a system QEMU (qemu-system-riscv32)."""
 import select
 import subprocess
 import sys
@@ -11,8 +12,9 @@ p = subprocess.Popen([qemu, '-machine', 'virt', '-bios', 'none', '-nographic',
                      stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
 output = bytearray()
 try:
-    deadline = time.monotonic() + 10
+    deadline = time.monotonic() + 15
     sent = False
+    echoed = False
     while time.monotonic() < deadline:
         readable, _, _ = select.select([p.stdout], [], [], 0.2)
         if readable:
@@ -24,13 +26,15 @@ try:
             p.stdin.write(b'Z')
             p.stdin.flush()
             sent = True
-        if sent and output.endswith(b'echo: Z'):
-            print('PASS: RV32 boot, UART banner and echoed byte')
+        if sent and not echoed and b'echo: Z' in output:
+            echoed = True
+        if echoed and b'tick 1\n' in output:
+            print('PASS: RV32 boot, UART echo and 100 Hz timer tick')
             break
     else:
-        raise RuntimeError('QEMU boot or echo timed out')
-    if not (sent and output.endswith(b'echo: Z')):
-        raise RuntimeError('QEMU exited or failed to echo')
+        raise RuntimeError('QEMU boot, echo or timer tick timed out')
+    if not (echoed and b'tick 1\n' in output):
+        raise RuntimeError('QEMU exited before the echo and first tick')
 finally:
     p.terminate()
     try:
@@ -38,7 +42,3 @@ finally:
     except subprocess.TimeoutExpired:
         p.kill()
         p.wait()
-    if p.returncode and not output:
-        print('QEMU produced no output', file=sys.stderr)
-    if not (sent and output.endswith(b'echo: Z')):
-        print(output.decode(errors='replace'), file=sys.stderr)
