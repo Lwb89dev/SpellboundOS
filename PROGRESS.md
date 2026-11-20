@@ -4242,3 +4242,18 @@ Python suite — this is the first piece of OS code verified at **runtime** here
   post event `0x102`; the supplied queue result controls packet freeing.
 - All 60 IMU host tests pass. The drain and lower services remain supplied in
   this scope. See [the callback report](analysis/SENSORHUB_IMU_READ.md).
+
+# 2026-11-20 — Backup, boot, Bluetooth and driver evidence
+
+- Added a read-only backup inventory checker and verified the local stock OTA
+  against its recorded size and SHA-256. The archive and five image signature
+  checks reproduce. The stock reference contains zero verified device readbacks.
+- Added six native main boot cases through the original verifier. They check
+  the 64-byte signature cutoff, SHA chunk boundaries and both ECDSA outcomes at
+  the stock image length. All 16 cases pass with cryptographic leaves supplied.
+- Verified the ordered authorization exchange on the same app channel in the
+  previously recorded Gadgetbridge reconnect. The report excludes the
+  challenge, proof and key bytes. Fresh pairing remains open.
+- Connected the original LSM6DSO FIFO drain to sample delivery in three cases
+  with supplied SPI responses. All 16 cases pass. The boot and IMU prior
+  observations reproduce unchanged, and 152 focused host tests pass.

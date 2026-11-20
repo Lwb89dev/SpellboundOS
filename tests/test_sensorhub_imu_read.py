@@ -13,7 +13,7 @@ class SensorhubImuReadTest(unittest.TestCase):
 
     def test_native_matches_model(self):
         report = self.evidence['native_validation']
-        self.assertEqual((report['case_count'], len(report['cases'])), (13, 13))
+        self.assertEqual((report['case_count'], len(report['cases'])), (16, 16))
         self.assertFalse(report['hardware_execution'])
         for row in report['cases']:
             name = row['name'].removeprefix('sensorhub_imu_read_')
@@ -69,6 +69,17 @@ class SensorhubImuReadTest(unittest.TestCase):
                 self.assertEqual((cases[name]['ret'], cases[name]['buffered_after']), (0, 2))
                 self.assertTrue(cases[name]['error_event'])
                 self.assertEqual(cases[name]['packet_freed'], freed)
+
+    def test_original_drain_feeds_the_delivery_callback(self):
+        cases = self.evidence['per_case']
+        self.assertEqual([s['count'] for s in cases['connected_accel']['streams']], [3])
+        gyro = cases['connected_gyro']
+        self.assertEqual((gyro['buffered_after'], len(gyro['streams'])), (0, 2))
+        self.assertEqual([s['count'] for s in gyro['streams']], [2, 2])
+        error = cases['connected_spi_error']
+        self.assertEqual((error['ret'], error['buffered_after']), (0, 0))
+        for c in self.evidence['native_validation']['cases'][-3:]:
+            self.assertTrue(any(action.startswith('spi:') for action in c['observed']['actions']))
 
 
 if __name__ == '__main__':

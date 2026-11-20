@@ -32,11 +32,12 @@ GYRO_SENSITIVITY = 0x80f16b24
 MOVE = 0x80fcdeec
 CACHE, PACKET = fifo.CACHE, fifo.PACKET
 PACKET_SIZE = 0x180
+DRAIN_PACKET = 0x81040000
+DRAIN_OUT = STACK - 0x40 + 6
 TS = 0x0000001200000005
 OFFSETS = (10, -20, 30, -40, 50, -60)
 
-CODE = ((READ_CB, 0x212, 'a560198409347cb1970266b2b6d1e16ef978605dc4ed2d4076e4938260c90c94'),) + tuple(
-    item for item in fifo.CODE if item[0] in (fifo.DECODE, fifo.PKT_ALLOC, fifo.PKT_RELEASE))
+CODE = ((READ_CB, 0x212, 'a560198409347cb1970266b2b6d1e16ef978605dc4ed2d4076e4938260c90c94'),) + fifo.CODE
 CALL_SITES = (
     (0x80f714d4, REARM), (0x80f714e4, FIFO_DRAIN), (0x80f71548, fifo.PKT_ALLOC),
     (0x80f715e4, fifo.DECODE), (0x80f715ec, fifo.PKT_RELEASE),
@@ -48,6 +49,12 @@ class Model(probe.Model):
     def __init__(self, case):
         super().__init__(case)
         self.svc = case['services']
+        self.drain = None
+        self.timestamp = TS
+        if case.get('connected'):
+            self.drain = fifo.Model(dict(case, registers={'sp': STACK - 0x40}))
+            self.drain.mem, self.drain.actions, self.drain.spi = self.mem, self.actions, self.spi
+            self.timestamp = fifo.TS
 
     def u8(self, a):
         return self.read(a, 1)
@@ -64,22 +71,25 @@ class Model(probe.Model):
             return 0
         size = 0x18 + streams * (0x28 + stride)
         self.leaf(fifo.MALLOC, 4, fifo.PKT_TAG_STR, size, 4)
-        if not self.svc['allocated']:
+        packet = PACKET if self.svc['allocated'] else 0
+        if self.drain:
+            packet = self.drain.mallocs.pop(0)
+        if not packet:
             self.leaf(fifo.LOGGER, fifo.LOG_ERROR)
             return 0
-        self.leaf(fifo.MEMSET, PACKET, 0, size)
-        self.put_bytes(PACKET, bytes(size))
-        headers = PACKET + 0x18
-        self.write(PACKET, 2, streams)
-        self.write(PACKET + 2, 2, stride)
-        self.write(PACKET + 0x10, 4, 1)
-        self.write(PACKET + 0x14, 4, headers)
+        self.leaf(fifo.MEMSET, packet, 0, size)
+        self.put_bytes(packet, bytes(size))
+        headers = packet + 0x18
+        self.write(packet, 2, streams)
+        self.write(packet + 2, 2, stride)
+        self.write(packet + 0x10, 4, 1)
+        self.write(packet + 0x14, 4, headers)
         self.leaf(fifo.TIMESTAMP)
         for i in range(streams):
             header = headers + i * 0x28
-            self.write(header + 8, 8, TS)
+            self.write(header + 8, 8, self.timestamp)
             self.write(header + 0x20, 4, headers + streams * 0x28 + i * stride)
-        return headers
+        return packet
 
     def decode(self, words, headers, samples):
         counts = [0] * len(headers)
@@ -107,8 +117,13 @@ class Model(probe.Model):
         if self.u8(REARM_FLAG) != 0:
             self.leaf(REARM, self.u8(0x80f1700d))
             self.write(REARM_FLAG, 1, 0)
-        self.leaf(FIFO_DRAIN, STACK - 0x40 + 6)
-        if self.svc['drain'] != 0:
+        if self.drain:
+            status = self.drain.fifo_read(DRAIN_OUT)
+            remaining = self.u16(DRAIN_OUT)
+        else:
+            self.leaf(FIFO_DRAIN, DRAIN_OUT)
+            status, remaining = self.svc['drain'], self.svc['remaining']
+        if status != 0:
             return 0
         buffered = self.u16(SAMPLE_COUNT)
         if not buffered:
@@ -118,23 +133,23 @@ class Model(probe.Model):
         streams = 2 if self.read(fifo.GYRO_ON, 4) else 1
         words = min(buffered, (rate * 1200 // 1000) * streams)
         samples = words // streams
-        header = self.allocate(streams, samples * 6)
-        if not header:
+        packet = self.allocate(streams, samples * 6)
+        if not packet:
             return 0
 
-        headers = [header + i * 0x28 for i in range(streams)]
-        backdate = ((buffered - words + self.svc['remaining']) // streams) * (1000 // rate)
+        headers = [packet + 0x18 + i * 0x28 for i in range(streams)]
+        backdate = ((buffered - words + remaining) // streams) * (1000 // rate)
         for i, at in enumerate(headers):
             self.write(at, 4, (2, 4)[i])
-            self.write(at + 8, 8, TS - backdate)
+            self.write(at + 8, 8, self.timestamp - backdate)
             self.write(at + 0x10, 4, self.read((fifo.SENSITIVITY, GYRO_SENSITIVITY)[i], 4))
             self.write(at + 0x14, 2, samples)
             self.write(at + 0x16, 2, rate // 25 * 25)
         if not self.decode(words, headers, samples):
             self.leaf(fifo.QUEUE)
             if not self.svc['retained']:
-                self.write(PACKET + 0x14, 4, 0)
-                self.leaf(fifo.FREE, 4, fifo.PKT_TAG_STR, PACKET)
+                self.write(packet + 0x14, 4, 0)
+                self.leaf(fifo.FREE, 4, fifo.PKT_TAG_STR, packet)
             self.leaf(fifo.EVENT_POST)
             self.actions.append('cap:' + struct.pack('<HHI', fifo.EVENT_ERROR, 0, 0).hex())
             return 0
@@ -146,7 +161,7 @@ class Model(probe.Model):
             size = leftover * 7
             self.leaf(MOVE, CACHE, start, size)
             self.put_bytes(CACHE, bytes(self.u8(start + i) for i in range(size)))
-        return PACKET
+        return packet
 
     def operation(self, op):
         if op['name'] != 'read':
@@ -161,6 +176,8 @@ def contract(case):
     result = model.run()
     if model.spi:
         raise ValueError('unused spi')
+    if model.drain and model.drain.mallocs:
+        raise ValueError('unused heap responses')
     return result
 
 
@@ -202,6 +219,23 @@ def case(name, flag=0, drain=0, words=(), remaining=0, gyro=False, rate=26,
         memory=memory, spi=[], services=g)
 
 
+def connected_case(name, words, *, gyro=False, spi_fail=0):
+    delivery = case(name, gyro=gyro, retained=True)
+    allocations = [] if spi_fail else [DRAIN_PACKET, PACKET]
+    drain = fifo.case(name, len(words), words, gyro=gyro, spi_fail=spi_fail,
+                      offsets=OFFSETS, malloc=allocations)
+    delivery['connected'] = True
+    delivery['services'].update(drain['services'])
+    delivery['orientation_table'] = drain['orientation_table']
+    delivery['spi'] = drain['spi']
+    delivery['quiet'] += drain['quiet'] + [[DRAIN_PACKET, DRAIN_PACKET + PACKET_SIZE]]
+    delivery['memory'] += drain['memory'] + [[DRAIN_PACKET, 'a5' * PACKET_SIZE]]
+    delivery['snapshot'] = [[SAMPLE_COUNT, 3], [CACHE, len(words) * 7], [PACKET, PACKET_SIZE]]
+    delivery['stubs'].update(drain['stubs'])
+    del delivery['stubs'][str(FIFO_DRAIN)]
+    return delivery
+
+
 def native_vectors():
     cases = []
 
@@ -226,8 +260,11 @@ def native_vectors():
     add(case('gyro_single_word_zero_stride', words=xl[:1], gyro=True))
     add(case('missing_accel_releases_packet', words=[xl[0], gy[0]]))
     add(case('missing_gyro_retains_packet', words=[xl[0], xl[1]], gyro=True, retained=True))
+    add(connected_case('connected_accel', xl[:3]))
+    add(connected_case('connected_gyro', [xl[0], gy[0], xl[1], gy[1], gy[2]], gyro=True))
+    add(connected_case('connected_spi_error', xl[:3], spi_fail=1))
     return dict(schema=1, bound_per_case=BOUND,
-                guards=[dict(address=a, size=n, sha256=h) for a, n, h in CODE], cases=cases)
+                guards=[dict(address=a, size=n, sha256=h) for a, n, h in CODE + fifo.DATA], cases=cases)
 
 
 def describe_case(observed):
@@ -260,10 +297,10 @@ def evidence(archive, vectors, validation):
     if hashlib.sha256(data).hexdigest() != probe.HUB_HASH:
         raise ValueError('unexpected sensor-hub image')
     memory = StartupMemory(data)
-    for address, size, expected in CODE:
+    for address, size, expected in CODE + fifo.DATA:
         if hashlib.sha256(memory.read(address, size)).hexdigest() != expected:
             raise ValueError(f'original bytes differ at {address:#x}')
-    for site, target in CALL_SITES:
+    for site, target in CALL_SITES + fifo.CALL_SITES:
         if kernel.direct_target(memory, site) != target:
             raise ValueError(f'call site {site:#x}')
     vector_doc = native_vectors()
@@ -295,7 +332,8 @@ def evidence(archive, vectors, validation):
         native_validation=report,
         limitations=[
             'The callback, packet allocator, tagged-word decoder and release wrapper execute original code. '
-            'Re-arm, FIFO drain, heap, timestamp, queue, logger, event and memory helper effects are supplied.',
+            'Three connected cases execute the original FIFO drain above a supplied SPI service. Re-arm, '
+            'heap, timestamp, queue, algorithm, logger, event and memory helper effects are supplied.',
             'Cases use authored FIFO contents and service results. They do not establish live sensor timing, '
             'cache concurrency or downstream packet consumption.'])
 

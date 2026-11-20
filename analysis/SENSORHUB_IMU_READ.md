@@ -1,9 +1,9 @@
 # Sensor-hub LSM6DSO sample delivery
 
-All **13 cases** pass (3,504 instructions) in the startup-aware `sensor-runtime`
+All **16 cases** pass (5,711 instructions) in the startup-aware `sensor-runtime`
 project. They execute the original shared read callback `0x80f714a0`, packet
 allocator `0x80f6453e`, tagged-word decoder `0x80f6fc42` and release wrapper
-`0x80f6462c`. The four earlier empty/error cases reproduce unchanged. See
+`0x80f6462c`. The thirteen earlier observations reproduce unchanged. See
 [the machine-readable evidence](sensorhub-imu-read.json).
 
 The caller optionally re-arms the device and clears the dirty flag. It passes a
@@ -33,7 +33,10 @@ and applies the per-axis offsets in 16-bit arithmetic.
 | Allocation failure or zero stride | Returns NULL and preserves the buffer |
 | Missing accelerometer or gyroscope tag | Calls the packet release wrapper, posts event `0x102`, returns NULL and preserves the buffer. The supplied queue result selects whether the wrapper frees the packet |
 
-Re-arm, the FIFO drain, heap, timestamp, queue, logger, event delivery, zeroing
+Three cases connect the original drain to the callback, covering fresh
+accelerometer words, dual-stream delivery with one word left in the FIFO, and
+an SPI failure. The other cases supply the drain result. The SPI transfer,
+re-arm, heap, clock, queue, algorithm hook, logger, event delivery, zeroing
 and overlap-safe memory movement are supplied to the emulation. The memory
 snapshots check the compacted bytes, packet headers and decoded samples. Live
 SPI timing, interrupt scheduling, cache concurrency and downstream packet

@@ -25,6 +25,13 @@ Completion still depends on four broad work areas:
 - Establish safe backup, device-specific restoration and a viable standalone
   boot path through the signed chain. This is still a major feasibility gate.
 
+The latest pass verified the stock archive inventory, connected the original
+main-image verifier to the boot decision, checked the ordered authorization
+exchange in the existing Bluetooth capture, and connected the LSM6DSO drain
+to sample delivery. The evidence and remaining gaps are in
+[backup and restoration](RECOVERY_INPUTS.md), [main boot](MAIN_BOOT_GATE.md),
+[Bluetooth runtime](LIVE_GADGETBRIDGE.md) and [IMU delivery](SENSORHUB_IMU_READ.md).
+
 These areas are not four fixed-size tasks or a time estimate. The current state
 remains targeted contract reconstruction/verification; final device integration
 requires evidence beyond OTA analysis and emulator case counts.

@@ -8,14 +8,14 @@
   },
   "image": "sensor-hub (OTA 4.6.0.3)",
   "limitations": [
-    "The callback, packet allocator, tagged-word decoder and release wrapper execute original code. Re-arm, FIFO drain, heap, timestamp, queue, logger, event and memory helper effects are supplied.",
+    "The callback, packet allocator, tagged-word decoder and release wrapper execute original code. Three connected cases execute the original FIFO drain above a supplied SPI service. Re-arm, heap, timestamp, queue, algorithm, logger, event and memory helper effects are supplied.",
     "Cases use authored FIFO contents and service results. They do not establish live sensor timing, cache concurrency or downstream packet consumption."
   ],
-  "native_case_count": 13,
-  "native_steps": 3504,
+  "native_case_count": 16,
+  "native_steps": 5711,
   "native_validation": {
     "bound_per_case": 20000,
-    "case_count": 13,
+    "case_count": 16,
     "cases": [
       {
         "name": "sensorhub_imu_read_empty_flag_clear",
@@ -464,6 +464,147 @@
           ]
         },
         "steps": 274
+      },
+      {
+        "name": "sensorhub_imu_read_connected_accel",
+        "observed": {
+          "actions": [
+            "op:read",
+            "spi:1515847681:2:5000:bb00",
+            "call:2164055536",
+            "spi:1515847681:2:5000:ba00",
+            "call:2164055536",
+            "spi:1515847681:2:5000:bb00",
+            "call:2164055536",
+            "spi:1515847681:22:5000:f8000000000000000000000000000000",
+            "call:2164055536",
+            "w:2163306532:2:3",
+            "call:2164056012:2164263536:0:1312",
+            "call:2164056012:2164263492:0:44",
+            "call:2163756270:4:2164082792:82:4",
+            "call:2164056012:2164523008:0:82",
+            "call:2163618562",
+            "call:2163617938",
+            "call:2163760404",
+            "call:2163756270:4:2164082792:82:4",
+            "call:2164056012:2164457472:0:82",
+            "call:2163618562",
+            "w:2163306532:2:0"
+          ],
+          "rows": [
+            {
+              "a0": 2164457472,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2163306532": "000000",
+                "2164326400": "10640038ff001010650036ffff0f10660034fffe0f",
+                "2164457472": "010012000000000000000000000000000100000018000381020000000000000090785634120000000010000003001900000000000000000040000381000000006e0024ff1e106f0022ff1d10700020ff1c1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 943
+      },
+      {
+        "name": "sensorhub_imu_read_connected_gyro",
+        "observed": {
+          "actions": [
+            "op:read",
+            "spi:1515847681:2:5000:bb00",
+            "call:2164055536",
+            "spi:1515847681:2:5000:ba00",
+            "call:2164055536",
+            "spi:1515847681:2:5000:bb00",
+            "call:2164055536",
+            "spi:1515847681:29:5000:f8000000000000000000000000000000",
+            "call:2164055536",
+            "w:2163306532:2:4",
+            "call:2164056012:2164263536:0:1312",
+            "call:2164056012:2164263492:0:44",
+            "call:2163756270:4:2164082792:76:4",
+            "call:2164056012:2164523008:0:76",
+            "call:2163618562",
+            "call:2163617938",
+            "call:2163760404",
+            "call:2163756270:4:2164082792:128:4",
+            "call:2164056012:2164457472:0:128",
+            "call:2163618562",
+            "w:2163306532:2:0"
+          ],
+          "rows": [
+            {
+              "a0": 2164457472,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2163306532": "000000",
+                "2164326400": "10640038ff001008d4fe90010cfe10650036ffff0f08d3fe91010dfe00000000000000",
+                "2164457472": "02000c00000000000000000000000000010000001800038102000000000000009078563412000000001000000200190000000000000000006800038100000000040000000000000090785634120000001000000002001900000000000000000074000381000000006e0024ff1e106f0022ff1d10acfec201d0fdabfec301d1fda5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 961
+      },
+      {
+        "name": "sensorhub_imu_read_connected_spi_error",
+        "observed": {
+          "actions": [
+            "op:read",
+            "spi:1515847681:2:5000:bb00",
+            "call:2164055536",
+            "spi:1515847681:2:5000:ba00",
+            "call:2164055536",
+            "spi:1515847681:2:5000:bb00",
+            "call:2164055536",
+            "spi:1515847681:22:5000:f8000000000000000000000000000000",
+            "call:2163764532:4"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {
+                "2163306532": "000000",
+                "2164326400": "000000000000000000000000000000000000000000",
+                "2164457472": "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5a5"
+              },
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 303
       }
     ],
     "hardware_execution": false,
@@ -516,6 +657,70 @@
     },
     "allocation_failed": {
       "buffered_after": 2,
+      "error_event": false,
+      "packet_freed": false,
+      "rearmed": false,
+      "ret": 0
+    },
+    "connected_accel": {
+      "buffered_after": 0,
+      "error_event": false,
+      "packet_freed": false,
+      "rearmed": false,
+      "ret": 2164457472,
+      "streams": [
+        {
+          "count": 3,
+          "first_xyz": [
+            110,
+            -220,
+            4126
+          ],
+          "hz": 25,
+          "kind": 2,
+          "sensitivity": 4096,
+          "stride": 18,
+          "timestamp": 78187493520
+        }
+      ]
+    },
+    "connected_gyro": {
+      "buffered_after": 0,
+      "error_event": false,
+      "packet_freed": false,
+      "rearmed": false,
+      "ret": 2164457472,
+      "streams": [
+        {
+          "count": 2,
+          "first_xyz": [
+            110,
+            -220,
+            4126
+          ],
+          "hz": 25,
+          "kind": 2,
+          "sensitivity": 4096,
+          "stride": 12,
+          "timestamp": 78187493520
+        },
+        {
+          "count": 2,
+          "first_xyz": [
+            -340,
+            450,
+            -560
+          ],
+          "hz": 25,
+          "kind": 4,
+          "sensitivity": 16,
+          "stride": 12,
+          "timestamp": 78187493520
+        }
+      ]
+    },
+    "connected_spi_error": {
+      "buffered_after": 0,
       "error_event": false,
       "packet_freed": false,
       "rearmed": false,
@@ -636,6 +841,6 @@
       "ret": 0
     }
   },
-  "validation_sha256": "78d6bff00d5f8de18302a98a5a9a115e41becf987c8a90befe50c82be551dff9",
-  "vectors_sha256": "63954f45e46940bc34207877b26d3cc5f2eed0fa9f980c84e8520422554e48d8"
+  "validation_sha256": "aaa173d68867098e902c4a8c67393b84a8bbcac9759f5fa3d366bfd83ece55e5",
+  "vectors_sha256": "5f3efab45c8f8ce722782bf842c255e360b3281eb889120e595b8e2ef53a5fa3"
 }

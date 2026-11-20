@@ -132,6 +132,7 @@ class Model(probe.Model):
         self.svc = case['services']
         self.table = [tuple(e) for e in case['orientation_table']]
         self.mallocs = list(self.svc['malloc'])
+        self.frame = case['registers']['sp'] - 0x590
 
     def u8(self, a):
         return self.read(a, 1)
@@ -247,7 +248,7 @@ class Model(probe.Model):
                 self.leaf(DUMP_COMPARE)
             status, data = self.read_reg(0x0f, 1)
             if status == 0:
-                self.write(STACK_ID, 1, data[0], record=False)
+                self.write(self.frame + 0x14, 1, data[0], record=False)
             self.getter_byte(0x01, lambda v: v)
             self.leaf(LOGGER, LOG_INFO)
             return self.overflow()
@@ -299,8 +300,8 @@ class Model(probe.Model):
             self.write(cache + i, 1, self.u8(buf + 1 + i), record=False)
         self.put(BUFFERED, 2, buffered + take)
         rate = self.u16(RATE)
-        self.leaf(MEMSET, STACK_ALGO, 0, 0x520)
-        self.leaf(MEMSET, STACK_RESULT, 0, 0x2c)
+        self.leaf(MEMSET, self.frame + 0x40, 0, 0x520)
+        self.leaf(MEMSET, self.frame + 0x14, 0, 0x2c)
         if self.u32(GYRO_ON):
             xl, left = take >> 1, remaining >> 1
         else:
@@ -346,12 +347,6 @@ class Model(probe.Model):
         if op['name'] != 'fifo':
             raise ValueError('operation')
         return self.fifo_read(op['args'][0])
-
-
-STACK = kernel.HARNESS_STACK - 0x590
-STACK_ID = STACK + 0x14
-STACK_RESULT = STACK + 0x14
-STACK_ALGO = STACK + 0x40
 
 
 def contract(case):
