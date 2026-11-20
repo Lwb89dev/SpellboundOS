@@ -2,6 +2,7 @@
 #include "riscv.h"
 #include "timer.h"
 #include "../../console.h"
+#include "../../drivers/plic.h"
 #include "../../sched_internal.h"
 
 extern void trap_vector(void);
@@ -15,6 +16,10 @@ struct trap_frame *trap_handler(uint32_t mcause, struct trap_frame *frame) {
     if (mcause == (MCAUSE_INTERRUPT | IRQ_MACHINE_TIMER)) {
         timer_on_tick();
         return sched_on_tick(frame);
+    }
+    if (mcause == (MCAUSE_INTERRUPT | IRQ_MACHINE_EXTERNAL)) {
+        plic_dispatch();
+        return frame;
     }
     if (mcause == EXCEPTION_MACHINE_ECALL && frame->pc == (uintptr_t)sched_trap_ecall) {
         struct trap_frame *next = sched_on_request(frame);

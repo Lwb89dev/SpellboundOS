@@ -14,7 +14,8 @@ This is bring-up scaffolding, not a Bip 6 image.
 | `arch/riscv/riscv.h` | CSR access helpers and bit definitions |
 | `console.c` / `console.h` | console formatting and byte I/O |
 | `drivers/uart16550.c` | polled access to the QEMU virt UART |
-| `boards/qemu-virt/board.c` | UART registration, timer addresses and input clock |
+| `drivers/plic.c` | external interrupt registration, claim and completion |
+| `boards/qemu-virt/board.c` | UART registration, PLIC context and timer configuration |
 | `sched.c` / `sched.h` | round-robin scheduler with cooperative and timer-driven switching |
 | `kmem.c` / `kmem.h` | first-fit kernel heap (split + coalesce), host-testable |
 | `driver.c` / `driver.h` | fixed-size device/driver registration and probe, host-testable |
@@ -28,6 +29,10 @@ This is bring-up scaffolding, not a Bip 6 image.
   `mepc` and `mtval`, masks interrupt sources and parks the hart.
 - CLINT machine timer: a periodic tick (100 Hz) via `MTIE` + global `MIE`, with a
   64-bit tick counter read protected from interrupts and safe RV32 `mtime`/`mtimecmp` access.
+- External interrupts use the PLIC machine context for hart 0. A registered
+  handler acknowledges its device before the controller completes the claim.
+  The test triggers two UART transmit-ready interrupts through this path.
+  See the [QEMU virt board description](https://www.qemu.org/docs/master/system/riscv/virt.html).
 - UART console (`puts`/`puthex`/`putdec`/`getc`), polled echo.
 - Round-robin tasks can yield, exit or sleep for a number of timer ticks. The scheduler waits on the boot stack when all tasks sleep and reuses slots when tasks exit. Call `trap_init` before running tasks.
 - `sched_set_preemption(true)` enables one tick per time slice. The default is cooperative. Both modes save integer registers and the interrupt state in the task's trap frame. A stack must have at least 272 bytes after alignment and enough space for the task's calls and trap handling. Tasks share machine-mode memory on hart 0. Serialize shared heap, registry and console access if using preemption.

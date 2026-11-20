@@ -4269,3 +4269,12 @@ Python suite — this is the first piece of OS code verified at **runtime** here
   while a peer stays CPU-bound. The cooperative and boot tests still pass.
 - Tasks share memory on hart 0. Stacks must cover trap handling, and callers
   serialize shared kernel resources when preemption is enabled.
+
+## SpellboundOS — External interrupts on QEMU virt
+
+- Configure hart 0's machine PLIC context at board startup and dispatch each
+  external machine interrupt by claiming, invoking the device handler and
+  completing. Validate registrations and mask unexpectedly enabled sources.
+- The QEMU test delivers two successive UART transmit-ready interrupts through
+  the PLIC, with a device acknowledgement before each completion. The full
+  QEMU kernel suite passes with the external interrupt path present.

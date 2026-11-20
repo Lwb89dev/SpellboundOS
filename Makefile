@@ -6,7 +6,7 @@ BUILD := build/qemu-virt
 .DEFAULT_GOAL := all
 CFLAGS := --target=riscv32-unknown-elf -march=rv32imac_zicsr -mabi=ilp32 -ffreestanding -fno-stack-protector -fno-pic -fno-builtin -Wall -Wextra -Werror -O2 -MMD -MP
 
-BOOT_OBJS := $(addprefix $(BUILD)/,start.o board.o uart16550.o console.o driver.o)
+BOOT_OBJS := $(addprefix $(BUILD)/,start.o board.o plic.o uart16550.o console.o driver.o)
 OBJS := $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o main.o trap.o timer.o sched.o kmem.o)
 
 -include $(wildcard $(BUILD)/*.d)
@@ -24,6 +24,9 @@ $(BUILD)/board.o: kernel/boards/qemu-virt/board.c | $(BUILD)
 	$(CLANG) $(CFLAGS) -c $< -o $@
 
 $(BUILD)/uart16550.o: kernel/drivers/uart16550.c | $(BUILD)
+	$(CLANG) $(CFLAGS) -c $< -o $@
+
+$(BUILD)/plic.o: kernel/drivers/plic.c | $(BUILD)
 	$(CLANG) $(CFLAGS) -c $< -o $@
 
 $(BUILD)/trap_vector.o: kernel/arch/riscv/trap.S | $(BUILD)
@@ -71,6 +74,12 @@ $(BUILD)/trap_test.o: tests/qemu_trap.c | $(BUILD)
 $(BUILD)/trap_test.elf: $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o trap.o timer.o sched.o trap_test.o) kernel/boards/qemu-virt/linker.ld
 	$(LLD) -m elf32lriscv -T kernel/boards/qemu-virt/linker.ld -o $@ $(filter %.o,$^)
 
+$(BUILD)/plic_test.o: tests/qemu_plic.c | $(BUILD)
+	$(CLANG) $(CFLAGS) -c $< -o $@
+
+$(BUILD)/plic_test.elf: $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o trap.o timer.o sched.o plic_test.o) kernel/boards/qemu-virt/linker.ld
+	$(LLD) -m elf32lriscv -T kernel/boards/qemu-virt/linker.ld -o $@ $(filter %.o,$^)
+
 $(BUILD)/console.o: kernel/console.c | $(BUILD)
 	$(CLANG) $(CFLAGS) -c $< -o $@
 
@@ -89,13 +98,14 @@ $(BUILD)/spellbound.bin: $(BUILD)/spellbound.elf
 qemu: $(BUILD)/spellbound.elf
 	$(QEMU) -machine virt -bios none -nographic -monitor none -kernel $<
 
-test: all $(addprefix $(BUILD)/,scheduler_test.elf preemption_test.elf timer_test.elf heap_test.elf trap_test.elf)
+test: all $(addprefix $(BUILD)/,scheduler_test.elf preemption_test.elf timer_test.elf heap_test.elf trap_test.elf plic_test.elf)
 	python3 tests/qemu_boot.py $(QEMU) $(BUILD)/spellbound.elf
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/scheduler_test.elf 'scheduler lifecycle'
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/preemption_test.elf 'timer preemption'
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/timer_test.elf 'timer rollover'
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/heap_test.elf 'heap boundaries'
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/trap_test.elf 'illegal instruction' 'trap: mcause=0x00000002 mepc=0x8[0-9a-f]{7} mtval=0x00000000'
+	python3 tests/qemu_case.py $(QEMU) $(BUILD)/plic_test.elf 'PLIC UART interrupts'
 
 test-host: | $(BUILD)
 	clang -std=c11 -Wall -Wextra -O2 -fsanitize=address,undefined -I kernel tests/test_kmem.c -o $(BUILD)/test_kmem

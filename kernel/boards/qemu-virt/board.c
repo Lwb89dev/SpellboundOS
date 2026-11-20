@@ -1,5 +1,6 @@
 #include "../../board.h"
 #include "../../driver.h"
+#include "../../drivers/plic.h"
 #include "../../drivers/uart16550.h"
 
 const struct board_timer_config board_timer = {
@@ -16,7 +17,8 @@ static struct device uart = {
 };
 
 int board_init(void) {
-    if (driver_register(&uart16550_driver) != 0 || device_register(&uart) != 0) {
+    if (plic_init(0x0c000000u, 0, 95) != 0 ||
+        driver_register(&uart16550_driver) != 0 || device_register(&uart) != 0) {
         return -1;
     }
     drivers_probe();
