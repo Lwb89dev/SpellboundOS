@@ -4208,3 +4208,12 @@ Python suite — this is the first piece of OS code verified at **runtime** here
   The board also supplies the addresses and input clock for the machine timer.
 - Boot, serial echo, scheduler lifecycle, timer rollover and heap tests pass
   through the same initialization path on RV32 QEMU virt.
+
+# 2026-11-20 — Cooperative task sleep
+
+- Tasks can suspend themselves for a number of timer ticks. The scheduler
+  continues to run ready tasks and waits for interrupts on the boot stack when
+  all remaining tasks are asleep. The timer interrupt only advances the tick
+  counter. The scheduler checks wake times before dispatch.
+- QEMU tests cover zero-delay yields, two sleeping tasks, minimum elapsed ticks,
+  and a sleeping task waking across the full 64-bit timer counter wrap.

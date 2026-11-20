@@ -1,14 +1,17 @@
 /* Cooperative round-robin scheduler over the context_switch primitive. */
 #include "sched.h"
+#include "arch/riscv/timer.h"
 
 #define MAX_TASKS 8
 #define CONTEXT_WORDS 16 /* ra + s0..s11 and padding, 16-byte aligned */
 
-enum task_state { TASK_UNUSED = 0, TASK_READY, TASK_RUNNING, TASK_DONE };
+enum task_state { TASK_UNUSED = 0, TASK_READY, TASK_RUNNING, TASK_SLEEPING, TASK_DONE };
 
 struct task {
     uint32_t *sp;
     enum task_state state;
+    uint64_t sleep_start;
+    uint32_t sleep_ticks;
 };
 
 extern void context_switch(uint32_t **old_sp, uint32_t *new_sp);
@@ -55,14 +58,32 @@ static int next_ready(int from) {
     return -1;
 }
 
+static int wake_sleepers(void) {
+    int waiting = 0;
+    for (int i = 0; i < MAX_TASKS; i++) {
+        struct task *task = &tasks[i];
+        if (task->state != TASK_SLEEPING) {
+            continue;
+        }
+        /* Unsigned elapsed time is valid across counter rollover. */
+        if (timer_ticks() - task->sleep_start >= task->sleep_ticks) {
+            task->state = TASK_READY;
+        } else {
+            waiting++;
+        }
+    }
+    return waiting;
+}
+
 void task_yield(void) {
     int cur = current;
     /* The boot context has no task to yield and may not have a saved stack. */
     if (cur < 0) return;
-    if (cur >= 0 && tasks[cur].state == TASK_RUNNING) {
+    if (tasks[cur].state == TASK_RUNNING) {
         tasks[cur].state = TASK_READY;
     }
-    int nxt = next_ready(cur < 0 ? MAX_TASKS - 1 : cur);
+    wake_sleepers();
+    int nxt = next_ready(cur);
     if (nxt < 0) {
         /* Nobody else ready: return to the boot context. */
         current = -1;
@@ -75,11 +96,20 @@ void task_yield(void) {
     }
     tasks[nxt].state = TASK_RUNNING;
     current = nxt;
-    if (cur >= 0) {
-        context_switch(&tasks[cur].sp, tasks[nxt].sp);
-    } else {
-        context_switch(&boot_sp, tasks[nxt].sp);
+    context_switch(&tasks[cur].sp, tasks[nxt].sp);
+}
+
+void task_sleep(uint32_t ticks) {
+    if (current < 0) {
+        return;
     }
+    if (ticks != 0) {
+        struct task *task = &tasks[current];
+        task->sleep_start = timer_ticks();
+        task->sleep_ticks = ticks;
+        task->state = TASK_SLEEPING;
+    }
+    task_yield();
 }
 
 void task_exit(void) {
@@ -94,17 +124,23 @@ void task_exit(void) {
 void sched_run(void) {
     /* A nested run would overwrite the saved boot context. */
     if (current >= 0) return;
-    int first = next_ready(MAX_TASKS - 1);
-    if (first < 0) {
-        return;
+    for (;;) {
+        int waiting = wake_sleepers();
+        int first = next_ready(MAX_TASKS - 1);
+        if (first >= 0) {
+            tasks[first].state = TASK_RUNNING;
+            current = first;
+            context_switch(&boot_sp, tasks[first].sp);
+        } else if (waiting) {
+            __asm__ volatile("wfi" ::: "memory");
+        } else {
+            return;
+        }
     }
-    tasks[first].state = TASK_RUNNING;
-    current = first;
-    context_switch(&boot_sp, tasks[first].sp);
-    current = -1;
 }
 
 int sched_runnable(void) {
+    wake_sleepers();
     int n = 0;
     for (int i = 0; i < MAX_TASKS; i++) {
         if (tasks[i].state == TASK_READY || tasks[i].state == TASK_RUNNING) {

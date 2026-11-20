@@ -10,6 +10,8 @@ static uint32_t stacks[8][256];
 static _Alignas(16) unsigned char misaligned_stack[96];
 static unsigned calls;
 static unsigned failures;
+static unsigned sleep_stage;
+static unsigned yield_stage;
 
 static void worker(void) {
     calls++;
@@ -18,6 +20,29 @@ static void worker(void) {
     sched_run();
     if (sched_runnable() != before) failures++;
     for (unsigned i = 0; i < 2000; i++) task_yield();
+}
+
+static void first_sleeper(void) {
+    yield_stage = 1;
+    task_sleep(0);
+    if (yield_stage != 2) failures++;
+    uint64_t start = timer_ticks();
+    sleep_stage = 1;
+    task_sleep(8);
+    if (timer_ticks() - start < 8 || sleep_stage < 2) failures++;
+    sleep_stage |= 4;
+}
+
+static void second_sleeper(void) {
+    if (yield_stage != 1) failures++;
+    yield_stage = 2;
+    task_yield();
+    if (sleep_stage != 1 || sched_runnable() != 1) failures++;
+    sleep_stage = 2;
+    uint64_t start = timer_ticks();
+    task_sleep(3);
+    if (timer_ticks() - start < 3) failures++;
+    sleep_stage |= 8;
 }
 
 void kernel_main(void) {
@@ -45,6 +70,17 @@ void kernel_main(void) {
         task_yield();
     }
     if (timer_ticks() == started) failures++;
+
+    /* Both tasks block, so the scheduler must idle and dispatch them again. */
+    clear_csr(mstatus, MSTATUS_MIE);
+    timer_init(100);
+    set_csr(mstatus, MSTATUS_MIE);
+    task_sleep(UINT32_MAX); /* no task is active */
+    if (task_create(first_sleeper, stacks[0], sizeof stacks[0]) < 0 ||
+        task_create(second_sleeper, stacks[1], sizeof stacks[1]) < 0) failures++;
+    sched_run();
+    if (sleep_stage != (2 | 4 | 8) || sched_runnable() != 0) failures++;
+
     console_puts(failures ? "FAIL: scheduler lifecycle\n" :
                             "PASS: scheduler lifecycle\n");
     for (;;) __asm__ volatile("wfi");

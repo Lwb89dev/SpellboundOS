@@ -53,7 +53,7 @@ $(BUILD)/scheduler_test.elf: $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o tr
 $(BUILD)/timer_test.o: tests/qemu_timer.c kernel/arch/riscv/timer.c | $(BUILD)
 	$(CLANG) $(CFLAGS) -c $< -o $@
 
-$(BUILD)/timer_test.elf: $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o trap.o timer_test.o) kernel/boards/qemu-virt/linker.ld
+$(BUILD)/timer_test.elf: $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o trap.o switch.o sched.o timer_test.o) kernel/boards/qemu-virt/linker.ld
 	$(LLD) -m elf32lriscv -T kernel/boards/qemu-virt/linker.ld -o $@ $(filter %.o,$^)
 
 $(BUILD)/heap_test.o: tests/qemu_heap.c | $(BUILD)

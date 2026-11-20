@@ -14,6 +14,11 @@ int task_create(task_fn fn, void *stack, uint32_t stack_size);
 /* Hand the CPU to the next ready task; outside a task this is a no-op. */
 void task_yield(void);
 
+/* Suspend the current task for at least this many timer interrupts.
+ * Zero acts like task_yield. Outside a task this is a no-op.
+ * A positive delay requires the periodic timer and interrupts to stay enabled. */
+void task_sleep(uint32_t ticks);
+
 /* End the current task (marks it finished and yields; never returns). */
 void task_exit(void);
 
@@ -21,7 +26,7 @@ void task_exit(void);
  * The scheduler is cooperative, single-hart and not interrupt-safe. */
 void sched_run(void);
 
-/* Number of tasks that have not yet exited. */
+/* Number of ready or running tasks, excluding tasks still asleep. */
 int sched_runnable(void);
 
 #endif /* SPELLBOUND_SCHED_H */

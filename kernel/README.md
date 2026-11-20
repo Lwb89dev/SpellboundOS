@@ -30,7 +30,7 @@ This is bring-up scaffolding, not a Bip 6 image.
 - CLINT machine timer: a periodic tick (100 Hz) via `MTIE` + global `MIE`, with a
   64-bit tick counter read protected from interrupts and safe RV32 `mtime`/`mtimecmp` access.
 - UART console (`puts`/`puthex`/`putdec`/`getc`), polled echo.
-- Cooperative round-robin scheduler: `task_create`, `task_yield`, `task_exit`, `sched_run` over a `context_switch` primitive (saves callee-saved registers + `ra`). Finished slots can be reused. It is single-hart and not interrupt-safe.
+- The cooperative round-robin scheduler can yield, exit or sleep for a number of timer ticks. It waits for interrupts when all tasks sleep and reuses slots after tasks exit. Scheduler calls belong in the boot or task context on hart 0.
 - Kernel heap `kmalloc`/`kfree` (first-fit, block split, forward coalescing); the allocator logic is portable and unit-tested on the host (`make test-host`). Access must be serialized, including against interrupts.
 - Device/driver registry: explicit name-based binding and retryable probe passes. QEMU virt registers and probes its console UART before `kernel_main`. Registration is single-threaded and reset only clears registry bindings.
 
