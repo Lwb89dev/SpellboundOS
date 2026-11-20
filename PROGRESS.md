@@ -3817,10 +3817,28 @@ deletion remain open.
    `0x80f714a0` and the ioctl dispatchers `0x80f716ec`/`0x80f71d58`. Vectors,
    native report and evidence regenerate byte for byte.
 
+## 2026-11-20 — ICNA3311 DSI command-write dispatch
+
+1. Executed `mhs_dc_write_cmd` `0x701620f0` with the DSI engine idle
+   (`0x80c1220c = 0`, semaphores skipped). All **6 native cases pass**:
+   packetization by the configured kind byte `0x80c00c8c` (kind 2 -> short
+   `cmd[0]<<8` type 2) or by length (MIPI data type `0x05`/`0x15`/`0x39`), then
+   the low-level writer `0x702a1eb0(config, type, byte0, &cmd[1], len-1)`; NULL
+   buffer/zero length -> -10, writer failure -> -1, success -> 0.
+
+   See [analysis/MAIN_DISPLAY_DSI.md](analysis/MAIN_DISPLAY_DSI.md). The
+   controller programming `0x70161e66` (0x9a000000 MMIO), the active
+   semaphore path and the frame DMA path remain (hardware orchestration).
+   Vectors, native report and evidence regenerate byte for byte.
+
 ## Next work
 
-- Remaining whole modules: BT RTL8763 transport, display DSI refresh. The IMU
-  read callback `0x80f714a0` and ioctl dispatchers `0x80f716ec`/`0x80f71d58`.
+- Display: the semaphore-serialized active path, the `0x9a000000` controller
+  programming `0x70161e66` and the frame path (`write_frame_work_out`, framebuffer
+  DMA, TE interrupt) — hardware MMIO/DMA. `mhs_dc_read_cmd` `0x70161f2a`.
+- BT RTL8763 transport (below `bx_hal_trans`, `serial_dev_*` uart2,
+  `hci_send_any`, patch-RAM loader).
+- IMU read callback `0x80f714a0` and ioctl dispatchers `0x80f716ec`/`0x80f71d58`.
 - OTA bootloader apply: the post-reboot `Upgrade bootloader/firmware/boot
   resource` staging, the cryptographic image signature it checks (beyond the
   CRC32 transfer integrity now covered), and the backup-firmware recovery path

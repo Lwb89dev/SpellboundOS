@@ -1,0 +1,236 @@
+{
+  "concurrency": {
+    "controller_programming": "0x70161e66 (0x9a000000 register block)",
+    "engine_active_flag": "0x80c1220c",
+    "semaphores": "when active: _dsi_cmd_semaphore then _dsi_semaphore 1 and 2, 10000-tick timeout each"
+  },
+  "function": "0x701620f0 (mhs_dc_write_cmd)",
+  "image": "main firmware (OTA 4.6.0.3)",
+  "limitations": [
+    "The DSI engine is held idle (0x80c1220c = 0) so the three command semaphores are skipped; the controller programming 0x70161e66 (0x9a000000 MMIO) and the low-level writer 0x702a1eb0 are stubbed. Only the packetization dispatch runs as real code.",
+    "The frame path (write_frame_work_out, the framebuffer DMA to DSI and the TE interrupt) and the semaphore-serialized active path are not executed."
+  ],
+  "native_case_count": 6,
+  "native_steps": 232,
+  "native_validation": {
+    "bound_per_case": 20000,
+    "case_count": 6,
+    "cases": [
+      {
+        "name": "main_display_dsi_long_write_one_param",
+        "observed": {
+          "actions": [
+            "op:write_cmd",
+            "call:1880497766",
+            "call:1881808560:2160069772:21:81:2164273153:1"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 42
+      },
+      {
+        "name": "main_display_dsi_short_write_no_param",
+        "observed": {
+          "actions": [
+            "op:write_cmd",
+            "call:1880497766",
+            "call:1881808560:2160069772:5:17:2164273153:0"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 40
+      },
+      {
+        "name": "main_display_dsi_long_write_payload",
+        "observed": {
+          "actions": [
+            "op:write_cmd",
+            "call:1880497766",
+            "call:1881808560:2160069772:57:44:2164273153:3"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 43
+      },
+      {
+        "name": "main_display_dsi_short_packet_kind2",
+        "observed": {
+          "actions": [
+            "op:write_cmd",
+            "call:1880497766",
+            "call:1881808560:2160069772:2:10496:2164273153:0"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 37
+      },
+      {
+        "name": "main_display_dsi_writer_failure",
+        "observed": {
+          "actions": [
+            "op:write_cmd",
+            "call:1880497766",
+            "call:1881808560:2160069772:21:81:2164273153:1",
+            "call:1881880738:6"
+          ],
+          "rows": [
+            {
+              "a0": 4294967295,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 54
+      },
+      {
+        "name": "main_display_dsi_null_buffer",
+        "observed": {
+          "actions": [
+            "op:write_cmd"
+          ],
+          "rows": [
+            {
+              "a0": 4294967286,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 16
+      }
+    ],
+    "hardware_execution": false,
+    "schema": 1
+  },
+  "packetization": {
+    "by_length": "data type 0x05 (len 1), 0x15 (len 2), 0x39 (long)",
+    "configured_kind_byte": "0x80c00c8c",
+    "kind2": "short packet, byte0 << 8, MIPI data type 2",
+    "writer": "0x702a1eb0(config, data_type, byte0, &cmd[1], length-1)"
+  },
+  "panel": "ICNA3311 over MIPI-DSI (board_disp)",
+  "per_case": {
+    "long_write_one_param": {
+      "data_type": 21,
+      "ret": 0
+    },
+    "long_write_payload": {
+      "data_type": 57,
+      "ret": 0
+    },
+    "null_buffer": {
+      "data_type": null,
+      "ret": 4294967286
+    },
+    "short_packet_kind2": {
+      "data_type": 2,
+      "ret": 0
+    },
+    "short_write_no_param": {
+      "data_type": 5,
+      "ret": 0
+    },
+    "writer_failure": {
+      "data_type": 21,
+      "ret": 4294967295
+    }
+  },
+  "return_codes": {
+    "null_or_zero": -10,
+    "success": 0,
+    "writer_failure": -1
+  },
+  "validation_sha256": "9d5fd1226ad9eb7bea536b906fe948d0074ae3526780cfe3ecbdabfcaed3a274",
+  "vectors_sha256": "59968cfb3a81938cc583362d6ff51eb413c38f7d9bc823f6d002434b262ce3e9"
+}
