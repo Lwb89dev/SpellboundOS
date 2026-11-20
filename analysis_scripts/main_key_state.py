@@ -50,6 +50,7 @@ STORE_STATE = 0x701e90be
 TIMER_CHECK = 0x701e8afc
 IDLE_HANDLER = 0x701e8dba
 EVENT_UPLOAD = 0x701e8b40
+LOGGER = 0x702b38a2
 
 RT_BASE = 0x70f92b74
 OBJ = 0x70f92bf4
@@ -149,9 +150,37 @@ class Model(kernel.Model):
                 return self.done()
             if self.u32(RT_BASE + 4) != 0:        # key 0 active -> clear the combo-key-1 index
                 self.write(COMBO_GLOBALS, 1, 0)
+                marker = state                    # s4 becomes this key's state
+            else:
+                marker = flag
             if self.u32(RT_BASE + 0x1c) == 0:     # key 1 idle -> no pairing
                 return self.done()
-            raise ValueError('two-key combo pairing is not modelled')
+            self.write(COMBO_GLOBALS + marker, 1, 1)
+            if marker != 1:
+                return self.done()
+            # Two-key combo pairing: compare the two keys' states, counters and inter-press time.
+            key_a = self.u8(COMBO_GLOBALS)        # combo key 1 index (just cleared to 0)
+            key_b = self.u8(COMBO_GLOBALS + 1)    # combo key 2 index
+            self.write(COMBO_GLOBALS + 3, 1, key_a)
+            self.write(COMBO_GLOBALS + 2, 1, key_b)
+            self.leaf(LOGGER, 6)
+            if marker < self.u8(RT_BASE + key_a * 0x18) or marker < self.u8(RT_BASE + key_b * 0x18):
+                self.upload(0x10)
+                self.store(2)
+                return self.done()
+            counter_a = self.u32(RT_BASE + key_a * 0x18 + 4)
+            counter_b = self.u32(RT_BASE + key_b * 0x18 + 4)
+            if abs(counter_a - counter_b) >= cfg(0x74):
+                self.upload(0x10)
+                self.store(2)
+                return self.done()
+            threshold = cfg(0x58)
+            if threshold >= counter_a or threshold >= counter_b:
+                return self.done()
+            self.write(COMBO_PENDING, 1, 1)
+            self.upload(0x400)
+            self.store(2)
+            return self.done()
 
         if state == 2:
             if flag == 0:
@@ -259,7 +288,8 @@ def contract(case):
 THRESHOLDS = {0x58: 3, 0x5c: 3, 0x60: 3, 0x64: 3, 0x68: 10, 0x6c: 3, 0x70: 3, 0x74: 0xa}
 
 
-def case(name, key=0, state=0, press=0, counter=0, repeat=0, flagbyte=0, flags=0, combo=0):
+def case(name, key=0, state=0, press=0, counter=0, repeat=0, flagbyte=0, flags=0, combo=0,
+         combo_key2=1, key1_state=0, key1_counter=0):
     g = dict(decode=press, timer=0, idle=0)
     msg = struct.pack('<II', EVENT, OBJ)
     event = bytearray(0x10)
@@ -271,11 +301,14 @@ def case(name, key=0, state=0, press=0, counter=0, repeat=0, flagbyte=0, flags=0
     struct.pack_into('<I', rt, base + 4, counter)
     struct.pack_into('<I', rt, base + 8, repeat)
     rt[base + 0xc] = flagbyte
+    rt[0x18] = key1_state              # key 1 runtime (for the combo pairing)
+    struct.pack_into('<I', rt, 0x1c, key1_counter)
     obj = bytearray(OBJ_SIZE)
     struct.pack_into('<I', obj, key * 0x30 + FLAGS, flags)
     for off, value in THRESHOLDS.items():
         struct.pack_into('<I', obj, key * 0x30 + off, value)
     combo_block = bytearray(0x10)       # 0x70f8e0d8..; the pending flag at +4 gates the two-key paths
+    combo_block[1] = combo_key2         # combo key 2 index
     combo_block[4] = combo
     stubs = {
         str(DECODE): dict(kind='store', out_arg=1, size=1, value=g['decode'], value_ret=0, args=2),
@@ -283,6 +316,7 @@ def case(name, key=0, state=0, press=0, counter=0, repeat=0, flagbyte=0, flags=0
         str(TIMER_CHECK): dict(kind='return', args=1, value=g['timer']),
         str(IDLE_HANDLER): dict(kind='return', args=1, value=g['idle']),
         str(EVENT_UPLOAD): dict(kind='return', args=2),
+        str(LOGGER): dict(kind='return', args=1),
     }
     return dict(
         name='main_key_state_' + name, scope='key_state', supplied={}, quiet=[[0x81000000, 0x81002000]],
@@ -313,6 +347,11 @@ def native_vectors():
     add(case('s1_press_combo_pending', state=1, press=0, counter=0, combo=1))
     add(case('s1_release_combo_clear', state=1, press=1, combo=0))
     add(case('s1_release_combo_pending', state=1, press=1, combo=1))
+    # two-key combo pairing: key 0 pressed while key 1 is also active within the window
+    add(case('s1_combo_detected', state=1, press=0, counter=4, combo=0,
+             combo_key2=1, key1_state=1, key1_counter=5))
+    add(case('s1_combo_out_of_window', state=1, press=0, counter=0, combo=0,
+             combo_key2=1, key1_state=1, key1_counter=12))
     # state 2
     add(case('s2_press_store5', state=2, press=0, counter=5, flags=0x02))
     add(case('s2_press_store4', state=2, press=0, counter=5, flags=0x22))

@@ -3,11 +3,10 @@
 `gpio_key_state_machine` (`0x701e923e`) is the key event handler. On each event
 it decodes the GPIO level (`0x702bd6c8` writes a press/release flag onto the
 stack) and dispatches on the per-key state byte through a 7-entry jump table.
-This scope executes the dispatch and **states 0..6** (the single-key paths, with
-the two-key combo pairing of state 1 held off by keeping the second key idle);
-the configuration it reads is the one written by
+This scope executes the dispatch and **all seven states**, including the two-key
+combo pairing of state 1; the configuration it reads is the one written by
 [drv_key_init](MAIN_KEY_INIT.md). Executed in `main-runtime`; the evidence is in
-[main-key-state.json](main-key-state.json). All **24 native cases pass** and the
+[main-key-state.json](main-key-state.json). All **26 native cases pass** and the
 runtime context writes are recorded.
 
 ## Dispatch and context
@@ -52,11 +51,15 @@ python3 -m analysis_scripts.main_key_state firmware/bip6-4.6.0.3.zip \
 python3 -m unittest tests.test_main_key_state -q
 ```
 
-## Remaining
+## Two-key combo (state 1 pairing)
 
-- The **two-key combo pairing**: when both keys are active, state 1 (and the
-  combo sub-paths of states 2..6) read both runtime contexts and the combo
-  indices at `0x70f8e0da`/`0db`, log `combo_key_1=%d, combo_key_2=%d`, compute
-  the inter-press time against the combo window (config `+0x74`) and post combo
-  events (bits `0x80`/`0x100`/`0x200`/`0x400`). Mapped; it needs both keys'
-  contexts authored and is the only key-handler path not yet executed.
+When both keys are active, state 1 clears the combo-key-1 index, records both
+combo indices at `0x70f8e0da`/`0db`, logs `combo_key_1=%d, combo_key_2=%d`, and
+compares the two keys' states and press counters: if both states are at most the
+current one and the inter-press time is within the combo window (config `+0x74`)
+with both counters above the press threshold (`+0x58`), it sets the combo-pending
+flag `0x70f8e0dc` and posts the combo event (**bit 0x400**); otherwise it posts
+bit 0x10. Both resolve to state 2.
+
+The whole gpio_key handler — driver init, dispatch and all seven states
+including the combo pairing — is now executed. This completes the key driver.
