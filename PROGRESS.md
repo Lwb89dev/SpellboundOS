@@ -3592,6 +3592,22 @@ deletion remain open.
 
    See [analysis/MAIN_CHARGER_CW6305.md](analysis/MAIN_CHARGER_CW6305.md).
 
+## 2026-11-20 — AW32012 charger register layer and controls
+
+1. Executed the alternative AW32012 charger driver in `main-runtime`. All
+   **47 native cases pass** (3,424 steps). The driver talks I2C `0x49`.
+2. Controls recovered:
+   - charge disable: `0x01` bit 3, active high;
+   - fast current: `0x02`, `(mA − 8) / 8`;
+   - termination current: `0x03`, `(mA − 1) / 2`;
+   - power off: `0x06` bit 5;
+   - status/charge state `0x08`, fault `0x09`, id `0x0a` and switch mode
+     `0x0d`;
+   - VBUS reset: `0x21` behind the `0x69` unlock;
+   - the 13-register init table.
+
+   See [analysis/MAIN_CHARGER_AW32012.md](analysis/MAIN_CHARGER_AW32012.md).
+
 ## Next work
 
 - Sensor-hub IMU: the descriptor callbacks (open/close/rate/flush) that call
