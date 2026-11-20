@@ -53,7 +53,8 @@ EVENT_UPLOAD = 0x701e8b40
 
 RT_BASE = 0x70f92b74
 OBJ = 0x70f92bf4
-COMBO_GLOBALS = 0x70f8e0d8           # combo-pending block (kept clear here)
+COMBO_GLOBALS = 0x70f8e0d8           # combo-key-1 index (cleared when key 0 is active)
+COMBO_PENDING = 0x70f8e0dc           # combo-pending flag
 FLAGS = 0x50
 
 MSG = 0x81003000
@@ -131,7 +132,26 @@ class Model(kernel.Model):
             return self.done()
 
         if state == 1:
-            raise ValueError('state 1 (combo) is not modelled')
+            combo = self.u8(COMBO_PENDING)
+            if flag != 0:                        # release
+                if combo == 0:
+                    self.upload(0x10)
+                self.store(2)
+                return self.done()
+            counter = self.u32(rt + 4) + 1        # press
+            self.put(rt + 4, counter)
+            if combo != 0:
+                self.store(2)
+                return self.done()
+            if cfg(0x58) + cfg(0x74) < counter:
+                self.upload(0x10)
+                self.store(2)
+                return self.done()
+            if self.u32(RT_BASE + 4) != 0:        # key 0 active -> clear the combo-key-1 index
+                self.write(COMBO_GLOBALS, 1, 0)
+            if self.u32(RT_BASE + 0x1c) == 0:     # key 1 idle -> no pairing
+                return self.done()
+            raise ValueError('two-key combo pairing is not modelled')
 
         if state == 2:
             if flag == 0:
@@ -239,13 +259,13 @@ def contract(case):
 THRESHOLDS = {0x58: 3, 0x5c: 3, 0x60: 3, 0x64: 3, 0x68: 10, 0x6c: 3, 0x70: 3, 0x74: 0xa}
 
 
-def case(name, key=0, state=0, press=0, counter=0, repeat=0, flagbyte=0, flags=0):
+def case(name, key=0, state=0, press=0, counter=0, repeat=0, flagbyte=0, flags=0, combo=0):
     g = dict(decode=press, timer=0, idle=0)
     msg = struct.pack('<II', EVENT, OBJ)
     event = bytearray(0x10)
     event[0] = key
     struct.pack_into('<H', event, 2, EVENT_CODE)
-    rt = bytearray((key + 1) * 0x18)
+    rt = bytearray(0x30)                # both keys' runtime contexts (state 1 reads both counters)
     base = key * 0x18
     rt[base] = state
     struct.pack_into('<I', rt, base + 4, counter)
@@ -255,7 +275,8 @@ def case(name, key=0, state=0, press=0, counter=0, repeat=0, flagbyte=0, flags=0
     struct.pack_into('<I', obj, key * 0x30 + FLAGS, flags)
     for off, value in THRESHOLDS.items():
         struct.pack_into('<I', obj, key * 0x30 + off, value)
-    combo = bytearray(0x10)             # 0x70f8e0d8.. kept clear so the combo paths are not taken
+    combo_block = bytearray(0x10)       # 0x70f8e0d8..; the pending flag at +4 gates the two-key paths
+    combo_block[4] = combo
     stubs = {
         str(DECODE): dict(kind='store', out_arg=1, size=1, value=g['decode'], value_ret=0, args=2),
         str(STORE_STATE): dict(kind='return', args=2),
@@ -270,7 +291,7 @@ def case(name, key=0, state=0, press=0, counter=0, repeat=0, flagbyte=0, flags=0
         snapshot=[], operations=[dict(name='event', entry=STATE_MACHINE, call=True, args=[MSG],
                                       registers=False, result=True, result_high=False)],
         memory=[[MSG, msg.hex()], [EVENT, bytes(event).hex()], [RT_BASE, bytes(rt).hex()],
-                [OBJ, bytes(obj).hex()], [COMBO_GLOBALS, bytes(combo).hex()]], services=g)
+                [OBJ, bytes(obj).hex()], [COMBO_GLOBALS, bytes(combo_block).hex()]], services=g)
 
 
 def native_vectors():
@@ -286,6 +307,12 @@ def native_vectors():
     add(case('s0_press_store1', state=0, press=0, counter=3, flags=0x10))
     add(case('s0_release', state=0, press=1, counter=5))
     add(case('s0_press_key1', key=1, state=0, press=0, counter=0))
+    # state 1 (combo gate open; the two-key pairing needs the second key active)
+    add(case('s1_press_within_window', state=1, press=0, counter=0, combo=0))
+    add(case('s1_press_past_window', state=1, press=0, counter=20, combo=0))
+    add(case('s1_press_combo_pending', state=1, press=0, counter=0, combo=1))
+    add(case('s1_release_combo_clear', state=1, press=1, combo=0))
+    add(case('s1_release_combo_pending', state=1, press=1, combo=1))
     # state 2
     add(case('s2_press_store5', state=2, press=0, counter=5, flags=0x02))
     add(case('s2_press_store4', state=2, press=0, counter=5, flags=0x22))

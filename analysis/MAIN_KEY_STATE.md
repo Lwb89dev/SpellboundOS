@@ -1,13 +1,13 @@
-# gpio_key state machine (dispatch + states 0, 2..6)
+# gpio_key state machine (dispatch + states 0..6)
 
 `gpio_key_state_machine` (`0x701e923e`) is the key event handler. On each event
 it decodes the GPIO level (`0x702bd6c8` writes a press/release flag onto the
 stack) and dispatches on the per-key state byte through a 7-entry jump table.
-This scope executes the dispatch and the **single-key paths of states 0 and
-2..6** (taken while the combo-pending global `0x70f8e0dc` is clear); the
-configuration it reads is the one written by [drv_key_init](MAIN_KEY_INIT.md).
-Executed in `main-runtime`; the evidence is in
-[main-key-state.json](main-key-state.json). All **19 native cases pass** and the
+This scope executes the dispatch and **states 0..6** (the single-key paths, with
+the two-key combo pairing of state 1 held off by keeping the second key idle);
+the configuration it reads is the one written by
+[drv_key_init](MAIN_KEY_INIT.md). Executed in `main-runtime`; the evidence is in
+[main-key-state.json](main-key-state.json). All **24 native cases pass** and the
 runtime context writes are recorded.
 
 ## Dispatch and context
@@ -27,6 +27,7 @@ runtime context writes are recorded.
 | State | Press | Release |
 | --- | --- | --- |
 | 0 (idle) | build counter; store state 1/2 at the threshold (flag `+0x50` bit 4) | clear counter |
+| 1 (combo) | within the combo window, debounce; past it, upload bit 0x10 + store 2; a pending combo stores 2 | upload bit 0x10 (unless combo pending) + store 2 |
 | 2 | store state 4/5 (bit 5), upload bit 2 | upload bit 8, then hold (store 3) or end (upload bit 1, store 0) |
 | 3 | upload bits 0x10 / 0x4, store state 5 | repeat → upload bit 1, store 0 |
 | 4 | store state 6, upload bit 0x20 | upload bit 8, store 0 |
@@ -53,9 +54,9 @@ python3 -m unittest tests.test_main_key_state -q
 
 ## Remaining
 
-- **State 1 (combo)** and the **two-key combo sub-paths of states 2..6**: these
-  engage when the combo-pending global `0x70f8e0dc` is set (or, in state 1, once
-  a key's counter is non-zero); they read both keys' runtime contexts and the
-  combo indices at `0x70f8e0da`/`0db`, compute the inter-press time against the
-  combo window (config `+0x74`) and post combo events (bits `0x80`/`0x100`/
-  `0x200`/`0x400`). Mapped but not yet executed.
+- The **two-key combo pairing**: when both keys are active, state 1 (and the
+  combo sub-paths of states 2..6) read both runtime contexts and the combo
+  indices at `0x70f8e0da`/`0db`, log `combo_key_1=%d, combo_key_2=%d`, compute
+  the inter-press time against the combo window (config `+0x74`) and post combo
+  events (bits `0x80`/`0x100`/`0x200`/`0x400`). Mapped; it needs both keys'
+  contexts authored and is the only key-handler path not yet executed.

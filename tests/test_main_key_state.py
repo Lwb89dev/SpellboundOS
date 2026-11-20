@@ -13,7 +13,7 @@ class MainKeyStateTest(unittest.TestCase):
 
     def test_native_matches_model(self):
         report = self.evidence['native_validation']
-        self.assertEqual((report['case_count'], len(report['cases'])), (19, 19))
+        self.assertEqual((report['case_count'], len(report['cases'])), (24, 24))
         self.assertFalse(report['hardware_execution'])
         for row in report['cases']:
             name = row['name'].removeprefix('main_key_state_')
@@ -44,6 +44,15 @@ class MainKeyStateTest(unittest.TestCase):
         for name in ('s4_release', 's5_release_ends', 's6_release'):
             self.assertEqual(self._pc(name), dict(upload_bits=[8], store_states=[0]))
         self.assertEqual(self._pc('s5_press_counts'), dict(upload_bits=[], store_states=[]))
+
+    def test_state1_combo(self):
+        # Press within the combo window just debounces; past it or on release it uploads bit 0x10
+        # and advances to state 2; a pending combo skips the upload.
+        self.assertEqual(self._pc('s1_press_within_window'), dict(upload_bits=[], store_states=[]))
+        self.assertEqual(self._pc('s1_press_past_window'), dict(upload_bits=[0x10], store_states=[2]))
+        self.assertEqual(self._pc('s1_press_combo_pending'), dict(upload_bits=[], store_states=[2]))
+        self.assertEqual(self._pc('s1_release_combo_clear'), dict(upload_bits=[0x10], store_states=[2]))
+        self.assertEqual(self._pc('s1_release_combo_pending'), dict(upload_bits=[], store_states=[2]))
 
     def test_dispatch_contract(self):
         self.assertEqual(self.evidence['function'], '0x701e923e (gpio_key_state_machine)')

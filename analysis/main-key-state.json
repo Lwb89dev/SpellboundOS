@@ -11,11 +11,11 @@
     "The GPIO decode, state store, timer check, idle handler and event upload are stubbed; the state machine runs as real code and the runtime context writes are recorded.",
     "Only the single-key paths are covered (combo-pending global kept clear). State 1 (combo) and the two-key combo sub-paths of states 2..6 read both keys' contexts and are not executed here."
   ],
-  "native_case_count": 19,
-  "native_steps": 1350,
+  "native_case_count": 24,
+  "native_steps": 1698,
   "native_validation": {
     "bound_per_case": 20000,
-    "case_count": 19,
+    "case_count": 24,
     "cases": [
       {
         "name": "main_key_state_s0_press_below",
@@ -168,6 +168,161 @@
           ]
         },
         "steps": 63
+      },
+      {
+        "name": "main_key_state_s1_press_within_window",
+        "observed": {
+          "actions": [
+            "op:event",
+            "call:1881921224:66:2164264911",
+            "w:1895377784:4:1",
+            "w:1895358680:1:0",
+            "call:1881049852:2164273152"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 76
+      },
+      {
+        "name": "main_key_state_s1_press_past_window",
+        "observed": {
+          "actions": [
+            "op:event",
+            "call:1881921224:66:2164264911",
+            "w:1895377784:4:21",
+            "call:1881049920:2164273152:16",
+            "call:1881051326:2164273408:2",
+            "call:1881049852:2164273152"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 78
+      },
+      {
+        "name": "main_key_state_s1_press_combo_pending",
+        "observed": {
+          "actions": [
+            "op:event",
+            "call:1881921224:66:2164264911",
+            "w:1895377784:4:1",
+            "call:1881051326:2164273408:2",
+            "call:1881049852:2164273152"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 67
+      },
+      {
+        "name": "main_key_state_s1_release_combo_clear",
+        "observed": {
+          "actions": [
+            "op:event",
+            "call:1881921224:66:2164264911",
+            "call:1881049920:2164273152:16",
+            "call:1881051326:2164273408:2",
+            "call:1881049852:2164273152"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 66
+      },
+      {
+        "name": "main_key_state_s1_release_combo_pending",
+        "observed": {
+          "actions": [
+            "op:event",
+            "call:1881921224:66:2164264911",
+            "call:1881051326:2164273408:2",
+            "call:1881049852:2164273152"
+          ],
+          "rows": [
+            {
+              "a0": 0,
+              "csrs": {
+                "1990": 0,
+                "1991": 0,
+                "3": 0,
+                "768": 0,
+                "772": 0,
+                "773": 0,
+                "832": 0,
+                "833": 0,
+                "834": 0
+              },
+              "snapshot": {},
+              "stopped": null
+            }
+          ]
+        },
+        "steps": 61
       },
       {
         "name": "main_key_state_s2_press_store5",
@@ -645,6 +800,38 @@
       "store_states": [],
       "upload_bits": []
     },
+    "s1_press_combo_pending": {
+      "store_states": [
+        2
+      ],
+      "upload_bits": []
+    },
+    "s1_press_past_window": {
+      "store_states": [
+        2
+      ],
+      "upload_bits": [
+        16
+      ]
+    },
+    "s1_press_within_window": {
+      "store_states": [],
+      "upload_bits": []
+    },
+    "s1_release_combo_clear": {
+      "store_states": [
+        2
+      ],
+      "upload_bits": [
+        16
+      ]
+    },
+    "s1_release_combo_pending": {
+      "store_states": [
+        2
+      ],
+      "upload_bits": []
+    },
     "s2_press_store4": {
       "store_states": [
         4
@@ -756,6 +943,6 @@
     "s5": "press only counts; release ends (upload bit 8)",
     "s6": "press uploads bit 0x40 and stores state 5; release ends"
   },
-  "validation_sha256": "4c29af322dbe8e246c8e91cdb0c98ce24eec84c0a79252bccc65a48919d1c3da",
-  "vectors_sha256": "fe17f8131ff01bde56eb7d89625602a8c15f52c857de9066d49d13fd081bc1de"
+  "validation_sha256": "ced2bd044903f5accd01ac99fe9fb62aabb979c7a4aed9cd5ca509ada0175628",
+  "vectors_sha256": "4fed19c84af0e61dd4e00d773912ad8055c0b79b9d4c23df60395afc67a08e73"
 }
