@@ -4158,3 +4158,45 @@ Python suite — this is the first piece of OS code verified at **runtime** here
   The selected legacy listener/store path now reaches a screen request; special
   storage-class/rich/sticky paths and complete UI policy remain open. Reverse
   action serializers are recovered; executing replies/call actions is untested.
+
+# 2026-11-20 — Complete driver registry integration
+
+- Integrated the previously committed device/driver registry into the RV32 build
+  and host test targets. Reject invalid or duplicate registrations, clear device
+  bindings on reset, and document ownership, synchronization and reset limits.
+- Added a host unittest wrapper and checks for duplicates, invalid devices and
+  re-registration. The registry is infrastructure only: no hardware driver is
+  connected, and reset does not tear down driver resources.
+- Keep the cooperative context-switch frame 16-byte aligned, including during
+  timer interrupts, and reject null or wrapping task stacks.
+- RV32 build and host tests pass; in this sandbox LeakSanitizer requires
+  `ASAN_OPTIONS=detect_leaks=0` (ASan and UBSan remain enabled). System QEMU is
+  unavailable, so runtime boot and scheduler behavior remain unverified here.
+
+# 2026-11-20 — Harden heap and timer foundations
+
+- Reject heap regions with null or wrapping addresses and allocation sizes that
+  overflow the 32-bit block representation. Use subtraction for the split
+  threshold so the threshold itself cannot wrap. Host tests cover these cases.
+- Read the RV32 64-bit timer counter with machine interrupts temporarily masked,
+  restoring the prior enable state. Clamp timer intervals to at least one tick.
+- Heap access remains caller-serialized. The timer counter fix has been compiled
+  for RV32 but requires system QEMU or hardware for runtime validation.
+
+# 2026-11-20 — RV32 runtime coverage and scheduler lifecycle
+
+- Ran a system QEMU RISC-V build from a temporary directory: boot, serial echo,
+  task alternation and the first 100 Hz tick now pass on QEMU virt.
+- Scheduler task slots are reusable after exit. Yield from boot and nested
+  sched_run are no-ops, preventing an invalid or overwritten boot context. Reject
+  stacks that lose too much space to alignment; callers still must provide enough
+  stack for their code and interrupts. The scheduler remains cooperative and is
+  not safe for concurrent calls from interrupt handlers.
+- Added RV32 runtime tests for invalid/full task tables, repeated task lifecycle,
+  48,000 yields with timer interrupts, timer counter rollover and interrupt-enable
+  preservation, plus heap overflow and coalescing. The counter is seeded near
+  rollover by the test; QEMU does not prove real hardware timing or interrupt
+  behavior. Host heap and registry tests also pass under ASan/UBSan.
+- Build rules now track header dependencies. System QEMU was unpacked locally for
+  this run, not installed; future runs require a system QEMU executable or an
+  equivalent local setup via the QEMU make variable.

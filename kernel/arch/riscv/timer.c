@@ -34,6 +34,7 @@ static void mtimecmp_write(uint64_t value) {
 
 void timer_init(uint32_t hz) {
     interval = hz ? (TIMER_HZ / hz) : TIMER_HZ;
+    if (interval == 0) interval = 1;
     ticks = 0;
     mtimecmp_write(mtime_read() + interval);
     set_csr(mie, MIE_MTIE);
@@ -45,5 +46,14 @@ void timer_on_tick(void) {
 }
 
 uint64_t timer_ticks(void) {
-    return ticks;
+    /* RV32 cannot load the counter atomically. Preserve the caller's MIE
+     * state while preventing a tick between the two 32-bit loads. */
+    uint32_t previous;
+    __asm__ volatile("csrrc %0, mstatus, %1"
+                     : "=r"(previous) : "r"(MSTATUS_MIE) : "memory");
+    uint64_t value = ticks;
+    if (previous & MSTATUS_MIE) {
+        __asm__ volatile("csrs mstatus, %0" :: "r"(MSTATUS_MIE) : "memory");
+    }
+    return value;
 }

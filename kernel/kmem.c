@@ -18,6 +18,12 @@ static struct block *head;
 static uint32_t managed;
 
 void kmem_init(void *base, uint32_t size) {
+    if (base == NULL || (uintptr_t)base > UINTPTR_MAX - size ||
+        (uintptr_t)base > UINTPTR_MAX - ALIGN_MASK) {
+        head = NULL;
+        managed = 0;
+        return;
+    }
     uintptr_t addr = ALIGN_UP((uintptr_t)base);
     uintptr_t end = (uintptr_t)base + size;
     if (end <= addr || (end - addr) < HDR + ALIGN) {
@@ -33,7 +39,7 @@ void kmem_init(void *base, uint32_t size) {
 }
 
 void *kmalloc(uint32_t size) {
-    if (size == 0) {
+    if (size == 0 || (uint64_t)size + ALIGN_MASK + HDR > UINT32_MAX) {
         return NULL;
     }
     uint32_t need = ALIGN_UP(size) + HDR;
@@ -42,7 +48,7 @@ void *kmalloc(uint32_t size) {
             continue;
         }
         /* Split if the remainder can hold a header plus a minimal payload. */
-        if (b->size >= need + HDR + ALIGN) {
+        if (b->size - need >= HDR + ALIGN) {
             struct block *rest = (struct block *)((uintptr_t)b + need);
             rest->size = b->size - need;
             rest->free = 1;

@@ -5,7 +5,8 @@
 .section .text
 .globl context_switch
 context_switch:
-    addi sp, sp, -52
+    /* Keep the stack ABI-aligned even if an interrupt arrives here. */
+    addi sp, sp, -64
     sw ra,  0(sp)
     sw s0,  4(sp)
     sw s1,  8(sp)
@@ -35,7 +36,7 @@ context_switch:
     lw s9, 40(sp)
     lw s10, 44(sp)
     lw s11, 48(sp)
-    addi sp, sp, 52
+    addi sp, sp, 64
     ret
 
 /* First entry into a task: context_switch restored s0 = task function and

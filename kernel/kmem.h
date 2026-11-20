@@ -6,9 +6,11 @@
 #include <stddef.h>
 #include <stdint.h>
 
+/* Single-threaded; callers must serialize access including interrupts. A valid
+ * region must remain available until reinitialization. */
 void kmem_init(void *base, uint32_t size);
 void *kmalloc(uint32_t size);
-void kfree(void *ptr);
+void kfree(void *ptr); /* NULL or a currently allocated pointer from this heap */
 
 struct kmem_stats {
     uint32_t total;      /* usable bytes under management */

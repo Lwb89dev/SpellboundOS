@@ -22,8 +22,10 @@ struct device {
     const struct driver *bound; /* set once bound */
 };
 
-int driver_register(const struct driver *drv); /* -1 if the table is full */
-int device_register(struct device *dev);       /* -1 if the table is full */
+/* Objects and their names must remain valid until reset. Returns -1 for invalid
+ * input, duplicate names, or a full table. Registration is not thread-safe. */
+int driver_register(const struct driver *drv);
+int device_register(struct device *dev);
 
 /* Bind each unbound device to the driver whose name matches and call its probe.
  * Returns the number of devices successfully bound in this pass. */
@@ -32,6 +34,7 @@ int drivers_probe(void);
 struct device *device_find(const char *name); /* NULL if unknown */
 int device_count(void);
 
-void driver_registry_reset(void); /* clear all registrations (tests/re-init) */
+/* Clears bindings, but does not release driver resources or clear drvdata. */
+void driver_registry_reset(void);
 
 #endif /* SPELLBOUND_DRIVER_H */

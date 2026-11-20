@@ -47,6 +47,10 @@ int main(void) {
     /* Oversized and zero requests fail cleanly. */
     assert(kmalloc(1000000) == NULL);
     assert(kmalloc(0) == NULL);
+    assert(kmalloc(UINT32_MAX) == NULL);
+    assert(kmalloc(UINT32_MAX - 7) == NULL);
+    kmem_get_stats(&s);
+    assert(s.blocks == 1 && s.free_bytes == initial_free);
 
     /* Many small allocations then frees, interleaved, stay consistent. */
     void *p[64];
@@ -62,6 +66,13 @@ int main(void) {
     }
     kmem_get_stats(&s);
     assert(s.free_blocks == 1 && s.free_bytes == initial_free);
+
+    kmem_init(NULL, 1024);
+    kmem_get_stats(&s);
+    assert(s.total == 0 && kmalloc(8) == NULL);
+    kmem_init((void *)(UINTPTR_MAX - 3), 16);
+    kmem_get_stats(&s);
+    assert(s.total == 0 && kmalloc(8) == NULL);
 
     printf("PASS: kmem first-fit, split, coalesce, OOM\n");
     return 0;

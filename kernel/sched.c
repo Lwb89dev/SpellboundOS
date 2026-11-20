@@ -2,7 +2,7 @@
 #include "sched.h"
 
 #define MAX_TASKS 8
-#define CONTEXT_WORDS 13 /* ra + s0..s11, as saved by context_switch */
+#define CONTEXT_WORDS 16 /* ra + s0..s11 and padding, 16-byte aligned */
 
 enum task_state { TASK_UNUSED = 0, TASK_READY, TASK_RUNNING, TASK_DONE };
 
@@ -21,15 +21,18 @@ static int current = -1;
 int task_create(task_fn fn, void *stack, uint32_t stack_size) {
     int id = -1;
     for (int i = 0; i < MAX_TASKS; i++) {
-        if (tasks[i].state == TASK_UNUSED) {
+        if (tasks[i].state == TASK_UNUSED || tasks[i].state == TASK_DONE) {
             id = i;
             break;
         }
     }
-    if (id < 0 || stack_size < CONTEXT_WORDS * 4u + 16u) {
+    if (id < 0 || fn == 0 || stack == 0 ||
+        stack_size < CONTEXT_WORDS * 4u + 16u ||
+        (uint32_t)stack > UINT32_MAX - stack_size) {
         return -1;
     }
     uint32_t top = ((uint32_t)stack + stack_size) & ~15u;
+    if (top - (uint32_t)stack < CONTEXT_WORDS * 4u + 16u) return -1;
     uint32_t *frame = (uint32_t *)(top - CONTEXT_WORDS * 4u);
     frame[0] = (uint32_t)task_trampoline; /* ra */
     frame[1] = (uint32_t)fn;              /* s0 -> called by the trampoline */
@@ -54,6 +57,8 @@ static int next_ready(int from) {
 
 void task_yield(void) {
     int cur = current;
+    /* The boot context has no task to yield and may not have a saved stack. */
+    if (cur < 0) return;
     if (cur >= 0 && tasks[cur].state == TASK_RUNNING) {
         tasks[cur].state = TASK_READY;
     }
@@ -61,8 +66,7 @@ void task_yield(void) {
     if (nxt < 0) {
         /* Nobody else ready: return to the boot context. */
         current = -1;
-        uint32_t *dummy;
-        context_switch(cur >= 0 ? &tasks[cur].sp : &dummy, boot_sp);
+        context_switch(&tasks[cur].sp, boot_sp);
         return;
     }
     if (nxt == cur) {
@@ -88,6 +92,8 @@ void task_exit(void) {
 }
 
 void sched_run(void) {
+    /* A nested run would overwrite the saved boot context. */
+    if (current >= 0) return;
     int first = next_ready(MAX_TASKS - 1);
     if (first < 0) {
         return;

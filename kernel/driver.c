@@ -1,5 +1,6 @@
 /* Device/driver registry: fixed tables, name matching, one probe pass. */
 #include "driver.h"
+#include <stddef.h>
 
 #define MAX_DRIVERS 16
 #define MAX_DEVICES 16
@@ -21,16 +22,24 @@ static int str_eq(const char *a, const char *b) {
 }
 
 int driver_register(const struct driver *drv) {
-    if (driver_n >= MAX_DRIVERS || drv == NULL || drv->name == NULL) {
+    if (driver_n >= MAX_DRIVERS || drv == NULL || drv->name == NULL ||
+        drv->name[0] == '\0') {
         return -1;
+    }
+    for (int i = 0; i < driver_n; i++) {
+        if (str_eq(drivers[i]->name, drv->name)) return -1;
     }
     drivers[driver_n++] = drv;
     return 0;
 }
 
 int device_register(struct device *dev) {
-    if (device_n >= MAX_DEVICES || dev == NULL || dev->name == NULL) {
+    if (device_n >= MAX_DEVICES || dev == NULL || dev->name == NULL ||
+        dev->name[0] == '\0' || dev->driver == NULL || dev->driver[0] == '\0') {
         return -1;
+    }
+    for (int i = 0; i < device_n; i++) {
+        if (devices[i] == dev || str_eq(devices[i]->name, dev->name)) return -1;
     }
     dev->bound = NULL;
     devices[device_n++] = dev;
@@ -80,6 +89,9 @@ int device_count(void) {
 }
 
 void driver_registry_reset(void) {
+    for (int i = 0; i < device_n; i++) {
+        devices[i]->bound = NULL;
+    }
     driver_n = 0;
     device_n = 0;
 }

@@ -15,6 +15,7 @@ This is bring-up scaffolding, not a Bip 6 image.
 | `console.c` / `console.h` | 16550 UART console (QEMU virt; the Bip 6 UART is separate) |
 | `sched.c` / `sched.h` | cooperative round-robin scheduler |
 | `kmem.c` / `kmem.h` | first-fit kernel heap (split + coalesce), host-testable |
+| `driver.c` / `driver.h` | fixed-size device/driver registration and probe, host-testable |
 | `arch/riscv/switch.S` | `context_switch` (callee-saved + ra) and the task trampoline |
 | `main.c` | bring-up: console → traps → polled echo → 100 Hz timer → two round-robin tasks → tick loop |
 | `boards/qemu-virt/linker.ld` | load at `0x80000000`, `.text/.rodata/.data/.bss`, 16 KiB stack |
@@ -25,19 +26,20 @@ This is bring-up scaffolding, not a Bip 6 image.
 - Machine-mode trap handling (direct `mtvec`); synchronous exceptions print
   `mcause`/`mepc` and park.
 - CLINT machine timer: a periodic tick (100 Hz) via `MTIE` + global `MIE`, with a
-  64-bit tick counter and safe RV32 `mtime`/`mtimecmp` access.
+  64-bit tick counter read protected from interrupts and safe RV32 `mtime`/`mtimecmp` access.
 - UART console (`puts`/`puthex`/`putdec`/`getc`), polled echo.
-- Cooperative round-robin scheduler: `task_create`, `task_yield`, `task_exit`, `sched_run` over a `context_switch` primitive (saves callee-saved registers + `ra`).
-- Kernel heap `kmalloc`/`kfree` (first-fit, block split, forward coalescing); the allocator logic is portable and unit-tested on the host (`make test-host`).
+- Cooperative round-robin scheduler: `task_create`, `task_yield`, `task_exit`, `sched_run` over a `context_switch` primitive (saves callee-saved registers + `ra`). Finished slots can be reused. It is single-hart and not interrupt-safe.
+- Kernel heap `kmalloc`/`kfree` (first-fit, block split, forward coalescing); the allocator logic is portable and unit-tested on the host (`make test-host`). Access must be serialized, including against interrupts.
+- Device/driver registry: explicit name-based binding and retryable probe passes. Objects and names must outlive registration; registration is single-threaded, reset does not release driver resources, and hardware drivers are not yet connected.
 
 ## Build and test
 
 ```sh
 make                 # needs clang, ld.lld, llvm-objcopy
 make LLD=/path/to/ld.lld   # if ld.lld is not on PATH (e.g. an LLVM/NDK toolchain)
-make test            # runs tests/qemu_boot.py (needs qemu-system-riscv32):
-                     #   verifies boot, echo, the scheduler and the first tick
-make test-host       # host unit test for the heap (clang + ASan/UBSan), no QEMU
+make test            # needs qemu-system-riscv32; checks boot, echo, timer,
+                     # scheduler lifecycle and heap on RV32 QEMU virt
+make test-host       # host tests for heap and driver registry (clang + ASan/UBSan)
 ```
 
 The build is linker-agnostic (any LLVM `ld.lld`); running the `test`/`qemu`
@@ -47,5 +49,5 @@ targets needs a *system* QEMU (`qemu-system-riscv32`), not the user-mode
 ## Next foundations
 
 - Preemptive scheduling (reschedule from the timer trap) on top of the current cooperative scheduler.
-- A device/driver registration model.
+- Connect board devices and real drivers to the registration model.
 - Board abstraction so the same core runs on QEMU and (later) the Bip 6.

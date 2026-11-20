@@ -53,12 +53,26 @@ int main(void) {
     assert(device_find("imu0") == &imu);
     assert(device_find("touch0") == &touch);
     assert(device_find("nope") == NULL);
+    assert(driver_register(&imu_drv) == -1);
+    assert(device_register(&imu) == -1);
+    struct device duplicate = {.name = "imu0", .driver = "lsm6dso"};
+    struct device invalid = {.name = "invalid"};
+    assert(device_register(&duplicate) == -1);
+    assert(device_register(&invalid) == -1);
+    assert(imu.bound == &imu_drv);
 
     /* A second probe pass does not re-probe the already-bound device. */
     int before = probe_calls;
     int bound2 = drivers_probe();
     assert(bound2 == 0);
     assert(probe_calls == before + 1); /* touch retried, imu skipped */
+
+    driver_registry_reset();
+    assert(device_count() == 0);
+    assert(imu.bound == NULL);
+    assert(driver_register(&imu_drv) == 0);
+    assert(device_register(&imu) == 0);
+    assert(drivers_probe() == 1);
 
     printf("PASS: driver registry bind/probe/lookup\n");
     return 0;
