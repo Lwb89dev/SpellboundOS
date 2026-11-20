@@ -4,6 +4,7 @@
 #include <stdint.h>
 
 #include "console.h"
+#include "kmem.h"
 #include "sched.h"
 #include "arch/riscv/riscv.h"
 #include "arch/riscv/timer.h"
@@ -13,6 +14,7 @@
 
 static uint32_t stack_a[256];
 static uint32_t stack_b[256];
+static uint8_t heap[32 * 1024];
 
 static void worker(char tag) {
     for (int i = 1; i <= 3; i++) {
@@ -44,6 +46,20 @@ void kernel_main(void) {
     console_puts("\ntimer: 100 Hz tick online\n");
     timer_init(TICK_HZ);
     set_csr(mstatus, MSTATUS_MIE);
+
+    /* Kernel heap. */
+    kmem_init(heap, sizeof heap);
+    void *p = kmalloc(256);
+    void *q = kmalloc(1024);
+    struct kmem_stats ks;
+    kmem_get_stats(&ks);
+    console_puts("heap: free ");
+    console_putdec(ks.free_bytes);
+    console_puts(" bytes in ");
+    console_putdec(ks.free_blocks);
+    console_puts(" blocks\n");
+    kfree(p);
+    kfree(q);
 
     /* Cooperative scheduler: two tasks round-robin to completion. */
     console_puts("scheduler: running 2 tasks\n");

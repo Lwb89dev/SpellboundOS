@@ -3893,11 +3893,23 @@ Clean `-Werror` build (10 KiB ELF). `tests/qemu_boot.py` now also checks the
 round-robin interleaving and the `all tasks done` line. Still verified by build
 + disassembly only (no `qemu-system-riscv32` in this environment to run it).
 
+## 2026-11-20 — SpellboundOS kernel heap (host-tested)
+
+Added `kernel/kmem.c`: a first-fit kernel heap (8-byte alignment, block split on
+allocation, forward coalescing on free) with `kmalloc`/`kfree`/`kmem_init`/
+`kmem_get_stats`. The allocator is written with `uintptr_t` address arithmetic so
+its logic is **portable and unit-tested on the host**: `tests/test_kmem.c`
+(included directly, 64 KiB buffer, asserts first-fit, split, coalesce and OOM)
+runs under clang with AddressSanitizer/UBSan via `tests/test_kmem_host.py` in the
+Python suite — this is the first piece of OS code verified at **runtime** here
+(QEMU not required). `main.c` initialises a 32 KiB heap and prints its stats.
+
 ## Next work — OS build
 
-- Preemptive scheduling (reschedule from the timer trap); a small allocator; a
-  device/driver registration model; board abstraction (QEMU vs Bip 6).
-- Run `make test` on a host with `qemu-system-riscv32` to confirm at runtime.
+- A device/driver registration model; preemptive scheduling (reschedule from the
+  timer trap); board abstraction (QEMU vs Bip 6).
+- Run `make test` on a host with `qemu-system-riscv32` to confirm boot/echo/
+  scheduler/tick at runtime.
 
 ## Reverse-engineering remainder (hardware transport/DMA — poor fit for native execution)
 

@@ -14,6 +14,7 @@ This is bring-up scaffolding, not a Bip 6 image.
 | `arch/riscv/riscv.h` | CSR access helpers and bit definitions |
 | `console.c` / `console.h` | 16550 UART console (QEMU virt; the Bip 6 UART is separate) |
 | `sched.c` / `sched.h` | cooperative round-robin scheduler |
+| `kmem.c` / `kmem.h` | first-fit kernel heap (split + coalesce), host-testable |
 | `arch/riscv/switch.S` | `context_switch` (callee-saved + ra) and the task trampoline |
 | `main.c` | bring-up: console → traps → polled echo → 100 Hz timer → two round-robin tasks → tick loop |
 | `boards/qemu-virt/linker.ld` | load at `0x80000000`, `.text/.rodata/.data/.bss`, 16 KiB stack |
@@ -27,6 +28,7 @@ This is bring-up scaffolding, not a Bip 6 image.
   64-bit tick counter and safe RV32 `mtime`/`mtimecmp` access.
 - UART console (`puts`/`puthex`/`putdec`/`getc`), polled echo.
 - Cooperative round-robin scheduler: `task_create`, `task_yield`, `task_exit`, `sched_run` over a `context_switch` primitive (saves callee-saved registers + `ra`).
+- Kernel heap `kmalloc`/`kfree` (first-fit, block split, forward coalescing); the allocator logic is portable and unit-tested on the host (`make test-host`).
 
 ## Build and test
 
@@ -34,7 +36,8 @@ This is bring-up scaffolding, not a Bip 6 image.
 make                 # needs clang, ld.lld, llvm-objcopy
 make LLD=/path/to/ld.lld   # if ld.lld is not on PATH (e.g. an LLVM/NDK toolchain)
 make test            # runs tests/qemu_boot.py (needs qemu-system-riscv32):
-                     #   verifies boot, UART echo and the first timer tick
+                     #   verifies boot, echo, the scheduler and the first tick
+make test-host       # host unit test for the heap (clang + ASan/UBSan), no QEMU
 ```
 
 The build is linker-agnostic (any LLVM `ld.lld`); running the `test`/`qemu`
@@ -44,5 +47,5 @@ targets needs a *system* QEMU (`qemu-system-riscv32`), not the user-mode
 ## Next foundations
 
 - Preemptive scheduling (reschedule from the timer trap) on top of the current cooperative scheduler.
-- A small heap/allocator and a device/driver registration model.
+- A device/driver registration model.
 - Board abstraction so the same core runs on QEMU and (later) the Bip 6.
