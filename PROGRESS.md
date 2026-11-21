@@ -4329,3 +4329,37 @@ Python suite — this is the first piece of OS code verified at **runtime** here
 - QEMU covers success, timeout while idle, a late signal while the expired task
   still has not run, and a timeout across the 64-bit tick counter wrap. All
   seven QEMU checks and both sanitized host checks pass.
+
+# 2026-11-21 — SpellboundOS ring buffer, mutex/message queue and Goldfish RTC
+
+- **Byte ring buffer (`kernel/ringbuf.c`, `kernel/ringbuf.h`)**: added a
+  freestanding, full-capacity bounded byte ring buffer over caller-owned
+  storage (single-byte push/pop/peek and bulk read/write). Refactored
+  `kernel/drivers/uart16550.c` to use it for the 64-byte console RX queue.
+- **Task synchronization (`kernel/sync.c`, `kernel/sync.h`, `task_current()`)**:
+  exposed `task_current()` in `sched.h` and cleared reused task sleep/event
+  fields in `task_create`. Added `kmutex` (non-recursive, owner-checked mutex
+  with blocking and bounded-timeout waits that recompute remaining ticks across
+  spurious/barging wakeups and 64-bit tick wrap) and `msgq` (bounded fixed-size
+  FIFO message queue with ISR-safe `try_send`/`try_recv` and task-context
+  blocking/timed `send`/`recv`).
+- **Real-time clock (`kernel/rtc.c`, `kernel/drivers/goldfish_rtc.c`)**: added
+  a hardware-independent RTC interface with freestanding 64-bit Unix-to-UTC
+  calendar conversion (`rtc_unix_to_datetime`, no libgcc division dependency)
+  and a Goldfish RTC driver registered on QEMU `virt` (`rtc0` at `0x00101000`,
+  PLIC IRQ 11). Reads latch `TIME_LOW` before `TIME_HIGH` with interrupts
+  masked; one-shot alarms write `ALARM_HIGH` before `ALARM_LOW` and clear the
+  device interrupt before invoking the callback. `kernel_main` prints the boot
+  UTC timestamp when an RTC is bound.
+- **Verification**:
+  - Host sanitized suite (`make test-host` and `python3 -m unittest` over
+    `test_kmem_host`, `test_driver_host`, `test_ringbuf_host`, `test_sync_host`,
+    `test_rtc_host`): all five C/ASan/UBSan test suites pass cleanly under
+    `-Werror -fno-sanitize-recover=all`.
+  - RV32 cross-build (`clang` + NDK `ld.lld` + `llvm-objcopy`): clean `-Werror`
+    build of `spellbound.elf`, `spellbound.bin` and all eight RV32 QEMU test
+    ELFs (including new `sync_test.elf` and `rtc_test.elf`); `llvm-objdump`
+    confirms register access order in `goldfish_rtc.o`.
+  - **Runtime QEMU tests not executed in this environment**: `qemu-system-riscv32`
+    is not installed here, so `make test` remains to be run on a host with
+    system QEMU.

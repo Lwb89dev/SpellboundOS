@@ -58,6 +58,9 @@ int task_create(task_fn fn, void *stack, uint32_t stack_size) {
         frame->pc = (uintptr_t)task_start;
         task->frame = frame;
         task->started = false;
+        task->sleep_start = 0;
+        task->sleep_ticks = 0;
+        task->event = NULL;
         task->state = TASK_READY;
         irq_restore(previous);
         return i;
@@ -270,4 +273,8 @@ int sched_runnable(void) {
     }
     irq_restore(previous);
     return count;
+}
+
+int task_current(void) {
+    return current;
 }

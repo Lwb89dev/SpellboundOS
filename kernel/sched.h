@@ -52,4 +52,7 @@ void sched_run(void);
 /* Number of ready or running tasks, excluding blocked tasks. */
 int sched_runnable(void);
 
+/* Active task id (0..N-1), or -1 outside a running task. */
+int task_current(void);
+
 #endif /* SPELLBOUND_SCHED_H */

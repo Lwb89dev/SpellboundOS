@@ -6,6 +6,7 @@
 #include "board.h"
 #include "console.h"
 #include "kmem.h"
+#include "rtc.h"
 #include "sched.h"
 #include "arch/riscv/riscv.h"
 #include "arch/riscv/timer.h"
@@ -78,9 +79,36 @@ static void report_ticks(void) {
     }
 }
 
+static void put_two_digits(uint8_t value) {
+    console_putc((char)('0' + (value / 10u) % 10u));
+    console_putc((char)('0' + value % 10u));
+}
+
+static void print_rtc_time(void) {
+    if (!rtc_is_bound()) {
+        return;
+    }
+    struct rtc_datetime dt;
+    rtc_unix_to_datetime(rtc_read_sec(), &dt);
+    console_puts("rtc: ");
+    console_putdec((uint32_t)dt.year);
+    console_putc('-');
+    put_two_digits(dt.month);
+    console_putc('-');
+    put_two_digits(dt.day);
+    console_putc(' ');
+    put_two_digits(dt.hour);
+    console_putc(':');
+    put_two_digits(dt.minute);
+    console_putc(':');
+    put_two_digits(dt.second);
+    console_puts(" UTC\n");
+}
+
 void kernel_main(void) {
     console_puts("SpellboundOS RV32 foundation\n");
     console_puts("QEMU virt only; Bluetooth unavailable\n");
+    print_rtc_time();
 
     trap_init();
 

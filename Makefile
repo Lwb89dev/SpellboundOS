@@ -6,8 +6,8 @@ BUILD := build/qemu-virt
 .DEFAULT_GOAL := all
 CFLAGS := --target=riscv32-unknown-elf -march=rv32imac_zicsr -mabi=ilp32 -ffreestanding -fno-stack-protector -fno-pic -fno-builtin -Wall -Wextra -Werror -O2 -MMD -MP
 
-BOOT_OBJS := $(addprefix $(BUILD)/,start.o board.o plic.o uart16550.o console.o driver.o)
-OBJS := $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o main.o trap.o timer.o sched.o kmem.o)
+BOOT_OBJS := $(addprefix $(BUILD)/,start.o board.o plic.o ringbuf.o uart16550.o rtc.o goldfish_rtc.o console.o driver.o)
+OBJS := $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o main.o trap.o timer.o sched.o sync.o kmem.o)
 
 -include $(wildcard $(BUILD)/*.d)
 
@@ -29,10 +29,22 @@ $(BUILD)/uart16550.o: kernel/drivers/uart16550.c | $(BUILD)
 $(BUILD)/plic.o: kernel/drivers/plic.c | $(BUILD)
 	$(CLANG) $(CFLAGS) -c $< -o $@
 
+$(BUILD)/ringbuf.o: kernel/ringbuf.c | $(BUILD)
+	$(CLANG) $(CFLAGS) -c $< -o $@
+
+$(BUILD)/rtc.o: kernel/rtc.c | $(BUILD)
+	$(CLANG) $(CFLAGS) -c $< -o $@
+
+$(BUILD)/goldfish_rtc.o: kernel/drivers/goldfish_rtc.c | $(BUILD)
+	$(CLANG) $(CFLAGS) -c $< -o $@
+
 $(BUILD)/trap_vector.o: kernel/arch/riscv/trap.S | $(BUILD)
 	$(CLANG) $(CFLAGS) -c $< -o $@
 
 $(BUILD)/sched.o: kernel/sched.c | $(BUILD)
+	$(CLANG) $(CFLAGS) -c $< -o $@
+
+$(BUILD)/sync.o: kernel/sync.c | $(BUILD)
 	$(CLANG) $(CFLAGS) -c $< -o $@
 
 $(BUILD)/kmem.o: kernel/kmem.c | $(BUILD)
@@ -80,6 +92,18 @@ $(BUILD)/plic_test.o: tests/qemu_plic.c | $(BUILD)
 $(BUILD)/plic_test.elf: $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o trap.o timer.o sched.o plic_test.o) kernel/boards/qemu-virt/linker.ld
 	$(LLD) -m elf32lriscv -T kernel/boards/qemu-virt/linker.ld -o $@ $(filter %.o,$^)
 
+$(BUILD)/sync_test.o: tests/qemu_sync.c | $(BUILD)
+	$(CLANG) $(CFLAGS) -c $< -o $@
+
+$(BUILD)/sync_test.elf: $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o trap.o timer.o sched.o sync.o sync_test.o) kernel/boards/qemu-virt/linker.ld
+	$(LLD) -m elf32lriscv -T kernel/boards/qemu-virt/linker.ld -o $@ $(filter %.o,$^)
+
+$(BUILD)/rtc_test.o: tests/qemu_rtc.c | $(BUILD)
+	$(CLANG) $(CFLAGS) -c $< -o $@
+
+$(BUILD)/rtc_test.elf: $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o trap.o timer.o sched.o rtc_test.o) kernel/boards/qemu-virt/linker.ld
+	$(LLD) -m elf32lriscv -T kernel/boards/qemu-virt/linker.ld -o $@ $(filter %.o,$^)
+
 $(BUILD)/console.o: kernel/console.c | $(BUILD)
 	$(CLANG) $(CFLAGS) -c $< -o $@
 
@@ -98,7 +122,7 @@ $(BUILD)/spellbound.bin: $(BUILD)/spellbound.elf
 qemu: $(BUILD)/spellbound.elf
 	$(QEMU) -machine virt -bios none -nographic -monitor none -kernel $<
 
-test: all $(addprefix $(BUILD)/,scheduler_test.elf preemption_test.elf timer_test.elf heap_test.elf trap_test.elf plic_test.elf)
+test: all $(addprefix $(BUILD)/,scheduler_test.elf preemption_test.elf timer_test.elf heap_test.elf trap_test.elf plic_test.elf sync_test.elf rtc_test.elf)
 	python3 tests/qemu_boot.py $(QEMU) $(BUILD)/spellbound.elf
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/scheduler_test.elf 'scheduler lifecycle'
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/preemption_test.elf 'timer preemption'
@@ -106,12 +130,20 @@ test: all $(addprefix $(BUILD)/,scheduler_test.elf preemption_test.elf timer_tes
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/heap_test.elf 'heap boundaries'
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/trap_test.elf 'illegal instruction' 'trap: mcause=0x00000002 mepc=0x8[0-9a-f]{7} mtval=0x00000000'
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/plic_test.elf 'PLIC UART interrupts'
+	python3 tests/qemu_case.py $(QEMU) $(BUILD)/sync_test.elf 'sync mutex and msgq'
+	python3 tests/qemu_case.py $(QEMU) $(BUILD)/rtc_test.elf 'Goldfish RTC and alarm'
 
 test-host: | $(BUILD)
 	clang -std=c11 -Wall -Wextra -O2 -fsanitize=address,undefined -I kernel tests/test_kmem.c -o $(BUILD)/test_kmem
 	$(BUILD)/test_kmem
 	clang -std=c11 -Wall -Wextra -Werror -O2 -fsanitize=address,undefined -fno-sanitize-recover=all -I kernel tests/test_driver.c -o $(BUILD)/test_driver
 	$(BUILD)/test_driver
+	clang -std=c11 -Wall -Wextra -Werror -O2 -fsanitize=address,undefined -fno-sanitize-recover=all -I kernel tests/test_ringbuf.c -o $(BUILD)/test_ringbuf
+	$(BUILD)/test_ringbuf
+	clang -std=c11 -Wall -Wextra -Werror -O2 -fsanitize=address,undefined -fno-sanitize-recover=all -I kernel tests/test_sync.c -o $(BUILD)/test_sync
+	$(BUILD)/test_sync
+	clang -std=c11 -Wall -Wextra -Werror -O2 -fsanitize=address,undefined -fno-sanitize-recover=all -I kernel tests/test_rtc.c -o $(BUILD)/test_rtc
+	$(BUILD)/test_rtc
 
 clean:
 	rm -rf $(BUILD)

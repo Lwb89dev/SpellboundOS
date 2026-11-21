@@ -3,6 +3,7 @@
 #include "plic.h"
 #include "../arch/riscv/riscv.h"
 #include "../console.h"
+#include "../ringbuf.h"
 #include <stdbool.h>
 
 #define UART_THR 0u
@@ -17,7 +18,7 @@
 struct uart_port {
     volatile uint8_t *registers;
     bool rx_irq;
-    unsigned head, tail;
+    struct ringbuf rx_ring;
     uint8_t rx[RX_CAPACITY];
     void (*notify)(void *);
     void *notify_context;
@@ -37,11 +38,8 @@ static int uart_getc(uintptr_t context) {
     struct uart_port *port = (struct uart_port *)context;
     if (port->rx_irq) {
         uint32_t previous = irq_save();
-        int result = -1;
-        if (port->head != port->tail) {
-            result = port->rx[port->tail];
-            port->tail = (port->tail + 1u) % RX_CAPACITY;
-        }
+        uint8_t byte = 0;
+        int result = ringbuf_pop_byte(&port->rx_ring, &byte) ? (int)byte : -1;
         irq_restore(previous);
         return result;
     }
@@ -55,16 +53,12 @@ static int uart_getc(uintptr_t context) {
 static void uart_receive(void *context) {
     struct uart_port *port = context;
     volatile uint8_t *registers = port->registers;
-    bool was_empty = port->head == port->tail;
+    bool was_empty = ringbuf_is_empty(&port->rx_ring);
     for (unsigned i = 0; i < RX_CAPACITY && (registers[UART_LSR] & LSR_DR); i++) {
         uint8_t byte = registers[UART_RBR];
-        unsigned next = (port->head + 1u) % RX_CAPACITY;
-        if (next != port->tail) {
-            port->rx[port->head] = byte;
-            port->head = next;
-        }
+        (void)ringbuf_push_byte(&port->rx_ring, byte);
     }
-    if (was_empty && port->head != port->tail && port->notify) {
+    if (was_empty && !ringbuf_is_empty(&port->rx_ring) && port->notify) {
         port->notify(port->notify_context);
     }
 }
@@ -76,6 +70,9 @@ static const struct console_io uart_io = {
 
 static int uart_probe(struct device *dev) {
     if (!dev->base || console_port.registers) {
+        return -1;
+    }
+    if (ringbuf_init(&console_port.rx_ring, console_port.rx, RX_CAPACITY) != 0) {
         return -1;
     }
     if (console_bind(&uart_io, (uintptr_t)&console_port) != 0) {
