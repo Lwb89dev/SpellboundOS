@@ -18,7 +18,11 @@ This is bring-up scaffolding, not a Bip 6 image.
 | `drivers/plic.c` | external interrupt registration, claim and completion |
 | `rtc.c` / `rtc.h` | primary RTC interface and freestanding Unix-to-UTC calendar conversion, host-testable |
 | `drivers/goldfish_rtc.c` | Goldfish RTC wall clock and one-shot alarm IRQ driver |
-| `boards/qemu-virt/board.c` | UART and Goldfish RTC registration, PLIC context and timer configuration |
+| `drivers/sifive_test.c` | SiFive Test syscon poweroff/reboot driver for QEMU virt |
+| `bus.c` / `bus.h` | hardware-independent GPIO, I2C and SPI bus abstractions, host-testable |
+| `input.c` / `input.h` | watch input event queue (keys, touch, gestures) backed by `msgq`, host-testable |
+| `drivers/gpio_keys.c` | portable GPIO button debouncer and gesture state machine (click, long, double, combo) |
+| `boards/qemu-virt/board.c` | UART, Goldfish RTC and SiFive Test syscon registration, PLIC context and timer configuration |
 | `sched.c` / `sched.h` | round-robin scheduler with cooperative and timer-driven switching |
 | `sync.c` / `sync.h` | non-recursive mutex (`kmutex`) and bounded FIFO message queue (`msgq`), host-testable |
 | `kmem.c` / `kmem.h` | first-fit kernel heap (split + coalesce), host-testable |
@@ -68,7 +72,9 @@ This is bring-up scaffolding, not a Bip 6 image.
   and task-context blocking/timed `msgq_send`/`msgq_recv`.
 - `sched_set_preemption(true)` enables one tick per time slice. The default is cooperative. Both modes save integer registers and the interrupt state in the task's trap frame and clear the hart's LR/SC reservation on a stack switch. A stack must have at least 272 bytes after alignment and enough space for the task's calls and trap handling. Tasks share machine-mode memory on hart 0. Serialize shared heap, registry and console access if using preemption.
 - Kernel heap `kmalloc`/`kfree` (first-fit, block split, forward coalescing); the allocator logic is portable and unit-tested on the host (`make test-host`). Access must be serialized, including against interrupts.
-- Device/driver registry: explicit name-based binding and retryable probe passes. QEMU virt registers and probes its console UART and Goldfish RTC before `kernel_main`. Registration is single-threaded and reset only clears registry bindings.
+- Device/driver registry: explicit name-based binding and retryable probe passes. QEMU virt registers and probes its console UART, Goldfish RTC and SiFive Test syscon (`0x00100000`, `board_poweroff`/`board_reboot`) before `kernel_main`. Registration is single-threaded and reset only clears registry bindings.
+- Bus abstractions (`bus.c`): named registries and validated wrappers for GPIO (`configure`/`read`/`write`/`set_irq`), I2C (`transfer`/`write`/`read`/`write_read`/`reset`) and SPI (`transfer`/`write_then_read`).
+- Watch input layer (`input.c`, `drivers/gpio_keys.c`): `input_post` (ISR-safe with auto-timestamping and drop accounting), `input_poll`/`input_wait`/`input_wait_for`, and a portable GPIO button debouncer/gesture engine supporting short click, double click, long press and simultaneous two-key combo events.
 
 ## Build and test
 
@@ -76,8 +82,8 @@ This is bring-up scaffolding, not a Bip 6 image.
 make                 # needs clang, ld.lld, llvm-objcopy
 make LLD=/path/to/ld.lld   # if ld.lld is not on PATH (e.g. an LLVM/NDK toolchain)
 make test            # needs qemu-system-riscv32; checks boot, echo, timer,
-                     # scheduling, preemption, heap, traps, PLIC, sync and RTC on RV32 QEMU virt
-make test-host       # host tests for heap, driver registry, ringbuf, sync and RTC (clang + ASan/UBSan)
+                     # scheduling, preemption, heap, traps, PLIC, sync, RTC and input/syscon on RV32 QEMU virt
+make test-host       # host tests for heap, driver registry, ringbuf, sync, RTC and bus/input/syscon (clang + ASan/UBSan)
 ```
 
 The build is linker-agnostic (any LLVM `ld.lld`); running the `test`/`qemu`
@@ -86,5 +92,5 @@ targets needs a *system* QEMU (`qemu-system-riscv32`), not the user-mode
 
 ## Next foundations
 
-- Hardware-independent bus interfaces (GPIO, I2C, SPI) and watch input/sensor service layers.
-- Board power control (syscon) and Bip 6 board scaffolding once the boot/recovery gate is resolved.
+- Portable peripheral drivers on top of `bus.h` (LSM6DSO IMU over SPI, ZTW622 touch over I2C) and sensor sample delivery.
+- Interactive console command shell and Bip 6 board scaffolding once the boot/recovery gate is resolved.

@@ -19,4 +19,8 @@ int board_init(void);
  * Notify on a transition from empty to readable, in interrupt context. */
 int board_console_rx_irq(void (*notify)(void *), void *context);
 
+/* Request board shutdown or reset; parks the hart if unsupported or on return. */
+_Noreturn void board_poweroff(void);
+_Noreturn void board_reboot(void);
+
 #endif

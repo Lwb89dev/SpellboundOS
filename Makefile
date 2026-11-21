@@ -6,8 +6,8 @@ BUILD := build/qemu-virt
 .DEFAULT_GOAL := all
 CFLAGS := --target=riscv32-unknown-elf -march=rv32imac_zicsr -mabi=ilp32 -ffreestanding -fno-stack-protector -fno-pic -fno-builtin -Wall -Wextra -Werror -O2 -MMD -MP
 
-BOOT_OBJS := $(addprefix $(BUILD)/,start.o board.o plic.o ringbuf.o uart16550.o rtc.o goldfish_rtc.o console.o driver.o)
-OBJS := $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o main.o trap.o timer.o sched.o sync.o kmem.o)
+BOOT_OBJS := $(addprefix $(BUILD)/,start.o board.o plic.o ringbuf.o uart16550.o rtc.o goldfish_rtc.o sifive_test.o console.o driver.o)
+OBJS := $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o main.o trap.o timer.o sched.o sync.o bus.o input.o gpio_keys.o kmem.o)
 
 -include $(wildcard $(BUILD)/*.d)
 
@@ -36,6 +36,18 @@ $(BUILD)/rtc.o: kernel/rtc.c | $(BUILD)
 	$(CLANG) $(CFLAGS) -c $< -o $@
 
 $(BUILD)/goldfish_rtc.o: kernel/drivers/goldfish_rtc.c | $(BUILD)
+	$(CLANG) $(CFLAGS) -c $< -o $@
+
+$(BUILD)/sifive_test.o: kernel/drivers/sifive_test.c | $(BUILD)
+	$(CLANG) $(CFLAGS) -c $< -o $@
+
+$(BUILD)/bus.o: kernel/bus.c | $(BUILD)
+	$(CLANG) $(CFLAGS) -c $< -o $@
+
+$(BUILD)/input.o: kernel/input.c | $(BUILD)
+	$(CLANG) $(CFLAGS) -c $< -o $@
+
+$(BUILD)/gpio_keys.o: kernel/drivers/gpio_keys.c | $(BUILD)
 	$(CLANG) $(CFLAGS) -c $< -o $@
 
 $(BUILD)/trap_vector.o: kernel/arch/riscv/trap.S | $(BUILD)
@@ -104,6 +116,12 @@ $(BUILD)/rtc_test.o: tests/qemu_rtc.c | $(BUILD)
 $(BUILD)/rtc_test.elf: $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o trap.o timer.o sched.o rtc_test.o) kernel/boards/qemu-virt/linker.ld
 	$(LLD) -m elf32lriscv -T kernel/boards/qemu-virt/linker.ld -o $@ $(filter %.o,$^)
 
+$(BUILD)/input_test.o: tests/qemu_input.c | $(BUILD)
+	$(CLANG) $(CFLAGS) -c $< -o $@
+
+$(BUILD)/input_test.elf: $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o trap.o timer.o sched.o sync.o bus.o input.o gpio_keys.o input_test.o) kernel/boards/qemu-virt/linker.ld
+	$(LLD) -m elf32lriscv -T kernel/boards/qemu-virt/linker.ld -o $@ $(filter %.o,$^)
+
 $(BUILD)/console.o: kernel/console.c | $(BUILD)
 	$(CLANG) $(CFLAGS) -c $< -o $@
 
@@ -122,7 +140,7 @@ $(BUILD)/spellbound.bin: $(BUILD)/spellbound.elf
 qemu: $(BUILD)/spellbound.elf
 	$(QEMU) -machine virt -bios none -nographic -monitor none -kernel $<
 
-test: all $(addprefix $(BUILD)/,scheduler_test.elf preemption_test.elf timer_test.elf heap_test.elf trap_test.elf plic_test.elf sync_test.elf rtc_test.elf)
+test: all $(addprefix $(BUILD)/,scheduler_test.elf preemption_test.elf timer_test.elf heap_test.elf trap_test.elf plic_test.elf sync_test.elf rtc_test.elf input_test.elf)
 	python3 tests/qemu_boot.py $(QEMU) $(BUILD)/spellbound.elf
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/scheduler_test.elf 'scheduler lifecycle'
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/preemption_test.elf 'timer preemption'
@@ -132,6 +150,7 @@ test: all $(addprefix $(BUILD)/,scheduler_test.elf preemption_test.elf timer_tes
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/plic_test.elf 'PLIC UART interrupts'
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/sync_test.elf 'sync mutex and msgq'
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/rtc_test.elf 'Goldfish RTC and alarm'
+	python3 tests/qemu_case.py $(QEMU) $(BUILD)/input_test.elf 'bus, input and syscon'
 
 test-host: | $(BUILD)
 	clang -std=c11 -Wall -Wextra -O2 -fsanitize=address,undefined -I kernel tests/test_kmem.c -o $(BUILD)/test_kmem
@@ -144,6 +163,8 @@ test-host: | $(BUILD)
 	$(BUILD)/test_sync
 	clang -std=c11 -Wall -Wextra -Werror -O2 -fsanitize=address,undefined -fno-sanitize-recover=all -I kernel tests/test_rtc.c -o $(BUILD)/test_rtc
 	$(BUILD)/test_rtc
+	clang -std=c11 -Wall -Wextra -Werror -O2 -fsanitize=address,undefined -fno-sanitize-recover=all -I kernel tests/test_bus_input.c -o $(BUILD)/test_bus_input
+	$(BUILD)/test_bus_input
 
 clean:
 	rm -rf $(BUILD)

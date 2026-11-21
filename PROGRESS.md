@@ -4363,3 +4363,31 @@ Python suite — this is the first piece of OS code verified at **runtime** here
   - **Runtime QEMU tests not executed in this environment**: `qemu-system-riscv32`
     is not installed here, so `make test` remains to be run on a host with
     system QEMU.
+
+# 2026-11-21 — SpellboundOS bus layer (GPIO/I2C/SPI), watch input, gpio_keys and syscon
+
+- **Board power control (`kernel/drivers/sifive_test.c`, `kernel/board.h`)**:
+  added the SiFive Test syscon driver (`syscon0` at `0x00100000`, `0x5555`
+  poweroff, `0x7777` reboot, `0x3333` fail) registered and probed by QEMU
+  `virt` during `board_init`, exposing `board_poweroff()` and `board_reboot()`
+  with a safe masked-interrupt `wfi` park fallback.
+- **Bus abstractions (`kernel/bus.c`, `kernel/bus.h`)**: added freestanding,
+  validated GPIO, I2C and SPI registries and dispatch helpers (`gpio_configure`,
+  `gpio_read`, `gpio_write`, `gpio_set_irq`, `i2c_transfer`, `i2c_write_read`,
+  `i2c_reset`, `spi_transfer`, `spi_write_then_read`).
+- **Watch input queue and portable button driver (`kernel/input.c`,
+  `kernel/drivers/gpio_keys.c`)**: added an ISR-safe input event queue backed
+  by `msgq` (with automatic tick timestamping and drop accounting) plus an
+  independently authored multi-key debouncer and gesture state machine
+  supporting short click, double click, long press and simultaneous two-key
+  combo detection over `bus.h`.
+- **Verification**:
+  - Host sanitized suite (`make test-host` and `python3 -m unittest` across all
+    six `test_*_host.py` modules): **6/6 pass** under Clang ASan+UBSan
+    (`-Werror -fno-sanitize-recover=all`), covering syscon MMIO values,
+    GPIO/I2C/SPI bounds and framing, input overflow/stamping, and every
+    `gpio_keys` gesture transition.
+  - RV32 cross-build (`clang` + NDK `ld.lld` + `llvm-objcopy`): clean `-Werror`
+    build of `spellbound.elf`, `spellbound.bin` and all nine RV32 QEMU test
+    ELFs (including new `input_test.elf`). Runtime QEMU execution still awaits
+    a host with `qemu-system-riscv32`.
