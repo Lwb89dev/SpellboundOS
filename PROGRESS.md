@@ -4614,3 +4614,21 @@ Python suite — this is the first piece of OS code verified at **runtime** here
   - RV32 cross-build (`clang` + NDK `ld.lld` + `llvm-objcopy`): clean `-Werror`
     build of `spellbound.elf`, `spellbound.bin` and all seventeen RV32 QEMU test
     ELFs (including new `crypto_test.elf`).
+
+# 2026-11-22 — SpellboundOS desktop C-kernel watch simulator and PNG screen exporter
+
+- **Host C-kernel simulator (`companion/sim_host.c`, `companion/simulator.py`,
+  `companion/cli.py`)**: compiles the actual freestanding C SpellboundOS stack
+  (`watch_app`, `ui`, `fb`, `power`, `proto`, `secure_link`, `crypto`, `notify`,
+  `activity`, `kv`, `hr`, `motor`, `icna3311`, `shell`, `input`, `sensor`, `rtc`)
+  at Bip 6's 390×450 RGB565 resolution into `build/host/libspellbound_sim.so`
+  and drives it from Python over an encrypted ChaCha20-Poly1305 session.
+- **Zero-dependency PNG renderer & CLI (`make sim-demo`)**: converts the live
+  RGB565 framebuffer into standard PNG images using Python `zlib`, exporting
+  all six watch screens (Watchface, Notifications, Roadstr Navigation, Incoming
+  Call, Quick Settings and AOD) and supporting direct shell inspection.
+- **Verification**:
+  - `python3 -m unittest tests.test_simulator -v`: compiles the shared library
+    with `-Werror` and verifies encrypted PING/PONG, notification + quick-action
+    round-trip, Roadstr auto-promotion, walking pedometer + ALS HBM + telemetry,
+    live shell commands and 6 valid rendered 390×450 PNG screenshots.

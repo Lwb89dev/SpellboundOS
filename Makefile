@@ -11,7 +11,7 @@ OBJS := $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o main.o trap.o timer.o s
 
 -include $(wildcard $(BUILD)/*.d)
 
-.PHONY: all qemu test test-host clean
+.PHONY: all qemu test test-host sim-demo clean
 all: $(BUILD)/spellbound.elf $(BUILD)/spellbound.bin
 
 $(BUILD):
@@ -307,5 +307,8 @@ test-host: | $(BUILD)
 	clang -std=c11 -Wall -Wextra -Werror -O2 -fsanitize=address,undefined -fno-sanitize-recover=all -I kernel tests/test_bt_crypto.c -o $(BUILD)/test_bt_crypto
 	$(BUILD)/test_bt_crypto
 
+sim-demo:
+	python3 -m companion.cli --demo-dir build/sim-screenshots
+
 clean:
-	rm -rf $(BUILD)
+	rm -rf $(BUILD) build/host build/sim-screenshots
