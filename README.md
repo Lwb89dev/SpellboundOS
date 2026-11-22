@@ -2,6 +2,20 @@
 
 SpellboundOS is a new standalone operating system for the Amazfit Bip 6, developed alongside the SpellboundFit Android companion. See [GOAL.md](GOAL.md) for the project goal and [PROGRESS.md](PROGRESS.md) for the work log.
 
+> **Project status: on standby, pending a boot feasibility assessment.**
+> Reverse engineering established that the signed boot chain is anchored by a key
+> embedded in the bootloader, so booting SpellboundOS reduces to replacing the
+> bootloader, which in turn depends on whether the SoC's on-die mask ROM enforces
+> a signature on the bootloader. The application processor is captive Zepp
+> silicon with no public documentation, and the watch has no wired debug port.
+> The only avenue that could admit a custom bootloader is hardware fault
+> injection, assessed as expert-level, destructive and low-probability on a
+> single undocumented unit — out of scope for now. Standalone-OS work is
+> therefore paused until that feasibility question is resolved; companion-app and
+> within-signed-system work may continue. See
+> [ROOT_OF_TRUST_AND_BOOTLOADER_KEY.md](analysis/ROOT_OF_TRUST_AND_BOOTLOADER_KEY.md)
+> and [FAULT_INJECTION_FEASIBILITY.md](analysis/FAULT_INJECTION_FEASIBILITY.md).
+
 Current reverse engineering status: [RE_STATUS.md](analysis/RE_STATUS.md).
 Recent evidence links the [62 application modules](analysis/APPLICATION_SERVICES.md)
 to the firmware and verifies a [synthetic notification over the live connection](analysis/NOTIFICATION_ACTIONS_AND_ROADSTR.md).
