@@ -4589,3 +4589,28 @@ Python suite — this is the first piece of OS code verified at **runtime** here
   - RV32 cross-build (`clang` + NDK `ld.lld` + `llvm-objcopy`): clean `-Werror`
     build of `spellbound.elf`, `spellbound.bin` and all sixteen RV32 QEMU test
     ELFs (including new `hr_test.elf`).
+
+# 2026-11-22 — SpellboundOS RTL8763 HCI framing, RFC 8439 ChaCha20-Poly1305 and encrypted companion link
+
+- **RTL8763 Bluetooth HCI framing (`kernel/drivers/rtl8763.c`, `.h`)**:
+  independently authored reflected CRC16/MODBUS (`0xA001`, seed `0xFFFF`,
+  `"123456789" -> 0x4B37`), HCI H4 standard/vendor-CRC command builders and
+  H5 SLIP byte-stuffing encoder/decoder (`0xC0`/`0xDB`) for `uart2`.
+- **Freestanding cryptography (`kernel/crypto.c`, `.h`)**: zero-dependency,
+  zero-heap, constant-time-verified FIPS 180-4 SHA-256, RFC 2104/4231
+  HMAC-SHA256, RFC 5869 HKDF-SHA256 and RFC 8439 ChaCha20-Poly1305 AEAD (5×26-bit
+  limb Poly1305, zero libgcc division).
+- **Authenticated encrypted companion link (`kernel/secure_link.c`, `.h`,
+  `companion/secure_link.py`)**: mutual-proof HKDF handshake (`HELLO` /
+  `HELLO_ACK` with 32-byte watch HMAC proof), directional ChaCha20-Poly1305
+  session keys and strict monotonic 64-bit anti-replay counters with a pure-Python
+  companion mirror verified live against `kernel/secure_link.c`.
+- **Verification**:
+  - Host sanitized suite (`tests/test_bt_crypto_host.py`,
+    `tests/test_companion_secure.py` and full `make test-host`): all **14/14** C
+    host suites + Python↔C encrypted interop pass under Clang ASan+UBSan
+    (`-Werror -fno-sanitize-recover=all`), including official FIPS/RFC test
+    vectors and replay/tamper rejection.
+  - RV32 cross-build (`clang` + NDK `ld.lld` + `llvm-objcopy`): clean `-Werror`
+    build of `spellbound.elf`, `spellbound.bin` and all seventeen RV32 QEMU test
+    ELFs (including new `crypto_test.elf`).
