@@ -4485,3 +4485,35 @@ Python suite — this is the first piece of OS code verified at **runtime** here
   - RV32 cross-build (`clang` + NDK `ld.lld` + `llvm-objcopy`): clean `-Werror`
     build of `spellbound.elf`, `spellbound.bin` and all twelve RV32 QEMU test
     ELFs (including new `shell_test.elf`).
+
+# 2026-11-22 — SpellboundOS power manager, watch UI compositor and Bip 6 board descriptor
+
+- **Power & auto-brightness manager (`kernel/power.c`, `.h`)**: added
+  `POWER_ACTIVE` / `POWER_DIM` / `POWER_AOD` / `POWER_SLEEP` screen state
+  machine with inactivity timeouts, wake/sleep transitions, pure-integer
+  piecewise ALS lux-to-brightness curve (24..255), HBM activation (>= 245),
+  battery/DND/haptics state and `power_apply_panel()` synchronization into
+  `icna3311`.
+- **Watch UI compositor (`kernel/ui.c`, `.h`)**: added freestanding RGB565 UI
+  compositor driven by `input_event`s and rendering into `struct fb`:
+  - `UI_SCREEN_WATCHFACE` (local timezone RTC clock, date, battery bar, unread
+    notification badge, steps/HR footer and low-burn-in AOD mode);
+  - `UI_SCREEN_NOTIFICATIONS` (card view, selection, dismiss on long press and
+    quick-action firing on double click/tap);
+  - `UI_SCREEN_NAVIGATION` (Roadstr turn-by-turn screen with geometric maneuver
+    arrows for straight/left/right/roundabout/U-turn/arrive, meters/km
+    formatting, street name and ETA, auto-promoting on new maneuver revisions);
+  - `UI_SCREEN_CALL` (incoming/active call overlay with auto-promotion);
+  - `UI_SCREEN_QUICK_SETTINGS` (interactive toggles for Auto-Brightness, DND,
+    Haptics and AOD).
+- **Bip 6 hardware inventory header (`kernel/boards/bip6/board_desc.h`)**:
+  read-only C constants consolidating the verified Bip 6 (`mhs003`) peripheral
+  buses, addresses, GPIO pins, rails and display dimensions from `analysis/`.
+  No Bip 6 bootable image is produced while backup/recovery/boot remains gated.
+- **Verification**:
+  - Host sanitized suite (`make test-host` and `python3 -m unittest` across all
+    ten `test_*_host.py` modules): **10/10 pass** under Clang ASan+UBSan
+    (`-Werror -fno-sanitize-recover=all`).
+  - RV32 cross-build (`clang` + NDK `ld.lld` + `llvm-objcopy`): clean `-Werror`
+    build of `spellbound.elf`, `spellbound.bin` and all thirteen RV32 QEMU test
+    ELFs (including new `ui_test.elf`).

@@ -34,6 +34,9 @@ This is bring-up scaffolding, not a Bip 6 image.
 | `notify.c` / `notify.h` | watch notification store (16 items + 4 actions), Roadstr turn-by-turn nav state and call state |
 | `proto.c` / `proto.h` | SpellboundFit v1 binary framed companion protocol with IEEE CRC-32, streaming decoder and dispatch |
 | `shell.c` / `shell.h` | freestanding interactive serial command shell (`help`, `uptime`, `date`, `heap`, `notify`, `nav`, `poweroff`, `reboot`) |
+| `power.c` / `power.h` | screen power state machine (`ACTIVE`/`DIM`/`AOD`/`SLEEP`), ALS auto-brightness curve and ICNA3311 sync |
+| `ui.c` / `ui.h` | watch UI compositor (watchface, notifications, Roadstr turn-by-turn navigation, call screen, quick settings) |
+| `boards/bip6/board_desc.h` | read-only Bip 6 (`mhs003`) hardware inventory constants from verified analysis reports |
 | `boards/qemu-virt/board.c` | UART, Goldfish RTC and SiFive Test syscon registration, PLIC context and timer configuration |
 | `sched.c` / `sched.h` | round-robin scheduler with cooperative and timer-driven switching |
 | `sync.c` / `sync.h` | non-recursive mutex (`kmutex`) and bounded FIFO message queue (`msgq`), host-testable |
@@ -90,6 +93,7 @@ This is bring-up scaffolding, not a Bip 6 image.
 - Sensor delivery and portable peripheral drivers (`sensor.c`, `drivers/lsm6dso.c`, `drivers/ztw622.c`): bounded `msgq`-backed `sensor_sample` queue with 8-orientation 3D remap; LSM6DSO SPI IMU driver (WHO_AM_I `0x6C`, soft-reset polling, dual-stream XL/GYRO config, 7-byte tagged FIFO drain with overrun recovery); ZTW622 I2C touch driver (`0x20`, chip ID `0xE622`, I2C bus-reset retry, 2-finger DOWN/MOVE/UP state tracking, 0°/90°/180°/270° rotation + 180° flip, large-object and wake-gesture dispatch to `input.h`).
 - Ambient light, battery charging, haptics and display stack (`drivers/stk31e60.c`, `drivers/charger.c`, `drivers/motor.c`, `fb.c`, `drivers/icna3311.c`): STK31E60 I2C ALS (`0x48`, ID `0xE0`, integer IT/gain/lux conversion); CW6305 (`0x0B`) & AW32012 (`0x49`) I2C chargers with runtime auto-probe, piecewise fast-charge current encoders and VBUS/poweroff controls; GPIO haptic motor with level durations and tick-driven patterns; RGB565 2D framebuffer with dirty-rect tracking and 5x7 scalable ASCII font; ICNA3311 MIPI DCS AMOLED driver (RDID1–3 9-variant check, page-0 unlock/lock brightness/dimming/HBM, even-aligned dirty-rect RAM flush).
 - Watch services, companion protocol and interactive shell (`notify.c`, `proto.c`, `shell.c`): 16-slot notification store with unread tracking, oldest-eviction and action callbacks; Roadstr turn-by-turn navigation and incoming call state stores; SpellboundFit v1 binary framed protocol (`"SB"`, IEEE CRC-32, streaming byte-by-byte decoder, dispatch for `PING`/`TIME_SYNC`/`NOTIFY_POST`/`NOTIFY_DISMISS`/`NAV_UPDATE`/`NAV_CLEAR`/`CALL_STATE` and watch-to-phone `NOTIFY_ACTION`/`TELEMETRY` encoders); extensible serial shell with line editing and quoted arguments.
+- Power manager, watch UI compositor and Bip 6 hardware map (`power.c`, `ui.c`, `boards/bip6/board_desc.h`): `ACTIVE`/`DIM`/`AOD`/`SLEEP` screen manager with pure-integer piecewise ALS auto-brightness curve (24..255 + HBM >= 245) applied to `icna3311`; RGB565 compositor rendering watchface (RTC clock, battery, unread badge, steps/HR, AOD), notifications with quick actions, Roadstr turn-by-turn navigation (geometric maneuver arrows + distance + street + ETA), incoming call screen and quick settings; read-only Bip 6 (`mhs003`) hardware inventory constants header.
 
 ## Build and test
 
@@ -107,5 +111,6 @@ targets needs a *system* QEMU (`qemu-system-riscv32`), not the user-mode
 
 ## Next foundations
 
-- Watch UI compositor (watchface, notifications, Roadstr navigation, quick settings), power/auto-brightness manager and Bip 6 board hardware descriptor header.
-- Bip 6 device integration once the boot/recovery gate is resolved.
+- Companion-side SpellboundFit Android/Python protocol client & simulator bridging live notifications and Roadstr navigation over the v1 binary protocol.
+- Persistent key-value settings store and step-counter/activity pipeline on top of `sensor.h`.
+- Bip 6 device bring-up once the signed boot, backup and recovery gate is resolved.
