@@ -231,10 +231,9 @@ def evidence(archive, vectors, validation):
             'The boot manager 0x80c00454 and the final main boot 0x80c00918 are not re-executed here; their '
             'control flow is read statically. The upgrade-record software recovery request and the recovery '
             'image validation are covered elsewhere.',
-            'This establishes the recovery-entry conditions, not the physical key mapping, the real debounce '
-            'timing, the power threshold or that recovery can always restore a good image after a bad write. '
-            'With no USB/wired port (BLE bridge only), these two-key-plus-power and upgrade-record paths are '
-            'the only recovery entries, and both still need on-device confirmation.'])
+            'The two-key-plus-power and upgrade-record branches describe the analyzed boot manager. '
+            'Physical key mapping, debounce timing, the power threshold, service interfaces and stock '
+            'restoration still require on-device evidence.'])
 
 
 def main():

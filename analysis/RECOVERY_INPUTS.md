@@ -1,19 +1,22 @@
-# Bip 6 backup and restoration evidence
+# Bip 6 backup, recovery and signed boot feasibility
 
-The local OTA 4.6.0.3 archive matches the recorded size and SHA-256. The
-inventory verifies **one stock OTA**. There is currently no device readback
-or device export in the inventory.
+**Flashing remains blocked as of 2026-11-22.** The Bip 6 is reachable through
+the existing phone connection. The inventory verifies **one stock OTA**. A
+physical backup, a tested restoration route and an accepted boot path for
+SpellboundOS are still required. [Project goal](../GOAL.md).
 
 ```sh
 python3 -m analysis_scripts.backup_audit firmware analysis/bip6-stock-ota-inventory.json
 python3 -m analysis_scripts.verify_ota_signatures firmware/bip6-4.6.0.3.zip
 ```
 
-The first command compares bytes with the recorded inventory and reports
-counts by artifact kind. The second checks the mathematical signatures against
-the key embedded in the archived bootloader. Together, these checks identify
-the local stock software reference. The expected hash comes from the recorded
-acquisition in the [repository README](../README.md).
+The first command compares the recorded byte length and SHA-256. The second
+reproduces the checked-in result for the ZIP and all five signed members
+(bootloader, main firmware, recovery, factory firmware and sensor hub). All
+six signatures verify against the archived bootloader's public key and each
+modified payload is rejected offline. The physical watch's root of trust and
+the effect of the recorded `META/res_info` manifest mismatch on recovery
+remain unknown. [Acquisition and manifest notes](../README.md#ota-catalog).
 
 For future local captures, keep a private schema-1 inventory with one artifact
 entry per file. Record its basename, byte length, SHA-256 and kind
@@ -23,14 +26,51 @@ directory. A file of any kind passes the tool only when its length and digest
 match the inventory. The kind is supplied by the investigator and describes
 provenance. It does not prove coverage.
 
-| Evidence | Current status |
-| --- | --- |
-| Stock software reference | OTA inventory and offline signature checks reproduce |
-| Device data and geometry | Need a documented read-only acquisition method, two independently read matching copies and an inventory of covered ranges, spare/OOB and device-specific data |
-| Restoration | Need a legitimate recovery entry route and a verified restore rehearsal, including post-restore readback and original firmware boot |
-| Standalone boot | The main-image gate requires a positive signature result. A supported entry path on the Bip 6 remains undemonstrated |
+## Physical observations
 
-The local hardware inventory for this run showed no phone in ADB and no Bip 6
-USB interface. ADB enumeration measures phone availability. It provides no
-evidence about the watch's flash or Bluetooth connection. The project keeps
-its [backup and recovery requirement](../GOAL.md) for any future device write.
+After the user connected the phone by USB, host USB and ADB enumeration saw
+the Samsung SM-S921B. Android's Bluetooth service showed an active encrypted
+LE link to the Amazfit Bip 6 and an open GATT channel held by Gadgetbridge and
+Android HID. This session observed the existing connection through Android
+diagnostics. The firmware 4.6.0.3 and hardware 0.135.23.0 identifiers are from
+the earlier [device inventory](../README.md).
+
+Host USB enumeration was identical before and after the user connected the
+magnetic puck to the computer and confirmed charging on the running Bip 6.
+The watch stayed connected over BLE. The manufacturer identifies the model as
+A2435 and describes the supplied accessory as a charging puck. The physical
+unit's service interfaces and fitted NAND remain unknown.
+[Amazfit product manual](https://support.amazfit.com/us/amazfit_bip_6/imgs/electronic_manual.pdf),
+[A2435 certification photos, FCC exhibit 8066732](https://device.report/m/81e1dd377853159e1a1edb0629cdded0572f030daedf582a1499f987476b4996.pdf).
+
+## Evidence required before a flash attempt
+
+- **Recoverable physical backup.** Obtain a documented or hardware-verified
+  read-only acquisition method. Record the fitted NAND and geometry, read
+  independently twice and compare hashes over stable physical data, including
+  spare/OOB, factory bad-block markers and translation metadata. Account for
+  unreadable pages, ECC mode and any regions outside the NAND required for
+  restoration. The archived table provides coverage targets for boot, recovery
+  slots, `nvms`, `env`, `envbak`, `userdata` and filesystems. Its offsets need
+  runtime geometry and translation. [Archived partition table](STORAGE_MAP_AND_DRIVER_BINDINGS.md).
+- **Independent stock recovery.** Zepp documents a generic reinstall through
+  its app for a specific failure screen. Ask Amazfit whether it applies to
+  A2435 hardware 0.135.23.0 when the stock main firmware fails, whether it can
+  reinstall the same signed version and which device-specific data it preserves.
+  The analyzed manager returns after a main signature failure. The candidate
+  recovery entry and handoff can update persistent records. A restoration
+  rehearsal can use an equivalent spare with its own verified backup. Check
+  post-restore readback, stock boot and preservation of device-specific state.
+  [Zepp reinstall guide](https://docs.zepp.com/docs/guides/faq/re-install-system/),
+  [boot manager](MAIN_RECOVERY_GATE.md), [recovery entry](BOOT_RECOVERY_AND_METADATA.md),
+  [recovery handoff](RECOVERY_SELECTION_AND_HANDOFF.md).
+- **Boot SpellboundOS.** The archived main-image loader requires successful
+  signature verification before handoff. Seek a vendor-supported unlock,
+  signing program or temporary lab boot path for this hardware revision.
+  Zepp's Developer Bridge documents installation and testing of apps and watch
+  faces in Zepp OS. Standalone boot requires an accepted image and an observed
+  handoff on the target. [Main-image loader](MAIN_BOOT_GATE.md),
+  [Zepp Developer Bridge](https://docs.zepp.com/docs/guides/faq/developer-bridge-mode/).
+
+Gadgetbridge can export data already collected by the phone app. Keep any such
+archive private. [Gadgetbridge export](https://gadgetbridge.org/internals/development/data-management/#manual-export).

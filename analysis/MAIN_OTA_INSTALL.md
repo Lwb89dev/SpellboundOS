@@ -1,10 +1,10 @@
 # Watch-side OTA install path: integrity, validation and persisted records
 
-The Bip 6 has **no USB or wired debug port** — its only bridge is BLE via
-Gadgetbridge — so every update, backup and recovery must travel over the air.
-This note reverse-engineers the watch-side OTA pipeline that receives those
-packages and decides whether they are safe to stage. The evidence is in
-[main-ota-install.json](main-ota-install.json).
+The live [Gadgetbridge session](LIVE_GADGETBRIDGE.md) observed a BLE connection
+to stock firmware. This note reverse-engineers the watch-side OTA pipeline
+that receives packages and decides whether to stage them. The evidence is in
+[main-ota-install.json](main-ota-install.json). Physical backup and recovery
+access are tracked in [the feasibility record](RECOVERY_INPUTS.md).
 
 ## Delegate and state machine
 

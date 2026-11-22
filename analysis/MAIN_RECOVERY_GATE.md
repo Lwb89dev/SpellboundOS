@@ -52,8 +52,9 @@ The executed detector returns 1 (enter recovery) only when **all** hold:
      this window returns 0; holding both to the end logs `backup check key
      pass !` and returns 1.
 
-So the recovery gesture is: **on external power, hold the two buttons together
-from boot and keep holding them through the confirmation window.**
+The two logical inputs and the power condition describe a candidate recovery
+gesture. Physical button mapping, timing and boot reason on the A2435 remain
+unverified.
 
 ## Cases
 
@@ -74,22 +75,17 @@ per-index button state, and the power check writes its flag, into the quiet
 stack window via a `store` stub kind, so no real key matrix, power rail or timer
 is read.
 
-## Consequence for a safe boot with no wired port
+## Consequence for physical recovery
 
-The device has no USB or wired debug port; its only bridge is BLE via the
-companion app. Combined with this gate, that leaves exactly two ways into
-recovery, and both must hold for any safe install plan:
+The analyzed boot manager has two observed recovery branches:
 
-1. **The physical two-key-plus-power gesture** decoded here. This is the only
-   operator-driven recovery with no wired fallback, so its real key mapping and
-   timing must be confirmed on the device before relying on it.
-2. **A pre-written `upgrade` record** (state 2) that requests recovery on the
-   next boot — the software path a normal OTA uses.
+1. A positive result from the key and power detector. The caller can write an
+   `upgrade` record before completing the transition.
+2. A pre-existing `upgrade` record in state 2, used by the OTA flow.
 
-Neither is a flash backup, and neither proves that recovery can always restore a
-known-good signed image after a bad write. Until the gesture is confirmed on the
-device and a recoverable, over-the-air restore is demonstrated, a write to the
-watch is not safe. This stays a hard feasibility gate.
+BLE through the companion is the observed live interface. The existence of a
+wired service path remains open. The [physical feasibility record](RECOVERY_INPUTS.md)
+tracks the backup, recovery and signed-boot requirements.
 
 ## Reproduction and remaining work
 
@@ -113,5 +109,5 @@ Remaining work:
   main-boot ordering under each boot reason and `upgrade` state.
 - Map the two poll indices to physical buttons and confirm the power threshold
   and debounce timing on the device.
-- Establish an over-the-air recovery/restore that is demonstrably recoverable,
-  the true prerequisite for any safe install given the BLE-only bridge.
+- Verify whether a supported recovery route restores a stock signed image and
+  preserves device-specific state.

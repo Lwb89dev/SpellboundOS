@@ -214,7 +214,7 @@ def evidence(archive, vectors, validation):
         image='main firmware (OTA 4.6.0.3)',
         vectors_sha256=hashlib.sha256(vectors.read_bytes()).hexdigest(),
         validation_sha256=hashlib.sha256(validation.read_bytes()).hexdigest(),
-        transport='BLE only (no USB/wired port); OTA manager with a single global state byte at '
+        transport='BLE was observed with stock firmware. The OTA manager has a single global state byte at '
                   f'{OTA_STATE:#010x}, transitions logged "OTA state %d -> %d" by {SET_STATE:#010x}',
         delegate_callbacks=list(DELEGATE_CALLBACKS),
         integrity=dict(

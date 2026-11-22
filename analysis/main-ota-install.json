@@ -372,7 +372,7 @@
     "data": 2097152,
     "firmware": 536870912
   },
-  "transport": "BLE only (no USB/wired port); OTA manager with a single global state byte at 0x70f95948, transitions logged \"OTA state %d -> %d\" by 0x7021b364",
+  "transport": "BLE was observed with stock firmware. The OTA manager has a single global state byte at 0x70f95948, transitions logged \"OTA state %d -> %d\" by 0x7021b364",
   "upgrade_package_record": {
     "property_key": "ota.record.v1.upgrade.package",
     "requires": "a matching download record whose file size and CRC32 agree before it is saved",

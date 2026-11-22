@@ -3342,8 +3342,8 @@ deletion remain open.
    into unverified bytes), a failed main verification does not fall through to
    recovery — recovery must be requested earlier.
 
-   With no USB/wired port (BLE bridge only), the two-key-plus-power gesture and
-   the `upgrade`-record path are therefore the only recovery entries. See
+   The two-key-plus-power and `upgrade`-record branches describe the analyzed
+   boot manager. See
    [analysis/MAIN_RECOVERY_GATE.md](analysis/MAIN_RECOVERY_GATE.md) and
    [analysis/main-recovery-gate.json](analysis/main-recovery-gate.json); the
    vectors, native report and evidence regenerate byte for byte. Eight new host
@@ -3661,8 +3661,8 @@ deletion remain open.
 
 ## 2026-11-20 — watch-side OTA install path
 
-1. Reverse-engineered the OTA pipeline that receives a package over BLE (the
-   only bridge on this device) and decides whether it is safe to stage:
+1. Reverse-engineered the watch-side OTA pipeline that receives a package and
+   decides whether to stage it:
    - **Integrity** `0x70161360(crc, buffer, length)` is the standard reflected
      CRC32 (table at `0x709bc4fc` verified as the `0xedb88320` polynomial),
      seeded `0xffffffff`, chained in `0x4000`-byte chunks
@@ -3958,8 +3958,7 @@ Python suite — this is the first piece of OS code verified at **runtime** here
   The caller `0x80c00454` now shows the main boot is the unconditional final
   step and a failed verification does not auto-enter recovery; recovery is
   gated by the executed two-key-plus-power detector `0x80c00312` or a
-  pre-written `upgrade` record. With no USB (BLE-only bridge), those are the
-  only recovery entries; see
+  pre-written `upgrade` record in the analyzed boot manager. See
   [analysis/MAIN_RECOVERY_GATE.md](analysis/MAIN_RECOVERY_GATE.md). Next:
   execute the full boot manager and establish a recoverable OTA restore.
   Selected boot validation, selection, header/counter preparation/completion and
@@ -4682,3 +4681,16 @@ Python suite — this is the first piece of OS code verified at **runtime** here
     while system `qemu-system-riscv32` is not installed; full RV32 runtime
     execution of the 17 compiled ELFs remains pending a host with
     `qemu-system-riscv32`.
+
+# 2026-11-22 — Physical Bip 6 backup, recovery and signed boot feasibility
+
+- Observed the existing encrypted Bip 6 LE connection and Gadgetbridge GATT
+  channel through Android diagnostics. USB and ADB enumerated the phone. The
+  USB device list was identical while the watch was charging on its puck.
+- Reproduced the stock OTA 4.6.0.3 inventory and all six archive/image signature
+  checks. All 85 targeted audit, signature, boot/recovery and OTA tests passed.
+- Found Zepp's generic reinstall procedure for failed startup. Applicability
+  to A2435 and preservation of its device-specific data remain unverified.
+  The [feasibility record](analysis/RECOVERY_INPUTS.md) tracks the missing
+  physical backup, stock restore rehearsal and accepted standalone boot path.
+  No watch recovery, reset, install or flash write was performed.
