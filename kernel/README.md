@@ -26,6 +26,11 @@ This is bring-up scaffolding, not a Bip 6 image.
 | `sensor.c` / `sensor.h` | sensor sample delivery queue (`msgq`-backed) and 8-orientation 3D axis remap, host-testable |
 | `drivers/lsm6dso.c` | portable LSM6DSO 6-axis IMU SPI driver (probe, reset, ODR/FS, tagged FIFO drain -> `sensor.h`) |
 | `drivers/ztw622.c` | portable ZTW622 capacitive touch I2C driver (probe, 2-finger tracking, rotation, wake gestures -> `input.h`) |
+| `drivers/stk31e60.c` | portable STK31E60 ambient light sensor I2C driver (probe, gain/IT config, DRDY poll -> `sensor.h`) |
+| `drivers/charger.c` | portable CW6305 (`0x0B`) and AW32012 (`0x49`) I2C charger drivers with auto-probe and current encoding |
+| `drivers/motor.c` | portable GPIO haptic vibration motor driver with level durations and non-blocking pattern sequencer |
+| `fb.c` / `fb.h` | freestanding RGB565 2D framebuffer, dirty-rect tracking, geometric primitives and 5x7 ASCII font |
+| `drivers/icna3311.c` | portable Chipone ICNA3311 AMOLED MIPI DCS panel driver (9-variant probe, brightness/HBM, dirty-rect flush) |
 | `boards/qemu-virt/board.c` | UART, Goldfish RTC and SiFive Test syscon registration, PLIC context and timer configuration |
 | `sched.c` / `sched.h` | round-robin scheduler with cooperative and timer-driven switching |
 | `sync.c` / `sync.h` | non-recursive mutex (`kmutex`) and bounded FIFO message queue (`msgq`), host-testable |
@@ -80,6 +85,7 @@ This is bring-up scaffolding, not a Bip 6 image.
 - Bus abstractions (`bus.c`): named registries and validated wrappers for GPIO (`configure`/`read`/`write`/`set_irq`), I2C (`transfer`/`write`/`read`/`write_read`/`reset`) and SPI (`transfer`/`write_then_read`).
 - Watch input layer (`input.c`, `drivers/gpio_keys.c`): `input_post` (ISR-safe with auto-timestamping and drop accounting), `input_poll`/`input_wait`/`input_wait_for`, and a portable GPIO button debouncer/gesture engine supporting short click, double click, long press and simultaneous two-key combo events.
 - Sensor delivery and portable peripheral drivers (`sensor.c`, `drivers/lsm6dso.c`, `drivers/ztw622.c`): bounded `msgq`-backed `sensor_sample` queue with 8-orientation 3D remap; LSM6DSO SPI IMU driver (WHO_AM_I `0x6C`, soft-reset polling, dual-stream XL/GYRO config, 7-byte tagged FIFO drain with overrun recovery); ZTW622 I2C touch driver (`0x20`, chip ID `0xE622`, I2C bus-reset retry, 2-finger DOWN/MOVE/UP state tracking, 0°/90°/180°/270° rotation + 180° flip, large-object and wake-gesture dispatch to `input.h`).
+- Ambient light, battery charging, haptics and display stack (`drivers/stk31e60.c`, `drivers/charger.c`, `drivers/motor.c`, `fb.c`, `drivers/icna3311.c`): STK31E60 I2C ALS (`0x48`, ID `0xE0`, integer IT/gain/lux conversion); CW6305 (`0x0B`) & AW32012 (`0x49`) I2C chargers with runtime auto-probe, piecewise fast-charge current encoders and VBUS/poweroff controls; GPIO haptic motor with level durations and tick-driven patterns; RGB565 2D framebuffer with dirty-rect tracking and 5x7 scalable ASCII font; ICNA3311 MIPI DCS AMOLED driver (RDID1–3 9-variant check, page-0 unlock/lock brightness/dimming/HBM, even-aligned dirty-rect RAM flush).
 
 ## Build and test
 
@@ -97,6 +103,6 @@ targets needs a *system* QEMU (`qemu-system-riscv32`), not the user-mode
 
 ## Next foundations
 
-- Portable ALS (STK31E60), battery chargers (CW6305/AW32012), haptic motor and RGB565 framebuffer / ICNA3311 display panel driver.
-- Watch notification/Roadstr navigation state, SpellboundFit wire protocol, interactive console shell and UI compositor.
-- Bip 6 board support once the boot/recovery gate is resolved.
+- Watch notification/Roadstr navigation state store, SpellboundFit binary wire protocol and interactive console shell.
+- Watch UI compositor (watchface, notifications, Roadstr navigation, quick settings), power manager and Bip 6 board descriptor header.
+- Bip 6 device integration once the boot/recovery gate is resolved.

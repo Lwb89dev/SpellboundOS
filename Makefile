@@ -7,7 +7,7 @@ BUILD := build/qemu-virt
 CFLAGS := --target=riscv32-unknown-elf -march=rv32imac_zicsr -mabi=ilp32 -ffreestanding -fno-stack-protector -fno-pic -fno-builtin -Wall -Wextra -Werror -O2 -MMD -MP
 
 BOOT_OBJS := $(addprefix $(BUILD)/,start.o kstring.o board.o plic.o ringbuf.o uart16550.o rtc.o goldfish_rtc.o sifive_test.o console.o driver.o)
-OBJS := $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o main.o trap.o timer.o sched.o sync.o bus.o input.o gpio_keys.o sensor.o lsm6dso.o ztw622.o kmem.o)
+OBJS := $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o main.o trap.o timer.o sched.o sync.o bus.o input.o gpio_keys.o sensor.o lsm6dso.o ztw622.o stk31e60.o charger.o motor.o fb.o icna3311.o kmem.o)
 
 -include $(wildcard $(BUILD)/*.d)
 
@@ -60,6 +60,21 @@ $(BUILD)/lsm6dso.o: kernel/drivers/lsm6dso.c | $(BUILD)
 	$(CLANG) $(CFLAGS) -c $< -o $@
 
 $(BUILD)/ztw622.o: kernel/drivers/ztw622.c | $(BUILD)
+	$(CLANG) $(CFLAGS) -c $< -o $@
+
+$(BUILD)/stk31e60.o: kernel/drivers/stk31e60.c | $(BUILD)
+	$(CLANG) $(CFLAGS) -c $< -o $@
+
+$(BUILD)/charger.o: kernel/drivers/charger.c | $(BUILD)
+	$(CLANG) $(CFLAGS) -c $< -o $@
+
+$(BUILD)/motor.o: kernel/drivers/motor.c | $(BUILD)
+	$(CLANG) $(CFLAGS) -c $< -o $@
+
+$(BUILD)/fb.o: kernel/fb.c | $(BUILD)
+	$(CLANG) $(CFLAGS) -c $< -o $@
+
+$(BUILD)/icna3311.o: kernel/drivers/icna3311.c | $(BUILD)
 	$(CLANG) $(CFLAGS) -c $< -o $@
 
 $(BUILD)/trap_vector.o: kernel/arch/riscv/trap.S | $(BUILD)
@@ -140,6 +155,12 @@ $(BUILD)/sensors_test.o: tests/qemu_sensors.c | $(BUILD)
 $(BUILD)/sensors_test.elf: $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o trap.o timer.o sched.o sync.o bus.o input.o sensor.o lsm6dso.o ztw622.o sensors_test.o) kernel/boards/qemu-virt/linker.ld
 	$(LLD) -m elf32lriscv -T kernel/boards/qemu-virt/linker.ld -o $@ $(filter %.o,$^)
 
+$(BUILD)/display_test.o: tests/qemu_display.c | $(BUILD)
+	$(CLANG) $(CFLAGS) -c $< -o $@
+
+$(BUILD)/display_test.elf: $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o trap.o timer.o sched.o sync.o bus.o sensor.o stk31e60.o charger.o motor.o fb.o icna3311.o display_test.o) kernel/boards/qemu-virt/linker.ld
+	$(LLD) -m elf32lriscv -T kernel/boards/qemu-virt/linker.ld -o $@ $(filter %.o,$^)
+
 $(BUILD)/console.o: kernel/console.c | $(BUILD)
 	$(CLANG) $(CFLAGS) -c $< -o $@
 
@@ -158,7 +179,7 @@ $(BUILD)/spellbound.bin: $(BUILD)/spellbound.elf
 qemu: $(BUILD)/spellbound.elf
 	$(QEMU) -machine virt -bios none -nographic -monitor none -kernel $<
 
-test: all $(addprefix $(BUILD)/,scheduler_test.elf preemption_test.elf timer_test.elf heap_test.elf trap_test.elf plic_test.elf sync_test.elf rtc_test.elf input_test.elf sensors_test.elf)
+test: all $(addprefix $(BUILD)/,scheduler_test.elf preemption_test.elf timer_test.elf heap_test.elf trap_test.elf plic_test.elf sync_test.elf rtc_test.elf input_test.elf sensors_test.elf display_test.elf)
 	python3 tests/qemu_boot.py $(QEMU) $(BUILD)/spellbound.elf
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/scheduler_test.elf 'scheduler lifecycle'
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/preemption_test.elf 'timer preemption'
@@ -170,6 +191,7 @@ test: all $(addprefix $(BUILD)/,scheduler_test.elf preemption_test.elf timer_tes
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/rtc_test.elf 'Goldfish RTC and alarm'
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/input_test.elf 'bus, input and syscon'
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/sensors_test.elf 'LSM6DSO and ZTW622 drivers'
+	python3 tests/qemu_case.py $(QEMU) $(BUILD)/display_test.elf 'peripherals and display'
 
 test-host: | $(BUILD)
 	clang -std=c11 -Wall -Wextra -O2 -fsanitize=address,undefined -I kernel tests/test_kmem.c -o $(BUILD)/test_kmem
@@ -186,6 +208,8 @@ test-host: | $(BUILD)
 	$(BUILD)/test_bus_input
 	clang -std=c11 -Wall -Wextra -Werror -O2 -fsanitize=address,undefined -fno-sanitize-recover=all -I kernel tests/test_sensors_touch.c -o $(BUILD)/test_sensors_touch
 	$(BUILD)/test_sensors_touch
+	clang -std=c11 -Wall -Wextra -Werror -O2 -fsanitize=address,undefined -fno-sanitize-recover=all -I kernel tests/test_periph_display.c -o $(BUILD)/test_periph_display
+	$(BUILD)/test_periph_display
 
 clean:
 	rm -rf $(BUILD)

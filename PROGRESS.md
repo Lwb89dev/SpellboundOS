@@ -4423,3 +4423,37 @@ Python suite — this is the first piece of OS code verified at **runtime** here
   - RV32 cross-build (`clang` + NDK `ld.lld` + `llvm-objcopy`): clean `-Werror`
     build of `spellbound.elf`, `spellbound.bin` and all ten RV32 QEMU test ELFs
     (including new `sensors_test.elf`).
+
+# 2026-11-22 — SpellboundOS ALS, chargers, haptic motor, RGB565 framebuffer and ICNA3311 display
+
+- **STK31E60 ambient light sensor (`kernel/drivers/stk31e60.c`, `.h`)**:
+  independently authored I2C (`0x48`) driver over `bus.h` with 3-attempt
+  read/write retries, chip ID (`0x3E == 0xE0`) probe, trim/init sequence,
+  pure-integer integration time encoding (`16.6 ms -> 0x00A6`), gain scaling,
+  data-ready polling (`0x10` bit 7), cached fallback on read errors and
+  `SENSOR_ALS` publishing into `sensor.h`.
+- **CW6305 and AW32012 battery chargers (`kernel/drivers/charger.c`, `.h`)**:
+  unified I2C charger interface with runtime auto-probe (`0x0B` CW6305 then
+  `0x49` AW32012), write-on-change charge enable, 4-segment piecewise CW6305
+  (10–470 mA) and linear AW32012 fast/pre-charge current encoders, AW32012
+  unlock/relock VBUS reset (`0x69`/`0x21`), CW6305 WDT-clearing poweroff and
+  status/fault decoding.
+- **Haptic vibration motor (`kernel/drivers/motor.c`, `.h`)**: portable GPIO
+  haptic driver over `bus.h` with level duration mapping (1–8 ->
+  25/25/50/50/80/130/25/25 ms, default 1000 ms) and non-blocking tick-based
+  multi-step haptic pattern playback.
+- **RGB565 framebuffer & ICNA3311 AMOLED panel (`kernel/fb.c`, `.h`,
+  `kernel/drivers/icna3311.c`, `.h`)**: freestanding RGB565 2D graphics engine
+  (clipping, lines, rounded rects, circles, filled triangles, compact 5x7
+  scalable ASCII font and dirty-rectangle tracking) paired with an
+  independently authored ICNA3311 MIPI DCS driver (RDID1–3 `0xDA/0xDB/0xDC`
+  9-variant probe, DCS command-table player, page-0 unlock/lock
+  brightness/dimming/HBM, power control and even-aligned dirty-rect `0x2A/0x2B/0x2C`
+  flush).
+- **Verification**:
+  - Host sanitized suite (`make test-host` and `python3 -m unittest` across all
+    eight `test_*_host.py` modules): **8/8 pass** under Clang ASan+UBSan
+    (`-Werror -fno-sanitize-recover=all`).
+  - RV32 cross-build (`clang` + NDK `ld.lld` + `llvm-objcopy`): clean `-Werror`
+    build of `spellbound.elf`, `spellbound.bin` and all eleven RV32 QEMU test
+    ELFs (including new `display_test.elf`).
