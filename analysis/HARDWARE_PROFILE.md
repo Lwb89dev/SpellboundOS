@@ -51,6 +51,26 @@ image decodes as Andes RISC-V (AndeStar v5), consistent with these being an
 in-house multi-core SoC rather than an off-the-shelf MCU. Exact silicon, die and
 memory map still need corroboration.
 
+### Physical corroboration (A2435 FCC internal photos)
+
+The A2435 FCC internal-photos exhibit 8066732 (FCC ID 2AC8UA2435, Anhui Huami;
+public record, Long-Term Confidentiality `No`) shows the main board with its
+shield removed. The central application SoC is branded **`ZEPP`** with a faint
+sub-marking consistent with the `mhs0xx` platform code (not crisply legible).
+This corroborates the string-derived finding that the application processor is
+Zepp/Huami in-house silicon, not an off-the-shelf part: no third-party main SoC
+(Realtek, MediaTek, Nordic, Ambiq) is present in the AP position. A separate
+memory package sits beside it (top marking `...Ncron 244724` / `8311WA66F-1E`,
+consistent with the firmware's PSRAM/NAND references). The board silkscreen reads
+`MH301_MB_PCB_P1` (mainboard codename MH301); a `2450` RF module corroborates the
+RTL8763 2.4 GHz package; the battery is `PL362332` 3.87 V 340 mAh. Secondary
+BT/PMIC parts are present but not crisply legible. The photos are a public FCC
+record and are kept local, out of the repository.
+
+The practical consequence: because the AP is captive Zepp silicon, its mask-ROM
+boot policy and secure-boot fuse state are undocumented and cannot be read from
+public sources; see [ROOT_OF_TRUST_AND_BOOTLOADER_KEY.md](ROOT_OF_TRUST_AND_BOOTLOADER_KEY.md).
+
 ## Health capability surface
 
 Whole-word counts of a fixed metric vocabulary in the main image (occurrences,

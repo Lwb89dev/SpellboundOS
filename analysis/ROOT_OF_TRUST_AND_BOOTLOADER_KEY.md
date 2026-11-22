@@ -96,8 +96,10 @@ over-the-air path, with no wired fallback if the chain breaks
 
 The candidate identifiers are platform `mhs003`, application-processor candidate
 `AX861`, core Andes RISC-V (AndeStar v5), an in-house multi-core Huami/Zepp SoC
-([HARDWARE_PROFILE.md](HARDWARE_PROFILE.md)). A public review on 2026-11-22 found
-no teardown, chip identification, mask-ROM dump or published boot-mode for the
+([HARDWARE_PROFILE.md](HARDWARE_PROFILE.md)). The A2435 FCC internal photos
+(exhibit 8066732) visually confirm the application SoC is branded `ZEPP` captive
+silicon, not an off-the-shelf part. A public review on 2026-11-22 found no
+teardown, chip identification, mask-ROM dump or published boot-mode for the
 Bip 6 / A2435 / `mhs003` / `AX861`. The older Amazfit unlock and unbrick
 procedures (Pace, Stratos) target a different U-Boot/fastboot ARM platform and do
 not apply. Determining the mask ROM's policy therefore needs the physical device
