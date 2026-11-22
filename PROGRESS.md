@@ -4457,3 +4457,31 @@ Python suite — this is the first piece of OS code verified at **runtime** here
   - RV32 cross-build (`clang` + NDK `ld.lld` + `llvm-objcopy`): clean `-Werror`
     build of `spellbound.elf`, `spellbound.bin` and all eleven RV32 QEMU test
     ELFs (including new `display_test.elf`).
+
+# 2026-11-22 — SpellboundOS watch services, SpellboundFit wire protocol and interactive shell
+
+- **Watch notification, Roadstr navigation and call services (`kernel/notify.c`,
+  `.h`)**: added an interrupt-safe 16-item newest-first notification store with
+  unread accounting, oldest-entry eviction, up to 4 quick actions per
+  notification and action dispatch callbacks; plus a Roadstr turn-by-turn
+  navigation store (11 maneuvers, roundabout exit, distance, ETA, street/next
+  street, revision tracking) and incoming/active call state store.
+- **SpellboundFit v1 binary link protocol (`kernel/proto.c`, `.h`)**:
+  independently authored transport-agnostic framed protocol (`"SB"` magic,
+  version 1, type, LE16 sequence/length, up to 256-byte payload, reflected IEEE
+  CRC-32 trailer). Includes a streaming byte-by-byte decoder that recovers from
+  noise and CRC faults, watch-to-phone encoders (`NOTIFY_ACTION`, `TELEMETRY`),
+  and `proto_dispatch` wiring `PING`, `TIME_SYNC`, `NOTIFY_POST`,
+  `NOTIFY_DISMISS`, `NAV_UPDATE`, `NAV_CLEAR` and `CALL_STATE` into watch
+  services with `PONG`/`ACK`/`NACK` responses.
+- **Interactive console command shell (`kernel/shell.c`, `.h`)**: freestanding
+  line-editing shell with quoted-argument tokenization, custom command
+  registration and built-in `help`, `uptime`, `date`, `heap`, `drivers`,
+  `sensors`, `input`, `notify`, `nav`, `poweroff` and `reboot` commands.
+- **Verification**:
+  - Host sanitized suite (`make test-host` and `python3 -m unittest` across all
+    nine `test_*_host.py` modules): **9/9 pass** under Clang ASan+UBSan
+    (`-Werror -fno-sanitize-recover=all`).
+  - RV32 cross-build (`clang` + NDK `ld.lld` + `llvm-objcopy`): clean `-Werror`
+    build of `spellbound.elf`, `spellbound.bin` and all twelve RV32 QEMU test
+    ELFs (including new `shell_test.elf`).
