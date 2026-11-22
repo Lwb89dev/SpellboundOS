@@ -38,6 +38,8 @@ This is bring-up scaffolding, not a Bip 6 image.
 | `ui.c` / `ui.h` | watch UI compositor (watchface, notifications, Roadstr turn-by-turn navigation, call screen, quick settings) |
 | `kv.c` / `kv.h` | power-fail-safe append-only log key-value settings store with CRC-32 records and compaction |
 | `activity.c` / `activity.h` | pure-integer IMU pedometer (step counter + cadence filter) and wrist-raise wake detector |
+| `drivers/ag3335.c` | portable Airoha AG3335M GNSS PAIR command framer, `PAIR001` ACK and fixed-point NMEA RMC/GGA parser |
+| `watch_app.c` / `watch_app.h` | unified watch runtime loop integrating input, sensors, activity, proto, KV settings, power, haptics and UI |
 | `boards/bip6/board_desc.h` | read-only Bip 6 (`mhs003`) hardware inventory constants from verified analysis reports |
 | `boards/qemu-virt/board.c` | UART, Goldfish RTC and SiFive Test syscon registration, PLIC context and timer configuration |
 | `sched.c` / `sched.h` | round-robin scheduler with cooperative and timer-driven switching |
@@ -97,6 +99,7 @@ This is bring-up scaffolding, not a Bip 6 image.
 - Watch services, companion protocol and interactive shell (`notify.c`, `proto.c`, `shell.c`): 16-slot notification store with unread tracking, oldest-eviction and action callbacks; Roadstr turn-by-turn navigation and incoming call state stores; SpellboundFit v1 binary framed protocol (`"SB"`, IEEE CRC-32, streaming byte-by-byte decoder, dispatch for `PING`/`TIME_SYNC`/`NOTIFY_POST`/`NOTIFY_DISMISS`/`NAV_UPDATE`/`NAV_CLEAR`/`CALL_STATE` and watch-to-phone `NOTIFY_ACTION`/`TELEMETRY` encoders); extensible serial shell with line editing and quoted arguments.
 - Power manager, watch UI compositor and Bip 6 hardware map (`power.c`, `ui.c`, `boards/bip6/board_desc.h`): `ACTIVE`/`DIM`/`AOD`/`SLEEP` screen manager with pure-integer piecewise ALS auto-brightness curve (24..255 + HBM >= 245) applied to `icna3311`; RGB565 compositor rendering watchface (RTC clock, battery, unread badge, steps/HR, AOD), notifications with quick actions, Roadstr turn-by-turn navigation (geometric maneuver arrows + distance + street + ETA), incoming call screen and quick settings; read-only Bip 6 (`mhs003`) hardware inventory constants header.
 - Persistence, activity tracking and companion protocol interop (`kv.c`, `activity.c`, `companion/protocol.py`, `companion/roadstr.py`): CRC-32 append-only key-value settings store with torn-write recovery and compaction; pure-integer pedometer (3-step cadence confirmation, distance/calories) and wrist-raise wake detector; Python SpellboundFit v1 protocol codec + Roadstr English/Italian notification parser verified end-to-end against `kernel/proto.c`.
+- GNSS driver and unified watch runtime (`drivers/ag3335.c`, `watch_app.c`): Airoha AG3335M `$PAIR<code>[,<params>]*HH\r\n` framing with verified XOR checksums (`002`/`003`/`066`/`104`), `PAIR001` ACK parsing and fixed-point NMEA `$GxRMC`/`$GxGGA` microdegree position/altitude/speed decoding; `watch_app` vertical-slice orchestrator connecting input, sensors/activity, companion protocol, KV settings, power, haptic patterns, UI rendering, ICNA3311 dirty-rect flushes and periodic telemetry.
 
 ## Build and test
 
@@ -114,5 +117,5 @@ targets needs a *system* QEMU (`qemu-system-riscv32`), not the user-mode
 
 ## Next foundations
 
-- Portable AG3335 GNSS PAIR/NMEA driver (`drivers/ag3335.c`) and unified watch runtime loop (`watch_app.c`) integrating sensors, input, protocol, power, haptics and UI.
+- Android SpellboundFit companion app scaffolding (NotificationListenerService + Roadstr bridge + BLE GATT transport speaking SpellboundFit v1 binary protocol).
 - Bip 6 device bring-up once the signed boot, backup and recovery gate is resolved.

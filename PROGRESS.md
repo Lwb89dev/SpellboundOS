@@ -4543,3 +4543,27 @@ Python suite — this is the first piece of OS code verified at **runtime** here
   - RV32 cross-build (`clang` + NDK `ld.lld` + `llvm-objcopy`): clean `-Werror`
     build of `spellbound.elf`, `spellbound.bin` and all fourteen RV32 QEMU test
     ELFs (including new `activity_test.elf`).
+
+# 2026-11-22 — SpellboundOS AG3335 GNSS PAIR/NMEA driver and unified watch_app runtime
+
+- **AG3335M GNSS driver (`kernel/drivers/ag3335.c`, `.h`)**: independently
+  authored PAIR/NMEA protocol driver matching the verified `$PAIR<code>[,<params>]*HH\r\n`
+  framing and XOR checksums (`$PAIR002*38`, `$PAIR104,1*22`,
+  `$PAIR066,1,1,1,1,0,0*3A`), `PAIR001` acknowledgement parsing and pure-integer
+  fixed-point NMEA `$GxRMC`/`$GxGGA` parsing (signed microdegrees, satellites,
+  0.1-knot speed and decimeter altitude, zero FPU/stdio).
+- **Unified watch runtime (`kernel/watch_app.c`, `.h`)**: end-to-end vertical
+  slice orchestrator binding `input.h`, `sensor.h`, `activity.h`, `proto.h`,
+  `notify.h`, `kv.h`, `power.h`, `motor.h`, `ui.h` and `icna3311.h` into
+  `watch_app_init` / `watch_app_feed_proto` / `watch_app_step` /
+  `watch_app_save_settings` (draining input & sensors, triggering DND-aware
+  haptic patterns, waking on wrist-raise/alerts, forwarding UI quick actions as
+  `PROTO_NOTIFY_ACTION`, emitting periodic `PROTO_TELEMETRY`, flushing dirty
+  framebuffer regions to ICNA3311 and persisting settings in KV).
+- **Verification**:
+  - Host sanitized suite (`make test-host` and `python3 -m unittest` across all
+    twelve `test_*_host.py` modules plus `tests/test_companion_proto.py`):
+    **all pass** under Clang ASan+UBSan (`-Werror -fno-sanitize-recover=all`).
+  - RV32 cross-build (`clang` + NDK `ld.lld` + `llvm-objcopy`): clean `-Werror`
+    build of `spellbound.elf`, `spellbound.bin` and all fifteen RV32 QEMU test
+    ELFs (including new `watch_app_test.elf`).
