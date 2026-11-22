@@ -43,6 +43,33 @@ unit's service interfaces and fitted NAND remain unknown.
 [Amazfit product manual](https://support.amazfit.com/us/amazfit_bip_6/imgs/electronic_manual.pdf),
 [A2435 certification photos, FCC exhibit 8066732](https://device.report/m/81e1dd377853159e1a1edb0629cdded0572f030daedf582a1499f987476b4996.pdf).
 
+## Signed bootloader replacement
+
+The stock OTA 4.6.0.3 includes a bootloader update declaration and a signed
+bootloader 2.0.6. The archive's manifest and metadata identify that version,
+and the image signature verifies offline against the archived key. Separate
+single-byte changes in the outer wrapper, the executable body and the signed
+metadata each caused offline verification to fail. The analysis ELF starts at
+the executable body. The watch's bootloader version, the update's effect on
+this unit and the trust policy that admits a bootloader at startup remain
+unverified on the device.
+[Package manifest](PACKAGE_MANIFEST.md), [Signature report](ota-signatures.json).
+
+A fresh query of the public Amazfit catalog for Italy and device source
+10158337 offered no OTA from 4.6.0.3. A query from version `0` returned the
+same stock 4.6.0.3 package. These are catalog responses for those parameters.
+[OTA catalog query](../ota_check.py), [Stock package record](../README.md#ota-catalog).
+
+Amazfit documents the regular update through Zepp. Zepp also documents a
+generic system reinstall after a startup failure. The public sources reviewed
+give no A2435 procedure that confirms a bootloader-only reinstall or documents
+a signed development image. Ask Amazfit service whether it offers either for
+A2435 hardware 0.135.23.0, and whether its stock restore works when the
+bootloader itself fails to start.
+[Bip 6 user manual](https://support.amazfit.com/it/amazfit_bip_6/files/user-manual.pdf.pdf),
+[Zepp reinstall guide](https://docs.zepp.com/docs/guides/faq/re-install-system/),
+[Amazfit Italy support](https://it.amazfit.com/pages/contact).
+
 ## Evidence required before a flash attempt
 
 - **Recoverable physical backup.** Obtain a documented or hardware-verified

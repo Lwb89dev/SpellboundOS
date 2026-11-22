@@ -4694,3 +4694,30 @@ Python suite — this is the first piece of OS code verified at **runtime** here
   The [feasibility record](analysis/RECOVERY_INPUTS.md) tracks the missing
   physical backup, stock restore rehearsal and accepted standalone boot path.
   No watch recovery, reset, install or flash write was performed.
+
+# 2026-11-22 — Root of trust: boot-chain anchor located in the bootloader
+
+- Established where the signed boot chain is anchored. The verifier
+  `0x80c0e144` copies a fixed 64-byte constant from the bootloader body
+  (offset `0x37094` in `META/bootloader_sign.bin`) and runs ECDSA secp256k1
+  against it; the embedded key is on-curve and verifies the bootloader, main
+  firmware, recovery, factory-test and sensor-hub signatures. The anchor is a
+  constant inside the mutable bootloader image, **not** read from eFuse/OTP, so
+  controlling the bootloader controls every downstream check. The standalone-boot
+  obstacle reduces to one fact absent from the OTA: whether the on-die mask ROM
+  (stage 0) enforces a signature on the bootloader itself.
+- Recorded the on-chip secure-boot surface present in the bootloader (eFuse power
+  domain, unique die id, good-die check, write-protected boot partition) as
+  byte-scan evidence; presence is not proof of enforcement. Boot image sits on
+  `nandraw` offset 0, size 1 MiB; the device has no wired debug port, so any
+  write stays over-the-air.
+- Public review (2026-11-22) found no teardown, chip id, mask-ROM dump or boot
+  mode for Bip 6 / A2435 / `mhs003` / `AX861`; legacy Amazfit Pace/Stratos
+  unlock/unbrick target a different U-Boot/fastboot ARM platform and do not apply.
+- New: `analysis_scripts/bootloader_root_key.py`,
+  `analysis/ROOT_OF_TRUST_AND_BOOTLOADER_KEY.md`,
+  `analysis/root-of-trust-key.json`, `tests/test_bootloader_root_key.py`.
+- Verification: `python3 -m unittest tests.test_bootloader_root_key -v` **8/8
+  pass**; JSON regenerates byte-for-byte from the archive. No device was accessed.
+- Next work: identify the exact silicon from A2435 FCC internal photos to learn
+  whether the mask ROM's secure-boot policy is documented or derivable.
