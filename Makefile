@@ -7,7 +7,7 @@ BUILD := build/qemu-virt
 CFLAGS := --target=riscv32-unknown-elf -march=rv32imac_zicsr -mabi=ilp32 -ffreestanding -fno-stack-protector -fno-pic -fno-builtin -Wall -Wextra -Werror -O2 -MMD -MP
 
 BOOT_OBJS := $(addprefix $(BUILD)/,start.o kstring.o board.o plic.o ringbuf.o uart16550.o rtc.o goldfish_rtc.o sifive_test.o console.o driver.o)
-OBJS := $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o main.o trap.o timer.o sched.o sync.o bus.o input.o gpio_keys.o sensor.o lsm6dso.o ztw622.o stk31e60.o charger.o motor.o fb.o icna3311.o notify.o proto.o shell.o power.o ui.o kv.o activity.o ag3335.o watch_app.o kmem.o)
+OBJS := $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o main.o trap.o timer.o sched.o sync.o bus.o input.o gpio_keys.o sensor.o lsm6dso.o ztw622.o stk31e60.o charger.o motor.o fb.o icna3311.o notify.o proto.o shell.o power.o ui.o kv.o activity.o ag3335.o max8617x.o hr.o watch_app.o kmem.o)
 
 -include $(wildcard $(BUILD)/*.d)
 
@@ -99,6 +99,12 @@ $(BUILD)/activity.o: kernel/activity.c | $(BUILD)
 	$(CLANG) $(CFLAGS) -c $< -o $@
 
 $(BUILD)/ag3335.o: kernel/drivers/ag3335.c | $(BUILD)
+	$(CLANG) $(CFLAGS) -c $< -o $@
+
+$(BUILD)/max8617x.o: kernel/drivers/max8617x.c | $(BUILD)
+	$(CLANG) $(CFLAGS) -c $< -o $@
+
+$(BUILD)/hr.o: kernel/hr.c | $(BUILD)
 	$(CLANG) $(CFLAGS) -c $< -o $@
 
 $(BUILD)/watch_app.o: kernel/watch_app.c | $(BUILD)
@@ -212,6 +218,12 @@ $(BUILD)/watch_app_test.o: tests/qemu_watch_app.c | $(BUILD)
 $(BUILD)/watch_app_test.elf: $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o trap.o timer.o sched.o sync.o bus.o input.o sensor.o fb.o icna3311.o motor.o notify.o proto.o power.o ui.o kv.o activity.o ag3335.o watch_app.o watch_app_test.o) kernel/boards/qemu-virt/linker.ld
 	$(LLD) -m elf32lriscv -T kernel/boards/qemu-virt/linker.ld -o $@ $(filter %.o,$^)
 
+$(BUILD)/hr_test.o: tests/qemu_hr.c | $(BUILD)
+	$(CLANG) $(CFLAGS) -c $< -o $@
+
+$(BUILD)/hr_test.elf: $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o trap.o timer.o sched.o sync.o bus.o sensor.o max8617x.o hr.o hr_test.o) kernel/boards/qemu-virt/linker.ld
+	$(LLD) -m elf32lriscv -T kernel/boards/qemu-virt/linker.ld -o $@ $(filter %.o,$^)
+
 $(BUILD)/console.o: kernel/console.c | $(BUILD)
 	$(CLANG) $(CFLAGS) -c $< -o $@
 
@@ -230,7 +242,7 @@ $(BUILD)/spellbound.bin: $(BUILD)/spellbound.elf
 qemu: $(BUILD)/spellbound.elf
 	$(QEMU) -machine virt -bios none -nographic -monitor none -kernel $<
 
-test: all $(addprefix $(BUILD)/,scheduler_test.elf preemption_test.elf timer_test.elf heap_test.elf trap_test.elf plic_test.elf sync_test.elf rtc_test.elf input_test.elf sensors_test.elf display_test.elf shell_test.elf ui_test.elf activity_test.elf watch_app_test.elf)
+test: all $(addprefix $(BUILD)/,scheduler_test.elf preemption_test.elf timer_test.elf heap_test.elf trap_test.elf plic_test.elf sync_test.elf rtc_test.elf input_test.elf sensors_test.elf display_test.elf shell_test.elf ui_test.elf activity_test.elf watch_app_test.elf hr_test.elf)
 	python3 tests/qemu_boot.py $(QEMU) $(BUILD)/spellbound.elf
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/scheduler_test.elf 'scheduler lifecycle'
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/preemption_test.elf 'timer preemption'
@@ -247,6 +259,7 @@ test: all $(addprefix $(BUILD)/,scheduler_test.elf preemption_test.elf timer_tes
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/ui_test.elf 'watch UI and power manager'
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/activity_test.elf 'KV store and activity pipeline'
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/watch_app_test.elf 'GNSS and watch_app runtime'
+	python3 tests/qemu_case.py $(QEMU) $(BUILD)/hr_test.elf 'optical PPG and HR estimator'
 
 test-host: | $(BUILD)
 	clang -std=c11 -Wall -Wextra -O2 -fsanitize=address,undefined -I kernel tests/test_kmem.c -o $(BUILD)/test_kmem
@@ -273,6 +286,8 @@ test-host: | $(BUILD)
 	$(BUILD)/test_activity_kv
 	clang -std=c11 -Wall -Wextra -Werror -O2 -fsanitize=address,undefined -fno-sanitize-recover=all -I kernel tests/test_gnss_watch_app.c -o $(BUILD)/test_gnss_watch_app
 	$(BUILD)/test_gnss_watch_app
+	clang -std=c11 -Wall -Wextra -Werror -O2 -fsanitize=address,undefined -fno-sanitize-recover=all -I kernel tests/test_ppg_hr.c -lm -o $(BUILD)/test_ppg_hr
+	$(BUILD)/test_ppg_hr
 
 clean:
 	rm -rf $(BUILD)

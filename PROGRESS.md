@@ -4567,3 +4567,25 @@ Python suite — this is the first piece of OS code verified at **runtime** here
   - RV32 cross-build (`clang` + NDK `ld.lld` + `llvm-objcopy`): clean `-Werror`
     build of `spellbound.elf`, `spellbound.bin` and all fifteen RV32 QEMU test
     ELFs (including new `watch_app_test.elf`).
+
+# 2026-11-22 — SpellboundOS MAX8617X optical PPG driver and integer HR estimator
+
+- **MAX8617X optical PPG SPI driver (`kernel/drivers/max8617x.c`, `.h`)**:
+  independently authored SPI driver over `bus.h` implementing 10-bit FIFO count
+  (`((reg3 & 0xC0) << 2) | reg4`), `0x08 0x80` burst reads, big-endian 32-bit
+  word unpacking (`channel[30:29]`, `meas_id[28:24]`, sign-extended 20-bit
+  `value[19:0]`), frame-word alignment and overflow recovery touching registers
+  `0x09`/`0x0A`/`0x0D`.
+- **Pure-integer PPG heart-rate estimator (`kernel/hr.c`, `.h`)**: freestanding
+  no-FPU heart-rate estimator with slow DC baseline removal, low-pass
+  smoothing, adaptive peak detection with 40–220 BPM physiological bounds,
+  median-of-5 inter-beat-interval (IBI) filtering, 3-second no-beat flatline
+  invalidation and `SENSOR_HEART_RATE` publishing into `sensor.h`.
+- **Verification**:
+  - Host sanitized suite (`make test-host` and `python3 -m unittest` across all
+    thirteen `test_*_host.py` modules): **13/13 pass** under Clang ASan+UBSan
+    (`-Werror -fno-sanitize-recover=all`), verifying 60 / 75 / 140 BPM waveforms
+    within ±2 BPM and flatline invalidation.
+  - RV32 cross-build (`clang` + NDK `ld.lld` + `llvm-objcopy`): clean `-Werror`
+    build of `spellbound.elf`, `spellbound.bin` and all sixteen RV32 QEMU test
+    ELFs (including new `hr_test.elf`).

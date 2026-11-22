@@ -39,6 +39,8 @@ This is bring-up scaffolding, not a Bip 6 image.
 | `kv.c` / `kv.h` | power-fail-safe append-only log key-value settings store with CRC-32 records and compaction |
 | `activity.c` / `activity.h` | pure-integer IMU pedometer (step counter + cadence filter) and wrist-raise wake detector |
 | `drivers/ag3335.c` | portable Airoha AG3335M GNSS PAIR command framer, `PAIR001` ACK and fixed-point NMEA RMC/GGA parser |
+| `drivers/max8617x.c` | portable MAX8617X optical PPG/SpO2 SPI driver (10-bit FIFO count, big-endian 20-bit signed decode, recovery) |
+| `hr.c` / `hr.h` | pure-integer PPG heart-rate estimator (40..220 BPM, median-of-5 IBI filter, flatline drop -> `sensor.h`) |
 | `watch_app.c` / `watch_app.h` | unified watch runtime loop integrating input, sensors, activity, proto, KV settings, power, haptics and UI |
 | `boards/bip6/board_desc.h` | read-only Bip 6 (`mhs003`) hardware inventory constants from verified analysis reports |
 | `boards/qemu-virt/board.c` | UART, Goldfish RTC and SiFive Test syscon registration, PLIC context and timer configuration |
@@ -100,6 +102,7 @@ This is bring-up scaffolding, not a Bip 6 image.
 - Power manager, watch UI compositor and Bip 6 hardware map (`power.c`, `ui.c`, `boards/bip6/board_desc.h`): `ACTIVE`/`DIM`/`AOD`/`SLEEP` screen manager with pure-integer piecewise ALS auto-brightness curve (24..255 + HBM >= 245) applied to `icna3311`; RGB565 compositor rendering watchface (RTC clock, battery, unread badge, steps/HR, AOD), notifications with quick actions, Roadstr turn-by-turn navigation (geometric maneuver arrows + distance + street + ETA), incoming call screen and quick settings; read-only Bip 6 (`mhs003`) hardware inventory constants header.
 - Persistence, activity tracking and companion protocol interop (`kv.c`, `activity.c`, `companion/protocol.py`, `companion/roadstr.py`): CRC-32 append-only key-value settings store with torn-write recovery and compaction; pure-integer pedometer (3-step cadence confirmation, distance/calories) and wrist-raise wake detector; Python SpellboundFit v1 protocol codec + Roadstr English/Italian notification parser verified end-to-end against `kernel/proto.c`.
 - GNSS driver and unified watch runtime (`drivers/ag3335.c`, `watch_app.c`): Airoha AG3335M `$PAIR<code>[,<params>]*HH\r\n` framing with verified XOR checksums (`002`/`003`/`066`/`104`), `PAIR001` ACK parsing and fixed-point NMEA `$GxRMC`/`$GxGGA` microdegree position/altitude/speed decoding; `watch_app` vertical-slice orchestrator connecting input, sensors/activity, companion protocol, KV settings, power, haptic patterns, UI rendering, ICNA3311 dirty-rect flushes and periodic telemetry.
+- Optical PPG and heart-rate pipeline (`drivers/max8617x.c`, `hr.c`): MAX8617X SPI driver implementing 10-bit FIFO count (`((reg3 & 0xC0) << 2) | reg4`), `0x08 0x80` burst FIFO read, big-endian 20-bit signed sample decoding, frame alignment and overflow recovery (`0x09`/`0x0D`); pure-integer PPG heart-rate estimator (40–220 BPM, median-of-5 IBI filter, skin-contact flatline invalidation) publishing `SENSOR_HEART_RATE`.
 
 ## Build and test
 
