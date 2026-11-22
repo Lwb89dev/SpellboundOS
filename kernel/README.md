@@ -13,6 +13,7 @@ This is bring-up scaffolding, not a Bip 6 image.
 | `arch/riscv/timer.c` | CLINT machine timer (`mtime`/`mtimecmp`), periodic tick at a chosen Hz |
 | `arch/riscv/riscv.h` | CSR access helpers and bit definitions |
 | `console.c` / `console.h` | console formatting and byte I/O |
+| `kstring.c` | freestanding `memcpy`/`memmove`/`memset`/`memcmp` for RV32 |
 | `ringbuf.c` / `ringbuf.h` | bounded byte ring buffer, host-testable |
 | `drivers/uart16550.c` | interrupt-driven RX and polled TX for the QEMU virt UART |
 | `drivers/plic.c` | external interrupt registration, claim and completion |
@@ -22,6 +23,9 @@ This is bring-up scaffolding, not a Bip 6 image.
 | `bus.c` / `bus.h` | hardware-independent GPIO, I2C and SPI bus abstractions, host-testable |
 | `input.c` / `input.h` | watch input event queue (keys, touch, gestures) backed by `msgq`, host-testable |
 | `drivers/gpio_keys.c` | portable GPIO button debouncer and gesture state machine (click, long, double, combo) |
+| `sensor.c` / `sensor.h` | sensor sample delivery queue (`msgq`-backed) and 8-orientation 3D axis remap, host-testable |
+| `drivers/lsm6dso.c` | portable LSM6DSO 6-axis IMU SPI driver (probe, reset, ODR/FS, tagged FIFO drain -> `sensor.h`) |
+| `drivers/ztw622.c` | portable ZTW622 capacitive touch I2C driver (probe, 2-finger tracking, rotation, wake gestures -> `input.h`) |
 | `boards/qemu-virt/board.c` | UART, Goldfish RTC and SiFive Test syscon registration, PLIC context and timer configuration |
 | `sched.c` / `sched.h` | round-robin scheduler with cooperative and timer-driven switching |
 | `sync.c` / `sync.h` | non-recursive mutex (`kmutex`) and bounded FIFO message queue (`msgq`), host-testable |
@@ -75,6 +79,7 @@ This is bring-up scaffolding, not a Bip 6 image.
 - Device/driver registry: explicit name-based binding and retryable probe passes. QEMU virt registers and probes its console UART, Goldfish RTC and SiFive Test syscon (`0x00100000`, `board_poweroff`/`board_reboot`) before `kernel_main`. Registration is single-threaded and reset only clears registry bindings.
 - Bus abstractions (`bus.c`): named registries and validated wrappers for GPIO (`configure`/`read`/`write`/`set_irq`), I2C (`transfer`/`write`/`read`/`write_read`/`reset`) and SPI (`transfer`/`write_then_read`).
 - Watch input layer (`input.c`, `drivers/gpio_keys.c`): `input_post` (ISR-safe with auto-timestamping and drop accounting), `input_poll`/`input_wait`/`input_wait_for`, and a portable GPIO button debouncer/gesture engine supporting short click, double click, long press and simultaneous two-key combo events.
+- Sensor delivery and portable peripheral drivers (`sensor.c`, `drivers/lsm6dso.c`, `drivers/ztw622.c`): bounded `msgq`-backed `sensor_sample` queue with 8-orientation 3D remap; LSM6DSO SPI IMU driver (WHO_AM_I `0x6C`, soft-reset polling, dual-stream XL/GYRO config, 7-byte tagged FIFO drain with overrun recovery); ZTW622 I2C touch driver (`0x20`, chip ID `0xE622`, I2C bus-reset retry, 2-finger DOWN/MOVE/UP state tracking, 0°/90°/180°/270° rotation + 180° flip, large-object and wake-gesture dispatch to `input.h`).
 
 ## Build and test
 
@@ -92,5 +97,6 @@ targets needs a *system* QEMU (`qemu-system-riscv32`), not the user-mode
 
 ## Next foundations
 
-- Portable peripheral drivers on top of `bus.h` (LSM6DSO IMU over SPI, ZTW622 touch over I2C) and sensor sample delivery.
-- Interactive console command shell and Bip 6 board scaffolding once the boot/recovery gate is resolved.
+- Portable ALS (STK31E60), battery chargers (CW6305/AW32012), haptic motor and RGB565 framebuffer / ICNA3311 display panel driver.
+- Watch notification/Roadstr navigation state, SpellboundFit wire protocol, interactive console shell and UI compositor.
+- Bip 6 board support once the boot/recovery gate is resolved.

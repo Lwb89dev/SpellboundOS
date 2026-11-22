@@ -4391,3 +4391,35 @@ Python suite — this is the first piece of OS code verified at **runtime** here
     build of `spellbound.elf`, `spellbound.bin` and all nine RV32 QEMU test
     ELFs (including new `input_test.elf`). Runtime QEMU execution still awaits
     a host with `qemu-system-riscv32`.
+
+# 2026-11-22 — SpellboundOS sensor delivery, LSM6DSO IMU (SPI) and ZTW622 touch (I2C)
+
+- **Sensor sample delivery (`kernel/sensor.c`, `kernel/sensor.h`)**: added an
+  ISR-safe `msgq`-backed `sensor_sample` queue (`sensor_init`, `sensor_post`
+  with automatic tick stamping and drop accounting, `sensor_poll`,
+  `sensor_wait`, `sensor_wait_for`) plus `sensor_remap_xyz` implementing all
+  eight orthogonal 3D board orientations and wrist-flip negation with
+  overflow-safe `int16_t` clamping.
+- **LSM6DSO 6-axis IMU driver (`kernel/drivers/lsm6dso.c`,
+  `kernel/drivers/lsm6dso.h`)**: independently authored 4-wire SPI driver over
+  `bus.h` implementing `CTRL3_C` software-reset polling, 3-attempt `WHO_AM_I`
+  (`0x6C`) probing, I3C disable, BDU/IF_INC, accelerometer and gyroscope
+  ODR/full-scale/power-mode configuration, continuous FIFO batching, direct raw
+  axis reads, and chunked 7-byte tagged FIFO draining (`XL_NC` tag 2, `GYRO_NC`
+  tag 1) with calibration offsets, orientation remap, overrun recovery and
+  delivery into `sensor.h`.
+- **ZTW622 touch controller driver (`kernel/drivers/ztw622.c`,
+  `kernel/drivers/ztw622.h`)**: independently authored 16-bit LE I2C driver
+  (`0x20`) over `bus.h` with automatic I2C bus-reset retry, optional GPIO
+  hardware reset, `0x01F8`/`0xC000`/`0x09D2`/`0x0FF8` probe sequence with
+  `0x0120` fallback checking chip ID `0xE622`, firmware version and resolution
+  reads, active/nap config, 3-attempt interrupt clearing (`0x0003`), 2-finger
+  DOWN/MOVE/UP slot tracking with 0°/90°/180°/270° rotation and 180° flip,
+  large-object (`0x0010`) and wake-gesture (`0x0126`) dispatch to `input.h`.
+- **Verification**:
+  - Host sanitized suite (`make test-host` and `python3 -m unittest` across all
+    seven `test_*_host.py` modules): **7/7 pass** under Clang ASan+UBSan
+    (`-Werror -fno-sanitize-recover=all`).
+  - RV32 cross-build (`clang` + NDK `ld.lld` + `llvm-objcopy`): clean `-Werror`
+    build of `spellbound.elf`, `spellbound.bin` and all ten RV32 QEMU test ELFs
+    (including new `sensors_test.elf`).
