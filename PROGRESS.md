@@ -4661,3 +4661,24 @@ Python suite — this is the first piece of OS code verified at **runtime** here
     (handshake, encrypted notification, replay rejection, encrypted Roadstr
     navigation) against the ASan+UBSan-instrumented `kernel/crypto.c` +
     `kernel/secure_link.c` + `kernel/proto.c` watch binary.
+
+# 2026-11-22 — SpellboundFit signed Android APK packaging and BLE scan/connect UI
+
+- **Offline Android APK builder (`android/SpellboundFit/build_apk.py`, `make android-apk`)**:
+  compiles resources (`aapt2 compile`/`link`), Java 17 bytecode (`javac -Xlint:all -Werror`),
+  Dalvik `classes.dex` (`d8 --min-api 26`), aligns (`zipalign -p 4`) and signs
+  (`apksigner sign` + `apksigner verify --verbose`) an installable
+  `build/android/SpellboundFit-debug.apk` (`dev.spellboundfit`, minSdk 26,
+  targetSdk 35) directly against Android SDK 35 and build-tools 36.0.0.
+- **Companion UI BLE scan & PSK persistence (`MainActivity.java`)**: added
+  `BluetoothLeScanner` discovery for Spellbound/Bip devices, `SharedPreferences`
+  persistence for target BLE MAC and 32-byte hex PSK, encrypted connect/disconnect
+  controls and incoming-call test sender.
+- **Verification**:
+  - `make android-apk` and `python3 -m unittest tests.test_android_companion -v`:
+    **2/2 pass** (full `javac` compile + JVM unit suite + live Java ↔ C
+    encrypted session + signed APK packaging & `apksigner verify` + `aapt2 dump badging`).
+  - Note: `/usr/bin/qemu-riscv32-static` (user-mode) is present on this host,
+    while system `qemu-system-riscv32` is not installed; full RV32 runtime
+    execution of the 17 compiled ELFs remains pending a host with
+    `qemu-system-riscv32`.

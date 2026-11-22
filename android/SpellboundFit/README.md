@@ -11,9 +11,16 @@ Independently authored Android companion app for SpellboundOS (minSdk 26, compil
 - `dev.spellboundfit.service.WatchNotificationListener`: `NotificationListenerService` forwarding phone alerts and Roadstr navigation instructions to the watch and executing watch-triggered `PendingIntent` actions.
 - `dev.spellboundfit.MainActivity`: Companion dashboard for status, telemetry, notification-bridge setup and test senders.
 
-## Verification
+## Build & Verification
 
-Open `android/SpellboundFit/` in Android Studio or run the automated compile + JVM unit + live Java ↔ C encrypted interop test from the repo root:
+Build a signed, zipaligned debug APK completely offline (requires JDK 17+ and Android SDK 35 + build-tools):
+
+```sh
+make android-apk
+adb install -r build/android/SpellboundFit-debug.apk
+```
+
+Or run the automated compile, JVM unit, live Java ↔ C encrypted interop and APK packaging/signature verification test from the repo root:
 
 ```sh
 python3 -m unittest tests.test_android_companion -v

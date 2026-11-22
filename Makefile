@@ -11,7 +11,7 @@ OBJS := $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o main.o trap.o timer.o s
 
 -include $(wildcard $(BUILD)/*.d)
 
-.PHONY: all qemu test test-host sim-demo clean
+.PHONY: all qemu test test-host sim-demo android-apk clean
 all: $(BUILD)/spellbound.elf $(BUILD)/spellbound.bin
 
 $(BUILD):
@@ -310,5 +310,8 @@ test-host: | $(BUILD)
 sim-demo:
 	python3 -m companion.cli --demo-dir build/sim-screenshots
 
+android-apk:
+	python3 android/SpellboundFit/build_apk.py --out build/android/SpellboundFit-debug.apk
+
 clean:
-	rm -rf $(BUILD) build/host build/sim-screenshots
+	rm -rf $(BUILD) build/host build/sim-screenshots build/android

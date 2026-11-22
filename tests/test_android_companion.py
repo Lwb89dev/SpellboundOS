@@ -92,6 +92,26 @@ class AndroidCompanionTest(unittest.TestCase):
                     except OSError:
                         pass
 
+    def test_build_and_verify_signed_android_apk(self):
+        if shutil.which('javac') is None or shutil.which('keytool') is None:
+            self.skipTest('JDK (javac/keytool) not available in PATH')
+        if not os.path.exists(ANDROID_JAR):
+            self.skipTest(f'Android SDK jar not found at {ANDROID_JAR}')
+
+        root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        script = os.path.join(root, 'android', 'SpellboundFit', 'build_apk.py')
+        with tempfile.TemporaryDirectory() as tmp:
+            apk_path = os.path.join(tmp, 'SpellboundFit-debug.apk')
+            res = subprocess.run(
+                ['python3', script, '--out', apk_path],
+                capture_output=True, text=True)
+            self.assertEqual(res.returncode, 0, res.stdout + res.stderr)
+            self.assertTrue(os.path.exists(apk_path))
+            self.assertGreater(os.path.getsize(apk_path), 4000)
+            self.assertIn("name='dev.spellboundfit'", res.stdout)
+            self.assertIn("minSdkVersion:'26'", res.stdout)
+            self.assertIn("targetSdkVersion:'35'", res.stdout)
+
 
 if __name__ == '__main__':
     unittest.main()
