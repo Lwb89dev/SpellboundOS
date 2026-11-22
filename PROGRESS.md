@@ -4632,3 +4632,32 @@ Python suite — this is the first piece of OS code verified at **runtime** here
     with `-Werror` and verifies encrypted PING/PONG, notification + quick-action
     round-trip, Roadstr auto-promotion, walking pedometer + ALS HBM + telemetry,
     live shell commands and 6 valid rendered 390×450 PNG screenshots.
+
+# 2026-11-22 — SpellboundFit Android companion app (Protocol, ChaCha20-Poly1305 SecureLink, Roadstr bridge & BLE GATT)
+
+- **Android Gradle project (`android/SpellboundFit/`)**: independently authored
+  Android companion application targeting `compileSdk`/`targetSdk` 35 (`minSdk`
+  26, Java 17):
+  - `dev.spellboundfit.protocol.Protocol`: byte-exact SpellboundFit v1 binary
+    framed codec (`"SB"`, IEEE CRC-32, `StreamDecoder`) matching `kernel/proto.c`;
+  - `dev.spellboundfit.protocol.SecureLink`: pure-Java RFC 8439
+    ChaCha20-Poly1305 AEAD + HKDF-SHA256 mutual-proof handshake and monotonic
+    anti-replay matching `kernel/secure_link.c`;
+  - `dev.spellboundfit.roadstr.RoadstrParser`: English and Italian Roadstr
+    turn-by-turn notification parser;
+  - `dev.spellboundfit.ble.BleWatchClient`: BLE GATT client with MTU
+    negotiation, CCCD subscription, encrypted handshake and telemetry/action
+    callbacks;
+  - `dev.spellboundfit.service.WatchNotificationListener`: Android
+    `NotificationListenerService` forwarding phone alerts and Roadstr guidance
+    to the watch and triggering `PendingIntent` actions on watch replies;
+  - `dev.spellboundfit.MainActivity`: status/telemetry dashboard with
+    notification-listener permission shortcut, time sync and test senders.
+- **Verification**:
+  - `python3 -m unittest tests.test_android_companion -v`: compiles **all**
+    Android app and test Java sources cleanly with `javac -Xlint:all -Werror`
+    against `android-35/android.jar`, passes the pure-JVM RFC 8439 / CRC-32 /
+    Roadstr suite, and passes a **live bidirectional Java ↔ C encrypted session**
+    (handshake, encrypted notification, replay rejection, encrypted Roadstr
+    navigation) against the ASan+UBSan-instrumented `kernel/crypto.c` +
+    `kernel/secure_link.c` + `kernel/proto.c` watch binary.

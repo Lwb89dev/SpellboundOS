@@ -124,5 +124,5 @@ targets needs a *system* QEMU (`qemu-system-riscv32`), not the user-mode
 
 ## Next foundations
 
-- Android SpellboundFit companion app scaffolding (NotificationListenerService + Roadstr bridge + BLE GATT transport speaking SpellboundFit v1 binary protocol).
-- Bip 6 device bring-up once the signed boot, backup and recovery gate is resolved.
+- Execute the 17 RV32 QEMU test ELFs on a host with `qemu-system-riscv32` and integrate Android Gradle APK packaging/device testing.
+- Bip 6 physical hardware bring-up once the signed boot, backup and recovery gate in `GOAL.md` is resolved.
