@@ -36,6 +36,8 @@ This is bring-up scaffolding, not a Bip 6 image.
 | `shell.c` / `shell.h` | freestanding interactive serial command shell (`help`, `uptime`, `date`, `heap`, `notify`, `nav`, `poweroff`, `reboot`) |
 | `power.c` / `power.h` | screen power state machine (`ACTIVE`/`DIM`/`AOD`/`SLEEP`), ALS auto-brightness curve and ICNA3311 sync |
 | `ui.c` / `ui.h` | watch UI compositor (watchface, notifications, Roadstr turn-by-turn navigation, call screen, quick settings) |
+| `kv.c` / `kv.h` | power-fail-safe append-only log key-value settings store with CRC-32 records and compaction |
+| `activity.c` / `activity.h` | pure-integer IMU pedometer (step counter + cadence filter) and wrist-raise wake detector |
 | `boards/bip6/board_desc.h` | read-only Bip 6 (`mhs003`) hardware inventory constants from verified analysis reports |
 | `boards/qemu-virt/board.c` | UART, Goldfish RTC and SiFive Test syscon registration, PLIC context and timer configuration |
 | `sched.c` / `sched.h` | round-robin scheduler with cooperative and timer-driven switching |
@@ -94,6 +96,7 @@ This is bring-up scaffolding, not a Bip 6 image.
 - Ambient light, battery charging, haptics and display stack (`drivers/stk31e60.c`, `drivers/charger.c`, `drivers/motor.c`, `fb.c`, `drivers/icna3311.c`): STK31E60 I2C ALS (`0x48`, ID `0xE0`, integer IT/gain/lux conversion); CW6305 (`0x0B`) & AW32012 (`0x49`) I2C chargers with runtime auto-probe, piecewise fast-charge current encoders and VBUS/poweroff controls; GPIO haptic motor with level durations and tick-driven patterns; RGB565 2D framebuffer with dirty-rect tracking and 5x7 scalable ASCII font; ICNA3311 MIPI DCS AMOLED driver (RDID1–3 9-variant check, page-0 unlock/lock brightness/dimming/HBM, even-aligned dirty-rect RAM flush).
 - Watch services, companion protocol and interactive shell (`notify.c`, `proto.c`, `shell.c`): 16-slot notification store with unread tracking, oldest-eviction and action callbacks; Roadstr turn-by-turn navigation and incoming call state stores; SpellboundFit v1 binary framed protocol (`"SB"`, IEEE CRC-32, streaming byte-by-byte decoder, dispatch for `PING`/`TIME_SYNC`/`NOTIFY_POST`/`NOTIFY_DISMISS`/`NAV_UPDATE`/`NAV_CLEAR`/`CALL_STATE` and watch-to-phone `NOTIFY_ACTION`/`TELEMETRY` encoders); extensible serial shell with line editing and quoted arguments.
 - Power manager, watch UI compositor and Bip 6 hardware map (`power.c`, `ui.c`, `boards/bip6/board_desc.h`): `ACTIVE`/`DIM`/`AOD`/`SLEEP` screen manager with pure-integer piecewise ALS auto-brightness curve (24..255 + HBM >= 245) applied to `icna3311`; RGB565 compositor rendering watchface (RTC clock, battery, unread badge, steps/HR, AOD), notifications with quick actions, Roadstr turn-by-turn navigation (geometric maneuver arrows + distance + street + ETA), incoming call screen and quick settings; read-only Bip 6 (`mhs003`) hardware inventory constants header.
+- Persistence, activity tracking and companion protocol interop (`kv.c`, `activity.c`, `companion/protocol.py`, `companion/roadstr.py`): CRC-32 append-only key-value settings store with torn-write recovery and compaction; pure-integer pedometer (3-step cadence confirmation, distance/calories) and wrist-raise wake detector; Python SpellboundFit v1 protocol codec + Roadstr English/Italian notification parser verified end-to-end against `kernel/proto.c`.
 
 ## Build and test
 
@@ -111,6 +114,5 @@ targets needs a *system* QEMU (`qemu-system-riscv32`), not the user-mode
 
 ## Next foundations
 
-- Companion-side SpellboundFit Android/Python protocol client & simulator bridging live notifications and Roadstr navigation over the v1 binary protocol.
-- Persistent key-value settings store and step-counter/activity pipeline on top of `sensor.h`.
+- Portable AG3335 GNSS PAIR/NMEA driver (`drivers/ag3335.c`) and unified watch runtime loop (`watch_app.c`) integrating sensors, input, protocol, power, haptics and UI.
 - Bip 6 device bring-up once the signed boot, backup and recovery gate is resolved.

@@ -4517,3 +4517,29 @@ Python suite — this is the first piece of OS code verified at **runtime** here
   - RV32 cross-build (`clang` + NDK `ld.lld` + `llvm-objcopy`): clean `-Werror`
     build of `spellbound.elf`, `spellbound.bin` and all thirteen RV32 QEMU test
     ELFs (including new `ui_test.elf`).
+
+# 2026-11-22 — SpellboundOS KV settings store, IMU activity pipeline and Python companion protocol bridge
+
+- **Power-fail-safe KV store (`kernel/kv.c`, `.h`)**: added an append-only
+  log-structured key-value store with `"SK"` record headers, IEEE CRC-32
+  integrity checks, tombstone deletion, clean torn-tail recovery on remount,
+  scratch-buffered log compaction (`kv_compact`) and `u32` helpers.
+- **IMU activity & wrist-wake pipeline (`kernel/activity.c`, `.h`)**: added a
+  pure-integer (`isqrt_u32`, no libgcc/FPU) pedometer with exponential baseline
+  tracking, hysteresis peak detection and 3-step cadence confirmation (rejecting
+  isolated jolts), distance/calorie estimators, and a cooldown-gated wrist-raise
+  wake detector.
+- **Python companion protocol & Roadstr bridge (`companion/protocol.py`,
+  `companion/roadstr.py`)**: implemented the companion-side SpellboundFit v1
+  binary framed codec (`StreamDecoder`, `PING`/`TIME_SYNC`/`NOTIFY_POST`/
+  `NOTIFY_DISMISS`/`NAV_UPDATE`/`NAV_CLEAR`/`CALL_STATE`/`NOTIFY_ACTION`/
+  `TELEMETRY`) plus an English/Italian Roadstr turn-by-turn notification parser.
+- **Verification**:
+  - Host sanitized suite (`make test-host` and `python3 -m unittest` across all
+    eleven `test_*_host.py` modules plus `tests/test_companion_proto.py`):
+    **all pass** under Clang ASan+UBSan (`-Werror -fno-sanitize-recover=all`),
+    including a live Python -> C (`kernel/proto.c` + `kernel/notify.c`) ->
+    Python binary wire interoperability round-trip.
+  - RV32 cross-build (`clang` + NDK `ld.lld` + `llvm-objcopy`): clean `-Werror`
+    build of `spellbound.elf`, `spellbound.bin` and all fourteen RV32 QEMU test
+    ELFs (including new `activity_test.elf`).

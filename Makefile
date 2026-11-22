@@ -7,7 +7,7 @@ BUILD := build/qemu-virt
 CFLAGS := --target=riscv32-unknown-elf -march=rv32imac_zicsr -mabi=ilp32 -ffreestanding -fno-stack-protector -fno-pic -fno-builtin -Wall -Wextra -Werror -O2 -MMD -MP
 
 BOOT_OBJS := $(addprefix $(BUILD)/,start.o kstring.o board.o plic.o ringbuf.o uart16550.o rtc.o goldfish_rtc.o sifive_test.o console.o driver.o)
-OBJS := $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o main.o trap.o timer.o sched.o sync.o bus.o input.o gpio_keys.o sensor.o lsm6dso.o ztw622.o stk31e60.o charger.o motor.o fb.o icna3311.o notify.o proto.o shell.o power.o ui.o kmem.o)
+OBJS := $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o main.o trap.o timer.o sched.o sync.o bus.o input.o gpio_keys.o sensor.o lsm6dso.o ztw622.o stk31e60.o charger.o motor.o fb.o icna3311.o notify.o proto.o shell.o power.o ui.o kv.o activity.o kmem.o)
 
 -include $(wildcard $(BUILD)/*.d)
 
@@ -90,6 +90,12 @@ $(BUILD)/power.o: kernel/power.c | $(BUILD)
 	$(CLANG) $(CFLAGS) -c $< -o $@
 
 $(BUILD)/ui.o: kernel/ui.c | $(BUILD)
+	$(CLANG) $(CFLAGS) -c $< -o $@
+
+$(BUILD)/kv.o: kernel/kv.c | $(BUILD)
+	$(CLANG) $(CFLAGS) -c $< -o $@
+
+$(BUILD)/activity.o: kernel/activity.c | $(BUILD)
 	$(CLANG) $(CFLAGS) -c $< -o $@
 
 $(BUILD)/trap_vector.o: kernel/arch/riscv/trap.S | $(BUILD)
@@ -188,6 +194,12 @@ $(BUILD)/ui_test.o: tests/qemu_ui.c | $(BUILD)
 $(BUILD)/ui_test.elf: $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o trap.o timer.o sched.o sync.o input.o fb.o icna3311.o notify.o proto.o power.o ui.o ui_test.o) kernel/boards/qemu-virt/linker.ld
 	$(LLD) -m elf32lriscv -T kernel/boards/qemu-virt/linker.ld -o $@ $(filter %.o,$^)
 
+$(BUILD)/activity_test.o: tests/qemu_activity.c | $(BUILD)
+	$(CLANG) $(CFLAGS) -c $< -o $@
+
+$(BUILD)/activity_test.elf: $(BOOT_OBJS) $(addprefix $(BUILD)/,trap_vector.o trap.o timer.o sched.o sync.o sensor.o notify.o proto.o kv.o activity.o activity_test.o) kernel/boards/qemu-virt/linker.ld
+	$(LLD) -m elf32lriscv -T kernel/boards/qemu-virt/linker.ld -o $@ $(filter %.o,$^)
+
 $(BUILD)/console.o: kernel/console.c | $(BUILD)
 	$(CLANG) $(CFLAGS) -c $< -o $@
 
@@ -206,7 +218,7 @@ $(BUILD)/spellbound.bin: $(BUILD)/spellbound.elf
 qemu: $(BUILD)/spellbound.elf
 	$(QEMU) -machine virt -bios none -nographic -monitor none -kernel $<
 
-test: all $(addprefix $(BUILD)/,scheduler_test.elf preemption_test.elf timer_test.elf heap_test.elf trap_test.elf plic_test.elf sync_test.elf rtc_test.elf input_test.elf sensors_test.elf display_test.elf shell_test.elf ui_test.elf)
+test: all $(addprefix $(BUILD)/,scheduler_test.elf preemption_test.elf timer_test.elf heap_test.elf trap_test.elf plic_test.elf sync_test.elf rtc_test.elf input_test.elf sensors_test.elf display_test.elf shell_test.elf ui_test.elf activity_test.elf)
 	python3 tests/qemu_boot.py $(QEMU) $(BUILD)/spellbound.elf
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/scheduler_test.elf 'scheduler lifecycle'
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/preemption_test.elf 'timer preemption'
@@ -221,6 +233,7 @@ test: all $(addprefix $(BUILD)/,scheduler_test.elf preemption_test.elf timer_tes
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/display_test.elf 'peripherals and display'
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/shell_test.elf 'services, proto and shell'
 	python3 tests/qemu_case.py $(QEMU) $(BUILD)/ui_test.elf 'watch UI and power manager'
+	python3 tests/qemu_case.py $(QEMU) $(BUILD)/activity_test.elf 'KV store and activity pipeline'
 
 test-host: | $(BUILD)
 	clang -std=c11 -Wall -Wextra -O2 -fsanitize=address,undefined -I kernel tests/test_kmem.c -o $(BUILD)/test_kmem
@@ -243,6 +256,8 @@ test-host: | $(BUILD)
 	$(BUILD)/test_services_shell
 	clang -std=c11 -Wall -Wextra -Werror -O2 -fsanitize=address,undefined -fno-sanitize-recover=all -I kernel tests/test_ui_power.c -o $(BUILD)/test_ui_power
 	$(BUILD)/test_ui_power
+	clang -std=c11 -Wall -Wextra -Werror -O2 -fsanitize=address,undefined -fno-sanitize-recover=all -I kernel tests/test_activity_kv.c -o $(BUILD)/test_activity_kv
+	$(BUILD)/test_activity_kv
 
 clean:
 	rm -rf $(BUILD)
