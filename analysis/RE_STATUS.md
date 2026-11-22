@@ -129,6 +129,7 @@ Latest detailed findings:
 - [Native original registry population, owner failure paths and lazy EFTL geometry](STORAGE_REGISTRY_AND_LAZY_EFTL.md)
 - [Native EFTL logical translation and generic/alternate page-read routes](EFTL_TRANSLATION_AND_PAGE_READ.md)
 - [Root of trust: the embedded bootloader key and the mask-ROM question](ROOT_OF_TRUST_AND_BOOTLOADER_KEY.md)
+- [Fault-injection feasibility against the bootloader signature](FAULT_INJECTION_FEASIBILITY.md)
 - [Native EFTL OOB checksum, mapping reconstruction, flags and retry signal](EFTL_OOB_MAPPING_RESUME.md)
 - [Connected EFTL initializer, supplied geometry collection, heap lifetime and format/retry](EFTL_INITIALIZATION_AND_GEOMETRY.md)
 - [Native NAND partition lookup, driver ioctls/read dispatch and EFTL OOB serialization](NAND_PARTITIONS_AND_OOB.md)

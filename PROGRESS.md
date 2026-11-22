@@ -4721,3 +4721,26 @@ Python suite — this is the first piece of OS code verified at **runtime** here
   pass**; JSON regenerates byte-for-byte from the archive. No device was accessed.
 - Next work: identify the exact silicon from A2435 FCC internal photos to learn
   whether the mask ROM's secure-boot policy is documented or derivable.
+
+# 2026-11-22 — A2435 silicon confirmed; fault-injection feasibility documented
+
+- Read the A2435 FCC internal photos (exhibit 8066732, FCC ID 2AC8UA2435;
+  public, long-term confidentiality No). Main board with shield removed shows the
+  application SoC branded **ZEPP** (faint sub-marking consistent with `mhs0xx`),
+  no third-party main SoC; board codename `MH301_MB_PCB_P1`; `2450` RF module;
+  separate memory package; `PL362332` 340 mAh battery. Recorded the corroboration
+  in `HARDWARE_PROFILE.md` and updated the root-of-trust note. Images kept local
+  in `firmware/fcc/` (gitignored); not committed. Commit 20dbb3d.
+- Confirmed consequence: the AP is captive Zepp silicon, so its mask-ROM boot
+  policy and secure-boot fuse state are undocumented and cannot be read from
+  public sources. A custom bootloader therefore depends on a hardware attack.
+- Documented fault-injection feasibility in `FAULT_INJECTION_FEASIBILITY.md`:
+  the target (glitch the mask-ROM signature check to accept a project-signed
+  bootloader), voltage FI vs EMFI, the A2435-specific prerequisite chain (NAND
+  chip-off backup and rewrite, shield removal, core-rail/reset/trigger access,
+  boot-timed trigger, automated sweep), equipment, and an honest verdict: the
+  only lever that could admit a custom bootloader, but expert-level, destructive,
+  low-probability on undocumented captive silicon with one unit and no wired port
+  — out of scope for the project's goals. Grounded in NCC Group (MediaTek
+  bootROM), Synacktiv VFI and FI survey literature.
+- No device was opened, probed or written.
